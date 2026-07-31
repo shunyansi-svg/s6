@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IAL Chemistry Topic 17: Ligand Reactions, Deprotonation & Complex Stability Studio</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- KaTeX CSS & JS CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="initKaTeX()"></script>
+
+    <script>
+        function initKaTeX() {
+            if (window.renderMathInElement) {
+                window.renderMathInElement(document.body, {
+                    delimiters: [
+                        {left: '$$', right: '$$', display: true},
+                        {left: '$', right: '$', display: false}
+                    ],
+                    throwOnError: false
+                });
+            }
+        }
+    </script>
+
+    <style>
+        .tab-btn-active {
+            border-bottom: 3px solid #38bdf8;
+            color: #38bdf8;
+            font-weight: 700;
+            background-color: rgba(56, 189, 248, 0.12);
+        }
+        .studio-canvas-bg {
+            background: linear-gradient(180deg, #0f172a 0%, #020617 100%);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            height: 6px;
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #1e293b;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #475569;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="bg-slate-900 border-b border-slate-800 sticky top-0 z-40 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center gap-3">
+            <div class="flex items-center gap-3">
+                <div class="bg-sky-500/20 p-2 rounded-lg border border-sky-500/30">
+                    <span class="text-2xl">🧪</span>
+                </div>
+                <div>
+                    <h1 class="text-lg font-extrabold tracking-tight text-sky-400">IAL Chemistry Topic 17: Ligand Reactions & Complex Stability Studio</h1>
+                    <p class="text-xs text-slate-400">Edexcel Topic 17.10–17.19: Deprotonation, Ligand Exchange, Chelate Effect & Haemoglobin Toxicity</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-2">
+                <span class="px-2.5 py-1 text-xs font-semibold rounded-full bg-sky-950 text-sky-300 border border-sky-800">
+                    Edexcel Spec 17.10 - 17.19
+                </span>
+                <span class="px-3 py-1.5 text-xs bg-emerald-950/80 text-emerald-300 rounded-lg border border-emerald-800/80 flex items-center gap-1.5 font-medium">
+                    <span>✨ Gemini AI Auto-Active</span>
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav class="bg-slate-900/90 border-b border-slate-800 text-xs sm:text-sm font-medium overflow-x-auto custom-scrollbar sticky top-[57px] z-30 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 flex whitespace-nowrap">
+            <button onclick="switchTab('scaffold')" id="btn-scaffold" class="tab-btn-active py-3 px-5 text-slate-300 hover:text-sky-300 transition flex items-center gap-2">
+                <span>📚 Syllabus Master Overview</span>
+            </button>
+            <button onclick="switchTab('reactions')" id="btn-reactions" class="py-3 px-5 text-slate-400 hover:text-sky-300 transition flex items-center gap-2">
+                <span>🧪 Reaction Workbench (Deprotonation vs Exchange)</span>
+            </button>
+            <button onclick="switchTab('stability')" id="btn-stability" class="py-3 px-5 text-slate-400 hover:text-sky-300 transition flex items-center gap-2">
+                <span>⚖️ Stability & Chelate Effect Calculator</span>
+            </button>
+            <button onclick="switchTab('haem')" id="btn-haem" class="py-3 px-5 text-slate-400 hover:text-sky-300 transition flex items-center gap-2">
+                <span>🫀 Haemoglobin & CO Substitution</span>
+            </button>
+            <button onclick="switchTab('ai')" id="btn-ai" class="py-3 px-5 text-slate-400 hover:text-sky-300 transition flex items-center gap-2">
+                <span>🤖 AI Examiner & Past Papers</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main class="max-w-7xl mx-auto px-4 py-6 flex-grow w-full">
+
+        <!-- SECTION 1: SYLLABUS MASTER OVERVIEW -->
+        <section id="tab-scaffold" class="space-y-6">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-sm">
+                <div class="border-b border-slate-800 pb-4 mb-6">
+                    <span class="text-xs font-bold text-sky-400 uppercase tracking-widest">Syllabus Master Overview</span>
+                    <h2 class="text-xl font-bold text-white mt-1">Topic 17 Learning Points & Mark Scheme Secrets (Spec 17.10 – 17.19)</h2>
+                    <p class="text-xs text-slate-400 mt-1">Review core definitions, reaction classifications, chelate thermodynamic entropy math, and examiner watch-outs.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    
+                    <!-- Card 1: 17.10 - 17.12 -->
+                    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-[10px] font-mono text-sky-400 uppercase font-bold px-2 py-0.5 bg-sky-950 rounded border border-sky-800">Spec 17.10 - 17.12</span>
+                                <span class="text-[10px] text-slate-400 font-mono">Coordination & Monodentates</span>
+                            </div>
+                            <h3 class="text-sm font-bold text-white mb-3">1. Coordination Number & Monodentate Ligands</h3>
+                            
+                            <div class="space-y-2">
+                                <span class="text-[11px] font-bold text-sky-300 uppercase tracking-wider block">🎯 5 Key Learning Goals:</span>
+                                <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed">
+                                    <li>Define **Coordination Number**: Total number of dative (coordinate) covalent bonds formed with central metal ion.</li>
+                                    <li>Classify Monodentate Ligands: $\text{H}_2\text{O}$, $\text{NH}_3$, $\text{Cl}^-$, $\text{OH}^-$, $\text{CN}^-$ (donate 1 lone pair).</li>
+                                    <li>Understand that neutral ligands ($\text{H}_2\text{O}, \text{NH}_3$) do not change complex charge, whereas anionic ligands ($\text{Cl}^-, \text{OH}^-$) alter overall charge.</li>
+                                    <li>Explain colour changes resulting from changes in oxidation state, ligand type, or coordination number.</li>
+                                    <li>Deduce central metal oxidation state: $x + \sum (\text{ligand charges}) = \text{overall charge}$.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="p-3 bg-amber-950/40 border border-amber-800/60 rounded-lg text-xs text-amber-200 space-y-1">
+                            <span class="font-bold text-amber-400 block uppercase text-[10px]">💡 IAL Examiner Watch-Outs:</span>
+                            <p class="leading-relaxed text-[11px]">
+                                Coordination number is the number of <b>DATIVE BONDS</b>, NOT the number of ligand molecules! E.g., $[\text{Cr}(\text{C}_2\text{O}_4)_3]^{3-}$ has 3 ligands, but its coordination number is <b>6</b> because ethanedioate is bidentate.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: 17.13 - 17.15 -->
+                    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-[10px] font-mono text-purple-400 uppercase font-bold px-2 py-0.5 bg-purple-950 rounded border border-purple-800">Spec 17.13 - 17.15</span>
+                                <span class="text-[10px] text-slate-400 font-mono">Complex Shapes & Cisplatin</span>
+                            </div>
+                            <h3 class="text-sm font-bold text-white mb-3">2. 3D Complex Geometries & Cisplatin Isomerism</h3>
+                            
+                            <div class="space-y-2">
+                                <span class="text-[11px] font-bold text-purple-300 uppercase tracking-wider block">🎯 5 Key Learning Goals:</span>
+                                <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed">
+                                    <li><b>Octahedral (CN=6)</b>: Formed with small ligands like $\text{H}_2\text{O}$ and $\text{NH}_3$ ($90^\circ$ bond angle).</li>
+                                    <li><b>Tetrahedral (CN=4)</b>: Formed with larger, bulky ligands like $\text{Cl}^-$ due to steric repulsion ($109.5^\circ$).</li>
+                                    <li><b>Square Planar (CN=4)</b>: Formed by $\text{Pt}^{2+}$ complexes ($90^\circ$ bond angle).</li>
+                                    <li><b>Linear (CN=2)</b>: Formed by $\text{Ag}^+$ complexes, e.g. $[\text{Ag}(\text{NH}_3)_2]^+$, $[\text{Ag}(\text{CN})_2]^-$.</li>
+                                    <li><b>Cisplatin $[\text{Pt}(\text{NH}_3)_2\text{Cl}_2]$</b>: Anticancer drug supplied as a single $cis$-isomer to bind DNA; $trans$-isomer is ineffective and toxic.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="p-3 bg-amber-950/40 border border-amber-800/60 rounded-lg text-xs text-amber-200 space-y-1">
+                            <span class="font-bold text-amber-400 block uppercase text-[10px]">💡 IAL Examiner Watch-Outs:</span>
+                            <p class="leading-relaxed text-[11px]">
+                                Replacing $\text{H}_2\text{O}$ with $\text{Cl}^-$ causes a change in coordination number from 6 to 4 ($[\text{Cu}(\text{H}_2\text{O})_6]^{2+} \rightarrow [\text{CuCl}_4]^{2-}$). State that $\text{Cl}^-$ is a <b>larger ligand</b> so fewer fit around the central metal ion!
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: 17.16 - 17.17 -->
+                    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-[10px] font-mono text-emerald-400 uppercase font-bold px-2 py-0.5 bg-emerald-950 rounded border border-emerald-800">Spec 17.16 - 17.17</span>
+                                <span class="text-[10px] text-slate-400 font-mono">Chelates & Haemoglobin</span>
+                            </div>
+                            <h3 class="text-sm font-bold text-white mb-3">3. Bidentate/Hexadentate Chelates & Haemoglobin</h3>
+                            
+                            <div class="space-y-2">
+                                <span class="text-[11px] font-bold text-emerald-300 uppercase tracking-wider block">🎯 5 Key Learning Goals:</span>
+                                <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed">
+                                    <li><b>Bidentate Ligands</b>: Form 2 dative bonds per ligand molecule (1,2-diaminoethane $\text{en}$, ethanedioate $\text{C}_2\text{O}_4^{2-}$).</li>
+                                    <li><b>Hexadentate Ligand</b>: $\text{EDTA}^{4-}$ forms 6 dative bonds per ligand molecule ($2 \times \text{:N}$, $4 \times \text{:O}^-$).</li>
+                                    <li><b>Chelate Effect</b>: Monodentate replacement by multidentates increases entropy ($\Delta S_{\text{system}} > 0$), producing more stable complexes.</li>
+                                    <li><b>Haemoglobin Structure</b>: Contains an $\text{Fe}^{2+}$ ion in a multidentate porphyrin ring bound to globin protein, leaving 1 site for reversible $\text{O}_2$ binding.</li>
+                                    <li><b>Carbon Monoxide Toxicity</b>: $\text{CO}$ forms a <b>much stronger dative covalent bond</b> with $\text{Fe}^{2+}$, replacing $\text{O}_2$ irreversibly.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="p-3 bg-amber-950/40 border border-amber-800/60 rounded-lg text-xs text-amber-200 space-y-1">
+                            <span class="font-bold text-amber-400 block uppercase text-[10px]">💡 IAL Examiner Watch-Outs:</span>
+                            <p class="leading-relaxed text-[11px]">
+                                Always explain stability in terms of <b>total entropy ($\Delta S_{\text{total}} = \Delta S_{\text{system}} + \Delta S_{\text{surroundings}}$)</b>. Number of product moles > reactant moles $\rightarrow \Delta S_{\text{system}} > 0$. Bond enthalpies are similar, so $\Delta H \approx 0 \rightarrow \Delta S_{\text{surroundings}} \approx 0$.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Card 4: Deprotonation vs Exchange Master Rule -->
+                    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between md:col-span-2 lg:col-span-3">
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-[10px] font-mono text-rose-400 uppercase font-bold px-2 py-0.5 bg-rose-950 rounded border border-rose-800">Critical IAL Distinction</span>
+                                <span class="text-[10px] text-slate-400 font-mono">Reaction Classification</span>
+                            </div>
+                            <h3 class="text-sm font-bold text-white mb-2">4. Deprotonation vs Ligand Exchange (The #1 Student Misconception)</h3>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-slate-300">
+                                <div class="p-3 bg-slate-900 rounded-lg border border-rose-900/60 space-y-1.5">
+                                    <span class="font-bold text-rose-300 uppercase text-[11px] block">Stage 1: Deprotonation (Base Action)</span>
+                                    <p class="text-[11px] leading-relaxed">
+                                        Adding a small amount of aqueous $\text{NaOH}$ or $\text{NH}_3$ to aqua-complexes $[\text{Cu}(\text{H}_2\text{O})_6]^{2+}$ causes <b>deprotonation</b>:
+                                    </p>
+                                    <div class="p-2 bg-slate-950 rounded font-mono text-rose-300 text-[11px]">
+                                        $[\text{Cu}(\text{H}_2\text{O})_6]^{2+} + 2\text{OH}^- \rightarrow [\text{Cu}(\text{H}_2\text{O})_4(\text{OH})_2](\text{s}) + 2\text{H}_2\text{O}$
+                                    </div>
+                                    <p class="text-[11px] text-amber-300 font-semibold">
+                                        ⚠️ Misconception Alert: $\text{OH}^-$ ions DO NOT replace water ligands! They act as a base, removing $\text{H}^+$ protons from two $\text{H}_2\text{O}$ ligands to form a neutral pale blue precipitate $\text{Cu}(\text{OH})_2(\text{s})$.
+                                    </p>
+                                </div>
+
+                                <div class="p-3 bg-slate-900 rounded-lg border border-sky-900/60 space-y-1.5">
+                                    <span class="font-bold text-sky-300 uppercase text-[11px] block">Stage 2: Ligand Exchange (Substitution)</span>
+                                    <p class="text-[11px] leading-relaxed">
+                                        Adding <b>excess $\text{NH}_3$</b> to the blue precipitate causes <b>ligand exchange</b>:
+                                    </p>
+                                    <div class="p-2 bg-slate-950 rounded font-mono text-sky-300 text-[11px]">
+                                        $[\text{Cu}(\text{H}_2\text{O})_4(\text{OH})_2] + 4\text{NH}_3 \rightarrow [\text{Cu}(\text{NH}_3)_4(\text{H}_2\text{O})_2]^{2+} + 2\text{OH}^- + 2\text{H}_2\text{O}$
+                                    </div>
+                                    <p class="text-[11px] text-sky-300 font-semibold">
+                                        ✓ Observations: Blue precipitate dissolves to form a <b>deep blue solution</b>. $4\text{NH}_3$ molecules replace $2\text{H}_2\text{O}$ and $2\text{OH}^-$ ligands.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: REACTION WORKBENCH (DEPROTONATION VS EXCHANGE) -->
+        <section id="tab-reactions" class="hidden space-y-6">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-sm space-y-6">
+                <div class="border-b border-slate-800 pb-4 flex flex-col sm:flex-row justify-between sm:items-center gap-2">
+                    <div>
+                        <span class="text-xs font-bold text-sky-400 uppercase tracking-widest">Interactive Reaction Workbench</span>
+                        <h2 class="text-xl font-bold text-white mt-1">Deprotonation & Ligand Exchange Laboratory</h2>
+                        <p class="text-xs text-slate-400 mt-1">Simulate stepwise addition of reagents ($\text{NH}_3$, $\text{NaOH}$, conc. $\text{HCl}$) to aqueous metal ions and observe real-time structural, color & precipitate changes.</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                    
+                    <!-- Left: Control Panel -->
+                    <div class="lg:col-span-5 bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+                        <h3 class="text-xs font-bold text-sky-300 uppercase tracking-wider">Select Reaction Sequence:</h3>
+                        
+                        <div class="space-y-2">
+                            <select id="reaction-sequence-select" onchange="resetWorkbench()" class="w-full bg-slate-900 border border-slate-700 text-slate-100 text-xs rounded-lg p-2.5 font-mono">
+                                <option value="cu_ammonia">Copper(II) + Ammonia (Stage 1 Deprotonation -> Stage 2 Exchange)</option>
+                                <option value="cu_hcl">Copper(II) + Concentrated HCl (Cl⁻ Substitution & Coordination Shift)</option>
+                                <option value="fe2_naoh">Iron(II) + NaOH Deprotonation (Dirty Green ppt -> Surface Brown Oxidation)</option>
+                                <option value="fe3_naoh">Iron(III) + NaOH Deprotonation (Foxy Red-Brown ppt)</option>
+                                <option value="cr3_naoh_excess">Chromium(III) + NaOH (Green ppt -> Amphoteric Dissolution)</option>
+                            </select>
+                        </div>
+
+                        <!-- Stepwise Buttons -->
+                        <div class="p-4 bg-slate-900 border border-slate-800 rounded-lg space-y-3">
+                            <span class="text-xs text-slate-400 font-semibold block">Stepwise Reagent Addition:</span>
+                            <div class="grid grid-cols-2 gap-2">
+                                <button onclick="setReactionStep(1)" id="step-btn-1" class="px-3 py-2 bg-sky-600 text-white font-bold text-xs rounded-lg shadow transition">
+                                    Stage 0: Initial Solution
+                                </button>
+                                <button onclick="setReactionStep(2)" id="step-btn-2" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs rounded-lg transition">
+                                    Stage 1: Small Reagent
+                                </button>
+                            </div>
+                            <button onclick="setReactionStep(3)" id="step-btn-3" class="w-full py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs rounded-lg transition">
+                                Stage 2: Excess Reagent
+                            </button>
+                        </div>
+
+                        <!-- Reaction Details Box -->
+                        <div class="p-4 bg-slate-900 border border-slate-800 rounded-lg text-xs space-y-2.5">
+                            <div class="flex justify-between border-b border-slate-800 pb-1.5">
+                                <span class="text-slate-400">Reaction Type:</span>
+                                <span id="wb-type" class="font-bold text-rose-400">Initial State</span>
+                            </div>
+                            <div class="flex justify-between border-b border-slate-800 pb-1.5">
+                                <span class="text-slate-400">Observation:</span>
+                                <span id="wb-obs" class="font-bold text-sky-400">Pale blue solution</span>
+                            </div>
+                            <div class="flex justify-between border-b border-slate-800 pb-1.5">
+                                <span class="text-slate-400">Complex Formula:</span>
+                                <span id="wb-formula" class="font-mono text-purple-300 font-bold">$[\text{Cu}(\text{H}_2\text{O})_6]^{2+}$</span>
+                            </div>
+                            <div class="flex justify-between border-b border-slate-800 pb-1.5">
+                                <span class="text-slate-400">Coordination Number:</span>
+                                <span id="wb-cn" class="font-mono text-emerald-400 font-bold">6 (Octahedral)</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-slate-400">Central Metal Oxidation State:</span>
+                                <span id="wb-oxstate" class="font-mono text-sky-300 font-bold">+2</span>
+                            </div>
+                        </div>
+
+                        <!-- Chemical Equation Display -->
+                        <div class="p-3.5 bg-slate-900 border border-sky-900/50 rounded-lg text-xs space-y-1">
+                            <span class="font-bold text-sky-400 block uppercase text-[10px]">Balanced Ionic Equation:</span>
+                            <div id="wb-equation" class="font-mono text-slate-200">
+                                $[\text{Cu}(\text{H}_2\text{O})_6]^{2+}(\text{aq})$
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Simulated Test Tube Canvas Viewport -->
+                    <div class="lg:col-span-7 bg-slate-950 border border-slate-800 rounded-xl p-5 flex flex-col items-center justify-center relative min-h-[380px]">
+                        <h3 class="text-xs font-bold text-slate-300 uppercase tracking-wider mb-3 self-start flex items-center justify-between w-full">
+                            <span>Simulated Test Tube & Precipitate Visualizer</span>
+                            <span id="wb-state-badge" class="text-[10px] font-mono px-2 py-0.5 rounded bg-sky-950 text-sky-300 border border-sky-800">Clear Solution</span>
+                        </h3>
+
+                        <div class="w-full flex justify-center items-center py-2">
+                            <canvas id="workbench-canvas" width="340" height="340" class="studio-canvas-bg rounded-lg border border-slate-800 shadow-2xl"></canvas>
+                        </div>
+
+                        <div id="wb-pedagogy-notes" class="mt-2 p-3 bg-slate-900/90 rounded-lg border border-slate-800 text-xs text-slate-300 leading-relaxed w-full">
+                            <b>Initial Solution:</b> Hexaaquacopper(II) ion $[\text{Cu}(\text{H}_2\text{O})_6]^{2+}$ forms a pale blue octahedral aqueous solution.
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: STABILITY & CHELATE EFFECT CALCULATOR -->
+        <section id="tab-stability" class="hidden space-y-6">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-sm space-y-6">
+                <div class="border-b border-slate-800 pb-4">
+                    <span class="text-xs font-bold text-sky-400 uppercase tracking-widest">Thermodynamic Physics</span>
+                    <h2 class="text-xl font-bold text-white mt-1">Complex Ion Stability & Chelate Effect Calculator</h2>
+                    <p class="text-xs text-slate-400 mt-1">Understand why multidentate ligands ($\text{en}, \text{C}_2\text{O}_4^{2-}, \text{EDTA}^{4-}$) replace monodentate ligands driven by entropy ($\Delta S_{\text{system}} > 0$).</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                    
+                    <!-- Left: Reaction Selector & Particle Count Visualizer -->
+                    <div class="lg:col-span-6 bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+                        <h3 class="text-xs font-bold text-sky-300 uppercase tracking-wider">Select Ligand Substitution System:</h3>
+                        
+                        <div class="space-y-2">
+                            <select id="stability-reaction-select" onchange="calculateStabilityData()" class="w-full bg-slate-900 border border-slate-700 text-slate-100 text-xs rounded-lg p-2.5 font-mono">
+                                <option value="co_en">Cobalt(II) Ammine + 3 en -> [Co(en)₃]²⁺ + 6 NH₃ (Bidentate)</option>
+                                <option value="cu_edta">Cu(II) Aqua + EDTA⁴⁻ -> [Cu(EDTA)]²⁻ + 6 H₂O (Hexadentate)</option>
+                                <option value="cr_oxalate">Cr(III) Aqua + 3 Oxalate²⁻ -> [Cr(C₂O₄)₃]³⁻ + 6 H₂O (Bidentate)</option>
+                            </select>
+                        </div>
+
+                        <!-- Particle Moles Counter -->
+                        <div class="p-4 bg-slate-900 border border-slate-800 rounded-lg space-y-3">
+                            <span class="text-xs font-bold text-purple-300 uppercase block">Mole Count & Entropy Analysis:</span>
+                            <div class="grid grid-cols-2 gap-3 text-center text-xs">
+                                <div class="p-3 bg-slate-950 rounded-lg border border-purple-900/60">
+                                    <span class="text-slate-400 block text-[10px]">Reactant Moles</span>
+                                    <span id="stab-moles-react" class="text-xl font-black text-purple-400 font-mono">4 moles</span>
+                                    <span id="stab-react-details" class="text-[10px] text-slate-500 block mt-1">1 complex + 3 en</span>
+                                </div>
+                                <div class="p-3 bg-slate-950 rounded-lg border border-emerald-900/60">
+                                    <span class="text-slate-400 block text-[10px]">Product Moles</span>
+                                    <span id="stab-moles-prod" class="text-xl font-black text-emerald-400 font-mono">7 moles</span>
+                                    <span id="stab-prod-details" class="text-[10px] text-slate-500 block mt-1">1 complex + 6 NH₃</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Thermodynamic Proof Card -->
+                        <div class="p-4 bg-slate-900 border border-slate-800 rounded-lg space-y-2 text-xs">
+                            <span class="font-bold text-amber-300 uppercase text-[10px] block">Official IAL Thermodynamic Explanation:</span>
+                            <ul class="space-y-1.5 text-slate-300 list-disc list-inside text-[11px] leading-relaxed">
+                                <li><b>Entropy of System ($\Delta S_{\text{system}}$)</b>: Positive ($\Delta S_{\text{system}} > 0$) because number of moles increases ($\Delta n > 0$), creating significantly more disorder.</li>
+                                <li><b>Enthalpy Change ($\Delta H$)</b>: Close to zero ($\Delta H \approx 0$) because the number and strength of dative bonds broken and formed are virtually identical.</li>
+                                <li><b>Total Entropy ($\Delta S_{\text{total}}$)</b>: Strongly positive ($\Delta S_{\text{total}} = \Delta S_{\text{system}} + \frac{-\Delta H}{T} > 0$), making the chelate complex exceptionally stable!</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Right: EDTA Applications & Chelate Effect Masterclass -->
+                    <div class="lg:col-span-6 bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <h3 class="text-xs font-bold text-emerald-300 uppercase tracking-wider">
+                                Practical Applications of EDTA & Chelate Complexes
+                            </h3>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                                <div class="p-3 bg-slate-900 rounded-lg border border-slate-800 space-y-1">
+                                    <span class="font-bold text-emerald-400 block text-[11px]">1. Heavy Metal Poisoning</span>
+                                    <p class="text-[11px] text-slate-300 leading-relaxed">
+                                        $\text{EDTA}^{4-}$ binds poisonous heavy metal ions (e.g., $\text{Pb}^{2+}$, $\text{Hg}^{2+}$) in blood to form stable, non-toxic soluble chelate complexes excreted in urine.
+                                    </p>
+                                </div>
+
+                                <div class="p-3 bg-slate-900 rounded-lg border border-slate-800 space-y-1">
+                                    <span class="font-bold text-emerald-400 block text-[11px]">2. Hard Water Softening</span>
+                                    <p class="text-[11px] text-slate-300 leading-relaxed">
+                                        Added to shampoos and detergents to sequester $\text{Ca}^{2+}$ and $\text{Mg}^{2+}$ ions, preventing scum formation and allowing lathering.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-3.5 bg-purple-950/40 border border-purple-800/60 rounded-lg text-xs space-y-1.5 text-purple-200">
+                            <span class="font-bold block uppercase text-[10px]">📝 Chelate Effect Exam Writing Template:</span>
+                            <p class="text-[11px] leading-relaxed font-mono text-slate-200">
+                                "The reaction has an <b>increase in entropy ($\Delta S_{\text{system}} > 0$)</b> because the number of moles increases from 4 to 7. The enthalpy change ($\Delta H$) is close to zero because the number and types of dative bonds are similar. Therefore, $\Delta S_{\text{total}}$ is positive, making the complex formed very stable."
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: HAEMOGLOBIN & CO SUBSTITUTION -->
+        <section id="tab-haem" class="hidden space-y-6">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-sm space-y-6">
+                <div class="border-b border-slate-800 pb-4">
+                    <span class="text-xs font-bold text-rose-400 uppercase tracking-widest">Biochemical Ligand Substitution</span>
+                    <h2 class="text-xl font-bold text-white mt-1">Haemoglobin Oxygen Transport & Carbon Monoxide Toxicity</h2>
+                    <p class="text-xs text-slate-400 mt-1">Explore the structure of Haem ($\text{Fe}^{2+}$ porphyrin ring) and learn why $\text{CO}$ acts as a competitive, irreversible ligand.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                    
+                    <!-- Left: Interactive Haem Structure Visualizer -->
+                    <div class="lg:col-span-6 bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col items-center justify-center">
+                        <h3 class="text-xs font-bold text-rose-300 uppercase tracking-wider self-start">
+                            Haem Group ($\text{Fe}^{2+}$ Coordination Architecture)
+                        </h3>
+
+                        <!-- SVG Haem Schematic -->
+                        <div class="w-full flex justify-center py-2">
+                            <svg viewBox="0 0 300 240" class="w-72 h-60 studio-canvas-bg rounded-lg border border-slate-800">
+                                <!-- Central Fe(II) Ion -->
+                                <circle cx="150" cy="120" r="22" fill="#ef4444" opacity="0.3" stroke="#ef4444" stroke-width="2"/>
+                                <text x="150" y="125" fill="#f8fafc" font-size="14" font-weight="bold" text-anchor="middle">Fe²⁺</text>
+
+                                <!-- Porphyrin Ring Nitrogen Donors (Equatorial Plane) -->
+                                <path d="M 128 120 L 70 120" stroke="#38bdf8" stroke-width="2"/>
+                                <text x="60" y="124" fill="#38bdf8" font-size="11" font-weight="bold" text-anchor="end">N (Ring)</text>
+
+                                <path d="M 172 120 L 230 120" stroke="#38bdf8" stroke-width="2"/>
+                                <text x="240" y="124" fill="#38bdf8" font-size="11" font-weight="bold" text-anchor="start">N (Ring)</text>
+
+                                <path d="M 150 98 L 150 50" stroke="#38bdf8" stroke-width="2"/>
+                                <text x="150" y="42" fill="#38bdf8" font-size="11" font-weight="bold" text-anchor="middle">N (Ring)</text>
+
+                                <!-- Globin Protein Nitrogen Donor (Axial Bottom) -->
+                                <path d="M 150 142 L 150 190" stroke="#a855f7" stroke-width="2"/>
+                                <rect x="110" y="190" width="80" height="24" rx="4" fill="#581c87" stroke="#a855f7" stroke-width="1.5"/>
+                                <text x="150" y="206" fill="#f3e8ff" font-size="10" font-weight="bold" text-anchor="middle">Globin Protein</text>
+
+                                <!-- Reversible Ligand Binding Site (Axial Top / Angle) -->
+                                <path id="haem-ligand-bond" d="M 165 105 L 210 65" stroke="#22c55e" stroke-width="2.5"/>
+                                <circle id="haem-ligand-node" cx="210" cy="65" r="14" fill="#15803d" stroke="#22c55e" stroke-width="2"/>
+                                <text id="haem-ligand-text" x="210" y="69" fill="#f8fafc" font-size="11" font-weight="bold" text-anchor="middle">O₂</text>
+                            </svg>
+                        </div>
+
+                        <div class="flex gap-2 w-full">
+                            <button onclick="switchHaemLigand('o2')" id="haem-btn-o2" class="flex-1 py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-lg shadow transition">
+                                🫁 Bind Oxygen ($\text{O}_2$)
+                            </button>
+                            <button onclick="switchHaemLigand('co')" id="haem-btn-co" class="flex-1 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs rounded-lg transition">
+                                ⚠️ Expose to Carbon Monoxide ($\text{CO}$)
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Right: Chemical Mechanics & Exam Answers -->
+                    <div class="lg:col-span-6 bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <h3 class="text-xs font-bold text-rose-300 uppercase tracking-wider">
+                                Ligand Exchange Mechanics in Haemoglobin
+                            </h3>
+
+                            <div id="haem-status-box" class="p-3.5 bg-slate-900 rounded-lg border border-emerald-900/60 text-xs space-y-2">
+                                <span class="font-bold text-emerald-400 block font-mono text-[11px]">1. Normal Oxygen Transport (Oxyhaemoglobin)</span>
+                                <p class="text-slate-300 leading-relaxed text-[11px]">
+                                    Oxygen forms a weak, <b>reversible dative bond</b> with $\text{Fe}^{2+}$ in the lungs where $\text{O}_2$ concentration is high. It travels through blood and releases $\text{O}_2$ readily to respiring tissues.
+                                </p>
+                                <div class="p-2 bg-slate-950 rounded font-mono text-emerald-300 text-[11px]">
+                                    $\text{haemoglobin} + \text{O}_2 \rightleftharpoons \text{oxyhaemoglobin}$
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-3.5 bg-rose-950/40 border border-rose-800/60 rounded-lg text-xs space-y-1.5 text-rose-200">
+                            <span class="font-bold block uppercase text-[10px]">📝 Official IAL Mark Scheme Explanation for CO Poisoning:</span>
+                            <p class="text-[11px] leading-relaxed font-mono text-slate-200">
+                                "Carbon monoxide ($\text{CO}$) forms a <b>much stronger dative covalent bond</b> with the central $\text{Fe}^{2+}$ ion than oxygen ($\text{O}_2$). In a ligand exchange reaction, $\text{CO}$ replaces $\text{O}_2$ to form <b>carboxyhaemoglobin</b>. Because this bond is extremely strong and non-reversible, $\text{Fe}^{2+}$ can no longer transport oxygen to cells, leading to asphyxiation."
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: AI EXAMINER & PAST PAPERS -->
+        <section id="tab-ai" class="hidden space-y-6">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-sm space-y-6">
+                <div>
+                    <h2 class="text-xl font-bold text-white">AI Topic 17 Examiner & Review Tutor</h2>
+                    <p class="text-xs text-slate-400 mt-1">Evaluate structured written answers, upload handwritten notes/complex drawings, or test yourself against authentic Edexcel IAL past papers.</p>
+                </div>
+
+                <!-- Grounding Context Box -->
+                <div class="space-y-2">
+                    <div class="flex justify-between items-center text-xs font-bold text-slate-300">
+                        <span>📚 OFFICIAL MARK SCHEME GROUNDING CONTEXT (Topic 17 Complete)</span>
+                        <span class="text-[10px] text-amber-400 font-mono">🔒 Locked Grounding</span>
+                    </div>
+                    <textarea id="aiSourceContext" rows="4" readonly class="w-full bg-slate-950/80 border border-slate-800 rounded-lg p-3 text-xs text-sky-200 font-mono focus:outline-none leading-relaxed cursor-not-allowed">
+[OFFICIAL IAL TOPIC 17 LIGAND REACTIONS & STABILITY MARK SCHEME GROUNDING]
+1. Coordination Number & Shapes:
+   - Coordination number: Total number of dative (coordinate) bonds formed with central metal ion.
+   - Small ligands (H2O, NH3) -> Octahedral (CN=6, 90 deg).
+   - Bulky ligands (Cl-) -> Tetrahedral (CN=4, 109.5 deg) due to steric repulsion.
+   - Pt2+ -> Square Planar (CN=4, 90 deg). Cisplatin is the active cis-isomer used in cancer chemotherapy.
+
+2. Deprotonation vs Ligand Exchange:
+   - Adding small NaOH or NH3 to [Cu(H2O)6]2+ is DEPROTONATION: [Cu(H2O)6]2+ + 2OH- -> [Cu(H2O)4(OH)2](s) + 2H2O. Blue ppt formed. OH- acts as a base, NOT replacing water ligands.
+   - Adding excess NH3 to blue ppt is LIGAND EXCHANGE: [Cu(H2O)4(OH)2] + 4NH3 -> [Cu(NH3)4(H2O)2]2+ + 2OH- + 2H2O. Blue ppt dissolves forming deep blue solution.
+
+3. Stability & Chelate Effect:
+   - Multidentate substitution increases total entropy (delta S_total > 0).
+   - Number of product moles > reactant moles -> delta S_system is strongly positive.
+   - Enthalpy change delta H is close to zero because number and type of dative bonds formed/broken are similar.
+   - Therefore delta S_total = delta S_system + (-delta H / T) is strongly positive, making chelate complexes very stable.
+
+4. Haemoglobin & CO Toxicity:
+   - Haem is Fe2+ bound to porphyrin ring + globin protein.
+   - CO forms a much stronger dative covalent bond with Fe2+ than O2, replacing O2 in a ligand substitution reaction to form carboxyhaemoglobin. Reverses very slowly/irreversibly.
+</textarea>
+                </div>
+
+                <!-- Chat & Past Papers Split -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                    
+                    <!-- Left: Past Paper Bank -->
+                    <div class="lg:col-span-5 bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+                        <h3 class="text-xs font-bold text-sky-300 uppercase tracking-wider">📚 Authentic IAL Past Paper Scenarios</h3>
+                        
+                        <div class="space-y-2">
+                            <select id="past-paper-select" onchange="loadPastPaperQuestion()" class="w-full bg-slate-900 border border-slate-700 text-slate-100 text-xs rounded-lg p-2.5 font-mono">
+                                <option value="q_chelate_4m">Q1: Explain why EDTA forms a more stable complex than aqua ligands (4 Marks)</option>
+                                <option value="q_deprot_3m">Q2: Describe observations and write equation for adding excess NH₃ to [Cu(H₂O)₆]²⁺ (3 Marks)</option>
+                                <option value="q_co_toxicity_3m">Q3: Explain why Carbon Monoxide is toxic in terms of ligand exchange (3 Marks)</option>
+                                <option value="q_cisplatin_2m">Q4: Explain why Cisplatin is supplied as a single isomer (2 Marks)</option>
+                            </select>
+                        </div>
+
+                        <div id="pp-desc-box" class="p-3.5 bg-slate-900 rounded-lg border border-slate-800 text-xs leading-relaxed space-y-2">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- Right: AI Evaluation Workspace -->
+                    <div class="lg:col-span-7 bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <h3 class="text-xs font-bold text-emerald-300 uppercase tracking-wider">🤖 Gemini AI Examiner Workspace</h3>
+                            </div>
+                            <div id="ai-chat-history" class="bg-slate-900 border border-slate-800 rounded-lg p-3 min-h-[220px] max-h-[300px] overflow-y-auto custom-scrollbar font-mono text-xs space-y-2">
+                                <div class="text-slate-500 italic">Examiner ready. Type your structured answer to be evaluated against official IAL mark scheme criteria...</div>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-2 pt-2">
+                            <input type="text" id="ai-user-input" placeholder="Type your structured answer to be evaluated..." class="flex-grow bg-slate-900 border border-slate-700 text-slate-100 text-xs rounded-lg p-2.5 focus:outline-none focus:ring-1 focus:ring-sky-500">
+                            <button onclick="sendAiChat()" class="px-4 py-2.5 bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs rounded-lg shadow transition">
+                                Submit Answer
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- JavaScript Engine -->
+    <script>
+        let currentWbStep = 1; // 1: Initial, 2: Stage 1, 3: Stage 2
+        let currentHaemLigand = 'o2'; // 'o2' or 'co'
+
+        // Past Paper Question Database
+        const PAST_PAPERS = {
+            'q_chelate_4m': {
+                title: 'Q1: Explain why EDTA forms a more stable complex than aqua ligands (4 Marks)',
+                desc: '<b>Question:</b> When $[\text{Cu}(\text{H}_2\text{O})_6]^{2+}$ reacts with $\text{EDTA}^{4-}$, the hexaaqua complex is completely converted to $[\text{Cu}(\text{EDTA})]^{2-}$. Explain why the EDTA complex is more stable using thermodynamic terms. (4 Marks)',
+                sample: '1. Number of moles of particles increases from 2 to 7 (or reactants < products).<br>2. System entropy change ($\Delta S_{\text{system}}$) is positive.<br>3. Enthalpy change ($\Delta H$) is close to zero because number and types of dative bonds broken and formed are similar.<br>4. Therefore total entropy change ($\Delta S_{\text{total}}$) is strongly positive.'
+            },
+            'q_deprot_3m': {
+                title: 'Q2: Describe observations and write equation for adding excess NH₃ to [Cu(H₂O)₆]²⁺ (3 Marks)',
+                desc: '<b>Question:</b> Describe what is seen when excess aqueous ammonia is added dropwise to an aqueous solution of copper(II) sulfate. Write ionic equations for both stages. (3 Marks)',
+                sample: '1. Pale blue solution forms a blue precipitate $[\text{Cu}(\text{H}_2\text{O})_4(\text{OH})_2]$ which dissolves in excess $\text{NH}_3$ to form a deep blue solution.<br>2. Stage 1 (deprotonation): $[\text{Cu}(\text{H}_2\text{O})_6]^{2+} + 2\text{NH}_3 \rightarrow [\text{Cu}(\text{H}_2\text{O})_4(\text{OH})_2] + 2\text{NH}_4^+$.<br>3. Stage 2 (ligand exchange): $[\text{Cu}(\text{H}_2\text{O})_4(\text{OH})_2] + 4\text{NH}_3 \rightarrow [\text{Cu}(\text{NH}_3)_4(\text{H}_2\text{O})_2]^{2+} + 2\text{OH}^- + 2\text{H}_2\text{O}$.'
+            },
+            'q_co_toxicity_3m': {
+                title: 'Q3: Explain why Carbon Monoxide is toxic in terms of ligand exchange (3 Marks)',
+                desc: '<b>Question:</b> Explain why inhaling carbon monoxide is dangerous to humans, referring to dative bonding and ligand exchange. (3 Marks)',
+                sample: '1. $\text{CO}$ forms a much stronger dative covalent bond with $\text{Fe}^{2+}$ than $\text{O}_2$.<br>2. $\text{CO}$ replaces $\text{O}_2$ in a ligand substitution reaction to form carboxyhaemoglobin.<br>3. This reaction is non-reversible, preventing haemoglobin from transporting oxygen to tissues.'
+            },
+            'q_cisplatin_2m': {
+                title: 'Q4: Explain why Cisplatin is supplied as a single isomer (2 Marks)',
+                desc: '<b>Question:</b> Explain why the anticancer drug cisplatin is supplied as a single isomer rather than a mixture with transplatin. (2 Marks)',
+                sample: '1. Only the $cis$-isomer binds effectively to cancer cell DNA to stop replication.<br>2. The $trans$-isomer is ineffective and produces severe unwanted side effects.'
+            }
+        };
+
+        // Tab Switcher
+        function switchTab(tabId) {
+            ['scaffold', 'reactions', 'stability', 'haem', 'ai'].forEach(id => {
+                const sec = document.getElementById(`tab-${id}`);
+                const btn = document.getElementById(`btn-${id}`);
+                if (sec) sec.classList.add('hidden');
+                if (btn) {
+                    btn.classList.remove('tab-btn-active');
+                    btn.classList.add('text-slate-400');
+                }
+            });
+
+            const targetSec = document.getElementById(`tab-${tabId}`);
+            const targetBtn = document.getElementById(`btn-${tabId}`);
+            if (targetSec) targetSec.classList.remove('hidden');
+            if (targetBtn) {
+                targetBtn.classList.add('tab-btn-active');
+                targetBtn.classList.remove('text-slate-400');
+            }
+
+            if (tabId === 'reactions') renderWorkbenchCanvas();
+            if (tabId === 'stability') calculateStabilityData();
+            initKaTeX();
+        }
+
+        // Workbench Reaction Logic
+        function resetWorkbench() {
+            setReactionStep(1);
+        }
+
+        function setReactionStep(step) {
+            currentWbStep = step;
+            
+            // Highlight active step button
+            [1, 2, 3].forEach(s => {
+                const btn = document.getElementById(`step-btn-${s}`);
+                if (btn) {
+                    if (s === step) {
+                        btn.className = 'px-3 py-2 bg-sky-600 text-white font-bold text-xs rounded-lg shadow transition';
+                    } else {
+                        btn.className = 'px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs rounded-lg transition';
+                    }
+                }
+            });
+
+            const seqKey = document.getElementById('reaction-sequence-select').value;
+            updateWorkbenchInfo(seqKey, step);
+            renderWorkbenchCanvas();
+            initKaTeX();
+        }
+
+        function updateWorkbenchInfo(seqKey, step) {
+            const elType = document.getElementById('wb-type');
+            const elObs = document.getElementById('wb-obs');
+            const elFormula = document.getElementById('wb-formula');
+            const elCn = document.getElementById('wb-cn');
+            const elOx = document.getElementById('wb-oxstate');
+            const elEq = document.getElementById('wb-equation');
+            const elNotes = document.getElementById('wb-pedagogy-notes');
+            const elBadge = document.getElementById('wb-state-badge');
+
+            if (seqKey === 'cu_ammonia') {
+                if (step === 1) {
+                    elType.textContent = 'Initial Solution State';
+                    elType.className = 'font-bold text-sky-400';
+                    elObs.textContent = 'Pale blue solution';
+                    elFormula.innerHTML = '$[\\text{Cu}(\\text{H}_2\\text{O})_6]^{2+}$';
+                    elCn.textContent = '6 (Octahedral)';
+                    elOx.textContent = '+2';
+                    elEq.innerHTML = '$[\\text{Cu}(\\text{H}_2\\text{O})_6]^{2+}(\\text{aq})$';
+                    elBadge.textContent = 'Clear Solution';
+                    elBadge.className = 'text-[10px] font-mono px-2 py-0.5 rounded bg-sky-950 text-sky-300 border border-sky-800';
+                    elNotes.innerHTML = '<b>Initial Solution:</b> Hexaaquacopper(II) ion $[\text{Cu}(\text{H}_2\text{O})_6]^{2+}$ forms a pale blue octahedral aqueous solution.';
+                } else if (step === 2) {
+                    elType.textContent = 'Stage 1: Deprotonation (Base Action)';
+                    elType.className = 'font-bold text-rose-400';
+                    elObs.textContent = 'Pale blue precipitate formed';
+                    elFormula.innerHTML = '$[\\text{Cu}(\\text{H}_2\\text{O})_4(\\text{OH})_2](\\text{s})$';
+                    elCn.textContent = '6 (Octahedral)';
+                    elOx.textContent = '+2';
+                    elEq.innerHTML = '$[\\text{Cu}(\\text{H}_2\\text{O})_6]^{2+} + 2\\text{NH}_3 \\rightarrow [\\text{Cu}(\\text{H}_2\\text{O})_4(\\text{OH})_2](\\text{s}) + 2\\text{NH}_4^+$';
+                    elBadge.textContent = 'Insoluble Precipitate';
+                    elBadge.className = 'text-[10px] font-mono px-2 py-0.5 rounded bg-rose-950 text-rose-300 border border-rose-800';
+                    elNotes.innerHTML = '<b>Stage 1 Deprotonation:</b> $\text{NH}_3$ acts as a base, taking $\text{H}^+$ protons from two water ligands to form a neutral pale blue precipitate $[\text{Cu}(\text{H}_2\text{O})_4(\text{OH})_2](\text{s})$. <i>No ligand substitution has occurred yet!</i>';
+                } else {
+                    elType.textContent = 'Stage 2: Ligand Exchange (Substitution)';
+                    elType.className = 'font-bold text-emerald-400';
+                    elObs.textContent = 'Blue ppt dissolves -> Deep blue solution';
+                    elFormula.innerHTML = '$[\\text{Cu}(\\text{NH}_3)_4(\\text{H}_2\\text{O})_2]^{2+}$';
+                    elCn.textContent = '6 (Octahedral)';
+                    elOx.textContent = '+2';
+                    elEq.innerHTML = '$[\\text{Cu}(\\text{H}_2\\text{O})_4(\\text{OH})_2] + 4\\text{NH}_3 \\rightarrow [\\text{Cu}(\\text{NH}_3)_4(\\text{H}_2\\text{O})_2]^{2+} + 2\\text{OH}^- + 2\\text{H}_2\\text{O}$';
+                    elBadge.textContent = 'Clear Complex Solution';
+                    elBadge.className = 'text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-800';
+                    elNotes.innerHTML = '<b>Stage 2 Ligand Exchange:</b> Excess $\text{NH}_3$ replaces $2\text{H}_2\text{O}$ and $2\text{OH}^-$ ligands, dissolving the precipitate into a royal deep blue solution.';
+                }
+            } else if (seqKey === 'cu_hcl') {
+                if (step === 1) {
+                    elType.textContent = 'Initial Solution State';
+                    elObs.textContent = 'Pale blue solution';
+                    elFormula.innerHTML = '$[\\text{Cu}(\\text{H}_2\\text{O})_6]^{2+}$';
+                    elCn.textContent = '6 (Octahedral)';
+                    elOx.textContent = '+2';
+                    elEq.innerHTML = '$[\\text{Cu}(\\text{H}_2\\text{O})_6]^{2+}(\\text{aq})$';
+                    elBadge.textContent = 'Clear Solution';
+                    elBadge.className = 'text-[10px] font-mono px-2 py-0.5 rounded bg-sky-950 text-sky-300 border border-sky-800';
+                    elNotes.innerHTML = '<b>Initial Solution:</b> $[\text{Cu}(\text{H}_2\text{O})_6]^{2+}$ pale blue octahedral complex.';
+                } else if (step === 2) {
+                    elType.textContent = 'Intermediate Mixing';
+                    elObs.textContent = 'Green solution (mixture of blue + yellow)';
+                    elFormula.innerHTML = 'Mixture of $[\\text{Cu}(\\text{H}_2\\text{O})_6]^{2+}$ & $[\\text{CuCl}_4]^{2-}$';
+                    elCn.textContent = 'Equilibrium Shift';
+                    elOx.textContent = '+2';
+                    elEq.innerHTML = '$[\\text{Cu}(\\text{H}_2\\text{O})_6]^{2+} + 2\\text{Cl}^- \\rightleftharpoons \\text{Green Mixture}$';
+                    elBadge.textContent = 'Equilibrium Mixture';
+                    elBadge.className = 'text-[10px] font-mono px-2 py-0.5 rounded bg-amber-950 text-amber-300 border border-amber-800';
+                    elNotes.innerHTML = '<b>Intermediate Green State:</b> Addition of concentrated $\text{HCl}$ produces a green solution due to a physical mixture of unreacted pale blue $[\text{Cu}(\text{H}_2\text{O})_6]^{2+}$ and newly formed yellow $[\text{CuCl}_4]^{2-}$.';
+                } else {
+                    elType.textContent = 'Complete Ligand Exchange & CN Shift';
+                    elObs.textContent = 'Yellow / Yellow-Green solution';
+                    elFormula.innerHTML = '$[\\text{CuCl}_4]^{2-}$';
+                    elCn.textContent = '4 (Tetrahedral)';
+                    elOx.textContent = '+2';
+                    elEq.innerHTML = '$[\\text{Cu}(\\text{H}_2\\text{O})_6]^{2+} + 4\\text{Cl}^- \\rightleftharpoons [\\text{CuCl}_4]^{2-} + 6\\text{H}_2\\text{O}$';
+                    elBadge.textContent = 'Tetrahedral Solution';
+                    elBadge.className = 'text-[10px] font-mono px-2 py-0.5 rounded bg-yellow-950 text-yellow-300 border border-yellow-800';
+                    elNotes.innerHTML = '<b>Tetrahedral Shift:</b> Excess $\text{Cl}^-$ replaces all water ligands. Coordination number drops from 6 to 4 because $\text{Cl}^-$ is a larger ligand with stronger steric repulsion.';
+                }
+            } else if (seqKey === 'fe2_naoh') {
+                if (step === 1) {
+                    elType.textContent = 'Initial Solution State';
+                    elObs.textContent = 'Pale green solution';
+                    elFormula.innerHTML = '$[\\text{Fe}(\\text{H}_2\\text{O})_6]^{2+}$';
+                    elCn.textContent = '6 (Octahedral)';
+                    elOx.textContent = '+2';
+                    elEq.innerHTML = '$[\\text{Fe}(\\text{H}_2\\text{O})_6]^{2+}(\\text{aq})$';
+                    elBadge.textContent = 'Clear Solution';
+                    elBadge.className = 'text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-800';
+                    elNotes.innerHTML = '<b>Initial Solution:</b> Hexaaquairon(II) ion $[\text{Fe}(\text{H}_2\text{O})_6]^{2+}$ pale green solution.';
+                } else if (step === 2) {
+                    elType.textContent = 'Stage 1: Deprotonation (Dirty Green ppt)';
+                    elObs.textContent = 'Dirty green precipitate formed';
+                    elFormula.innerHTML = '$[\\text{Fe}(\\text{H}_2\\text{O})_4(\\text{OH})_2](\\text{s})$';
+                    elCn.textContent = '6 (Octahedral)';
+                    elOx.textContent = '+2';
+                    elEq.innerHTML = '$[\\text{Fe}(\\text{H}_2\\text{O})_6]^{2+} + 2\\text{OH}^- \\rightarrow [\\text{Fe}(\\text{H}_2\\text{O})_4(\\text{OH})_2](\\text{s}) + 2\\text{H}_2\\text{O}$';
+                    elBadge.textContent = 'Dirty Green Precipitate';
+                    elBadge.className = 'text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-800';
+                    elNotes.innerHTML = '<b>Dirty Green Precipitate:</b> Addition of $\text{NaOH}$ causes deprotonation forming insoluble dirty green iron(II) hydroxide precipitate.';
+                } else {
+                    elType.textContent = 'Stage 2: Air Oxidation at Surface';
+                    elObs.textContent = 'Dirty green ppt turns brown at top';
+                    elFormula.innerHTML = '$[\\text{Fe}(\\text{H}_2\\text{O})_3(\\text{OH})_3](\\text{s})$ on top';
+                    elCn.textContent = '6 (Octahedral)';
+                    elOx.textContent = '+2 -> +3 (Surface Oxidation)';
+                    elEq.innerHTML = '$4[\\text{Fe}(\\text{H}_2\\text{O})_4(\\text{OH})_2] + \\text{O}_2 + 2\\text{H}_2\\text{O} \\rightarrow 4[\\text{Fe}(\\text{H}_2\\text{O})_3(\\text{OH})_3](\\text{s})$';
+                    elBadge.textContent = 'Surface Oxidation';
+                    elBadge.className = 'text-[10px] font-mono px-2 py-0.5 rounded bg-amber-950 text-amber-300 border border-amber-800';
+                    elNotes.innerHTML = '<b>Air Oxidation Secret:</b> On standing in air, dissolved atmospheric $\text{O}_2$ oxidizes surface $\text{Fe}^{2+}$ to $\text{Fe}^{3+}$, forming a rusty brown iron(III) hydroxide layer on top of the green precipitate!';
+                }
+            } else if (seqKey === 'fe3_naoh') {
+                if (step === 1) {
+                    elType.textContent = 'Initial Solution State';
+                    elObs.textContent = 'Yellow / Red-brown solution';
+                    elFormula.innerHTML = '$[\\text{Fe}(\\text{H}_2\\text{O})_6]^{3+}$';
+                    elCn.textContent = '6 (Octahedral)';
+                    elOx.textContent = '+3';
+                    elEq.innerHTML = '$[\\text{Fe}(\\text{H}_2\\text{O})_6]^{3+}(\\text{aq})$';
+                    elBadge.textContent = 'Clear Solution';
+                    elBadge.className = 'text-[10px] font-mono px-2 py-0.5 rounded bg-amber-950 text-amber-300 border border-amber-800';
+                    elNotes.innerHTML = '<b>Initial Solution:</b> Hexaaquairon(III) $[\text{Fe}(\text{H}_2\text{O})_6]^{3+}$ yellow/brown acidic solution.';
+                } else {
+                    elType.textContent = 'Deprotonation (Foxy Red-Brown ppt)';
+                    elObs.textContent = 'Foxy red-brown precipitate formed';
+                    elFormula.innerHTML = '$[\\text{Fe}(\\text{H}_2\\text{O})_3(\\text{OH})_3](\\text{s})$';
+                    elCn.textContent = '6 (Octahedral)';
+                    elOx.textContent = '+3';
+                    elEq.innerHTML = '$[\\text{Fe}(\\text{H}_2\\text{O})_6]^{3+} + 3\\text{OH}^- \\rightarrow [\\text{Fe}(\\text{H}_2\\text{O})_3(\\text{OH})_3](\\text{s}) + 3\\text{H}_2\\text{O}$';
+                    elBadge.textContent = 'Red-Brown Precipitate';
+                    elBadge.className = 'text-[10px] font-mono px-2 py-0.5 rounded bg-rose-950 text-rose-300 border border-rose-800';
+                    elNotes.innerHTML = '<b>Foxy Red-Brown Precipitate:</b> Addition of $\text{NaOH}$ or $\text{NH}_3$ deprotonates 3 water ligands to form insoluble red-brown iron(III) hydroxide precipitate. Insoluble in excess $\text{NH}_3$.';
+                }
+            } else {
+                // Chromium(III) + NaOH excess
+                if (step === 1) {
+                    elType.textContent = 'Initial Solution State';
+                    elObs.textContent = 'Violet / Green solution';
+                    elFormula.innerHTML = '$[\\text{Cr}(\\text{H}_2\\text{O})_6]^{3+}$';
+                    elCn.textContent = '6 (Octahedral)';
+                    elOx.textContent = '+3';
+                    elEq.innerHTML = '$[\\text{Cr}(\\text{H}_2\\text{O})_6]^{3+}(\\text{aq})$';
+                    elBadge.textContent = 'Clear Solution';
+                    elBadge.className = 'text-[10px] font-mono px-2 py-0.5 rounded bg-purple-950 text-purple-300 border border-purple-800';
+                    elNotes.innerHTML = '<b>Initial Solution:</b> Hexaaquachromium(III) $[\text{Cr}(\text{H}_2\text{O})_6]^{3+}$ violet-green aqueous complex.';
+                } else if (step === 2) {
+                    elType.textContent = 'Stage 1: Deprotonation (Green ppt)';
+                    elObs.textContent = 'Grey-green precipitate formed';
+                    elFormula.innerHTML = '$[\\text{Cr}(\\text{H}_2\\text{O})_3(\\text{OH})_3](\\text{s})$';
+                    elCn.textContent = '6 (Octahedral)';
+                    elOx.textContent = '+3';
+                    elEq.innerHTML = '$[\\text{Cr}(\\text{H}_2\\text{O})_6]^{3+} + 3\\text{OH}^- \\rightarrow [\\text{Cr}(\\text{H}_2\\text{O})_3(\\text{OH})_3](\\text{s}) + 3\\text{H}_2\\text{O}$';
+                    elBadge.textContent = 'Green Precipitate';
+                    elBadge.className = 'text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-800';
+                    elNotes.innerHTML = '<b>Stage 1 Deprotonation:</b> Small amount of $\text{NaOH}$ removes 3 protons forming neutral grey-green precipitate $[\text{Cr}(\text{H}_2\text{O})_3(\\text{OH})_3](\text{s})$.';
+                } else {
+                    elType.textContent = 'Stage 2: Amphoteric Reaction with Excess OH⁻';
+                    elObs.textContent = 'Green ppt dissolves -> Dark green solution';
+                    elFormula.innerHTML = '$[\\text{Cr}(\\text{OH})_6]^{3-}$ or $[\\text{Cr}(\\text{H}_2\\text{O})_2(\\text{OH})_4]^-$';
+                    elCn.textContent = '6 (Octahedral)';
+                    elOx.textContent = '+3';
+                    elEq.innerHTML = '$[\\text{Cr}(\\text{H}_2\\text{O})_3(\\text{OH})_3] + 3\\text{OH}^- \\rightarrow [\\text{Cr}(\\text{OH})_6]^{3-} + 3\\text{H}_2\\text{O}$';
+                    elBadge.textContent = 'Dark Green Solution';
+                    elBadge.className = 'text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-800';
+                    elNotes.innerHTML = '<b>Amphoteric Behavior:</b> Chromium(III) hydroxide is amphoteric! Adding excess $\text{NaOH}$ causes further deprotonation to form soluble dark green chromate(III) ions $[\text{Cr}(\text{OH})_6]^{3-}$.';
+                }
+            }
+        }
+
+        function renderWorkbenchCanvas() {
+            const canvas = document.getElementById('workbench-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const w = canvas.width;
+            const h = canvas.height;
+
+            ctx.clearRect(0, 0, w, h);
+
+            const seqKey = document.getElementById('reaction-sequence-select').value;
+
+            // Tube Placement
+            const ttX = 120;
+            const ttY = 20;
+            const ttW = 100;
+            const ttH = 280;
+
+            // Liquid / Precipitate Color Configs
+            let liqColor = 'rgba(56, 189, 248, 0.45)'; // Default aqua blue
+            let showPpt = false;
+            let pptColor = '#38bdf8';
+            let topOxidizedColor = null;
+
+            if (seqKey === 'cu_ammonia') {
+                if (currentWbStep === 1) {
+                    liqColor = 'rgba(56, 189, 248, 0.55)'; // Pale sky blue
+                } else if (currentWbStep === 2) {
+                    liqColor = 'rgba(56, 189, 248, 0.2)'; // Clearish blue solution
+                    showPpt = true;
+                    pptColor = '#38bdf8'; // Pale blue ppt
+                } else {
+                    liqColor = 'rgba(30, 27, 75, 0.95)'; // Deep royal blue solution
+                }
+            } else if (seqKey === 'cu_hcl') {
+                if (currentWbStep === 1) {
+                    liqColor = 'rgba(56, 189, 248, 0.55)';
+                } else if (currentWbStep === 2) {
+                    liqColor = 'rgba(34, 197, 94, 0.65)'; // Green mixture
+                } else {
+                    liqColor = 'rgba(234, 179, 8, 0.85)'; // Yellow solution
+                }
+            } else if (seqKey === 'fe2_naoh') {
+                if (currentWbStep === 1) {
+                    liqColor = 'rgba(16, 185, 129, 0.35)'; // Pale green
+                } else if (currentWbStep === 2) {
+                    liqColor = 'rgba(16, 185, 129, 0.15)';
+                    showPpt = true;
+                    pptColor = '#15803d'; // Dirty green
+                } else {
+                    liqColor = 'rgba(16, 185, 129, 0.15)';
+                    showPpt = true;
+                    pptColor = '#15803d'; // Dirty green base
+                    topOxidizedColor = '#9a3412'; // Rusty brown top layer
+                }
+            } else if (seqKey === 'fe3_naoh') {
+                if (currentWbStep === 1) {
+                    liqColor = 'rgba(234, 179, 8, 0.45)'; // Yellow-brown
+                } else {
+                    liqColor = 'rgba(234, 179, 8, 0.15)';
+                    showPpt = true;
+                    pptColor = '#9a3412'; // Foxy red-brown
+                }
+            } else {
+                // Chromium(III)
+                if (currentWbStep === 1) {
+                    liqColor = 'rgba(168, 85, 247, 0.45)'; // Violet-green
+                } else if (currentWbStep === 2) {
+                    liqColor = 'rgba(168, 85, 247, 0.15)';
+                    showPpt = true;
+                    pptColor = '#047857'; // Grey-green ppt
+                } else {
+                    liqColor = 'rgba(6, 95, 70, 0.9)'; // Dark green solution
+                }
+            }
+
+            // 1. Draw Liquid Fill in Test Tube
+            ctx.fillStyle = liqColor;
+            ctx.beginPath();
+            ctx.moveTo(ttX + 4, ttY + 80);
+            ctx.lineTo(ttX + 4, ttY + ttH - 28);
+            ctx.arcTo(ttX + 4, ttY + ttH - 4, ttX + 28, ttY + ttH - 4, 24);
+            ctx.lineTo(ttX + ttW - 28, ttY + ttH - 4);
+            ctx.arcTo(ttX + ttW - 4, ttY + ttH - 4, ttX + ttW - 4, ttY + ttH - 28, 24);
+            ctx.lineTo(ttX + ttW - 4, ttY + 80);
+            ctx.closePath();
+            ctx.fill();
+
+            // 2. Liquid Meniscus Effect at Top
+            ctx.fillStyle = liqColor;
+            ctx.globalAlpha = 0.8;
+            ctx.beginPath();
+            ctx.ellipse(ttX + ttW / 2, ttY + 80, ttW / 2 - 4, 8, 0, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.globalAlpha = 1.0;
+
+            // 3. Render High-Quality Gelatinous Precipitate if active
+            if (showPpt) {
+                const sedY = ttY + ttH - 65;
+                const sedH = 50;
+
+                // Base Gelatinous Sediment Layer
+                ctx.fillStyle = pptColor;
+                ctx.beginPath();
+                ctx.moveTo(ttX + 5, sedY);
+                // Organic wavy top edge
+                for (let x = ttX + 5; x <= ttX + ttW - 5; x += 10) {
+                    let offset = Math.sin((x - ttX) * 0.25) * 3;
+                    ctx.lineTo(x, sedY + offset);
+                }
+                ctx.lineTo(ttX + ttW - 5, ttY + ttH - 28);
+                ctx.arcTo(ttX + ttW - 5, ttY + ttH - 5, ttX + ttW - 28, ttY + ttH - 5, 24);
+                ctx.lineTo(ttX + 28, ttY + ttH - 5);
+                ctx.arcTo(ttX + 5, ttY + ttH - 5, ttX + 5, ttY + ttH - 28, 24);
+                ctx.closePath();
+                ctx.fill();
+
+                // Flocculent Cloud Overlaps inside Sediment
+                for (let i = 0; i < 20; i++) {
+                    let px = ttX + 15 + (i * 4) % (ttW - 30);
+                    let py = sedY + 8 + (i * 6) % (sedH - 12);
+                    let r = 5 + (i % 4) * 2;
+                    ctx.fillStyle = pptColor;
+                    ctx.globalAlpha = 0.65;
+                    ctx.beginPath();
+                    ctx.arc(px, py, r, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+                ctx.globalAlpha = 1.0;
+
+                // Air Oxidation Layer on Top of Precipitate (for Fe2+)
+                if (topOxidizedColor) {
+                    ctx.fillStyle = topOxidizedColor;
+                    ctx.globalAlpha = 0.9;
+                    ctx.beginPath();
+                    ctx.ellipse(ttX + ttW / 2, sedY, 42, 8, 0, 0, Math.PI * 2);
+                    ctx.fill();
+
+                    // Oxidation Label
+                    ctx.fillStyle = '#f8fafc';
+                    ctx.font = '9px bold sans-serif';
+                    ctx.fillText('Fe(OH)₃ Brown Surface Oxidation', ttX - 35, sedY - 8);
+                    ctx.globalAlpha = 1.0;
+                }
+
+                // Floating Particulate Specks in Solution (Turbidity)
+                for (let i = 0; i < 28; i++) {
+                    let px = ttX + 10 + (i * 13) % (ttW - 20);
+                    let py = ttY + 85 + (i * 11) % (sedY - (ttY + 85));
+                    let r = 1.5 + (i % 3);
+                    ctx.fillStyle = pptColor;
+                    ctx.globalAlpha = 0.45 + (i % 4) * 0.12;
+                    ctx.beginPath();
+                    ctx.arc(px, py, r, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+                ctx.globalAlpha = 1.0;
+            }
+
+            // 4. Draw Outer Glass Tube Contour & Glare Highlights
+            ctx.strokeStyle = '#64748b';
+            ctx.lineWidth = 3;
+
+            ctx.beginPath();
+            ctx.moveTo(ttX, ttY);
+            ctx.lineTo(ttX, ttY + ttH - 30);
+            ctx.arcTo(ttX, ttY + ttH, ttX + 30, ttY + ttH, 30);
+            ctx.lineTo(ttX + ttW - 30, ttY + ttH);
+            ctx.arcTo(ttX + ttW, ttY + ttH, ttX + ttW, ttY + ttH - 30, 30);
+            ctx.lineTo(ttX + ttW, ttY);
+            ctx.stroke();
+
+            // Glass Lip Rim
+            ctx.beginPath();
+            ctx.ellipse(ttX + ttW / 2, ttY, ttW / 2 + 4, 6, 0, 0, Math.PI * 2);
+            ctx.stroke();
+
+            // Glass Reflection Glare Streak
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.25)';
+            ctx.lineWidth = 4;
+            ctx.beginPath();
+            ctx.moveTo(ttX + 10, ttY + 20);
+            ctx.lineTo(ttX + 10, ttY + ttH - 40);
+            ctx.stroke();
+        }
+
+        // Stability Calculator Logic
+        function calculateStabilityData() {
+            const seqKey = document.getElementById('stability-reaction-select').value;
+            const elReact = document.getElementById('stab-moles-react');
+            const elProd = document.getElementById('stab-moles-prod');
+            const elReactDet = document.getElementById('stab-react-details');
+            const elProdDet = document.getElementById('stab-prod-details');
+
+            if (seqKey === 'co_en') {
+                elReact.textContent = '4 moles';
+                elProd.textContent = '7 moles';
+                elReactDet.textContent = '1 [Co(NH₃)₆]²⁺ + 3 en';
+                elProdDet.textContent = '1 [Co(en)₃]²⁺ + 6 NH₃';
+            } else if (seqKey === 'cu_edta') {
+                elReact.textContent = '2 moles';
+                elProd.textContent = '7 moles';
+                elReactDet.textContent = '1 [Cu(H₂O)₆]²⁺ + 1 EDTA⁴⁻';
+                elProdDet.textContent = '1 [Cu(EDTA)]²⁻ + 6 H₂O';
+            } else {
+                elReact.textContent = '4 moles';
+                elProd.textContent = '7 moles';
+                elReactDet.textContent = '1 [Cr(H₂O)₆]³⁺ + 3 C₂O₄²⁻';
+                elProdDet.textContent = '1 [Cr(C₂O₄)₃]³⁻ + 6 H₂O';
+            }
+        }
+
+        // Haemoglobin Ligand Switcher
+        function switchHaemLigand(mode) {
+            currentHaemLigand = mode;
+            const btnO2 = document.getElementById('haem-btn-o2');
+            const btnCO = document.getElementById('haem-btn-co');
+            const elBond = document.getElementById('haem-ligand-bond');
+            const elNode = document.getElementById('haem-ligand-node');
+            const elText = document.getElementById('haem-ligand-text');
+            const elBox = document.getElementById('haem-status-box');
+
+            if (mode === 'o2') {
+                btnO2.className = 'flex-1 py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-lg shadow transition';
+                btnCO.className = 'flex-1 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs rounded-lg transition';
+
+                elBond.setAttribute('stroke', '#22c55e');
+                elNode.setAttribute('fill', '#15803d');
+                elNode.setAttribute('stroke', '#22c55e');
+                elText.textContent = 'O₂';
+
+                elBox.className = 'p-3.5 bg-slate-900 rounded-lg border border-emerald-900/60 text-xs space-y-2';
+                elBox.innerHTML = `
+                    <span class="font-bold text-emerald-400 block font-mono text-[11px]">1. Normal Oxygen Transport (Oxyhaemoglobin)</span>
+                    <p class="text-slate-300 leading-relaxed text-[11px]">
+                        Oxygen forms a weak, <b>reversible dative bond</b> with $\text{Fe}^{2+}$ in the lungs where $\text{O}_2$ concentration is high. It travels through blood and releases $\text{O}_2$ readily to respiring tissues.
+                    </p>
+                    <div class="p-2 bg-slate-950 rounded font-mono text-emerald-300 text-[11px]">
+                        $\\text{haemoglobin} + \\text{O}_2 \\rightleftharpoons \\text{oxyhaemoglobin}$
+                    </div>
+                `;
+            } else {
+                btnCO.className = 'flex-1 py-2 bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs rounded-lg shadow transition';
+                btnO2.className = 'flex-1 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs rounded-lg transition';
+
+                elBond.setAttribute('stroke', '#ef4444');
+                elNode.setAttribute('fill', '#991b1b');
+                elNode.setAttribute('stroke', '#ef4444');
+                elText.textContent = 'CO';
+
+                elBox.className = 'p-3.5 bg-slate-900 rounded-lg border border-rose-900/60 text-xs space-y-2';
+                elBox.innerHTML = `
+                    <span class="font-bold text-rose-400 block font-mono text-[11px]">2. Carbon Monoxide Poisoning (Carboxyhaemoglobin)</span>
+                    <p class="text-slate-300 leading-relaxed text-[11px]">
+                        $\text{CO}$ forms a <b>much stronger dative bond</b> with $\text{Fe}^{2+}$, replacing $\text{O}_2$ in an irreversible ligand substitution reaction.
+                    </p>
+                    <div class="p-2 bg-slate-950 rounded font-mono text-rose-300 text-[11px]">
+                        $\\text{haemoglobin} + \\text{CO} \\rightarrow \\text{carboxyhaemoglobin}$
+                    </div>
+                `;
+            }
+            initKaTeX();
+        }
+
+        function loadPastPaperQuestion() {
+            const sel = document.getElementById('past-paper-select');
+            const key = sel ? sel.value : 'q_chelate_4m';
+            const paper = PAST_PAPERS[key] || PAST_PAPERS['q_chelate_4m'];
+
+            document.getElementById('pp-desc-box').innerHTML = `${paper.desc}<div class="mt-2 pt-2 border-t border-slate-800 text-sky-300"><b>Official Mark Scheme Criteria:</b><br>${paper.sample}</div>`;
+            initKaTeX();
+        }
+
+        function sendAiChat() {
+            const input = document.getElementById('ai-user-input');
+            if (!input || !input.value.trim()) return;
+
+            const chat = document.getElementById('ai-chat-history');
+            const text = input.value.trim();
+
+            const uDiv = document.createElement('div');
+            uDiv.className = 'text-sky-300 font-semibold';
+            uDiv.textContent = `Student: ${text}`;
+            chat.appendChild(uDiv);
+            input.value = '';
+
+            const aiDiv = document.createElement('div');
+            aiDiv.className = 'text-emerald-400';
+            
+            let score = 0;
+            let feedback = [];
+            const lower = text.toLowerCase();
+
+            if (lower.includes('mole') || lower.includes('disorder') || lower.includes('entropy')) { score++; feedback.push('✓ Correctly identified entropy increase (delta S > 0).'); }
+            if (lower.includes('enthalpy') || lower.includes('bond')) { score++; feedback.push('✓ Correctly addressed enthalpy/dative bond energies.'); }
+            if (lower.includes('deprotonat') || lower.includes('base') || lower.includes('proton')) { score++; feedback.push('✓ Identified deprotonation/base action.'); }
+            if (lower.includes('co') || lower.includes('stronger') || lower.includes('carboxyhaemoglobin')) { score++; feedback.push('✓ Correctly explained CO dative strength.'); }
+
+            if (score === 0) {
+                aiDiv.innerHTML = `<b>Examiner Feedback:</b> Include key IAL terms: mole increase ($\Delta S > 0$), base action vs substitution, dative bond enthalpy ($\Delta H \approx 0$), or CO dative bond strength.`;
+            } else {
+                aiDiv.innerHTML = `<b>Examiner Evaluation Score: ${score}/4 Marks</b><br>${feedback.join('<br>')}`;
+            }
+
+            chat.appendChild(aiDiv);
+            chat.scrollTop = chat.scrollHeight;
+        }
+
+        // Initialize Page
+        window.onload = function() {
+            loadPastPaperQuestion();
+            setReactionStep(1);
+            calculateStabilityData();
+            initKaTeX();
+        };
+    </script>
+</body>
+</html>

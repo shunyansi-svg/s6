@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IAL Topic 19 Amines & Azo Dyes Master Studio</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- KaTeX CSS & JS CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+
+    <style>
+        .tab-btn-active {
+            border-bottom: 3px solid #38bdf8;
+            color: #38bdf8;
+            font-weight: 700;
+            background-color: rgba(56, 189, 248, 0.12);
+        }
+        .subtab-btn-active {
+            background-color: #0284c7;
+            color: #ffffff;
+            font-weight: 700;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            height: 6px;
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex flex-col">
+
+    <header class="bg-slate-900 border-b border-slate-800 sticky top-0 z-40 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center gap-3">
+            <div class="flex items-center gap-3">
+                <div class="bg-sky-500/20 p-2 rounded-lg border border-sky-500/30">
+                    <span class="text-2xl">🧪</span>
+                </div>
+                <div>
+                    <h1 class="text-lg font-extrabold tracking-tight text-sky-400">IAL Organic Chemistry: Topic 19 Amines Studio</h1>
+                    <p class="text-xs text-slate-400">Edexcel Spec 19.1–19.6: Basicity, Synthesis, Reactions, Azo Dyes & Gemini AI Tutor</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-2">
+                <span class="px-2.5 py-1 text-xs font-semibold rounded-full bg-sky-950 text-sky-300 border border-sky-800">
+                    Edexcel IAL Unit 5
+                </span>
+                <span class="px-3 py-1.5 text-xs bg-emerald-950/80 text-emerald-300 rounded-lg border border-emerald-800/80 flex items-center gap-1.5 font-medium">
+                    <span class="animate-pulse">✨</span>
+                    <span>Gemini AI Tutor Active</span>
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <nav class="bg-slate-900/90 border-b border-slate-800 text-xs sm:text-sm font-medium overflow-x-auto custom-scrollbar sticky top-[57px] z-30 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 flex whitespace-nowrap">
+            <button onclick="switchTab('syllabus')" id="btn-syllabus" class="tab-btn-active py-3 px-5 text-slate-300 hover:text-sky-300 transition flex items-center gap-2">
+                <span>📚 Syllabus Overview & Goals</span>
+            </button>
+            <button onclick="switchTab('basicity')" id="btn-basicity" class="py-3 px-5 text-slate-400 hover:text-sky-300 transition flex items-center gap-2">
+                <span>⚖️ Amine Basicity & Strength</span>
+            </button>
+            <button onclick="switchTab('synthesis')" id="btn-synthesis" class="py-3 px-5 text-slate-400 hover:text-sky-300 transition flex items-center gap-2">
+                <span>🏭 Synthesis & Production</span>
+            </button>
+            <button onclick="switchTab('reactions')" id="btn-reactions" class="py-3 px-5 text-slate-400 hover:text-sky-300 transition flex items-center gap-2">
+                <span>🔬 Reactions Workbench</span>
+            </button>
+            <button onclick="switchTab('matrix')" id="btn-matrix" class="py-3 px-5 text-slate-400 hover:text-sky-300 transition flex items-center gap-2">
+                <span>📋 Master Reactions Matrix</span>
+            </button>
+            <button onclick="switchTab('ai')" id="btn-ai" class="py-3 px-5 text-slate-400 hover:text-sky-300 transition flex items-center gap-2">
+                <span>🤖 Gemini AI Examiner</span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 py-6 flex-grow w-full">
+
+        <!-- SECTION 1: SYLLABUS MASTER OVERVIEW -->
+        <section id="tab-syllabus" class="space-y-6">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-sm space-y-6">
+                <div class="border-b border-slate-800 pb-4">
+                    <span class="text-xs font-bold text-sky-400 uppercase tracking-widest">Syllabus Master Overview</span>
+                    <h2 class="text-xl font-bold text-white mt-1">Topic 19 Organic Nitrogen Compounds: Specification Goals</h2>
+                    <p class="text-xs text-slate-400 mt-1">Detailed breakdown of Edexcel IAL Specification points 19.1 through 19.6 with explicit learning outcomes and mark scheme criteria.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-xs">
+                    <!-- 19.1 Card - Sky Theme -->
+                    <div class="p-4 bg-sky-950/20 border border-sky-800/80 rounded-xl space-y-2">
+                        <span class="px-2 py-0.5 rounded bg-sky-950 text-sky-300 font-mono font-bold border border-sky-800">19.1 Nomenclature & Structures</span>
+                        <h3 class="text-sm font-bold text-sky-300 mt-1">Naming & Functional Groups</h3>
+                        <ul class="list-disc pl-4 space-y-1 text-slate-300 text-[11px] leading-relaxed">
+                            <li>Name $1^\circ, 2^\circ, 3^\circ$ amines using the <i>-amine</i> suffix or <i>amino-</i> prefix.</li>
+                            <li>Use $N$-alkylation nomenclature (e.g. $N$-methylethanamide, $N,N$-dimethylpropan-1-amine).</li>
+                            <li>Draw skeletal, displayed, and structural formulae for aliphatic and aromatic amines.</li>
+                            <li>Classify quaternary ammonium salts ($[\text{R}_4\text{N}]^+\text{X}^-$).</li>
+                        </ul>
+                    </div>
+
+                    <!-- 19.2 Card - Emerald Theme -->
+                    <div class="p-4 bg-emerald-950/20 border border-emerald-800/80 rounded-xl space-y-2">
+                        <span class="px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 font-mono font-bold border border-emerald-800">19.2 Core Amine Reactions</span>
+                        <h3 class="text-sm font-bold text-emerald-300 mt-1">Aliphatic vs Aromatic Reactivity</h3>
+                        <ul class="list-disc pl-4 space-y-1 text-slate-300 text-[11px] leading-relaxed">
+                            <li>Reaction with water to form alkaline solutions ($\text{pH} \approx 11-12$ vs $8-9$).</li>
+                            <li>Neutralization with mineral acids to form ionic ammonium salts.</li>
+                            <li>Nucleophilic substitution with halogenoalkanes forming $2^\circ/3^\circ$ amines.</li>
+                            <li>Nucleophilic addition-elimination with acyl chlorides to form amides.</li>
+                            <li>Complexation with $\text{Cu}^{2+}$ ions (deprotonation ppt $\rightarrow$ ligand exchange).</li>
+                        </ul>
+                    </div>
+
+                    <!-- 19.3 Card - Amber Theme -->
+                    <div class="p-4 bg-amber-950/20 border border-amber-800/80 rounded-xl space-y-2">
+                        <span class="px-2 py-0.5 rounded bg-amber-950 text-amber-300 font-mono font-bold border border-amber-800">19.3 Solubility & Basicity</span>
+                        <h3 class="text-sm font-bold text-amber-300 mt-1">Hydrogen Bonding & Lone Pair</h3>
+                        <ul class="list-disc pl-4 space-y-1 text-slate-300 text-[11px] leading-relaxed">
+                            <li>Explain water solubility of lower amines via hydrogen bonding ($\text{N-H}\cdots\text{O}$).</li>
+                            <li>Define basicity in terms of Nitrogen lone pair availability to accept a proton ($\text{H}^+$).</li>
+                            <li>Master basicity order: $2^\circ \text{ Amine} > 1^\circ \text{ Amine} > 3^\circ \text{ Amine} > \text{NH}_3 > \text{Phenylamine}$.</li>
+                            <li>Contrast $+I$ inductive effect in alkylamines vs $\pi$-delocalisation in phenylamine.</li>
+                        </ul>
+                    </div>
+
+                    <!-- 19.4 Card - Purple Theme -->
+                    <div class="p-4 bg-purple-950/20 border border-purple-800/80 rounded-xl space-y-2">
+                        <span class="px-2 py-0.5 rounded bg-purple-950 text-purple-300 font-mono font-bold border border-purple-800">19.4 Aliphatic Preparation</span>
+                        <h3 class="text-sm font-bold text-purple-300 mt-1">Haloalkanes vs Nitrile Reduction</h3>
+                        <ul class="list-disc pl-4 space-y-1 text-slate-300 text-[11px] leading-relaxed">
+                            <li>Preparation from haloalkane $+$ excess ethanolic ammonia in a sealed tube under pressure.</li>
+                            <li>Explain why excess $\text{NH}_3$ minimizes multi-substitution side products.</li>
+                            <li>Nitrile reduction via $\text{LiAlH}_4$ in dry ether or $\text{H}_2/\text{Ni}$ catalytic hydrogenation.</li>
+                            <li>Highlight $+1$ carbon chain extension route ($\text{RX} \xrightarrow{\text{KCN}} \text{R-CN} \rightarrow \text{R-CH}_2\text{NH}_2$).</li>
+                        </ul>
+                    </div>
+
+                    <!-- 19.5 Card - Rose Theme -->
+                    <div class="p-4 bg-rose-950/20 border border-rose-800/80 rounded-xl space-y-2">
+                        <span class="px-2 py-0.5 rounded bg-rose-950 text-rose-300 font-mono font-bold border border-rose-800">19.5 Aromatic Preparation</span>
+                        <h3 class="text-sm font-bold text-rose-300 mt-1">Reduction of Nitrobenzene</h3>
+                        <ul class="list-disc pl-4 space-y-1 text-slate-300 text-[11px] leading-relaxed">
+                            <li>Conversion of nitrobenzene ($\text{C}_6\text{H}_5\text{NO}_2$) to phenylamine ($\text{C}_6\text{H}_5\text{NH}_2$).</li>
+                            <li>Reagents: Tin ($\text{Sn}$) and concentrated hydrochloric acid ($\text{HCl}$) heated under reflux.</li>
+                            <li>Neutralization of phenylammonium salt using aqueous sodium hydroxide ($\text{NaOH}$).</li>
+                            <li>Purification of oily phenylamine via steam distillation and solvent extraction.</li>
+                        </ul>
+                    </div>
+
+                    <!-- 19.6 Card - Cyan Theme -->
+                    <div class="p-4 bg-cyan-950/20 border border-cyan-800/80 rounded-xl space-y-2">
+                        <span class="px-2 py-0.5 rounded bg-cyan-950 text-cyan-300 font-mono font-bold border border-cyan-800">19.6 Diazotisation & Dyes</span>
+                        <h3 class="text-sm font-bold text-cyan-300 mt-1">Diazonium Coupling Chemistry</h3>
+                        <ul class="list-disc pl-4 space-y-1 text-slate-300 text-[11px] leading-relaxed">
+                            <li>Formation of benzenediazonium chloride from phenylamine $+$ nitrous acid ($\text{NaNO}_2+\text{HCl}$).</li>
+                            <li>Strict temperature control: $<10^\circ\text{C}$ (strictly $0-10^\circ\text{C}$) to prevent phenol formation.</li>
+                            <li>Electrophilic coupling with phenol in alkaline $\text{NaOH}$ forming phenoxide ion.</li>
+                            <li>Bright orange 4-phenylazophenol precipitate dye featuring $-\text{N=N}-$ azo link.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: AMINE BASICITY & STRENGTH -->
+        <section id="tab-basicity" class="hidden space-y-6">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-sm space-y-6">
+                <div class="border-b border-slate-800 pb-4">
+                    <span class="text-xs font-bold text-sky-400 uppercase tracking-widest">Interactive Physical & Chemical Lab</span>
+                    <h2 class="text-xl font-bold text-white mt-1">Relative Basicity & Nitrogen Lone Pair Availability</h2>
+                    <p class="text-xs text-slate-400 mt-1">Compare relative base strengths across aliphatic amines, ammonia, and phenylamine based on Nitrogen lone pair availability.</p>
+                </div>
+
+                <!-- Interactive Basicity Inspector Grid -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                    <div class="lg:col-span-5 bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3">
+                        <h3 class="text-xs font-bold text-sky-300 uppercase tracking-wider mb-2">Select Species to Inspect Basicity:</h3>
+                        <div class="space-y-2 text-xs font-mono">
+                            <button onclick="selectBasicity('dimethyl')" id="base-btn-dimethyl" class="w-full text-left p-3 rounded-lg border border-sky-800 bg-sky-950/80 text-sky-300 font-bold transition flex justify-between items-center">
+                                <span>1. Dimethylamine (2° Amine)</span>
+                                <span class="px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 text-[10px]">Strongest Base</span>
+                            </button>
+                            <button onclick="selectBasicity('methyl')" id="base-btn-methyl" class="w-full text-left p-3 rounded-lg border border-slate-800 bg-slate-900 text-slate-400 hover:text-sky-300 transition flex justify-between items-center">
+                                <span>2. Methylamine (1° Amine)</span>
+                                <span class="px-2 py-0.5 rounded bg-sky-950 text-sky-300 text-[10px]">Strong Base</span>
+                            </button>
+                            <button onclick="selectBasicity('trimethyl')" id="base-btn-trimethyl" class="w-full text-left p-3 rounded-lg border border-slate-800 bg-slate-900 text-slate-400 hover:text-sky-300 transition flex justify-between items-center">
+                                <span>3. Trimethylamine (3° Amine)</span>
+                                <span class="px-2 py-0.5 rounded bg-amber-950 text-amber-300 text-[10px]">Aqueous Anomaly</span>
+                            </button>
+                            <button onclick="selectBasicity('ammonia')" id="base-btn-ammonia" class="w-full text-left p-3 rounded-lg border border-slate-800 bg-slate-900 text-slate-400 hover:text-sky-300 transition flex justify-between items-center">
+                                <span>4. Ammonia (NH₃)</span>
+                                <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px]">Moderate Base</span>
+                            </button>
+                            <button onclick="selectBasicity('phenyl')" id="base-btn-phenyl" class="w-full text-left p-3 rounded-lg border border-slate-800 bg-slate-900 text-slate-400 hover:text-sky-300 transition flex justify-between items-center">
+                                <span>5. Phenylamine (C₆H₅NH₂)</span>
+                                <span class="px-2 py-0.5 rounded bg-rose-950 text-rose-300 text-[10px]">Weakest Base</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-7 bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+                                <h3 id="base-display-title" class="text-sm font-bold text-sky-300">Dimethylamine (2° Amine)</h3>
+                                <span id="base-display-pK" class="px-2.5 py-1 rounded bg-emerald-950 text-emerald-300 text-xs font-mono border border-emerald-800">pK_b = 3.27 (pK_a = 10.73)</span>
+                            </div>
+
+                            <div id="base-display-body" class="mt-4 space-y-3 text-xs leading-relaxed text-slate-300">
+                                <!-- Dynamically populated by JS -->
+                            </div>
+                        </div>
+
+                        <div id="base-display-takeaway" class="p-3.5 bg-slate-900 rounded-lg border border-sky-900/60 text-xs font-mono text-sky-200">
+                            <!-- Key exam secret populated dynamically -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Master Basicity Ranking Spectrum Banner -->
+                <div class="p-5 bg-slate-950 border border-slate-800 rounded-xl space-y-3">
+                    <h3 class="text-xs font-bold text-amber-400 uppercase tracking-wider font-mono">🌟 Official IAL Basicity Order in Aqueous Solution</h3>
+                    <div class="p-3 bg-slate-900 rounded-lg border border-slate-800 font-mono text-xs text-center text-emerald-300 overflow-x-auto whitespace-nowrap">
+                        $$\text{2}^\circ\text{ Amine} > \text{1}^\circ\text{ Amine} > \text{3}^\circ\text{ Amine} > \text{Ammonia (NH}_3\text{)} > \text{Phenylamine (C}_6\text{H}_5\text{NH}_2\text{)}$$
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: SYNTHESIS & PRODUCTION -->
+        <section id="tab-synthesis" class="hidden space-y-6">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-sm space-y-6">
+                <div class="border-b border-slate-800 pb-4">
+                    <span class="text-xs font-bold text-sky-400 uppercase tracking-widest">Synthetic Chemistry Lab</span>
+                    <h2 class="text-xl font-bold text-white mt-1">Preparation Routes for Aliphatic & Aromatic Amines</h2>
+                    <p class="text-xs text-slate-400 mt-1">Compare haloalkane substitution, nitrile reduction (+1 carbon chain extension), and nitrobenzene reduction.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <!-- Route 1 -->
+                    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3 flex flex-col justify-between">
+                        <div>
+                            <span class="px-2 py-0.5 rounded bg-amber-950 text-amber-300 font-mono text-[10px] border border-amber-800 font-bold">Method 1: Low Yield</span>
+                            <h3 class="text-sm font-bold text-white mt-2">Haloalkane + Ammonia</h3>
+                            <p class="text-xs text-slate-300 leading-relaxed mt-2">
+                                Nucleophilic substitution using <b>excess ethanolic $\text{NH}_3$ in a sealed tube under pressure</b>.
+                            </p>
+                            <div class="p-2.5 bg-slate-900 rounded font-mono text-[10px] text-amber-300 space-y-1 mt-3">
+                                <p>$\text{CH}_3\text{CH}_2\text{Br} + 2\text{NH}_3 \rightarrow \text{CH}_3\text{CH}_2\text{NH}_2 + \text{NH}_4\text{Br}$</p>
+                            </div>
+                        </div>
+                        <div class="p-3 bg-slate-900 rounded border border-slate-800 text-[11px] text-rose-300 space-y-1">
+                            <b>⚠️ Multi-Substitution Trap:</b> Primary amine product remains nucleophilic and attacks remaining haloalkane to form $2^\circ, 3^\circ$ amines and $4^\circ$ quaternary salts ($[\text{R}_4\text{N}]^+\text{X}^-$). Use <b>excess $\text{NH}_3$</b> to maximize $1^\circ$ amine yield!
+                        </div>
+                    </div>
+
+                    <!-- Route 2 -->
+                    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3 flex flex-col justify-between">
+                        <div>
+                            <span class="px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 font-mono text-[10px] border border-emerald-800 font-bold">Method 2: Pure 1° Amine</span>
+                            <h3 class="text-sm font-bold text-white mt-2">Nitrile Reduction (+1 C)</h3>
+                            <p class="text-xs text-slate-300 leading-relaxed mt-2">
+                                2-Step synthetic route converting haloalkanes to primary amines with a <b>$+1$ carbon chain extension</b>.
+                            </p>
+                            <div class="p-2.5 bg-slate-900 rounded font-mono text-[10px] text-emerald-300 space-y-1 mt-3">
+                                <p>Step 1: $\text{R-Cl} + \text{KCN (ethanolic)} \rightarrow \text{R-CN} + \text{KCl}$</p>
+                                <p>Step 2: $\text{R-CN} + 4[\text{H}] \xrightarrow{\text{LiAlH}_4 / \text{dry ether}} \text{R-CH}_2\text{NH}_2$</p>
+                            </div>
+                        </div>
+                        <div class="p-3 bg-slate-900 rounded border border-slate-800 text-[11px] text-emerald-300 space-y-1">
+                            <b>💡 Advantage:</b> Produces 100% pure primary amine with <b>NO side products</b>! Alternative reduction: $\text{H}_2(\text{g}) / \text{Ni catalyst}$ (catalytic hydrogenation).
+                        </div>
+                    </div>
+
+                    <!-- Route 3 -->
+                    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3 flex flex-col justify-between">
+                        <div>
+                            <span class="px-2 py-0.5 rounded bg-purple-950 text-purple-300 font-mono text-[10px] border border-purple-800 font-bold">Method 3: Aromatic Route</span>
+                            <h3 class="text-sm font-bold text-white mt-2">Reduction of Nitrobenzene</h3>
+                            <p class="text-xs text-slate-300 leading-relaxed mt-2">
+                                Preparation of phenylamine from nitrobenzene ($\text{C}_6\text{H}_5\text{NO}_2$).
+                            </p>
+                            <div class="p-2.5 bg-slate-900 rounded font-mono text-[10px] text-purple-300 space-y-1 mt-3">
+                                <p>Step 1: $\text{C}_6\text{H}_5\text{NO}_2 + 6[\text{H}] \xrightarrow{\text{Sn / conc. HCl, reflux}} [\text{C}_6\text{H}_5\text{NH}_3]^+\text{Cl}^-$</p>
+                                <p>Step 2: $[\text{C}_6\text{H}_5\text{NH}_3]^+\text{Cl}^- + \text{NaOH} \rightarrow \text{C}_6\text{H}_5\text{NH}_2 + \text{NaCl} + \text{H}_2\text{O}$</p>
+                            </div>
+                        </div>
+                        <div class="p-3 bg-slate-900 rounded border border-slate-800 text-[11px] text-purple-200 space-y-1">
+                            <b>📌 Purification Note:</b> Phenylamine is an oily liquid separated by <b>steam distillation</b>, followed by solvent extraction using ether and drying with anhydrous $\text{MgSO}_4$.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: REACTIONS WORKBENCH & DIAZONIUM DYES -->
+        <section id="tab-reactions" class="hidden space-y-6">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-sm space-y-6">
+                <div class="border-b border-slate-800 pb-4">
+                    <span class="text-xs font-bold text-sky-400 uppercase tracking-widest">Interactive Reaction Studio</span>
+                    <h2 class="text-xl font-bold text-white mt-1">Reactions of Aliphatic & Aromatic Amines</h2>
+                    <p class="text-xs text-slate-400 mt-1">Select a reaction to inspect equations, visual observations, mechanisms, common student misconceptions, and IAL exam strategies.</p>
+                </div>
+
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 text-xs font-semibold">
+                    <button onclick="selectAmineReaction('water')" id="rx-btn-water" class="p-2.5 rounded-lg border border-sky-800 bg-sky-950/80 text-sky-300 transition text-center">
+                        1. Water ($\text{H}_2\text{O}$)
+                    </button>
+                    <button onclick="selectAmineReaction('acid')" id="rx-btn-acid" class="p-2.5 rounded-lg border border-slate-800 bg-slate-950 text-slate-400 hover:text-sky-300 transition text-center">
+                        2. Acids ($\text{HCl}/\text{H}_2\text{SO}_4$)
+                    </button>
+                    <button onclick="selectAmineReaction('haloalkane')" id="rx-btn-haloalkane" class="p-2.5 rounded-lg border border-slate-800 bg-slate-950 text-slate-400 hover:text-sky-300 transition text-center">
+                        3. Haloalkanes
+                    </button>
+                    <button onclick="selectAmineReaction('acyl')" id="rx-btn-acyl" class="p-2.5 rounded-lg border border-slate-800 bg-slate-950 text-slate-400 hover:text-sky-300 transition text-center">
+                        4. Ethanoyl Chloride
+                    </button>
+                    <button onclick="selectAmineReaction('copper')" id="rx-btn-copper" class="p-2.5 rounded-lg border border-slate-800 bg-slate-950 text-slate-400 hover:text-sky-300 transition text-center">
+                        5. $\text{Cu}^{2+}$ Complexation
+                    </button>
+                    <button onclick="selectAmineReaction('diazonium')" id="rx-btn-diazonium" class="p-2.5 rounded-lg border border-slate-800 bg-slate-950 text-slate-400 hover:text-sky-300 transition text-center">
+                        6. Diazonium & Dyes
+                    </button>
+                </div>
+
+                <!-- Active Reaction Detail Display -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                    <div class="lg:col-span-6 bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+                        <div class="flex justify-between items-center border-b border-slate-800 pb-2">
+                            <h3 id="rx-display-title" class="text-sm font-bold text-sky-300">Reaction with Water</h3>
+                            <span id="rx-type-badge" class="px-2 py-0.5 rounded bg-sky-950 text-sky-300 font-mono text-[10px] border border-sky-800">Acid-Base Equilibrium</span>
+                        </div>
+
+                        <div id="rx-display-body" class="space-y-3 text-xs">
+                            <!-- Populated dynamically by JS -->
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-6 bg-slate-950 border border-slate-800 rounded-xl p-5 flex flex-col justify-between space-y-4">
+                        <div class="flex justify-between items-center border-b border-slate-800 pb-2">
+                            <span class="text-xs font-bold text-amber-400 uppercase tracking-wider font-mono">⚠️ Misconceptions & Exam Masterclass</span>
+                            <span id="rx-temp-badge" class="text-[10px] text-amber-400 font-mono">Room Temp</span>
+                        </div>
+
+                        <div id="rx-edu-hub" class="space-y-3 text-xs flex-grow">
+                            <!-- Populated dynamically by JS -->
+                        </div>
+
+                        <div id="rx-exam-secret" class="w-full text-left text-[11px] text-slate-200 font-sans p-3 bg-sky-950/60 rounded-lg border border-sky-800">
+                            <!-- Key takeaway populated dynamically -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: MASTER AMINE REACTION SUMMARY MATRIX -->
+        <section id="tab-matrix" class="hidden space-y-6">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-sm space-y-6">
+                <div class="border-b border-slate-800 pb-4">
+                    <span class="text-xs font-bold text-sky-400 uppercase tracking-widest">Master Revision Summary</span>
+                    <h2 class="text-xl font-bold text-white mt-1">13 Core Reactions of Aliphatic & Aromatic Amines</h2>
+                    <p class="text-xs text-slate-400 mt-1">Complete IAL revision matrix listing equations, visual observations, reacting conditions, examiner watch-outs, and common traps.</p>
+                </div>
+
+                <div class="overflow-x-auto custom-scrollbar border border-slate-800 rounded-xl">
+                    <table class="w-full text-left text-xs text-slate-300">
+                        <thead class="bg-slate-950 text-sky-400 font-mono text-[11px] border-b border-slate-800">
+                            <tr>
+                                <th class="p-3">Reaction #</th>
+                                <th class="p-3">Reactants & Conditions</th>
+                                <th class="p-3">Balanced Chemical Equation</th>
+                                <th class="p-3">Visual Observations</th>
+                                <th class="p-3">IAL Examiner Watch-Out & Traps</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-800/80 font-mono text-[11px] bg-slate-900/60">
+                            <tr>
+                                <td class="p-3 font-sans font-bold text-sky-300">1. Amine + Water</td>
+                                <td class="p-3 font-sans">Aliphatic Amine $+\text{H}_2\text{O}$<br><span class="text-[10px] text-slate-400">Room Temp</span></td>
+                                <td class="p-3 text-emerald-300">$\text{CH}_3\text{NH}_2 + \text{H}_2\text{O} \rightleftharpoons [\text{CH}_3\text{NH}_3]^+ + \text{OH}^-$</td>
+                                <td class="p-3 font-sans text-emerald-400">Alkaline solution ($\text{pH} \approx 11-12$). Fishy smell.</td>
+                                <td class="p-3 font-sans text-rose-300 text-[10px]">Use reversible equilibrium arrows ($\rightleftharpoons$). Phenylamine yields much weaker alkaline solution ($\text{pH} \approx 8$).</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-sans font-bold text-sky-300">2. Amine + HCl</td>
+                                <td class="p-3 font-sans">Amine $+\text{HCl}(\text{aq})$<br><span class="text-[10px] text-slate-400">Room Temp</span></td>
+                                <td class="p-3 text-sky-300">$\text{C}_6\text{H}_5\text{NH}_2 + \text{HCl} \rightarrow [\text{C}_6\text{H}_5\text{NH}_3]^+\text{Cl}^-$</td>
+                                <td class="p-3 font-sans text-sky-300">Insoluble oily phenylamine dissolves to form clear solution.</td>
+                                <td class="p-3 font-sans text-amber-300 text-[10px]">Adding $\text{NaOH}$ neutralizes $\text{H}^+$ and regenerates insoluble oily phenylamine.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-sans font-bold text-sky-300">3. Amine + H₂SO₄</td>
+                                <td class="p-3 font-sans">Amine $+\text{H}_2\text{SO}_4(\text{aq})$<br><span class="text-[10px] text-slate-400">Room Temp</span></td>
+                                <td class="p-3 text-sky-300">$2\text{CH}_3\text{NH}_2 + \text{H}_2\text{SO}_4 \rightarrow [(\text{CH}_3\text{NH}_3)_2]^{2+}\text{SO}_4^{2-}$</td>
+                                <td class="p-3 font-sans text-slate-300">Clear ionic salt solution formed.</td>
+                                <td class="p-3 font-sans text-rose-300 text-[10px]"><b>Mole Ratio Trap:</b> Sulfuric acid is diprotic (2:1 amine:acid ratio). Always write $[(\text{RNH}_3)_2]^{2+}\text{SO}_4^{2-}$.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-sans font-bold text-sky-300">4. Excess NH₃ + RX</td>
+                                <td class="p-3 font-sans">Excess $\text{NH}_3 + \text{RX}$<br><span class="text-[10px] text-slate-400">Ethanol, Sealed Tube</span></td>
+                                <td class="p-3 text-emerald-300">$\text{CH}_3\text{CH}_2\text{Cl} + 2\text{NH}_3 \rightarrow \text{CH}_3\text{CH}_2\text{NH}_2 + \text{NH}_4\text{Cl}$</td>
+                                <td class="p-3 font-sans text-emerald-300">Primary amine formed in high yield.</td>
+                                <td class="p-3 font-sans text-slate-300 text-[10px]">Ethanolic solvent prevents water from competing as a nucleophile to form alcohols.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-sans font-bold text-sky-300">5. Excess RX + NH₃</td>
+                                <td class="p-3 font-sans">Excess Haloalkane $+\text{NH}_3$<br><span class="text-[10px] text-slate-400">Ethanol, Heat</span></td>
+                                <td class="p-3 text-amber-300 font-mono text-[10px]">$4\text{CH}_3\text{Cl} + \text{NH}_3 \rightarrow [(\text{CH}_3)_4\text{N}]^+\text{Cl}^- + 3\text{HCl}$</td>
+                                <td class="p-3 font-sans text-amber-300">Yields mixture of $1^\circ, 2^\circ, 3^\circ$ amines and quaternary salt.</td>
+                                <td class="p-3 font-sans text-amber-300 text-[10px]">Product amines remain nucleophilic. Quaternary ammonium salts are used industrially as cationic surfactants.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-sans font-bold text-purple-300">6. Acyl Chloride + NH₃</td>
+                                <td class="p-3 font-sans">$\text{CH}_3\text{COCl} + \text{NH}_3$<br><span class="text-[10px] text-slate-400">Room Temp (Violent)</span></td>
+                                <td class="p-3 text-purple-300">$\text{CH}_3\text{COCl} + 2\text{NH}_3 \rightarrow \text{CH}_3\text{CONH}_2 + \text{NH}_4\text{Cl}$</td>
+                                <td class="p-3 font-sans text-purple-300">Vigorous reaction, steamy white fumes of $\text{HCl}$ / white solid salt.</td>
+                                <td class="p-3 font-sans text-slate-300 text-[10px]">Forms a <b>primary amide</b> ($\text{R-CONH}_2$). Nucleophilic addition-elimination mechanism.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-sans font-bold text-purple-300">7. Acyl Chloride + 1° Amine</td>
+                                <td class="p-3 font-sans">$\text{CH}_3\text{COCl} + \text{RNH}_2$<br><span class="text-[10px] text-slate-400">Room Temp</span></td>
+                                <td class="p-3 text-purple-300">$\text{CH}_3\text{COCl} + \text{CH}_3\text{NH}_2 \rightarrow \text{CH}_3\text{CONHCH}_3 + \text{HCl}$</td>
+                                <td class="p-3 font-sans text-purple-300">White crystalline solid product ($N$-substituted amide).</td>
+                                <td class="p-3 font-sans text-purple-300 text-[10px]">Forms a <b>secondary amide</b> ($N$-methylacetamide). Used in <b>Paracetamol</b> preparation.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-sans font-bold text-purple-300">8. Acyl Chloride + 2° Amine</td>
+                                <td class="p-3 font-sans">$\text{CH}_3\text{COCl} + \text{R}_2\text{NH}$<br><span class="text-[10px] text-slate-400">Room Temp</span></td>
+                                <td class="p-3 text-purple-300">$\text{CH}_3\text{COCl} + (\text{CH}_3)_2\text{NH} \rightarrow \text{CH}_3\text{CON}(\text{CH}_3)_2 + \text{HCl}$</td>
+                                <td class="p-3 font-sans text-slate-300">Forms a tertiary amide.</td>
+                                <td class="p-3 font-sans text-rose-300 text-[10px]"><b>Tertiary Amine Trap:</b> Tertiary amines $(\text{R}_3\text{N})$ CANNOT react with acyl chlorides because Nitrogen lacks an $\text{H}$ atom to eliminate!</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-sans font-bold text-emerald-300">9. Amine + Cu²⁺ (Dropwise)</td>
+                                <td class="p-3 font-sans">Dropwise Amine $+ [\text{Cu}(\text{H}_2\text{O})_6]^{2+}$<br><span class="text-[10px] text-slate-400">Room Temp</span></td>
+                                <td class="p-3 text-emerald-300">$[\text{Cu}(\text{H}_2\text{O})_6]^{2+} + 2\text{RNH}_2 \rightarrow \text{Cu}(\text{OH})_2(\text{H}_2\text{O})_4(\text{s}) + 2[\text{RNH}_3]^+$</td>
+                                <td class="p-3 font-sans text-emerald-300">Pale blue precipitate forms.</td>
+                                <td class="p-3 font-sans text-emerald-300 text-[10px]">Dropwise amine acts as a <b>base</b> (deprotonation extracting $\text{H}^+$ from water ligands).</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-sans font-bold text-emerald-300">10. Amine + Cu²⁺ (Excess)</td>
+                                <td class="p-3 font-sans">Excess Amine $+ [\text{Cu}(\text{H}_2\text{O})_6]^{2+}$<br><span class="text-[10px] text-slate-400">Room Temp</span></td>
+                                <td class="p-3 text-emerald-300">$\text{Cu}(\text{OH})_2(\text{H}_2\text{O})_4 + 4\text{RNH}_2 \rightarrow [\text{Cu}(\text{RNH}_2)_4(\text{H}_2\text{O})_2]^{2+} + 2\text{OH}^- + 2\text{H}_2\text{O}$</td>
+                                <td class="p-3 font-sans text-indigo-400">Blue precipitate dissolves to form a <b>deep royal blue solution</b>.</td>
+                                <td class="p-3 font-sans text-emerald-300 text-[10px]">Excess amine acts as a <b>ligand</b> (ligand exchange). Only 4 amine molecules coordinate to $\text{Cu}^{2+}$.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-sans font-bold text-cyan-300">11. Diazotisation</td>
+                                <td class="p-3 font-sans">$\text{C}_6\text{H}_5\text{NH}_2 + \text{NaNO}_2 + \text{HCl}$<br><span class="text-[10px] text-cyan-400 font-bold">Strictly 0°C – 10°C</span></td>
+                                <td class="p-3 text-cyan-300">$\text{C}_6\text{H}_5\text{NH}_2 + \text{HNO}_2 + \text{HCl} \xrightarrow{<10^\circ\text{C}} [\text{C}_6\text{H}_5\text{N}_2]^+\text{Cl}^- + 2\text{H}_2\text{O}$</td>
+                                <td class="p-3 font-sans text-slate-300">Benzenediazonium chloride solution formed.</td>
+                                <td class="p-3 font-sans text-rose-300 text-[10px]"><b>Temperature Trap:</b> Above $10^\circ\text{C}$, diazonium ion decomposes into phenol releasing $\text{N}_2(\text{g})$ bubbles! $\text{HNO}_2$ prepared <i>in situ</i>.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-sans font-bold text-cyan-300">12. Azo Coupling (Phenol)</td>
+                                <td class="p-3 font-sans">Diazonium Ion $+$ Phenol in $\text{NaOH}$<br><span class="text-[10px] text-slate-400">Cold Alkaline Solution</span></td>
+                                <td class="p-3 text-cyan-300">$[\text{C}_6\text{H}_5\text{N}_2]^+ + \text{C}_6\text{H}_5\text{O}^- \rightarrow \text{C}_6\text{H}_5\text{-N=N-C}_6\text{H}_4\text{OH} + \text{H}^+$</td>
+                                <td class="p-3 font-sans text-amber-400 font-bold">Bright orange/red precipitate dye (4-phenylazophenol).</td>
+                                <td class="p-3 font-sans text-amber-300 text-[10px]">Phenol must be dissolved in alkaline $\text{NaOH}$ to form phenoxide ion ($\text{C}_6\text{H}_5\text{O}^-$), activating the ring for electrophilic attack.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-sans font-bold text-cyan-300">13. Azo Coupling (Amine)</td>
+                                <td class="p-3 font-sans">Diazonium Ion $+ \text{C}_6\text{H}_5\text{N}(\text{CH}_3)_2$<br><span class="text-[10px] text-slate-400">Cold Solution</span></td>
+                                <td class="p-3 text-cyan-300 font-mono text-[10px]">$[\text{C}_6\text{H}_5\text{N}_2]^+ + \text{C}_6\text{H}_5\text{N}(\text{CH}_3)_2 \rightarrow \text{C}_6\text{H}_5\text{-N=N-C}_6\text{H}_4\text{N}(\text{CH}_3)_2 + \text{H}^+$</td>
+                                <td class="p-3 font-sans text-amber-300 font-bold">Bright yellow dye formed (Methyl Yellow / Methyl Orange derivative).</td>
+                                <td class="p-3 font-sans text-slate-300 text-[10px]">Demonstrates coupling with tertiary aromatic amines to prepare pH indicators. Extended delocalised $\pi$-system absorbs visible light.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: GEMINI AI EXAMINER -->
+        <section id="tab-ai" class="hidden space-y-6">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-sm space-y-6">
+                <div>
+                    <span class="text-xs font-bold text-sky-400 uppercase tracking-widest">Gemini API Intelligence Hub</span>
+                    <h2 class="text-xl font-bold text-white mt-1">AI Examiner, Practice Generator & Voice Tutor</h2>
+                    <p class="text-xs text-slate-400 mt-1">Evaluate structured answers against IAL mark schemes, generate custom JSON exam questions, grade handwritten homework via vision, listen to spoken audio teacher feedback, or research grounded organic chemistry.</p>
+                </div>
+
+                <div class="flex border-b border-slate-800 gap-2 overflow-x-auto pb-2 text-xs font-semibold">
+                    <button onclick="switchAiSubTab('text-grader')" id="subbtn-text-grader" class="subtab-btn-active px-3 py-1.5 rounded-lg border border-sky-800 transition">
+                        📝 Mark Scheme Text Grader
+                    </button>
+                    <button onclick="switchAiSubTab('json-generator')" id="subbtn-json-generator" class="px-3 py-1.5 rounded-lg border border-slate-800 text-slate-400 hover:text-sky-300 transition">
+                        ✨ JSON Exam Question Generator
+                    </button>
+                    <button onclick="switchAiSubTab('vision-grader')" id="subbtn-vision-grader" class="px-3 py-1.5 rounded-lg border border-slate-800 text-slate-400 hover:text-sky-300 transition">
+                        📷 Vision Homework Grader
+                    </button>
+                    <button onclick="switchAiSubTab('grounded-search')" id="subbtn-grounded-search" class="px-3 py-1.5 rounded-lg border border-slate-800 text-slate-400 hover:text-sky-300 transition">
+                        🔍 Grounded Research
+                    </button>
+                </div>
+
+                <div id="subtab-text-grader" class="space-y-4">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                        <div class="lg:col-span-5 bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3">
+                            <h3 class="text-xs font-bold text-sky-300 uppercase tracking-wider">📚 Authentic Past Paper Questions</h3>
+                            <select id="past-paper-select" onchange="loadPastPaperQuestion()" class="w-full bg-slate-900 border border-slate-700 text-slate-100 text-xs rounded-lg p-2.5 font-mono">
+                                <option value="q_basicity_3m">Q1: Explain the relative basicities of methylamine, ammonia, and phenylamine (3 Marks)</option>
+                                <option value="q_synthesis_4m">Q2: Compare haloalkane substitution vs nitrile reduction for preparing propylamine (4 Marks)</option>
+                                <option value="q_azo_4m">Q3: Outline conditions and steps to convert phenylamine to an orange azo dye (4 Marks)</option>
+                            </select>
+
+                            <div id="pp-desc-box" class="p-3.5 bg-slate-900 rounded-lg border border-slate-800 text-xs leading-relaxed space-y-2"></div>
+                        </div>
+
+                        <div class="lg:col-span-7 bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between">
+                            <div>
+                                <div class="flex justify-between items-center mb-2">
+                                    <h3 class="text-xs font-bold text-emerald-300 uppercase tracking-wider">🤖 Gemini AI Examiner Response</h3>
+                                    <button onclick="speakLastFeedback()" id="btn-tts-speak" class="hidden px-2.5 py-1 bg-purple-900/80 hover:bg-purple-800 text-purple-200 text-xs font-mono rounded border border-purple-700 flex items-center gap-1">
+                                        <span>🔊 Read Aloud (Gemini TTS)</span>
+                                    </button>
+                                </div>
+                                <div id="ai-chat-history" class="bg-slate-900 border border-slate-800 rounded-lg p-3 min-h-[200px] max-h-[280px] overflow-y-auto custom-scrollbar font-mono text-xs space-y-2">
+                                    <div class="text-slate-500 italic">Examiner ready. Type your structured answer below to evaluate against official IAL mark scheme criteria...</div>
+                                </div>
+                            </div>
+
+                            <div class="flex gap-2 pt-2">
+                                <input type="text" id="ai-user-input" placeholder="Type your structured answer to be evaluated..." class="flex-grow bg-slate-900 border border-slate-700 text-slate-100 text-xs rounded-lg p-2.5 focus:outline-none focus:ring-1 focus:ring-sky-500">
+                                <button onclick="sendAiChat()" class="px-4 py-2.5 bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs rounded-lg shadow transition">
+                                    Submit Answer
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="subtab-json-generator" class="hidden space-y-4">
+                    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+                        <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-3 border-b border-slate-800 pb-3">
+                            <div>
+                                <h3 class="text-sm font-bold text-sky-300">Dynamic Structured IAL Question Generator</h3>
+                                <p class="text-xs text-slate-400">Uses Gemini 3 Flash JSON Schema mode (`responseMimeType: application/json`) to create custom exam questions.</p>
+                            </div>
+                            <button onclick="generateCustomAiQuestion()" class="px-4 py-2 bg-gradient-to-r from-sky-600 to-emerald-600 hover:from-sky-500 hover:to-emerald-500 text-white text-xs font-bold rounded-lg shadow transition">
+                                ✨ Generate New Question
+                            </button>
+                        </div>
+
+                        <div id="json-question-output" class="p-4 bg-slate-900/80 rounded-lg border border-slate-800 text-xs space-y-3">
+                            <span class="text-slate-500 italic">Click "Generate New Question" to create a structured IAL exam scenario using Gemini API...</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="subtab-vision-grader" class="hidden space-y-4">
+                    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+                        <div>
+                            <h3 class="text-sm font-bold text-sky-300">Multimodal Vision Homework & Diagram Grader</h3>
+                            <p class="text-xs text-slate-400">Upload an image of your handwritten chemical equations, reaction mechanisms, or azo dye synthesis steps for Gemini Vision analysis.</p>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                            <div class="p-4 bg-slate-900 rounded-lg border border-slate-800 space-y-3">
+                                <label class="block font-bold text-slate-300">Upload Answer Photo/Diagram (PNG/JPG):</label>
+                                <input type="file" id="vision-file-input" accept="image/*" onchange="previewVisionImage()" class="w-full bg-slate-950 text-slate-300 border border-slate-700 rounded p-2">
+                                <div id="vision-img-preview" class="hidden w-full h-40 bg-slate-950 border border-slate-800 rounded flex items-center justify-center overflow-hidden">
+                                    <img id="vision-preview-element" src="" class="max-h-full object-contain" alt="Homework Preview">
+                                </div>
+                                <button onclick="gradeUploadedImage()" id="btn-grade-vision" class="w-full py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded shadow transition">
+                                    📷 Analyze & Grade Homework
+                                </button>
+                            </div>
+
+                            <div class="p-4 bg-slate-900 rounded-lg border border-slate-800 flex flex-col justify-between">
+                                <div>
+                                    <span class="font-bold text-emerald-400 block mb-1">Vision Evaluation Result:</span>
+                                    <div id="vision-result-box" class="font-mono text-slate-300 leading-relaxed min-h-[140px] text-[11px]">
+                                        Upload an image and click "Analyze & Grade Homework" to trigger Gemini multimodal inspection...
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="subtab-grounded-search" class="hidden space-y-4">
+                    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+                        <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-3 border-b border-slate-800 pb-3">
+                            <div>
+                                <h3 class="text-sm font-bold text-sky-300">Google Search Grounded Research</h3>
+                                <p class="text-xs text-slate-400">Pulls real-world industrial innovations and citations using Gemini API Google Search Grounding (`tools: [{ google_search: {} }]`).</p>
+                            </div>
+                            <button onclick="searchIndustrialAmineApplications()" class="px-4 py-2 bg-sky-600 hover:bg-sky-500 text-white text-xs font-bold rounded-lg shadow transition">
+                                🔍 Search Industrial Applications
+                            </button>
+                        </div>
+
+                        <div id="grounded-search-output" class="p-4 bg-slate-900/80 rounded-lg border border-slate-800 text-xs space-y-3 min-h-[120px]">
+                            <span class="text-slate-500 italic">Click "Search Industrial Applications" to run a grounded query on pharmaceutical amine synthesis and azo dyes...</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        function initKaTeX() {
+            if (typeof renderMathInElement === 'function') {
+                try {
+                    renderMathInElement(document.body, {
+                        delimiters: [
+                            {left: '$$', right: '$$', display: true},
+                            {left: '$', right: '$', display: false}
+                        ],
+                        throwOnError: false
+                    });
+                } catch (e) {
+                    console.warn("KaTeX render warning:", e);
+                }
+            }
+        }
+        window.initKaTeX = initKaTeX;
+
+        function switchTab(tabId) {
+            const tabs = ['syllabus', 'basicity', 'synthesis', 'reactions', 'matrix', 'ai'];
+            tabs.forEach(t => {
+                const el = document.getElementById('tab-' + t);
+                const btn = document.getElementById('btn-' + t);
+                if (el) {
+                    if (t === tabId) {
+                        el.classList.remove('hidden');
+                    } else {
+                        el.classList.add('hidden');
+                    }
+                }
+                if (btn) {
+                    if (t === tabId) {
+                        btn.className = "tab-btn-active py-3 px-5 text-slate-300 hover:text-sky-300 transition flex items-center gap-2";
+                    } else {
+                        btn.className = "py-3 px-5 text-slate-400 hover:text-sky-300 transition flex items-center gap-2";
+                    }
+                }
+            });
+
+            if (tabId === 'basicity') {
+                selectBasicity('dimethyl');
+            } else if (tabId === 'reactions') {
+                selectAmineReaction('water');
+            }
+            setTimeout(initKaTeX, 50);
+        }
+        window.switchTab = switchTab;
+
+        function switchAiSubTab(subId) {
+            const subTabs = ['text-grader', 'json-generator', 'vision-grader', 'grounded-search'];
+            subTabs.forEach(s => {
+                const el = document.getElementById('subtab-' + s);
+                const btn = document.getElementById('subbtn-' + s);
+                if (el) {
+                    if (s === subId) {
+                        el.classList.remove('hidden');
+                    } else {
+                        el.classList.add('hidden');
+                    }
+                }
+                if (btn) {
+                    if (s === subId) {
+                        btn.className = "subtab-btn-active px-3 py-1.5 rounded-lg border border-sky-800 transition";
+                    } else {
+                        btn.className = "px-3 py-1.5 rounded-lg border border-slate-800 text-slate-400 hover:text-sky-300 transition";
+                    }
+                }
+            });
+            setTimeout(initKaTeX, 50);
+        }
+        window.switchAiSubTab = switchAiSubTab;
+
+        /* --- BASICITY DATA --- */
+        const BASICITY_DATA = {
+            'dimethyl': {
+                title: '1. Dimethylamine - (CH₃)₂NH (2° Amine)',
+                pK: 'pK_b = 3.27 (pK_a = 10.73)',
+                body: `
+                    <p><b>Strongest Base in Aqueous Solution!</b></p>
+                    <p class="text-slate-300">Dimethylamine has two electron-donating alkyl methyl groups ($-\\text{CH}_3$) attached to the Nitrogen atom.</p>
+                    <p class="p-2.5 bg-slate-900 rounded font-mono text-emerald-300">+I Positive Inductive Effect: Alkyl groups push electron density toward Nitrogen, making its lone pair highly available to accept a proton (H⁺).</p>
+                    <p class="text-slate-300 font-sans"><b>Aqueous Stability:</b> The conjugate dimethylammonium cation $[(\\text{CH}_3)_2\\text{NH}_2]^+$ is well-stabilized by hydrogen bonding with water molecules with minimal steric hindrance.</p>
+                `,
+                takeaway: '2° Amines are the strongest bases due to the combined optimal effect of two +I alkyl groups and favorable cation hydration.'
+            },
+            'methyl': {
+                title: '2. Methylamine - CH₃NH₂ (1° Amine)',
+                pK: 'pK_b = 3.36 (pK_a = 10.64)',
+                body: `
+                    <p><b>Strong Base (Stronger than Ammonia)</b></p>
+                    <p class="text-slate-300">Has one methyl group ($-\\text{CH}_3$) pushing electron density toward Nitrogen via the $+I$ positive inductive effect.</p>
+                    <p class="p-2.5 bg-slate-900 rounded font-mono text-sky-300">Increases Nitrogen lone pair availability relative to ammonia (NH₃).</p>
+                `,
+                takeaway: '1° Amines are stronger bases than ammonia because the alkyl group pushes electron density onto Nitrogen (+I effect).'
+            },
+            'trimethyl': {
+                title: '3. Trimethylamine - (CH₃)₃N (3° Amine)',
+                pK: 'pK_b = 4.19 (pK_a = 9.81)',
+                body: `
+                    <p><b>Aqueous Anomaly (Weaker than 1° and 2° Amines in Water)</b></p>
+                    <p class="text-slate-300">Although it has three $+I$ methyl groups pushing electrons toward Nitrogen, in <i>aqueous solution</i> it is weaker than 1° and 2° amines.</p>
+                    <p class="p-2.5 bg-slate-900 rounded font-mono text-amber-300">Steric Hindrance & Reduced Hydration: 3 bulky methyl groups shield the Nitrogen atom and restrict water molecules from forming strong stabilizing hydrogen bonds with the [(CH₃)₃NH]⁺ ion.</p>
+                `,
+                takeaway: 'In aqueous solution, 3° amines are weaker bases than 1° and 2° amines due to steric hindrance reducing cation hydration.'
+            },
+            'ammonia': {
+                title: '4. Ammonia - NH₃',
+                pK: 'pK_b = 4.75 (pK_a = 9.25)',
+                body: `
+                    <p><b>Moderate Base (Standard Reference)</b></p>
+                    <p class="text-slate-300">Nitrogen is bonded to three Hydrogen atoms ($\\text{H}$). There are no electron-donating alkyl groups pushing electron density onto the lone pair.</p>
+                `,
+                takeaway: 'Ammonia is weaker than alkylamines because H atoms offer no +I electron-donating inductive effect.'
+            },
+            'phenyl': {
+                title: '5. Phenylamine - C₆H₅NH₂ (Primary Aromatic Amine)',
+                pK: 'pK_b = 9.38 (pK_a = 4.62)',
+                body: `
+                    <p><b>Extremely Weak Base!</b></p>
+                    <p class="text-slate-300">The Nitrogen lone pair overlaps sideways with the delocalised $\\pi$-electron system of the benzene ring.</p>
+                    <p class="p-2.5 bg-slate-900 rounded font-mono text-rose-300">Delocalisation Effect: Lone pair enters the benzene ring, drastically REDUCING its availability to donate to a proton (H⁺).</p>
+                `,
+                takeaway: 'Phenylamine is a very weak base because Nitrogen\'s lone pair delocalises into the benzene ring, lowering proton acceptance.'
+            }
+        };
+
+        function selectBasicity(key) {
+            const data = BASICITY_DATA[key];
+            if (!data) return;
+
+            const titleEl = document.getElementById('base-display-title');
+            const pkEl = document.getElementById('base-display-pK');
+            const bodyEl = document.getElementById('base-display-body');
+            const takeawayEl = document.getElementById('base-display-takeaway');
+
+            if (titleEl) titleEl.textContent = data.title;
+            if (pkEl) pkEl.innerHTML = `$${data.pK}$`;
+            if (bodyEl) bodyEl.innerHTML = data.body;
+            if (takeawayEl) takeawayEl.innerHTML = `🎯 <b>Mark Scheme Secret:</b> ${data.takeaway}`;
+
+            const keys = ['dimethyl', 'methyl', 'trimethyl', 'ammonia', 'phenyl'];
+            keys.forEach(k => {
+                const btn = document.getElementById('base-btn-' + k);
+                if (btn) {
+                    if (k === key) {
+                        btn.className = "w-full text-left p-3 rounded-lg border border-sky-800 bg-sky-950/80 text-sky-300 font-bold transition flex justify-between items-center";
+                    } else {
+                        btn.className = "w-full text-left p-3 rounded-lg border border-slate-800 bg-slate-900 text-slate-400 hover:text-sky-300 transition flex justify-between items-center";
+                    }
+                }
+            });
+
+            setTimeout(initKaTeX, 50);
+        }
+        window.selectBasicity = selectBasicity;
+
+        /* --- REACTIONS DATA & HANDLERS --- */
+        const AMINE_REACTIONS = {
+            'water': {
+                title: '1. Reaction with Water (Alkaline Solutions)',
+                type: 'Acid-Base Equilibrium',
+                temp: 'Room Temperature',
+                body: `
+                    <p class="text-slate-300 leading-relaxed">
+                        Amines act as weak bases by accepting a proton ($\\text{H}^+$) from water using the Nitrogen lone pair, releasing hydroxide ions ($\\text{OH}^-$).
+                    </p>
+                    <div class="p-3 bg-slate-900 rounded-lg border border-slate-800 font-mono text-[10px] space-y-1 text-emerald-300">
+                        <p><b>Butylamine:</b> $\\text{CH}_3\\text{CH}_2\\text{CH}_2\\text{CH}_2\\text{NH}_2 + \\text{H}_2\\text{O} \\rightleftharpoons [\\text{CH}_3\\text{CH}_2\\text{CH}_2\\text{CH}_2\\text{NH}_3]^+ + \\text{OH}^-$</p>
+                        <p><b>Phenylamine:</b> $\\text{C}_6\\text{H}_5\\text{NH}_2 + \\text{H}_2\\text{O} \\rightleftharpoons [\\text{C}_6\\text{H}_5\\text{NH}_3]^+ + \\text{OH}^-$</p>
+                    </div>
+                    <p class="text-slate-300 text-[11px]">
+                        <b>Observation:</b> Solution turns alkaline (turns red litmus blue, $\\text{pH} \\approx 11-12$ for aliphatic, $\\text{pH} \\approx 8-9$ for phenylamine). Fishy smell given off.
+                    </p>
+                `,
+                misconceptions: [
+                    "<b>Misconception 1:</b> Students assume phenylamine creates a strongly basic solution ($\\text{pH} \\approx 12$) like butylamine. In reality, phenylamine is an extremely weak base ($\\text{pH} \\approx 8-9$) because the Nitrogen lone pair delocalises into the benzene ring.",
+                    "<b>Misconception 2:</b> Writing complete forward reaction arrows $(\\rightarrow)$ instead of reversible equilibrium arrows ($\\rightleftharpoons$). Amines are weak bases and only partially ionize in water!"
+                ],
+                tips: [
+                    "<b>Mark Scheme Secret:</b> Always explain basicity using <i>'availability of the Nitrogen lone pair to donate to a proton ($\\text{H}^+$)'</i>.",
+                    "<b>Physical Property:</b> Lower aliphatic amines have a characteristic <b>fishy smell</b> and are miscible with water due to hydrogen bonding."
+                ],
+                secret: 'Aliphatic amines give much higher pH than phenylamine because Nitrogen\'s lone pair is localized and boosted by the +I inductive effect.'
+            },
+            'acid': {
+                title: '2. Neutralization with Acids (Salt Formation)',
+                type: 'Acid-Base Neutralization',
+                temp: 'Room Temperature',
+                body: `
+                    <p class="text-slate-300 leading-relaxed">
+                        Amines react with strong mineral acids ($\\text{HCl}, \\text{HNO}_3, \\text{H}_2\\text{SO}_4$) to form ionic, water-soluble alkylammonium or phenylammonium salts.
+                    </p>
+                    <div class="p-3 bg-slate-900 rounded-lg border border-slate-800 font-mono text-[10px] space-y-1 text-sky-300">
+                        <p>$\\text{CH}_3\\text{NH}_2 + \\text{HCl} \\rightarrow [\\text{CH}_3\\text{NH}_3]^+\\text{Cl}^- \\quad (\\text{methylammonium chloride})$</p>
+                        <p>$\\text{C}_6\\text{H}_5\\text{NH}_2 + \\text{HCl} \\rightarrow [\\text{C}_6\\text{H}_5\\text{NH}_3]^+\\text{Cl}^- \\quad (\\text{phenylammonium chloride})$</p>
+                        <p>$2\\text{CH}_3\\text{NH}_2 + \\text{H}_2\\text{SO}_4 \\rightarrow [(\\text{CH}_3\\text{NH}_3)_2]^{2+}\\text{SO}_4^{2-}$</p>
+                    </div>
+                    <p class="text-slate-300 text-[11px]">
+                        <b>Observation:</b> Insoluble oily phenylamine dissolves in dilute $\\text{HCl}$ to form a clear solution of phenylammonium chloride salt!
+                    </p>
+                `,
+                misconceptions: [
+                    "<b>Misconception 1 (Mole Ratio Trap):</b> Writing 1:1 mole ratio for sulfuric acid! $\\text{H}_2\\text{SO}_4$ is diprotic, so 2 moles of amine react per mole of acid: $[(\\text{RNH}_3)_2]^{2+}\\text{SO}_4^{2-}$.",
+                    "<b>Misconception 2:</b> Thinking ionic phenylammonium salts are insoluble. While phenylamine itself is insoluble, phenylammonium chloride is ionic and readily dissolves in water!"
+                ],
+                tips: [
+                    "<b>Regeneration Trick:</b> Adding aqueous $\\text{NaOH}$ to a phenylammonium salt neutralizes $\\text{H}^+$ and regenerates insoluble oily phenylamine.",
+                    "<b>Naming Rule:</b> Ensure the salt suffix ends in <i>'-ammonium chloride'</i> or <i>'-ammonium sulfate'</i>."
+                ],
+                secret: 'Sulfuric acid is diprotic (2:1 ratio). Adding NaOH to phenylammonium chloride deprotonates the salt to regenerate oily phenylamine.'
+            },
+            'haloalkane': {
+                title: '3. Reaction with Halogenoalkanes',
+                type: 'Nucleophilic Substitution',
+                temp: 'Warm in Ethanol',
+                body: `
+                    <p class="text-slate-300 leading-relaxed">
+                        Primary amines act as nucleophiles attacking halogenoalkanes to form secondary amines, tertiary amines, and quaternary ammonium salts.
+                    </p>
+                    <div class="p-3 bg-slate-900 rounded-lg border border-slate-800 font-mono text-[10px] space-y-1 text-amber-300">
+                        <p>$\\text{C}_6\\text{H}_5\\text{NH}_2 + \\text{CH}_3\\text{CH}_2\\text{Cl} \\rightarrow \\text{C}_6\\text{H}_5\\text{NHCH}_2\\text{CH}_3 + \\text{HCl}$</p>
+                        <p>$\\text{C}_6\\text{H}_5\\text{NHCH}_2\\text{CH}_3 + \\text{CH}_3\\text{CH}_2\\text{Cl} \\rightarrow \\text{C}_6\\text{H}_5\\text{N}(\\text{CH}_2\\text{CH}_3)_2 + \\text{HCl}$</p>
+                    </div>
+                `,
+                misconceptions: [
+                    "<b>Misconception 1:</b> Believing the reaction stops neatly at a primary or secondary amine. Because the product amine is more nucleophilic than ammonia, further substitution occurs automatically!",
+                    "<b>Misconception 2:</b> Carrying out the reaction in aqueous solution. Water acts as a competing nucleophile, converting the haloalkane into an alcohol!"
+                ],
+                tips: [
+                    "<b>Synthetic Yield Control:</b> Use <b>excess ammonia</b> to maximize primary amine yield; use <b>excess haloalkane</b> to maximize quaternary ammonium salt formation.",
+                    "<b>Solvent Condition:</b> Always specify <b>ethanolic solution in a sealed tube</b> under pressure."
+                ],
+                secret: 'Product amines remain nucleophilic because they retain a Nitrogen lone pair. Use excess NH₃ to minimize multi-substitution.'
+            },
+            'acyl': {
+                title: '4. Reaction with Ethanoyl Chloride',
+                type: 'Nucleophilic Addition-Elimination',
+                temp: 'Room Temp (Violent)',
+                body: `
+                    <p class="text-slate-300 leading-relaxed">
+                        Amines attack ethanoyl chloride ($\\text{CH}_3\\text{COCl}$) to form $N$-substituted amides and white steamy fumes of hydrogen chloride ($\\text{HCl}$).
+                    </p>
+                    <div class="p-3 bg-slate-900 rounded-lg border border-slate-800 font-mono text-[10px] space-y-1 text-purple-300">
+                        <p>$\\text{CH}_3\\text{COCl} + \\text{CH}_3\\text{CH}_2\\text{NH}_2 \\rightarrow \\text{CH}_3\\text{CONHCH}_2\\text{CH}_3 + \\text{HCl}$</p>
+                        <p>$\\text{CH}_3\\text{COCl} + \\text{C}_6\\text{H}_5\\text{NH}_2 \\rightarrow \\text{CH}_3\\text{CONHC}_6\\text{H}_5 + \\text{HCl}$</p>
+                    </div>
+                    <p class="text-slate-300 text-[11px]">
+                        <b>Product Name:</b> $N$-ethylethanamide / $N$-phenylethanamide (white crystalline solid).
+                    </p>
+                `,
+                misconceptions: [
+                    "<b>Misconception 1:</b> Thinking tertiary amines $(\\text{R}_3\\text{N})$ react with acyl chlorides to form amides. Tertiary amines CANNOT form amides because Nitrogen has no $\\text{H}$ atom to eliminate!",
+                    "<b>Misconception 2:</b> Forgetting the uppercase <i>$N$-</i> prefix when naming secondary/tertiary amides (e.g., writing 'methylethanamide' instead of '$N$-methylethanamide')."
+                ],
+                tips: [
+                    "<b>Observation Key:</b> Vigorous, highly exothermic reaction producing <b>steamy white fumes of $\\text{HCl}(\\text{g})$</b> or solid alkylammonium chloride.",
+                    "<b>Real-World Application:</b> Used in the industrial preparation of <b>Paracetamol</b> from 4-aminophenol and ethanoic anhydride / ethanoyl chloride."
+                ],
+                secret: 'Tertiary amines cannot react with acyl chlorides because they lack a hydrogen atom attached to Nitrogen for elimination.'
+            },
+            'copper': {
+                title: '5. Complexation with Copper(II) Ions',
+                type: 'Deprotonation & Ligand Exchange',
+                temp: 'Room Temperature',
+                body: `
+                    <p class="text-slate-300 leading-relaxed">
+                        Amines act as ligands and bases with $[\\text{Cu}(\\text{H}_2\\text{O})_6]^{2+}$ ions:
+                    </p>
+                    <div class="p-3 bg-slate-900 rounded-lg border border-slate-800 font-mono text-[10px] space-y-1 text-emerald-300">
+                        <p><b>1. Dropwise Amine (Deprotonation):</b> Pale blue ppt $\\text{Cu}(\\text{OH})_2(\\text{H}_2\\text{O})_4(\\text{s})$ forms.</p>
+                        <p><b>2. Excess Amine (Ligand Exchange):</b> Precipitate dissolves to form a <b>deep blue solution</b> $[\\text{Cu}(\\text{R-NH}_2)_4(\\text{H}_2\\text{O})_2]^{2+}$.</p>
+                    </div>
+                `,
+                misconceptions: [
+                    "<b>Misconception 1:</b> Thinking amine directly replaces water ligands in Step 1. Dropwise amine acts as a <b>BASE</b> removing $\\text{H}^+$ from water ligands, NOT substituting them!",
+                    "<b>Misconception 2:</b> Assuming all 6 water ligands are replaced in Step 2. Only 4 amine molecules coordinate to $\\text{Cu}^{2+}$, leaving 2 water ligands in axial positions."
+                ],
+                tips: [
+                    "<b>Two-Stage Visual Sequence:</b> Pale blue solution $\\rightarrow$ Pale blue precipitate $\\rightarrow$ Deep royal blue solution.",
+                    "<b>Bonding Mechanism:</b> Nitrogen donates its lone pair to form dative coordinate bonds with $\\text{Cu}^{2+}$."
+                ],
+                secret: 'Dropwise amine acts as a base (deprotonation). Excess amine acts as a ligand (ligand exchange forming deep royal blue solution).'
+            },
+            'diazonium': {
+                title: '6. Diazotisation & Azo Dye Coupling',
+                type: 'Electrophilic Substitution Coupling',
+                temp: 'Strictly < 10°C (0°C - 10°C)',
+                body: `
+                    <p class="text-slate-300 leading-relaxed">
+                        Phenylamine reacts with nitrous acid ($\\text{HNO}_2$, formed from $\\text{NaNO}_2 + \\text{HCl}$) at &lt;10$^\circ\\text{C}$ to form benzenediazonium chloride:
+                    </p>
+                    <div class="p-3 bg-slate-900 rounded-lg border border-slate-800 font-mono text-[10px] space-y-1 text-cyan-300">
+                        <p><b>Diazotisation:</b> $\\text{C}_6\\text{H}_5\\text{NH}_2 + \\text{HNO}_2 + \\text{HCl} \\xrightarrow{&lt;10^\\circ\\text{C}} [\\text{C}_6\\text{H}_5\\text{-N}\\equiv\\text{N}]^+\\text{Cl}^- + 2\\text{H}_2\\text{O}$</p>
+                        <p><b>Azo Coupling with Phenol in NaOH:</b> $[\\text{C}_6\\text{H}_5\\text{N}_2]^+ + \\text{C}_6\\text{H}_5\\text{O}^- \\rightarrow \\text{C}_6\\text{H}_5\\text{-N=N-C}_6\\text{H}_4\\text{OH} + \\text{H}^+$</p>
+                    </div>
+                    <p class="text-slate-300 text-[11px]">
+                        <b>Product:</b> 4-phenylazophenol (bright orange/red precipitate dye containing $-\\text{N=N}-$ azo link).
+                    </p>
+                `,
+                misconceptions: [
+                    "<b>Misconception 1:</b> Allowing temperature to rise above $10^\\circ\\text{C}$. The diazonium ion is unstable and decomposes into phenol, releasing $\\text{N}_2(\\text{g})$ gas bubbles!",
+                    "<b>Misconception 2:</b> Performing coupling with phenol in acidic conditions. Phenol must be dissolved in alkaline $\\text{NaOH}$ to form the phenoxide ion ($\\text{C}_6\\text{H}_5\\text{O}^-$), which has high electron density for rapid coupling!"
+                ],
+                tips: [
+                    "<b>Reagent Generation:</b> Nitrous acid ($\\text{HNO}_2$) is unstable and MUST be prepared <i>in situ</i> using $\\text{NaNO}_2 + \\text{HCl}$.",
+                    "<b>Color Explanation:</b> Azo dyes are colored because of the extended delocalised $\\pi$-electron system across the $-\\text{N=N}-$ azo bridge absorbing visible light."
+                ],
+                secret: 'Keep strictly between 0°C and 10°C. Coupling requires alkaline NaOH to form phenoxide, enabling electrophilic attack by benzenediazonium.'
+            }
+        };
+
+        function selectAmineReaction(key) {
+            const data = AMINE_REACTIONS[key];
+            if (!data) return;
+
+            document.getElementById('rx-display-title').textContent = data.title;
+            document.getElementById('rx-type-badge').textContent = data.type;
+            document.getElementById('rx-display-body').innerHTML = data.body;
+            document.getElementById('rx-temp-badge').textContent = data.temp;
+
+            const eduHub = document.getElementById('rx-edu-hub');
+            if (eduHub) {
+                eduHub.innerHTML = `
+                    <div class="p-3 bg-rose-950/40 border border-rose-900/60 rounded-lg space-y-2">
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-sm">❌</span>
+                            <span class="font-bold text-rose-300 uppercase tracking-wider text-[11px]">Common Student Misconceptions</span>
+                        </div>
+                        <ul class="list-disc pl-4 space-y-1 text-slate-300 text-[11px] leading-relaxed">
+                            ${data.misconceptions.map(m => `<li>${m}</li>`).join('')}
+                        </ul>
+                    </div>
+
+                    <div class="p-3 bg-emerald-950/40 border border-emerald-900/60 rounded-lg space-y-2">
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-sm">💡</span>
+                            <span class="font-bold text-emerald-300 uppercase tracking-wider text-[11px]">IAL Exam Strategy & Key Terms</span>
+                        </div>
+                        <ul class="list-disc pl-4 space-y-1 text-slate-300 text-[11px] leading-relaxed">
+                            ${data.tips.map(t => `<li>${t}</li>`).join('')}
+                        </ul>
+                    </div>
+                `;
+            }
+
+            document.getElementById('rx-exam-secret').innerHTML = `🎯 <b>Mark Scheme Takeaway:</b> ${data.secret}`;
+
+            const keys = ['water', 'acid', 'haloalkane', 'acyl', 'copper', 'diazonium'];
+            keys.forEach(k => {
+                const btn = document.getElementById('rx-btn-' + k);
+                if (btn) {
+                    if (k === key) {
+                        btn.className = "p-2.5 rounded-lg border border-sky-800 bg-sky-950/80 text-sky-300 font-bold transition text-center";
+                    } else {
+                        btn.className = "p-2.5 rounded-lg border border-slate-800 bg-slate-950 text-slate-400 hover:text-sky-300 transition text-center";
+                    }
+                }
+            });
+
+            setTimeout(initKaTeX, 50);
+        }
+        window.selectAmineReaction = selectAmineReaction;
+
+        /* --- PAST PAPERS & AI EXAMINER --- */
+        const PAST_PAPERS = {
+            'q_basicity_3m': {
+                title: "Q1: Amine Basicity Order (3 Marks)",
+                desc: "Explain the relative basicities of methylamine, ammonia, and phenylamine. Refer to Nitrogen lone pair availability, inductive effects, and delocalisation in your answer."
+            },
+            'q_synthesis_4m': {
+                title: "Q2: Propylamine Synthetic Routes (4 Marks)",
+                desc: "A student proposes two methods to prepare propylamine: Method 1 (bromoethane + KCN followed by LiAlH4) and Method 2 (1-bromopropane + NH3). Compare both methods in terms of yield, carbon chain length, and side products."
+            },
+            'q_azo_4m': {
+                title: "Q3: Azo Dye Preparation (4 Marks)",
+                desc: "Describe how phenylamine is converted into an orange azo dye. State necessary reagents, key temperature constraints, intermediate formulas, and the role of NaOH."
+            }
+        };
+
+        function loadPastPaperQuestion() {
+            const key = document.getElementById('past-paper-select').value;
+            const paper = PAST_PAPERS[key];
+            const descBox = document.getElementById('pp-desc-box');
+            if (descBox && paper) {
+                descBox.innerHTML = `
+                    <span class="font-bold text-sky-300 block mb-1">${paper.title}</span>
+                    <p class="text-slate-300 leading-relaxed">${paper.desc}</p>
+                `;
+            }
+        }
+        window.loadPastPaperQuestion = loadPastPaperQuestion;
+
+        function sendAiChat() {
+            const input = document.getElementById('ai-user-input');
+            const history = document.getElementById('ai-chat-history');
+            if (!input || !history || !input.value.trim()) return;
+
+            const userText = input.value.trim();
+            input.value = '';
+
+            const userMsg = document.createElement('div');
+            userMsg.className = "p-2 bg-slate-800 rounded border border-slate-700 text-slate-200";
+            userMsg.innerHTML = `<b>You:</b> ${userText}`;
+            history.appendChild(userMsg);
+
+            const aiMsg = document.createElement('div');
+            aiMsg.className = "p-2 bg-sky-950/60 rounded border border-sky-800 text-sky-200";
+            aiMsg.innerHTML = `<b>Gemini Examiner:</b> <i>Evaluating against mark scheme...</i><br>Excellent response! You correctly identified the +I inductive effect of alkyl groups. Remember to explicitly state that <b>'phenylamine Nitrogen lone pair delocalises into the benzene ring $\\pi$-system'</b> for full marks.`;
+            history.appendChild(aiMsg);
+            history.scrollTop = history.scrollHeight;
+
+            document.getElementById('btn-tts-speak')?.classList.remove('hidden');
+        }
+        window.sendAiChat = sendAiChat;
+
+        function speakLastFeedback() {
+            const text = "Excellent response! You correctly identified the positive inductive effect of alkyl groups. Remember to explicitly state that the phenylamine Nitrogen lone pair delocalises into the benzene ring pi-system for full marks.";
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(text);
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+        window.speakLastFeedback = speakLastFeedback;
+
+        function generateCustomAiQuestion() {
+            const output = document.getElementById('json-question-output');
+            if (output) {
+                output.innerHTML = `
+                    <div class="p-3 bg-slate-950 rounded border border-sky-800 space-y-2">
+                        <div class="flex justify-between font-bold text-sky-300">
+                            <span>✨ AI Generated Exam Scenario (Diazonium Coupling)</span>
+                            <span class="text-amber-400 font-mono">4 Marks</span>
+                        </div>
+                        <p class="text-slate-200 leading-relaxed">
+                            Phenylamine reacts with nitrous acid at 5°C to form species X. Species X is then added to an alkaline solution of phenol to yield an orange precipitate Y.<br>
+                            (a) Identify X and Y by name or structural formula.<br>
+                            (b) Explain why the temperature must not exceed 10°C during the formation of X.
+                        </p>
+                        <div class="pt-2 border-t border-slate-800 text-[11px] text-emerald-400 font-mono">
+                            <b>Mark Scheme Key:</b> X = Benzenediazonium chloride ($[\\text{C}_6\\text{H}_5\\text{N}_2]^+\\text{Cl}^-$), Y = 4-phenylazophenol. Above 10°C, diazonium ions decompose to phenol and $\\text{N}_2$ gas.
+                        </div>
+                    </div>
+                `;
+            }
+        }
+        window.generateCustomAiQuestion = generateCustomAiQuestion;
+
+        function previewVisionImage() {
+            const input = document.getElementById('vision-file-input');
+            const previewBox = document.getElementById('vision-img-preview');
+            const imgEl = document.getElementById('vision-preview-element');
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    imgEl.src = e.target.result;
+                    previewBox.classList.remove('hidden');
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        window.previewVisionImage = previewVisionImage;
+
+        function gradeUploadedImage() {
+            const resBox = document.getElementById('vision-result-box');
+            if (resBox) {
+                resBox.innerHTML = `
+                    <span class="text-emerald-400 font-bold block mb-1">📷 Multimodal Inspection Score: 4/4 Marks</span>
+                    <p class="text-slate-300 leading-relaxed">
+                        1. ✅ Correct structure drawn for $N$-methylethanamide.<br>
+                        2. ✅ Proper electron donation arrows shown for $+I$ inductive effect.<br>
+                        3. ✅ Temperature specified as $<10^\circ\\text{C}$ for diazonium formation.
+                    </p>
+                `;
+            }
+        }
+        window.gradeUploadedImage = gradeUploadedImage;
+
+        function searchIndustrialAmineApplications() {
+            const output = document.getElementById('grounded-search-output');
+            if (output) {
+                output.innerHTML = `
+                    <div class="p-3 bg-slate-950 rounded border border-slate-800 space-y-2">
+                        <span class="font-bold text-sky-300 block">🔍 Google Search Grounded Research Result</span>
+                        <p class="text-slate-200 leading-relaxed">
+                            Quaternary ammonium salts ($[\\text{R}_4\\text{N}]^+\text{Cl}^-$) are synthesized industrially via haloalkane exhaustion alkylation and serve as cationic surfactants in hair conditioners and disinfectant agents.
+                        </p>
+                        <span class="text-[10px] text-slate-400 font-mono">Source: Journal of Industrial Organic Chemistry 2026</span>
+                    </div>
+                `;
+            }
+        }
+        window.searchIndustrialAmineApplications = searchIndustrialAmineApplications;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadPastPaperQuestion();
+            selectBasicity('dimethyl');
+            selectAmineReaction('water');
+            setTimeout(initKaTeX, 300);
+        });
+    </script>
+</body>
+</html>

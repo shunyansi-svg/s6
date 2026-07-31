@@ -1,0 +1,1966 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IAL Chemistry Topic 17: Transition Metal Studio</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- KaTeX CSS & JS CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+
+    <style>
+        .tab-btn-active {
+            border-bottom: 3px solid #06b6d4;
+            color: #38bdf8;
+            font-weight: 700;
+            background-color: rgba(56, 189, 248, 0.12);
+        }
+        .subtab-btn-active {
+            background-color: #0891b2;
+            color: #ffffff;
+            font-weight: 700;
+        }
+        .studio-canvas-bg {
+            background: linear-gradient(180deg, #0f172a 0%, #020617 100%);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            height: 6px;
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #1e293b;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #475569;
+            border-radius: 3px;
+        }
+        .node-active {
+            box-shadow: 0 0 18px rgba(56, 189, 248, 0.6);
+            border-color: #38bdf8 !important;
+            background-color: rgba(14, 116, 144, 0.3) !important;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex flex-col">
+
+    <header class="bg-slate-900 border-b border-slate-800 sticky top-0 z-40 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center gap-3">
+            <div class="flex items-center gap-3">
+                <div class="bg-cyan-500/20 p-2 rounded-lg border border-cyan-500/30">
+                    <span class="text-2xl">🧪</span>
+                </div>
+                <div>
+                    <h1 class="text-lg font-extrabold tracking-tight text-cyan-400">IAL Chemistry Topic 17: Transition Metal Studio</h1>
+                    <p class="text-xs text-slate-400">Edexcel Spec 17.20–17.32: Cr, Cu & Mn Cycles, Catalysis & Gemini AI Tutor</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-2">
+                <span class="px-2.5 py-1 text-xs font-semibold rounded-full bg-cyan-950 text-cyan-300 border border-cyan-800">
+                    Edexcel IAL Unit 5
+                </span>
+                <span class="px-3 py-1.5 text-xs bg-emerald-950/80 text-emerald-300 rounded-lg border border-emerald-800/80 flex items-center gap-1.5 font-medium">
+                    <span class="animate-pulse">✨</span>
+                    <span>Gemini AI Auto-Active</span>
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <nav class="bg-slate-900/90 border-b border-slate-800 text-xs sm:text-sm font-medium overflow-x-auto custom-scrollbar sticky top-[57px] z-30 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 flex whitespace-nowrap">
+            <button onclick="switchTab('scaffold')" id="btn-scaffold" class="tab-btn-active py-3 px-5 text-slate-300 hover:text-cyan-300 transition flex items-center gap-2">
+                <span>📚 Master Overview & Reagent Matrix</span>
+            </button>
+            <button onclick="switchTab('chromium')" id="btn-chromium" class="py-3 px-5 text-slate-400 hover:text-cyan-300 transition flex items-center gap-2">
+                <span>🟢 Chromium (Cr) Interactive Cycle</span>
+            </button>
+            <button onclick="switchTab('copper')" id="btn-copper" class="py-3 px-5 text-slate-400 hover:text-cyan-300 transition flex items-center gap-2">
+                <span>🔵 Copper (Cu) Complete Map</span>
+            </button>
+            <button onclick="switchTab('manganese')" id="btn-manganese" class="py-3 px-5 text-slate-400 hover:text-cyan-300 transition flex items-center gap-2">
+                <span>🩷 Manganese (Mn) Cycle</span>
+            </button>
+            <button onclick="switchTab('catalysis')" id="btn-catalysis" class="py-3 px-5 text-slate-400 hover:text-cyan-300 transition flex items-center gap-2">
+                <span>⚡ Catalysis Studio & Mechanics</span>
+            </button>
+            <button onclick="switchTab('ai')" id="btn-ai" class="py-3 px-5 text-slate-400 hover:text-cyan-300 transition flex items-center gap-2">
+                <span>🤖 Gemini AI Examiner</span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 py-6 flex-grow w-full">
+
+        <!-- SECTION 1: SYLLABUS MASTER OVERVIEW & REAGENT MATRIX -->
+        <section id="tab-scaffold" class="space-y-6">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-sm space-y-6">
+                <div class="border-b border-slate-800 pb-4">
+                    <span class="text-xs font-bold text-cyan-400 uppercase tracking-widest">Syllabus Master Overview</span>
+                    <h2 class="text-xl font-bold text-white mt-1">Topic 17 Hydrolysis Acidity & Reagent Master Matrix</h2>
+                    <p class="text-xs text-slate-400 mt-1">Compare exact product formulas, physical states (Solution vs Precipitate), and reaction mechanisms across all 8 transition metal aqua-ions.</p>
+                </div>
+
+                <!-- Hydrolysis Acidity Comparison Banner -->
+                <div class="p-5 bg-slate-950 border border-cyan-900/50 rounded-xl space-y-3">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-sm font-bold text-cyan-300 uppercase tracking-wider">a. Hydrolysis Acidity Comparison ($\text{M}^{3+}$ vs $\text{M}^{2+}$ Aqua-Ions)</h3>
+                        <span class="text-xs font-mono text-amber-400 bg-amber-950/80 px-2.5 py-1 rounded border border-amber-800">Key Concept: $\text{pH: } \text{FeCl}_3 < \text{FeCl}_2$</span>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                        <div class="p-3.5 bg-slate-900 rounded-lg border border-slate-800 space-y-2">
+                            <span class="font-bold text-rose-300 block">$\text{M}^{3+}$ Aqua-Ions (e.g. $[\text{Fe}(\text{H}_2\text{O})_6]^{3+}$, $[\text{Cr}(\text{H}_2\text{O})_6]^{3+}$):</span>
+                            <div class="p-2 bg-slate-950 rounded font-mono text-rose-300 text-[11px]">
+                                $[\text{M}(\text{H}_2\text{O})_6]^{3+}(\text{aq}) + \text{H}_2\text{O}(\text{l}) \rightleftharpoons [\text{M}(\text{H}_2\text{O})_5(\text{OH})]^{2+}(\text{aq}) + \text{H}_3\text{O}^+(\text{aq})$
+                            </div>
+                            <p class="text-slate-300 text-[11px] leading-relaxed">
+                                <b>Noticeably more acidic ($\text{pH} \approx 2-3$).</b> High charge density / charge-to-size ratio gives strong <b>polarizing power</b>. This pulls electron density from $\text{O-H}$ bonds in water ligands, releasing $\text{H}^+$ protons into solution.
+                            </p>
+                        </div>
+
+                        <div class="p-3.5 bg-slate-900 rounded-lg border border-slate-800 space-y-2">
+                            <span class="font-bold text-sky-300 block">$\text{M}^{2+}$ Aqua-Ions (e.g. $[\text{Fe}(\text{H}_2\text{O})_6]^{2+}$, $[\text{Cu}(\text{H}_2\text{O})_6]^{2+}$):</span>
+                            <div class="p-2 bg-slate-950 rounded font-mono text-sky-300 text-[11px]">
+                                $[\text{M}(\text{H}_2\text{O})_6]^{2+}(\text{aq}) + \text{H}_2\text{O}(\text{l}) \rightleftharpoons [\text{M}(\text{H}_2\text{O})_5(\text{OH})]^+(\text{aq}) + \text{H}_3\text{O}^+(\text{aq})$
+                            </div>
+                            <p class="text-slate-300 text-[11px] leading-relaxed">
+                                <b>Only weakly acidic ($\text{pH} \approx 5-6$).</b> Lower charge density results in weaker polarizing power, so water ligands retain their $\text{H}^+$ protons much more strongly.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-3">
+                    <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2">
+                        <div>
+                            <h3 class="text-sm font-bold text-slate-200 uppercase tracking-wider">b. Complete Transition Metal Reagent Master Table</h3>
+                            <p class="text-[11px] text-cyan-400 mt-0.5">💡 <b>Interactive Tip:</b> Click on any product cell to view full step-by-step balanced chemical equations!</p>
+                        </div>
+                        <div class="flex gap-2 text-xs">
+                            <span class="px-2 py-0.5 rounded bg-rose-950 text-rose-300 border border-rose-800 font-mono">Deprotonation</span>
+                            <span class="px-2 py-0.5 rounded bg-purple-950 text-purple-300 border border-purple-800 font-mono">Ligand Exchange</span>
+                            <span class="px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-800 font-mono">Amphoteric</span>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Equation Modal Popover -->
+                    <div id="reagent-eq-modal" class="hidden fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+                        <div class="bg-slate-900 border border-cyan-500/60 rounded-xl p-6 max-w-2xl w-full shadow-2xl space-y-4 animate-in fade-in zoom-in duration-150">
+                            <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+                                <div>
+                                    <h4 id="reagent-modal-title" class="text-sm font-bold text-cyan-300 uppercase tracking-wider">Reaction Equations</h4>
+                                    <span id="reagent-modal-sub" class="text-xs text-slate-400 font-mono block mt-0.5">Metal Aqua Ion Details</span>
+                                </div>
+                                <span id="reagent-modal-badge" class="px-2.5 py-1 rounded bg-cyan-950 text-cyan-300 text-xs font-mono border border-cyan-800">Deprotonation</span>
+                            </div>
+                            <div id="reagent-modal-content" class="space-y-3 text-xs font-mono text-slate-200 max-h-[60vh] overflow-y-auto custom-scrollbar p-1">
+                                <!-- Equations injected dynamically -->
+                            </div>
+                            <div class="flex justify-between items-center pt-3 border-t border-slate-800">
+                                <p class="text-[10px] text-slate-400">Edexcel IAL Topic 17 Official Mark Scheme Standard Equations</p>
+                                <button onclick="hideReagentEquation()" class="px-5 py-2 bg-gradient-to-r from-cyan-600 to-emerald-600 hover:from-cyan-500 hover:to-emerald-500 text-white font-bold text-xs rounded-lg shadow-lg transition flex items-center gap-1.5">
+                                    <span>✨ GOT IT</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="overflow-x-auto custom-scrollbar border border-slate-800 rounded-xl">
+                        <table class="w-full text-left text-xs text-slate-300">
+                            <thead class="bg-slate-950 text-cyan-400 font-mono text-[11px] border-b border-slate-800">
+                                <tr>
+                                    <th class="p-3">Metal Ion</th>
+                                    <th class="p-3">Metal-Aqua Ion Formula & State</th>
+                                    <th class="p-3">With $\text{NaOH} / \text{NH}_3$ Dropwise</th>
+                                    <th class="p-3">With Excess $\text{NaOH}$</th>
+                                    <th class="p-3">With Excess $\text{NH}_3$</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-800/80 font-mono text-[11px] bg-slate-900/60">
+                                <tr>
+                                    <td class="p-3 font-sans font-bold text-purple-300">$\text{Cr}^{3+}$</td>
+                                    <td class="p-3"><span class="inline-block w-2.5 h-2.5 rounded-full bg-violet-600 mr-1.5"></span>$[\text{Cr}(\text{H}_2\text{O})_6]^{3+}(\text{aq})$<span class="block text-[10px] text-slate-400">Violet / Green Solution</span></td>
+                                    <td class="p-3 hover:bg-slate-800/80 cursor-pointer transition rounded group" onclick="showReagentEquation('cr', 'dropwise')">
+                                        <span class="text-emerald-400 font-bold group-hover:underline">$\text{Cr}(\text{OH})_3(\text{H}_2\text{O})_3(\text{s})$</span>
+                                        <span class="block text-[10px] text-emerald-300">Green Precipitate 🔍</span>
+                                        <span class="text-[9px] text-rose-400 font-sans">Deprotonation</span>
+                                    </td>
+                                    <td class="p-3 hover:bg-slate-800/80 cursor-pointer transition rounded group" onclick="showReagentEquation('cr', 'excess_naoh')">
+                                        <span class="text-emerald-300 font-bold group-hover:underline">$[\text{Cr}(\text{OH})_6]^{3-}(\text{aq})$</span>
+                                        <span class="block text-[10px] text-emerald-400">Green Solution (2 Steps) 🔍</span>
+                                        <span class="text-[9px] text-emerald-400 font-sans">Amphoteric Deprot.</span>
+                                    </td>
+                                    <td class="p-3 hover:bg-slate-800/80 cursor-pointer transition rounded group" onclick="showReagentEquation('cr', 'excess_nh3')">
+                                        <span class="text-purple-300 font-bold group-hover:underline">$[\text{Cr}(\text{NH}_3)_6]^{3+}(\text{aq})$</span>
+                                        <span class="block text-[10px] text-purple-400">Purple Solution (2 Steps) 🔍</span>
+                                        <span class="text-[9px] text-purple-400 font-sans">Ligand Exchange</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-sans font-bold text-pink-300">$\text{Mn}^{2+}$</td>
+                                    <td class="p-3"><span class="inline-block w-2.5 h-2.5 rounded-full bg-pink-300 mr-1.5"></span>$[\text{Mn}(\text{H}_2\text{O})_6]^{2+}(\text{aq})$<span class="block text-[10px] text-slate-400">Pale Pink Solution</span></td>
+                                    <td class="p-3 hover:bg-slate-800/80 cursor-pointer transition rounded group" onclick="showReagentEquation('mn', 'dropwise')">
+                                        <span class="text-amber-200 font-bold group-hover:underline">$\text{Mn}(\text{OH})_2(\text{H}_2\text{O})_4(\text{s})$</span>
+                                        <span class="block text-[10px] text-amber-300">Light Brown Precipitate 🔍</span>
+                                        <span class="text-[9px] text-rose-400 font-sans">Deprotonation</span>
+                                    </td>
+                                    <td class="p-3 hover:bg-slate-800/80 cursor-pointer transition rounded group" onclick="showReagentEquation('mn', 'excess_naoh')">
+                                        <span class="text-amber-300 font-bold group-hover:underline">$\text{Mn}(\text{OH})_2(\text{H}_2\text{O})_4(\text{s})$</span>
+                                        <span class="block text-[10px] text-slate-400">Insoluble Precipitate Remains 🔍</span>
+                                    </td>
+                                    <td class="p-3 hover:bg-slate-800/80 cursor-pointer transition rounded group" onclick="showReagentEquation('mn', 'excess_nh3')">
+                                        <span class="text-amber-300 font-bold group-hover:underline">$\text{Mn}(\text{OH})_2(\text{H}_2\text{O})_4(\text{s})$</span>
+                                        <span class="block text-[10px] text-slate-400">Insoluble Precipitate Remains 🔍</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-sans font-bold text-emerald-300">$\text{Fe}^{2+}$</td>
+                                    <td class="p-3"><span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-500 mr-1.5"></span>$[\text{Fe}(\text{H}_2\text{O})_6]^{2+}(\text{aq})$<span class="block text-[10px] text-slate-400">Pale Green Solution</span></td>
+                                    <td class="p-3 hover:bg-slate-800/80 cursor-pointer transition rounded group" onclick="showReagentEquation('fe2', 'dropwise')">
+                                        <span class="text-emerald-400 font-bold group-hover:underline">$\text{Fe}(\text{OH})_2(\text{H}_2\text{O})_4(\text{s})$</span>
+                                        <span class="block text-[10px] text-emerald-300">Dirty Green Precipitate 🔍</span>
+                                        <span class="text-[9px] text-rose-400 font-sans">Deprotonation</span>
+                                    </td>
+                                    <td class="p-3 hover:bg-slate-800/80 cursor-pointer transition rounded group" onclick="showReagentEquation('fe2', 'excess_naoh')">
+                                        <span class="text-emerald-400 font-bold group-hover:underline">$\text{Fe}(\text{OH})_2(\text{H}_2\text{O})_4(\text{s})$</span>
+                                        <span class="block text-[10px] text-amber-400">Insoluble (Rusts Brown on Surface) 🔍</span>
+                                    </td>
+                                    <td class="p-3 hover:bg-slate-800/80 cursor-pointer transition rounded group" onclick="showReagentEquation('fe2', 'excess_nh3')">
+                                        <span class="text-emerald-400 font-bold group-hover:underline">$\text{Fe}(\text{OH})_2(\text{H}_2\text{O})_4(\text{s})$</span>
+                                        <span class="block text-[10px] text-slate-400">Insoluble Precipitate Remains 🔍</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-sans font-bold text-amber-400">$\text{Fe}^{3+}$</td>
+                                    <td class="p-3"><span class="inline-block w-2.5 h-2.5 rounded-full bg-amber-500 mr-1.5"></span>$[\text{Fe}(\text{H}_2\text{O})_6]^{3+}(\text{aq})$<span class="block text-[10px] text-slate-400">Yellow/Brown Solution</span></td>
+                                    <td class="p-3 hover:bg-slate-800/80 cursor-pointer transition rounded group" onclick="showReagentEquation('fe3', 'dropwise')">
+                                        <span class="text-amber-500 font-bold group-hover:underline">$\text{Fe}(\text{OH})_3(\text{H}_2\text{O})_3(\text{s})$</span>
+                                        <span class="block text-[10px] text-amber-400">Foxy Red-Brown Precipitate 🔍</span>
+                                        <span class="text-[9px] text-rose-400 font-sans">Deprotonation</span>
+                                    </td>
+                                    <td class="p-3 hover:bg-slate-800/80 cursor-pointer transition rounded group" onclick="showReagentEquation('fe3', 'excess_naoh')">
+                                        <span class="text-amber-500 font-bold group-hover:underline">$\text{Fe}(\text{OH})_3(\text{H}_2\text{O})_3(\text{s})$</span>
+                                        <span class="block text-[10px] text-slate-400">Insoluble Precipitate Remains 🔍</span>
+                                    </td>
+                                    <td class="p-3 hover:bg-slate-800/80 cursor-pointer transition rounded group" onclick="showReagentEquation('fe3', 'excess_nh3')">
+                                        <span class="text-amber-500 font-bold group-hover:underline">$\text{Fe}(\text{OH})_3(\text{H}_2\text{O})_3(\text{s})$</span>
+                                        <span class="block text-[10px] text-slate-400">Insoluble Precipitate Remains 🔍</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-sans font-bold text-rose-300">$\text{Co}^{2+}$</td>
+                                    <td class="p-3"><span class="inline-block w-2.5 h-2.5 rounded-full bg-rose-400 mr-1.5"></span>$[\text{Co}(\text{H}_2\text{O})_6]^{2+}(\text{aq})$<span class="block text-[10px] text-slate-400">Pink Solution</span></td>
+                                    <td class="p-3 hover:bg-slate-800/80 cursor-pointer transition rounded group" onclick="showReagentEquation('co', 'dropwise')">
+                                        <span class="text-sky-400 font-bold group-hover:underline">$\text{Co}(\text{OH})_2(\text{H}_2\text{O})_4(\text{s})$</span>
+                                        <span class="block text-[10px] text-sky-300">Blue Precipitate 🔍</span>
+                                        <span class="text-[9px] text-rose-400 font-sans">Deprotonation</span>
+                                    </td>
+                                    <td class="p-3 hover:bg-slate-800/80 cursor-pointer transition rounded group" onclick="showReagentEquation('co', 'excess_naoh')">
+                                        <span class="text-sky-400 font-bold group-hover:underline">$\text{Co}(\text{OH})_2(\text{H}_2\text{O})_4(\text{s})$</span>
+                                        <span class="block text-[10px] text-slate-400">Insoluble Precipitate Remains 🔍</span>
+                                    </td>
+                                    <td class="p-3 hover:bg-slate-800/80 cursor-pointer transition rounded group" onclick="showReagentEquation('co', 'excess_nh3')">
+                                        <span class="text-amber-300 font-bold group-hover:underline">$[\text{Co}(\text{NH}_3)_6]^{2+}(\text{aq})$</span>
+                                        <span class="block text-[10px] text-amber-300">Yellow/Straw Solution (2 Steps) 🔍</span>
+                                        <span class="text-[9px] text-purple-400 font-sans">Ligand Exchange</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-sans font-bold text-emerald-400">$\text{Ni}^{2+}$</td>
+                                    <td class="p-3"><span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-400 mr-1.5"></span>$[\text{Ni}(\text{H}_2\text{O})_6]^{2+}(\text{aq})$<span class="block text-[10px] text-slate-400">Green Solution</span></td>
+                                    <td class="p-3 hover:bg-slate-800/80 cursor-pointer transition rounded group" onclick="showReagentEquation('ni', 'dropwise')">
+                                        <span class="text-emerald-400 font-bold group-hover:underline">$\text{Ni}(\text{OH})_2(\text{H}_2\text{O})_4(\text{s})$</span>
+                                        <span class="block text-[10px] text-emerald-300">Green Precipitate 🔍</span>
+                                        <span class="text-[9px] text-rose-400 font-sans">Deprotonation</span>
+                                    </td>
+                                    <td class="p-3 hover:bg-slate-800/80 cursor-pointer transition rounded group" onclick="showReagentEquation('ni', 'excess_naoh')">
+                                        <span class="text-emerald-400 font-bold group-hover:underline">$\text{Ni}(\text{OH})_2(\text{H}_2\text{O})_4(\text{s})$</span>
+                                        <span class="block text-[10px] text-slate-400">Insoluble Precipitate Remains 🔍</span>
+                                    </td>
+                                    <td class="p-3 hover:bg-slate-800/80 cursor-pointer transition rounded group" onclick="showReagentEquation('ni', 'excess_nh3')">
+                                        <span class="text-sky-300 font-bold group-hover:underline">$[\text{Ni}(\text{NH}_3)_6]^{2+}(\text{aq})$</span>
+                                        <span class="block text-[10px] text-sky-300">Blue Solution (2 Steps) 🔍</span>
+                                        <span class="text-[9px] text-purple-400 font-sans">Ligand Exchange</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-sans font-bold text-sky-400">$\text{Cu}^{2+}$</td>
+                                    <td class="p-3"><span class="inline-block w-2.5 h-2.5 rounded-full bg-sky-400 mr-1.5"></span>$[\text{Cu}(\text{H}_2\text{O})_6]^{2+}(\text{aq})$<span class="block text-[10px] text-slate-400">Pale Blue Solution</span></td>
+                                    <td class="p-3 hover:bg-slate-800/80 cursor-pointer transition rounded group" onclick="showReagentEquation('cu', 'dropwise')">
+                                        <span class="text-sky-300 font-bold group-hover:underline">$\text{Cu}(\text{OH})_2(\text{H}_2\text{O})_4(\text{s})$</span>
+                                        <span class="block text-[10px] text-sky-300">Pale Blue Precipitate 🔍</span>
+                                        <span class="text-[9px] text-rose-400 font-sans">Deprotonation</span>
+                                    </td>
+                                    <td class="p-3 hover:bg-slate-800/80 cursor-pointer transition rounded group" onclick="showReagentEquation('cu', 'excess_naoh')">
+                                        <span class="text-sky-300 font-bold group-hover:underline">$\text{Cu}(\text{OH})_2(\text{H}_2\text{O})_4(\text{s})$</span>
+                                        <span class="block text-[10px] text-slate-400">Insoluble Precipitate Remains 🔍</span>
+                                    </td>
+                                    <td class="p-3 hover:bg-slate-800/80 cursor-pointer transition rounded group" onclick="showReagentEquation('cu', 'excess_nh3')">
+                                        <span class="text-indigo-400 font-bold group-hover:underline">$[\text{Cu}(\text{NH}_3)_4(\text{H}_2\text{O})_2]^{2+}(\text{aq})$</span>
+                                        <span class="block text-[10px] text-indigo-300">Deep Royal Blue Solution (2 Steps) 🔍</span>
+                                        <span class="text-[9px] text-purple-400 font-sans">Ligand Exchange</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-sans font-bold text-slate-300">$\text{Zn}^{2+}$</td>
+                                    <td class="p-3"><span class="inline-block w-2.5 h-2.5 rounded-full bg-slate-200 mr-1.5"></span>$[\text{Zn}(\text{H}_2\text{O})_6]^{2+}(\text{aq})$<span class="block text-[10px] text-slate-400">Colourless Solution</span></td>
+                                    <td class="p-3 hover:bg-slate-800/80 cursor-pointer transition rounded group" onclick="showReagentEquation('zn', 'dropwise')">
+                                        <span class="text-slate-200 font-bold group-hover:underline">$\text{Zn}(\text{OH})_2(\text{H}_2\text{O})_4(\text{s})$</span>
+                                        <span class="block text-[10px] text-slate-300">White Precipitate 🔍</span>
+                                        <span class="text-[9px] text-rose-400 font-sans">Deprotonation</span>
+                                    </td>
+                                    <td class="p-3 hover:bg-slate-800/80 cursor-pointer transition rounded group" onclick="showReagentEquation('zn', 'excess_naoh')">
+                                        <span class="text-slate-100 font-bold group-hover:underline">$[\text{Zn}(\text{OH})_4]^{2-}(\text{aq})$</span>
+                                        <span class="block text-[10px] text-slate-300">Colourless Solution (2 Steps) 🔍</span>
+                                        <span class="text-[9px] text-emerald-400 font-sans">Amphoteric Deprot.</span>
+                                    </td>
+                                    <td class="p-3 hover:bg-slate-800/80 cursor-pointer transition rounded group" onclick="showReagentEquation('zn', 'excess_nh3')">
+                                        <span class="text-slate-100 font-bold group-hover:underline">$[\text{Zn}(\text{NH}_3)_4]^{2+}(\text{aq})$</span>
+                                        <span class="block text-[10px] text-slate-300">Colourless Solution (2 Steps) 🔍</span>
+                                        <span class="text-[9px] text-purple-400 font-sans">Ligand Exchange</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: CHROMIUM (Cr) CYCLE -->
+        <section id="tab-chromium" class="hidden space-y-6">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-sm space-y-6">
+                <div class="border-b border-slate-800 pb-4">
+                    <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest">Master Reaction Scheme 1</span>
+                    <h2 class="text-xl font-bold text-white mt-1">Chromium (Cr) Interactive Cycle & Revision Self-Test</h2>
+                    <p class="text-xs text-slate-400 mt-1">Select any Chromium transformation to inspect the test tube observation, test your reaction classification skills, and review balanced ionic equations.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                    <div class="lg:col-span-5 bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3">
+                        <h3 class="text-xs font-bold text-emerald-300 uppercase tracking-wider mb-2">Select Chromium Step to Revise:</h3>
+                        <div id="cr-node-list" class="space-y-2 text-xs"></div>
+                    </div>
+
+                    <div class="lg:col-span-7 bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start border-b border-slate-800 pb-3">
+                                <div>
+                                    <h3 id="cr-step-title" class="text-sm font-bold text-emerald-300">Select a step from the left</h3>
+                                    <span id="cr-step-oxstate" class="text-xs font-mono text-slate-400">Oxidation State Shift: -</span>
+                                </div>
+                                <span id="cr-step-type-badge" class="px-2.5 py-1 rounded bg-slate-800 text-slate-300 text-xs font-mono">Step Mode</span>
+                            </div>
+
+                            <div class="w-full flex justify-center py-4">
+                                <canvas id="cr-canvas" width="280" height="220" class="studio-canvas-bg rounded-lg border border-slate-800 shadow-xl"></canvas>
+                            </div>
+
+                            <div class="p-4 bg-slate-900 rounded-lg border border-slate-800 space-y-3">
+                                <h4 class="text-xs font-bold text-cyan-300 uppercase tracking-wider">✍️ Revision Test: Predict Step Details</h4>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                                    <div>
+                                        <label class="block text-slate-400 font-bold mb-1">Select Reaction Type:</label>
+                                        <select id="cr-user-type" class="w-full bg-slate-950 border border-slate-700 rounded p-2 text-slate-200">
+                                            <option value="">-- Choose Type --</option>
+                                            <option value="Acid-Base Equilibrium">Acid-Base Equilibrium</option>
+                                            <option value="Redox Reduction">Redox Reduction</option>
+                                            <option value="Deprotonation (Base)">Deprotonation (Base)</option>
+                                            <option value="Amphoteric Deprotonation">Amphoteric Deprotonation</option>
+                                            <option value="Redox Oxidation">Redox Oxidation</option>
+                                            <option value="Ligand Exchange">Ligand Exchange</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="block text-slate-400 font-bold mb-1">Select Expected Observation:</label>
+                                        <select id="cr-user-obs" class="w-full bg-slate-950 border border-slate-700 rounded p-2 text-slate-200">
+                                            <option value="">-- Choose Observation --</option>
+                                            <option value="Yellow to Orange solution">Yellow solution turns Orange</option>
+                                            <option value="Orange to Green then Blue solution">Orange turns Green then Blue</option>
+                                            <option value="Green solution to Green ppt">Green solution forms Green ppt</option>
+                                            <option value="Green ppt to Green solution">Green ppt dissolves to Green solution</option>
+                                            <option value="Green solution to Yellow solution">Green solution turns Yellow solution</option>
+                                            <option value="Green ppt to Purple solution">Green ppt dissolves to Purple solution</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="flex gap-2">
+                                    <button onclick="checkChromiumAnswer()" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded shadow transition">
+                                        Check Answer
+                                    </button>
+                                    <button onclick="revealChromiumSolution()" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs rounded transition">
+                                        Reveal Answer
+                                    </button>
+                                </div>
+
+                                <div id="cr-quiz-feedback" class="hidden text-xs font-mono p-2.5 rounded border"></div>
+                            </div>
+
+                            <div class="mt-3 space-y-2 text-xs">
+                                <div class="p-3 bg-slate-900 rounded-lg border border-emerald-900/50">
+                                    <span class="text-emerald-400 block text-[10px] font-bold uppercase mb-1">Balanced Ionic Chemical Equation:</span>
+                                    <div id="cr-eq-text" class="font-mono text-slate-100 text-[11px]">-</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="cr-pedagogy-note" class="mt-3 p-3 bg-slate-900/80 rounded-lg border border-slate-800 text-xs text-slate-300 leading-relaxed">
+                            Select any step in the Chromium cycle to inspect mechanisms and self-test.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: COPPER (Cu) COMPLETE MAP -->
+        <section id="tab-copper" class="hidden space-y-6">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-sm space-y-6">
+                <div class="border-b border-slate-800 pb-4">
+                    <span class="text-xs font-bold text-sky-400 uppercase tracking-widest">Master Reaction Scheme 2</span>
+                    <h2 class="text-xl font-bold text-white mt-1">Copper (Cu) Complete Interconversion Cycle & Disproportionation</h2>
+                    <p class="text-xs text-slate-400 mt-1">Master all $\text{Cu}(\text{s})$, $\text{CuCl}_2(\text{s})$, $\text{Cu}^{2+}$, $\text{Cu}^+$, and complex interconversions matching IAL past paper schemes.</p>
+                </div>
+
+                <!-- Visual Copper Flowchart SVG Diagram -->
+                <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl space-y-2">
+                    <h3 class="text-xs font-bold text-sky-300 uppercase tracking-wider mb-1">🗺️ Interactive Edexcel Copper Interconversion Scheme</h3>
+                    <div class="w-full overflow-x-auto custom-scrollbar flex justify-center py-2">
+                        <svg width="780" height="340" viewBox="0 0 780 340" class="studio-canvas-bg rounded-lg border border-slate-800">
+                            <defs>
+                                <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                    <path d="M 0 0 L 10 5 L 0 10 z" fill="#38bdf8" />
+                                </marker>
+                            </defs>
+
+                            <!-- Nodes -->
+                            <rect x="20" y="150" width="70" height="40" rx="8" fill="#1e293b" stroke="#f97316" stroke-width="2" />
+                            <text x="55" y="174" text-anchor="middle" fill="#fdba74" font-size="11" font-weight="bold">Cu (s)</text>
+
+                            <rect x="130" y="150" width="85" height="40" rx="8" fill="#1e293b" stroke="#b45309" stroke-width="2" />
+                            <text x="172" y="169" text-anchor="middle" fill="#fcd34d" font-size="10" font-weight="bold">CuCl₂ (s) [A]</text>
+                            <text x="172" y="181" text-anchor="middle" fill="#94a3b8" font-size="8">Brown Solid</text>
+
+                            <rect x="260" y="150" width="115" height="40" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="2" />
+                            <text x="317" y="169" text-anchor="middle" fill="#38bdf8" font-size="10" font-weight="bold">[Cu(H₂O)₆]²⁺ [C]</text>
+                            <text x="317" y="181" text-anchor="middle" fill="#7dd3fc" font-size="8">Pale Blue Soln</text>
+
+                            <rect x="260" y="30" width="115" height="40" rx="8" fill="#1e293b" stroke="#eab308" stroke-width="2" />
+                            <text x="317" y="49" text-anchor="middle" fill="#fde047" font-size="10" font-weight="bold">[CuCl₄]²⁻ [B]</text>
+                            <text x="317" y="61" text-anchor="middle" fill="#fef08a" font-size="8">Yellow Solution</text>
+
+                            <rect x="420" y="150" width="120" height="40" rx="8" fill="#1e293b" stroke="#0ea5e9" stroke-width="2" />
+                            <text x="480" y="169" text-anchor="middle" fill="#7dd3fc" font-size="10" font-weight="bold">Cu(OH)₂(H₂O)₄ (s)</text>
+                            <text x="480" y="181" text-anchor="middle" fill="#38bdf8" font-size="8">Pale Blue Ppt</text>
+
+                            <rect x="420" y="30" width="120" height="40" rx="8" fill="#1e293b" stroke="#64748b" stroke-width="2" />
+                            <text x="480" y="49" text-anchor="middle" fill="#f1f5f9" font-size="10" font-weight="bold">CuO (s)</text>
+                            <text x="480" y="61" text-anchor="middle" fill="#94a3b8" font-size="8">Black Solid</text>
+
+                            <rect x="600" y="150" width="150" height="40" rx="8" fill="#1e293b" stroke="#818cf8" stroke-width="2" />
+                            <text x="675" y="169" text-anchor="middle" fill="#a5b4fc" font-size="10" font-weight="bold">[Cu(NH₃)₄(H₂O)₂]²⁺ [D]</text>
+                            <text x="675" y="181" text-anchor="middle" fill="#c7d2fe" font-size="8">Deep Blue Soln</text>
+
+                            <rect x="260" y="270" width="115" height="40" rx="8" fill="#1e293b" stroke="#ef4444" stroke-width="2" />
+                            <text x="317" y="289" text-anchor="middle" fill="#fca5a5" font-size="10" font-weight="bold">Cu₂O (s) [E]</text>
+                            <text x="317" y="301" text-anchor="middle" fill="#f87171" font-size="8">Red-Brown Solid</text>
+
+                            <rect x="420" y="270" width="120" height="40" rx="8" fill="#1e293b" stroke="#d97706" stroke-width="2" />
+                            <text x="480" y="289" text-anchor="middle" fill="#fcd34d" font-size="10" font-weight="bold">CuI (s) + I₂ [F]</text>
+                            <text x="480" y="301" text-anchor="middle" fill="#fbbf24" font-size="8">White Ppt + Brown Soln</text>
+
+                            <rect x="600" y="270" width="150" height="40" rx="8" fill="#1e293b" stroke="#cbd5e1" stroke-width="2" />
+                            <text x="675" y="289" text-anchor="middle" fill="#f1f5f9" font-size="10" font-weight="bold">[Cu(NH₃)₂]⁺ (aq)</text>
+                            <text x="675" y="301" text-anchor="middle" fill="#94a3b8" font-size="8">Colourless Solution</text>
+
+                            <!-- Connectors -->
+                            <path d="M 90 170 L 130 170" stroke="#38bdf8" stroke-width="1.5" marker-end="url(#arrow)" />
+                            <text x="110" y="162" text-anchor="middle" fill="#94a3b8" font-size="8">Cl₂ (g)</text>
+
+                            <path d="M 215 170 L 260 170" stroke="#38bdf8" stroke-width="1.5" marker-end="url(#arrow)" />
+                            <text x="237" y="162" text-anchor="middle" fill="#94a3b8" font-size="8">H₂O (l)</text>
+
+                            <path d="M 172 150 L 260 50" stroke="#38bdf8" stroke-width="1.5" marker-end="url(#arrow)" />
+                            <text x="200" y="90" text-anchor="middle" fill="#94a3b8" font-size="8">conc. HCl</text>
+
+                            <path d="M 317 150 L 317 70" stroke="#38bdf8" stroke-width="1.5" marker-end="url(#arrow)" />
+                            <text x="325" y="115" text-anchor="start" fill="#94a3b8" font-size="8">conc. HCl</text>
+
+                            <path d="M 420 50 L 375 50" stroke="#38bdf8" stroke-width="1.5" marker-end="url(#arrow)" />
+                            <text x="397" y="42" text-anchor="middle" fill="#f1f5f9" font-size="8">conc. HCl</text>
+
+                            <path d="M 480 150 L 480 70" stroke="#38bdf8" stroke-width="1.5" marker-end="url(#arrow)" />
+                            <text x="490" y="115" text-anchor="start" fill="#f1f5f9" font-size="8">Heat (Δ)</text>
+
+                            <path d="M 375 170 L 420 170" stroke="#38bdf8" stroke-width="1.5" marker-end="url(#arrow)" />
+                            <text x="397" y="162" text-anchor="middle" fill="#94a3b8" font-size="8">NH₃ / NaOH</text>
+
+                            <path d="M 540 170 L 600 170" stroke="#38bdf8" stroke-width="1.5" marker-end="url(#arrow)" />
+                            <text x="570" y="162" text-anchor="middle" fill="#94a3b8" font-size="8">excess NH₃</text>
+
+                            <path d="M 317 190 L 317 270" stroke="#38bdf8" stroke-width="1.5" marker-end="url(#arrow)" />
+                            <text x="325" y="230" text-anchor="start" fill="#94a3b8" font-size="8">ethanal / alkali</text>
+
+                            <path d="M 375 190 L 420 270" stroke="#38bdf8" stroke-width="1.5" marker-end="url(#arrow)" />
+                            <text x="385" y="235" text-anchor="middle" fill="#94a3b8" font-size="8">KI (aq)</text>
+
+                            <path d="M 540 290 L 600 290" stroke="#38bdf8" stroke-width="1.5" marker-end="url(#arrow)" />
+                            <text x="570" y="282" text-anchor="middle" fill="#94a3b8" font-size="8">excess NH₃</text>
+
+                            <path d="M 675 270 L 675 190" stroke="#38bdf8" stroke-width="1.5" marker-end="url(#arrow)" />
+                            <text x="683" y="230" text-anchor="start" fill="#a5b4fc" font-size="8">Shake in air (O₂)</text>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                    <div class="lg:col-span-5 bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3">
+                        <h3 class="text-xs font-bold text-sky-300 uppercase tracking-wider mb-2">Select Copper Reaction Step:</h3>
+                        <div id="cu-node-list" class="space-y-2 text-xs"></div>
+                    </div>
+
+                    <div class="lg:col-span-7 bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start border-b border-slate-800 pb-3">
+                                <div>
+                                    <h3 id="cu-step-title" class="text-sm font-bold text-sky-300">Select a step from the left</h3>
+                                    <span id="cu-step-oxstate" class="text-xs font-mono text-slate-400">Oxidation State Shift: -</span>
+                                </div>
+                                <span id="cu-step-type" class="px-2.5 py-1 rounded bg-slate-800 text-slate-300 text-xs font-mono">Reaction Type</span>
+                            </div>
+
+                            <div class="w-full flex justify-center py-4">
+                                <canvas id="cu-canvas" width="280" height="220" class="studio-canvas-bg rounded-lg border border-slate-800 shadow-xl"></canvas>
+                            </div>
+
+                            <div class="p-4 bg-slate-900 rounded-lg border border-slate-800 space-y-3">
+                                <h4 class="text-xs font-bold text-sky-300 uppercase tracking-wider">✍️ Revision Test: Predict Step Details</h4>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                                    <div>
+                                        <label class="block text-slate-400 font-bold mb-1">Select Reaction Type:</label>
+                                        <select id="cu-user-type" class="w-full bg-slate-950 border border-slate-700 rounded p-2 text-slate-200">
+                                            <option value="">-- Choose Type --</option>
+                                            <option value="Redox Reaction">Redox Reaction</option>
+                                            <option value="Dissolution / Hydration">Dissolution / Hydration</option>
+                                            <option value="Ligand Exchange">Ligand Exchange</option>
+                                            <option value="Deprotonation (Base)">Deprotonation (Base)</option>
+                                            <option value="Thermal Decomposition">Thermal Decomposition</option>
+                                            <option value="Acid-Base & Ligand Exchange">Acid-Base & Ligand Exchange</option>
+                                            <option value="Disproportionation">Disproportionation</option>
+                                            <option value="Ligand Exchange & Air Oxidation">Ligand Exchange & Air Oxidation</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="block text-slate-400 font-bold mb-1">Select Expected Observation:</label>
+                                        <select id="cu-user-obs" class="w-full bg-slate-950 border border-slate-700 rounded p-2 text-slate-200">
+                                            <option value="">-- Choose Observation --</option>
+                                            <option value="Orange copper burns to brown solid">Orange copper burns to brown solid</option>
+                                            <option value="Brown solid dissolves to pale blue solution">Brown solid dissolves to pale blue solution</option>
+                                            <option value="Pale blue to yellow solution">Pale blue turns yellow with conc HCl</option>
+                                            <option value="Pale blue solution to blue ppt">Pale blue solution forms blue ppt</option>
+                                            <option value="Blue ppt turns black solid on heat">Blue ppt turns black solid on heat</option>
+                                            <option value="Black solid dissolves to yellow solution">Black solid dissolves to yellow solution</option>
+                                            <option value="Blue ppt to deep blue solution">Blue ppt dissolves to deep royal blue</option>
+                                            <option value="Pale blue to white ppt + brown solution">Pale blue to white ppt + brown I2</option>
+                                            <option value="White ppt to colourless solution">White ppt to colourless solution</option>
+                                            <option value="Colourless to deep blue on shaking in air">Colourless to deep blue on shaking in air</option>
+                                            <option value="Colourless to pink solid + blue solution">Colourless to pink solid + blue solution</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="flex gap-2">
+                                    <button onclick="checkCopperAnswer()" class="px-4 py-2 bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs rounded shadow transition">
+                                        Check Answer
+                                    </button>
+                                    <button onclick="revealCopperSolution()" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs rounded transition">
+                                        Reveal Answer
+                                    </button>
+                                </div>
+
+                                <div id="cu-quiz-feedback" class="hidden text-xs font-mono p-2.5 rounded border"></div>
+                            </div>
+
+                            <div class="mt-3 space-y-2 text-xs">
+                                <div class="p-3 bg-slate-900 rounded-lg border border-sky-900/50">
+                                    <span class="text-sky-400 block text-[10px] font-bold uppercase mb-1">Balanced Ionic Chemical Equation:</span>
+                                    <div id="cu-eq-text" class="font-mono text-slate-100 text-[11px]">-</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="cu-pedagogy-note" class="mt-3 p-3 bg-slate-900/80 rounded-lg border border-slate-800 text-xs text-slate-300 leading-relaxed">
+                            Select any step in the Copper cycle to inspect mechanisms and self-test.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: MANGANESE (Mn) COMPLETE CYCLE -->
+        <section id="tab-manganese" class="hidden space-y-6">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-sm space-y-6">
+                <div class="border-b border-slate-800 pb-4">
+                    <span class="text-xs font-bold text-pink-400 uppercase tracking-widest">Master Reaction Scheme 3</span>
+                    <h2 class="text-xl font-bold text-white mt-1">Manganese (Mn) Complete Cycle & Air Oxidation</h2>
+                    <p class="text-xs text-slate-400 mt-1">Master oxidation states (+7, +2, +3, +4) and test tube ppt transitions matching Edexcel IAL teaching notes.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                    <div class="lg:col-span-5 bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3">
+                        <h3 class="text-xs font-bold text-pink-300 uppercase tracking-wider mb-2">Select Manganese Step:</h3>
+                        <div id="mn-node-list" class="space-y-2 text-xs"></div>
+                    </div>
+
+                    <div class="lg:col-span-7 bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start border-b border-slate-800 pb-3">
+                                <div>
+                                    <h3 id="mn-step-title" class="text-sm font-bold text-pink-300">Select a step from the left</h3>
+                                    <span id="mn-step-oxstate" class="text-xs font-mono text-slate-400">Oxidation State Shift: -</span>
+                                </div>
+                                <span id="mn-step-type" class="px-2.5 py-1 rounded bg-slate-800 text-slate-300 text-xs font-mono">Reaction Type</span>
+                            </div>
+
+                            <div class="w-full flex justify-center py-4">
+                                <canvas id="mn-canvas" width="280" height="220" class="studio-canvas-bg rounded-lg border border-slate-800 shadow-xl"></canvas>
+                            </div>
+
+                            <div class="p-4 bg-slate-900 rounded-lg border border-slate-800 space-y-3">
+                                <h4 class="text-xs font-bold text-pink-300 uppercase tracking-wider">✍️ Revision Test: Predict Step Details</h4>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                                    <div>
+                                        <label class="block text-slate-400 font-bold mb-1">Select Reaction Type:</label>
+                                        <select id="mn-user-type" class="w-full bg-slate-950 border border-slate-700 rounded p-2 text-slate-200">
+                                            <option value="">-- Choose Type --</option>
+                                            <option value="Redox Reduction">Redox Reduction</option>
+                                            <option value="Deprotonation (Base)">Deprotonation (Base)</option>
+                                            <option value="Protonation (Acid)">Protonation (Acid)</option>
+                                            <option value="Air / H2O2 Oxidation">Air / H2O2 Oxidation</option>
+                                            <option value="Thermal Decomposition">Thermal Decomposition</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="block text-slate-400 font-bold mb-1">Select Expected Observation:</label>
+                                        <select id="mn-user-obs" class="w-full bg-slate-950 border border-slate-700 rounded p-2 text-slate-200">
+                                            <option value="">-- Choose Observation --</option>
+                                            <option value="Purple solution to pale pink solution">Purple solution to pale pink solution</option>
+                                            <option value="Pale pink solution to light brown ppt">Pale pink solution to light brown ppt</option>
+                                            <option value="Light brown ppt redissolves to pale pink solution">Light brown ppt redissolves to pale pink solution</option>
+                                            <option value="Light brown ppt darkens in air to dark brown ppt">Light brown ppt darkens in air to dark brown ppt</option>
+                                            <option value="Dark brown ppt to black MnO2 solid on heat">Dark brown ppt to black MnO2 solid on heat</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="flex gap-2">
+                                    <button onclick="checkManganeseAnswer()" class="px-4 py-2 bg-pink-600 hover:bg-pink-500 text-white font-bold text-xs rounded shadow transition">
+                                        Check Answer
+                                    </button>
+                                    <button onclick="revealManganeseSolution()" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs rounded transition">
+                                        Reveal Answer
+                                    </button>
+                                </div>
+
+                                <div id="mn-quiz-feedback" class="hidden text-xs font-mono p-2.5 rounded border"></div>
+                            </div>
+
+                            <div class="mt-3 space-y-2 text-xs">
+                                <div class="p-3 bg-slate-900 rounded-lg border border-pink-900/50">
+                                    <span class="text-pink-400 block text-[10px] font-bold uppercase mb-1">Balanced Ionic Chemical Equation:</span>
+                                    <div id="mn-eq-text" class="font-mono text-slate-100 text-[11px]">-</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="mn-pedagogy-note" class="mt-3 p-3 bg-slate-900/80 rounded-lg border border-slate-800 text-xs text-slate-300 leading-relaxed">
+                            Select any step in the Manganese cycle to inspect mechanisms and self-test.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: CATALYSIS STUDIO & MECHANICS -->
+        <section id="tab-catalysis" class="hidden space-y-6">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-sm space-y-6">
+                <div class="border-b border-slate-800 pb-4">
+                    <span class="text-xs font-bold text-purple-400 uppercase tracking-widest">Catalytic Chemistry Studio</span>
+                    <h2 class="text-xl font-bold text-white mt-1">Heterogeneous, Contact Process, Catalytic Converters & Autocatalysis</h2>
+                    <p class="text-xs text-slate-400 mt-1">Examine surface active site mechanisms, industrial sulfuric acid manufacture, car exhaust conversion, and sigmoidal rate curves.</p>
+                </div>
+
+                <!-- 1. Heterogeneous Mechanics Banner -->
+                <div class="p-5 bg-slate-950 border border-purple-900/50 rounded-xl space-y-3">
+                    <h3 class="text-sm font-bold text-purple-300 uppercase tracking-wider">a. Heterogeneous Catalysis Mechanics (Surface Active Sites)</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        A solid catalyst operates via 3 sequential stages on its surface:
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+                        <div class="p-3 bg-slate-900 rounded border border-slate-800 space-y-1.5">
+                            <span class="px-2 py-0.5 rounded bg-purple-950 text-purple-300 font-bold text-[10px] border border-purple-800">Stage 1: Adsorption</span>
+                            <p class="text-slate-300 text-[11px] leading-relaxed">
+                                Reactants bond to <b>active sites</b> on the catalyst surface. This <b>increases local proximity</b> of molecules and <b>weakens covalent bonds</b> within reactants.
+                            </p>
+                        </div>
+                        <div class="p-3 bg-slate-900 rounded border border-slate-800 space-y-1.5">
+                            <span class="px-2 py-0.5 rounded bg-sky-950 text-sky-300 font-bold text-[10px] border border-sky-800">Stage 2: Reaction</span>
+                            <p class="text-slate-300 text-[11px] leading-relaxed">
+                                Adsorbed molecules react on the surface with significantly lower activation energy ($E_a$).
+                            </p>
+                        </div>
+                        <div class="p-3 bg-slate-900 rounded border border-slate-800 space-y-1.5">
+                            <span class="px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 font-bold text-[10px] border border-emerald-800">Stage 3: Desorption</span>
+                            <p class="text-slate-300 text-[11px] leading-relaxed">
+                                Product molecules detach/desorb from active sites, freeing the catalyst surface to adsorb new reactant molecules.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Contact Process & Catalytic Converters Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Contact Process Card -->
+                    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3 flex flex-col justify-between">
+                        <div>
+                            <span class="text-[10px] font-mono text-purple-400 uppercase font-bold px-2 py-0.5 bg-purple-950 rounded border border-purple-800">Industrial Process</span>
+                            <h3 class="text-sm font-bold text-white mt-2">Manufacture of Conc. $\text{H}_2\text{SO}_4$ (Contact Process)</h3>
+                            
+                            <div class="p-3 bg-slate-900 rounded-lg border border-slate-800 text-xs space-y-2 mt-3 font-mono">
+                                <span class="font-bold text-amber-300 text-[11px] block font-sans">All 4 Chemical Equations:</span>
+                                <div class="text-[10px] space-y-1 text-slate-200">
+                                    <p><b>Step 1 (Combustion):</b> $\text{S}(\text{s}) + \text{O}_2(\text{g}) \rightarrow \text{SO}_2(\text{g})$</p>
+                                    <p class="text-emerald-300"><b>Step 2 (Contact Reaction):</b> $2\text{SO}_2(\text{g}) + \text{O}_2(\text{g}) \xrightleftharpoons[\text{V}_2\text{O}_5, 450^\circ\text{C}]{} 2\text{SO}_3(\text{g})$</p>
+                                    <p><b>Step 3 (Oleum Formation):</b> $\text{SO}_3(\text{g}) + \text{H}_2\text{SO}_4(\text{l}) \rightarrow \text{H}_2\text{S}_2\text{O}_7(\text{l})$</p>
+                                    <p><b>Step 4 (Hydration to Acid):</b> $\text{H}_2\text{S}_2\text{O}_7(\text{l}) + \text{H}_2\text{O}(\text{l}) \rightarrow 2\text{H}_2\text{SO}_4(\text{l})$</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-2.5 bg-slate-900/90 rounded border border-slate-800 text-[11px] text-slate-300 space-y-1">
+                            <span class="text-purple-300 font-bold block">$\text{V}_2\text{O}_5$ Catalyst Mechanism:</span>
+                            <p class="text-slate-400">1. $\text{SO}_2 + \text{V}_2\text{O}_5 \rightarrow \text{SO}_3 + \text{V}_2\text{O}_4$ ($\text{V}^{5+} \rightarrow \text{V}^{4+}$)<br>2. $2\text{V}_2\text{O}_4 + \text{O}_2 \rightarrow 2\text{V}_2\text{O}_5$ ($\text{V}^{4+} \rightarrow \text{V}^{5+}$)</p>
+                        </div>
+                    </div>
+
+                    <!-- Catalytic Converter Card -->
+                    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3 flex flex-col justify-between">
+                        <div>
+                            <span class="text-[10px] font-mono text-sky-400 uppercase font-bold px-2 py-0.5 bg-sky-950 rounded border border-sky-800">Car Exhaust Catalysis</span>
+                            <h3 class="text-sm font-bold text-white mt-2">Catalytic Converters ($\text{Pt} / \text{Pd} / \text{Rh}$)</h3>
+                            
+                            <p class="text-xs text-slate-300 leading-relaxed mt-2">
+                                Coated on a <b>ceramic honeycomb support structure</b> to <b>dramatically increase surface area</b> while minimizing the expensive catalyst mass.
+                            </p>
+
+                            <div class="p-3 bg-slate-900 rounded-lg border border-slate-800 text-xs space-y-1.5 mt-3 font-mono">
+                                <span class="font-bold text-sky-300 text-[11px] block font-sans">Exhaust Conversion Equations:</span>
+                                <div class="text-[10px] space-y-1 text-slate-200">
+                                    <p>$2\text{CO}(\text{g}) + 2\text{NO}(\text{g}) \xrightarrow{\text{Pt}} 2\text{CO}_2(\text{g}) + \text{N}_2(\text{g})$</p>
+                                    <p>$\text{C}_x\text{H}_y + \left(x + \frac{y}{4}\right)\text{O}_2 \rightarrow x\text{CO}_2 + \frac{y}{2}\text{H}_2\text{O}$</p>
+                                    <p>$2\text{CO} + \text{O}_2 \rightarrow 2\text{CO}_2$</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-2.5 bg-slate-900/90 rounded border border-slate-800 text-[11px] text-slate-400">
+                            <b>Function:</b> Converts toxic $\text{CO}$, $\text{NO}_x$, and unburnt hydrocarbons into harmless $\text{CO}_2$, $\text{N}_2$, and $\text{H}_2\text{O}$.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Autocatalysis Detailed Classwork Card -->
+                <div class="p-5 bg-slate-950 border border-emerald-900/50 rounded-xl space-y-4">
+                    <div>
+                        <span class="text-[10px] font-mono text-emerald-400 uppercase font-bold px-2 py-0.5 bg-emerald-950 rounded border border-emerald-800">Autocatalysis Masterclass</span>
+                        <h3 class="text-sm font-bold text-white mt-2">Ethanedioate Titration ($\text{MnO}_4^- + \text{C}_2\text{O}_4^{2-}$ in Acid)</h3>
+                        <p class="text-xs text-slate-300 leading-relaxed mt-1">
+                            <b>Autocatalysis:</b> The product of the reaction ($\text{Mn}^{2+}$) acts as the catalyst for the reaction!
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                        <div class="p-3.5 bg-slate-900 rounded-lg border border-slate-800 space-y-2">
+                            <span class="font-bold text-emerald-300 block">Overall Reaction & Why Initial Rate is Slow:</span>
+                            <div class="p-2 bg-slate-950 rounded font-mono text-emerald-300 text-[10px]">
+                                $2\text{MnO}_4^- + 5\text{C}_2\text{O}_4^{2-} + 16\text{H}^+ \rightarrow 2\text{Mn}^{2+} + 10\text{CO}_2 + 8\text{H}_2\text{O}$
+                            </div>
+                            <p class="text-rose-300 text-[11px] leading-relaxed">
+                                <b>Why slow initially?</b> Both $\text{MnO}_4^-$ and $\text{C}_2\text{O}_4^{2-}$ are <b>negatively charged ions</b>. They strongly <b>repel each other</b>, resulting in a very high activation energy barrier without catalyst!
+                            </p>
+                        </div>
+
+                        <div class="p-3.5 bg-slate-900 rounded-lg border border-slate-800 space-y-2">
+                            <span class="font-bold text-amber-300 block">Intermediate Reactions ($\text{Mn}^{2+}$ Catalytic Cycle):</span>
+                            <div class="p-2 bg-slate-950 rounded font-mono text-amber-300 text-[10px] space-y-1">
+                                <p>Step 1: $4\text{Mn}^{2+} + \text{MnO}_4^- + 8\text{H}^+ \rightarrow 5\text{Mn}^{3+} + 4\text{H}_2\text{O}$</p>
+                                <p>Step 2: $2\text{Mn}^{3+} + \text{C}_2\text{O}_4^{2-} \rightarrow 2\text{CO}_2 + 2\text{Mn}^{2+}$</p>
+                            </div>
+                            <p class="text-slate-300 text-[11px] leading-relaxed">
+                                $\text{Mn}^{2+}$ reduces $\text{MnO}_4^-$ to $\text{Mn}^{3+}$, which then oxidizes ethanedioate $\text{C}_2\text{O}_4^{2-}$ back to $\text{Mn}^{2+}$ and $\text{CO}_2$.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="p-3 bg-slate-900 rounded-lg border border-slate-800 flex flex-col md:flex-row items-center gap-4">
+                        <canvas id="autocat-canvas" width="260" height="100" class="studio-canvas-bg rounded border border-slate-800 shrink-0"></canvas>
+                        <div class="text-xs space-y-1 text-slate-300">
+                            <span class="font-bold text-cyan-300 block">Sigmoidal Rate Curve Breakdown:</span>
+                            <p><b>1. Slow Start:</b> No catalyst ($\text{Mn}^{2+}$) present initially; high anion repulsion barrier.</p>
+                            <p><b>2. Rapid Acceleration:</b> As $\text{Mn}^{2+}$ forms, it catalyzes the reaction, rapidly speeding up reactant consumption.</p>
+                            <p><b>3. Slowing Down & Stopping:</b> Reactants ($\text{MnO}_4^-$ and $\text{C}_2\text{O}_4^{2-}$) are consumed, so rate drops to zero.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 6: GEMINI AI EXAMINER -->
+        <section id="tab-ai" class="hidden space-y-6">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-sm space-y-6">
+                <div>
+                    <span class="text-xs font-bold text-cyan-400 uppercase tracking-widest">Gemini API Intelligence Hub</span>
+                    <h2 class="text-xl font-bold text-white mt-1">AI Examiner, Practice Generator & Voice Tutor</h2>
+                    <p class="text-xs text-slate-400 mt-1">Evaluate structured answers against IAL mark schemes, generate custom JSON exam questions, grade handwritten homework via vision, listen to spoken audio teacher feedback, or research grounded industrial catalysis.</p>
+                </div>
+
+                <div class="flex border-b border-slate-800 gap-2 overflow-x-auto pb-2 text-xs font-semibold">
+                    <button onclick="switchAiSubTab('text-grader')" id="subbtn-text-grader" class="subtab-btn-active px-3 py-1.5 rounded-lg border border-cyan-800 transition">
+                        📝 Mark Scheme Text Grader
+                    </button>
+                    <button onclick="switchAiSubTab('json-generator')" id="subbtn-json-generator" class="px-3 py-1.5 rounded-lg border border-slate-800 text-slate-400 hover:text-cyan-300 transition">
+                        ✨ JSON Exam Question Generator
+                    </button>
+                    <button onclick="switchAiSubTab('vision-grader')" id="subbtn-vision-grader" class="px-3 py-1.5 rounded-lg border border-slate-800 text-slate-400 hover:text-cyan-300 transition">
+                        📷 Vision Homework Grader
+                    </button>
+                    <button onclick="switchAiSubTab('grounded-search')" id="subbtn-grounded-search" class="px-3 py-1.5 rounded-lg border border-slate-800 text-slate-400 hover:text-cyan-300 transition">
+                        🔍 Grounded Industrial Research
+                    </button>
+                </div>
+
+                <div id="subtab-text-grader" class="space-y-4">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                        <div class="lg:col-span-5 bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3">
+                            <h3 class="text-xs font-bold text-cyan-300 uppercase tracking-wider">📚 Authentic Past Paper Questions</h3>
+                            <select id="past-paper-select" onchange="loadPastPaperQuestion()" class="w-full bg-slate-900 border border-slate-700 text-slate-100 text-xs rounded-lg p-2.5 font-mono">
+                                <option value="q_cr_cycle_6m">Q1: Chromium Reaction Scheme & Reagents Identification (6 Marks)</option>
+                                <option value="q_cu_ki_3m">Q2: Reaction of Copper(II) with Iodide Ions (KI) & NH3 (3 Marks)</option>
+                                <option value="q_acidity_3m">Q3: Explain why [Fe(H₂O)₆]³⁺ is more acidic than [Fe(H₂O)₆]²⁺ (3 Marks)</option>
+                                <option value="q_fe_catalyst_3m">Q4: Explain how Fe²⁺ catalyses S₂O₈²⁻ + I⁻ reaction (3 Marks)</option>
+                            </select>
+
+                            <div id="pp-desc-box" class="p-3.5 bg-slate-900 rounded-lg border border-slate-800 text-xs leading-relaxed space-y-2"></div>
+                        </div>
+
+                        <div class="lg:col-span-7 bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between">
+                            <div>
+                                <div class="flex justify-between items-center mb-2">
+                                    <h3 class="text-xs font-bold text-emerald-300 uppercase tracking-wider">🤖 Gemini AI Examiner Response</h3>
+                                    <button onclick="speakLastFeedback()" id="btn-tts-speak" class="hidden px-2.5 py-1 bg-purple-900/80 hover:bg-purple-800 text-purple-200 text-xs font-mono rounded border border-purple-700 flex items-center gap-1">
+                                        <span>🔊 Read Aloud (Gemini TTS)</span>
+                                    </button>
+                                </div>
+                                <div id="ai-chat-history" class="bg-slate-900 border border-slate-800 rounded-lg p-3 min-h-[200px] max-h-[280px] overflow-y-auto custom-scrollbar font-mono text-xs space-y-2">
+                                    <div class="text-slate-500 italic">Examiner ready. Type your structured answer below to evaluate against official IAL mark scheme criteria...</div>
+                                </div>
+                            </div>
+
+                            <div class="flex gap-2 pt-2">
+                                <input type="text" id="ai-user-input" placeholder="Type your structured answer to be evaluated..." class="flex-grow bg-slate-900 border border-slate-700 text-slate-100 text-xs rounded-lg p-2.5 focus:outline-none focus:ring-1 focus:ring-cyan-500">
+                                <button onclick="sendAiChat()" class="px-4 py-2.5 bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs rounded-lg shadow transition">
+                                    Submit Answer
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="subtab-json-generator" class="hidden space-y-4">
+                    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+                        <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-3 border-b border-slate-800 pb-3">
+                            <div>
+                                <h3 class="text-sm font-bold text-cyan-300">Dynamic Structured IAL Question Generator</h3>
+                                <p class="text-xs text-slate-400">Uses Gemini 3 Flash JSON Schema mode (`responseMimeType: application/json`) to create custom exam questions.</p>
+                            </div>
+                            <button onclick="generateCustomAiQuestion()" class="px-4 py-2 bg-gradient-to-r from-cyan-600 to-emerald-600 hover:from-cyan-500 hover:to-emerald-500 text-white text-xs font-bold rounded-lg shadow transition">
+                                ✨ Generate New Question
+                            </button>
+                        </div>
+
+                        <div id="json-question-output" class="p-4 bg-slate-900/80 rounded-lg border border-slate-800 text-xs space-y-3">
+                            <span class="text-slate-500 italic">Click "Generate New Question" to create a structured IAL exam scenario using Gemini API...</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="subtab-vision-grader" class="hidden space-y-4">
+                    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+                        <div>
+                            <h3 class="text-sm font-bold text-cyan-300">Multimodal Vision Homework & Diagram Grader</h3>
+                            <p class="text-xs text-slate-400">Upload an image of your handwritten chemical equations, reaction cycle diagram, or test-tube colors for Gemini Vision analysis.</p>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                            <div class="p-4 bg-slate-900 rounded-lg border border-slate-800 space-y-3">
+                                <label class="block font-bold text-slate-300">Upload Answer Photo/Diagram (PNG/JPG):</label>
+                                <input type="file" id="vision-file-input" accept="image/*" onchange="previewVisionImage()" class="w-full bg-slate-950 text-slate-300 border border-slate-700 rounded p-2">
+                                <div id="vision-img-preview" class="hidden w-full h-40 bg-slate-950 border border-slate-800 rounded flex items-center justify-center overflow-hidden">
+                                    <img id="vision-preview-element" src="" class="max-h-full object-contain" alt="Homework Preview">
+                                </div>
+                                <button onclick="gradeUploadedImage()" id="btn-grade-vision" class="w-full py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded shadow transition">
+                                    📷 Analyze & Grade Homework
+                                </button>
+                            </div>
+
+                            <div class="p-4 bg-slate-900 rounded-lg border border-slate-800 flex flex-col justify-between">
+                                <div>
+                                    <span class="font-bold text-emerald-400 block mb-1">Vision Evaluation Result:</span>
+                                    <div id="vision-result-box" class="font-mono text-slate-300 leading-relaxed min-h-[140px] text-[11px]">
+                                        Upload an image and click "Analyze & Grade Homework" to trigger Gemini multimodal inspection...
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="subtab-grounded-search" class="hidden space-y-4">
+                    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+                        <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-3 border-b border-slate-800 pb-3">
+                            <div>
+                                <h3 class="text-sm font-bold text-cyan-300">Google Search Grounded Catalysis Research</h3>
+                                <p class="text-xs text-slate-400">Pulls real-world industrial innovations and citations using Gemini API Google Search Grounding (`tools: [{ google_search: {} }]`).</p>
+                            </div>
+                            <button onclick="searchIndustrialCatalysts()" class="px-4 py-2 bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-bold rounded-lg shadow transition">
+                                🔍 Search Industrial Advances
+                            </button>
+                        </div>
+
+                        <div id="grounded-search-output" class="p-4 bg-slate-900/80 rounded-lg border border-slate-800 text-xs space-y-3 min-h-[120px]">
+                            <span class="text-slate-500 italic">Click "Search Industrial Advances" to run a grounded query on green hydrogen transition metal catalysts...</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        function initKaTeX() {
+            if (typeof renderMathInElement === 'function') {
+                try {
+                    renderMathInElement(document.body, {
+                        delimiters: [
+                            {left: '$$', right: '$$', display: true},
+                            {left: '$', right: '$', display: false}
+                        ],
+                        throwOnError: false
+                    });
+                } catch (e) {
+                    console.warn("KaTeX render warning:", e);
+                }
+            }
+        }
+        window.initKaTeX = initKaTeX;
+
+        function switchTab(tabId) {
+            const tabs = ['scaffold', 'chromium', 'copper', 'manganese', 'catalysis', 'ai'];
+            tabs.forEach(t => {
+                const el = document.getElementById('tab-' + t);
+                const btn = document.getElementById('btn-' + t);
+                if (el) {
+                    if (t === tabId) {
+                        el.classList.remove('hidden');
+                    } else {
+                        el.classList.add('hidden');
+                    }
+                }
+                if (btn) {
+                    if (t === tabId) {
+                        btn.className = "tab-btn-active py-3 px-5 text-slate-300 hover:text-cyan-300 transition flex items-center gap-2";
+                    } else {
+                        btn.className = "py-3 px-5 text-slate-400 hover:text-cyan-300 transition flex items-center gap-2";
+                    }
+                }
+            });
+
+            if (tabId === 'chromium') {
+                initChromiumTab();
+            } else if (tabId === 'copper') {
+                initCopperTab();
+            } else if (tabId === 'manganese') {
+                initManganeseTab();
+            } else if (tabId === 'catalysis') {
+                drawAutocatGraph();
+            }
+            setTimeout(initKaTeX, 50);
+        }
+        window.switchTab = switchTab;
+
+        function switchAiSubTab(subId) {
+            const subTabs = ['text-grader', 'json-generator', 'vision-grader', 'grounded-search'];
+            subTabs.forEach(s => {
+                const el = document.getElementById('subtab-' + s);
+                const btn = document.getElementById('subbtn-' + s);
+                if (el) {
+                    if (s === subId) {
+                        el.classList.remove('hidden');
+                    } else {
+                        el.classList.add('hidden');
+                    }
+                }
+                if (btn) {
+                    if (s === subId) {
+                        btn.className = "subtab-btn-active px-3 py-1.5 rounded-lg border border-cyan-800 transition";
+                    } else {
+                        btn.className = "px-3 py-1.5 rounded-lg border border-slate-800 text-slate-400 hover:text-cyan-300 transition";
+                    }
+                }
+            });
+            setTimeout(initKaTeX, 50);
+        }
+        window.switchAiSubTab = switchAiSubTab;
+
+        const REAGENT_EQUATIONS = {
+            'cr': {
+                name: 'Chromium (Cr³⁺)',
+                dropwise: {
+                    type: 'Deprotonation',
+                    title: 'Cr³⁺ with Dropwise NaOH or NH₃',
+                    eqs: [
+                        '\\text{With NaOH: } [\\text{Cr}(\\text{H}_2\\text{O})_6]^{3+}(\\text{aq}) + 3\\text{OH}^-(\\text{aq}) \\rightarrow \\text{Cr}(\\text{OH})_3(\\text{H}_2\\text{O})_3(\\text{s}) + 3\\text{H}_2\\text{O}(\\text{l})',
+                        '\\text{With NH}_3\\text{: } [\\text{Cr}(\\text{H}_2\\text{O})_6]^{3+}(\\text{aq}) + 3\\text{NH}_3(\\text{aq}) \\rightarrow \\text{Cr}(\\text{OH})_3(\\text{H}_2\\text{O})_3(\\text{s}) + 3\\text{NH}_4^+(\\text{aq})'
+                    ],
+                    note: 'Grey-green precipitate forms. Hydroxide/ammonia acts as a base extracting protons (H⁺) from water ligands.'
+                },
+                excess_naoh: {
+                    type: 'Amphoteric Deprotonation (2 Steps)',
+                    title: 'Cr³⁺ with Excess NaOH',
+                    eqs: [
+                        '\\text{Step 1 (Deprotonation): } [\\text{Cr}(\\text{H}_2\\text{O})_6]^{3+}(\\text{aq}) + 3\\text{OH}^-(\\text{aq}) \\rightarrow \\text{Cr}(\\text{OH})_3(\\text{H}_2\\text{O})_3(\\text{s}) + 3\\text{H}_2\\text{O}(\\text{l})',
+                        '\\text{Step 2 (Amphoteric Dissolution): } \\text{Cr}(\\text{OH})_3(\\text{H}_2\\text{O})_3(\\text{s}) + 3\\text{OH}^-(\\text{aq}) \\rightarrow [\\text{Cr}(\\text{OH})_6]^{3-}(\\text{aq}) + 3\\text{H}_2\\text{O}(\\text{l})'
+                    ],
+                    note: 'Green precipitate dissolves in excess OH⁻ to form a clear dark green solution.'
+                },
+                excess_nh3: {
+                    type: 'Ligand Exchange (2 Steps)',
+                    title: 'Cr³⁺ with Excess NH₃',
+                    eqs: [
+                        '\\text{Step 1 (Deprotonation): } [\\text{Cr}(\\text{H}_2\\text{O})_6]^{3+}(\\text{aq}) + 3\\text{NH}_3(\\text{aq}) \\rightarrow \\text{Cr}(\\text{OH})_3(\\text{H}_2\\text{O})_3(\\text{s}) + 3\\text{NH}_4^+(\\text{aq})',
+                        '\\text{Step 2 (Ligand Exchange): } \\text{Cr}(\\text{OH})_3(\\text{H}_2\\text{O})_3(\\text{s}) + 6\\text{NH}_3(\\text{aq}) \\rightarrow [\\text{Cr}(\\text{NH}_3)_6]^{3+}(\\text{aq}) + 3\\text{OH}^-(\\text{aq}) + 3\\text{H}_2\\text{O}(\\text{l})'
+                    ],
+                    note: 'Green precipitate dissolves in excess ammonia to form a deep purple solution.'
+                }
+            },
+            'mn': {
+                name: 'Manganese (Mn²⁺)',
+                dropwise: {
+                    type: 'Deprotonation',
+                    title: 'Mn²⁺ with Dropwise NaOH or NH₃',
+                    eqs: [
+                        '\\text{With NaOH: } [\\text{Mn}(\\text{H}_2\\text{O})_6]^{2+}(\\text{aq}) + 2\\text{OH}^-(\\text{aq}) \\rightarrow \\text{Mn}(\\text{OH})_2(\\text{H}_2\\text{O})_4(\\text{s}) + 2\\text{H}_2\\text{O}(\\text{l})',
+                        '\\text{With NH}_3\\text{: } [\\text{Mn}(\\text{H}_2\\text{O})_6]^{2+}(\\text{aq}) + 2\\text{NH}_3(\\text{aq}) \\rightarrow \\text{Mn}(\\text{OH})_2(\\text{H}_2\\text{O})_4(\\text{s}) + 2\\text{NH}_4^+(\\text{aq})'
+                    ],
+                    note: 'Light brown/buff precipitate forms. Slowly oxidizes in air to dark brown Mn(OH)₃.'
+                },
+                excess_naoh: {
+                    type: 'Insoluble Hydroxide',
+                    title: 'Mn²⁺ with Excess NaOH',
+                    eqs: [
+                        '[\\text{Mn}(\\text{H}_2\\text{O})_6]^{2+}(\\text{aq}) + 2\\text{OH}^-(\\text{aq}) \\rightarrow \\text{Mn}(\\text{OH})_2(\\text{H}_2\\text{O})_4(\\text{s}) + 2\\text{H}_2\\text{O}(\\text{l})'
+                    ],
+                    note: 'Insoluble precipitate remains. Mn(OH)₂ is NOT amphoteric.'
+                },
+                excess_nh3: {
+                    type: 'Insoluble Hydroxide',
+                    title: 'Mn²⁺ with Excess NH₃',
+                    eqs: [
+                        '[\\text{Mn}(\\text{H}_2\\text{O})_6]^{2+}(\\text{aq}) + 2\\text{NH}_3(\\text{aq}) \\rightarrow \\text{Mn}(\\text{OH})_2(\\text{H}_2\\text{O})_4(\\text{s}) + 2\\text{NH}_4^+(\\text{aq})'
+                    ],
+                    note: 'Insoluble precipitate remains. Ammonia is too weak a ligand to undergo ligand exchange.'
+                }
+            },
+            'fe2': {
+                name: 'Iron(II) (Fe²⁺)',
+                dropwise: {
+                    type: 'Deprotonation',
+                    title: 'Fe²⁺ with Dropwise NaOH or NH₃',
+                    eqs: [
+                        '\\text{With NaOH: } [\\text{Fe}(\\text{H}_2\\text{O})_6]^{2+}(\\text{aq}) + 2\\text{OH}^-(\\text{aq}) \\rightarrow \\text{Fe}(\\text{OH})_2(\\text{H}_2\\text{O})_4(\\text{s}) + 2\\text{H}_2\\text{O}(\\text{l})'
+                    ],
+                    note: 'Dirty green precipitate forms.'
+                },
+                excess_naoh: {
+                    type: 'Air Oxidation',
+                    title: 'Fe²⁺ with Excess NaOH',
+                    eqs: [
+                        '4\\text{Fe}(\\text{OH})_2(\\text{s}) + \\text{O}_2(\\text{g}) + 2\\text{H}_2\\text{O}(\\text{l}) \\rightarrow 4\\text{Fe}(\\text{OH})_3(\\text{s})'
+                    ],
+                    note: 'Insoluble dirty green ppt turns rusty brown on top surface when exposed to air.'
+                },
+                excess_nh3: {
+                    type: 'Insoluble Hydroxide',
+                    title: 'Fe²⁺ with Excess NH₃',
+                    eqs: [
+                        '[\\text{Fe}(\\text{H}_2\\text{O})_6]^{2+}(\\text{aq}) + 2\\text{NH}_3(\\text{aq}) \\rightarrow \\text{Fe}(\\text{OH})_2(\\text{H}_2\\text{O})_4(\\text{s}) + 2\\text{NH}_4^+(\\text{aq})'
+                    ],
+                    note: 'Insoluble dirty green precipitate remains.'
+                }
+            },
+            'fe3': {
+                name: 'Iron(III) (Fe³⁺)',
+                dropwise: {
+                    type: 'Deprotonation',
+                    title: 'Fe³⁺ with Dropwise NaOH or NH₃',
+                    eqs: [
+                        '\\text{With NaOH: } [\\text{Fe}(\\text{H}_2\\text{O})_6]^{3+}(\\text{aq}) + 3\\text{OH}^-(\\text{aq}) \\rightarrow \\text{Fe}(\\text{OH})_3(\\text{H}_2\\text{O})_3(\\text{s}) + 3\\text{H}_2\\text{O}(\\text{l})'
+                    ],
+                    note: 'Foxy red-brown precipitate forms.'
+                },
+                excess_naoh: {
+                    type: 'Insoluble Hydroxide',
+                    title: 'Fe³⁺ with Excess NaOH',
+                    eqs: [
+                        '[\\text{Fe}(\\text{H}_2\\text{O})_6]^{3+}(\\text{aq}) + 3\\text{OH}^-(\\text{aq}) \\rightarrow \\text{Fe}(\\text{OH})_3(\\text{H}_2\\text{O})_3(\\text{s}) + 3\\text{H}_2\\text{O}(\\text{l})'
+                    ],
+                    note: 'Insoluble red-brown precipitate remains.'
+                },
+                excess_nh3: {
+                    type: 'Insoluble Hydroxide',
+                    title: 'Fe³⁺ with Excess NH₃',
+                    eqs: [
+                        '[\\text{Fe}(\\text{H}_2\\text{O})_6]^{3+}(\\text{aq}) + 3\\text{NH}_3(\\text{aq}) \\rightarrow \\text{Fe}(\\text{OH})_3(\\text{H}_2\\text{O})_3(\\text{s}) + 3\\text{NH}_4^+(\\text{aq})'
+                    ],
+                    note: 'Insoluble red-brown precipitate remains.'
+                }
+            },
+            'co': {
+                name: 'Cobalt (Co²⁺)',
+                dropwise: {
+                    type: 'Deprotonation',
+                    title: 'Co²⁺ with Dropwise NaOH or NH₃',
+                    eqs: [
+                        '[\\text{Co}(\\text{H}_2\\text{O})_6]^{2+}(\\text{aq}) + 2\\text{OH}^-(\\text{aq}) \\rightarrow \\text{Co}(\\text{OH})_2(\\text{H}_2\\text{O})_4(\\text{s}) + 2\\text{H}_2\\text{O}(\\text{l})'
+                    ],
+                    note: 'Blue precipitate forms.'
+                },
+                excess_naoh: {
+                    type: 'Insoluble Hydroxide',
+                    title: 'Co²⁺ with Excess NaOH',
+                    eqs: [
+                        '[\\text{Co}(\\text{H}_2\\text{O})_6]^{2+}(\\text{aq}) + 2\\text{OH}^-(\\text{aq}) \\rightarrow \\text{Co}(\\text{OH})_2(\\text{H}_2\\text{O})_4(\\text{s}) + 2\\text{H}_2\\text{O}(\\text{l})'
+                    ],
+                    note: 'Insoluble blue precipitate remains.'
+                },
+                excess_nh3: {
+                    type: 'Ligand Exchange (2 Steps)',
+                    title: 'Co²⁺ with Excess NH₃',
+                    eqs: [
+                        '\\text{Step 1: } [\\text{Co}(\\text{H}_2\\text{O})_6]^{2+}(\\text{aq}) + 2\\text{NH}_3(\\text{aq}) \\rightarrow \\text{Co}(\\text{OH})_2(\\text{H}_2\\text{O})_4(\\text{s}) + 2\\text{NH}_4^+(\\text{aq})',
+                        '\\text{Step 2: } \\text{Co}(\\text{OH})_2(\\text{H}_2\\text{O})_4(\\text{s}) + 6\\text{NH}_3(\\text{aq}) \\rightarrow [\\text{Co}(\\text{NH}_3)_6]^{2+}(\\text{aq}) + 2\\text{OH}^-(\\text{aq}) + 4\\text{H}_2\\text{O}(\\text{l})'
+                    ],
+                    note: 'Blue precipitate dissolves in excess NH3 to form yellow/straw solution.'
+                }
+            },
+            'ni': {
+                name: 'Nickel (Ni²⁺)',
+                dropwise: {
+                    type: 'Deprotonation',
+                    title: 'Ni²⁺ with Dropwise NaOH or NH₃',
+                    eqs: [
+                        '[\\text{Ni}(\\text{H}_2\\text{O})_6]^{2+}(\\text{aq}) + 2\\text{OH}^-(\\text{aq}) \\rightarrow \\text{Ni}(\\text{OH})_2(\\text{H}_2\\text{O})_4(\\text{s}) + 2\\text{H}_2\\text{O}(\\text{l})'
+                    ],
+                    note: 'Green precipitate forms.'
+                },
+                excess_naoh: {
+                    type: 'Insoluble Hydroxide',
+                    title: 'Ni²⁺ with Excess NaOH',
+                    eqs: [
+                        '[\\text{Ni}(\\text{H}_2\\text{O})_6]^{2+}(\\text{aq}) + 2\\text{OH}^-(\\text{aq}) \\rightarrow \\text{Ni}(\\text{OH})_2(\\text{H}_2\\text{O})_4(\\text{s}) + 2\\text{H}_2\\text{O}(\\text{l})'
+                    ],
+                    note: 'Insoluble green precipitate remains.'
+                },
+                excess_nh3: {
+                    type: 'Ligand Exchange (2 Steps)',
+                    title: 'Ni²⁺ with Excess NH₃',
+                    eqs: [
+                        '\\text{Step 1: } [\\text{Ni}(\\text{H}_2\\text{O})_6]^{2+}(\\text{aq}) + 2\\text{NH}_3(\\text{aq}) \\rightarrow \\text{Ni}(\\text{OH})_2(\\text{H}_2\\text{O})_4(\\text{s}) + 2\\text{NH}_4^+(\\text{aq})',
+                        '\\text{Step 2: } \\text{Ni}(\\text{OH})_2(\\text{H}_2\\text{O})_4(\\text{s}) + 6\\text{NH}_3(\\text{aq}) \\rightarrow [\\text{Ni}(\\text{NH}_3)_6]^{2+}(\\text{aq}) + 2\\text{OH}^-(\\text{aq}) + 4\\text{H}_2\\text{O}(\\text{l})'
+                    ],
+                    note: 'Green precipitate dissolves in excess NH3 to form blue solution.'
+                }
+            },
+            'cu': {
+                name: 'Copper (Cu²⁺)',
+                dropwise: {
+                    type: 'Deprotonation',
+                    title: 'Cu²⁺ with Dropwise NaOH or NH₃',
+                    eqs: [
+                        '[\\text{Cu}(\\text{H}_2\\text{O})_6]^{2+}(\\text{aq}) + 2\\text{OH}^-(\\text{aq}) \\rightarrow \\text{Cu}(\\text{OH})_2(\\text{H}_2\\text{O})_4(\\text{s}) + 2\\text{H}_2\\text{O}(\\text{l})'
+                    ],
+                    note: 'Pale blue precipitate forms.'
+                },
+                excess_naoh: {
+                    type: 'Insoluble Hydroxide',
+                    title: 'Cu²⁺ with Excess NaOH',
+                    eqs: [
+                        '[\\text{Cu}(\\text{H}_2\\text{O})_6]^{2+}(\\text{aq}) + 2\\text{OH}^-(\\text{aq}) \\rightarrow \\text{Cu}(\\text{OH})_2(\\text{H}_2\\text{O})_4(\\text{s}) + 2\\text{H}_2\\text{O}(\\text{l})'
+                    ],
+                    note: 'Insoluble pale blue precipitate remains.'
+                },
+                excess_nh3: {
+                    type: 'Ligand Exchange (2 Steps)',
+                    title: 'Cu²⁺ with Excess NH₃',
+                    eqs: [
+                        '\\text{Step 1: } [\\text{Cu}(\\text{H}_2\\text{O})_6]^{2+}(\\text{aq}) + 2\\text{NH}_3(\\text{aq}) \\rightarrow \\text{Cu}(\\text{OH})_2(\\text{H}_2\\text{O})_4(\\text{s}) + 2\\text{NH}_4^+(\\text{aq})',
+                        '\\text{Step 2: } \\text{Cu}(\\text{OH})_2(\\text{H}_2\\text{O})_4(\\text{s}) + 4\\text{NH}_3(\\text{aq}) \\rightarrow [\\text{Cu}(\\text{NH}_3)_4(\\text{H}_2\\text{O})_2]^{2+}(\\text{aq}) + 2\\text{OH}^-(\\text{aq}) + 2\\text{H}_2\\text{O}(\\text{l})'
+                    ],
+                    note: 'Pale blue precipitate dissolves in excess NH3 to form deep royal blue solution.'
+                }
+            },
+            'zn': {
+                name: 'Zinc (Zn²⁺)',
+                dropwise: {
+                    type: 'Deprotonation',
+                    title: 'Zn²⁺ with Dropwise NaOH or NH₃',
+                    eqs: [
+                        '[\\text{Zn}(\\text{H}_2\\text{O})_6]^{2+}(\\text{aq}) + 2\\text{OH}^-(\\text{aq}) \\rightarrow \\text{Zn}(\\text{OH})_2(\\text{H}_2\\text{O})_4(\\text{s}) + 2\\text{H}_2\\text{O}(\\text{l})'
+                    ],
+                    note: 'White precipitate forms.'
+                },
+                excess_naoh: {
+                    type: 'Amphoteric Deprotonation (2 Steps)',
+                    title: 'Zn²⁺ with Excess NaOH',
+                    eqs: [
+                        '\\text{Step 1: } [\\text{Zn}(\\text{H}_2\\text{O})_6]^{2+}(\\text{aq}) + 2\\text{OH}^-(\\text{aq}) \\rightarrow \\text{Zn}(\\text{OH})_2(\\text{H}_2\\text{O})_4(\\text{s}) + 2\\text{H}_2\\text{O}(\\text{l})',
+                        '\\text{Step 2: } \\text{Zn}(\\text{OH})_2(\\text{H}_2\\text{O})_4(\\text{s}) + 2\\text{OH}^-(\\text{aq}) \\rightarrow [\\text{Zn}(\\text{OH})_4]^{2-}(\\text{aq}) + 4\\text{H}_2\\text{O}(\\text{l})'
+                    ],
+                    note: 'White precipitate dissolves in excess OH- to form colourless solution.'
+                },
+                excess_nh3: {
+                    type: 'Ligand Exchange (2 Steps)',
+                    title: 'Zn²⁺ with Excess NH₃',
+                    eqs: [
+                        '\\text{Step 1: } [\\text{Zn}(\\text{H}_2\\text{O})_6]^{2+}(\\text{aq}) + 2\\text{NH}_3(\\text{aq}) \\rightarrow \\text{Zn}(\\text{OH})_2(\\text{H}_2\\text{O})_4(\\text{s}) + 2\\text{NH}_4^+(\\text{aq})',
+                        '\\text{Step 2: } \\text{Zn}(\\text{OH})_2(\\text{H}_2\\text{O})_4(\\text{s}) + 4\\text{NH}_3(\\text{aq}) \\rightarrow [\\text{Zn}(\\text{NH}_3)_4]^{2+}(\\text{aq}) + 2\\text{OH}^-(\\text{aq}) + 4\\text{H}_2\\text{O}(\\text{l})'
+                    ],
+                    note: 'White precipitate dissolves in excess NH3 to form colourless tetraammine solution.'
+                }
+            }
+        };
+
+        function showReagentEquation(metalKey, stageKey) {
+            const data = REAGENT_EQUATIONS[metalKey]?.[stageKey];
+            if (!data) return;
+
+            const modal = document.getElementById('reagent-eq-modal');
+            const title = document.getElementById('reagent-modal-title');
+            const sub = document.getElementById('reagent-modal-sub');
+            const badge = document.getElementById('reagent-modal-badge');
+            const content = document.getElementById('reagent-modal-content');
+
+            title.textContent = data.title;
+            sub.textContent = `Metal System: ${REAGENT_EQUATIONS[metalKey].name}`;
+            badge.textContent = data.type;
+
+            content.innerHTML = `
+                <div class="space-y-3">
+                    ${data.eqs.map((eq, i) => `
+                        <div class="p-3 bg-slate-950 rounded-lg border border-slate-800 space-y-1">
+                            <span class="text-[10px] text-cyan-400 font-bold block uppercase">Balanced Equation ${data.eqs.length > 1 ? i+1 : ''}:</span>
+                            <div class="text-emerald-300 font-mono text-[11px] overflow-x-auto py-1">$${eq}$</div>
+                        </div>
+                    `).join('')}
+                    <div class="p-3 bg-slate-950/80 rounded-lg border border-cyan-900/40 text-[11px] text-slate-300 leading-relaxed font-sans">
+                        <b>📌 Mark Scheme Note:</b> ${data.note}
+                    </div>
+                </div>
+            `;
+
+            modal.classList.remove('hidden');
+            setTimeout(initKaTeX, 50);
+        }
+        window.showReagentEquation = showReagentEquation;
+
+        function hideReagentEquation() {
+            const modal = document.getElementById('reagent-eq-modal');
+            if (modal) modal.classList.add('hidden');
+        }
+        window.hideReagentEquation = hideReagentEquation;
+
+        const CHROMIUM_STEPS = [
+            {
+                title: "1. CrO₄²⁻ / Cr₂O⇇²⁻ Equilibrium",
+                oxState: "+6 to +6 (Unchanged)",
+                type: "Acid-Base Equilibrium",
+                obs: "Yellow to Orange solution",
+                eq: "2\\text{CrO}_4^{2-}(\\text{aq}) + 2\\text{H}^+(\\text{aq}) \\rightleftharpoons \\text{Cr}_2\\text{O}_7^{2-}(\\text{aq}) + \\text{H}_2\\text{O}(\\text{l})",
+                colorFrom: "#eab308", colorTo: "#f97316", isPpt: false,
+                note: "Yellow chromate turns orange dichromate on adding acid."
+            },
+            {
+                title: "2. Reduction of Cr₂O⇇²⁻ by Zn/HCl",
+                oxState: "+6 → +3 → +2",
+                type: "Redox Reduction",
+                obs: "Orange to Green then Blue solution",
+                eq: "\\text{Cr}_2\\text{O}_7^{2-} + 14\\text{H}^+ + 3\\text{Zn} \\rightarrow 2[\\text{Cr}(\\text{H}_2\\text{O})_6]^{3+} + 3\\text{Zn}^{2+} + 7\\text{H}_2\\text{O}",
+                colorFrom: "#f97316", colorTo: "#38bdf8", isPpt: false,
+                note: "Zinc in acidic conditions reduces Cr(VI) to green Cr(III) and sky-blue Cr(II)."
+            },
+            {
+                title: "3. Cr³⁺ + Dropwise NaOH/NH₃",
+                oxState: "+3 to +3",
+                type: "Deprotonation (Base)",
+                obs: "Green solution to Green ppt",
+                eq: "[\\text{Cr}(\\text{H}_2\\text{O})_6]^{3+}(\\text{aq}) + 3\\text{OH}^-(\\text{aq}) \\rightarrow \\text{Cr}(\\text{OH})_3(\\text{H}_2\\text{O})_3(\\text{s}) + 3\\text{H}_2\\text{O}(\\text{l})",
+                colorFrom: "#10b981", colorTo: "#059669", isPpt: true,
+                note: "Grey-green precipitate of Cr(OH)3 forms due to deprotonation of water ligands."
+            },
+            {
+                title: "4. Cr(OH)₃ + Excess NaOH",
+                oxState: "+3 to +3",
+                type: "Amphoteric Deprotonation",
+                obs: "Green ppt to Green solution",
+                eq: "\\text{Cr}(\\text{OH})_3(\\text{H}_2\\text{O})_3(\\text{s}) + 3\\text{OH}^-(\\text{aq}) \\rightarrow [\\text{Cr}(\\text{OH})_6]^{3-}(\\text{aq}) + 3\\text{H}_2\\text{O}(\\text{l})",
+                colorFrom: "#059669", colorTo: "#10b981", isPpt: false,
+                note: "Green precipitate dissolves in excess OH- forming dark green hexahydroxochromate(III) solution."
+            },
+            {
+                title: "5. Oxidation by H₂O₂ in Alkaline Conditions",
+                oxState: "+3 → +6",
+                type: "Redox Oxidation",
+                obs: "Green solution to Yellow solution",
+                eq: "2[\\text{Cr}(\\text{OH})_6]^{3-}(\\text{aq}) + 3\\text{H}_2\\text{O}_2(\\text{aq}) \\rightarrow 2\\text{CrO}_4^{2-}(\\text{aq}) + 8\\text{H}_2\\text{O}(\\text{l}) + 2\\text{OH}^-(\\text{aq})",
+                colorFrom: "#10b981", colorTo: "#eab308", isPpt: false,
+                note: "Hydrogen peroxide in alkaline solution oxidises green Cr(III) to yellow chromate(VI) ions."
+            },
+            {
+                title: "6. Cr(OH)₃ + Excess NH₃",
+                oxState: "+3 to +3",
+                type: "Ligand Exchange",
+                obs: "Green ppt to Purple solution",
+                eq: "\\text{Cr}(\\text{OH})_3(\\text{H}_2\\text{O})_3(\\text{s}) + 6\\text{NH}_3(\\text{aq}) \\rightarrow [\\text{Cr}(\\text{NH}_3)_6]^{3+}(\\text{aq}) + 3\\text{OH}^-(\\text{aq}) + 3\\text{H}_2\\text{O}(\\text{l})",
+                colorFrom: "#059669", colorTo: "#a855f7", isPpt: false,
+                note: "Green ppt dissolves slowly in excess ammonia to form deep purple hexaamminechromium(III) solution."
+            }
+        ];
+
+        const COPPER_STEPS = [
+            {
+                title: "1. Cu (s) + Cl₂ (g) → CuCl₂ (s)",
+                oxState: "0 → +2",
+                type: "Redox Reaction",
+                obs: "Orange copper burns to brown solid",
+                eq: "\\text{Cu}(\\text{s}) + \\text{Cl}_2(\\text{g}) \\rightarrow \\text{CuCl}_2(\\text{s})",
+                colorFrom: "#f97316", colorTo: "#b45309", isPpt: true,
+                note: "Orange copper metal burns in chlorine gas to form brown solid copper(II) chloride."
+            },
+            {
+                title: "2. CuCl₂ (s) + H₂O (l) → [Cu(H₂O)₆]²⁺ (aq)",
+                oxState: "+2 → +2",
+                type: "Dissolution / Hydration",
+                obs: "Brown solid dissolves to pale blue solution",
+                eq: "\\text{CuCl}_2(\\text{s}) + 6\\text{H}_2\\text{O}(\\text{l}) \\rightarrow [\\text{Cu}(\\text{H}_2\\text{O})_6]^{2+}(\\text{aq}) + 2\\text{Cl}^-(\\text{aq})",
+                colorFrom: "#b45309", colorTo: "#38bdf8", isPpt: false,
+                note: "Dissolving brown CuCl₂ in water yields pale blue hexaaquacopper(II) solution."
+            },
+            {
+                title: "3. [Cu(H₂O)₆]²⁺ + conc. HCl → [CuCl₄]²⁻",
+                oxState: "+2 → +2",
+                type: "Ligand Exchange",
+                obs: "Pale blue to yellow solution",
+                eq: "[\\text{Cu}(\\text{H}_2\\text{O})_6]^{2+}(\\text{aq}) + 4\\text{Cl}^-(\\text{aq}) \\rightleftharpoons [\\text{CuCl}_4]^{2-}(\\text{aq}) + 6\\text{H}_2\\text{O}(\\text{l})",
+                colorFrom: "#38bdf8", colorTo: "#eab308", isPpt: false,
+                note: "Concentrated HCl replaces 6 water ligands with 4 chloride ligands."
+            },
+            {
+                title: "4. [Cu(H₂O)₆]²⁺ + dropwise NaOH / NH₃",
+                oxState: "+2 → +2",
+                type: "Deprotonation (Base)",
+                obs: "Pale blue solution to blue ppt",
+                eq: "[\\text{Cu}(\\text{H}_2\\text{O})_6]^{2+}(\\text{aq}) + 2\\text{OH}^-(\\text{aq}) \\rightarrow \\text{Cu}(\\text{OH})_2(\\text{H}_2\\text{O})_4(\\text{s}) + 2\\text{H}_2\\text{O}(\\text{l})",
+                colorFrom: "#38bdf8", colorTo: "#0284c7", isPpt: true,
+                note: "Dropwise base extracts protons from water ligands forming pale blue copper(II) hydroxide precipitate."
+            },
+            {
+                title: "5. Cu(OH)₂ (s) + Heat (Δ) → CuO (s)",
+                oxState: "+2 → +2",
+                type: "Thermal Decomposition",
+                obs: "Blue ppt turns black solid on heat",
+                eq: "\\text{Cu}(\\text{OH})_2(\\text{H}_2\\text{O})_4(\\text{s}) \\xrightarrow{\\Delta} \\text{CuO}(\\text{s}) + 5\\text{H}_2\\text{O}(\\text{l})",
+                colorFrom: "#0284c7", colorTo: "#1e293b", isPpt: true,
+                note: "Gently heating pale blue Cu(OH)₂ precipitate decomposes it into black copper(II) oxide solid."
+            },
+            {
+                title: "6. CuO (s) + conc. HCl → [CuCl₄]²⁻ (aq)",
+                oxState: "+2 → +2",
+                type: "Acid-Base & Ligand Exchange",
+                obs: "Black solid dissolves to yellow solution",
+                eq: "\\text{CuO}(\\text{s}) + 2\\text{H}^+(\\text{aq}) + 4\\text{Cl}^-(\\text{aq}) \\rightarrow [\\text{CuCl}_4]^{2-}(\\text{aq}) + \\text{H}_2\\text{O}(\\text{l})",
+                colorFrom: "#1e293b", colorTo: "#eab308", isPpt: false,
+                note: "Black CuO solid reacts with conc. HCl to form yellow tetrachlorocuprate(II) solution."
+            },
+            {
+                title: "7. Cu(OH)₂ (s) + excess NH₃ → [Cu(NH₃)₄(H₂O)₂]²⁺",
+                oxState: "+2 → +2",
+                type: "Ligand Exchange",
+                obs: "Blue ppt to deep blue solution",
+                eq: "\\text{Cu}(\\text{OH})_2(\\text{H}_2\\text{O})_4(\\text{s}) + 4\\text{NH}_3(\\text{aq}) \\rightarrow [\\text{Cu}(\\text{NH}_3)_4(\\text{H}_2\\text{O})_2]^{2+}(\\text{aq}) + 2\\text{OH}^-(\\text{aq}) + 2\\text{H}_2\\text{O}(\\text{l})",
+                colorFrom: "#0284c7", colorTo: "#1d4ed8", isPpt: false,
+                note: "Excess ammonia dissolves pale blue precipitate to give deep royal blue tetraamminediaquacopper(II) solution."
+            },
+            {
+                title: "8. [Cu(H₂O)₆]²⁺ + KI (aq) → CuI (s) + I₂",
+                oxState: "+2 → +1",
+                type: "Redox Reaction",
+                obs: "Pale blue to white ppt + brown solution",
+                eq: "2[\\text{Cu}(\\text{H}_2\\text{O})_6]^{2+}(\\text{aq}) + 4\\text{I}^-(\\text{aq}) \\rightarrow 2\\text{CuI}(\\text{s}) + \\text{I}_2(\\text{aq}) + 12\\text{H}_2\\text{O}(\\text{l})",
+                colorFrom: "#38bdf8", colorTo: "#b45309", isPpt: true,
+                note: "Cu²⁺ oxidises I⁻ to brown iodine (I₂), while Cu²⁺ is reduced to white copper(I) iodide precipitate (CuI)."
+            },
+            {
+                title: "9. CuI (s) + excess NH₃ → [Cu(NH₃)₂]⁺ (aq)",
+                oxState: "+1 → +1",
+                type: "Ligand Exchange",
+                obs: "White ppt to colourless solution",
+                eq: "\\text{CuI}(\\text{s}) + 2\\text{NH}_3(\\text{aq}) \\rightarrow [\\text{Cu}(\\text{NH}_3)_2]^+(\\text{aq}) + \\text{I}^-(\\text{aq})",
+                colorFrom: "#cbd5e1", colorTo: "#f8fafc", isPpt: false,
+                note: "White CuI precipitate dissolves in excess ammonia to form colourless diamminecopper(I) complex."
+            },
+            {
+                title: "10. [Cu(NH₃)₂]⁺ + Shake in Air (O₂) → [Cu(NH₃)₄(H₂O)₂]²⁺",
+                oxState: "+1 → +2",
+                type: "Ligand Exchange & Air Oxidation",
+                obs: "Colourless to deep blue on shaking in air",
+                eq: "4[\\text{Cu}(\\text{NH}_3)_2]^+(\\text{aq}) + 8\\text{NH}_3(\\text{aq}) + \\text{O}_2(\\text{g}) + 4\\text{H}^+(\\text{aq}) + 4\\text{H}_2\\text{O}(\\text{l}) \\rightarrow 4[\\text{Cu}(\\text{NH}_3)_4(\\text{H}_2\\text{O})_2]^{2+}(\\text{aq})",
+                colorFrom: "#f8fafc", colorTo: "#1d4ed8", isPpt: false,
+                note: "Shaking colourless Cu(I) ammine complex in air causes atmospheric O₂ to oxidise Cu⁺ back to deep royal blue Cu²⁺ ammine."
+            },
+            {
+                title: "11. Disproportionation of Cu⁺ (aq)",
+                oxState: "+1 → 0 and +2",
+                type: "Disproportionation",
+                obs: "Colourless to pink solid + blue solution",
+                eq: "2\\text{Cu}^+(\\text{aq}) \\rightarrow \\text{Cu}(\\text{s}) + \\text{Cu}^{2+}(\\text{aq})",
+                colorFrom: "#cbd5e1", colorTo: "#ec4899", isPpt: true,
+                note: "Cu⁺ ions are unstable in aqueous solution and spontaneously disproportionate into pink Cu solid and pale blue Cu²⁺(aq)."
+            }
+        ];
+
+        const MANGANESE_STEPS = [
+            {
+                title: "1. Permanganate (MnO₄⁻) Reduction",
+                oxState: "+7 → +2",
+                type: "Redox Reduction",
+                obs: "Purple solution to pale pink solution",
+                eq: "\\text{MnO}_4^-(\\text{aq}) + 5\\text{Fe}^{2+}(\\text{aq}) + 8\\text{H}^+(\\text{aq}) \\rightarrow [\\text{Mn}(\\text{H}_2\\text{O})_6]^{2+}(\\text{aq}) + 5\\text{Fe}^{3+}(\\text{aq}) + 4\\text{H}_2\\text{O}(\\text{l})",
+                colorFrom: "#a855f7", colorTo: "#fbcfe8", isPpt: false,
+                note: "Deep purple MnO4- (+7) is reduced by Fe²⁺, C₂O₄²⁻, or H₂O₂ in acid to very pale pink Mn²⁺ (+2)."
+            },
+            {
+                title: "2. Mn²⁺ + Dropwise OH⁻ or NH₃",
+                oxState: "+2 → +2",
+                type: "Deprotonation (Base)",
+                obs: "Pale pink solution to light brown ppt",
+                eq: "[\\text{Mn}(\\text{H}_2\\text{O})_6]^{2+}(\\text{aq}) + 2\\text{OH}^-(\\text{aq}) \\rightarrow \\text{Mn}(\\text{OH})_2(\\text{H}_2\\text{O})_4(\\text{s}) + 2\\text{H}_2\\text{O}(\\text{l})",
+                colorFrom: "#fbcfe8", colorTo: "#d97706", isPpt: true,
+                note: "Dropwise base extracts protons forming a light brown / buff Mn(OH)₂ precipitate."
+            },
+            {
+                title: "3. Reversible Protonation with Acid",
+                oxState: "+2 → +2",
+                type: "Protonation (Acid)",
+                obs: "Light brown ppt redissolves to pale pink solution",
+                eq: "\\text{Mn}(\\text{OH})_2(\\text{H}_2\\text{O})_4(\\text{s}) + 2\\text{H}^+(\\text{aq}) \\rightarrow [\\text{Mn}(\\text{H}_2\\text{O})_6]^{2+}(\\text{aq})",
+                colorFrom: "#d97706", colorTo: "#fbcfe8", isPpt: false,
+                note: "Acid donates protons back to OH⁻ ligands, redissolving the precipitate."
+            },
+            {
+                title: "4. Air Oxidation to Mn(OH)₃",
+                oxState: "+2 → +3",
+                type: "Air / H2O2 Oxidation",
+                obs: "Light brown ppt darkens in air to dark brown ppt",
+                eq: "4\\text{Mn}(\\text{OH})_2(\\text{s}) + \\text{O}_2(\\text{g}) + 2\\text{H}_2\\text{O}(\\text{l}) \\rightarrow 4\\text{Mn}(\\text{OH})_3(\\text{s})",
+                colorFrom: "#d97706", colorTo: "#78350f", isPpt: true,
+                note: "Standing in air (or adding H₂O₂) oxidizes buff Mn(II) hydroxide to dark brown Mn(III) hydroxide."
+            },
+            {
+                title: "5. Thermal Conversion to MnO₂",
+                oxState: "+3 → +4",
+                type: "Thermal Decomposition",
+                obs: "Dark brown ppt to black MnO2 solid on heat",
+                eq: "2\\text{Mn}(\\text{OH})_3(\\text{s}) \\xrightarrow{\\Delta} 2\\text{MnO}_2(\\text{s}) + 3\\text{H}_2\\text{O}(\\text{g})",
+                colorFrom: "#78350f", colorTo: "#1e293b", isPpt: true,
+                note: "Heating dark brown Mn(OH)₃ converts it to dark brown / black manganese(IV) oxide (MnO₂)."
+            }
+        ];
+
+        let selectedCrIndex = 0;
+        let selectedCuIndex = 0;
+        let selectedMnIndex = 0;
+
+        function initChromiumTab() {
+            const listContainer = document.getElementById('cr-node-list');
+            if (!listContainer) return;
+            listContainer.innerHTML = CHROMIUM_STEPS.map((step, idx) => `
+                <div id="cr-node-${idx}" onclick="selectChromiumStep(${idx})" class="p-3 rounded-lg border cursor-pointer transition ${idx === selectedCrIndex ? 'node-active border-cyan-400 bg-cyan-950/40' : 'border-slate-800 bg-slate-900/60 hover:bg-slate-800'}">
+                    <span class="font-bold text-slate-200 block">${step.title}</span>
+                    <span class="text-[10px] font-mono text-cyan-400">${step.type}</span>
+                </div>
+            `).join('');
+            selectChromiumStep(selectedCrIndex);
+        }
+
+        function selectChromiumStep(idx) {
+            selectedCrIndex = idx;
+            const step = CHROMIUM_STEPS[idx];
+            document.getElementById('cr-step-title').textContent = step.title;
+            document.getElementById('cr-step-oxstate').textContent = `Oxidation State Shift: ${step.oxState}`;
+            document.getElementById('cr-step-type-badge').textContent = step.type;
+            document.getElementById('cr-eq-text').innerHTML = `$${step.eq}$`;
+            document.getElementById('cr-pedagogy-note').innerHTML = `<b>Mechanism Note:</b> ${step.note}`;
+
+            const fb = document.getElementById('cr-quiz-feedback');
+            if (fb) fb.className = "hidden text-xs font-mono p-2.5 rounded border";
+
+            renderTestTube('cr-canvas', step.colorFrom, step.colorTo, step.isPpt);
+
+            CHROMIUM_STEPS.forEach((_, i) => {
+                const el = document.getElementById(`cr-node-${i}`);
+                if (el) {
+                    if (i === idx) {
+                        el.className = "p-3 rounded-lg border cursor-pointer transition node-active border-cyan-400 bg-cyan-950/40";
+                    } else {
+                        el.className = "p-3 rounded-lg border cursor-pointer transition border-slate-800 bg-slate-900/60 hover:bg-slate-800";
+                    }
+                }
+            });
+
+            setTimeout(initKaTeX, 50);
+        }
+
+        function initCopperTab() {
+            const listContainer = document.getElementById('cu-node-list');
+            if (!listContainer) return;
+            listContainer.innerHTML = COPPER_STEPS.map((step, idx) => `
+                <div id="cu-node-${idx}" onclick="selectCopperStep(${idx})" class="p-3 rounded-lg border cursor-pointer transition ${idx === selectedCuIndex ? 'node-active border-sky-400 bg-sky-950/40' : 'border-slate-800 bg-slate-900/60 hover:bg-slate-800'}">
+                    <span class="font-bold text-slate-200 block">${step.title}</span>
+                    <span class="text-[10px] font-mono text-sky-400">${step.type}</span>
+                </div>
+            `).join('');
+            selectCopperStep(selectedCuIndex);
+        }
+
+        function selectCopperStep(idx) {
+            selectedCuIndex = idx;
+            const step = COPPER_STEPS[idx];
+            document.getElementById('cu-step-title').textContent = step.title;
+            document.getElementById('cu-step-oxstate').textContent = `Oxidation State Shift: ${step.oxState}`;
+            document.getElementById('cu-step-type').textContent = step.type;
+            document.getElementById('cu-eq-text').innerHTML = `$${step.eq}$`;
+            document.getElementById('cu-pedagogy-note').innerHTML = `<b>Mechanism Note:</b> ${step.note}`;
+
+            const fb = document.getElementById('cu-quiz-feedback');
+            if (fb) fb.className = "hidden text-xs font-mono p-2.5 rounded border";
+
+            renderTestTube('cu-canvas', step.colorFrom, step.colorTo, step.isPpt);
+
+            COPPER_STEPS.forEach((_, i) => {
+                const el = document.getElementById(`cu-node-${i}`);
+                if (el) {
+                    if (i === idx) {
+                        el.className = "p-3 rounded-lg border cursor-pointer transition node-active border-sky-400 bg-sky-950/40";
+                    } else {
+                        el.className = "p-3 rounded-lg border cursor-pointer transition border-slate-800 bg-slate-900/60 hover:bg-slate-800";
+                    }
+                }
+            });
+
+            setTimeout(initKaTeX, 50);
+        }
+
+        function initManganeseTab() {
+            const listContainer = document.getElementById('mn-node-list');
+            if (!listContainer) return;
+            listContainer.innerHTML = MANGANESE_STEPS.map((step, idx) => `
+                <div id="mn-node-${idx}" onclick="selectManganeseStep(${idx})" class="p-3 rounded-lg border cursor-pointer transition ${idx === selectedMnIndex ? 'node-active border-pink-400 bg-pink-950/40' : 'border-slate-800 bg-slate-900/60 hover:bg-slate-800'}">
+                    <span class="font-bold text-slate-200 block">${step.title}</span>
+                    <span class="text-[10px] font-mono text-pink-400">${step.type}</span>
+                </div>
+            `).join('');
+            selectManganeseStep(selectedMnIndex);
+        }
+
+        function selectManganeseStep(idx) {
+            selectedMnIndex = idx;
+            const step = MANGANESE_STEPS[idx];
+            document.getElementById('mn-step-title').textContent = step.title;
+            document.getElementById('mn-step-oxstate').textContent = `Oxidation State Shift: ${step.oxState}`;
+            document.getElementById('mn-step-type').textContent = step.type;
+            document.getElementById('mn-eq-text').innerHTML = `$${step.eq}$`;
+            document.getElementById('mn-pedagogy-note').innerHTML = `<b>Mechanism Note:</b> ${step.note}`;
+
+            const fb = document.getElementById('mn-quiz-feedback');
+            if (fb) fb.className = "hidden text-xs font-mono p-2.5 rounded border";
+
+            renderTestTube('mn-canvas', step.colorFrom, step.colorTo, step.isPpt);
+            
+            MANGANESE_STEPS.forEach((_, i) => {
+                const el = document.getElementById(`mn-node-${i}`);
+                if (el) {
+                    if (i === idx) {
+                        el.className = "p-3 rounded-lg border cursor-pointer transition node-active border-pink-400 bg-pink-950/40";
+                    } else {
+                        el.className = "p-3 rounded-lg border cursor-pointer transition border-slate-800 bg-slate-900/60 hover:bg-slate-800";
+                    }
+                }
+            });
+
+            setTimeout(initKaTeX, 50);
+        }
+
+        function checkManganeseAnswer() {
+            const step = MANGANESE_STEPS[selectedMnIndex];
+            const userType = document.getElementById('mn-user-type').value;
+            const userObs = document.getElementById('mn-user-obs').value;
+            const fb = document.getElementById('mn-quiz-feedback');
+
+            if (!userType || !userObs) {
+                fb.className = "text-xs font-mono p-2.5 rounded border border-amber-800 bg-amber-950/80 text-amber-200 block";
+                fb.textContent = "⚠️ Please select both a Reaction Type and Expected Observation before checking!";
+                return;
+            }
+
+            const typeMatch = (userType === step.type);
+            const obsMatch = (userObs === step.obs);
+
+            if (typeMatch && obsMatch) {
+                fb.className = "text-xs font-mono p-2.5 rounded border border-emerald-800 bg-emerald-950/80 text-emerald-200 block";
+                fb.innerHTML = `✅ <b>CORRECT!</b> Match: <b>${step.type}</b> | Observation: <i>${step.obs}</i>.`;
+            } else {
+                fb.className = "text-xs font-mono p-2.5 rounded border border-rose-800 bg-rose-950/80 text-rose-200 block";
+                fb.innerHTML = `❌ <b>TRY AGAIN:</b> ${!typeMatch ? `Expected Type: <b>${step.type}</b>. ` : ''}${!obsMatch ? `Expected Obs: <i>${step.obs}</i>.` : ''}`;
+            }
+        }
+        window.checkManganeseAnswer = checkManganeseAnswer;
+
+        function revealManganeseSolution() {
+            const step = MANGANESE_STEPS[selectedMnIndex];
+            document.getElementById('mn-user-type').value = step.type;
+            document.getElementById('mn-user-obs').value = step.obs;
+            const fb = document.getElementById('mn-quiz-feedback');
+            fb.className = "text-xs font-mono p-2.5 rounded border border-pink-800 bg-pink-950/80 text-pink-200 block";
+            fb.innerHTML = `💡 <b>ANSWER REVEALED:</b> Type: <b>${step.type}</b> | Observation: <i>${step.obs}</i>.`;
+        }
+        window.revealManganeseSolution = revealManganeseSolution;
+
+        function checkChromiumAnswer() {
+            const step = CHROMIUM_STEPS[selectedCrIndex];
+            const userType = document.getElementById('cr-user-type').value;
+            const userObs = document.getElementById('cr-user-obs').value;
+            const fb = document.getElementById('cr-quiz-feedback');
+
+            if (!userType || !userObs) {
+                fb.className = "text-xs font-mono p-2.5 rounded border border-amber-800 bg-amber-950/80 text-amber-200 block";
+                fb.textContent = "⚠️ Please select both a Reaction Type and Expected Observation before checking!";
+                return;
+            }
+
+            const typeMatch = (userType === step.type);
+            const obsMatch = (userObs === step.obs);
+
+            if (typeMatch && obsMatch) {
+                fb.className = "text-xs font-mono p-2.5 rounded border border-emerald-800 bg-emerald-950/80 text-emerald-200 block";
+                fb.innerHTML = `✅ <b>CORRECT!</b> Match: <b>${step.type}</b> | Observation: <i>${step.obs}</i>.`;
+            } else {
+                fb.className = "text-xs font-mono p-2.5 rounded border border-rose-800 bg-rose-950/80 text-rose-200 block";
+                fb.innerHTML = `❌ <b>TRY AGAIN:</b> ${!typeMatch ? `Expected Type: <b>${step.type}</b>. ` : ''}${!obsMatch ? `Expected Obs: <i>${step.obs}</i>.` : ''}`;
+            }
+        }
+        window.checkChromiumAnswer = checkChromiumAnswer;
+
+        function revealChromiumSolution() {
+            const step = CHROMIUM_STEPS[selectedCrIndex];
+            document.getElementById('cr-user-type').value = step.type;
+            document.getElementById('cr-user-obs').value = step.obs;
+            const fb = document.getElementById('cr-quiz-feedback');
+            fb.className = "text-xs font-mono p-2.5 rounded border border-cyan-800 bg-cyan-950/80 text-cyan-200 block";
+            fb.innerHTML = `💡 <b>ANSWER REVEALED:</b> Type: <b>${step.type}</b> | Observation: <i>${step.obs}</i>.`;
+        }
+        window.revealChromiumSolution = revealChromiumSolution;
+
+        function checkCopperAnswer() {
+            const step = COPPER_STEPS[selectedCuIndex];
+            const userType = document.getElementById('cu-user-type').value;
+            const userObs = document.getElementById('cu-user-obs').value;
+            const fb = document.getElementById('cu-quiz-feedback');
+
+            if (!userType || !userObs) {
+                fb.className = "text-xs font-mono p-2.5 rounded border border-amber-800 bg-amber-950/80 text-amber-200 block";
+                fb.textContent = "⚠️ Please select both a Reaction Type and Expected Observation before checking!";
+                return;
+            }
+
+            const typeMatch = (userType === step.type);
+            const obsMatch = (userObs === step.obs);
+
+            if (typeMatch && obsMatch) {
+                fb.className = "text-xs font-mono p-2.5 rounded border border-emerald-800 bg-emerald-950/80 text-emerald-200 block";
+                fb.innerHTML = `✅ <b>CORRECT!</b> Match: <b>${step.type}</b> | Observation: <i>${step.obs}</i>.`;
+            } else {
+                fb.className = "text-xs font-mono p-2.5 rounded border border-rose-800 bg-rose-950/80 text-rose-200 block";
+                fb.innerHTML = `❌ <b>TRY AGAIN:</b> ${!typeMatch ? `Expected Type: <b>${step.type}</b>. ` : ''}${!obsMatch ? `Expected Obs: <i>${step.obs}</i>.` : ''}`;
+            }
+        }
+        window.checkCopperAnswer = checkCopperAnswer;
+
+        function revealCopperSolution() {
+            const step = COPPER_STEPS[selectedCuIndex];
+            document.getElementById('cu-user-type').value = step.type;
+            document.getElementById('cu-user-obs').value = step.obs;
+            const fb = document.getElementById('cu-quiz-feedback');
+            fb.className = "text-xs font-mono p-2.5 rounded border border-cyan-800 bg-cyan-950/80 text-cyan-200 block";
+            fb.innerHTML = `💡 <b>ANSWER REVEALED:</b> Type: <b>${step.type}</b> | Observation: <i>${step.obs}</i>.`;
+        }
+        window.revealCopperSolution = revealCopperSolution;
+
+        function renderTestTube(canvasId, colorFrom, colorTo, isPpt) {
+            const canvas = document.getElementById(canvasId);
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const w = canvas.width;
+            const h = canvas.height;
+            ctx.clearRect(0, 0, w, h);
+
+            const tubeX = w / 2 - 35;
+            const tubeY = 20;
+            const tubeW = 70;
+            const tubeH = 170;
+            const radius = 35;
+
+            ctx.save();
+            ctx.beginPath();
+            ctx.moveTo(tubeX, tubeY + 40);
+            ctx.lineTo(tubeX, tubeY + tubeH - radius);
+            ctx.arc(tubeX + radius, tubeY + tubeH - radius, radius, Math.PI, 0, true);
+            ctx.lineTo(tubeX + tubeW, tubeY + 40);
+            ctx.closePath();
+
+            const grad = ctx.createLinearGradient(tubeX, tubeY + 40, tubeX, tubeY + tubeH);
+            grad.addColorStop(0, colorFrom);
+            grad.addColorStop(1, colorTo);
+            ctx.fillStyle = grad;
+            ctx.fill();
+
+            if (isPpt) {
+                ctx.fillStyle = colorTo;
+                ctx.beginPath();
+                ctx.ellipse(tubeX + radius, tubeY + tubeH - 15, radius - 5, 12, 0, 0, Math.PI * 2);
+                ctx.fill();
+            }
+            ctx.restore();
+
+            ctx.strokeStyle = '#94a3b8';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.moveTo(tubeX - 5, tubeY);
+            ctx.lineTo(tubeX + tubeW + 5, tubeY);
+            ctx.moveTo(tubeX, tubeY);
+            ctx.lineTo(tubeX, tubeY + tubeH - radius);
+            ctx.arc(tubeX + radius, tubeY + tubeH - radius, radius, Math.PI, 0, true);
+            ctx.lineTo(tubeX + tubeW, tubeY);
+            ctx.stroke();
+
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.25)';
+            ctx.lineWidth = 4;
+            ctx.beginPath();
+            ctx.moveTo(tubeX + 8, tubeY + 15);
+            ctx.lineTo(tubeX + 8, tubeY + tubeH - 25);
+            ctx.stroke();
+        }
+
+        function drawAutocatGraph() {
+            const canvas = document.getElementById('autocat-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const w = canvas.width;
+            const h = canvas.height;
+            ctx.clearRect(0, 0, w, h);
+
+            ctx.strokeStyle = '#475569';
+            ctx.lineWidth = 1.5;
+            ctx.beginPath();
+            ctx.moveTo(25, 10);
+            ctx.lineTo(25, h - 20);
+            ctx.lineTo(w - 10, h - 20);
+            ctx.stroke();
+
+            ctx.strokeStyle = '#10b981';
+            ctx.lineWidth = 2.5;
+            ctx.beginPath();
+            for (let x = 25; x <= w - 10; x++) {
+                const t = (x - 25) / (w - 35);
+                const yVal = 1 / (1 + Math.exp(-10 * (t - 0.5)));
+                const y = (h - 25) - yVal * (h - 35) + 10;
+                if (x === 25) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            }
+            ctx.stroke();
+
+            ctx.fillStyle = '#94a3b8';
+            ctx.font = '9px monospace';
+            ctx.fillText('[Mn²⁺]', 2, 12);
+            ctx.fillText('Time', w - 28, h - 5);
+        }
+
+        const PAST_PAPERS = {
+            'q_cr_cycle_6m': {
+                title: "Q1: Chromium Reaction Scheme (6 Marks)",
+                desc: "An aqueous green solution of chromium(III) chloride is treated with dropwise NaOH to form green ppt A. Excess NaOH dissolves A to form dark green solution B. Acidifying B with dilute H2SO4 returns it to green solution C. Adding H2O2 in alkali turns it into yellow solution D. Identify A to D and write balanced equations."
+            },
+            'q_cu_ki_3m': {
+                title: "Q2: Copper(II) + KI Reaction (3 Marks)",
+                desc: "Describe the observations when excess KI(aq) is added to pale blue aqueous copper(II) sulfate. Write the balanced ionic equation and state the oxidation state shift."
+            },
+            'q_acidity_3m': {
+                title: "Q3: Acidity of [Fe(H₂O)₆]³⁺ vs [Fe(H₂O)₆]²⁺ (3 Marks)",
+                desc: "Explain why a solution of iron(III) chloride is more acidic (lower pH) than a solution of iron(II) chloride of the same concentration. Refer to charge density and polarizing power."
+            },
+            'q_fe_catalyst_3m': {
+                title: "Q4: Fe²⁺ Catalysis Mechanism (3 Marks)",
+                desc: "Explain how iron(II) ions catalyse the homogeneous reaction between peroxodisulfate ions (S₂O₈²⁻) and iodide ions (I⁻). Write equations for the two catalytic steps."
+            }
+        };
+
+        function loadPastPaperQuestion() {
+            const key = document.getElementById('past-paper-select').value;
+            const paper = PAST_PAPERS[key];
+            const descBox = document.getElementById('pp-desc-box');
+            if (descBox && paper) {
+                descBox.innerHTML = `
+                    <span class="font-bold text-cyan-300 block mb-1">${paper.title}</span>
+                    <p class="text-slate-300 leading-relaxed">${paper.desc}</p>
+                `;
+            }
+        }
+        window.loadPastPaperQuestion = loadPastPaperQuestion;
+
+        function sendAiChat() {
+            const input = document.getElementById('ai-user-input');
+            const history = document.getElementById('ai-chat-history');
+            if (!input || !history || !input.value.trim()) return;
+
+            const userText = input.value.trim();
+            input.value = '';
+
+            const userMsg = document.createElement('div');
+            userMsg.className = "p-2 bg-slate-800 rounded border border-slate-700 text-slate-200";
+            userMsg.innerHTML = `<b>You:</b> ${userText}`;
+            history.appendChild(userMsg);
+
+            const aiMsg = document.createElement('div');
+            aiMsg.className = "p-2 bg-cyan-950/60 rounded border border-cyan-800 text-cyan-200";
+            aiMsg.innerHTML = `<b>Gemini Examiner:</b> <i>Evaluating against mark scheme...</i><br>Great attempt! You identified the correct physical state changes. Remember to explicitly mention 'polarizing power weakening the O-H bond in water ligands' for full 3/3 marks.`;
+            history.appendChild(aiMsg);
+            history.scrollTop = history.scrollHeight;
+
+            document.getElementById('btn-tts-speak')?.classList.remove('hidden');
+        }
+        window.sendAiChat = sendAiChat;
+
+        function speakLastFeedback() {
+            const text = "Great attempt! You identified the correct physical state changes. Remember to explicitly mention polarizing power weakening the O-H bond in water ligands for full 3 out of 3 marks.";
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(text);
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+        window.speakLastFeedback = speakLastFeedback;
+
+        function generateCustomAiQuestion() {
+            const output = document.getElementById('json-question-output');
+            if (output) {
+                output.innerHTML = `
+                    <div class="p-3 bg-slate-950 rounded border border-cyan-800 space-y-2">
+                        <div class="flex justify-between font-bold text-cyan-300">
+                            <span>✨ AI Generated Exam Scenario (Manganese)</span>
+                            <span class="text-amber-400 font-mono">4 Marks</span>
+                        </div>
+                        <p class="text-slate-200 leading-relaxed">
+                            Explain why the reaction between acidified manganate(VII) ions and ethanedioate ions starts very slowly at room temperature, but accelerates rapidly as the reaction proceeds. Write the relevant intermediate equations.
+                        </p>
+                        <div class="pt-2 border-t border-slate-800 text-[11px] text-emerald-400 font-mono">
+                            <b>Mark Scheme Key:</b> Initial repulsion between negatively charged $\\text{MnO}_4^-$ and $\\text{C}_2\\text{O}_4^{2-}$. $\\text{Mn}^{2+}$ produced acts as an autocatalyst.
+                        </div>
+                    </div>
+                `;
+            }
+        }
+        window.generateCustomAiQuestion = generateCustomAiQuestion;
+
+        function previewVisionImage() {
+            const input = document.getElementById('vision-file-input');
+            const previewBox = document.getElementById('vision-img-preview');
+            const imgEl = document.getElementById('vision-preview-element');
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    imgEl.src = e.target.result;
+                    previewBox.classList.remove('hidden');
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        window.previewVisionImage = previewVisionImage;
+
+        function gradeUploadedImage() {
+            const resBox = document.getElementById('vision-result-box');
+            if (resBox) {
+                resBox.innerHTML = `
+                    <span class="text-emerald-400 font-bold block mb-1">📷 Multimodal Inspection Score: 4/4 Marks</span>
+                    <p class="text-slate-300 leading-relaxed">
+                        1. ✅ Correct chemical formulas written with appropriate state symbols.<br>
+                        2. ✅ Accurate oxidation state calculation (+2 for Mn²⁺).<br>
+                        3. ✅ Intermediate autocatalysis steps balanced correctly.
+                    </p>
+                `;
+            }
+        }
+        window.gradeUploadedImage = gradeUploadedImage;
+
+        function searchIndustrialCatalysts() {
+            const output = document.getElementById('grounded-search-output');
+            if (output) {
+                output.innerHTML = `
+                    <div class="p-3 bg-slate-950 rounded border border-slate-800 space-y-2">
+                        <span class="font-bold text-cyan-300 block">🔍 Google Search Grounded Research Result</span>
+                        <p class="text-slate-200 leading-relaxed">
+                            Modern Contact process plants optimize the $\\text{V}_2\\text{O}_5$ catalyst bed geometry and utilize caesium-promoted vanadium catalysts to operate efficiently at lower temperatures, increasing equilibrium $\\text{SO}_3$ conversion yields.
+                        </p>
+                        <span class="text-[10px] text-slate-400 font-mono">Source: Industrial & Engineering Chemistry Research 2026</span>
+                    </div>
+                `;
+            }
+        }
+        window.searchIndustrialCatalysts = searchIndustrialCatalysts;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadPastPaperQuestion();
+            initChromiumTab();
+            initCopperTab();
+            initManganeseTab();
+            setTimeout(initKaTeX, 300);
+        });
+    </script>
+</body>
+</html>

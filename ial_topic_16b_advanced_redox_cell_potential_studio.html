@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IAL Chemistry Topic 16 (Part 2): Advanced Redox & Feasibility Studio</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- KaTeX CSS & JS CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="initKaTeX()"></script>
+
+    <script>
+        function initKaTeX() {
+            if (window.renderMathInElement) {
+                window.renderMathInElement(document.body, {
+                    delimiters: [
+                        {left: '$$', right: '$$', display: true},
+                        {left: '$', right: '$', display: false}
+                    ],
+                    throwOnError: false
+                });
+            }
+        }
+    </script>
+
+    <style>
+        .tab-btn-active {
+            border-bottom: 3px solid #38bdf8;
+            color: #38bdf8;
+            font-weight: 700;
+            background-color: rgba(56, 189, 248, 0.12);
+        }
+        .studio-canvas-bg {
+            background: linear-gradient(180deg, #0f172a 0%, #020617 100%);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            height: 6px;
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #1e293b;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #475569;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex flex-col">
+
+    <header class="bg-slate-900 border-b border-slate-800 sticky top-0 z-40 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center gap-3">
+            <div class="flex items-center gap-3">
+                <div class="bg-sky-500/20 p-2 rounded-lg border border-sky-500/30">
+                    <span class="text-2xl">⚡</span>
+                </div>
+                <div>
+                    <h1 class="text-lg font-extrabold tracking-tight text-sky-400">IAL Chemistry Advanced Redox & Feasibility Studio</h1>
+                    <p class="text-xs text-slate-400">Edexcel Topic 16.7–16.14: Cell Notation, Feasibility, Vanadium Steps & $\Delta S_{\text{total}} \propto E^\ominus_{\text{cell}}$</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-2">
+                <span class="px-2.5 py-1 text-xs font-semibold rounded-full bg-sky-950 text-sky-300 border border-sky-800">
+                    Edexcel Spec 16.7 - 16.14
+                </span>
+                <span class="px-3 py-1.5 text-xs bg-emerald-950/80 text-emerald-300 rounded-lg border border-emerald-800/80 flex items-center gap-1.5 font-medium">
+                    <span>✨ Gemini AI Auto-Active</span>
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <nav class="bg-slate-900/90 border-b border-slate-800 text-xs sm:text-sm font-medium overflow-x-auto custom-scrollbar sticky top-[57px] z-30 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 flex whitespace-nowrap">
+            <button onclick="switchTab('scaffold')" id="btn-scaffold" class="tab-btn-active py-3 px-5 text-slate-300 hover:text-sky-300 transition flex items-center gap-2">
+                <span>🧭 Master Scaffold & IUPAC Rules</span>
+            </button>
+            <button onclick="switchTab('builder')" id="btn-builder" class="py-3 px-5 text-slate-400 hover:text-sky-300 transition flex items-center gap-2">
+                <span>✍️ IUPAC Cell Notation Builder</span>
+            </button>
+            <button onclick="switchTab('vanadium')" id="btn-vanadium" class="py-3 px-5 text-slate-400 hover:text-sky-300 transition flex items-center gap-2">
+                <span>🧪 Vanadium & Disproportionation Studio</span>
+            </button>
+            <button onclick="switchTab('feasibility')" id="btn-feasibility" class="py-3 px-5 text-slate-400 hover:text-sky-300 transition flex items-center gap-2">
+                <span>📊 Thermodynamic Feasibility Predictor</span>
+            </button>
+            <button onclick="switchTab('ai')" id="btn-ai" class="py-3 px-5 text-slate-400 hover:text-sky-300 transition flex items-center gap-2">
+                <span>🤖 AI Examiner & Edexcel Past Papers</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main class="max-w-7xl mx-auto px-4 py-6 flex-grow w-full">
+
+        <!-- TAB 1: MASTER SCAFFOLD & IUPAC RULES -->
+        <section id="tab-scaffold" class="space-y-6">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-sm">
+                <div class="border-b border-slate-800 pb-4 mb-6">
+                    <span class="text-xs font-bold text-sky-400 uppercase tracking-widest">Pedagogical Core</span>
+                    <h2 class="text-xl font-bold text-white mt-1">IUPAC Conventional Cell Diagram Rules & Thermodynamic Relationships</h2>
+                    <p class="text-xs text-slate-400 mt-1">Master cell notation formatting, $E^\ominus_{\text{cell}}$ calculation rules, and entropy proportionalities for Edexcel IAL exams.</p>
+                </div>
+
+                <!-- IUPAC Rules Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                    <div class="bg-slate-950 border border-rose-900/50 rounded-xl p-5 relative">
+                        <div class="text-xs font-bold text-rose-400 uppercase tracking-wider mb-2">LHS = Oxidation (Anode)</div>
+                        <h3 class="text-base font-bold text-white mb-1">🐂 Left Hand Side (Oxidation)</h3>
+                        <p class="text-xs text-slate-300 mb-2 font-semibold">Species being oxidized (releasing $e^-$).</p>
+                        <ul class="text-xs text-slate-400 space-y-1.5 list-disc list-inside">
+                            <li>Reducing agent written on far left.</li>
+                            <li>Phase boundary: Single solid vertical line `|`.</li>
+                            <li>Example: $\text{Zn(s)} \mid [\text{Zn}^{2+}\text{(aq)}]$</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-slate-950 border border-emerald-900/50 rounded-xl p-5 relative">
+                        <div class="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-2">RHS = Reduction (Cathode)</div>
+                        <h3 class="text-base font-bold text-white mb-1">🐱 Right Hand Side (Reduction)</h3>
+                        <p class="text-xs text-slate-300 mb-2 font-semibold">Species being reduced (accepting $e^-$).</p>
+                        <ul class="text-xs text-slate-400 space-y-1.5 list-disc list-inside">
+                            <li>Oxidizing agent written on right.</li>
+                            <li>Salt bridge: Double solid vertical line `||`.</li>
+                            <li>Example: $[\text{Cu}^{2+}\text{(aq)}] \mid \text{Cu(s)}$</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-slate-950 border border-purple-900/50 rounded-xl p-5 relative">
+                        <div class="text-xs font-bold text-purple-400 uppercase tracking-wider mb-2">Inert Platinum Electrode</div>
+                        <h3 class="text-base font-bold text-white mb-1">⚡ Platinum ($\text{Pt(s)}$) Rule</h3>
+                        <p class="text-xs text-slate-300 mb-2 font-semibold">Required when no conducting metal electrode is present.</p>
+                        <ul class="text-xs text-slate-400 space-y-1.5 list-disc list-inside">
+                            <li>Ion-ion cells in same phase: $\text{Pt(s)} \mid [\text{Fe}^{2+}\text{(aq)}] , [\text{Fe}^{3+}\text{(aq)}]$</li>
+                            <li>Dichromate/Permanganate: $[\text{Cr}_2\text{O}_7^{2-}\text{(aq)} + 14\text{H}^+\text{(aq)}] , [2\text{Cr}^{3+}\text{(aq)} + 7\text{H}_2\text{O(l)}] \mid \text{Pt(s)}$</li>
+                            <li>Gas half-cells: $\text{Pt(s)} \mid \text{Cl}_2\text{(g)} \mid [2\text{Cl}^-\text{(aq)}]$</li>
+                            <li><b class="text-amber-300">Mandatory Rule:</b> Species in same environment must use `[species(aq)]` brackets with `,`.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Golden Calculation Rules -->
+                <div class="mt-6 bg-slate-950 border border-amber-900/50 rounded-xl p-5 space-y-3">
+                    <h3 class="text-sm font-bold text-amber-300 flex items-center gap-2">
+                        <span>⭐ Mandatory Edexcel Mark Scheme Rules for $E^\ominus_{\text{cell}}$</span>
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                        <div class="p-3.5 bg-slate-900 rounded-lg border border-slate-800">
+                            <span class="font-bold text-cyan-400 block mb-1">1. $E^\ominus_{\text{cell}}$ Formula</span>
+                            <span class="text-slate-300 block mb-1">$$E^\ominus_{\text{cell}} = E^\ominus_{\text{RHS}} - E^\ominus_{\text{LHS}} = E^\ominus_{\text{reduction}} - E^\ominus_{\text{oxidation}}$$</span>
+                            <span class="text-slate-400 text-[11px]">Alternatively: Swap the equation for the more negative species and ADD potentials ($E^\ominus_{\text{cell}} > 0$ for feasible reactions).</span>
+                        </div>
+                        <div class="p-3.5 bg-slate-900 rounded-lg border border-slate-800">
+                            <span class="font-bold text-rose-400 block mb-1">2. CRITICAL EXAM PITFALL: DO NOT MULTIPLY $E^\ominus$!</span>
+                            <span class="text-slate-300 block mb-1">When balancing overall stoichiometry (e.g., multiplying a half-equation by 2 or 5), **NEVER multiply the $E^\ominus$ value!**</span>
+                            <span class="text-slate-400 text-[11px] font-semibold">$E^\ominus$ is an intensive property (potential difference per unit charge).</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Thermodynamic Proportionalities Section -->
+                <div class="mt-6 bg-slate-950 border border-sky-900/50 rounded-xl p-5 space-y-3">
+                    <h3 class="text-sm font-bold text-sky-300 flex items-center gap-2">
+                        <span>📐 Thermodynamic Proportionalities (Specification 16.11)</span>
+                    </h3>
+                    <p class="text-xs text-slate-400">Standard cell potential $E^\ominus_{\text{cell}}$ is directly proportional to both total entropy change ($\Delta S_{\text{total}}$) and the natural logarithm of the equilibrium constant ($\ln K$).</p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                        <div class="p-4 bg-slate-900 rounded-lg border border-slate-800 space-y-2">
+                            <span class="font-bold text-emerald-400 block">1. Total Entropy Change ($\Delta S_{\text{total}}$)</span>
+                            <div class="p-2.5 bg-slate-950 rounded font-mono text-center text-cyan-300">
+                                $$\Delta S_{\text{total}} = n F E^\ominus_{\text{cell}}$$
+                            </div>
+                            <div class="p-2 bg-emerald-950/40 rounded border border-emerald-900/60 font-mono text-emerald-200 text-center font-bold">
+                                $$\Delta S_{\text{total}} \propto E^\ominus_{\text{cell}}$$
+                            </div>
+                            <p class="text-slate-400 text-[11px]">Where $n$ = moles of electrons transferred, $F$ = Faraday constant ($96,500\text{ C mol}^{-1}$). Since $n$ and $F$ are positive, a positive $E^\ominus_{\text{cell}}$ guarantees a positive $\Delta S_{\text{total}}$.</p>
+                        </div>
+
+                        <div class="p-4 bg-slate-900 rounded-lg border border-slate-800 space-y-2">
+                            <span class="font-bold text-sky-400 block">2. Equilibrium Constant ($\ln K$)</span>
+                            <div class="p-2.5 bg-slate-950 rounded font-mono text-center text-cyan-300">
+                                $$\ln K = \frac{n F E^\ominus_{\text{cell}}}{R T}$$
+                            </div>
+                            <div class="p-2 bg-sky-950/40 rounded border border-sky-900/60 font-mono text-sky-200 text-center font-bold">
+                                $$\ln K \propto E^\ominus_{\text{cell}}$$
+                            </div>
+                            <p class="text-slate-400 text-[11px]">A larger positive $E^\ominus_{\text{cell}}$ yields a significantly larger $K$ value, indicating that the reaction goes virtually to completion at equilibrium.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kinetic & Non-Standard Limitations -->
+                <div class="mt-6 bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3">
+                    <h3 class="text-sm font-bold text-amber-400 flex items-center gap-2">
+                        <span>⚠️ Limitations of $E^\ominus$ Feasibility Predictions (Spec 16.12)</span>
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                        <div class="p-3 bg-slate-900 rounded-lg border border-slate-800">
+                            <b class="text-slate-200 block mb-1">1. Kinetic Stability (High Activation Energy $E_a$):</b>
+                            <span class="text-slate-300">A reaction may be thermodynamically feasible ($E^\ominus_{\text{cell}} > 0$), but occurs at an unmeasurably slow rate due to a high activation energy barrier $E_a$.</span>
+                        </div>
+                        <div class="p-3 bg-slate-900 rounded-lg border border-slate-800">
+                            <b class="text-slate-200 block mb-1">2. Departure from Standard Conditions:</b>
+                            <span class="text-slate-300">If ion concentrations deviate from $1.00\text{ mol dm}^{-3}$ or temperature differs from $298\text{ K}$, Le Chatelier shifts alter $E$ away from $E^\ominus$, potentially changing feasibility.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 2: INTERACTIVE IUPAC CELL NOTATION BUILDER -->
+        <section id="tab-builder" class="hidden space-y-6">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-sm space-y-6">
+                <div>
+                    <span class="text-xs font-bold text-sky-400 uppercase tracking-widest">Interactive Practice</span>
+                    <h2 class="text-xl font-bold text-white mt-1">IUPAC Conventional Cell Diagram Builder</h2>
+                    <p class="text-xs text-slate-400 mt-1">Select a reaction scenario, then assemble the notation tokens in exact IUPAC order (LHS Oxidation $\parallel$ RHS Reduction).</p>
+                </div>
+
+                <!-- Scenario Selection -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-3">
+                    <button onclick="selectBuilderScenario('zn_cu')" id="scen-btn-zn_cu" class="p-3 rounded-lg border border-sky-500 bg-sky-950/30 text-left transition hover:border-sky-400">
+                        <span class="font-bold text-xs text-sky-300 block">Scenario 1</span>
+                        <span class="text-[11px] text-slate-300">Zinc & Copper Cell</span>
+                    </button>
+                    <button onclick="selectBuilderScenario('fe_cu')" id="scen-btn-fe_cu" class="p-3 rounded-lg border border-slate-800 bg-slate-950 text-left transition hover:border-sky-400">
+                        <span class="font-bold text-xs text-slate-300 block">Scenario 2</span>
+                        <span class="text-[11px] text-slate-400">Fe²⁺/Fe³⁺ & Copper Cell</span>
+                    </button>
+                    <button onclick="selectBuilderScenario('cl_cr')" id="scen-btn-cl_cr" class="p-3 rounded-lg border border-slate-800 bg-slate-950 text-left transition hover:border-sky-400">
+                        <span class="font-bold text-xs text-slate-300 block">Scenario 3</span>
+                        <span class="text-[11px] text-slate-400">Chlorine & Dichromate Cell</span>
+                    </button>
+                    <button onclick="selectBuilderScenario('mn_bi')" id="scen-btn-mn_bi" class="p-3 rounded-lg border border-slate-800 bg-slate-950 text-left transition hover:border-sky-400">
+                        <span class="font-bold text-xs text-slate-300 block">Scenario 4</span>
+                        <span class="text-[11px] text-slate-400">Manganese & Bismuthate Cell</span>
+                    </button>
+                </div>
+
+                <!-- Scenario Prompt Banner -->
+                <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl space-y-2">
+                    <div class="flex justify-between items-center text-xs">
+                        <span class="font-bold text-amber-300 uppercase tracking-wider">Target Chemical System:</span>
+                        <span id="builder-e-cell-target" class="font-mono text-emerald-400 font-bold">E°cell = +1.10 V</span>
+                    </div>
+                    <p id="builder-prompt-text" class="text-xs text-slate-200 leading-relaxed font-mono"></p>
+                </div>
+
+                <!-- Interactive Token Bench & Drop Slot Area -->
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center text-xs">
+                        <span class="font-bold text-slate-300 uppercase tracking-wider">Your Assembled IUPAC Cell Diagram:</span>
+                        <button onclick="clearBuilderSlots()" class="text-[11px] text-rose-400 hover:underline">Clear Bench</button>
+                    </div>
+
+                    <!-- Selected Slots Area -->
+                    <div id="builder-slots-container" class="min-h-[60px] p-3 bg-slate-950 border-2 border-dashed border-slate-800 rounded-xl flex flex-wrap items-center gap-2 justify-center font-mono text-xs">
+                        <!-- Token chips dropped here -->
+                    </div>
+
+                    <!-- Available Tokens Palette -->
+                    <div>
+                        <span class="text-xs text-slate-400 block mb-2">Click tokens below to add them to your diagram:</span>
+                        <div id="builder-tokens-palette" class="flex flex-wrap gap-2">
+                            <!-- Tokens injected via JS -->
+                        </div>
+                    </div>
+
+                    <!-- Check & Feedback Buttons -->
+                    <div class="flex gap-3 pt-2">
+                        <button onclick="checkBuilderAnswer()" class="flex-grow py-2.5 bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs rounded-lg shadow transition">
+                            Check Conventional Cell Notation
+                        </button>
+                    </div>
+
+                    <div id="builder-feedback-msg" class="hidden text-xs p-3.5 rounded-lg border leading-relaxed"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 3: VANADIUM STEPWISE REDUCTION & DISPROPORTIONATION STUDIO -->
+        <section id="tab-vanadium" class="hidden space-y-6">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-sm space-y-6">
+                <div>
+                    <span class="text-xs font-bold text-sky-400 uppercase tracking-widest">Multi-Step Redox Simulation</span>
+                    <h2 class="text-xl font-bold text-white mt-1">Vanadium Stepwise Reduction & Disproportionation Studio</h2>
+                    <p class="text-xs text-slate-400 mt-1">Explore Zinc reducing Vanadium across oxidation states (+5 to +2) and analyze hydrogen peroxide ($\text{H}_2\text{O}_2$) disproportionation.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                    <!-- Left: Vanadium Reduction Test Tube Visualizer -->
+                    <div class="lg:col-span-5 bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col items-center">
+                        <h3 class="text-xs font-bold text-slate-300 uppercase tracking-wider self-start">Vanadium Oxidation State Test Tube</h3>
+                        
+                        <!-- Test Tube Graphic -->
+                        <div class="relative w-32 h-64 border-4 border-slate-700 border-t-0 rounded-b-full bg-slate-900 flex flex-col justify-end p-1 overflow-hidden shadow-inner">
+                            <div id="van-liquid-fill" class="w-full h-4/5 rounded-b-full transition-colors duration-1000 flex items-center justify-center relative" style="background-color: #eab308;">
+                                <span id="van-ion-label" class="text-xs font-extrabold text-slate-900 bg-white/80 px-2 py-1 rounded shadow font-mono">VO₂⁺ (+5)</span>
+                            </div>
+                        </div>
+
+                        <!-- Step Control Buttons -->
+                        <div class="w-full space-y-2">
+                            <div class="grid grid-cols-2 gap-2">
+                                <button onclick="setVanadiumStep(0)" class="py-2 px-3 text-xs bg-amber-600/80 hover:bg-amber-500 text-white font-bold rounded-lg transition">
+                                    1. VO₂⁺ (+5 Yellow)
+                                </button>
+                                <button onclick="setVanadiumStep(1)" class="py-2 px-3 text-xs bg-sky-600/80 hover:bg-sky-500 text-white font-bold rounded-lg transition">
+                                    2. VO²⁺ (+4 Blue)
+                                </button>
+                                <button onclick="setVanadiumStep(2)" class="py-2 px-3 text-xs bg-emerald-600/80 hover:bg-emerald-500 text-white font-bold rounded-lg transition">
+                                    3. V³⁺ (+3 Green)
+                                </button>
+                                <button onclick="setVanadiumStep(3)" class="py-2 px-3 text-xs bg-purple-600/80 hover:bg-purple-500 text-white font-bold rounded-lg transition">
+                                    4. V²⁺ (+2 Violet)
+                                </button>
+                            </div>
+                            <button onclick="runVanadiumAutoSequence()" class="w-full py-2 bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs rounded-lg shadow transition">
+                                ▶️ Run Full Stepwise Reduction with Zinc ($\text{Zn}$)
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Right: Stepwise Thermodynamics Breakdown & Disproportionation -->
+                    <div class="lg:col-span-7 bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+                        <h3 class="text-xs font-bold text-amber-300 uppercase tracking-wider">Stepwise Thermodynamics & Feasibility Matrix</h3>
+                        
+                        <div id="van-step-details" class="p-4 bg-slate-900 rounded-lg border border-slate-800 text-xs space-y-2 font-mono">
+                            <!-- Injected by JS -->
+                        </div>
+
+                        <!-- Why Reduction Halts at V2+ Callout -->
+                        <div class="p-3.5 bg-rose-950/40 border border-rose-900/60 rounded-lg text-xs space-y-1">
+                            <span class="font-bold text-rose-300 block">⚠️ Why does Zinc stop at $\text{V}^{2+}$ and NOT reduce to $\text{V(s)}$ metal?</span>
+                            <p class="text-slate-300 leading-relaxed">
+                                For $\text{V}^{2+} + 2e^- \rightleftharpoons \text{V(s)}$, $E^\ominus = -1.18\text{ V}$. Paired with Zinc oxidation ($\text{Zn} \rightarrow \text{Zn}^{2+} + 2e^-, E^\ominus = +0.76\text{ V}$):
+                                $$E^\ominus_{\text{cell}} = -1.18 - (-0.76) = -0.42\text{ V}$$
+                                Because $E^\ominus_{\text{cell}} < 0$, reducing $\text{V}^{2+}$ to $\text{V(s)}$ is **thermodynamically non-feasible** under standard conditions!
+                            </p>
+                        </div>
+
+                        <!-- Disproportionation Section -->
+                        <div class="p-4 bg-slate-900 border border-slate-800 rounded-lg space-y-2 text-xs">
+                            <span class="font-bold text-sky-300 uppercase block tracking-wider text-[11px]">♻️ Disproportionation Analysis: Hydrogen Peroxide ($\text{H}_2\text{O}_2$)</span>
+                            <p class="text-slate-300">
+                                Disproportionation occurs when a single species is simultaneously **oxidized and reduced** in the same reaction.
+                            </p>
+                            <div class="p-2.5 bg-slate-950 rounded border border-slate-800 font-mono text-cyan-200">
+                                $$2\text{H}_2\text{O}_2(\text{aq}) \rightarrow 2\text{H}_2\text{O}(\text{l}) + \text{O}_2(\text{g})$$
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px]">
+                                <div class="p-2 bg-slate-950 rounded border border-slate-800">
+                                    <span class="text-rose-400 font-bold block">Oxidation:</span>
+                                    <span class="text-slate-300 font-mono">$\text{H}_2\text{O}_2 \rightarrow \text{O}_2 + 2\text{H}^+ + 2e^-$</span><br>
+                                    <span class="text-slate-400">Oxidation number of O: $-1 \rightarrow 0$</span>
+                                </div>
+                                <div class="p-2 bg-slate-950 rounded border border-slate-800">
+                                    <span class="text-emerald-400 font-bold block">Reduction:</span>
+                                    <span class="text-slate-300 font-mono">$\text{H}_2\text{O}_2 + 2\text{H}^+ + 2e^- \rightarrow 2\text{H}_2\text{O}$</span><br>
+                                    <span class="text-slate-400">Oxidation number of O: $-1 \rightarrow -2$</span>
+                                </div>
+                            </div>
+                            <div class="p-2 bg-emerald-950/40 rounded border border-emerald-900/60 font-mono text-emerald-300 text-center font-bold">
+                                $$E^\ominus_{\text{cell}} = +1.77\text{ V} - (+0.68\text{ V}) = +1.09\text{ V} > 0 \text{ (Feasible!)}$$
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 4: THERMODYNAMIC FEASIBILITY PREDICTOR -->
+        <section id="tab-feasibility" class="hidden space-y-6">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-sm space-y-6">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                    <div>
+                        <span class="text-xs font-bold text-sky-400 uppercase tracking-widest">Reaction Feasibility Studio</span>
+                        <h2 class="text-xl font-bold text-white mt-1">Electrochemical Feasibility Predictor (31-System Data Booklet)</h2>
+                        <p class="text-xs text-slate-400 mt-1">Select ANY two electrode systems from the official Edexcel Data Booklet (1 to 31) to test $E^\ominus_{\text{cell}}$ and evaluate thermodynamic feasibility.</p>
+                    </div>
+                    <button onclick="toggleDataBookletModal(true)" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-sky-300 border border-slate-700 text-xs font-bold rounded-lg transition flex items-center gap-1.5">
+                        <span>📖 View 31-System Data Booklet Table</span>
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                    <!-- Pair Selector -->
+                    <div class="lg:col-span-5 bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-xs font-bold text-slate-300 uppercase tracking-wider">Select Electrode Systems</h3>
+                            <button onclick="autoSetSpontaneousFeasibility()" class="text-[11px] font-bold text-sky-400 hover:underline flex items-center gap-1">
+                                <span>⚡ Auto-Set Spontaneous Path</span>
+                            </button>
+                        </div>
+                        
+                        <!-- System 1 (Reduction) -->
+                        <div>
+                            <label for="feas-sys1-select" class="block text-xs font-semibold text-emerald-400 mb-1">
+                                System 1: Reduction Candidate (RHS - Cathode):
+                            </label>
+                            <select id="feas-sys1-select" onchange="updateFeasibilityCalc()" class="w-full bg-slate-900 border border-slate-700 text-slate-100 text-xs rounded-lg p-2.5 font-mono custom-scrollbar">
+                                <!-- Injected dynamically by JS (1 to 31) -->
+                            </select>
+                        </div>
+
+                        <!-- System 2 (Oxidation) -->
+                        <div>
+                            <label for="feas-sys2-select" class="block text-xs font-semibold text-rose-400 mb-1">
+                                System 2: Oxidation Candidate (LHS - Anode):
+                            </label>
+                            <select id="feas-sys2-select" onchange="updateFeasibilityCalc()" class="w-full bg-slate-900 border border-slate-700 text-slate-100 text-xs rounded-lg p-2.5 font-mono custom-scrollbar">
+                                <!-- Injected dynamically by JS (1 to 31) -->
+                            </select>
+                        </div>
+
+                        <!-- Swap Direction Button -->
+                        <button onclick="swapFeasibilityRoles()" class="w-full py-2 bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-300 text-xs font-semibold rounded-lg transition flex items-center justify-center gap-2">
+                            <span>⇄ Swap Reduction & Oxidation Roles</span>
+                        </button>
+
+                        <div class="p-3.5 bg-slate-900 rounded-lg border border-slate-800 text-xs space-y-2">
+                            <div class="flex justify-between">
+                                <span class="text-slate-400">E°(Reduction - System 1):</span>
+                                <span id="feas-e-ox" class="font-mono text-emerald-400 font-bold">+1.51 V</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-slate-400">E°(Oxidation - System 2):</span>
+                                <span id="feas-e-red" class="font-mono text-rose-400 font-bold">-0.76 V</span>
+                            </div>
+                            <div class="border-t border-slate-800 pt-2 flex justify-between items-center">
+                                <span class="font-bold text-slate-200">E°cell (E°RHS - E°LHS):</span>
+                                <span id="feas-e-cell" class="font-mono text-lg font-extrabold text-sky-400">+2.27 V</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Output & Analysis -->
+                    <div class="lg:col-span-7 bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <h3 class="text-xs font-bold text-sky-300 uppercase tracking-wider">Thermodynamic Evaluation & Stepwise Breakdown</h3>
+                            
+                            <div id="feas-banner" class="p-4 rounded-xl border text-xs space-y-2">
+                                <!-- Injected by JS -->
+                            </div>
+
+                            <!-- Balanced Equation Card -->
+                            <div class="p-3.5 bg-slate-900 border border-slate-800 rounded-lg text-xs space-y-2">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-bold text-slate-200">Balanced Overall Ionic Equation:</span>
+                                    <span id="feas-electron-count" class="text-[10px] font-mono text-cyan-400">10e⁻ transferred</span>
+                                </div>
+                                <div id="feas-equation-box" class="p-2.5 bg-slate-950 rounded border border-slate-800 font-mono text-cyan-300 text-xs overflow-x-auto">
+                                    <!-- Equation injected by JS -->
+                                </div>
+                                <p class="text-[11px] text-amber-400 italic">⭐ Exam Rule: Half-equations are multiplied to balance electrons, but $E^\ominus$ values are NEVER multiplied!</p>
+                            </div>
+                        </div>
+
+                        <!-- Kinetic Note -->
+                        <div class="p-3.5 bg-amber-950/30 border border-amber-900/50 rounded-lg text-xs text-amber-200 space-y-1">
+                            <span class="font-bold text-amber-400 block">💡 IAL Examiner Note on Feasibility vs Rate:</span>
+                            <p id="feas-kinetic-note" class="text-slate-300 leading-relaxed"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DATA BOOKLET MODAL -->
+        <div id="databooklet-modal" class="hidden fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl max-w-3xl w-full max-h-[85vh] p-6 space-y-4 shadow-2xl flex flex-col">
+                <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+                    <h3 class="text-sm font-bold text-white flex items-center gap-2">
+                        <span>📖 Official Edexcel Data Booklet Table (Standard Reduction Potentials at 298 K)</span>
+                    </h3>
+                    <button onclick="toggleDataBookletModal(false)" class="text-slate-400 hover:text-white text-lg font-bold">×</button>
+                </div>
+                <div class="overflow-y-auto custom-scrollbar flex-grow pr-1">
+                    <table class="w-full text-left text-xs font-mono text-slate-300">
+                        <thead class="bg-slate-950 text-sky-400 sticky top-0 border-b border-slate-800">
+                            <tr>
+                                <th class="p-2.5">#</th>
+                                <th class="p-2.5">Right-hand electrode system (Half-equation)</th>
+                                <th class="p-2.5 text-right">E° / V</th>
+                            </tr>
+                        </thead>
+                        <tbody id="databooklet-table-body" class="divide-y divide-slate-800">
+                            <!-- Injected dynamically by JS -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="flex justify-end pt-2 border-t border-slate-800">
+                    <button onclick="toggleDataBookletModal(false)" class="px-4 py-1.5 bg-sky-600 hover:bg-sky-500 text-white text-xs font-bold rounded-lg">Close Table</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 5: AI EXAMINER & EDEXCEL PAST PAPER BANK -->
+        <section id="tab-ai" class="hidden space-y-6">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-sm space-y-6">
+                <div>
+                    <h2 class="text-xl font-bold text-white">AI Advanced Redox Examiner & Edexcel Past Paper Suite</h2>
+                    <p class="text-xs text-slate-400 mt-1">Practice authentic Edexcel IAL past paper questions on cell notation, Vanadium reduction, and disproportionation with auto-grading via Gemini AI.</p>
+                </div>
+
+                <!-- READ-ONLY KNOWLEDGE BASE FOR STUDENTS -->
+                <div id="kbContainer" class="space-y-2">
+                    <div class="flex justify-between items-center text-xs font-bold text-slate-300">
+                        <span>📚 OFFICIAL MARK SCHEME GROUNDING CONTEXT (Topic 16.7 - 16.14)</span>
+                        <span class="text-[10px] text-amber-400 font-mono">🔒 Locked Teacher Context</span>
+                    </div>
+                    <textarea id="aiSourceContext" rows="5" readonly class="w-full bg-slate-950/80 border border-slate-800 rounded-lg p-3 text-xs text-sky-200 font-mono focus:outline-none leading-relaxed cursor-not-allowed">
+[OFFICIAL IAL TOPIC 16.7 - 16.14 ADVANCED REDOX & FEASIBILITY MARK SCHEME GROUNDING]
+1. Conventional Cell Notation Rules:
+   - Oxidation on Left Hand Side (LHS), Reduction on Right Hand Side (RHS).
+   - Single vertical line '|' represents phase boundary. Double vertical line '||' represents salt bridge.
+   - Species in the SAME aqueous environment/phase MUST be formatted inside square brackets '[species(aq)]' separated by a comma ','.
+     Example: Pt(s) | [Fe²⁺(aq)] , [Fe³⁺(aq)] || [Cu²⁺(aq)] | Cu(s)
+     Example: Pt(s) | [2Cl⁻(aq)] | Cl₂(g) || [Cr₂O⇇²⁻(aq) + 14H⁺(aq)] , [2Cr³⁺(aq) + 7H₂O(l)] | Pt(s)
+   - Inert platinum electrode 'Pt(s)' MUST be included at the outer edges if no conducting solid metal is present.
+
+2. Calculating E°cell & Feasibility:
+   - E°cell = E°(RHS) - E°(LHS).
+   - NEVER multiply E° values when multiplying half-equations to balance electrons.
+   - Reaction is thermodynamically feasible if E°cell > 0.
+   - Kinetic stability limitation: Reaction may be feasible (E°cell > 0) but extremely slow due to high activation energy Ea.
+
+3. Stepwise Reduction of Vanadium:
+   - VO2+ (+5, Yellow) -> VO2+ (+4, Blue) -> V3+ (+3, Green) -> V2+ (+2, Violet).
+   - Zinc (E° = -0.76 V) reduces VO2+ step-by-step down to V2+, but CANNOT reduce V2+ to V(s) because E°cell = -1.18 - (-0.76) = -0.42 V (non-feasible).
+
+4. Disproportionation & Thermodynamic Equations:
+   - Disproportionation: Species is simultaneously oxidized and reduced.
+   - H2O2 disproportionation to H2O and O2 is feasible (E°cell = +1.09 V).
+   - Proportionalities: Delta S_total is directly proportional to E°cell (Delta S_total = n F E°cell).
+   - ln K is directly proportional to E°cell (ln K = n F E°cell / RT).
+</textarea>
+                </div>
+
+                <!-- AI Workspace Split -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                    <!-- Left: Authentic Edexcel Past Paper Question Bank -->
+                    <div class="lg:col-span-5 bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+                        <h3 class="text-xs font-bold text-sky-300 uppercase tracking-wider">📚 Authentic Edexcel IAL Past Paper Bank</h3>
+                        <p class="text-xs text-slate-400">Select an Edexcel IAL past paper exam question to practice:</p>
+                        
+                        <div id="past-paper-list" class="space-y-2">
+                            <!-- Populated dynamically by JS -->
+                        </div>
+                    </div>
+
+                    <!-- Right: Selected Question Workspace & Evaluator -->
+                    <div class="lg:col-span-7 bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center border-b border-slate-800 pb-2">
+                                <h3 id="pp-q-title" class="text-xs font-bold text-amber-300 uppercase tracking-wider">Select a Question from the Bank</h3>
+                                <span id="pp-q-code" class="text-[11px] font-mono text-sky-400">Edexcel IAL</span>
+                            </div>
+
+                            <div id="pp-q-box" class="p-3.5 bg-slate-900 border border-slate-800 rounded-lg text-xs leading-relaxed text-slate-200">
+                                Select an Edexcel past paper question on the left to view question text and mark scheme criteria.
+                            </div>
+
+                            <div id="ai-chat-history" class="bg-slate-900 border border-slate-800 rounded-lg p-3 min-h-[140px] max-h-[220px] overflow-y-auto custom-scrollbar font-mono text-xs space-y-2">
+                                <div class="text-slate-500 italic">Examiner ready. Type your written response below to evaluate against official mark scheme criteria.</div>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-2 pt-2">
+                            <input type="text" id="ai-user-input" placeholder="Type your answer to be evaluated against official mark scheme..." class="flex-grow bg-slate-900 border border-slate-700 text-slate-100 text-xs rounded-lg p-2.5 focus:outline-none focus:ring-1 focus:ring-sky-500">
+                            <button onclick="sendAiChat()" class="px-4 py-2.5 bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs rounded-lg shadow transition">
+                                Submit Answer
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Application JavaScript Logic -->
+    <script>
+        // Data Booklet 31 Electrode Systems
+        const DATA_BOOKLET_31 = [
+            { id: 1, eq: "Na⁺ + e⁻ ⇌ Na", e0: -2.71, n: 1, ox: "Na⁺", red: "Na", lhs: "[Na⁺(aq)]", rhs: "Na(s)" },
+            { id: 2, eq: "Mg²⁺ + 2e⁻ ⇌ Mg", e0: -2.37, n: 2, ox: "Mg²⁺", red: "Mg", lhs: "[Mg²⁺(aq)]", rhs: "Mg(s)" },
+            { id: 3, eq: "Al³⁺ + 3e⁻ ⇌ Al", e0: -1.66, n: 3, ox: "Al³⁺", red: "Al", lhs: "[Al³⁺(aq)]", rhs: "Al(s)" },
+            { id: 4, eq: "V²⁺ + 2e⁻ ⇌ V", e0: -1.18, n: 2, ox: "V²⁺", red: "V", lhs: "[V²⁺(aq)]", rhs: "V(s)" },
+            { id: 5, eq: "Zn²⁺ + 2e⁻ ⇌ Zn", e0: -0.76, n: 2, ox: "Zn²⁺", red: "Zn", lhs: "[Zn²⁺(aq)]", rhs: "Zn(s)" },
+            { id: 6, eq: "Cr³⁺ + 3e⁻ ⇌ Cr", e0: -0.74, n: 3, ox: "Cr³⁺", red: "Cr", lhs: "[Cr³⁺(aq)]", rhs: "Cr(s)" },
+            { id: 7, eq: "Fe²⁺ + 2e⁻ ⇌ Fe", e0: -0.44, n: 2, ox: "Fe²⁺", red: "Fe", lhs: "[Fe²⁺(aq)]", rhs: "Fe(s)" },
+            { id: 8, eq: "Cr³⁺ + e⁻ ⇌ Cr²⁺", e0: -0.41, n: 1, ox: "Cr³⁺", red: "Cr²⁺", lhs: "[Cr³⁺(aq)]", rhs: "[Cr²⁺(aq)]" },
+            { id: 9, eq: "V³⁺ + e⁻ ⇌ V²⁺", e0: -0.26, n: 1, ox: "V³⁺", red: "V²⁺", lhs: "[V³⁺(aq)]", rhs: "[V²⁺(aq)]" },
+            { id: 10, eq: "Ni²⁺ + 2e⁻ ⇌ Ni", e0: -0.25, n: 2, ox: "Ni²⁺", red: "Ni", lhs: "[Ni²⁺(aq)]", rhs: "Ni(s)" },
+            { id: 11, eq: "H⁺ + e⁻ ⇌ ½H₂", e0: 0.00, n: 1, ox: "H⁺", red: "½H₂", lhs: "[H⁺(aq)]", rhs: "H₂(g)" },
+            { id: 12, eq: "S₄O₆²⁻ + 2e⁻ ⇌ 2S₂O₃²⁻", e0: 0.09, n: 2, ox: "S₄O₆²⁻", red: "2S₂O₃²⁻", lhs: "[S₄O₆²⁻(aq)]", rhs: "[2S₂O₃²⁻(aq)]" },
+            { id: 13, eq: "Cu²⁺ + e⁻ ⇌ Cu⁺", e0: 0.15, n: 1, ox: "Cu²⁺", red: "Cu⁺", lhs: "[Cu²⁺(aq)]", rhs: "[Cu⁺(aq)]" },
+            { id: 14, eq: "Cu²⁺ + 2e⁻ ⇌ Cu", e0: 0.34, n: 2, ox: "Cu²⁺", red: "Cu", lhs: "[Cu²⁺(aq)]", rhs: "Cu(s)" },
+            { id: 15, eq: "VO²⁺ + 2H⁺ + e⁻ ⇌ V³⁺ + H₂O", e0: 0.34, n: 1, ox: "VO²⁺ + 2H⁺", red: "V³⁺ + H₂O", lhs: "[VO²⁺(aq) + 2H⁺(aq)]", rhs: "[V³⁺(aq) + H₂O(l)]" },
+            { id: 16, eq: "O₂ + 2H₂O + 4e⁻ ⇌ 4OH⁻", e0: 0.40, n: 4, ox: "O₂ + 2H₂O", red: "4OH⁻", lhs: "O₂(g)", rhs: "[4OH⁻(aq)]" },
+            { id: 17, eq: "S₂O₃²⁻ + 6H⁺ + 4e⁻ ⇌ 2S + 3H₂O", e0: 0.47, n: 4, ox: "S₂O₃²⁻ + 6H⁺", red: "2S + 3H₂O", lhs: "[S₂O₃²⁻(aq) + 6H⁺(aq)]", rhs: "2S(s)" },
+            { id: 18, eq: "Cu⁺ + e⁻ ⇌ Cu", e0: 0.52, n: 1, ox: "Cu⁺", red: "Cu", lhs: "[Cu⁺(aq)]", rhs: "Cu(s)" },
+            { id: 19, eq: "I₂ + 2e⁻ ⇌ 2I⁻", e0: 0.54, n: 2, ox: "I₂", red: "2I⁻", lhs: "I₂(s)", rhs: "[2I⁻(aq)]" },
+            { id: 20, eq: "O₂ + 2H⁺ + 2e⁻ ⇌ H₂O₂", e0: 0.68, n: 2, ox: "O₂ + 2H⁺", red: "H₂O₂", lhs: "O₂(g)", rhs: "[H₂O₂(aq)]" },
+            { id: 21, eq: "Fe³⁺ + e⁻ ⇌ Fe²⁺", e0: 0.77, n: 1, ox: "Fe³⁺", red: "Fe²⁺", lhs: "[Fe³⁺(aq)]", rhs: "[Fe²⁺(aq)]" },
+            { id: 22, eq: "Ag⁺ + e⁻ ⇌ Ag", e0: 0.80, n: 1, ox: "Ag⁺", red: "Ag", lhs: "[Ag⁺(aq)]", rhs: "Ag(s)" },
+            { id: 23, eq: "NO₃⁻ + 2H⁺ + e⁻ ⇌ NO₂ + H₂O", e0: 0.80, n: 1, ox: "NO₃⁻ + 2H⁺", red: "NO₂ + H₂O", lhs: "[NO₃⁻(aq) + 2H⁺(aq)]", rhs: "NO₂(g)" },
+            { id: 24, eq: "ClO⁻ + H₂O + 2e⁻ ⇌ Cl⁻ + 2OH⁻", e0: 0.89, n: 2, ox: "ClO⁻ + H₂O", red: "Cl⁻ + 2OH⁻", lhs: "[ClO⁻(aq)]", rhs: "[Cl⁻(aq) + 2OH⁻(aq)]" },
+            { id: 25, eq: "VO₂⁺ + 2H⁺ + e⁻ ⇌ VO²⁺ + H₂O", e0: 1.00, n: 1, ox: "VO₂⁺ + 2H⁺", red: "VO²⁺ + H₂O", lhs: "[VO₂⁺(aq) + 2H⁺(aq)]", rhs: "[VO²⁺(aq) + H₂O(l)]" },
+            { id: 26, eq: "Br₂ + 2e⁻ ⇌ 2Br⁻", e0: 1.09, n: 2, ox: "Br₂", red: "2Br⁻", lhs: "Br₂(l)", rhs: "[2Br⁻(aq)]" },
+            { id: 27, eq: "O₂ + 4H⁺ + 4e⁻ ⇌ 2H₂O", e0: 1.23, n: 4, ox: "O₂ + 4H⁺", red: "2H₂O", lhs: "O₂(g)", rhs: "H₂O(l)" },
+            { id: 28, eq: "Cr₂O⇇²⁻ + 14H⁺ + 6e⁻ ⇌ 2Cr³⁺ + 7H₂O", e0: 1.33, n: 6, ox: "Cr₂O⇇²⁻ + 14H⁺", red: "2Cr³⁺ + 7H₂O", lhs: "[Cr₂O⇇²⁻(aq) + 14H⁺(aq)]", rhs: "[2Cr³⁺(aq) + 7H₂O(l)]" },
+            { id: 29, eq: "Cl₂ + 2e⁻ ⇌ 2Cl⁻", e0: 1.36, n: 2, ox: "Cl₂", red: "2Cl⁻", lhs: "Cl₂(g)", rhs: "[2Cl⁻(aq)]" },
+            { id: 30, eq: "MnO₄⁻ + 8H⁺ + 5e⁻ ⇌ Mn²⁺ + 4H₂O", e0: 1.51, n: 5, ox: "MnO₄⁻ + 8H⁺", red: "Mn²⁺ + 4H₂O", lhs: "[MnO₄⁻(aq) + 8H⁺(aq)]", rhs: "[Mn²⁺(aq) + 4H₂O(l)]" },
+            { id: 31, eq: "H₂O₂ + 2H⁺ + 2e⁻ ⇌ 2H₂O", e0: 1.77, n: 2, ox: "H₂O₂ + 2H⁺", red: "2H₂O", lhs: "[H₂O₂(aq) + 2H⁺(aq)]", rhs: "H₂O(l)" }
+        ];
+
+        // IUPAC Builder Scenarios
+        const BUILDER_SCENARIOS = {
+            'zn_cu': {
+                prompt: "Assemble the conventional cell diagram for a Zinc anode (oxidation) and Copper cathode (reduction) cell.",
+                eCell: "+1.10 V",
+                tokens: ["Zn(s)", "|", "[Zn²⁺(aq)]", "||", "[Cu²⁺(aq)]", "|", "Cu(s)", "Pt(s)"],
+                correctOrder: ["Zn(s)", "|", "[Zn²⁺(aq)]", "||", "[Cu²⁺(aq)]", "|", "Cu(s)"]
+            },
+            'fe_cu': {
+                prompt: "Assemble the conventional cell diagram for an ion-ion Fe²⁺/Fe³⁺ oxidation half-cell connected to a Copper reduction half-cell.",
+                eCell: "-0.43 V",
+                tokens: ["Pt(s)", "|", "[Fe²⁺(aq)]", ",", "[Fe³⁺(aq)]", "||", "[Cu²⁺(aq)]", "|", "Cu(s)"],
+                correctOrder: ["Pt(s)", "|", "[Fe²⁺(aq)]", ",", "[Fe³⁺(aq)]", "||", "[Cu²⁺(aq)]", "|", "Cu(s)"]
+            },
+            'cl_cr': {
+                prompt: "Assemble the conventional cell diagram for a Chlorine oxidation half-cell (2Cl⁻ → Cl₂) connected to an acidic Dichromate reduction half-cell.",
+                eCell: "+0.13 V",
+                tokens: ["Pt(s)", "|", "[2Cl⁻(aq)]", "|", "Cl₂(g)", "||", "[Cr₂O⇇²⁻(aq) + 14H⁺(aq)]", ",", "[2Cr³⁺(aq) + 7H₂O(l)]", "|", "Pt(s)"],
+                correctOrder: ["Pt(s)", "|", "[2Cl⁻(aq)]", "|", "Cl₂(g)", "||", "[Cr₂O⇇²⁻(aq) + 14H⁺(aq)]", ",", "[2Cr³⁺(aq) + 7H₂O(l)]", "|", "Pt(s)"]
+            },
+            'mn_bi': {
+                prompt: "Assemble the conventional cell diagram for a Mn²⁺/MnO₄⁻ oxidation half-cell connected to a Bismuthate (BiO₃⁻) reduction half-cell.",
+                eCell: "+0.09 V",
+                tokens: ["Pt(s)", "|", "[Mn²⁺(aq) + 4H₂O(l)]", ",", "[MnO₄⁻(aq) + 8H⁺(aq)]", "||", "[BiO₃⁻(aq) + 6H⁺(aq)]", ",", "[Bi³⁺(aq) + 3H₂O(l)]", "|", "Pt(s)"],
+                correctOrder: ["Pt(s)", "|", "[Mn²⁺(aq) + 4H₂O(l)]", ",", "[MnO₄⁻(aq) + 8H⁺(aq)]", "||", "[BiO₃⁻(aq) + 6H⁺(aq)]", ",", "[Bi³⁺(aq) + 3H₂O(l)]", "|", "Pt(s)"]
+            }
+        };
+
+        // Vanadium Steps
+        const VANADIUM_STEPS = [
+            {
+                name: "VO₂⁺ (+5, Yellow)",
+                color: "#eab308",
+                textColor: "text-slate-900",
+                e0: "+1.00 V",
+                eCell: "+1.76 V (Feasible)",
+                feasible: true,
+                desc: "VO₂⁺ + 2H⁺ + e⁻ ⇌ VO²⁺ + H₂O. Paired with Zn oxidation (+0.76 V), E°cell = +1.00 - (-0.76) = +1.76 V > 0. Solution turns from Yellow to Blue."
+            },
+            {
+                name: "VO²⁺ (+4, Blue)",
+                color: "#0284c7",
+                textColor: "text-white",
+                e0: "+0.34 V",
+                eCell: "+1.10 V (Feasible)",
+                feasible: true,
+                desc: "VO²⁺ + 2H⁺ + e⁻ ⇌ V³⁺ + H₂O. Paired with Zn oxidation (+0.76 V), E°cell = +0.34 - (-0.76) = +1.10 V > 0. Solution turns from Blue to Green."
+            },
+            {
+                name: "V³⁺ (+3, Green)",
+                color: "#16a34a",
+                textColor: "text-white",
+                e0: "-0.26 V",
+                eCell: "+0.50 V (Feasible)",
+                feasible: true,
+                desc: "V³⁺ + e⁻ ⇌ V²⁺. Paired with Zn oxidation (+0.76 V), E°cell = -0.26 - (-0.76) = +0.50 V > 0. Solution turns from Green to Violet."
+            },
+            {
+                name: "V²⁺ (+2, Violet)",
+                color: "#9333ea",
+                textColor: "text-white",
+                e0: "-1.18 V",
+                eCell: "-0.42 V (NON-FEASIBLE)",
+                feasible: false,
+                desc: "V²⁺ + 2e⁻ ⇌ V(s). Paired with Zn oxidation (+0.76 V), E°cell = -1.18 - (-0.76) = -0.42 V < 0. Reduction HALTS here! Zinc cannot reduce V²⁺ to V metal."
+            }
+        ];
+
+        // Past Paper Question Bank
+        const PAST_PAPERS = [
+            {
+                id: "pp1",
+                title: "Vanadium Multi-Step Reduction with Zinc",
+                code: "2020 Jun P5 Q24b",
+                questionText: "Use the electrode potential data provided to explain why, under standard conditions, VO₂⁺ can be reduced by zinc step-by-step to V²⁺, but V²⁺ cannot be reduced by zinc to vanadium metal, V(s).",
+                markScheme: "1. E°cell for V²⁺ to V(s) with Zn is -1.18 - (-0.76) = -0.42 V (negative, so non-feasible).\n2. E°cell for V reduction steps down to V²⁺ are all positive (+1.76 V, +1.10 V, +0.50 V) so feasible.\n3. Reduction halts at V²⁺ due to thermodynamic non-feasibility."
+            },
+            {
+                id: "pp2",
+                title: "Hydrogen Peroxide Disproportionation",
+                code: "2021 Jan P5 Q19a",
+                questionText: "Explain, using calculated E°cell values and oxidation numbers, why hydrogen peroxide (H₂O₂) undergoes disproportionation into water and oxygen gas under standard conditions.",
+                markScheme: "1. Disproportionation: Oxygen is simultaneously oxidized (-1 to 0 in O₂) and reduced (-1 to -2 in H₂O).\n2. E°cell = +1.77 - (+0.68) = +1.09 V.\n3. E°cell > 0, so the reaction is thermodynamically feasible."
+            },
+            {
+                id: "pp3",
+                title: "IUPAC Cell Diagram with Bracket Notation",
+                code: "2022 Jun P5 Q18b",
+                questionText: "Write the conventional IUPAC cell diagram for a cell composed of a dichromate(VI) half-cell [Cr₂O⇇²⁻, H⁺ / Cr³⁺] and a chlorine half-cell [Cl₂ / Cl⁻]. Dichromate is reduced.",
+                markScheme: "1. Pt(s) | [2Cl⁻(aq)] | Cl₂(g) || [Cr₂O⇇²⁻(aq) + 14H⁺(aq)] , [2Cr³⁺(aq) + 7H₂O(l)] | Pt(s)\n2. Oxidation on LHS, Reduction on RHS.\n3. Square brackets and comma for species in same phase."
+            }
+        ];
+
+        let activeBuilderKey = 'zn_cu';
+        let userBuilderSlots = [];
+        let selectedPpQuestion = PAST_PAPERS[0];
+
+        // Initialize Page
+        document.addEventListener('DOMContentLoaded', () => {
+            renderPastPaperList();
+            selectBuilderScenario('zn_cu');
+            setVanadiumStep(0);
+            populateFeasibilitySelects();
+            populateDataBookletModal();
+            updateFeasibilityCalc();
+            initKaTeX();
+        });
+
+        function switchTab(tabId) {
+            const tabs = ['scaffold', 'builder', 'vanadium', 'feasibility', 'ai'];
+            tabs.forEach(t => {
+                const sec = document.getElementById(`tab-${t}`);
+                const btn = document.getElementById(`btn-${t}`);
+                if (sec) sec.classList.add('hidden');
+                if (btn) {
+                    btn.classList.remove('tab-btn-active');
+                    btn.classList.add('text-slate-400');
+                    btn.classList.remove('text-slate-300', 'text-sky-300');
+                }
+            });
+
+            const targetSec = document.getElementById(`tab-${tabId}`);
+            const targetBtn = document.getElementById(`btn-${tabId}`);
+            if (targetSec) targetSec.classList.remove('hidden');
+            if (targetBtn) {
+                targetBtn.classList.add('tab-btn-active');
+                targetBtn.classList.remove('text-slate-400');
+            }
+            initKaTeX();
+        }
+
+        function populateFeasibilitySelects() {
+            const sel1 = document.getElementById('feas-sys1-select');
+            const sel2 = document.getElementById('feas-sys2-select');
+            if (!sel1 || !sel2) return;
+
+            sel1.innerHTML = '';
+            sel2.innerHTML = '';
+
+            DATA_BOOKLET_31.forEach(sys => {
+                const opt1 = document.createElement('option');
+                opt1.value = sys.id;
+                opt1.textContent = `${sys.id}. ${sys.eq} (${sys.e0 >= 0 ? '+' : ''}${sys.e0.toFixed(2)} V)`;
+                if (sys.id === 30) opt1.selected = true; // MnO4- default
+                sel1.appendChild(opt1);
+
+                const opt2 = document.createElement('option');
+                opt2.value = sys.id;
+                opt2.textContent = `${sys.id}. ${sys.eq} (${sys.e0 >= 0 ? '+' : ''}${sys.e0.toFixed(2)} V)`;
+                if (sys.id === 5) opt2.selected = true; // Zn default
+                sel2.appendChild(opt2);
+            });
+        }
+
+        function populateDataBookletModal() {
+            const body = document.getElementById('databooklet-table-body');
+            if (!body) return;
+            body.innerHTML = '';
+
+            DATA_BOOKLET_31.forEach(sys => {
+                const row = document.createElement('tr');
+                row.className = 'hover:bg-slate-800/50 transition';
+                row.innerHTML = `
+                    <td class="p-2.5 font-bold text-sky-400">${sys.id}</td>
+                    <td class="p-2.5 text-slate-200">${sys.eq}</td>
+                    <td class="p-2.5 text-right font-bold ${sys.e0 >= 0 ? 'text-emerald-400' : 'text-rose-400'}">${sys.e0 >= 0 ? '+' : ''}${sys.e0.toFixed(2)} V</td>
+                `;
+                body.appendChild(row);
+            });
+        }
+
+        function toggleDataBookletModal(show) {
+            const modal = document.getElementById('databooklet-modal');
+            if (modal) modal.classList.toggle('hidden', !show);
+        }
+
+        function swapFeasibilityRoles() {
+            const sel1 = document.getElementById('feas-sys1-select');
+            const sel2 = document.getElementById('feas-sys2-select');
+            if (!sel1 || !sel2) return;
+
+            const temp = sel1.value;
+            sel1.value = sel2.value;
+            sel2.value = temp;
+            updateFeasibilityCalc();
+        }
+
+        function autoSetSpontaneousFeasibility() {
+            const sel1 = document.getElementById('feas-sys1-select');
+            const sel2 = document.getElementById('feas-sys2-select');
+            if (!sel1 || !sel2) return;
+
+            const id1 = parseInt(sel1.value);
+            const id2 = parseInt(sel2.value);
+
+            const sys1 = DATA_BOOKLET_31.find(s => s.id === id1);
+            const sys2 = DATA_BOOKLET_31.find(s => s.id === id2);
+
+            if (sys1 && sys2) {
+                if (sys1.e0 < sys2.e0) {
+                    sel1.value = sys2.id;
+                    sel2.value = sys1.id;
+                }
+            }
+            updateFeasibilityCalc();
+        }
+
+        function getLcm(a, b) {
+            let max = Math.max(a, b);
+            let min = Math.min(a, b);
+            for (let i = max; ; i += max) {
+                if (i % min === 0) return i;
+            }
+        }
+
+        function updateFeasibilityCalc() {
+            const sel1 = document.getElementById('feas-sys1-select');
+            const sel2 = document.getElementById('feas-sys2-select');
+            if (!sel1 || !sel2) return;
+
+            const id1 = parseInt(sel1.value);
+            const id2 = parseInt(sel2.value);
+
+            const sys1 = DATA_BOOKLET_31.find(s => s.id === id1) || DATA_BOOKLET_31[29]; // Sys 30
+            const sys2 = DATA_BOOKLET_31.find(s => s.id === id2) || DATA_BOOKLET_31[4];  // Sys 5
+
+            const eOx = sys1.e0;
+            const eRed = sys2.e0;
+            const eCellVal = (eOx - eRed).toFixed(2);
+            const eCellNum = parseFloat(eCellVal);
+
+            document.getElementById('feas-e-ox').textContent = `${eOx >= 0 ? '+' : ''}${eOx.toFixed(2)} V (${sys1.ox})`;
+            document.getElementById('feas-e-red').textContent = `${eRed >= 0 ? '+' : ''}${eRed.toFixed(2)} V (${sys2.red})`;
+            document.getElementById('feas-e-cell').textContent = `${eCellNum >= 0 ? '+' : ''}${eCellVal} V`;
+
+            const banner = document.getElementById('feas-banner');
+            if (eCellNum > 0) {
+                banner.className = 'p-4 rounded-xl border border-emerald-500/60 bg-emerald-950/40 text-emerald-200 text-xs space-y-2';
+                banner.innerHTML = `
+                    <span class="font-bold text-emerald-300 block text-sm">✅ Thermodynamically Feasible (E°cell = +${eCellVal} V > 0)</span>
+                    <p>Calculated $E^\\ominus_{\\text{cell}} = +${eCellVal}\\text{ V} > 0$. The overall total entropy change $\\Delta S_{\\text{total}} > 0$ and $K \\gg 1$, driving the reaction spontaneously to the right under standard conditions.</p>
+                `;
+            } else if (eCellNum < 0) {
+                banner.className = 'p-4 rounded-xl border border-rose-500/60 bg-rose-950/40 text-rose-200 text-xs space-y-2';
+                banner.innerHTML = `
+                    <span class="font-bold text-rose-300 block text-sm">❌ Non-Feasible Under Standard Conditions (E°cell = ${eCellVal} V < 0)</span>
+                    <p>Calculated $E^\\ominus_{\\text{cell}} = ${eCellVal}\\text{ V} < 0$. The reaction is non-spontaneous ($\Delta S_{\\text{total}} < 0$). The reverse reaction is thermodynamically favoured.</p>
+                `;
+            } else {
+                banner.className = 'p-4 rounded-xl border border-amber-500/60 bg-amber-950/40 text-amber-200 text-xs space-y-2';
+                banner.innerHTML = `
+                    <span class="font-bold text-amber-300 block text-sm">⚖️ Equilibrium State (E°cell = 0.00 V)</span>
+                    <p>Both half-cells are identical. The reaction is at dynamic equilibrium with zero net voltage.</p>
+                `;
+            }
+
+            // Calculate balanced electron stoichiometry
+            const n1 = sys1.n; // e- for reduction
+            const n2 = sys2.n; // e- for oxidation
+            const totalE = getLcm(n1, n2);
+            const k1 = totalE / n1; // factor for sys1
+            const k2 = totalE / n2; // factor for sys2
+
+            document.getElementById('feas-electron-count').textContent = `${totalE}e⁻ transferred`;
+
+            let eqStr = ``;
+            if (k1 === 1 && k2 === 1) {
+                eqStr = `$$${sys1.lhs} + ${sys2.rhs} \\rightarrow ${sys1.rhs} + ${sys2.lhs}$$`;
+            } else {
+                eqStr = `$$${k1 > 1 ? k1 : ''}${sys1.lhs} + ${k2 > 1 ? k2 : ''}${sys2.rhs} \\rightarrow ${k1 > 1 ? k1 : ''}${sys1.rhs} + ${k2 > 1 ? k2 : ''}${sys2.lhs}$$`;
+            }
+
+            document.getElementById('feas-equation-box').innerHTML = eqStr;
+
+            document.getElementById('feas-kinetic-note').textContent = eCellNum > 0 ? 
+                `Although E°cell = +${eCellVal} V predicts thermodynamic feasibility, if the rate is unmeasurably slow, the reaction suffers from a high activation energy barrier (Ea kinetic stability).` :
+                `Because E°cell is negative (${eCellVal} V), the reaction will not proceed under standard conditions without external voltage or non-standard concentration shifts.`;
+
+            initKaTeX();
+        }
+
+        function selectBuilderScenario(key) {
+            activeBuilderKey = key;
+            const sc = BUILDER_SCENARIOS[key];
+
+            ['zn_cu', 'fe_cu', 'cl_cr', 'mn_bi'].forEach(k => {
+                const btn = document.getElementById(`scen-btn-${k}`);
+                if (btn) {
+                    btn.className = `p-3 rounded-lg border text-left transition hover:border-sky-400 ${k === key ? 'border-sky-500 bg-sky-950/30' : 'border-slate-800 bg-slate-950'}`;
+                }
+            });
+
+            document.getElementById('builder-e-cell-target').textContent = `Target E°cell = ${sc.eCell}`;
+            document.getElementById('builder-prompt-text').textContent = sc.prompt;
+
+            userBuilderSlots = [];
+            renderBuilderBench();
+            renderBuilderPalette();
+            document.getElementById('builder-feedback-msg').className = 'hidden text-xs p-3.5 rounded-lg border leading-relaxed';
+        }
+
+        function renderBuilderPalette() {
+            const sc = BUILDER_SCENARIOS[activeBuilderKey];
+            const paletteEl = document.getElementById('builder-tokens-palette');
+            if (!paletteEl) return;
+            paletteEl.innerHTML = '';
+
+            sc.tokens.forEach(tok => {
+                const btn = document.createElement('button');
+                btn.className = 'px-3 py-1.5 bg-slate-900 border border-slate-700 hover:border-sky-400 text-sky-200 text-xs font-mono rounded-md shadow-sm transition';
+                btn.textContent = tok;
+                btn.onclick = () => addTokenToSlots(tok);
+                paletteEl.appendChild(btn);
+            });
+        }
+
+        function addTokenToSlots(tok) {
+            userBuilderSlots.push(tok);
+            renderBuilderBench();
+        }
+
+        function removeTokenFromSlot(idx) {
+            userBuilderSlots.splice(idx, 1);
+            renderBuilderBench();
+        }
+
+        function clearBuilderSlots() {
+            userBuilderSlots = [];
+            renderBuilderBench();
+        }
+
+        function renderBuilderBench() {
+            const container = document.getElementById('builder-slots-container');
+            if (!container) return;
+            container.innerHTML = '';
+
+            if (userBuilderSlots.length === 0) {
+                container.innerHTML = '<span class="text-slate-500 italic">Click tokens below to build IUPAC cell diagram...</span>';
+                return;
+            }
+
+            userBuilderSlots.forEach((tok, i) => {
+                const chip = document.createElement('span');
+                chip.className = 'px-2.5 py-1 bg-sky-950 border border-sky-700 text-sky-200 rounded font-mono text-xs flex items-center gap-1.5 cursor-pointer hover:bg-rose-950 hover:border-rose-700 transition';
+                chip.onclick = () => removeTokenFromSlot(i);
+                chip.innerHTML = `${tok} <span class="text-[10px] text-slate-400">×</span>`;
+                container.appendChild(chip);
+            });
+        }
+
+        function checkBuilderAnswer() {
+            const sc = BUILDER_SCENARIOS[activeBuilderKey];
+            const fb = document.getElementById('builder-feedback-msg');
+            if (!fb) return;
+            fb.classList.remove('hidden');
+
+            const isCorrect = userBuilderSlots.length === sc.correctOrder.length &&
+                userBuilderSlots.every((val, index) => val === sc.correctOrder[index]);
+
+            if (isCorrect) {
+                fb.className = 'text-xs p-3.5 rounded-lg border bg-emerald-950/60 border-emerald-800 text-emerald-200 leading-relaxed';
+                fb.innerHTML = `<b>✅ Perfect IUPAC Cell Notation!</b><br>Oxidation on LHS, Reduction on RHS, phase boundaries '|', salt bridge '||', and same-phase brackets '[...]' placed correctly.`;
+            } else {
+                fb.className = 'text-xs p-3.5 rounded-lg border bg-rose-950/60 border-rose-800 text-rose-200 leading-relaxed';
+                fb.innerHTML = `<b>❌ Incorrect Cell Notation.</b><br>Expected sequence: <code class="font-mono text-cyan-300 block mt-1">${sc.correctOrder.join(' ')}</code>`;
+            }
+        }
+
+        function setVanadiumStep(idx) {
+            const v = VANADIUM_STEPS[idx];
+            const fill = document.getElementById('van-liquid-fill');
+            const label = document.getElementById('van-ion-label');
+            const details = document.getElementById('van-step-details');
+            if (!fill || !label || !details) return;
+
+            fill.style.backgroundColor = v.color;
+            label.textContent = v.name;
+            label.className = `text-xs font-extrabold ${v.textColor} bg-slate-900/80 px-2.5 py-1 rounded shadow font-mono`;
+
+            details.innerHTML = `
+                <div class="flex justify-between border-b border-slate-800 pb-1">
+                    <span class="text-slate-400">Vanadium Species:</span>
+                    <span class="text-sky-300 font-bold">${v.name}</span>
+                </div>
+                <div class="flex justify-between border-b border-slate-800 pb-1">
+                    <span class="text-slate-400">E°(Vanadium Half-Cell):</span>
+                    <span class="text-emerald-400 font-bold">${v.e0}</span>
+                </div>
+                <div class="flex justify-between border-b border-slate-800 pb-1">
+                    <span class="text-slate-400">E°cell with Zn (-0.76 V):</span>
+                    <span class="${v.feasible ? 'text-cyan-400' : 'text-rose-400'} font-bold">${v.eCell}</span>
+                </div>
+                <p class="text-slate-300 text-[11px] pt-1">${v.desc}</p>
+            `;
+
+            initKaTeX();
+        }
+
+        function runVanadiumAutoSequence() {
+            let i = 0;
+            const timer = setInterval(() => {
+                setVanadiumStep(i);
+                i++;
+                if (i >= VANADIUM_STEPS.length) clearInterval(timer);
+            }, 1800);
+        }
+
+        function renderPastPaperList() {
+            const listEl = document.getElementById('past-paper-list');
+            if (!listEl) return;
+            listEl.innerHTML = '';
+            PAST_PAPERS.forEach((qp, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'w-full text-left p-3 rounded-lg border border-slate-800 bg-slate-950 hover:border-sky-500/50 transition space-y-1';
+                btn.onclick = () => selectPastPaperQuestion(idx);
+                btn.innerHTML = `
+                    <div class="font-bold text-xs text-amber-300">${qp.title}</div>
+                    <div class="text-[10px] font-mono text-sky-400">${qp.code}</div>
+                `;
+                listEl.appendChild(btn);
+            });
+            if (PAST_PAPERS.length > 0) {
+                selectPastPaperQuestion(0);
+            }
+        }
+
+        function selectPastPaperQuestion(idx) {
+            selectedPpQuestion = PAST_PAPERS[idx];
+            const qTitle = document.getElementById('pp-q-title');
+            const qCode = document.getElementById('pp-q-code');
+            const qBox = document.getElementById('pp-q-box');
+
+            if (qTitle) qTitle.textContent = selectedPpQuestion.title;
+            if (qCode) qCode.textContent = selectedPpQuestion.code;
+            if (qBox) qBox.innerHTML = `<p class="leading-relaxed">${selectedPpQuestion.questionText}</p>`;
+        }
+
+        async function callGeminiAPI(prompt, systemInstruction) {
+            const apiKey = ""; // Auto-injected in execution environment
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+            const payload = {
+                contents: [{ parts: [{ text: prompt }] }],
+                systemInstruction: { parts: [{ text: systemInstruction }] }
+            };
+
+            let delay = 1000;
+            for (let attempt = 0; attempt < 3; attempt++) {
+                try {
+                    const res = await fetch(url, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    const data = await res.json();
+                    return data.candidates?.[0]?.content?.parts?.[0]?.text || "Unable to parse response from Gemini AI.";
+                } catch (err) {
+                    if (attempt === 2) return "Offline Mode: Gemini API unreachable. Please verify internet connection.";
+                    await new Promise(r => setTimeout(r, delay));
+                    delay *= 2;
+                }
+            }
+        }
+
+        async function sendAiChat() {
+            const input = document.getElementById('ai-user-input');
+            const text = input.value.trim();
+            if (!text) return;
+
+            const chatHistory = document.getElementById('ai-chat-history');
+            if (!chatHistory) return;
+
+            const uMsg = document.createElement('div');
+            uMsg.className = 'text-sky-400 font-bold';
+            uMsg.textContent = `Student Answer: ${text}`;
+            chatHistory.appendChild(uMsg);
+            input.value = '';
+
+            const tMsg = document.createElement('div');
+            tMsg.className = 'text-slate-400 italic';
+            tMsg.textContent = 'Examiner AI: Evaluating answer against official mark scheme...';
+            chatHistory.appendChild(tMsg);
+            chatHistory.scrollTop = chatHistory.scrollHeight;
+
+            const context = document.getElementById('aiSourceContext').value;
+            const fullPrompt = `Question: ${selectedPpQuestion.title}\nQuestion Text: ${selectedPpQuestion.questionText}\nOfficial Mark Scheme:\n${selectedPpQuestion.markScheme}\nStudent Response: ${text}`;
+            const sys = `You are an official Edexcel IAL Chemistry Examiner. Grade the student response against the provided mark scheme. Give marks awarded out of maximum, identify missed keywords, and provide concise feedback. Grounding Context:\n${context}`;
+
+            const reply = await callGeminiAPI(fullPrompt, sys);
+            chatHistory.removeChild(tMsg);
+
+            const aiMsg = document.createElement('div');
+            aiMsg.className = 'text-emerald-300';
+            aiMsg.textContent = `Examiner Feedback: ${reply}`;
+            chatHistory.appendChild(aiMsg);
+            chatHistory.scrollTop = chatHistory.scrollHeight;
+        }
+    </script>
+</body>
+</html>

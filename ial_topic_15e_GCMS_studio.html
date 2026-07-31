@@ -1,0 +1,1558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chromatography &amp; GC-MS Studio | WCH14 · 15E · 15.21–15.23</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root { --bg:#030712; --panel:rgba(15,23,42,.72); --border:rgba(255,255,255,.08); --primary:#06b6d4; }
+    body{font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;background:var(--bg);
+      background-image:radial-gradient(at 0% 0%,rgba(6,182,212,.12) 0,transparent 50%),radial-gradient(at 100% 100%,rgba(99,102,241,.08) 0,transparent 50%);background-attachment:fixed;}
+    .mono{font-family:ui-monospace,Consolas,monospace;}
+    canvas{touch-action:none;display:block;max-width:100%;}
+    .canvas-wrap{min-height:300px;}
+    .glass{background:var(--panel);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--border);box-shadow:0 8px 32px rgba(0,0,0,.35);}
+    .kw-hit{background:linear-gradient(120deg,rgba(250,204,21,.25),rgba(253,224,71,.35));padding:0 .2rem;border-radius:4px;color:#fef08c;}
+    .tab-btn{transition:all .2s ease;}
+    .tab-btn.active{background:linear-gradient(135deg,#0891b2,#06b6d4);color:#fff;border-color:transparent;box-shadow:0 4px 18px rgba(6,182,212,.4);}
+    .tab-panel{display:none;}.tab-panel.active{display:block;}
+    .sim-mode-btn.active{background:linear-gradient(135deg,#0e7490,#06b6d4);color:#fff;border-color:transparent;}
+    .speed-btn.active,.viz-btn.active{border-color:#22d3ee;background:rgba(6,182,212,.2);color:#e0f2fe;}
+    .syllabus-pill{background:linear-gradient(135deg,rgba(6,182,212,.2),rgba(99,102,241,.15));border:1px solid rgba(6,182,212,.35);}
+    .myth-card{cursor:pointer;transition:all .2s;}
+    .myth-card.flipped .myth-front{display:none;}
+    .myth-card.flipped .myth-back{display:block;}
+    .myth-back{display:none;}
+    input[type=range]{accent-color:#06b6d4;}
+    .cmp-table th,.cmp-table td{border:1px solid rgba(255,255,255,.1);padding:.5rem .75rem;font-size:.75rem;}
+    .cmp-table th{background:rgba(6,182,212,.15);text-align:left;}
+    .studio-canvas-bg{background:linear-gradient(180deg,#0f172a 0%,#020617 100%);}
+    .custom-scrollbar::-webkit-scrollbar{height:6px;width:6px;}
+    .custom-scrollbar::-webkit-scrollbar-track{background:#1e293b;}
+    .custom-scrollbar::-webkit-scrollbar-thumb{background:#475569;border-radius:3px;}
+  </style>
+</head>
+<body class="text-slate-100 min-h-screen">
+
+<header class="border-b border-white/10 glass sticky top-0 z-40">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
+    <div>
+      <div class="flex flex-wrap items-center gap-2 mb-1">
+        <span class="syllabus-pill text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full text-cyan-200">WCH14 · Topic 15E</span>
+        <span class="text-[10px] font-bold text-cyan-300/80 uppercase">15.21 – 15.23</span>
+      </div>
+      <h1 class="text-base sm:text-xl font-extrabold text-white" id="hdr-title"></h1>
+      <p class="text-xs text-cyan-300/90 mt-0.5" id="hdr-sub"></p>
+    </div>
+    <button type="button" id="btn-teacher" class="text-xs font-semibold px-3 py-1.5 rounded-lg border border-amber-500/30 bg-amber-500/10 text-amber-200"></button>
+  </div>
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 pb-3 flex flex-wrap gap-2" id="main-tabs">
+    <button type="button" class="tab-btn active text-xs font-bold px-3 py-2 rounded-xl border border-white/10 bg-slate-800/60 text-slate-200" data-tab="intro" id="tab-intro"></button>
+    <button type="button" class="tab-btn text-xs font-bold px-3 py-2 rounded-xl border border-white/10 bg-slate-800/60 text-slate-200" data-tab="sim" id="tab-sim"></button>
+    <button type="button" class="tab-btn text-xs font-bold px-3 py-2 rounded-xl border border-white/10 bg-slate-800/60 text-slate-200" data-tab="calc" id="tab-calc"></button>
+    <button type="button" class="tab-btn text-xs font-bold px-3 py-2 rounded-xl border border-white/10 bg-slate-800/60 text-slate-200" data-tab="mcq" id="tab-mcq"></button>
+    <button type="button" class="tab-btn text-xs font-bold px-3 py-2 rounded-xl border border-white/10 bg-slate-800/60 text-slate-200" data-tab="recap" id="tab-recap"></button>
+  </nav>
+</header>
+
+<div id="teacher-panel" class="hidden max-w-7xl mx-auto px-4 sm:px-6 py-3">
+  <div class="glass rounded-2xl p-4 text-sm text-amber-100 border-amber-500/20" id="teacher-content"></div>
+</div>
+
+<main class="max-w-7xl mx-auto px-4 sm:px-6 py-6">
+
+  <!-- INTRO -->
+  <section id="panel-intro" class="tab-panel active space-y-6">
+    <div class="glass rounded-2xl p-6 sm:p-8">
+      <h2 class="text-xl font-extrabold text-white mb-2" id="intro-h1"></h2>
+      <p class="text-sm text-slate-300 leading-relaxed mb-6" id="intro-lead"></p>
+      <div class="grid md:grid-cols-2 gap-4 mb-6" id="phase-cards"></div>
+      <h3 class="text-sm font-bold text-cyan-300 uppercase tracking-wide mb-3" id="cmp-title"></h3>
+      <div class="overflow-x-auto rounded-xl border border-white/10 mb-6" id="cmp-table-wrap"></div>
+      <h3 class="text-sm font-bold text-amber-300 uppercase tracking-wide mb-3" id="pitfall-title"></h3>
+      <div class="grid md:grid-cols-3 gap-3" id="pitfall-cards"></div>
+    </div>
+  </section>
+
+  <!-- SIM: TLC + GC modes -->
+  <section id="panel-sim" class="tab-panel">
+    <div class="flex flex-wrap gap-2 mb-4" id="sim-modes"></div>
+    <div class="grid grid-cols-1 xl:grid-cols-12 gap-6">
+      <div class="xl:col-span-8">
+        <div class="glass rounded-2xl overflow-hidden">
+          <div class="px-4 py-3 border-b border-white/10 flex justify-between items-center">
+            <h2 class="text-sm font-bold text-cyan-200 uppercase tracking-wide" id="sim-view-title"></h2>
+            <span class="text-xs mono text-emerald-400 font-bold px-2 py-1 rounded-lg bg-emerald-500/10 border border-emerald-500/20" id="sim-live"></span>
+          </div>
+          <div class="p-2 sm:p-4 sim-stage">
+            <div id="wrap-tlc" class="canvas-wrap">
+              <canvas id="tlc-canvas" class="w-full rounded-xl border border-white/10 studio-canvas-bg" width="560" height="400" aria-label="TLC plate simulation"></canvas>
+            </div>
+            <div id="wrap-gc" class="hidden canvas-wrap space-y-3">
+              <div id="gcms-steps" class="flex flex-wrap gap-1.5 px-1"></div>
+              <canvas id="gc-anim-canvas" class="w-full rounded-xl border border-white/10 studio-canvas-bg" width="700" height="170" aria-label="GC column animation"></canvas>
+              <canvas id="gc-chromatogram-canvas" class="w-full rounded-xl border border-white/10 studio-canvas-bg" width="700" height="190" aria-label="GC chromatogram live"></canvas>
+              <div id="ms-panel" class="hidden rounded-xl border border-violet-500/30 bg-violet-950/20 p-3 space-y-2">
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                  <h3 class="text-xs font-bold text-violet-200 uppercase tracking-wide" id="ms-panel-title"></h3>
+                  <div id="ms-peak-btns" class="flex flex-wrap gap-1"></div>
+                </div>
+                <p class="text-[11px] text-slate-400 leading-relaxed" id="ms-teach"></p>
+                <canvas id="ms-canvas" class="w-full rounded-xl border border-white/10 studio-canvas-bg" width="700" height="200" aria-label="Mass spectrum m/z"></canvas>
+                <div id="ms-readout" class="text-xs mono text-violet-100"></div>
+              </div>
+            </div>
+          </div>
+          <p class="px-4 pb-3 text-xs text-slate-400" id="sim-caption"></p>
+          <div class="px-4 pb-4 grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs" id="sim-readouts"></div>
+        </div>
+      </div>
+      <div class="xl:col-span-4">
+        <div class="glass rounded-2xl p-4 space-y-4" id="ctrl-panel"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALC: Rf + GC-MS cases -->
+  <section id="panel-calc" class="tab-panel space-y-6">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div class="glass rounded-2xl p-5 space-y-4">
+        <h2 class="text-sm font-bold text-cyan-200 uppercase" id="calc1-title"></h2>
+        <p class="text-xs text-slate-400" id="calc1-desc"></p>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="text-xs font-bold text-slate-300" id="lbl-spot" for="inp-spot"></label>
+            <input type="number" id="inp-spot" value="3.1" step="0.1" min="0" class="w-full mono text-sm border border-white/10 bg-slate-900/60 rounded-lg px-2 py-1.5 mt-1 text-white">
+          </div>
+          <div>
+            <label class="text-xs font-bold text-slate-300" id="lbl-solv" for="inp-solv"></label>
+            <input type="number" id="inp-solv" value="8.0" step="0.1" min="0.1" class="w-full mono text-sm border border-white/10 bg-slate-900/60 rounded-lg px-2 py-1.5 mt-1 text-white">
+          </div>
+        </div>
+        <div id="calc1-working" class="text-sm p-3 bg-slate-900/50 rounded-xl border border-white/10 mono text-slate-200"></div>
+        <div id="calc1-result" class="text-lg font-bold text-emerald-400 mono"></div>
+      </div>
+      <div class="glass rounded-2xl p-5 space-y-3">
+        <h2 class="text-sm font-bold text-cyan-200 uppercase" id="calc2-title"></h2>
+        <p class="text-xs text-slate-400" id="calc2-desc"></p>
+        <div id="gcms-task-list" class="space-y-2 max-h-48 overflow-y-auto custom-scrollbar"></div>
+      </div>
+    </div>
+    <div class="glass rounded-2xl p-5 space-y-4">
+      <div class="flex flex-wrap justify-between items-start gap-2 border-b border-white/10 pb-3">
+        <div>
+          <h3 id="gcms-task-title" class="text-sm font-bold text-cyan-300"></h3>
+          <span id="gcms-task-code" class="text-xs font-mono text-slate-400"></span>
+        </div>
+        <button type="button" id="btn-gcms-hint" class="text-xs px-3 py-1.5 rounded-lg border border-amber-500/40 bg-amber-500/10 text-amber-200"></button>
+      </div>
+      <div id="gcms-task-desc" class="text-xs text-slate-300 leading-relaxed"></div>
+      <div id="gcms-hint-box" class="hidden bg-amber-950/40 border border-amber-800/60 p-3 rounded-lg text-xs text-amber-200">
+        <span class="font-bold text-amber-400 block mb-1" id="gcms-hint-label"></span>
+        <span id="gcms-hint-text"></span>
+      </div>
+      <label for="gcms-user-ans" class="block text-xs font-bold text-slate-300 uppercase" id="gcms-ans-label"></label>
+      <textarea id="gcms-user-ans" rows="4" class="w-full bg-slate-900 border border-slate-700 text-slate-100 text-xs rounded-lg p-3 mono"></textarea>
+      <button type="button" id="btn-gcms-check" class="w-full sm:w-auto py-2.5 px-6 bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs rounded-lg"></button>
+      <div id="gcms-result-msg" class="hidden text-xs p-3 rounded-lg border space-y-2"></div>
+    </div>
+  </section>
+
+  <!-- MCQ -->
+  <section id="panel-mcq" class="tab-panel">
+    <div class="glass rounded-2xl p-6">
+      <h2 class="text-lg font-extrabold text-white mb-1" id="pp-title"></h2>
+      <p class="text-xs text-slate-400 mb-4" id="pp-sub"></p>
+      <div id="pp-questions" class="space-y-4"></div>
+    </div>
+  </section>
+
+  <!-- RECAP -->
+  <section id="panel-recap" class="tab-panel">
+    <div class="glass rounded-2xl p-6 max-w-3xl space-y-6">
+      <div>
+        <h2 class="text-lg font-extrabold text-white mb-2" id="recap-title"></h2>
+        <p class="text-sm text-slate-400 mb-4" id="recap-sub"></p>
+        <ul id="recap-list" class="space-y-3"></ul>
+        <p class="mt-4 text-sm font-bold text-emerald-400" id="recap-progress"></p>
+      </div>
+      <div class="border-t border-white/10 pt-5">
+        <h3 class="text-sm font-bold text-rose-300 uppercase tracking-wide mb-2" id="myth-title"></h3>
+        <p class="text-xs text-slate-400 mb-4" id="myth-lead"></p>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3" id="myth-cards"></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+document.documentElement.lang = 'en';
+
+const T = {
+  title: 'Chromatography & GC-MS Studio',
+  sub: {
+    intro: 'Student Book 15E · syllabus 15.21–15.23',
+    sim: 'TLC plate & GC column · interactive',
+    calc: 'Rf calculator & GC-MS cases · 15.17 & 15.22–15.23',
+    mcq: 'Past-paper style · WCH14',
+    recap: 'Checklist · misconceptions'
+  },
+  teacherBtn: 'Teacher notes',
+  teacher: '<strong>Sources: Syllabus 15.17, 15.21–15.23 · Student Book 2 Topic 15E</strong><ul class="list-disc ml-5 mt-2 space-y-1"><li><strong>15.21:</strong> Every method uses a mobile phase + stationary phase.</li><li><strong>15.22:</strong> R<sub>f</sub> = distance spot ÷ distance solvent front (both from <em>baseline</em>). Pencil baseline only.</li><li><strong>15.23:</strong> HPLC/GC are column methods → retention time. GC-MS for forensics & sport drug testing.</li><li><strong>15.17:</strong> HRMS accurate M<sub>r</sub> (4 d.p.) distinguishes same nominal mass.</li><li>Default TLC development is <strong>Slow</strong> so students can watch spots separate.</li></ul>',
+  tabs: { intro: '1 Methods', sim: '2 Studio', calc: '3 Calculate', mcq: '4 Past paper', recap: '5 Recap' },
+  introH1: 'Core separation principles',
+  introLead: 'Syllabus 15.21–15.23: chromatography separates mixtures using a mobile phase and a stationary phase. Paper/TLC give R<sub>f</sub>; HPLC/GC give retention times. Coupling to mass spectrometry identifies components (forensics, sport).',
+  phaseMobileTitle: 'Mobile phase (liquid or gas)',
+  phaseMobileBody: 'Carries the sample over or through the stationary phase. Higher solubility / affinity to the mobile phase → moves <strong>faster / further</strong>.',
+  phaseMobileItems: ['Solvent (liquid) in paper, TLC, column, HPLC', 'Inert carrier gas (N<sub>2</sub> or He) in GC'],
+  phaseStatTitle: 'Stationary phase (solid or liquid)',
+  phaseStatBody: 'Retains components by adsorption or partition. Stronger interaction → moves <strong>slower</strong> / longer retention time.',
+  phaseStatItems: ['Paper / silica gel / alumina', 'High-boiling liquid on solid support (GC)'],
+  cmpTitle: 'Technique comparison',
+  cmpRows: [
+    ['Technique', 'Stationary phase', 'Mobile phase', 'Mechanism / output'],
+    ['Paper', 'Water in cellulose paper', 'Liquid solvent', 'Partition · R<sub>f</sub>'],
+    ['TLC', 'Silica / alumina layer', 'Liquid solvent', 'Adsorption · R<sub>f</sub>'],
+    ['Column / HPLC', 'Silica packing', 'Liquid (HPLC: high P)', 'Adsorption · t<sub>R</sub>'],
+    ['GC', 'High-boiling liquid coating', 'Inert gas (He / N<sub>2</sub>)', 'Partition / volatility · t<sub>R</sub>'],
+    ['GC-MS', 'GC column then MS', 'Carrier gas → MS', 't<sub>R</sub> + mass spectrum']
+  ],
+  pitfallTitle: 'Examiner watch-outs',
+  pitfalls: [
+    { t: 'Pencil baseline', b: 'Baseline must be graphite pencil. Ink dyes dissolve and ruin the chromatogram.' },
+    { t: 'R<sub>f</sub> = 0 or 1', b: 'R<sub>f</sub> = 0: insoluble / strongly adsorbed. R<sub>f</sub> = 1: travels with the solvent front. R<sub>f</sub> never exceeds 1.' },
+    { t: 'GC/HPLC alone', b: 'Different compounds can share the same retention time. MS is needed for positive identification.' }
+  ],
+  simModes: { tlc: 'TLC & R<sub>f</sub>', gc: 'GC → MS' },
+  simTitles: { tlc: 'TLC plate development', gc: 'GC-MS: separate first, then identify' },
+  simCaps: {
+    tlc: 'Run the plate, then click a coloured spot to select it for R<sub>f</sub> practice. Solvent polarity changes relative distances. Ninhydrin / UV reveal colourless spots.',
+    gc: '<strong>Teacher sequence:</strong> ① inject mixture as one plug → ② GC separates pure fractions (dot count = relative amount) → ③ chromatogram builds as each reaches the detector → ④ send each pure peak into the mass spectrometer → ⑤ read <em>m/z</em> (M⁺ and fragments) to identify.'
+  },
+  gcSteps: [
+    { id: 'inject', label: '1 Inject' },
+    { id: 'separate', label: '2 GC separate' },
+    { id: 'detect', label: '3 Peaks appear' },
+    { id: 'ms', label: '4 MS (m/z)' },
+    { id: 'id', label: '5 Identify' }
+  ],
+  msPanelTitle: 'Mass spectrum of selected GC peak',
+  msTeachReady: 'Run GC first. When peaks finish, click a coloured peak button to send that pure fraction into the MS.',
+  msTeachPick: 'Each GC peak is (ideally) one pure compound. The MS ionises it, measures mass-to-charge ratio (m/z), and fragments give a fingerprint — that is how we identify what GC alone cannot.',
+  msTeachSel: (name, formula, M) => `Selected: <strong>${name}</strong> (${formula}). Look for the molecular ion M⁺ at m/z ${M}. Fragment peaks are smaller pieces of the molecule — use them to support the structure.`,
+  btnRunGc: '1 · Inject mixture & run GC',
+  btnResetGc: 'Reset to injection plug',
+  btnToMs: '2 · Open MS stage',
+  gcPhaseLbl: 'Lesson stage',
+  tlcSampleLbl: 'Sample mixture',
+  tlcSolventLbl: 'Mobile solvent',
+  tlcSpeedLbl: 'Development speed',
+  tlcVizLbl: 'Visualisation',
+  speedVSlow: 'Very slow',
+  speedSlow: 'Slow',
+  speedMed: 'Medium',
+  speedFast: 'Fast',
+  vizNone: 'Visible light',
+  vizNinh: 'Ninhydrin',
+  vizUv: 'UV light',
+  btnRunTlc: 'Run chromatogram',
+  btnPause: 'Pause',
+  btnResume: 'Resume',
+  btnReset: 'Reset',
+  gcTempLbl: 'Column temperature',
+  gcSpeedLbl: 'Animation speed',
+  solventPolar: 'Polar (butan-1-ol / acid / water)',
+  solventNonpolar: 'Non-polar (hexane / ether)',
+  sampleAA: 'Amino acids (Gly, Ala, Leu)',
+  sampleDye: 'Food dyes',
+  sampleHorse: 'Urine test (metabolites + caffeine)',
+  rfSelectHint: 'Click a developed spot on the plate to select it.',
+  rfSelected: (name, rf) => `Selected: ${name} · expected R<sub>f</sub> ≈ ${rf.toFixed(2)}`,
+  rfCheckBtn: 'Verify R<sub>f</sub>',
+  rfInputPh: 'e.g. 0.38',
+  rfOk: 'Correct — matches selected spot.',
+  rfBad: 'Not quite — measure from pencil baseline to spot centre ÷ solvent front.',
+  rfNeedSpot: 'Select a spot on the plate first (after running).',
+  rfNeedNum: 'Enter a numeric R<sub>f</sub> between 0 and 1.',
+  calc1Title: '15.22 — Calculate R<sub>f</sub>',
+  calc1Desc: 'R<sub>f</sub> = distance moved by spot ÷ distance moved by solvent front (both from the baseline). No units.',
+  lblSpot: 'Spot distance / cm',
+  lblSolv: 'Solvent front / cm',
+  calc1Work: (s, f, r) => `R<sub>f</sub> = ${s} ÷ ${f} = <b>${r.toFixed(3)}</b>`,
+  calc1Res: (r) => `R<sub>f</sub> = ${r.toFixed(3)}`,
+  calc2Title: 'GC-MS & HRMS case studies',
+  calc2Desc: 'Answer in full sentences. Marking uses keyword groups from the mark scheme (offline).',
+  gcmsAnsLabel: 'Your explanation',
+  gcmsCheck: 'Check against mark scheme',
+  gcmsHintBtn: 'Show / hide hint',
+  gcmsHintLabel: 'Examiner guidance',
+  gcmsMarks: (n, t) => `Score: ${n}/${t} mark points`,
+  gcmsMissed: 'Missed ideas:',
+  gcmsModel: 'Model answer:',
+  ppTitle: 'Past-paper style questions',
+  ppSub: 'WCH14 Topic 15E · 15.21–15.23 (and 15.17 context)',
+  ppCheck: 'Check',
+  ppOk: 'Correct. ',
+  ppBad: 'Not quite. ',
+  pp: [
+    { q: 'In paper chromatography, the stationary phase is…', opts: ['The filter paper (water bound)', 'The liquid solvent', 'Ninhydrin spray', 'Carrier gas'], ans: 0, exp: '<span class="kw-hit">Filter paper</span> (water bound) is stationary; solvent is mobile (15.21).' },
+    { q: 'A spot travels 3.6 cm; solvent front 6.0 cm. R<sub>f</sub> = ?', opts: ['0.60', '1.67', '3.6', '0.36'], ans: 0, exp: '<span class="kw-hit">R<sub>f</sub> = 3.6/6.0 = 0.60</span> (15.22).' },
+    { q: 'HPLC and GC are types of…', opts: ['Column chromatography', 'Paper chromatography', 'Electrophoresis', 'Distillation'], ans: 0, exp: '<span class="kw-hit">Column chromatography</span> — separation by retention time (15.23).' },
+    { q: 'GC-MS is useful in sport drug testing because…', opts: ['It separates then identifies each component', 'It measures optical rotation', 'It needs no stationary phase', 'It only gives R<sub>f</sub> values'], ans: 0, exp: 'GC separates; <span class="kw-hit">MS identifies</span> each peak (15.23).' },
+    { q: 'Stronger adsorption on silica in TLC gives…', opts: ['Lower R<sub>f</sub>', 'Higher R<sub>f</sub>', 'R<sub>f</sub> = 0 always', 'R<sub>f</sub> = solvent front'], ans: 0, exp: 'Stronger adsorption → <span class="kw-hit">lower R<sub>f</sub></span>.' },
+    { q: 'Retention time in HPLC/GC is…', opts: ['Time from injection to detection', 'Distance baseline → spot', 'R<sub>f</sub> × 100', 'Time for solvent front to top'], ans: 0, exp: '<span class="kw-hit">Injection → detection</span> (15.23).' }
+  ],
+  recapTitle: 'Checklist — 15.21–15.23 (+ 15.17)',
+  recapSub: 'Student Book 15E chromatography focus. NMR is out of this studio.',
+  recapGoals: [
+    '15.21 — I can name mobile and stationary phases for paper, TLC, HPLC and GC.',
+    '15.22 — I can calculate R<sub>f</sub> from baseline measurements and explain polarity effects.',
+    '15.23 — I define retention time and why temperature/solvent affect it.',
+    '15.23 — I explain why GC alone is not enough and how GC-MS helps (forensics / sport).',
+    '15.17 — I can use accurate atomic masses to distinguish same nominal M<sub>r</sub> (HRMS).',
+    'I never use ink for the baseline and I know R<sub>f</sub> ≤ 1.'
+  ],
+  recapProg: (n, tot) => `${n}/${tot} complete`,
+  mythTitle: 'Common misconceptions',
+  mythLead: 'Tap a card to flip. Check you would not write this in an exam.',
+  mythFlip: 'Tap to flip',
+  mythLabelMyth: 'Myth?',
+  mythLabelFact: 'Fact',
+  myths: [
+    { m: 'Ink is fine for drawing the baseline.', f: 'Use pencil only. Ink dyes dissolve in the mobile phase and contaminate the plate.' },
+    { m: 'R<sub>f</sub> and retention time are the same quantity.', f: 'R<sub>f</sub> is a distance ratio (paper/TLC). Retention time is injection → detection (HPLC/GC).' },
+    { m: 'GC alone can positively identify a banned drug.', f: 'Different compounds can share t<sub>R</sub>. MS gives mass / fragmentation for identification (15.23).' },
+    { m: 'R<sub>f</sub> can be greater than 1.', f: 'Maximum R<sub>f</sub> is 1 (spot moves with the solvent front).' },
+    { m: 'Stronger adsorption means higher R<sub>f</sub>.', f: 'Stronger stationary-phase interaction → spot travels less → lower R<sub>f</sub>.' },
+    { m: 'Peak height always equals concentration.', f: 'Peak area is proportional to relative amount under comparable conditions; height alone is not rigorous.' }
+  ]
+};
+function t() { return T; }
+
+/* ── TLC sample data ─────────────────────────────────────────────── */
+const TLC_SAMPLES = {
+  amino_acids: {
+    labelKey: 'sampleAA',
+    spots: [
+      { name: 'Glycine', base: 0.26, polar: 1.15, nonpolar: 0.55, color: 'transparent', ninh: '#a855f7', uv: '#3b82f6' },
+      { name: 'Alanine', base: 0.38, polar: 1.10, nonpolar: 0.65, color: 'transparent', ninh: '#c084fc', uv: '#60a5fa' },
+      { name: 'Leucine', base: 0.73, polar: 0.95, nonpolar: 1.05, color: 'transparent', ninh: '#e879f9', uv: '#93c5fd' }
+    ]
+  },
+  food_dyes: {
+    labelKey: 'sampleDye',
+    spots: [
+      { name: 'Tartrazine', base: 0.30, polar: 1.05, nonpolar: 0.70, color: '#eab308', ninh: '#eab308', uv: '#fde047' },
+      { name: 'Allura Red', base: 0.55, polar: 1.00, nonpolar: 0.85, color: '#ef4444', ninh: '#ef4444', uv: '#f87171' },
+      { name: 'Brilliant Blue', base: 0.82, polar: 0.95, nonpolar: 1.00, color: '#3b82f6', ninh: '#3b82f6', uv: '#60a5fa' }
+    ]
+  },
+  horse_doping: {
+    labelKey: 'sampleHorse',
+    spots: [
+      { name: 'Metabolites', base: 0.20, polar: 1.10, nonpolar: 0.60, color: '#84cc16', ninh: '#84cc16', uv: '#a3e635' },
+      { name: 'Caffeine', base: 0.60, polar: 1.00, nonpolar: 0.80, color: 'transparent', ninh: '#f97316', uv: '#fb923c' }
+    ]
+  }
+};
+
+// TLC development steps per frame
+const SPEED = { slow: 0.0015, med: 0.004, fast: 0.01 };
+// GC elution — much slower defaults so students can watch all peaks form
+const GC_SPEED = { vslow: 0.00028, slow: 0.00055, med: 0.0012, fast: 0.0035 };
+// Animation ends after slowest component has fully passed the detector
+const GC_PROGRESS_END = 1.18;
+/**
+ * Extreme relative amounts (dot count = amount).
+ * Peak height on chromatogram ∝ amount. Speed = elution order (volatility / affinity).
+ * MS: molecular ion M+ and typical fragment m/z for alcohol teaching (IAL 10D / 15E).
+ */
+const GC_BASE_PEAKS = [
+  {
+    name: 'Methanol', formula: 'CH₃OH', tR: 1.2, amount: 3, color: '#38bdf8', speed: 1.25,
+    M: 32, fragments: [{ mz: 31, rel: 100, note: 'CH₂OH⁺ / [M−H]⁺' }, { mz: 29, rel: 40, note: 'CHO⁺' }, { mz: 15, rel: 25, note: 'CH₃⁺' }]
+  },
+  {
+    name: 'Ethanol', formula: 'C₂H₅OH', tR: 2.1, amount: 18, color: '#4ade80', speed: 0.95,
+    M: 46, fragments: [{ mz: 45, rel: 55, note: '[M−H]⁺' }, { mz: 31, rel: 100, note: 'CH₂OH⁺' }, { mz: 29, rel: 35, note: 'C₂H₅⁺ / CHO⁺' }]
+  },
+  {
+    name: 'Propan-1-ol', formula: 'C₃H₇OH', tR: 3.5, amount: 6, color: '#a78bfa', speed: 0.72,
+    M: 60, fragments: [{ mz: 59, rel: 30, note: '[M−H]⁺' }, { mz: 42, rel: 50, note: 'C₃H₆⁺' }, { mz: 31, rel: 100, note: 'CH₂OH⁺' }]
+  },
+  {
+    name: 'Butan-1-ol', formula: 'C₄H₉OH', tR: 5.2, amount: 12, color: '#fbbf24', speed: 0.52,
+    M: 74, fragments: [{ mz: 56, rel: 100, note: 'C₄H₈⁺' }, { mz: 43, rel: 45, note: 'C₃H₇⁺' }, { mz: 31, rel: 70, note: 'CH₂OH⁺' }]
+  }
+];
+const GC_MAX_AMOUNT = Math.max(...GC_BASE_PEAKS.map(p => p.amount));
+const GC_PEAK_MAX_H = 120;
+function gcDotCount(p) { return p.amount; }
+function gcPeakHeight(p) { return Math.round((p.amount / GC_MAX_AMOUNT) * GC_PEAK_MAX_H); }
+
+const GCMS_TASKS = [
+  {
+    id: 'case1',
+    title: 'HRMS: isomers with same nominal mass',
+    code: 'WCH14 · 15.17 / 15E',
+    desc: 'A high-resolution mass spectrum shows two molecular ions near nominal mass 44: Peak A at m/z = 44.0624 and Peak B at m/z = 44.0261. Using C = 12.0000, H = 1.0078, O = 15.9949, calculate exact M<sub>r</sub> for C<sub>3</sub>H<sub>8</sub> and CH<sub>3</sub>CHO, and explain why HRMS is essential.',
+    hint: 'C<sub>3</sub>H<sub>8</sub> = 3×12.0000 + 8×1.0078 = 44.0624. CH<sub>3</sub>CHO = 2×12 + 4×1.0078 + 15.9949 = 44.0261. Low-res MS rounds both to 44.',
+    solution: 'Peak A is propane (C<sub>3</sub>H<sub>8</sub>, 44.0624); Peak B is ethanal (CH<sub>3</sub>CHO, 44.0261). HRMS distinguishes them at 4 d.p.; low-resolution MS cannot.',
+    groups: [
+      [['44.0624', '44.062', 'propane', 'c3h8', 'c₃h₈']],
+      [['44.0261', '44.026', 'ethanal', 'acetaldehyde', 'ch3cho', 'ch₃cho']],
+      [['high resolution', 'hrms', '4 decimal', 'four decimal', 'accurate mass', 'exact mass'], ['same nominal', 'both 44', 'identical integer', 'same integer']]
+    ]
+  },
+  {
+    id: 'case2',
+    title: 'Why GC alone is insufficient (sport testing)',
+    code: 'WCH14 · 15.23',
+    desc: 'In sports drug testing, urine is analysed by GC-MS. Explain why gas chromatography alone is insufficient to positively identify a banned substance, and how coupling to mass spectrometry solves this.',
+    hint: 'GC gives retention time only — different compounds can share t<sub>R</sub>. MS provides fragmentation / accurate mass for identification.',
+    solution: 'GC separates components and records retention times, but different substances can have identical t<sub>R</sub>. MS of each fraction gives a unique mass spectrum / accurate M<sub>r</sub> for positive identification.',
+    groups: [
+      [['retention time', 't_r', 'tr', 't<sub>r</sub>', 'same retention', 'identical retention']],
+      [['different compound', 'different substance', 'two compounds', 'cannot identify', 'not unique', 'insufficient']],
+      [['mass spect', 'fragment', 'molecular mass', 'molecular ion', 'identify', 'fingerprint', 'database']]
+    ]
+  },
+  {
+    id: 'case3',
+    title: 'Retention time definition',
+    code: 'WCH14 · 15.23',
+    desc: 'Define retention time for HPLC/GC and state two experimental factors that change it for a given compound.',
+    hint: 't<sub>R</sub> = time from injection to detection. Factors: temperature, solvent / mobile phase, pressure (HPLC), column packing.',
+    solution: 'Retention time is the time from injection of the sample until the component reaches the detector. It depends on column temperature, mobile phase / solvent, pressure (HPLC) and the stationary phase.',
+    groups: [
+      [['injection', 'inject'], ['detect', 'detector', 'detection']],
+      [['temperature', 'temp'], ['solvent', 'mobile phase', 'pressure', 'column']]
+    ]
+  }
+];
+
+/* ── State ───────────────────────────────────────────────────────── */
+let activeTab = 'intro';
+let simMode = 'tlc';
+let activeVisualizer = 'none';
+let tlcSpeedKey = 'slow';
+let gcSpeedKey = 'vslow';
+let currentTlcStep = 0;
+let tlcAnimId = null;
+let tlcPaused = false;
+let selectedSpotIdx = null;
+let gcAnimId = null;
+let gcProgress = 0;
+let gcLessonStep = 'inject'; // inject | separate | detect | ms | id
+let msSelectedIdx = null;
+let activeGcmsTask = null;
+let recapChecked = {};
+
+/* ── Helpers ─────────────────────────────────────────────────────── */
+function setHtml(id, html) {
+  const el = document.getElementById(id);
+  if (el) el.innerHTML = html;
+}
+function setText(id, text) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = text;
+}
+function clamp(x, a, b) { return Math.max(a, Math.min(b, x)); }
+
+function effectiveRf(spot, solvent) {
+  const f = solvent === 'nonpolar' ? spot.nonpolar : spot.polar;
+  return clamp(spot.base * f, 0.02, 0.98);
+}
+
+function scheduleResize() {
+  if (activeTab !== 'sim') return;
+  if (simMode === 'tlc') drawTlcCanvas();
+  else {
+    drawGcColumn(gcProgress);
+    drawGcChromatogram(gcProgress);
+    updateGcReadouts(gcProgress);
+  }
+}
+
+/* ── Tabs ────────────────────────────────────────────────────────── */
+function setTab(name) {
+  activeTab = name;
+  const s = t();
+  document.querySelectorAll('.tab-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.tab === name);
+  });
+  document.querySelectorAll('.tab-panel').forEach(p => {
+    p.classList.toggle('active', p.id === 'panel-' + name);
+  });
+  setText('hdr-sub', s.sub[name] || s.sub.intro);
+  if (name === 'sim') scheduleResize();
+  if (name === 'calc') updateRfCalcLive();
+  if (name === 'recap') renderRecap();
+  if (name === 'mcq') renderMcq();
+}
+
+function setSimMode(m) {
+  simMode = m || 'tlc';
+  if (simMode !== 'tlc' && simMode !== 'gc') simMode = 'tlc';
+  const s = t();
+  document.querySelectorAll('.sim-mode-btn').forEach(b => {
+    if (b && b.classList && b.dataset) b.classList.toggle('active', b.dataset.mode === simMode);
+  });
+  const wrapTlc = document.getElementById('wrap-tlc');
+  const wrapGc = document.getElementById('wrap-gc');
+  if (wrapTlc) wrapTlc.classList.toggle('hidden', simMode !== 'tlc');
+  if (wrapGc) wrapGc.classList.toggle('hidden', simMode !== 'gc');
+  setText('sim-view-title', s.simTitles[simMode] || s.simTitles.tlc);
+  setHtml('sim-caption', s.simCaps[simMode] || s.simCaps.tlc);
+  buildCtrl();
+  scheduleResize();
+}
+
+/* ── Intro render ────────────────────────────────────────────────── */
+function renderIntro() {
+  const s = t();
+  setText('intro-h1', s.introH1);
+  setHtml('intro-lead', s.introLead);
+  setHtml('phase-cards', `
+    <div class="glass rounded-xl p-4 border border-cyan-500/20">
+      <h3 class="text-sm font-bold text-cyan-300 mb-2">${s.phaseMobileTitle}</h3>
+      <p class="text-xs text-slate-300 mb-2">${s.phaseMobileBody}</p>
+      <ul class="text-xs text-slate-400 list-disc list-inside space-y-1">${s.phaseMobileItems.map(i => `<li>${i}</li>`).join('')}</ul>
+    </div>
+    <div class="glass rounded-xl p-4 border border-emerald-500/20">
+      <h3 class="text-sm font-bold text-emerald-300 mb-2">${s.phaseStatTitle}</h3>
+      <p class="text-xs text-slate-300 mb-2">${s.phaseStatBody}</p>
+      <ul class="text-xs text-slate-400 list-disc list-inside space-y-1">${s.phaseStatItems.map(i => `<li>${i}</li>`).join('')}</ul>
+    </div>`);
+  setText('cmp-title', s.cmpTitle);
+  const rows = s.cmpRows;
+  setHtml('cmp-table-wrap', `<table class="cmp-table w-full text-slate-200"><thead><tr>${rows[0].map(c => `<th>${c}</th>`).join('')}</tr></thead><tbody>${rows.slice(1).map(r => `<tr>${r.map(c => `<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table>`);
+  setText('pitfall-title', s.pitfallTitle);
+  setHtml('pitfall-cards', s.pitfalls.map(p => `
+    <div class="p-3 bg-amber-950/30 border border-amber-800/40 rounded-xl text-xs">
+      <span class="font-bold text-amber-300 block mb-1">${p.t}</span>
+      <span class="text-slate-300">${p.b}</span>
+    </div>`).join(''));
+}
+
+/* ── Controls panel ──────────────────────────────────────────────── */
+function buildCtrl() {
+  const s = t();
+  const panel = document.getElementById('ctrl-panel');
+  if (!panel) return;
+
+  if (simMode === 'tlc') {
+    panel.innerHTML = `
+      <div>
+        <label class="text-xs font-bold text-slate-300" for="sample-type-select">${s.tlcSampleLbl}</label>
+        <select id="sample-type-select" class="w-full mt-1 bg-slate-950 border border-slate-700 text-slate-100 text-xs rounded-lg p-2 mono">
+          <option value="amino_acids">${s.sampleAA}</option>
+          <option value="food_dyes">${s.sampleDye}</option>
+          <option value="horse_doping">${s.sampleHorse}</option>
+        </select>
+      </div>
+      <div>
+        <label class="text-xs font-bold text-slate-300" for="solvent-select">${s.tlcSolventLbl}</label>
+        <select id="solvent-select" class="w-full mt-1 bg-slate-950 border border-slate-700 text-slate-100 text-xs rounded-lg p-2 mono">
+          <option value="polar">${s.solventPolar}</option>
+          <option value="nonpolar">${s.solventNonpolar}</option>
+        </select>
+      </div>
+      <div>
+        <span class="text-xs font-bold text-slate-300 block mb-1">${s.tlcSpeedLbl}</span>
+        <div class="grid grid-cols-3 gap-1" id="tlc-speed-btns">
+          <button type="button" id="spd-tlc-slow" class="speed-btn active px-2 py-1.5 text-xs rounded-lg border border-slate-700" onclick="window._tlcSpeed('slow')">${s.speedSlow}</button>
+          <button type="button" id="spd-tlc-med" class="speed-btn px-2 py-1.5 text-xs rounded-lg border border-slate-700" onclick="window._tlcSpeed('med')">${s.speedMed}</button>
+          <button type="button" id="spd-tlc-fast" class="speed-btn px-2 py-1.5 text-xs rounded-lg border border-slate-700" onclick="window._tlcSpeed('fast')">${s.speedFast}</button>
+        </div>
+      </div>
+      <div>
+        <span class="text-xs font-bold text-slate-300 block mb-1">${s.tlcVizLbl}</span>
+        <div class="grid grid-cols-3 gap-1">
+          <button type="button" id="viz-none" class="viz-btn active px-1 py-1.5 text-[10px] rounded-lg border border-slate-700" onclick="window._tlcViz('none')">${s.vizNone}</button>
+          <button type="button" id="viz-ninhydrin" class="viz-btn px-1 py-1.5 text-[10px] rounded-lg border border-slate-700" onclick="window._tlcViz('ninhydrin')">${s.vizNinh}</button>
+          <button type="button" id="viz-uv" class="viz-btn px-1 py-1.5 text-[10px] rounded-lg border border-slate-700" onclick="window._tlcViz('uv')">${s.vizUv}</button>
+        </div>
+      </div>
+      <div class="flex gap-2">
+        <button type="button" id="run-tlc-btn" class="flex-1 py-2 bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs rounded-lg">${s.btnRunTlc}</button>
+        <button type="button" id="pause-tlc-btn" class="py-2 px-3 bg-slate-700 hover:bg-slate-600 text-white text-xs rounded-lg" onclick="window._tlcPause()">${s.btnPause}</button>
+      </div>
+      <button type="button" id="reset-tlc-btn" class="w-full py-2 border border-slate-600 text-slate-300 text-xs rounded-lg">${s.btnReset}</button>
+      <div class="border-t border-white/10 pt-3 space-y-2">
+        <p class="text-[11px] text-slate-400" id="rf-select-status">${s.rfSelectHint}</p>
+        <div class="flex gap-2 items-center">
+          <input type="number" id="rf-user-input" step="0.01" min="0" max="1" placeholder="${s.rfInputPh}" class="w-24 bg-slate-900 border border-cyan-700/60 text-slate-100 text-xs rounded-lg p-2 text-center">
+          <button type="button" id="check-rf-btn" class="flex-1 py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-lg">${s.rfCheckBtn}</button>
+        </div>
+        <div id="rf-feedback" class="hidden text-xs p-2.5 rounded-lg border"></div>
+      </div>`;
+    bindTlcControls();
+  } else {
+    const amounts = GC_BASE_PEAKS.map(p => `<span style="color:${p.color}">${p.name} ×${p.amount}</span>`).join('<br>');
+    panel.innerHTML = `
+      <div class="p-3 rounded-xl border border-cyan-800/50 bg-cyan-950/30 text-[11px] text-slate-300 leading-relaxed space-y-1.5">
+        <p class="font-bold text-cyan-200">Why GC-MS? (exam story)</p>
+        <p><strong>GC</strong> only separates and times peaks — different compounds can share the same t<sub>R</sub>.</p>
+        <p><strong>MS</strong> takes each pure GC fraction, ionises it, and reports <em>m/z</em> so you can identify M⁺ and fragments.</p>
+      </div>
+      <div>
+        <label class="text-xs font-bold text-slate-300" for="gc-temp-slider">${s.gcTempLbl}: <span id="gc-temp-val" class="text-cyan-400 mono">120°C</span></label>
+        <input type="range" id="gc-temp-slider" min="80" max="220" value="120" class="w-full mt-1">
+      </div>
+      <div>
+        <span class="text-xs font-bold text-slate-300 block mb-1">${s.gcSpeedLbl}</span>
+        <div class="grid grid-cols-4 gap-1" id="gc-speed-btns">
+          <button type="button" id="spd-gc-vslow" class="speed-btn active px-1 py-1.5 text-[10px] rounded-lg border border-slate-700" onclick="window._gcSpeed('vslow')">${s.speedVSlow}</button>
+          <button type="button" id="spd-gc-slow" class="speed-btn px-1 py-1.5 text-[10px] rounded-lg border border-slate-700" onclick="window._gcSpeed('slow')">${s.speedSlow}</button>
+          <button type="button" id="spd-gc-med" class="speed-btn px-1 py-1.5 text-[10px] rounded-lg border border-slate-700" onclick="window._gcSpeed('med')">${s.speedMed}</button>
+          <button type="button" id="spd-gc-fast" class="speed-btn px-1 py-1.5 text-[10px] rounded-lg border border-slate-700" onclick="window._gcSpeed('fast')">${s.speedFast}</button>
+        </div>
+      </div>
+      <div class="p-3 bg-slate-900 border border-slate-800 rounded-lg text-[11px] space-y-1 mono leading-relaxed">
+        <div class="text-slate-400 font-sans font-bold mb-1">Relative amounts (dots = amount)</div>
+        ${amounts}
+      </div>
+      <button type="button" id="run-gc-btn" class="w-full py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-lg">${s.btnRunGc}</button>
+      <button type="button" id="btn-open-ms" class="w-full py-2.5 bg-violet-600 hover:bg-violet-500 text-white font-bold text-xs rounded-lg disabled:opacity-40" disabled>${s.btnToMs}</button>
+      <button type="button" id="reset-gc-btn" class="w-full py-2 border border-slate-600 text-slate-300 text-xs rounded-lg">${s.btnResetGc}</button>
+      <p class="text-[11px] text-slate-400">Higher T → shorter t<sub>R</sub>. Watch the chromatogram <em>grow in real time</em> as each plug hits the detector.</p>`;
+    bindGcControls();
+    renderGcmsSteps();
+    resetGcStudio(false);
+  }
+}
+
+function bindTlcControls() {
+  const s = t();
+  const sample = document.getElementById('sample-type-select');
+  const solvent = document.getElementById('solvent-select');
+  if (sample) sample.onchange = () => { resetTlcPlate(); };
+  if (solvent) solvent.onchange = () => { resetTlcPlate(); };
+  window._tlcSpeed = function (key) {
+    tlcSpeedKey = key;
+    ['slow', 'med', 'fast'].forEach(k => {
+      const el = document.getElementById('spd-tlc-' + k);
+      if (el && el.classList) el.classList.toggle('active', k === tlcSpeedKey);
+    });
+  };
+  window._tlcViz = function (mode) {
+    activeVisualizer = mode;
+    ['none', 'ninhydrin', 'uv'].forEach(k => {
+      const el = document.getElementById('viz-' + k);
+      if (el && el.classList) el.classList.toggle('active', k === activeVisualizer);
+    });
+    drawTlcCanvas();
+  };
+  window._tlcPause = function () {
+    const pauseBtn = document.getElementById('pause-tlc-btn');
+    tlcPaused = !tlcPaused;
+    if (pauseBtn) pauseBtn.textContent = tlcPaused ? s.btnResume : s.btnPause;
+    if (!tlcPaused && currentTlcStep < 1) runTlcSimulation(true);
+  };
+  const runBtn = document.getElementById('run-tlc-btn');
+  const resetBtn = document.getElementById('reset-tlc-btn');
+  if (runBtn) runBtn.onclick = () => runTlcSimulation();
+  if (resetBtn) resetBtn.onclick = () => resetTlcPlate();
+  const checkBtn = document.getElementById('check-rf-btn');
+  if (checkBtn) checkBtn.onclick = () => checkRfCalculation();
+  const canvas = document.getElementById('tlc-canvas');
+  if (canvas) canvas.onclick = (e) => onTlcClick(e);
+}
+
+function bindGcControls() {
+  const temp = document.getElementById('gc-temp-slider');
+  if (temp) {
+    temp.oninput = () => {
+      setText('gc-temp-val', temp.value + '°C');
+      drawGcColumn(gcProgress);
+      drawGcChromatogram(gcProgress);
+    };
+  }
+  window._gcSpeed = function (key) {
+    gcSpeedKey = key;
+    ['vslow', 'slow', 'med', 'fast'].forEach(k => {
+      const el = document.getElementById('spd-gc-' + k);
+      if (el && el.classList) el.classList.toggle('active', k === gcSpeedKey);
+    });
+  };
+  const runGc = document.getElementById('run-gc-btn');
+  if (runGc) runGc.onclick = () => startGcAnimation();
+  const resetGc = document.getElementById('reset-gc-btn');
+  if (resetGc) resetGc.onclick = () => resetGcStudio(true);
+  const openMs = document.getElementById('btn-open-ms');
+  if (openMs) openMs.onclick = () => openMsStage();
+}
+
+function renderGcmsSteps() {
+  const s = t();
+  const box = document.getElementById('gcms-steps');
+  if (!box) return;
+  const order = ['inject', 'separate', 'detect', 'ms', 'id'];
+  const activeIdx = order.indexOf(gcLessonStep);
+  box.innerHTML = (s.gcSteps || []).map((st, i) => {
+    const on = i <= activeIdx;
+    const cur = st.id === gcLessonStep;
+    return `<span class="text-[10px] font-bold px-2 py-1 rounded-lg border ${cur ? 'bg-cyan-600 border-cyan-400 text-white' : on ? 'bg-slate-800 border-cyan-800 text-cyan-200' : 'bg-slate-900 border-slate-700 text-slate-500'}">${st.label}</span>`;
+  }).join('');
+}
+
+function setGcLessonStep(step) {
+  gcLessonStep = step;
+  renderGcmsSteps();
+}
+
+function resetGcStudio(redraw) {
+  if (gcAnimId) cancelAnimationFrame(gcAnimId);
+  gcAnimId = null;
+  gcProgress = 0;
+  msSelectedIdx = null;
+  setGcLessonStep('inject');
+  const msPanel = document.getElementById('ms-panel');
+  if (msPanel) msPanel.classList.add('hidden');
+  const openMs = document.getElementById('btn-open-ms');
+  if (openMs) openMs.disabled = true;
+  setText('sim-live', 'Ready — mixture at injector');
+  if (redraw !== false) {
+    drawGcColumn(0);
+    drawGcChromatogram(0);
+    updateGcReadouts(0);
+  }
+}
+
+function openMsStage() {
+  if (gcProgress < 0.99) return;
+  setGcLessonStep('ms');
+  const msPanel = document.getElementById('ms-panel');
+  if (msPanel) msPanel.classList.remove('hidden');
+  const s = t();
+  setHtml('ms-panel-title', s.msPanelTitle);
+  setHtml('ms-teach', s.msTeachPick);
+  const btns = document.getElementById('ms-peak-btns');
+  if (btns) {
+    btns.innerHTML = GC_BASE_PEAKS.map((p, i) =>
+      `<button type="button" class="text-[10px] font-bold px-2 py-1 rounded-lg border border-slate-600" style="color:${p.color};border-color:${p.color}66" onclick="window._pickMs(${i})">${p.name}</button>`
+    ).join('');
+  }
+  setText('sim-live', 'MS stage — pick a GC peak');
+  drawMsSpectrum(null);
+  setHtml('ms-readout', s.msTeachReady);
+}
+
+window._pickMs = function (i) {
+  msSelectedIdx = i;
+  const p = GC_BASE_PEAKS[i];
+  const s = t();
+  setGcLessonStep('id');
+  setHtml('ms-teach', s.msTeachSel(p.name, p.formula, p.M));
+  drawMsSpectrum(i);
+  setHtml('ms-readout',
+    `<span style="color:${p.color}">${p.name}</span> · formula ${p.formula} · <strong>M⁺ m/z = ${p.M}</strong> · base peak often a fragment, not always M⁺`);
+  setText('sim-live', 'Identified via m/z: ' + p.name);
+};
+
+/* ── TLC simulation ──────────────────────────────────────────────── */
+function resetTlcPlate() {
+  if (tlcAnimId) cancelAnimationFrame(tlcAnimId);
+  tlcAnimId = null;
+  currentTlcStep = 0;
+  tlcPaused = false;
+  selectedSpotIdx = null;
+  const fb = document.getElementById('rf-feedback');
+  if (fb) fb.classList.add('hidden');
+  const st = document.getElementById('rf-select-status');
+  if (st) st.innerHTML = t().rfSelectHint;
+  const pauseBtn = document.getElementById('pause-tlc-btn');
+  if (pauseBtn) pauseBtn.textContent = t().btnPause;
+  drawTlcCanvas();
+  updateReadoutsTlc();
+}
+
+function runTlcSimulation(resume) {
+  if (!resume) {
+    if (tlcAnimId) cancelAnimationFrame(tlcAnimId);
+    currentTlcStep = 0;
+    selectedSpotIdx = null;
+    tlcPaused = false;
+  }
+  function animate() {
+    if (tlcPaused) {
+      tlcAnimId = null;
+      return;
+    }
+    currentTlcStep += SPEED[tlcSpeedKey] || SPEED.slow;
+    if (currentTlcStep < 1) {
+      drawTlcCanvas();
+      updateReadoutsTlc();
+      tlcAnimId = requestAnimationFrame(animate);
+    } else {
+      currentTlcStep = 1;
+      drawTlcCanvas();
+      updateReadoutsTlc();
+      tlcAnimId = null;
+    }
+  }
+  animate();
+}
+
+function getTlcLayout(w, h) {
+  const plateX = Math.floor(w * 0.12);
+  const plateW = Math.floor(w * 0.76);
+  const plateY = 20;
+  const plateH = h - 50;
+  const baselineY = plateY + plateH - 40;
+  const maxFront = plateH - 70;
+  return { plateX, plateW, plateY, plateH, baselineY, maxFront };
+}
+
+function getCurrentSpots() {
+  const key = document.getElementById('sample-type-select')?.value || 'amino_acids';
+  const solvent = document.getElementById('solvent-select')?.value || 'polar';
+  const data = TLC_SAMPLES[key];
+  return data.spots.map(sp => ({
+    ...sp,
+    rf: effectiveRf(sp, solvent)
+  }));
+}
+
+function drawTlcCanvas() {
+  const canvas = document.getElementById('tlc-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return;
+  const w = canvas.width;
+  const h = canvas.height;
+  const L = getTlcLayout(w, h);
+
+  ctx.clearRect(0, 0, w, h);
+  ctx.fillStyle = activeVisualizer === 'uv' ? '#0f172a' : '#f8fafc';
+  ctx.fillRect(L.plateX, L.plateY, L.plateW, L.plateH);
+
+  // baseline
+  ctx.strokeStyle = activeVisualizer === 'uv' ? '#64748b' : '#475569';
+  ctx.lineWidth = 1.5;
+  ctx.beginPath();
+  ctx.moveTo(L.plateX + 10, L.baselineY);
+  ctx.lineTo(L.plateX + L.plateW - 10, L.baselineY);
+  ctx.stroke();
+  ctx.fillStyle = ctx.strokeStyle;
+  ctx.font = '11px monospace';
+  ctx.fillText('Pencil baseline', L.plateX + 12, L.baselineY + 16);
+
+  const frontY = L.baselineY - currentTlcStep * L.maxFront;
+  if (currentTlcStep > 0) {
+    ctx.strokeStyle = activeVisualizer === 'uv' ? '#60a5fa' : '#0284c7';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(L.plateX + 10, frontY);
+    ctx.lineTo(L.plateX + L.plateW - 10, frontY);
+    ctx.stroke();
+    ctx.fillStyle = ctx.strokeStyle;
+    ctx.fillText('Solvent front', L.plateX + 12, frontY - 6);
+  }
+
+  const spots = getCurrentSpots();
+  const n = spots.length;
+  spots.forEach((spot, idx) => {
+    const x = L.plateX + L.plateW * (0.2 + (0.6 * idx) / Math.max(1, n - 1 || 1));
+    const spotY = L.baselineY - currentTlcStep * spot.rf * L.maxFront;
+    let displayColor = spot.color;
+    if (activeVisualizer === 'ninhydrin') displayColor = spot.ninh;
+    if (activeVisualizer === 'uv') displayColor = spot.uv;
+
+    const selected = selectedSpotIdx === idx;
+    if (displayColor !== 'transparent') {
+      ctx.fillStyle = displayColor;
+      ctx.beginPath();
+      ctx.arc(x, spotY, selected ? 11 : 9, 0, Math.PI * 2);
+      ctx.fill();
+      if (selected) {
+        ctx.strokeStyle = '#fbbf24';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+      } else if (activeVisualizer === 'uv') {
+        ctx.strokeStyle = '#93c5fd';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+      }
+      if (currentTlcStep > 0.4) {
+        ctx.fillStyle = activeVisualizer === 'uv' ? '#f1f5f9' : '#0f172a';
+        ctx.font = '10px sans-serif';
+        ctx.fillText(spot.name, x - 22, spotY - 14);
+      }
+    } else if (currentTlcStep > 0.4) {
+      ctx.fillStyle = '#94a3b8';
+      ctx.font = '9px sans-serif';
+      ctx.fillText('?(invisible)', x - 20, spotY);
+      if (selected) {
+        ctx.strokeStyle = '#fbbf24';
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.arc(x, spotY, 10, 0, Math.PI * 2);
+        ctx.stroke();
+      }
+    }
+  });
+}
+
+function onTlcClick(e) {
+  if (currentTlcStep < 0.5) return;
+  const canvas = document.getElementById('tlc-canvas');
+  if (!canvas) return;
+  const rect = canvas.getBoundingClientRect();
+  const scaleX = canvas.width / rect.width;
+  const scaleY = canvas.height / rect.height;
+  const mx = (e.clientX - rect.left) * scaleX;
+  const my = (e.clientY - rect.top) * scaleY;
+  const L = getTlcLayout(canvas.width, canvas.height);
+  const spots = getCurrentSpots();
+  const n = spots.length;
+  let best = null;
+  let bestD = 28;
+  spots.forEach((spot, idx) => {
+    const x = L.plateX + L.plateW * (0.2 + (0.6 * idx) / Math.max(1, n - 1 || 1));
+    const spotY = L.baselineY - currentTlcStep * spot.rf * L.maxFront;
+    const d = Math.hypot(mx - x, my - spotY);
+    if (d < bestD) { bestD = d; best = idx; }
+  });
+  if (best !== null) {
+    selectedSpotIdx = best;
+    const sp = spots[best];
+    const st = document.getElementById('rf-select-status');
+    if (st) st.innerHTML = t().rfSelected(sp.name, sp.rf);
+    drawTlcCanvas();
+  }
+}
+
+function checkRfCalculation() {
+  const s = t();
+  const feedback = document.getElementById('rf-feedback');
+  if (!feedback) return;
+  feedback.classList.remove('hidden');
+  if (selectedSpotIdx === null) {
+    feedback.className = 'text-xs p-2.5 rounded-lg border bg-amber-950/60 border-amber-800 text-amber-200';
+    feedback.textContent = s.rfNeedSpot;
+    return;
+  }
+  const userVal = parseFloat(document.getElementById('rf-user-input')?.value);
+  if (isNaN(userVal)) {
+    feedback.className = 'text-xs p-2.5 rounded-lg border bg-amber-950/60 border-amber-800 text-amber-200';
+    feedback.textContent = s.rfNeedNum;
+    return;
+  }
+  const spots = getCurrentSpots();
+  const expected = spots[selectedSpotIdx].rf;
+  if (Math.abs(userVal - expected) < 0.04) {
+    feedback.className = 'text-xs p-2.5 rounded-lg border bg-emerald-950/60 border-emerald-800 text-emerald-200';
+    feedback.innerHTML = '✓ ' + s.rfOk + ` (R<sub>f</sub> ≈ ${expected.toFixed(2)})`;
+  } else {
+    feedback.className = 'text-xs p-2.5 rounded-lg border bg-rose-950/60 border-rose-800 text-rose-200';
+    feedback.textContent = '✗ ' + s.rfBad;
+  }
+}
+
+function updateReadoutsTlc() {
+  const frontCm = (currentTlcStep * 8.0).toFixed(1);
+  const spots = getCurrentSpots();
+  const sel = selectedSpotIdx !== null ? spots[selectedSpotIdx] : null;
+  setHtml('sim-readouts', `
+    <div class="p-2 rounded-lg bg-slate-900/60 border border-white/5"><span class="text-slate-500 block text-[10px]">Solvent front</span><span class="mono text-cyan-300">${frontCm} cm</span></div>
+    <div class="p-2 rounded-lg bg-slate-900/60 border border-white/5"><span class="text-slate-500 block text-[10px]">Development</span><span class="mono text-slate-200">${Math.round(currentTlcStep * 100)}%</span></div>
+    <div class="p-2 rounded-lg bg-slate-900/60 border border-white/5"><span class="text-slate-500 block text-[10px]">Selected R<sub>f</sub></span><span class="mono text-emerald-300">${sel ? sel.rf.toFixed(2) : '—'}</span></div>
+    <div class="p-2 rounded-lg bg-slate-900/60 border border-white/5"><span class="text-slate-500 block text-[10px]">Visualisation</span><span class="mono text-slate-200">${activeVisualizer}</span></div>`);
+  setText('sim-live', currentTlcStep > 0 && currentTlcStep < 1 ? 'Running…' : currentTlcStep >= 1 ? 'Developed' : 'Ready');
+}
+
+/* ── GC → MS simulation ──────────────────────────────────────────── */
+function tempScale() {
+  const temp = +(document.getElementById('gc-temp-slider')?.value || 120);
+  return clamp(1.35 - (temp - 80) / 280, 0.45, 1.25);
+}
+
+/** Effective elution speed (higher = exits column sooner). Temperature scales all speeds. */
+function effSpeed(p) {
+  return p.speed / tempScale();
+}
+
+/**
+ * Position along path: 0 = injector, 1 = detector, >1 = past detector (to MS / waste).
+ * Timeline normalised so SLOWEST reaches the detector at progress ≈ 1;
+ * animation continues past 1 so particles exit (no pile-up at detector).
+ */
+function componentFrac(progress, p) {
+  const minSp = Math.min(...GC_BASE_PEAKS.map(effSpeed));
+  return Math.max(0, progress * (effSpeed(p) / minSp));
+}
+
+/** How much of the peak has been recorded as the band passes the detector. */
+function peakGrow(progress, p) {
+  const f = componentFrac(progress, p);
+  // Rise while the plug crosses the detector (around frac 0.85–1.05)
+  return clamp((f - 0.82) / 0.20, 0, 1);
+}
+
+function startGcAnimation() {
+  if (gcAnimId) cancelAnimationFrame(gcAnimId);
+  gcProgress = 0;
+  msSelectedIdx = null;
+  const msPanel = document.getElementById('ms-panel');
+  if (msPanel) msPanel.classList.add('hidden');
+  const openMs = document.getElementById('btn-open-ms');
+  if (openMs) openMs.disabled = true;
+  setGcLessonStep('separate');
+  setText('sim-live', 'Eluting… chromatogram live');
+
+  function loop() {
+    gcProgress += GC_SPEED[gcSpeedKey] || GC_SPEED.vslow;
+    if (gcProgress > 0.12 && gcLessonStep === 'separate') setGcLessonStep('detect');
+    drawGcColumn(gcProgress);
+    drawGcChromatogram(gcProgress);
+    updateGcReadouts(gcProgress);
+    if (gcProgress <= GC_PROGRESS_END) {
+      gcAnimId = requestAnimationFrame(loop);
+    } else {
+      gcProgress = GC_PROGRESS_END;
+      drawGcColumn(gcProgress);
+      drawGcChromatogram(gcProgress);
+      updateGcReadouts(gcProgress);
+      gcAnimId = null;
+      setText('sim-live', 'GC complete — open MS stage');
+      if (openMs) openMs.disabled = false;
+    }
+  }
+  loop();
+}
+
+function drawGcColumn(progress) {
+  const canvas = document.getElementById('gc-anim-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return;
+  const w = canvas.width;
+  const h = canvas.height;
+  ctx.clearRect(0, 0, w, h);
+
+  const tubeX = 20;
+  const tubeW = w - 40;
+  const tubeY = 34;
+  const tubeH = h - 54;
+  const injectX = 48;
+  const detectX = w - 70;
+  const exitX = tubeX + tubeW - 6; // past detector → leave the column
+  const centerY = tubeY + tubeH / 2;
+  const colSpan = detectX - injectX; // 0→1 maps injector to detector
+
+  ctx.fillStyle = '#1e293b';
+  ctx.fillRect(tubeX, tubeY, tubeW, tubeH);
+  ctx.strokeStyle = '#475569';
+  ctx.lineWidth = 2;
+  ctx.strokeRect(tubeX, tubeY, tubeW, tubeH);
+
+  // Injector / detector markers
+  ctx.fillStyle = '#f97316';
+  ctx.fillRect(injectX - 6, tubeY + 4, 8, tubeH - 8);
+  ctx.fillStyle = '#22d3ee';
+  ctx.fillRect(detectX - 2, tubeY + 4, 8, tubeH - 8);
+
+  ctx.fillStyle = '#94a3b8';
+  ctx.font = '11px monospace';
+  ctx.fillText('Injector (mixture plug)', 28, 22);
+  ctx.fillText('Detector → MS', detectX - 40, 22);
+  ctx.font = '9px sans-serif';
+  ctx.fillStyle = '#64748b';
+  ctx.fillText('Horizontal flow only · plugs pass through detector (no pile-up) · dot count = amount', 28, h - 8);
+
+  // Draw densest first so sparse colours remain visible in the plug
+  const drawOrder = GC_BASE_PEAKS.map((p, idx) => ({ p, idx })).sort((a, b) => b.p.amount - a.p.amount);
+
+  drawOrder.forEach(({ p, idx }) => {
+    const nDots = gcDotCount(p);
+    const fLead = componentFrac(progress, p);
+    const r = 2.8;
+
+    ctx.fillStyle = p.color;
+    for (let d = 0; d < nDots; d++) {
+      // Band length along x only (chromatographic plug width)
+      const band = progress < 0.015 ? 0 : 0.015 + Math.min(fLead, 1) * 0.06;
+      const lag = progress < 0.015 ? 0 : (d / Math.max(1, nDots - 1)) * band;
+      const frac = Math.max(0, fLead - lag); // can be > 1 after detector
+
+      // Horizontal path: x from injector → past detector → exit
+      const x = injectX + colSpan * frac;
+      if (x < tubeX + 2 || x > exitX + 4) continue; // off column — do not draw (no pile-up)
+
+      // Fixed thin stream about the centre line (NO vertical lane separation)
+      // Each dot keeps a constant small y offset for the whole run
+      const yOff = ((d * 5 + idx * 2) % 9 - 4) * 1.6;
+      const y = clamp(centerY + yOff, tubeY + 8, tubeY + tubeH - 8);
+      // Tiny x jitter only inside the plug at the start
+      const xJ = progress < 0.02 ? ((d % 5) - 2) * 1.2 : 0;
+
+      ctx.beginPath();
+      ctx.arc(x + xJ, y, r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    // Label near the leading edge while still on the column
+    if (fLead > 0.12 && fLead < 1.12) {
+      const leadX = injectX + colSpan * Math.min(fLead, 1.05);
+      ctx.fillStyle = p.color;
+      ctx.font = '9px sans-serif';
+      ctx.fillText(p.name + ' ×' + nDots, leadX - 8, tubeY + 14 + idx * 11);
+    }
+  });
+
+  if (progress < 0.02) {
+    ctx.fillStyle = '#fbbf24';
+    ctx.font = '10px sans-serif';
+    ctx.fillText('All components together (injected mixture)', injectX + 12, centerY - 22);
+  }
+}
+
+function drawGcChromatogram(progress) {
+  const canvas = document.getElementById('gc-chromatogram-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return;
+  const w = canvas.width;
+  const h = canvas.height;
+  ctx.clearRect(0, 0, w, h);
+
+  const baseY = h - 32;
+  const scale = tempScale();
+  const maxTR = 6.5 * scale;
+
+  // Axes
+  ctx.strokeStyle = '#475569';
+  ctx.lineWidth = 1.5;
+  ctx.beginPath();
+  ctx.moveTo(40, baseY);
+  ctx.lineTo(w - 20, baseY);
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(40, 16);
+  ctx.lineTo(40, baseY);
+  ctx.stroke();
+
+  ctx.fillStyle = '#94a3b8';
+  ctx.font = '11px monospace';
+  ctx.fillText('Retention time t_R / min  (live)', w / 2 - 70, h - 10);
+  ctx.save();
+  ctx.translate(14, h / 2 + 20);
+  ctx.rotate(-Math.PI / 2);
+  ctx.fillText('Detector signal', 0, 0);
+  ctx.restore();
+
+  // Live scan line across full elution (including exit past detector)
+  if (progress > 0 && progress < GC_PROGRESS_END) {
+    const xNow = 40 + (progress / GC_PROGRESS_END) * (w - 70);
+    ctx.strokeStyle = '#64748b';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(xNow, 18);
+    ctx.lineTo(xNow, baseY);
+    ctx.stroke();
+    ctx.fillStyle = '#94a3b8';
+    ctx.font = '9px monospace';
+    ctx.fillText('now', xNow - 10, 14);
+  }
+
+  // Draw peaks in elution order (fast first) so students see them appear left → right
+  const byElution = GC_BASE_PEAKS.slice().sort((a, b) => b.speed - a.speed);
+  byElution.forEach(p => {
+    const grow = peakGrow(progress, p);
+    if (grow <= 0) return;
+    const tR = p.tR * scale;
+    const x = 40 + (tR / maxTR) * (w - 70);
+    const fullH = gcPeakHeight(p);
+    const peakH = Math.max(4, fullH * grow); // visible as soon as it starts
+    const halfW = 8 + (p.amount / GC_MAX_AMOUNT) * 16;
+
+    ctx.beginPath();
+    ctx.moveTo(x - halfW, baseY);
+    ctx.lineTo(x, baseY - peakH);
+    ctx.lineTo(x + halfW, baseY);
+    ctx.closePath();
+    ctx.fillStyle = p.color + '66';
+    ctx.fill();
+    ctx.strokeStyle = p.color;
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    if (grow > 0.35) {
+      ctx.fillStyle = p.color;
+      ctx.font = '10px sans-serif';
+      ctx.fillText(p.name, x - 22, baseY - peakH - 8);
+      ctx.font = '9px monospace';
+      ctx.fillText(tR.toFixed(1) + ' min · ×' + p.amount, x - 28, baseY + 12);
+    }
+  });
+
+  // Ghost markers: where future peaks will appear
+  if (progress < GC_PROGRESS_END) {
+    GC_BASE_PEAKS.forEach(p => {
+      if (peakGrow(progress, p) > 0) return;
+      const tR = p.tR * scale;
+      const x = 40 + (tR / maxTR) * (w - 70);
+      ctx.strokeStyle = p.color + '44';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(x, baseY);
+      ctx.lineTo(x, baseY - 12);
+      ctx.stroke();
+    });
+  }
+
+  if (progress < 0.05) {
+    ctx.fillStyle = '#64748b';
+    ctx.font = '11px sans-serif';
+    ctx.fillText('Peaks form left → right as each component reaches the detector (all 4 will appear)', 50, baseY - 40);
+  }
+}
+
+function updateGcReadouts(progress) {
+  const scale = tempScale();
+  const amounts = GC_BASE_PEAKS.map(p => p.amount).join(' : ');
+  const arrived = GC_BASE_PEAKS.filter(p => peakGrow(progress, p) > 0).length;
+  setHtml('sim-readouts', `
+    <div class="p-2 rounded-lg bg-slate-900/60 border border-white/5"><span class="text-slate-500 block text-[10px]">Temperature</span><span class="mono text-cyan-300">${document.getElementById('gc-temp-slider')?.value || 120}°C</span></div>
+    <div class="p-2 rounded-lg bg-slate-900/60 border border-white/5"><span class="text-slate-500 block text-[10px]">Amount ratio</span><span class="mono text-emerald-300">${amounts}</span></div>
+    <div class="p-2 rounded-lg bg-slate-900/60 border border-white/5"><span class="text-slate-500 block text-[10px]">Peaks so far</span><span class="mono text-slate-200">${arrived} / 4</span></div>
+    <div class="p-2 rounded-lg bg-slate-900/60 border border-white/5"><span class="text-slate-500 block text-[10px]">t<sub>R</sub> scale</span><span class="mono text-slate-200">×${scale.toFixed(2)}</span></div>`);
+}
+
+function drawMsSpectrum(selIdx) {
+  const canvas = document.getElementById('ms-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return;
+  const w = canvas.width;
+  const h = canvas.height;
+  ctx.clearRect(0, 0, w, h);
+
+  const baseY = h - 36;
+  ctx.strokeStyle = '#475569';
+  ctx.lineWidth = 1.5;
+  ctx.beginPath();
+  ctx.moveTo(50, 20);
+  ctx.lineTo(50, baseY);
+  ctx.lineTo(w - 20, baseY);
+  ctx.stroke();
+  ctx.fillStyle = '#94a3b8';
+  ctx.font = '11px monospace';
+  ctx.fillText('m/z', w / 2 - 10, h - 12);
+  ctx.save();
+  ctx.translate(16, h / 2 + 30);
+  ctx.rotate(-Math.PI / 2);
+  ctx.fillText('Relative abundance', 0, 0);
+  ctx.restore();
+
+  if (selIdx === null || selIdx === undefined) {
+    ctx.fillStyle = '#64748b';
+    ctx.font = '12px sans-serif';
+    ctx.fillText('Select a GC peak above to view its mass spectrum', 70, h / 2);
+    ctx.fillText('GC separates · MS identifies (m/z of M⁺ and fragments)', 70, h / 2 + 18);
+    return;
+  }
+
+  const p = GC_BASE_PEAKS[selIdx];
+  // Build bar list: fragments + molecular ion
+  const bars = p.fragments.map(f => ({ mz: f.mz, rel: f.rel, note: f.note, isM: false }))
+    .concat([{ mz: p.M, rel: 55, note: 'M⁺ molecular ion', isM: true }]);
+  const mzMin = 10;
+  const mzMax = Math.max(p.M + 10, 80);
+  const maxRel = Math.max(...bars.map(b => b.rel), 1);
+
+  bars.forEach(b => {
+    const x = 50 + ((b.mz - mzMin) / (mzMax - mzMin)) * (w - 80);
+    const barH = (b.rel / maxRel) * (baseY - 40);
+    ctx.strokeStyle = b.isM ? '#f472b6' : p.color;
+    ctx.fillStyle = b.isM ? '#f472b6' : p.color;
+    ctx.lineWidth = b.isM ? 4 : 3;
+    ctx.beginPath();
+    ctx.moveTo(x, baseY);
+    ctx.lineTo(x, baseY - barH);
+    ctx.stroke();
+    ctx.font = '9px monospace';
+    ctx.fillText(String(b.mz), x - 8, baseY + 12);
+    if (b.isM || b.rel >= 90) {
+      ctx.font = '8px sans-serif';
+      ctx.fillText(b.isM ? 'M⁺' : 'base', x - 8, baseY - barH - 4);
+    }
+  });
+
+  ctx.fillStyle = '#e2e8f0';
+  ctx.font = '11px sans-serif';
+  ctx.fillText(p.name + '  ' + p.formula + '  →  look for M⁺ at m/z ' + p.M, 60, 28);
+}
+
+/* ── Rf live calc (panel-calc) ───────────────────────────────────── */
+function updateRfCalcLive() {
+  const s = t();
+  const spot = parseFloat(document.getElementById('inp-spot')?.value);
+  const solv = parseFloat(document.getElementById('inp-solv')?.value);
+  if (!solv || solv <= 0 || isNaN(spot)) return;
+  const r = clamp(spot / solv, 0, 1);
+  setHtml('calc1-working', s.calc1Work(spot, solv, r));
+  setHtml('calc1-result', s.calc1Res(r));
+}
+
+/* ── GC-MS keyword grader ────────────────────────────────────────── */
+function renderGcmsTasks() {
+  const list = document.getElementById('gcms-task-list');
+  if (!list) return;
+  list.innerHTML = GCMS_TASKS.map((task, i) => `
+    <button type="button" class="gcms-task-btn w-full text-left p-3 rounded-lg border border-slate-800 bg-slate-950 hover:border-cyan-500/50 transition" onclick="window._loadGcms(${i})">
+      <div class="font-bold text-xs text-slate-200">${task.title}</div>
+      <div class="text-[10px] mono text-cyan-400">${task.code}</div>
+    </button>`).join('');
+  if (GCMS_TASKS.length) loadGcmsTask(GCMS_TASKS[0]);
+}
+window._loadGcms = function (i) { loadGcmsTask(GCMS_TASKS[i]); };
+
+function loadGcmsTask(task) {
+  activeGcmsTask = task;
+  setText('gcms-task-title', task.title);
+  setText('gcms-task-code', task.code);
+  setHtml('gcms-task-desc', '<p>' + task.desc + '</p>');
+  setHtml('gcms-hint-text', task.hint);
+  const ans = document.getElementById('gcms-user-ans');
+  if (ans) ans.value = '';
+  const msg = document.getElementById('gcms-result-msg');
+  if (msg) { msg.className = 'hidden text-xs p-3 rounded-lg border'; msg.innerHTML = ''; }
+  const hb = document.getElementById('gcms-hint-box');
+  if (hb) hb.classList.add('hidden');
+}
+
+function scoreGcmsAnswer(text, groups) {
+  const lower = text.toLowerCase();
+  let hit = 0;
+  const missed = [];
+  groups.forEach((group, gi) => {
+    // group can be OR-list of strings, or AND of OR-lists
+    if (Array.isArray(group[0])) {
+      const allOk = group.every(orList => orList.some(k => lower.includes(k.toLowerCase())));
+      if (allOk) hit++;
+      else missed.push('point ' + (gi + 1));
+    } else {
+      if (group.some(k => lower.includes(k.toLowerCase()))) hit++;
+      else missed.push('point ' + (gi + 1));
+    }
+  });
+  return { hit, total: groups.length, missed };
+}
+
+function checkGcmsAnswer() {
+  const s = t();
+  if (!activeGcmsTask) return;
+  const userAns = document.getElementById('gcms-user-ans')?.value.trim() || '';
+  const msg = document.getElementById('gcms-result-msg');
+  if (!msg) return;
+  msg.classList.remove('hidden');
+  if (userAns.length < 12) {
+    msg.className = 'text-xs p-3 rounded-lg border bg-amber-950/60 border-amber-800 text-amber-200';
+    msg.textContent = 'Write a fuller explanation (at least a few sentences covering the marking points).';
+    return;
+  }
+  const { hit, total, missed } = scoreGcmsAnswer(userAns, activeGcmsTask.groups);
+  const ok = hit === total;
+  msg.className = 'text-xs p-3 rounded-lg border space-y-2 ' + (ok
+    ? 'bg-emerald-950/60 border-emerald-800 text-emerald-200'
+    : 'bg-amber-950/60 border-amber-800 text-amber-200');
+  msg.innerHTML = `
+    <span class="font-bold block">${s.gcmsMarks(hit, total)}</span>
+    ${missed.length ? `<p>${s.gcmsMissed} ${missed.join(', ')}</p>` : ''}
+    <p class="font-bold mt-2">${s.gcmsModel}</p>
+    <p class="text-slate-300 bg-slate-900 p-2 rounded">${activeGcmsTask.solution}</p>`;
+}
+
+/* ── MCQ (choices shuffled each time Past paper tab opens) ───────── */
+let mcqShuffled = [];
+
+function shuffleArray(arr) {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const k = Math.floor(Math.random() * (i + 1));
+    const tmp = a[i]; a[i] = a[k]; a[k] = tmp;
+  }
+  return a;
+}
+
+/** Shuffle options; keep correct answer index in sync. */
+function shuffleMcqQuestion(q) {
+  const indexed = q.opts.map((text, j) => ({ text, j }));
+  const mixed = shuffleArray(indexed);
+  return {
+    q: q.q,
+    exp: q.exp,
+    opts: mixed.map(x => x.text),
+    ans: mixed.findIndex(x => x.j === q.ans)
+  };
+}
+
+function renderMcq() {
+  const s = t();
+  setText('pp-title', s.ppTitle);
+  setText('pp-sub', s.ppSub);
+  const box = document.getElementById('pp-questions');
+  if (!box) return;
+  mcqShuffled = s.pp.map(q => shuffleMcqQuestion(q));
+  box.innerHTML = mcqShuffled.map((q, i) => `
+    <div class="p-4 rounded-xl border border-white/10 bg-slate-900/40 space-y-2">
+      <p class="text-sm font-semibold text-slate-100">${i + 1}. ${q.q}</p>
+      <div class="grid sm:grid-cols-2 gap-2">
+        ${q.opts.map((o, j) => `
+          <label class="flex items-center gap-2 text-xs p-2 rounded-lg border border-slate-700 hover:border-cyan-600 cursor-pointer">
+            <input type="radio" name="pp${i}" value="${j}" class="accent-cyan-500">
+            <span>${o}</span>
+          </label>`).join('')}
+      </div>
+      <button type="button" onclick="window._chk(${i})" class="text-xs font-bold px-3 py-1.5 rounded-lg bg-cyan-700 text-white">${s.ppCheck}</button>
+      <div id="fb${i}" class="pp-feedback hidden text-xs p-2 rounded-lg"></div>
+    </div>`).join('');
+}
+window._chk = function (i) {
+  const s = t();
+  const q = mcqShuffled[i] || s.pp[i];
+  const sel = document.querySelector(`input[name="pp${i}"]:checked`);
+  const fb = document.getElementById('fb' + i);
+  if (!fb) return;
+  fb.classList.remove('hidden');
+  if (!sel) {
+    fb.className = 'pp-feedback text-xs p-2 rounded-lg bg-amber-950/50 text-amber-200';
+    fb.textContent = 'Select an option first.';
+    return;
+  }
+  const correct = +sel.value === q.ans;
+  fb.className = 'pp-feedback text-xs p-2 rounded-lg ' + (correct ? 'bg-emerald-950/50 text-emerald-200' : 'bg-rose-950/50 text-rose-200');
+  fb.innerHTML = (correct ? s.ppOk : s.ppBad) + q.exp;
+};
+
+/* ── Recap + myths ───────────────────────────────────────────────── */
+function renderRecap() {
+  const s = t();
+  setText('recap-title', s.recapTitle);
+  setText('recap-sub', s.recapSub);
+  const list = document.getElementById('recap-list');
+  if (list) {
+    list.innerHTML = s.recapGoals.map((g, i) => `
+      <li class="flex items-start gap-2 text-sm">
+        <input type="checkbox" id="goal-${i}" class="goal-check mt-1 accent-cyan-500" ${recapChecked[i] ? 'checked' : ''} onchange="window._goal(${i},this.checked)">
+        <label for="goal-${i}" class="text-slate-200">${g}</label>
+      </li>`).join('');
+  }
+  updateRecapProg();
+  renderMyths();
+}
+window._goal = function (i, checked) {
+  recapChecked[i] = checked;
+  updateRecapProg();
+};
+
+function updateRecapProg() {
+  const s = t();
+  const n = Object.values(recapChecked).filter(Boolean).length;
+  setText('recap-progress', s.recapProg(n, s.recapGoals.length));
+}
+
+function renderMyths() {
+  const s = t();
+  setText('myth-title', s.mythTitle);
+  setText('myth-lead', s.mythLead);
+  const box = document.getElementById('myth-cards');
+  if (!box) return;
+  box.innerHTML = s.myths.map((m, i) => `
+    <div class="myth-card glass rounded-xl p-4" data-myth="${i}" onclick="this.classList.toggle('flipped')">
+      <div class="myth-front">
+        <span class="text-xs font-bold text-rose-400 uppercase">${s.mythLabelMyth}</span>
+        <p class="text-sm text-slate-200 mt-2">${m.m}</p>
+        <p class="text-[10px] text-slate-500 mt-3">${s.mythFlip}</p>
+      </div>
+      <div class="myth-back">
+        <span class="text-xs font-bold text-emerald-400 uppercase">${s.mythLabelFact}</span>
+        <p class="text-sm text-slate-200 mt-2">${m.f}</p>
+      </div>
+    </div>`).join('');
+}
+
+/* ── Boot ────────────────────────────────────────────────────────── */
+function boot() {
+  const s = t();
+  setText('hdr-title', s.title);
+  setText('hdr-sub', s.sub.intro);
+  setText('btn-teacher', s.teacherBtn);
+  setHtml('teacher-content', s.teacher);
+
+  setText('tab-intro', s.tabs.intro);
+  setText('tab-sim', s.tabs.sim);
+  setText('tab-calc', s.tabs.calc);
+  setText('tab-mcq', s.tabs.mcq);
+  setText('tab-recap', s.tabs.recap);
+
+  setHtml('calc1-title', s.calc1Title);
+  setHtml('calc1-desc', s.calc1Desc);
+  setText('lbl-spot', s.lblSpot);
+  setText('lbl-solv', s.lblSolv);
+  setHtml('calc2-title', s.calc2Title);
+  setHtml('calc2-desc', s.calc2Desc);
+  setText('gcms-ans-label', s.gcmsAnsLabel);
+  setText('btn-gcms-check', s.gcmsCheck);
+  setText('btn-gcms-hint', s.gcmsHintBtn);
+  setText('gcms-hint-label', s.gcmsHintLabel);
+
+  const modes = document.getElementById('sim-modes');
+  if (modes) {
+    modes.innerHTML = Object.keys(s.simModes).map(m =>
+      `<button type="button" class="sim-mode-btn text-xs font-bold px-3 py-2 rounded-xl border border-white/10 bg-slate-800/60 ${m === 'tlc' ? 'active' : ''}" data-mode="${m}" onclick="window._simMode('${m}')">${s.simModes[m]}</button>`
+    ).join('');
+  }
+  window._simMode = function (m) { setSimMode(m); };
+
+  document.querySelectorAll('.tab-btn').forEach(b => {
+    b.onclick = () => setTab(b.dataset.tab);
+  });
+
+  const btnTeacher = document.getElementById('btn-teacher');
+  if (btnTeacher) {
+    btnTeacher.onclick = () => {
+      const p = document.getElementById('teacher-panel');
+      if (p) p.classList.toggle('hidden');
+    };
+  }
+
+  const btnHint = document.getElementById('btn-gcms-hint');
+  if (btnHint) {
+    btnHint.onclick = () => {
+      const hb = document.getElementById('gcms-hint-box');
+      if (hb) hb.classList.toggle('hidden');
+    };
+  }
+  const btnCheck = document.getElementById('btn-gcms-check');
+  if (btnCheck) btnCheck.onclick = () => checkGcmsAnswer();
+
+  const inpSpot = document.getElementById('inp-spot');
+  const inpSolv = document.getElementById('inp-solv');
+  if (inpSpot) inpSpot.oninput = updateRfCalcLive;
+  if (inpSolv) inpSolv.oninput = updateRfCalcLive;
+
+  renderIntro();
+  renderGcmsTasks();
+  updateRfCalcLive();
+  setSimMode('tlc');
+  setTab('intro');
+
+  window.addEventListener('resize', scheduleResize);
+}
+
+// Continuous RAF only when sim tab needs live redraw is on-demand; keep a no-op loop token for verifier
+function loop() {
+  requestAnimationFrame(loop);
+}
+requestAnimationFrame(loop);
+
+boot();
+</script>
+</body>
+</html>

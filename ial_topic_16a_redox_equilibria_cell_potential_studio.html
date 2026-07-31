@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IAL Chemistry Topic 16: Redox Equilibria & Cell Potential Studio</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- KaTeX CSS & JS CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="initKaTeX()"></script>
+
+    <script>
+        function initKaTeX() {
+            if (window.renderMathInElement) {
+                window.renderMathInElement(document.body, {
+                    delimiters: [
+                        {left: '$$', right: '$$', display: true},
+                        {left: '$', right: '$', display: false}
+                    ],
+                    throwOnError: false
+                });
+            }
+        }
+    </script>
+
+    <style>
+        .tab-btn-active {
+            border-bottom: 3px solid #3b82f6;
+            color: #2563eb;
+            font-weight: 700;
+            background-color: rgba(219, 234, 254, 0.5);
+        }
+        .studio-canvas-bg {
+            background: linear-gradient(180deg, #0f172a 0%, #020617 100%);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            height: 6px;
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #1e293b;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #475569;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex flex-col">
+
+    <!-- Top Header -->
+    <header class="bg-slate-900 border-b border-slate-800 sticky top-0 z-40 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center gap-3">
+            <div class="flex items-center gap-3">
+                <div class="bg-blue-500/20 p-2 rounded-lg border border-blue-500/30">
+                    <span class="text-2xl">⚡</span>
+                </div>
+                <div>
+                    <h1 class="text-lg font-extrabold tracking-tight text-blue-400">IAL Chemistry Redox Equilibria & Cell Potential Studio</h1>
+                    <p class="text-xs text-slate-400">Edexcel Topic 16: Standard Electrode Potentials ($E^\ominus$), SHE, Salt Bridge & Cell Voltage</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-2">
+                <span class="px-2.5 py-1 text-xs font-semibold rounded-full bg-blue-950 text-blue-300 border border-blue-800">
+                    Edexcel Spec 16.1 - 16.5
+                </span>
+                <span class="px-3 py-1.5 text-xs bg-emerald-950/80 text-emerald-300 rounded-lg border border-emerald-800/80 flex items-center gap-1.5 font-medium">
+                    <span>✨ Gemini AI Auto-Active</span>
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="bg-slate-900/90 border-b border-slate-800 text-xs sm:text-sm font-medium overflow-x-auto custom-scrollbar sticky top-[57px] z-30 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 flex whitespace-nowrap">
+            <button onclick="switchTab('scaffold')" id="btn-scaffold" class="tab-btn-active py-3 px-5 text-slate-300 hover:text-blue-300 transition flex items-center gap-2">
+                <span>🧭 Master Scaffold & Core Rules</span>
+            </button>
+            <button onclick="switchTab('simulator')" id="btn-simulator" class="py-3 px-5 text-slate-400 hover:text-blue-300 transition flex items-center gap-2">
+                <span>⚡ Cell Builder & Live Circuit Simulator</span>
+            </button>
+            <button onclick="switchTab('she')" id="btn-she" class="py-3 px-5 text-slate-400 hover:text-blue-300 transition flex items-center gap-2">
+                <span>🧪 Standard Hydrogen Electrode (SHE)</span>
+            </button>
+            <button onclick="switchTab('ai')" id="btn-ai" class="py-3 px-5 text-slate-400 hover:text-blue-300 transition flex items-center gap-2">
+                <span>🤖 AI Examiner & Edexcel Past Paper Bank</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main class="max-w-7xl mx-auto px-4 py-6 flex-grow w-full">
+
+        <!-- TAB 1: MASTER SCAFFOLD & EXAM TIPS -->
+        <section id="tab-scaffold" class="space-y-6">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-sm">
+                <div class="border-b border-slate-800 pb-4 mb-6">
+                    <span class="text-xs font-bold text-blue-400 uppercase tracking-widest">Pedagogical Framework</span>
+                    <h2 class="text-xl font-bold text-white mt-1">Redox Equilibria & Standard Cell Fundamentals</h2>
+                    <p class="text-xs text-slate-400 mt-1">Master oxidation states, electron transfer, the 3 salt bridge functions, and electrode polarities.</p>
+                </div>
+
+                <!-- Memory Rules Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                    <div class="bg-slate-950 border border-emerald-900/50 rounded-xl p-5 relative">
+                        <div class="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-2">Cathode (Positive Electrode)</div>
+                        <h3 class="text-base font-bold text-white mb-1">🐱 RED-CAT Rule</h3>
+                        <p class="text-xs text-slate-300 mb-2 font-semibold"><b>REDUCTION</b> always occurs at the <b>CATHODE</b>.</p>
+                        <ul class="text-xs text-slate-400 space-y-1.5 list-disc list-inside">
+                            <li>Accepts electrons ($e^-$) from external wire.</li>
+                            <li>Contains the species with the <b>more positive $E^\ominus$</b>.</li>
+                            <li>Example: $\text{Cu}^{2+}(\text{aq}) + 2e^- \rightarrow \text{Cu}(\text{s})$</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-slate-950 border border-rose-900/50 rounded-xl p-5 relative">
+                        <div class="text-xs font-bold text-rose-400 uppercase tracking-wider mb-2">Anode (Negative Electrode)</div>
+                        <h3 class="text-base font-bold text-white mb-1">🐂 OX-AN Rule</h3>
+                        <p class="text-xs text-slate-300 mb-2 font-semibold"><b>OXIDATION</b> always occurs at the <b>ANODE</b>.</p>
+                        <ul class="text-xs text-slate-400 space-y-1.5 list-disc list-inside">
+                            <li>Releases electrons ($e^-$) into external wire.</li>
+                            <li>Contains the species with the <b>more negative $E^\ominus$</b>.</li>
+                            <li>Example: $\text{Zn}(\text{s}) \rightarrow \text{Zn}^{2+}(\text{aq}) + 2e^-$</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-slate-950 border border-amber-900/50 rounded-xl p-5 relative">
+                        <div class="text-xs font-bold text-amber-400 uppercase tracking-wider mb-2">Standard Conditions ($E^\ominus$)</div>
+                        <h3 class="text-base font-bold text-white mb-1">🌡️ Mandatory Conditions</h3>
+                        <p class="text-xs text-slate-300 mb-2 font-semibold">Measured against Standard Hydrogen Electrode (SHE = 0.00 V).</p>
+                        <ul class="text-xs text-slate-400 space-y-1.5 list-disc list-inside">
+                            <li>Temperature: $298\text{ K}$ ($25^\circ\text{C}$)</li>
+                            <li>Gas Pressure: $100\text{ kPa}$ ($1\text{ atm}$)</li>
+                            <li>Ion Concentration: $1.00\text{ mol dm}^{-3}$</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Salt Bridge Masterclass Section -->
+                <div class="mt-6 bg-slate-950 border border-blue-900/40 rounded-xl p-5">
+                    <h3 class="text-sm font-bold text-blue-300 mb-2 flex items-center gap-2">
+                        <span>🧪 Salt Bridge: Preparation & 3 Mandatory Functions (Must-Know Exam Criteria)</span>
+                    </h3>
+                    <p class="text-xs text-slate-400 mb-4">
+                        A salt bridge is made by soaking filter paper in a <b>saturated potassium nitrate ($\text{KNO}_3$)</b> solution. Both $\text{K}^+$ and $\text{NO}_3^-$ salts are soluble in water, ensuring no precipitate interferes with the mobile ions.
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                        <div class="bg-slate-900 p-3.5 rounded-lg border border-slate-800">
+                            <span class="font-bold text-cyan-400 block mb-1">Function 1: Prevents Direct Mixing</span>
+                            <span class="text-slate-300">Prevents direct mixing and chemical reaction between the two electrolyte solutions in the half-cells.</span>
+                        </div>
+                        <div class="bg-slate-900 p-3.5 rounded-lg border border-slate-800">
+                            <span class="font-bold text-cyan-400 block mb-1">Function 2: Completes the Circuit</span>
+                            <span class="text-slate-300">Completes the electrical circuit by providing **mobile ions** ($\text{K}^+$ and $\text{NO}_3^-$) that move between half-cells (electrons ONLY flow through the wire!).</span>
+                        </div>
+                        <div class="bg-slate-900 p-3.5 rounded-lg border border-slate-800">
+                            <span class="font-bold text-cyan-400 block mb-1">Function 3: Neutralizes Charge Buildup</span>
+                            <span class="text-slate-300">Supplies $\text{K}^+$ ions to the cathode (to replace reduced cations) and $\text{NO}_3^-$ to the anode (to balance accumulated oxidation cations).</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Critical IAL Exam Pitfalls -->
+                <div class="mt-6 bg-rose-950/30 border border-rose-800/50 rounded-xl p-5 space-y-3">
+                    <h3 class="text-sm font-bold text-rose-300 flex items-center gap-2">
+                        <span>⚠️ Key IAL Exam Pitfalls & Examiner Marking Tricks</span>
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                        <div class="p-3 bg-slate-900/80 rounded-lg border border-slate-800">
+                            <span class="font-bold text-amber-400 block mb-1">1. Why NOT Immerse Metal Directly in Opposite Electrolyte?</span>
+                            <span class="text-slate-300">If $\text{Zn}$ metal is dipped directly into $\text{Cu}^{2+}(\text{aq})$, a **direct displacement reaction** occurs on the metal surface. Heat energy is released directly, bypassing the wire and destroying the measurable voltage output!</span>
+                        </div>
+                        <div class="p-3 bg-slate-900/80 rounded-lg border border-slate-800">
+                            <span class="font-bold text-amber-400 block mb-1">2. Platinum ($\text{Pt}$) Inert Electrode Requirement</span>
+                            <span class="text-slate-300">For non-metal half-cells ($\text{Cl}_2/\text{Cl}^-$) or ion-ion half-cells ($\text{Fe}^{3+}/\text{Fe}^{2+}$), a **platinum electrode** is used because it conducts electricity, provides a reaction surface, but is **chemically inert**.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 2: CELL BUILDER & CIRCUIT SIMULATOR -->
+        <section id="tab-simulator" class="hidden space-y-6">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-sm">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6 pb-4 border-b border-slate-800">
+                    <div>
+                        <h2 class="text-xl font-bold text-white">Interactive Electrochemical Cell Simulator</h2>
+                        <p class="text-xs text-slate-400">Select Left and Right half-cells to observe electron wire movement, salt bridge ion migration, and stoichiometric equations.</p>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-3">
+                        <div>
+                            <label for="cell-left-select" class="text-xs font-semibold text-slate-400 block mb-1">Left Half-Cell:</label>
+                            <select id="cell-left-select" onchange="updateCellSimulation()" class="bg-slate-950 border border-slate-700 text-slate-100 text-xs rounded-lg p-2 font-mono">
+                                <option value="Zn" selected>Zinc: Zn²⁺(aq) + 2e⁻ ⇌ Zn(s) (-0.76 V)</option>
+                                <option value="Cu">Copper: Cu²⁺(aq) + 2e⁻ ⇌ Cu(s) (+0.34 V)</option>
+                                <option value="Ag">Silver: Ag⁺(aq) + e⁻ ⇌ Ag(s) (+0.80 V)</option>
+                                <option value="Fe">Iron II/III: Fe³⁺(aq) + e⁻ ⇌ Fe²⁺(aq) (+0.77 V)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="cell-right-select" class="text-xs font-semibold text-slate-400 block mb-1">Right Half-Cell:</label>
+                            <select id="cell-right-select" onchange="updateCellSimulation()" class="bg-slate-950 border border-slate-700 text-slate-100 text-xs rounded-lg p-2 font-mono">
+                                <option value="Zn">Zinc: Zn²⁺(aq) + 2e⁻ ⇌ Zn(s) (-0.76 V)</option>
+                                <option value="Cu" selected>Copper: Cu²⁺(aq) + 2e⁻ ⇌ Cu(s) (+0.34 V)</option>
+                                <option value="Ag">Silver: Ag⁺(aq) + e⁻ ⇌ Ag(s) (+0.80 V)</option>
+                                <option value="Fe">Iron II/III: Fe³⁺(aq) + e⁻ ⇌ Fe²⁺(aq) (+0.77 V)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Banner when identical metals/half-cells selected -->
+                <div id="identical-metals-banner" class="hidden p-3.5 bg-amber-950/80 border border-amber-500/60 rounded-xl text-xs text-amber-200 flex items-start gap-2.5 mb-4">
+                    <span class="text-base">⚠️</span>
+                    <div>
+                        <span class="font-bold text-amber-300 block mb-0.5">Identical Half-Cells Selected (No Potential Difference):</span>
+                        <span>Both half-cells are identical ($E^\ominus_1 = E^\ominus_2$). Measured cell potential $E^\ominus_{\text{cell}} = 0.00\text{ V}$. Because there is no potential difference driving current, **there is NO net electron flow in the wire and NO net ion migration in the salt bridge**. Animation is stopped.</span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                    <!-- Left Column: Controls & Calculations -->
+                    <div class="lg:col-span-4 space-y-4">
+                        <div class="bg-slate-950 border border-slate-800 rounded-xl p-4 space-y-3">
+                            <h3 class="text-xs font-bold text-blue-400 uppercase tracking-wider">Cell Potential Calculation</h3>
+                            
+                            <div class="p-3 bg-slate-900 rounded-lg border border-slate-800 text-xs space-y-2">
+                                <div class="flex justify-between">
+                                    <span class="text-slate-400">E°(Cathode - Positive):</span>
+                                    <span id="calc-e-cathode" class="font-mono text-emerald-400 font-bold">+0.80 V</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-slate-400">E°(Anode - Negative):</span>
+                                    <span id="calc-e-anode" class="font-mono text-rose-400 font-bold">-0.76 V</span>
+                                </div>
+                                <div class="border-t border-slate-800 pt-2 flex justify-between items-center">
+                                    <span class="font-bold text-slate-200">E°cell = E°red - E°ox:</span>
+                                    <span id="calc-e-cell" class="font-mono text-lg font-extrabold text-cyan-400">+1.56 V</span>
+                                </div>
+                            </div>
+
+                            <!-- Non-Standard Concentration Adjustment -->
+                            <div class="space-y-2 pt-2 border-t border-slate-800">
+                                <label for="conc-slider" class="text-xs font-semibold text-slate-300 block">
+                                    Le Chatelier Shift: Left Ion Conc = <span id="conc-val" class="text-cyan-400 font-mono font-bold">1.00 mol/dm³</span>
+                                </label>
+                                <input type="range" id="conc-slider" min="0.1" max="2.0" step="0.1" value="1.0" oninput="updateConcentrationShift()" class="w-full accent-cyan-500 cursor-pointer">
+                                <p id="conc-feedback" class="text-[11px] text-slate-400 italic leading-snug"></p>
+                            </div>
+
+                            <button onclick="toggleCellAnimation()" id="btn-toggle-anim" class="w-full py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs rounded-lg shadow transition flex items-center justify-center gap-2">
+                                <span>⏸️ Pause / Resume Circuit Animation</span>
+                            </button>
+                        </div>
+
+                        <!-- Half Equations Summary -->
+                        <div class="bg-slate-950 border border-slate-800 rounded-xl p-4 space-y-2 text-xs">
+                            <h4 class="font-bold text-slate-200 uppercase tracking-wider text-[11px]">Cell Half-Reactions & Balanced Overall Equation</h4>
+                            <div class="p-2.5 bg-rose-950/40 border border-rose-900/60 rounded">
+                                <span class="text-rose-400 font-bold block mb-0.5">Anode Oxidation (releases e⁻):</span>
+                                <span id="eq-anode" class="font-mono text-slate-200">Zn(s) → Zn²⁺(aq) + 2e⁻</span>
+                            </div>
+                            <div class="p-2.5 bg-emerald-950/40 border border-emerald-900/60 rounded">
+                                <span class="text-emerald-400 font-bold block mb-0.5">Cathode Reduction (accepts e⁻):</span>
+                                <span id="eq-cathode" class="font-mono text-slate-200">Cu²⁺(aq) + 2e⁻ → Cu(s)</span>
+                            </div>
+                            <div class="p-2.5 bg-blue-950/40 border border-blue-900/60 rounded">
+                                <span class="text-cyan-400 font-bold block mb-0.5">Balanced Overall Chemical Equation:</span>
+                                <span id="eq-overall" class="font-mono text-slate-100 font-bold">Zn(s) + Cu²⁺(aq) → Zn²⁺(aq) + Cu(s)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Interactive Animated Cell Canvas -->
+                    <div class="lg:col-span-8 bg-slate-950 border border-slate-800 rounded-xl p-4 flex flex-col items-center justify-center relative">
+                        <h3 class="text-xs font-bold text-slate-300 uppercase tracking-wider mb-2 self-start">Live Circuit Schematic & Particle Flow</h3>
+                        
+                        <div class="relative w-full flex justify-center">
+                            <canvas id="cell-canvas" width="580" height="340" class="studio-canvas-bg rounded-lg border border-slate-800 w-full max-w-[580px]"></canvas>
+                        </div>
+
+                        <!-- Charge Balancing Mechanism Explanation Cards -->
+                        <div id="salt-bridge-mechanism-card" class="mt-4 p-3.5 bg-slate-900/90 rounded-lg border border-blue-900/50 w-full text-xs space-y-2">
+                            <span class="font-bold text-cyan-300 uppercase block tracking-wider text-[11px]">⚡ Salt Bridge Charge-Balancing Mechanics (Why Reaction Continues)</span>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-[11px] leading-relaxed">
+                                <div class="p-2.5 bg-rose-950/40 rounded border border-rose-900/60 space-y-1">
+                                    <span class="font-bold text-rose-300 block">🐂 Anode Beaker (Oxidation):</span>
+                                    <p id="sb-anode-explain" class="text-slate-300">Oxidation forms positive cations ($\text{Zn}^{2+}$). Excess positive charge buildup would repel incoming current and halt reaction! **$\text{NO}_3^-$ anions** migrate out of salt bridge into this beaker to neutralize positive charge.</p>
+                                </div>
+                                <div class="p-2.5 bg-emerald-950/40 rounded border border-emerald-900/60 space-y-1">
+                                    <span class="font-bold text-emerald-300 block">🐱 Cathode Beaker (Reduction):</span>
+                                    <p id="sb-cathode-explain" class="text-slate-300">Reduction consumes aqueous cations ($\text{Cu}^{2+}$), leaving excess negative counter-ions ($\text{SO}_4^{2-}$). **$\text{K}^+$ cations** migrate out of salt bridge into this beaker to restore charge balance.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Legend Explaining Particle Movement -->
+                        <div class="mt-3 grid grid-cols-1 sm:grid-cols-3 gap-2 w-full text-[11px] font-mono">
+                            <div class="p-2 bg-slate-900 rounded border border-yellow-500/30 flex items-center gap-2">
+                                <span class="w-3 h-3 rounded-full bg-yellow-400 inline-block shrink-0"></span>
+                                <span class="text-yellow-200">Wire: <b>Electrons (e⁻)</b> flow Anode → Cathode</span>
+                            </div>
+                            <div class="p-2 bg-slate-900 rounded border border-cyan-500/30 flex items-center gap-2">
+                                <span class="w-3 h-3 rounded-full bg-cyan-400 inline-block shrink-0"></span>
+                                <span class="text-cyan-200">Salt Bridge: <b>K⁺ Cations</b> enter Cathode Beaker</span>
+                            </div>
+                            <div class="p-2 bg-slate-900 rounded border border-rose-500/30 flex items-center gap-2">
+                                <span class="w-3 h-3 rounded-full bg-rose-400 inline-block shrink-0"></span>
+                                <span class="text-rose-200">Salt Bridge: <b>NO₃⁻ Anions</b> enter Anode Beaker</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 3: STANDARD HYDROGEN ELECTRODE (SHE) -->
+        <section id="tab-she" class="hidden space-y-6">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-sm">
+                <div class="border-b border-slate-800 pb-4 mb-6">
+                    <span class="text-xs font-bold text-blue-400 uppercase tracking-widest">Universal Reference Standard</span>
+                    <h2 class="text-xl font-bold text-white mt-1">Standard Hydrogen Electrode (SHE) Apparatus</h2>
+                    <p class="text-xs text-slate-400 mt-1">Master the exact textbook features, equilibrium, and mandatory exam labels for measuring standard electrode potentials ($E^\ominus = 0.00\text{ V}$).</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                    <!-- Left: Standard Uploaded Reference Schematic Diagram -->
+                    <div class="lg:col-span-6 space-y-4">
+                        <div class="bg-slate-950 border border-slate-800 rounded-xl p-4 flex flex-col items-center">
+                            <div class="flex justify-between items-center w-full mb-2">
+                                <h3 class="text-xs font-bold text-slate-300 uppercase tracking-wider">SHE Vector Schematic Diagram</h3>
+                                <span class="text-[10px] text-cyan-400 font-mono">Reference Potential = 0.00 V</span>
+                            </div>
+                            <canvas id="she-canvas" width="400" height="340" class="studio-canvas-bg rounded-lg border border-slate-800 w-full max-w-[400px]"></canvas>
+                        </div>
+
+                        <!-- Technical Summary Card matching uploaded diagram text -->
+                        <div class="bg-slate-950 border border-slate-800 rounded-xl p-4 text-xs space-y-2">
+                            <h4 class="font-bold text-cyan-300 uppercase flex items-center gap-2">
+                                <span>📌 Standard Hydrogen Electrode Specifications</span>
+                            </h4>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px] font-mono">
+                                <div class="p-2 bg-slate-900 rounded border border-slate-800">
+                                    <span class="text-slate-400 block">Hydrogen Gas Pressure:</span>
+                                    <span class="text-emerald-400 font-bold">1 atm / 100 kPa</span>
+                                </div>
+                                <div class="p-2 bg-slate-900 rounded border border-slate-800">
+                                    <span class="text-slate-400 block">Solution Electrolyte:</span>
+                                    <span class="text-cyan-400 font-bold">1M Hydrochloric Acid (HCl)</span>
+                                </div>
+                                <div class="p-2 bg-slate-900 rounded border border-slate-800">
+                                    <span class="text-slate-400 block">Conducting Wire:</span>
+                                    <span class="text-yellow-400 font-bold">Platinum Wire to Voltmeter</span>
+                                </div>
+                                <div class="p-2 bg-slate-900 rounded border border-slate-800">
+                                    <span class="text-slate-400 block">Electrode Foil:</span>
+                                    <span class="text-purple-400 font-bold">Platinised Pt (Pt Black)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: 5-Mark Checklist & Practical Notes -->
+                    <div class="lg:col-span-6 space-y-4">
+                        <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3">
+                            <h3 class="text-xs font-bold text-amber-300 uppercase tracking-wider">⭐ 5-Mark Practical Exam Label Checklist</h3>
+                            <p class="text-xs text-slate-400">Edexcel Paper 5 practical questions frequently require drawing a fully labelled SHE apparatus connected to an unknown half-cell. Verify all 5 required labels:</p>
+
+                            <div class="space-y-2 text-xs">
+                                <label class="flex items-start gap-2 p-2 bg-slate-900 rounded border border-slate-800">
+                                    <input type="checkbox" checked disabled class="mt-0.5 accent-blue-500">
+                                    <div>
+                                        <b class="text-slate-200">1. Hydrogen Gas Inlet:</b> $\text{H}_2(\text{g})$ bubbled at $1\text{ atm}$ / $100\text{ kPa}$ pressure.
+                                    </div>
+                                </label>
+                                <label class="flex items-start gap-2 p-2 bg-slate-900 rounded border border-slate-800">
+                                    <input type="checkbox" checked disabled class="mt-0.5 accent-blue-500">
+                                    <div>
+                                        <b class="text-slate-200">2. Solution Electrolyte:</b> $1\text{M Hydrochloric acid solution}$ ($1.00\text{ mol dm}^{-3} \text{H}^+$).
+                                    </div>
+                                </label>
+                                <label class="flex items-start gap-2 p-2 bg-slate-900 rounded border border-slate-800">
+                                    <input type="checkbox" checked disabled class="mt-0.5 accent-blue-500">
+                                    <div>
+                                        <b class="text-slate-200">3. Inert Platinum Electrode:</b> Platinised platinum electrode covered in platinum black.
+                                    </div>
+                                </label>
+                                <label class="flex items-start gap-2 p-2 bg-slate-900 rounded border border-slate-800">
+                                    <input type="checkbox" checked disabled class="mt-0.5 accent-blue-500">
+                                    <div>
+                                        <b class="text-slate-200">4. Platinum Wire Connection:</b> Platinum wire leading to the high-resistance voltmeter.
+                                    </div>
+                                </label>
+                                <label class="flex items-start gap-2 p-2 bg-slate-900 rounded border border-slate-800">
+                                    <input type="checkbox" checked disabled class="mt-0.5 accent-blue-500">
+                                    <div>
+                                        <b class="text-slate-200">5. Temperature Condition:</b> $298\text{ K}$ ($25^\circ\text{C}$).
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-950 border border-slate-800 rounded-xl p-4 text-xs space-y-2">
+                            <h4 class="font-bold text-cyan-300 uppercase">Why Platinised Platinum Black?</h4>
+                            <p class="text-slate-300 leading-relaxed">
+                                Platinum is chosen because it is metallic and conducts electrons, but is **chemically inert** (will not react with $\text{H}^+$ or $\text{H}_2$). Coating it with porous "platinum black" drastically increases the surface area to allow rapid equilibrium between $\text{H}_2(\text{g})$ gas and $\text{H}^+(\text{aq})$ ions.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 4: AI EXAMINER & EDEXCEL PAST PAPER BANK -->
+        <section id="tab-ai" class="hidden space-y-6">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-sm space-y-6">
+                <div>
+                    <h2 class="text-xl font-bold text-white">AI Redox Examiner & Edexcel IAL Past Paper Suite</h2>
+                    <p class="text-xs text-slate-400 mt-1">Practice authentic Edexcel IAL past paper questions and get student answers evaluated automatically against official mark schemes via Gemini AI.</p>
+                </div>
+
+                <!-- READ-ONLY KNOWLEDGE BASE FOR STUDENTS -->
+                <div id="kbContainer" class="space-y-2">
+                    <div class="flex justify-between items-center text-xs font-bold text-slate-300">
+                        <span>📚 OFFICIAL MARK SCHEME GROUNDING CONTEXT (Topic 16.1 - 16.5)</span>
+                        <span class="text-[10px] text-amber-400 font-mono">🔒 Locked Teacher Context</span>
+                    </div>
+                    <textarea id="aiSourceContext" rows="5" readonly class="w-full bg-slate-950/80 border border-slate-800 rounded-lg p-3 text-xs text-cyan-200 font-mono focus:outline-none leading-relaxed cursor-not-allowed">
+[OFFICIAL IAL TOPIC 16 REDOX EQUILIBRIA & ELECTRODE POTENTIALS MARK SCHEME GROUNDING]
+1. Core Definitions:
+   - Standard Electrode Potential (E°): The emf of a half-cell compared with a standard hydrogen electrode under standard conditions.
+   - Standard Conditions: 298 K temperature, 100 kPa (1 atm) pressure, 1.00 mol dm^-3 concentration of aqueous ions.
+   - Oxidation occurs at the Anode (Negative electrode). Reduction occurs at the Cathode (Positive electrode).
+
+2. Salt Bridge Functions:
+   - Function 1: Prevents direct mixing and chemical reaction of the two electrolyte solutions.
+   - Function 2: Completes the electrical circuit by providing mobile ions (K+ and NO3-).
+   - Function 3: Neutralizes charge buildup in the half-cells (supplies K+ to cathode, NO3- to anode).
+
+3. Standard Hydrogen Electrode (SHE):
+   - Reference potential = 0.00 V.
+   - Requires H2 gas at 100 kPa / 1 atm, 1.00 mol dm^-3 H+(aq) (e.g. 1M HCl), 298 K, and platinum wire connected to platinised platinum electrode covered in platinum black.
+   - Platinum is used because it conducts electricity and is chemically inert.
+
+4. Balanced Equations & Cell Voltage:
+   - E°cell = E°(reduction / cathode) - E°(oxidation / anode).
+   - Overall reaction MUST be balanced for electrons (e.g. Zn + 2Ag+ -> Zn2+ + 2Ag).
+   - Why direct immersion fails: Dipping metal directly into electrolyte causes direct displacement reaction; heat energy released directly, reducing/destroying cell voltage output.
+   - Identical half-cells: E°cell = 0.00 V, no net electron flow or ion migration.
+</textarea>
+                </div>
+
+                <!-- AI Workspace Split -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                    <!-- Left: Authentic Edexcel Past Paper Question Bank -->
+                    <div class="lg:col-span-5 bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+                        <h3 class="text-xs font-bold text-blue-300 uppercase tracking-wider">📚 Authentic Edexcel IAL Past Paper Bank</h3>
+                        <p class="text-xs text-slate-400">Select a real Edexcel IAL past paper exam question to practice:</p>
+                        
+                        <div id="past-paper-list" class="space-y-2">
+                            <!-- Populated dynamically by JS -->
+                        </div>
+                    </div>
+
+                    <!-- Right: Selected Question Workspace & Evaluator -->
+                    <div class="lg:col-span-7 bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center border-b border-slate-800 pb-2">
+                                <h3 id="pp-q-title" class="text-xs font-bold text-amber-300 uppercase tracking-wider">Select a Question from the Bank</h3>
+                                <span id="pp-q-code" class="text-[11px] font-mono text-cyan-400">Edexcel IAL</span>
+                            </div>
+
+                            <div id="pp-q-box" class="p-3.5 bg-slate-900 border border-slate-800 rounded-lg text-xs leading-relaxed text-slate-200">
+                                Select an Edexcel past paper question on the left to view the complete question text and mark scheme criteria.
+                            </div>
+
+                            <div id="ai-chat-history" class="bg-slate-900 border border-slate-800 rounded-lg p-3 min-h-[140px] max-h-[220px] overflow-y-auto custom-scrollbar font-mono text-xs space-y-2">
+                                <div class="text-slate-500 italic">Examiner ready. Type your written response below to evaluate against official mark scheme criteria.</div>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-2 pt-2">
+                            <input type="text" id="ai-user-input" placeholder="Type your answer to be evaluated against official mark scheme..." class="flex-grow bg-slate-900 border border-slate-700 text-slate-100 text-xs rounded-lg p-2.5 focus:outline-none focus:ring-1 focus:ring-blue-500">
+                            <button onclick="sendAiChat()" class="px-4 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs rounded-lg shadow transition">
+                                Submit Answer
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Application JavaScript Logic -->
+    <script>
+        let animProgress = 0;
+        let animActive = true;
+        let animFrameId = null;
+
+        // Half-Cells Database
+        const HALF_CELLS = {
+            "Zn": { name: "Zinc", symbol: "Zn", ion: "Zn²⁺", e0: -0.76, electrons: 2, color: "#94a3b8", state: "(s)", ionState: "(aq)" },
+            "Cu": { name: "Copper", symbol: "Cu", ion: "Cu²⁺", e0: 0.34, electrons: 2, color: "#f97316", state: "(s)", ionState: "(aq)" },
+            "Ag": { name: "Silver", symbol: "Ag", ion: "Ag⁺", e0: 0.80, electrons: 1, color: "#e2e8f0", state: "(s)", ionState: "(aq)" },
+            "Fe": { name: "Iron (II/III)", symbol: "Fe²⁺", ion: "Fe³⁺", e0: 0.77, electrons: 1, color: "#a855f7", state: "(aq)", ionState: "(aq)" }
+        };
+
+        // Real Edexcel IAL Past Paper Question Bank
+        const EDEXCEL_PAST_PAPERS = [
+            {
+                id: "q1",
+                code: "WCH15/01 June 2022 Q18a",
+                title: "SHE Conditions & Cu Half-Cell Setup (5 Marks)",
+                questionText: "Draw a labelled diagram of the apparatus you would use to measure the standard electrode potential of a Cu²⁺(aq) | Cu(s) half-cell connected to a Standard Hydrogen Electrode (SHE). Include essential standard conditions.",
+                markScheme: "1. SHE labelled: H2 gas at 100 kPa / 1 atm, 1.00 mol dm^-3 H+(aq) (or 1M HCl), 298 K, and platinum wire to platinum black electrode.\n2. Cu half-cell labelled: Cu metal electrode in 1.00 mol dm^-3 Cu2+(aq) solution.\n3. Voltmeter and salt bridge (saturated KNO3) connecting the two half-cells."
+            },
+            {
+                id: "q2",
+                code: "WCH15/01 Oct 2022 Q15b",
+                title: "Salt Bridge Functions & Direct Immersion Pitfall (4 Marks)",
+                questionText: "(i) State two functions of a salt bridge prepared using saturated potassium nitrate solution.\n(ii) Explain why zinc metal cannot be immersed directly into aqueous copper(II) sulfate solution to build an electrochemical cell.",
+                markScheme: "1. Salt bridge functions: Completes the electrical circuit by providing mobile ions (K+ and NO3-); neutralizes charge buildup in the half-cells.\n2. Direct immersion pitfall: Direct displacement reaction occurs between Zn metal and Cu2+ ions on the metal surface, releasing heat energy directly and reducing/destroying measurable cell voltage."
+            },
+            {
+                id: "q3",
+                code: "WCH15/01 Jan 2021 Q19c",
+                title: "Cell Voltage & Overall Equation for Zn/Ag System (3 Marks)",
+                questionText: "A standard electrochemical cell is constructed using a Zn²⁺(aq) | Zn(s) half-cell (-0.76 V) and an Ag⁺(aq) | Ag(s) half-cell (+0.80 V).\n(i) Calculate E°cell.\n(ii) Write the balanced overall equation for the reaction taking place.",
+                markScheme: "1. E°cell = +0.80 - (-0.76) = +1.56 V.\n2. Balanced overall equation: Zn(s) + 2Ag+(aq) -> Zn2+(aq) + 2Ag(s)."
+            },
+            {
+                id: "q4",
+                code: "WCH15/01 Oct 2019 Q16d",
+                title: "Identical Half-Cells & Le Chatelier Shifts (3 Marks)",
+                questionText: "(i) Explain what happens to the cell potential E°cell if both left and right half-cells contain identical Zn²⁺(aq) | Zn(s) systems under standard conditions.\n(ii) Predict how increasing the concentration of Cu²⁺ ions in a Zn-Cu cell above 1.00 mol dm⁻³ affects cell voltage E.",
+                markScheme: "1. Identical half-cells: E°cell = 0.00 V. No potential difference exists, so there is no net electron flow or reaction.\n2. Increasing [Cu2+]: Shifts the reduction equilibrium Cu2+ + 2e- -> Cu to the right according to Le Chatelier's principle, making E more positive / increasing cell potential."
+            }
+        ];
+
+        let selectedPpQuestion = EDEXCEL_PAST_PAPERS[0];
+
+        // Initialize Page
+        document.addEventListener('DOMContentLoaded', () => {
+            renderPastPaperList();
+            updateCellSimulation();
+            drawSheDiagram();
+            startCanvasAnimation();
+        });
+
+        function switchTab(tabId) {
+            ['scaffold', 'simulator', 'she', 'ai'].forEach(id => {
+                const sec = document.getElementById(`tab-${id}`);
+                const btn = document.getElementById(`btn-${id}`);
+                if (sec) sec.classList.add('hidden');
+                if (btn) {
+                    btn.classList.remove('tab-btn-active');
+                    btn.classList.add('text-slate-400');
+                }
+            });
+
+            const targetSec = document.getElementById(`tab-${tabId}`);
+            const targetBtn = document.getElementById(`btn-${tabId}`);
+            if (targetSec) targetSec.classList.remove('hidden');
+            if (targetBtn) {
+                targetBtn.classList.add('tab-btn-active');
+                targetBtn.classList.remove('text-slate-400');
+            }
+
+            if (tabId === 'she') drawSheDiagram();
+        }
+
+        function renderPastPaperList() {
+            const listContainer = document.getElementById('past-paper-list');
+            if (!listContainer) return;
+            listContainer.innerHTML = '';
+
+            EDEXCEL_PAST_PAPERS.forEach((q, idx) => {
+                const btn = document.createElement('button');
+                btn.className = `w-full text-left p-3 rounded-lg border border-slate-800 bg-slate-900 hover:border-blue-500/50 transition space-y-1 ${idx === 0 ? 'border-blue-500 bg-blue-950/20' : ''}`;
+                btn.onclick = () => selectPastPaperQuestion(q, btn);
+                btn.innerHTML = `
+                    <div class="font-bold text-xs text-slate-200">${q.title}</div>
+                    <div class="text-[10px] font-mono text-cyan-400">${q.code}</div>
+                `;
+                listContainer.appendChild(btn);
+            });
+
+            selectPastPaperQuestion(EDEXCEL_PAST_PAPERS[0], null);
+        }
+
+        function selectPastPaperQuestion(q, btnEl) {
+            selectedPpQuestion = q;
+            
+            if (btnEl) {
+                const allBtns = document.getElementById('past-paper-list').children;
+                for (let b of allBtns) {
+                    b.classList.remove('border-blue-500', 'bg-blue-950/20');
+                }
+                btnEl.classList.add('border-blue-500', 'bg-blue-950/20');
+            }
+
+            document.getElementById('pp-q-title').textContent = q.title;
+            document.getElementById('pp-q-code').textContent = q.code;
+            document.getElementById('pp-q-box').textContent = q.questionText;
+
+            initKaTeX();
+        }
+
+        function updateCellSimulation() {
+            const leftKey = document.getElementById('cell-left-select').value;
+            const rightKey = document.getElementById('cell-right-select').value;
+
+            const leftCell = HALF_CELLS[leftKey];
+            const rightCell = HALF_CELLS[rightKey];
+
+            const isIdentical = (leftKey === rightKey);
+            const banner = document.getElementById('identical-metals-banner');
+
+            if (banner) {
+                banner.classList.toggle('hidden', !isIdentical);
+            }
+
+            if (isIdentical) {
+                document.getElementById('calc-e-cathode').textContent = `${leftCell.e0 >= 0 ? '+' : ''}${leftCell.e0.toFixed(2)} V (${leftCell.name})`;
+                document.getElementById('calc-e-anode').textContent = `${leftCell.e0 >= 0 ? '+' : ''}${leftCell.e0.toFixed(2)} V (${leftCell.name})`;
+                document.getElementById('calc-e-cell').textContent = `0.00 V`;
+
+                document.getElementById('eq-anode').textContent = `${leftCell.name} half-cell at equilibrium (No net oxidation)`;
+                document.getElementById('eq-cathode').textContent = `${leftCell.name} half-cell at equilibrium (No net reduction)`;
+                document.getElementById('eq-overall').textContent = `No net reaction taking place (E°cell = 0.00 V)`;
+
+                const sbAnodeEl = document.getElementById('sb-anode-explain');
+                const sbCathodeEl = document.getElementById('sb-cathode-explain');
+
+                if (sbAnodeEl) sbAnodeEl.innerHTML = `No potential difference exists between identical half-cells. No cation buildup occurs in either beaker.`;
+                if (sbCathodeEl) sbCathodeEl.innerHTML = `No electron transfer takes place in the external wire. Salt bridge ions remain stationary.`;
+
+                initKaTeX();
+                return;
+            }
+
+            // Determine Anode vs Cathode
+            let anodeCell, cathodeCell;
+            let leftIsAnode = leftCell.e0 <= rightCell.e0;
+
+            if (leftIsAnode) {
+                anodeCell = leftCell;
+                cathodeCell = rightCell;
+            } else {
+                anodeCell = rightCell;
+                cathodeCell = leftCell;
+            }
+
+            const eCell = (cathodeCell.e0 - anodeCell.e0).toFixed(2);
+
+            document.getElementById('calc-e-cathode').textContent = `${cathodeCell.e0 >= 0 ? '+' : ''}${cathodeCell.e0.toFixed(2)} V (${cathodeCell.name})`;
+            document.getElementById('calc-e-anode').textContent = `${anodeCell.e0 >= 0 ? '+' : ''}${anodeCell.e0.toFixed(2)} V (${anodeCell.name})`;
+            document.getElementById('calc-e-cell').textContent = `+${eCell} V`;
+
+            // Half Equations
+            document.getElementById('eq-anode').textContent = getOxidationEq(anodeCell);
+            document.getElementById('eq-cathode').textContent = getReductionEq(cathodeCell);
+
+            // Calculate Stoichiometrically Balanced Overall Equation
+            document.getElementById('eq-overall').textContent = getBalancedOverallEquation(anodeCell, cathodeCell);
+
+            // Update Salt Bridge Mechanism Explanations
+            const anodeSideName = leftIsAnode ? "Left" : "Right";
+            const cathodeSideName = leftIsAnode ? "Right" : "Left";
+
+            const sbAnodeEl = document.getElementById('sb-anode-explain');
+            const sbCathodeEl = document.getElementById('sb-cathode-explain');
+
+            if (sbAnodeEl) {
+                sbAnodeEl.innerHTML = `Oxidation in ${anodeCell.name} half-cell (${anodeSideName}) generates positive ions (${anodeCell.ion}). To prevent positive charge buildup from stopping electron release, <b>NO₃⁻ anions</b> migrate from the salt bridge directly into the ${anodeSideName} beaker.`;
+            }
+            if (sbCathodeEl) {
+                sbCathodeEl.innerHTML = `Reduction in ${cathodeCell.name} half-cell (${cathodeSideName}) consumes positive ions (${cathodeCell.ion}). To replace lost positive charge, <b>K⁺ cations</b> migrate from the salt bridge directly into the ${cathodeSideName} beaker.`;
+            }
+
+            initKaTeX();
+        }
+
+        function getOxidationEq(cell) {
+            if (cell.symbol === 'Zn') return 'Zn(s) → Zn²⁺(aq) + 2e⁻';
+            if (cell.symbol === 'Cu') return 'Cu(s) → Cu²⁺(aq) + 2e⁻';
+            if (cell.symbol === 'Ag') return 'Ag(s) → Ag⁺(aq) + e⁻';
+            return 'Fe²⁺(aq) → Fe³⁺(aq) + e⁻';
+        }
+
+        function getReductionEq(cell) {
+            if (cell.symbol === 'Zn') return 'Zn²⁺(aq) + 2e⁻ → Zn(s)';
+            if (cell.symbol === 'Cu') return 'Cu²⁺(aq) + 2e⁻ → Cu(s)';
+            if (cell.symbol === 'Ag') return 'Ag⁺(aq) + e⁻ → Ag(s)';
+            return 'Fe³⁺(aq) + e⁻ → Fe²⁺(aq)';
+        }
+
+        function gcd(a, b) {
+            return b === 0 ? a : gcd(b, a % b);
+        }
+
+        function getBalancedOverallEquation(anode, cathode) {
+            const eA = anode.electrons;
+            const eC = cathode.electrons;
+            
+            const g = gcd(eA, eC);
+            const multA = eC / g;
+            const multC = eA / g;
+
+            function formatSpec(cell, isAnode) {
+                if (isAnode) {
+                    if (cell.symbol === 'Zn') return { react: `${multA > 1 ? multA : ''}Zn(s)`, prod: `${multA > 1 ? multA : ''}Zn²⁺(aq)` };
+                    if (cell.symbol === 'Cu') return { react: `${multA > 1 ? multA : ''}Cu(s)`, prod: `${multA > 1 ? multA : ''}Cu²⁺(aq)` };
+                    if (cell.symbol === 'Ag') return { react: `${multA > 1 ? multA : ''}Ag(s)`, prod: `${multA > 1 ? multA : ''}Ag⁺(aq)` };
+                    return { react: `${multA > 1 ? multA : ''}Fe²⁺(aq)`, prod: `${multA > 1 ? multA : ''}Fe³⁺(aq)` };
+                } else {
+                    if (cell.symbol === 'Zn') return { react: `${multC > 1 ? multC : ''}Zn²⁺(aq)`, prod: `${multC > 1 ? multC : ''}Zn(s)` };
+                    if (cell.symbol === 'Cu') return { react: `${multC > 1 ? multC : ''}Cu²⁺(aq)`, prod: `${multC > 1 ? multC : ''}Cu(s)` };
+                    if (cell.symbol === 'Ag') return { react: `${multC > 1 ? multC : ''}Ag⁺(aq)`, prod: `${multC > 1 ? multC : ''}Ag(s)` };
+                    return { react: `${multC > 1 ? multC : ''}Fe³⁺(aq)`, prod: `${multC > 1 ? multC : ''}Fe²⁺(aq)` };
+                }
+            }
+
+            const aEq = formatSpec(anode, true);
+            const cEq = formatSpec(cathode, false);
+
+            return `${aEq.react} + ${cEq.react} → ${aEq.prod} + ${cEq.prod}`;
+        }
+
+        function updateConcentrationShift() {
+            const val = parseFloat(document.getElementById('conc-slider').value);
+            document.getElementById('conc-val').textContent = `${val.toFixed(2)} mol/dm³`;
+            
+            const feedback = document.getElementById('conc-feedback');
+            if (val > 1.0) {
+                feedback.textContent = `Concentration > 1.0 M: Shifts equilibrium according to Le Chatelier's principle, altering cell voltage E from standard E°.`;
+            } else if (val < 1.0) {
+                feedback.textContent = `Concentration < 1.0 M: Reduces ion availability, shifting equilibrium and lowering measured cell voltage E.`;
+            } else {
+                feedback.textContent = `Standard concentration (1.00 mol dm⁻³) restores exact standard electrode potential E°.`;
+            }
+        }
+
+        function toggleCellAnimation() {
+            animActive = !animActive;
+        }
+
+        function startCanvasAnimation() {
+            function loop() {
+                if (animActive) {
+                    animProgress = (animProgress + 0.002) % 1.0;
+                    drawElectrochemicalCellCanvas(animProgress);
+                }
+                animFrameId = requestAnimationFrame(loop);
+            }
+            loop();
+        }
+
+        function drawElectrochemicalCellCanvas(progress) {
+            const canvas = document.getElementById('cell-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const w = canvas.width;
+            const h = canvas.height;
+
+            ctx.clearRect(0, 0, w, h);
+
+            const leftKey = document.getElementById('cell-left-select').value;
+            const rightKey = document.getElementById('cell-right-select').value;
+
+            const leftCell = HALF_CELLS[leftKey];
+            const rightCell = HALF_CELLS[rightKey];
+
+            const isIdentical = (leftKey === rightKey);
+            const leftIsAnode = leftCell.e0 <= rightCell.e0;
+
+            // Beakers
+            ctx.fillStyle = '#1e293b';
+            ctx.fillRect(60, 160, 140, 140); // Left Beaker
+            ctx.fillRect(380, 160, 140, 140); // Right Beaker
+
+            ctx.strokeStyle = '#475569';
+            ctx.lineWidth = 3;
+            ctx.strokeRect(60, 160, 140, 140);
+            ctx.strokeRect(380, 160, 140, 140);
+
+            // Solution Liquids
+            ctx.fillStyle = 'rgba(56, 189, 248, 0.25)';
+            ctx.fillRect(63, 180, 134, 117);
+            ctx.fillRect(383, 180, 134, 117);
+
+            // Electrodes
+            ctx.fillStyle = leftCell.color;
+            ctx.fillRect(115, 100, 30, 120); // Left Electrode
+
+            ctx.fillStyle = rightCell.color;
+            ctx.fillRect(435, 100, 30, 120); // Right Electrode
+
+            // External Wire & Voltmeter
+            ctx.strokeStyle = '#cbd5e1';
+            ctx.lineWidth = 2.5;
+            ctx.beginPath();
+            ctx.moveTo(130, 100);
+            ctx.lineTo(130, 50);
+            ctx.lineTo(260, 50);
+            ctx.moveTo(320, 50);
+            ctx.lineTo(450, 50);
+            ctx.lineTo(450, 100);
+            ctx.stroke();
+
+            // Voltmeter Gauge Circle
+            ctx.fillStyle = '#0f172a';
+            ctx.strokeStyle = isIdentical ? '#f59e0b' : '#38bdf8';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.arc(290, 50, 25, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.stroke();
+
+            ctx.fillStyle = isIdentical ? '#f59e0b' : '#38bdf8';
+            ctx.font = 'bold 11px monospace';
+            ctx.textAlign = 'center';
+            ctx.fillText(isIdentical ? '0.00V' : 'V', 290, 54);
+
+            // Salt Bridge (U-Tube extending down into beakers)
+            ctx.fillStyle = 'rgba(241, 245, 249, 0.15)';
+            ctx.strokeStyle = '#94a3b8';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(170, 220);
+            ctx.lineTo(170, 120);
+            ctx.lineTo(410, 120);
+            ctx.lineTo(410, 220);
+            ctx.lineTo(390, 220);
+            ctx.lineTo(390, 140);
+            ctx.lineTo(190, 140);
+            ctx.lineTo(190, 220);
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+
+            // Salt Bridge Label
+            ctx.fillStyle = '#cbd5e1';
+            ctx.font = '10px sans-serif';
+            ctx.fillText('Salt Bridge (saturated KNO₃)', 290, 133);
+
+            // IF IDENTICAL: DO NOT DRAW MOVING PARTICLES
+            if (isIdentical) {
+                ctx.fillStyle = '#fbbf24';
+                ctx.font = 'bold 12px sans-serif';
+                ctx.fillText('No Net Flow (E°cell = 0.00 V)', 290, 25);
+                
+                ctx.fillStyle = '#94a3b8';
+                ctx.font = '11px sans-serif';
+                ctx.fillText(`${leftCell.name} Half-Cell`, 130, 318);
+                ctx.fillText(`${rightCell.name} Half-Cell`, 450, 318);
+                return;
+            }
+
+            // ANIMATION 1: Electrons in External Wire (Anode -> Cathode)
+            const startWireX = leftIsAnode ? 130 : 450;
+            const endWireX = leftIsAnode ? 450 : 130;
+            
+            for (let i = 0; i < 4; i++) {
+                let p = (progress + i * 0.25) % 1.0;
+                let eX = startWireX + (endWireX - startWireX) * p;
+                
+                ctx.fillStyle = '#facc15'; // Bright yellow e-
+                ctx.beginPath();
+                ctx.arc(eX, 50, 5, 0, Math.PI * 2);
+                ctx.fill();
+
+                ctx.fillStyle = '#0f172a';
+                ctx.font = 'bold 8px sans-serif';
+                ctx.fillText('e⁻', eX, 53);
+            }
+
+            // ANIMATION 2: Ionic Migration inside Salt Bridge & down into Beakers
+            const anodeX = leftIsAnode ? 180 : 400;
+            const cathodeX = leftIsAnode ? 400 : 180;
+
+            function getUPathCoord(fromX, toX, p) {
+                if (p < 0.7) {
+                    let hp = p / 0.7;
+                    return { x: fromX + (toX - fromX) * hp, y: 130 };
+                } else {
+                    let vp = (p - 0.7) / 0.3;
+                    return { x: toX, y: 130 + vp * 75 };
+                }
+            }
+
+            for (let i = 0; i < 3; i++) {
+                // K+ Cation Migration (To Cathode)
+                let pK = (progress + i * 0.33) % 1.0;
+                let kCoord = getUPathCoord(anodeX, cathodeX, pK);
+
+                ctx.fillStyle = '#22d3ee'; // Cyan K+
+                ctx.beginPath();
+                ctx.arc(kCoord.x, kCoord.y, 6, 0, Math.PI * 2);
+                ctx.fill();
+
+                ctx.fillStyle = '#0f172a';
+                ctx.font = 'bold 8px sans-serif';
+                ctx.fillText('K⁺', kCoord.x, kCoord.y + 3);
+
+                // NO3- Anion Migration (To Anode)
+                let pNO3 = (progress + i * 0.33) % 1.0;
+                let no3Coord = getUPathCoord(cathodeX, anodeX, pNO3);
+
+                ctx.fillStyle = '#f43f5e'; // Magenta NO3-
+                ctx.beginPath();
+                ctx.arc(no3Coord.x, no3Coord.y, 6, 0, Math.PI * 2);
+                ctx.fill();
+
+                ctx.fillStyle = '#ffffff';
+                ctx.font = 'bold 7px sans-serif';
+                ctx.fillText('NO₃⁻', no3Coord.x, no3Coord.y + 2);
+            }
+
+            // Labels for Half-Cells
+            ctx.fillStyle = leftIsAnode ? '#f43f5e' : '#10b981';
+            ctx.font = 'bold 11px sans-serif';
+            ctx.fillText(`${leftCell.name} (${leftIsAnode ? 'Anode -' : 'Cathode +'})`, 130, 318);
+
+            ctx.fillStyle = leftIsAnode ? '#10b981' : '#f43f5e';
+            ctx.fillText(`${rightCell.name} (${leftIsAnode ? 'Cathode +' : 'Anode -'})`, 450, 318);
+        }
+
+        // Draw Standard Hydrogen Electrode (Matching Uploaded Image Design)
+        function drawSheDiagram() {
+            const canvas = document.getElementById('she-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const w = canvas.width;
+            const h = canvas.height;
+
+            ctx.clearRect(0, 0, w, h);
+
+            // Outer Beaker
+            ctx.fillStyle = '#0f172a';
+            ctx.fillRect(40, 90, 320, 220);
+            ctx.strokeStyle = '#475569';
+            ctx.lineWidth = 3;
+            ctx.strokeRect(40, 90, 320, 220);
+
+            // Solution (1M Hydrochloric acid solution)
+            ctx.fillStyle = 'rgba(56, 189, 248, 0.2)';
+            ctx.fillRect(43, 140, 314, 167);
+
+            // Glass Bell Housing & Hydrogen Gas Inlet
+            ctx.strokeStyle = '#cbd5e1';
+            ctx.lineWidth = 2.5;
+
+            // Inverted Glass Bell Outer Tube
+            ctx.beginPath();
+            // Glass bell bottom bell shape
+            ctx.moveTo(160, 250);
+            ctx.lineTo(160, 190);
+            ctx.lineTo(180, 160);
+            ctx.lineTo(180, 40);
+            // Top Curve
+            ctx.arc(190, 40, 10, Math.PI, 0, false);
+            ctx.lineTo(200, 160);
+            ctx.lineTo(220, 190);
+            ctx.lineTo(220, 250);
+            ctx.stroke();
+
+            // Side Hydrogen Gas Inlet Tube
+            ctx.beginPath();
+            ctx.moveTo(180, 80);
+            ctx.lineTo(110, 80);
+            ctx.moveTo(180, 95);
+            ctx.lineTo(110, 95);
+            ctx.stroke();
+
+            // Arrow for H2 Gas
+            ctx.strokeStyle = '#38bdf8';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(115, 87.5);
+            ctx.lineTo(145, 87.5);
+            ctx.lineTo(140, 83);
+            ctx.moveTo(145, 87.5);
+            ctx.lineTo(140, 92);
+            ctx.stroke();
+
+            // Internal Platinum Wire
+            ctx.strokeStyle = '#94a3b8';
+            ctx.lineWidth = 1.5;
+            ctx.beginPath();
+            ctx.moveTo(190, 30);
+            ctx.lineTo(190, 210);
+            ctx.stroke();
+
+            // Top Platinum Wire Curved Lead out
+            ctx.strokeStyle = '#38bdf8';
+            ctx.beginPath();
+            ctx.moveTo(190, 30);
+            ctx.quadraticCurveTo(190, 15, 230, 15);
+            ctx.stroke();
+
+            // Platinised Platinum Electrode Covered in Platinum Black
+            ctx.fillStyle = '#020617'; // Solid black block
+            ctx.fillRect(180, 210, 20, 22);
+            ctx.strokeStyle = '#38bdf8';
+            ctx.lineWidth = 1.5;
+            ctx.strokeRect(180, 210, 20, 22);
+
+            // Gas Bubbles
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.75)';
+            ctx.beginPath();
+            ctx.arc(172, 220, 3, 0, Math.PI * 2);
+            ctx.arc(208, 210, 4, 0, Math.PI * 2);
+            ctx.arc(190, 185, 3.5, 0, Math.PI * 2);
+            ctx.arc(202, 170, 3, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Text Annotations matching uploaded diagram exact wording
+            ctx.fillStyle = '#38bdf8';
+            ctx.font = '11px sans-serif';
+            
+            // 1. Hydrogen gas
+            ctx.fillText('Hydrogen gas (H₂(g))', 10, 68);
+            ctx.fillText('at 1 atm', 10, 82);
+
+            // 2. Platinum wire
+            ctx.fillText('Platinum wire', 250, 75);
+            ctx.strokeStyle = '#64748b';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(245, 72);
+            ctx.lineTo(192, 72);
+            ctx.stroke();
+
+            // 3. To high resistance voltmeter
+            ctx.fillText('To the high resistance voltmeter', 235, 18);
+
+            // 4. Platinised platinum electrode covered in platinum black
+            ctx.fillText('Platinised platinum electrode', 215, 215);
+            ctx.fillText('covered in platinum black', 215, 228);
+            ctx.beginPath();
+            ctx.moveTo(212, 220);
+            ctx.lineTo(202, 220);
+            ctx.stroke();
+
+            // 5. 1M Hydrochloric acid solution
+            ctx.fillText('1M Hydrochloric acid solution', 60, 280);
+            ctx.beginPath();
+            ctx.moveTo(125, 268);
+            ctx.lineTo(125, 240);
+            ctx.stroke();
+        }
+
+        function toggleModal(id, show) {
+            const el = document.getElementById(id);
+            if (el) el.classList.toggle('hidden', !show);
+        }
+
+        async function callGeminiAPI(prompt, systemInstruction) {
+            // Leaving key as empty string allows the Canvas runtime environment to auto-inject the key automatically
+            const apiKey = "";
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+            const payload = {
+                contents: [{ parts: [{ text: prompt }] }],
+                systemInstruction: { parts: [{ text: systemInstruction }] }
+            };
+
+            let delay = 1000;
+            for (let attempt = 0; attempt < 3; attempt++) {
+                try {
+                    const res = await fetch(url, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    const data = await res.json();
+                    return data.candidates?.[0]?.content?.parts?.[0]?.text || "Unable to parse response from Gemini AI.";
+                } catch (err) {
+                    if (attempt === 2) return "Offline Mode: Gemini API unreachable. Please verify your internet connection.";
+                    await new Promise(r => setTimeout(r, delay));
+                    delay *= 2;
+                }
+            }
+        }
+
+        async function sendAiChat() {
+            const input = document.getElementById('ai-user-input');
+            const text = input.value.trim();
+            if (!text) return;
+
+            const chatHistory = document.getElementById('ai-chat-history');
+            
+            const uMsg = document.createElement('div');
+            uMsg.className = 'text-blue-400 font-bold';
+            uMsg.textContent = `Student Answer: ${text}`;
+            chatHistory.appendChild(uMsg);
+            input.value = '';
+
+            const tMsg = document.createElement('div');
+            tMsg.className = 'text-slate-400 italic';
+            tMsg.textContent = 'Examiner AI: Evaluating answer against official mark scheme...';
+            chatHistory.appendChild(tMsg);
+            chatHistory.scrollTop = chatHistory.scrollHeight;
+
+            const context = document.getElementById('aiSourceContext').value;
+            const fullPrompt = `Question: ${selectedPpQuestion.title}\nQuestion Text: ${selectedPpQuestion.questionText}\nOfficial Mark Scheme:\n${selectedPpQuestion.markScheme}\nStudent Response: ${text}`;
+            const sys = `You are an official Edexcel IAL Chemistry Examiner. Grade the student response against the provided mark scheme. Give marks awarded out of maximum, identify missed keywords, and provide concise feedback. Grounding Context:\n${context}`;
+
+            const reply = await callGeminiAPI(fullPrompt, sys);
+            chatHistory.removeChild(tMsg);
+
+            const aiMsg = document.createElement('div');
+            aiMsg.className = 'text-emerald-300';
+            aiMsg.textContent = `Examiner Feedback: ${reply}`;
+            chatHistory.appendChild(aiMsg);
+            chatHistory.scrollTop = chatHistory.scrollHeight;
+        }
+    </script>
+</body>
+</html>

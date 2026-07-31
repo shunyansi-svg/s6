@@ -1,0 +1,1753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IAL Chemistry: Spectroscopy & 13C NMR Studio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- KaTeX for math & chemical notation -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script>
+        function renderMath(el) {
+            if (window.renderMathInElement) {
+                try {
+                    renderMathInElement(el || document.body, {
+                        delimiters: [
+                            {left: '$$', right: '$$', display: true},
+                            {left: '$', right: '$', display: false}
+                        ],
+                        throwOnError: false
+                    });
+                } catch (err) {
+                    console.warn("KaTeX rendering warning:", err);
+                }
+            }
+        }
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMath();"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0b1329;
+            color: #f8fafc;
+        }
+        .font-mono {
+            font-family: 'Fira Code', monospace;
+        }
+        /* Custom scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1e293b;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-teal-500 selection:text-slate-900">
+
+    <!-- Top Navigation Header -->
+    <header class="bg-slate-900/90 border-b border-slate-800 sticky top-0 z-50 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="p-2 bg-teal-500/10 border border-teal-500/30 rounded-lg text-teal-400">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-lg font-bold text-slate-100 flex items-center gap-2">
+                        IAL Spectroscopy & $^{13}\text{C}$ NMR Studio
+                        <span class="text-xs font-normal px-2 py-0.5 rounded bg-teal-500/20 text-teal-300 border border-teal-500/30">Topic 15E Spec</span>
+                    </h1>
+                    <p class="text-xs text-slate-400">Edexcel / CAIE International A-Level Interactive Chemistry Studio</p>
+                </div>
+            </div>
+
+            <!-- Main Tab Navigation -->
+            <nav class="flex space-x-1 bg-slate-950 p-1 rounded-xl border border-slate-800 overflow-x-auto" id="mainTabNav">
+                <button onclick="switchTab('predictor-tab')" id="nav-predictor-tab" class="tab-btn px-3 py-2 text-xs font-medium rounded-lg transition-all text-teal-300 bg-slate-800 shadow-sm flex items-center gap-1.5 whitespace-nowrap">
+                    <span>📊</span> Spectrum Studio
+                </button>
+                <button onclick="switchTab('solver-tab')" id="nav-solver-tab" class="tab-btn px-3 py-2 text-xs font-medium rounded-lg transition-all text-slate-400 hover:text-slate-200 flex items-center gap-1.5 whitespace-nowrap">
+                    <span>🔍</span> Structure Solver
+                </button>
+                <button onclick="switchTab('mass-calc-tab')" id="nav-mass-calc-tab" class="tab-btn px-3 py-2 text-xs font-medium rounded-lg transition-all text-slate-400 hover:text-slate-200 flex items-center gap-1.5 whitespace-nowrap">
+                    <span>⚖️</span> High-Res $M_r$ Calculator
+                </button>
+                <button onclick="switchTab('summary-tab')" id="nav-summary-tab" class="tab-btn px-3 py-2 text-xs font-medium rounded-lg transition-all text-slate-400 hover:text-slate-200 flex items-center gap-1.5 whitespace-nowrap">
+                    <span>📚</span> Notes & Symmetry
+                </button>
+                <button onclick="switchTab('ai-tab')" id="nav-ai-tab" class="tab-btn px-3 py-2 text-xs font-medium rounded-lg transition-all text-slate-400 hover:text-slate-200 flex items-center gap-1.5 whitespace-nowrap">
+                    <svg class="w-3.5 h-3.5 text-teal-400 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                    AI Examiner
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-grow w-full">
+
+        <!-- ========================================================= -->
+        <!-- TAB 1: 13C NMR & MASS SPEC PREDICTOR STUDIO              -->
+        <!-- ========================================================= -->
+        <div id="predictor-tab" class="tab-content space-y-6">
+            
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 space-y-2">
+                <h2 class="text-base font-semibold text-teal-400 flex items-center gap-2">
+                    <span>🔬</span> Interactive $^{13}\text{C}$ NMR Spectrum & Environment Visualizer
+                </h2>
+                <p class="text-xs text-slate-300">
+                    Select an organic molecule to analyze its full displayed structural formula, symmetry, and high-resolution $M_r$ data. Examine the displayed structure and predict the number of unique carbon environments before unmasking the spectrum.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+                <!-- Left Column: Controls & Molecule Selector -->
+                <div class="lg:col-span-4 bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-5">
+                    <h3 class="text-sm font-bold text-slate-100 flex items-center gap-2 border-b border-slate-800 pb-2">
+                        <span>🧪</span> Target Organic Molecule
+                    </h3>
+
+                    <div class="space-y-4 text-xs">
+                        <div class="space-y-1.5">
+                            <label class="text-slate-300 font-medium">Select Target Compound:</label>
+                            <select id="molSelect" onchange="updatePredictorMolecule()" class="w-full bg-slate-950 border border-slate-700 rounded-lg p-2 text-slate-100 focus:border-teal-500 focus:outline-none font-mono">
+                                <optgroup label="Alcohols & Cyclic Diols">
+                                    <option value="ethanol">Ethanol (CH3CH2OH)</option>
+                                    <option value="propan1ol">Propan-1-ol (CH3CH2CH2OH)</option>
+                                    <option value="propan2ol">Propan-2-ol (CH3CH(OH)CH3) [Symmetrical]</option>
+                                    <option value="cyclohexanediol_12">1,2-cyclohexanediol (Symmetrical - 3 peaks)</option>
+                                    <option value="cyclohexanediol_14">1,4-cyclohexanediol (Highly Symmetrical - 2 peaks)</option>
+                                </optgroup>
+                                <optgroup label="Alkanes & Branched Hydrocarbons">
+                                    <option value="propane">Propane (CH3CH2CH3)</option>
+                                    <option value="pentane">Pentane (CH3(CH2)3CH3)</option>
+                                    <option value="methylpropane_2">2-methylpropane (CH(CH3)3)</option>
+                                    <option value="dimethylpropane_22">2,2-dimethylpropane (C(CH3)4) [1 peak]</option>
+                                </optgroup>
+                            </select>
+                        </div>
+
+                        <!-- Molecule Structural Summary Card -->
+                        <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-2">
+                            <div class="flex justify-between items-center border-b border-slate-800 pb-2">
+                                <span class="font-bold text-teal-400 font-mono" id="molFormula">C2H6O</span>
+                                <span class="text-xs px-2 py-0.5 rounded bg-teal-500/20 text-teal-300 font-mono hidden" id="molPeakCount">2 NMR Peaks</span>
+                            </div>
+                            <div class="text-[11px] text-slate-300 space-y-1">
+                                <p><strong>Molecular Weight (Nominal):</strong> <span id="molNominalMr" class="font-mono text-slate-200">46</span></p>
+                                <p><strong>Exact High-Res $M_r$ (4 d.p.):</strong> <span id="molExactMr" class="font-mono text-amber-400 font-bold">46.0417</span></p>
+                                <p><strong>Symmetry Analysis:</strong> <span id="molSymmetryDesc" class="text-slate-300 leading-tight">Asymmetrical alcohol with 2 distinct carbon environments.</span></p>
+                            </div>
+                        </div>
+
+                        <!-- Full Displayed Formula Visualizer Box -->
+                        <div class="bg-slate-950 p-4 rounded-xl border border-teal-500/30 space-y-2">
+                            <div class="flex justify-between items-center border-b border-slate-800 pb-1.5">
+                                <span class="text-xs font-bold text-teal-300 font-mono flex items-center gap-1.5">
+                                    <span>✍️</span> Displayed Structural Formula:
+                                </span>
+                                <div class="flex gap-1 bg-slate-900 p-0.5 rounded border border-slate-800 text-[10px]">
+                                    <button onclick="toggleStructureView('svg')" id="btnViewSvg" class="px-2 py-0.5 rounded bg-teal-500/20 text-teal-300 font-mono font-bold transition">Explicit SVG</button>
+                                    <button onclick="toggleStructureView('pubchem')" id="btnViewPubchem" class="px-2 py-0.5 rounded text-slate-400 font-mono hover:text-slate-200 transition">PubChem 2D</button>
+                                </div>
+                            </div>
+                            <div id="displayedFormulaContainer" class="p-3 bg-slate-900/90 rounded-lg border border-slate-800 flex items-center justify-center min-h-[160px] overflow-x-auto text-slate-100">
+                                <!-- JS Populated Structural SVG / PubChem Image -->
+                            </div>
+                        </div>
+
+                        <!-- Interactive Student Prediction Challenge Box -->
+                        <div class="bg-gradient-to-br from-slate-950 to-slate-900 border border-amber-500/30 p-4 rounded-xl space-y-3">
+                            <div class="flex justify-between items-center border-b border-slate-800 pb-1.5">
+                                <span class="font-bold text-amber-400 text-xs flex items-center gap-1.5">
+                                    <span>🎯</span> Student Carbon Environment Prediction
+                                </span>
+                                <span id="predictStatusBadge" class="text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-400 font-mono">Awaiting Guess</span>
+                            </div>
+                            <p class="text-[11px] text-slate-300">Examine the full structural formula above and predict the number of distinct $^{13}\text{C}$ NMR peaks (carbon environments):</p>
+                            <div class="flex items-center gap-2">
+                                <input type="number" id="userPeakGuess" min="1" max="10" placeholder="e.g. 2" onkeydown="if(event.key==='Enter') checkPeakPrediction()" class="w-20 bg-slate-900 border border-slate-700 rounded-lg p-2 text-center text-teal-300 font-mono font-bold text-sm focus:border-teal-500 focus:outline-none">
+                                <button onclick="checkPeakPrediction()" class="flex-1 bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold py-2 px-3 rounded-lg text-xs transition shadow-md flex items-center justify-center gap-1">
+                                    <span>Check & Unmask</span>
+                                </button>
+                                <button onclick="revealSpectrumDirectly()" class="bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold py-2 px-2.5 rounded-lg text-xs transition border border-slate-700" title="Skip prediction and reveal spectrum">
+                                    👁️ Reveal
+                                </button>
+                            </div>
+                            <div id="predictFeedback" class="hidden p-2.5 rounded-lg text-xs leading-relaxed font-mono"></div>
+                        </div>
+
+                        <!-- Environments Breakdown List -->
+                        <div id="envListSection" class="space-y-2 opacity-40 pointer-events-none transition-all">
+                            <span class="text-slate-300 font-bold text-[11px] block">🎨 Carbon Environments & Shifts:</span>
+                            <div id="envList" class="space-y-1.5 max-h-48 overflow-y-auto pr-1">
+                                <!-- JS Populated -->
+                            </div>
+                        </div>
+
+                        <button onclick="explainSpectrumWithAI()" id="btnAiExplainSpectrum" class="w-full bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-500 hover:to-emerald-500 text-slate-950 font-bold py-2.5 rounded-lg text-xs transition shadow-md flex items-center justify-center gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                            Ask AI to Explain Symmetry & Peaks
+                        </button>
+                        <div id="aiSpectrumOutput" class="hidden p-3.5 bg-slate-950 rounded-xl border border-teal-500/30 text-xs text-slate-200 leading-relaxed"></div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Canvas Display & Spectrum Chart -->
+                <div class="lg:col-span-8 bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-4">
+                    <div class="flex justify-between items-center border-b border-slate-800 pb-2">
+                        <div>
+                            <h3 id="displayMolName" class="text-sm font-bold text-slate-100">Ethanol</h3>
+                            <p id="displayMolIupac" class="text-xs text-slate-400">Structural Formula: CH₃-CH₂-OH</p>
+                        </div>
+                        <span class="text-xs font-mono px-2 py-1 rounded bg-slate-950 border border-slate-800 text-teal-400">
+                            TMS Standard = 0 ppm
+                        </span>
+                    </div>
+
+                    <!-- Canvas for Spectrum -->
+                    <div class="relative bg-slate-950 rounded-xl border border-slate-800 p-3 overflow-hidden space-y-3">
+                        <!-- Zoom Presets Header -->
+                        <div class="flex flex-wrap justify-between items-center text-[11px] text-slate-400 font-mono gap-2 border-b border-slate-800 pb-2">
+                            <span>$^{13}\text{C}$ NMR Absorption Spectrum</span>
+                            <div class="flex items-center gap-1.5 flex-wrap">
+                                <span class="text-slate-400 text-[10px]">Zoom Presets:</span>
+                                <button onclick="setZoomRange(0, 220)" class="bg-slate-800 hover:bg-slate-700 text-teal-300 px-2 py-0.5 rounded text-[10px] border border-slate-700 transition">Full (0-220 ppm)</button>
+                                <button onclick="setZoomRange(0, 90)" class="bg-slate-800 hover:bg-slate-700 text-teal-300 px-2 py-0.5 rounded text-[10px] border border-slate-700 transition">Alcohols & C-O (0-90 ppm)</button>
+                                <button onclick="setZoomRange(0, 50)" class="bg-slate-800 hover:bg-slate-700 text-amber-400 px-2 py-0.5 rounded text-[10px] border border-slate-700 transition">Alkyl Detail (0-50 ppm)</button>
+                            </div>
+                        </div>
+
+                        <!-- Interactive Horizontal Zoom & Pan Controls -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 bg-slate-900/90 p-2.5 rounded-lg border border-slate-800 text-[11px] font-mono">
+                            <div class="flex items-center gap-2">
+                                <span class="text-slate-300 shrink-0">🔍 Zoom Level:</span>
+                                <input type="range" id="zoomLevelSlider" min="1" max="6" step="0.2" value="1" oninput="handleZoomSliderChange()" class="w-full accent-teal-400 cursor-pointer">
+                                <span id="zoomLevelLabel" class="text-amber-400 w-10 text-right">1.0×</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-slate-300 shrink-0">↔️ Pan Position:</span>
+                                <input type="range" id="panSlider" min="0" max="220" step="1" value="110" oninput="handleZoomSliderChange()" class="w-full accent-teal-400 cursor-pointer">
+                                <span id="panLabel" class="text-amber-400 w-14 text-right">110 ppm</span>
+                            </div>
+                        </div>
+
+                        <div class="relative">
+                            <canvas id="nmrCanvas" class="w-full h-[320px] block"></canvas>
+                            <!-- Locked Overlay until Student Predicts or Reveals -->
+                            <div id="canvasOverlay" class="absolute inset-0 bg-slate-950/90 backdrop-blur-md flex flex-col items-center justify-center p-6 text-center space-y-3 rounded-lg border border-slate-800 z-10 transition-all duration-300">
+                                <div class="p-3 bg-amber-500/10 border border-amber-500/30 rounded-full text-amber-400 text-2xl">
+                                    🔒
+                                </div>
+                                <div>
+                                    <h4 class="text-sm font-bold text-slate-100">Spectrum Masked for Active Prediction</h4>
+                                    <p class="text-xs text-slate-400 max-w-sm mt-1">Look at the full displayed formula on the left, predict how many carbon environments exist, then check your answer!</p>
+                                </div>
+                                <div class="flex gap-2">
+                                    <button onclick="document.getElementById('userPeakGuess').focus()" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-4 py-2 rounded-lg text-xs transition shadow-lg flex items-center gap-1.5">
+                                        <span>🎯</span> Enter Prediction
+                                    </button>
+                                    <button onclick="revealSpectrumDirectly()" class="bg-slate-800 hover:bg-slate-700 text-teal-300 border border-teal-500/30 font-bold px-4 py-2 rounded-lg text-xs transition flex items-center gap-1.5">
+                                        <span>📊</span> Reveal Spectrum
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Reference Quick-Bar -->
+                    <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800 text-xs space-y-2">
+                        <span class="text-teal-300 font-bold flex items-center gap-1.5">
+                            <span>📖</span> Edexcel IAL Data Booklet $^{13}\text{C}$ Shift Ranges Quick-Check:
+                        </span>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 font-mono text-[10px] text-slate-300">
+                            <div class="bg-slate-900 p-2 rounded border border-slate-800">$\text{C-C}$ (alkane): <span class="text-amber-400">0 - 50</span></div>
+                            <div class="bg-slate-900 p-2 rounded border border-slate-800">$\text{C-O}$ (alcohol/ester): <span class="text-amber-400">50 - 90</span></div>
+                            <div class="bg-slate-900 p-2 rounded border border-slate-800">$\text{C=C}$ (arenes): <span class="text-amber-400">110 - 160</span></div>
+                            <div class="bg-slate-900 p-2 rounded border border-slate-800">$\text{C=O}$ (carbonyl): <span class="text-amber-400">160 - 220</span></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ========================================================= -->
+        <!-- TAB 2: UNKNOWN MOLECULE STRUCTURE SOLVER                 -->
+        <!-- ========================================================= -->
+        <div id="solver-tab" class="tab-content hidden space-y-6">
+            
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 space-y-2">
+                <h2 class="text-base font-semibold text-teal-400 flex items-center gap-2">
+                    <span>🔍</span> IAL Exam-Style Unknown Structural Solver
+                </h2>
+                <p class="text-xs text-slate-300">
+                    In Edexcel / CAIE IAL Unit 5 examinations, students are given high-resolution $M_r$ data alongside $^{13}\text{C}$ NMR peak counts to distinguish between structural isomers and deduce exact formulas.
+                </p>
+            </div>
+
+            <!-- Problem Challenge Container -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+                <div class="lg:col-span-5 bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-4">
+                    <div class="flex justify-between items-center border-b border-slate-800 pb-2">
+                        <span class="text-xs font-bold text-teal-400 font-mono">PROBLEM CASE #<span id="problemIndex">1</span></span>
+                        <span class="text-xs text-slate-400">[IAL 4-Mark Problem]</span>
+                    </div>
+
+                    <!-- Given Data Card -->
+                    <div class="bg-slate-950 p-4 rounded-xl border border-teal-500/30 space-y-3 text-xs">
+                        <h4 class="font-bold text-slate-100 flex items-center gap-2">
+                            <span>📋</span> Experimental Spectroscopic Evidence:
+                        </h4>
+                        <div class="space-y-1.5 font-mono text-slate-200">
+                            <p>• <strong>High-Res Mass Spec $M^+ / M_r$:</strong> <span id="solveMr" class="text-amber-400 font-bold">116.0836</span></p>
+                            <p>• <strong>Molecular Formula:</strong> <span id="solveFormula" class="text-teal-300">C₆H₁₂O₂</span></p>
+                            <p>• <strong>$^{13}\text{C}$ NMR Spectrum:</strong> Displays <span id="solvePeaks" class="text-emerald-400 font-bold">5 distinct peaks</span></p>
+                            <p>• <strong>Functional Group Test:</strong> Effervesces with $\text{Na}_2\text{CO}_3\text{(aq)}$ (Carboxylic Acid)</p>
+                        </div>
+                    </div>
+
+                    <!-- Question Prompt -->
+                    <div class="text-xs text-slate-200 leading-relaxed space-y-2">
+                        <p><strong>Task:</strong> Identify the correct structural isomer matching the given number of carbon environments and symmetry rules.</p>
+                    </div>
+
+                    <!-- Options -->
+                    <div id="solverOptions" class="space-y-2 text-xs">
+                        <!-- JS Populated -->
+                    </div>
+
+                    <button onclick="nextSolverProblem()" class="w-full bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold py-2 rounded-lg text-xs transition border border-slate-700">
+                        🔄 Try Next Unknown Structure
+                    </button>
+                </div>
+
+                <!-- Right Column: Visual Spectral Evidence & Explanation -->
+                <div class="lg:col-span-7 bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-center border-b border-slate-800 pb-2 mb-3">
+                            <h3 class="text-sm font-bold text-slate-100">Spectroscopic Feedback & Symmetry Breakdown</h3>
+                            <span class="text-xs text-slate-400">IAL Mark Scheme Criteria</span>
+                        </div>
+
+                        <div id="solverFeedback" class="p-4 rounded-xl bg-slate-950 border border-slate-800 text-xs text-slate-300 space-y-2 leading-relaxed">
+                            <p class="text-slate-400 italic">Select a candidate structure on the left to verify its $^{13}\text{C}$ NMR peak count against the experimental data.</p>
+                        </div>
+                    </div>
+
+                    <!-- Symmetry Tip Card -->
+                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-xs space-y-2">
+                        <span class="text-amber-400 font-bold flex items-center gap-1.5">
+                            💡 Key IAL Symmetry Rule:
+                        </span>
+                        <p class="text-slate-300 leading-relaxed">
+                            Molecules with internal lines or planes of symmetry display <strong>fewer</strong> $^{13}\text{C}$ NMR peaks than the total number of carbon atoms present. For instance, cyclic structures like 1,4-cyclohexanediol contain 6 carbons but yield only 2 peaks.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ========================================================= -->
+        <!-- TAB 3: HIGH-PRECISION MASS SPEC CALCULATOR (15.17.ii)     -->
+        <!-- ========================================================= -->
+        <div id="mass-calc-tab" class="tab-content hidden space-y-6">
+            
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 space-y-2">
+                <h2 class="text-base font-semibold text-teal-400 flex items-center gap-2">
+                    <span>⚖️</span> High-Precision $M_r$ Calculator (4 Decimal Places)
+                </h2>
+                <p class="text-xs text-slate-300">
+                    High-resolution mass spectrometers measure relative molecular masses to 4 decimal places. This allows chemists to distinguish between compounds with identical nominal masses (e.g. Propanal $\text{C}_3\text{H}_6\text{O}$ vs Butane $\text{C}_4\text{H}_{10}$).
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+                <!-- Left Column: Atom Counter Input -->
+                <div class="lg:col-span-5 bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-4">
+                    <h3 class="text-sm font-bold text-slate-100 flex items-center gap-2 border-b border-slate-800 pb-2">
+                        <span>🧮</span> Atom Composition Counter
+                    </h3>
+
+                    <div class="space-y-3 text-xs">
+                        <div class="flex justify-between items-center bg-slate-950 p-2.5 rounded-lg border border-slate-800">
+                            <div>
+                                <span class="font-bold text-slate-200 block">Carbon ($^{12}\text{C}$)</span>
+                                <span class="text-[10px] text-slate-400 font-mono">12.0000 g/mol</span>
+                            </div>
+                            <input type="number" min="0" max="30" value="6" id="numC" onchange="calculateHighResMr()" class="w-20 bg-slate-900 border border-slate-700 rounded p-1.5 text-center font-mono text-teal-300 focus:border-teal-500 focus:outline-none">
+                        </div>
+
+                        <div class="flex justify-between items-center bg-slate-950 p-2.5 rounded-lg border border-slate-800">
+                            <div>
+                                <span class="font-bold text-slate-200 block">Hydrogen ($^1\text{H}$)</span>
+                                <span class="text-[10px] text-slate-400 font-mono">1.0078 g/mol</span>
+                            </div>
+                            <input type="number" min="0" max="60" value="12" id="numH" onchange="calculateHighResMr()" class="w-20 bg-slate-900 border border-slate-700 rounded p-1.5 text-center font-mono text-teal-300 focus:border-teal-500 focus:outline-none">
+                        </div>
+
+                        <div class="flex justify-between items-center bg-slate-950 p-2.5 rounded-lg border border-slate-800">
+                            <div>
+                                <span class="font-bold text-slate-200 block">Oxygen ($^{16}\text{O}$)</span>
+                                <span class="text-[10px] text-slate-400 font-mono">15.9949 g/mol</span>
+                            </div>
+                            <input type="number" min="0" max="10" value="2" id="numO" onchange="calculateHighResMr()" class="w-20 bg-slate-900 border border-slate-700 rounded p-1.5 text-center font-mono text-teal-300 focus:border-teal-500 focus:outline-none">
+                        </div>
+
+                        <div class="flex justify-between items-center bg-slate-950 p-2.5 rounded-lg border border-slate-800">
+                            <div>
+                                <span class="font-bold text-slate-200 block">Nitrogen ($^{14}\text{N}$)</span>
+                                <span class="text-[10px] text-slate-400 font-mono">14.0031 g/mol</span>
+                            </div>
+                            <input type="number" min="0" max="10" value="0" id="numN" onchange="calculateHighResMr()" class="w-20 bg-slate-900 border border-slate-700 rounded p-1.5 text-center font-mono text-teal-300 focus:border-teal-500 focus:outline-none">
+                        </div>
+
+                        <div class="flex justify-between items-center bg-slate-950 p-2.5 rounded-lg border border-slate-800">
+                            <div>
+                                <span class="font-bold text-slate-200 block">Chlorine ($^{35}\text{Cl}$)</span>
+                                <span class="text-[10px] text-slate-400 font-mono">34.9689 g/mol</span>
+                            </div>
+                            <input type="number" min="0" max="5" value="0" id="numCl" onchange="calculateHighResMr()" class="w-20 bg-slate-900 border border-slate-700 rounded p-1.5 text-center font-mono text-teal-300 focus:border-teal-500 focus:outline-none">
+                        </div>
+
+                        <!-- Presets -->
+                        <div class="space-y-1.5 pt-2 border-t border-slate-800">
+                            <span class="text-[11px] text-slate-400 block">Preset Test Formulas:</span>
+                            <div class="grid grid-cols-2 gap-2">
+                                <button onclick="setCalcPreset(3,6,1,0,0)" class="bg-slate-800 hover:bg-slate-700 text-teal-300 p-1.5 rounded font-mono text-[11px] border border-slate-700">Propanal (C3H6O)</button>
+                                <button onclick="setCalcPreset(4,10,0,0,0)" class="bg-slate-800 hover:bg-slate-700 text-teal-300 p-1.5 rounded font-mono text-[11px] border border-slate-700">Butane (C4H10)</button>
+                                <button onclick="setCalcPreset(6,12,2,0,0)" class="bg-slate-800 hover:bg-slate-700 text-teal-300 p-1.5 rounded font-mono text-[11px] border border-slate-700">C6H12O2 Isomers</button>
+                                <button onclick="setCalcPreset(2,5,0,0,1)" class="bg-slate-800 hover:bg-slate-700 text-teal-300 p-1.5 rounded font-mono text-[11px] border border-slate-700">Chloroethane (C2H5Cl)</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Result Display -->
+                <div class="lg:col-span-7 bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="border-b border-slate-800 pb-2">
+                            <h3 class="text-sm font-bold text-slate-100">Calculated Mass Spectrometry Output</h3>
+                            <p class="text-xs text-slate-400">IAL Spec 15.17.ii Requirements</p>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3 text-center">
+                            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800">
+                                <div class="text-xs text-slate-400">Nominal Mass ($M_r$)</div>
+                                <div id="calcNominal" class="text-2xl font-mono font-bold text-slate-200 mt-1">116</div>
+                            </div>
+                            <div class="bg-slate-950 p-4 rounded-xl border border-teal-500/40">
+                                <div class="text-xs text-teal-400 font-bold">Exact High-Res $M_r$ (4 d.p.)</div>
+                                <div id="calcHighRes" class="text-2xl font-mono font-bold text-amber-400 mt-1">116.0836</div>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-2 text-xs">
+                            <h4 class="font-semibold text-teal-300">Exact Sum Calculation:</h4>
+                            <div id="calcBreakdown" class="font-mono text-slate-300 space-y-1 text-[11px]">
+                                <!-- JS Populated -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-xs space-y-2">
+                        <h4 class="font-bold text-amber-400">💡 Why High-Resolution Mass Spec Matters in IAL Exams:</h4>
+                        <p class="text-slate-300 leading-relaxed">
+                            Propanal ($\text{C}_3\text{H}_6\text{O}$) and Prop-2-en-1-ol both have nominal mass <strong>58</strong>. 
+                            However, Propanal ($\text{C}_3\text{H}_6\text{O}$) has exact mass $3(12.0000) + 6(1.0078) + 15.9949 = \mathbf{58.0417}$, whereas Butane ($\text{C}_4\text{H}_{10}$) has exact mass $4(12.0000) + 10(1.0078) = \mathbf{58.0780}$. High-res MS easily distinguishes them!
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ========================================================= -->
+        <!-- TAB 4: TEACHER'S NOTES & SYMMETRY SUMMARY GUIDE           -->
+        <!-- ========================================================= -->
+        <div id="summary-tab" class="tab-content hidden space-y-6">
+            
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 space-y-2">
+                <h2 class="text-base font-semibold text-teal-400 flex items-center gap-2">
+                    <span>📚</span> Topic 15E Summary Guide & Class Notes
+                </h2>
+                <p class="text-xs text-slate-300">
+                    Comprehensive study guide based on official Edexcel IAL chemistry notes—covering Molecule Symmetry, Carbon Environment Counting, Cyclics, Benzene Derivatives, and the official $^{13}\text{C}$ Chemical Shift Chart.
+                </p>
+            </div>
+
+            <!-- Notes Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-3 text-xs">
+                    <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+                        <h3 class="font-bold text-teal-300 flex items-center gap-2 text-sm">
+                            <span>✨</span> Molecule Symmetry & Peak Reduction
+                        </h3>
+                        <span class="px-2 py-0.5 rounded bg-teal-500/20 text-teal-300 font-mono text-[10px]">Key Concept</span>
+                    </div>
+                    <p class="text-slate-300 leading-relaxed">
+                        Molecules that possess <strong>internal symmetry</strong> display <em>fewer</em> $^{13}\text{C}$ NMR peaks ($\delta$) than the total number of carbon atoms in the molecule.
+                    </p>
+                    <div class="bg-slate-950 p-3.5 rounded-lg border border-slate-800 space-y-2">
+                        <p class="font-bold text-slate-100">Classic Examples from Teacher Notes:</p>
+                        <ul class="list-disc list-inside space-y-1.5 text-slate-300">
+                            <li><strong class="text-amber-400">1,2-cyclohexanediol:</strong> Contains 6 carbons but displays only <strong>3 peaks</strong> due to its axial line of symmetry.</li>
+                            <li><strong class="text-amber-400">1,4-cyclohexanediol:</strong> Highly symmetrical cyclic diol containing 6 carbons but showing only <strong>2 peaks</strong>!</li>
+                            <li><strong class="text-amber-400">2,2-dimethylpropane:</strong> All 4 methyl carbons are in identical environments attached to a central quaternary carbon $\rightarrow$ <strong>1 peak</strong> total.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-3 text-xs">
+                    <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+                        <h3 class="font-bold text-teal-300 flex items-center gap-2 text-sm">
+                            <span>🛑</span> Benzene Ring Carbon Environments
+                        </h3>
+                        <span class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 font-mono text-[10px]">Exam Frequent</span>
+                    </div>
+                    <p class="text-slate-300 leading-relaxed">
+                        In aromatic compounds, substituent positions dictate ring symmetry:
+                    </p>
+                    <div class="bg-slate-950 p-3 rounded-lg border border-slate-800 space-y-2 font-mono text-[11px]">
+                        <div class="flex justify-between border-b border-slate-800 pb-1">
+                            <span>Benzene (C6H6):</span>
+                            <span class="text-teal-400 font-bold">1 peak</span>
+                        </div>
+                        <div class="flex justify-between border-b border-slate-800 pb-1">
+                            <span>Toluene (C6H5CH3):</span>
+                            <span class="text-teal-400 font-bold">5 peaks</span>
+                        </div>
+                        <div class="flex justify-between border-b border-slate-800 pb-1">
+                            <span>Phenol / Aniline:</span>
+                            <span class="text-teal-400 font-bold">4 peaks</span>
+                        </div>
+                        <div class="flex justify-between border-b border-slate-800 pb-1">
+                            <span>Salicylic acid:</span>
+                            <span class="text-teal-400 font-bold">7 peaks</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Hydroquinone (1,4-benzenediol):</span>
+                            <span class="text-teal-400 font-bold">2 peaks</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-3 text-xs">
+                    <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+                        <h3 class="font-bold text-teal-300 flex items-center gap-2 text-sm">
+                            <span>🍌</span> Case Study: Isoamyl vs Amyl Acetate
+                        </h3>
+                    </div>
+                    <p class="text-slate-300 leading-relaxed">
+                        How to distinguish structural isomers using peak counting:
+                    </p>
+                    <div class="bg-slate-950 p-3.5 rounded-lg border border-slate-800 space-y-2 text-[11px] text-slate-300">
+                        <p>• <strong>Isoamyl acetate (Banana oil):</strong> Has a branched terminal isopropyl group $(-\text{CH(CH}_3)_2)$. The two methyl carbons are symmetrical and equivalent $\rightarrow$ <strong>6 peaks</strong>.</p>
+                        <p>• <strong>Amyl acetate (Apple scent):</strong> Unbranched linear chain $(-\text{CH}_2\text{CH}_2\text{CH}_2\text{CH}_2\text{CH}_3)$. Every carbon atom is unique $\rightarrow$ <strong>7 peaks</strong>.</p>
+                    </div>
+                </div>
+
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-3 text-xs">
+                    <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+                        <h3 class="font-bold text-teal-300 flex items-center gap-2 text-sm">
+                            <span>📈</span> Edexcel IAL Data Booklet Shifts
+                        </h3>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left font-mono text-[11px] border-collapse">
+                            <thead>
+                                <tr class="bg-slate-950 text-slate-400 border-b border-slate-800">
+                                    <th class="p-2">Environment</th>
+                                    <th class="p-2">Structure</th>
+                                    <th class="p-2 text-right">$\delta$ / ppm</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-800 text-slate-200">
+                                <tr>
+                                    <td class="p-2 text-teal-300">Alkyl</td>
+                                    <td class="p-2">C-C / R-CH3</td>
+                                    <td class="p-2 text-right text-amber-400">0 - 50</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-teal-300">Amine</td>
+                                    <td class="p-2">C-N</td>
+                                    <td class="p-2 text-right text-amber-400">30 - 65</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-teal-300">Halogenoalkane</td>
+                                    <td class="p-2">C-Cl / C-Br</td>
+                                    <td class="p-2 text-right text-amber-400">30 - 70</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-teal-300">Alcohol / Ether</td>
+                                    <td class="p-2">C-O</td>
+                                    <td class="p-2 text-right text-amber-400">50 - 90</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-teal-300">Alkene / Arene</td>
+                                    <td class="p-2">C=C / Ring</td>
+                                    <td class="p-2 text-right text-amber-400">100 - 160</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-teal-300">Ester / Acid</td>
+                                    <td class="p-2">R-C(=O)-O</td>
+                                    <td class="p-2 text-right text-amber-400">160 - 185</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 text-teal-300">Aldehyde / Ketone</td>
+                                    <td class="p-2">R-C(=O)-R / H</td>
+                                    <td class="p-2 text-right text-amber-400">190 - 220</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ========================================================= -->
+        <!-- TAB 5: DEDICATED AI SPECTROSCOPY EXAMINER & TUTOR        -->
+        <!-- ========================================================= -->
+        <div id="ai-tab" class="tab-content hidden space-y-6">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 space-y-2">
+                <h2 class="text-base font-semibold text-teal-400 flex items-center gap-2">
+                    <span>🤖</span> Dedicated IAL Spectroscopy AI Tutor & Examiner
+                </h2>
+                <p class="text-xs text-slate-300">
+                    Ask questions regarding Topic 15E Spectroscopy, $^{13}\text{C}$ NMR chemical shifts, symmetry counting, or submit written exam answers for instant marking.
+                </p>
+            </div>
+
+            <!-- Custom Source Material / Mark Scheme Context Box -->
+            <div class="bg-slate-900 border border-teal-500/30 rounded-xl p-5 space-y-3">
+                <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+                    <span class="text-xs font-bold text-teal-400 font-mono flex items-center gap-2">
+                        <span>📚</span> AI KNOWLEDGE BASE & MARK SCHEME SOURCE (EDITABLE)
+                    </span>
+                    <button onclick="toggleKnowledgeBase()" id="btnToggleKB" class="text-xs text-teal-300 hover:underline font-mono">
+                        [Collapse Source]
+                    </button>
+                </div>
+                <p class="text-xs text-slate-300">
+                    Paste custom Edexcel mark schemes, key vocabulary, or teaching notes below. The AI will strictly ground its marking and explanations on this knowledge base.
+                </p>
+                <div id="kbContainer" class="space-y-2">
+                    <textarea id="aiSourceContext" rows="5" class="w-full bg-slate-950 border border-slate-700 rounded-lg p-3 text-xs text-teal-200 font-mono focus:border-teal-500 focus:outline-none leading-relaxed">
+[OFFICIAL EDEXCEL IAL TOPIC 15E SPECTROSCOPY MARK SCHEME & SYLLABUS SOURCE]
+1. High-Resolution Mass Spec (15.17):
+   - Atomic masses (4 d.p.): 12C = 12.0000, 1H = 1.0078, 16O = 15.9949, 14N = 14.0031, 35Cl = 34.9689, 79Br = 78.9183.
+   - High-res Mr differentiates compounds with identical nominal masses (e.g. C3H6O Mr = 58.0417 vs C4H10 Mr = 58.0780).
+
+2. Carbon-13 NMR Spectroscopy (15.18 & 15.19):
+   - Chemical shift (δ / ppm) measured relative to Tetramethylsilane (TMS at 0 ppm).
+   - Number of peaks = number of distinct non-equivalent carbon environments.
+   - Peak ranges: C-C (0-50 ppm), C-N (30-65 ppm), C-Cl/C-Br (30-70 ppm), C-O alcohol/ester (50-90 ppm), C=C alkene/arene (100-160 ppm), C=O ester/acid (160-185 ppm), C=O aldehyde/ketone (190-220 ppm).
+
+3. Symmetry Rules & Isomer Cases (Key Exam Criteria):
+   - 1,2-cyclohexanediol: 6 carbons, 3 peaks (plane of symmetry cutting C1-C2 and C4-C5).
+   - 1,4-cyclohexanediol: 6 carbons, ONLY 2 peaks (plane of symmetry through C1 & C4 makes 4 ring CH2 equivalent).
+   - Isoamyl acetate (3-methylbutyl acetate): 7 carbons, 6 peaks (terminal isopropyl group gives 2 equivalent CH3).
+   - Amyl acetate (pentyl acetate): 7 carbons, 7 peaks (linear unbranched chain).
+   - 2,2-dimethylbutanoic acid: 6 carbons, 5 peaks (2 equivalent CH3 on C2).
+   - 3,3-dimethylbutanoic acid: 6 carbons, 4 peaks (3 equivalent CH3 on C3 tert-butyl block).
+   - Hydroquinone (1,4-benzenediol): 6 carbons, 2 peaks. Toluene: 7 carbons, 5 peaks. Phenol: 6 carbons, 4 peaks. Benzene: 1 peak.
+</textarea>
+                    <div class="flex justify-between items-center text-[10px] text-slate-400">
+                        <span>Tip: You can edit or replace this source text anytime to match specific past paper mark schemes.</span>
+                        <button onclick="resetDefaultKnowledgeBase()" class="text-amber-400 hover:underline">Reset Default Source</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Free Response Answer Evaluator Box -->
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-3">
+                <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+                    <span class="text-xs font-bold text-teal-400 font-mono">AI CHIEF EXAMINER FREE-RESPONSE EVALUATOR</span>
+                    <span class="text-xs text-slate-400">Grade My Written Explanation</span>
+                </div>
+                <p class="text-xs text-slate-300">
+                    Type your written response to an IAL Spectroscopy question (e.g., <em>"Explain why 1,4-cyclohexanediol exhibits only 2 peaks in its carbon-13 NMR spectrum"</em>).
+                </p>
+                <textarea id="aiStudentAnswerInput" rows="3" placeholder="e.g. 1,4-cyclohexanediol has a plane of symmetry through carbon 1 and carbon 4..." class="w-full bg-slate-950 border border-slate-700 rounded-lg p-3 text-xs text-slate-100 focus:border-teal-500 focus:outline-none font-sans"></textarea>
+                <button onclick="gradeStudentAnswerWithAI()" id="btnGradeAnswer" class="bg-slate-800 hover:bg-slate-700 border border-teal-500/40 text-teal-300 font-semibold px-4 py-2 rounded-lg text-xs transition flex items-center gap-2">
+                    <span>🤖 Grade Written Explanation</span>
+                </button>
+                <div id="aiGradeOutput" class="hidden p-4 rounded-lg text-xs bg-slate-950 border border-teal-500/30 text-slate-200 space-y-2 leading-relaxed"></div>
+            </div>
+
+            <!-- Interactive Chat Stream Box -->
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col h-[500px]">
+                <div class="flex gap-2 overflow-x-auto pb-1 text-xs">
+                    <button onclick="sendQuickPrompt('Explain how symmetry reduces the number of 13C NMR peaks in 1,4-cyclohexanediol.')" class="bg-slate-950 hover:bg-slate-800 border border-slate-800 rounded-lg px-3 py-1.5 text-teal-300 whitespace-nowrap">
+                        💡 Symmetry in Cyclohexanediol
+                    </button>
+                    <button onclick="sendQuickPrompt('Why is high-resolution mass spec able to distinguish C3H6O from C4H10?')" class="bg-slate-950 hover:bg-slate-800 border border-slate-800 rounded-lg px-3 py-1.5 text-teal-300 whitespace-nowrap">
+                        ⚖️ High-Res Mass Spec
+                    </button>
+                    <button onclick="sendQuickPrompt('How do I distinguish isoamyl acetate from amyl acetate using 13C NMR?')" class="bg-slate-950 hover:bg-slate-800 border border-slate-800 rounded-lg px-3 py-1.5 text-teal-300 whitespace-nowrap">
+                        🍌 Isoamyl vs Amyl Acetate
+                    </button>
+                    <button onclick="sendQuickPrompt('What are the chemical shift ranges for carbonyl carbons C=O?')" class="bg-slate-950 hover:bg-slate-800 border border-slate-800 rounded-lg px-3 py-1.5 text-teal-300 whitespace-nowrap">
+                        📈 Carbonyl Chemical Shifts
+                    </button>
+                </div>
+
+                <div id="aiChatStream" class="flex-1 bg-slate-950 rounded-xl border border-slate-800 p-4 overflow-y-auto space-y-3 text-xs">
+                    <div class="bg-slate-900 p-3.5 rounded-xl border border-teal-500/20 text-slate-200 space-y-1">
+                        <span class="font-bold text-teal-400 text-[11px] block">👋 Welcome to IAL Spectroscopy AI Studio!</span>
+                        <p class="text-slate-300 leading-relaxed">
+                            I am your specialized Edexcel / CAIE IAL Chemistry Spectroscopy AI Tutor. How can I help you master Topic 15E today?
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flex gap-2 pt-2 border-t border-slate-800">
+                    <input type="text" id="aiChatInput" onkeydown="if(event.key==='Enter') sendAIChatMessage()" placeholder="Ask a question about 13C NMR shifts or high-res Mr..." class="flex-1 bg-slate-950 border border-slate-700 rounded-lg p-2.5 text-xs text-slate-100 focus:border-teal-500 focus:outline-none">
+                    <button onclick="sendAIChatMessage()" id="btnSendChat" class="bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold px-4 py-2.5 rounded-lg text-xs transition flex items-center gap-1">
+                        Send
+                    </button>
+                    <button onclick="clearAIChat()" class="bg-slate-800 hover:bg-slate-700 text-slate-400 px-3 py-2.5 rounded-lg text-xs transition">
+                        Clear
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 border-t border-slate-900 py-4 text-center text-xs text-slate-500">
+        IAL Chemistry Spec Topic 15E • Spectroscopy & $^{13}\text{C}$ NMR • Designed for Edexcel / CAIE Interactive Learning
+    </footer>
+
+    <!-- JavaScript Application Engine -->
+    <script>
+        // Global Application State
+        let currentTab = 'predictor-tab';
+        let currentMoleculeKey = 'ethanol';
+        let currentSolverIndex = 0;
+        let isSpectrumRevealed = false;
+        let currentStructureView = 'pubchem'; // 'pubchem' or 'svg'
+
+        // Horizontal Zoom State
+        let viewMinPpm = 0;
+        let viewMaxPpm = 220;
+
+        function setZoomRange(minPpm, maxPpm) {
+            viewMinPpm = minPpm;
+            viewMaxPpm = maxPpm;
+            const span = maxPpm - minPpm;
+            const level = 220 / span;
+            const center = (minPpm + maxPpm) / 2;
+
+            const zSlider = document.getElementById('zoomLevelSlider');
+            const pSlider = document.getElementById('panSlider');
+            const zLabel = document.getElementById('zoomLevelLabel');
+            const pLabel = document.getElementById('panLabel');
+
+            if (zSlider) zSlider.value = level.toFixed(1);
+            if (pSlider) pSlider.value = Math.round(center);
+            if (zLabel) zLabel.textContent = level.toFixed(1) + '×';
+            if (pLabel) pLabel.textContent = Math.round(center) + ' ppm';
+
+            drawNMRCanvas();
+        }
+
+        function handleZoomSliderChange() {
+            const zSlider = document.getElementById('zoomLevelSlider');
+            const pSlider = document.getElementById('panSlider');
+            if (!zSlider || !pSlider) return;
+
+            const level = parseFloat(zSlider.value);
+            const center = parseFloat(pSlider.value);
+
+            document.getElementById('zoomLevelLabel').textContent = level.toFixed(1) + '×';
+            document.getElementById('panLabel').textContent = Math.round(center) + ' ppm';
+
+            const halfSpan = (220 / level) / 2;
+            viewMinPpm = Math.max(0, center - halfSpan);
+            viewMaxPpm = Math.min(220, center + halfSpan);
+
+            if (viewMinPpm === 0) viewMaxPpm = Math.min(220, 220 / level);
+            if (viewMaxPpm === 220) viewMinPpm = Math.max(0, 220 - 220 / level);
+
+            drawNMRCanvas();
+        }
+
+        // Comprehensive Molecule Database - Alkanes and Alcohols
+        const MOLECULES_DB = {
+            ethanol: {
+                name: "Ethanol",
+                formula: "C₂H₆O",
+                iupac: "CH₃-CH₂-OH",
+                nominalMr: 46,
+                exactMr: 46.0417,
+                peakCount: 2,
+                pubchemCid: 702,
+                symmetryDesc: "Asymmetrical alcohol with 2 distinct carbon environments: -CH₃ (alkyl) and -CH₂-O-.",
+                environments: [
+                    { shift: 18, count: 1, label: "1× CH₃ (C2)", color: "#38bdf8", desc: "Alkyl methyl carbon (10-30 ppm)" },
+                    { shift: 58, count: 1, label: "1× CH₂-OH (C1)", color: "#f43f5e", desc: "Carbon attached to oxygen (50-90 ppm)" }
+                ],
+                svg: `<svg viewBox="0 0 280 120" class="w-full h-32 text-teal-300 font-mono font-bold" fill="none" stroke="currentColor" stroke-width="2">
+                    <text x="70" y="65" fill="#38bdf8" font-size="22" text-anchor="middle">C</text>
+                    <line x1="70" y1="45" x2="70" y2="25"/><text x="70" y="20" fill="#f8fafc" font-size="16" text-anchor="middle">H</text>
+                    <line x1="70" y1="75" x2="70" y2="95"/><text x="70" y="112" fill="#f8fafc" font-size="16" text-anchor="middle">H</text>
+                    <line x1="50" y1="60" x2="30" y2="60"/><text x="20" y="65" fill="#f8fafc" font-size="16" text-anchor="middle">H</text>
+                    <line x1="85" y1="60" x2="125" y2="60"/>
+                    <text x="140" y="65" fill="#f43f5e" font-size="22" text-anchor="middle">C</text>
+                    <line x1="140" y1="45" x2="140" y2="25"/><text x="140" y="20" fill="#f8fafc" font-size="16" text-anchor="middle">H</text>
+                    <line x1="140" y1="75" x2="140" y2="95"/><text x="140" y="112" fill="#f8fafc" font-size="16" text-anchor="middle">H</text>
+                    <line x1="155" y1="60" x2="190" y2="60"/>
+                    <text x="205" y="65" fill="#fbbf24" font-size="22" text-anchor="middle">O</text>
+                    <line x1="220" y1="60" x2="245" y2="60"/>
+                    <text x="255" y="65" fill="#f8fafc" font-size="18" text-anchor="middle">H</text>
+                </svg>`
+            },
+            propan1ol: {
+                name: "Propan-1-ol",
+                formula: "C₃H₈O",
+                iupac: "CH₃-CH₂-CH₂-OH",
+                nominalMr: 60,
+                exactMr: 60.0575,
+                peakCount: 3,
+                pubchemCid: 1031,
+                symmetryDesc: "Unbranched primary alcohol. All 3 carbons are in distinct environments.",
+                environments: [
+                    { shift: 10, count: 1, label: "1× CH₃ (C3)", color: "#38bdf8", desc: "Terminal alkyl methyl carbon" },
+                    { shift: 26, count: 1, label: "1× CH₂ (C2)", color: "#a855f7", desc: "Middle alkyl methylene carbon" },
+                    { shift: 64, count: 1, label: "1× CH₂-OH (C1)", color: "#f43f5e", desc: "Carbon bonded directly to -OH group" }
+                ],
+                svg: `<svg viewBox="0 0 320 120" class="w-full h-32 text-teal-300 font-mono font-bold" fill="none" stroke="currentColor" stroke-width="2">
+                    <text x="40" y="65" fill="#38bdf8" font-size="20" text-anchor="middle">C3</text>
+                    <line x1="60" y1="60" x2="100" y2="60"/>
+                    <text x="120" y="65" fill="#a855f7" font-size="20" text-anchor="middle">C2</text>
+                    <line x1="140" y1="60" x2="180" y2="60"/>
+                    <text x="200" y="65" fill="#f43f5e" font-size="20" text-anchor="middle">C1</text>
+                    <line x1="220" y1="60" x2="255" y2="60"/>
+                    <text x="275" y="65" fill="#fbbf24" font-size="20" text-anchor="middle">O-H</text>
+                </svg>`
+            },
+            propan2ol: {
+                name: "Propan-2-ol",
+                formula: "C₃H₈O",
+                iupac: "(CH₃)₂CH-OH",
+                nominalMr: 60,
+                exactMr: 60.0575,
+                peakCount: 2,
+                pubchemCid: 3776,
+                symmetryDesc: "Symmetrical secondary alcohol. Both terminal methyl carbons (-CH₃) are equivalent (peak ratio = 2:1).",
+                environments: [
+                    { shift: 25, count: 2, label: "2× CH₃ (C1, C3)", color: "#38bdf8", desc: "Symmetrical terminal methyl carbons (Signal intensity = 2)" },
+                    { shift: 64, count: 1, label: "1× CH-OH (C2)", color: "#f43f5e", desc: "Central carbon bonded to -OH (Signal intensity = 1)" }
+                ],
+                svg: `<svg viewBox="0 0 280 120" class="w-full h-32 text-teal-300 font-mono font-bold" fill="none" stroke="currentColor" stroke-width="2">
+                    <text x="40" y="65" fill="#38bdf8" font-size="18" text-anchor="middle">CH₃</text>
+                    <line x1="70" y1="60" x2="110" y2="60"/>
+                    <text x="130" y="65" fill="#f43f5e" font-size="18" text-anchor="middle">CH</text>
+                    <line x1="150" y1="60" x2="190" y2="60"/>
+                    <text x="220" y="65" fill="#38bdf8" font-size="18" text-anchor="middle">CH₃</text>
+                    <line x1="130" y1="75" x2="130" y2="95"/>
+                    <text x="130" y="112" fill="#fbbf24" font-size="18" text-anchor="middle">OH</text>
+                </svg>`
+            },
+            cyclohexanediol_12: {
+                name: "1,2-Cyclohexanediol",
+                formula: "C₆H₁₂O₂",
+                iupac: "C₆H₁₀(OH)₂ (1,2-isomer)",
+                nominalMr: 116,
+                exactMr: 116.0836,
+                peakCount: 3,
+                pubchemCid: 13835,
+                symmetryDesc: "Contains an axial line of symmetry bisecting C1-C2 and C4-C5, giving 3 peaks (height ratio 2:2:2).",
+                environments: [
+                    { shift: 76, count: 2, label: "2× C-OH (C1, C2)", color: "#f43f5e", desc: "Carbons bonded to hydroxyl groups" },
+                    { shift: 32, count: 2, label: "2× CH₂ (C3, C6)", color: "#a855f7", desc: "Adjacent ring methylene carbons" },
+                    { shift: 20, count: 2, label: "2× CH₂ (C4, C5)", color: "#38bdf8", desc: "Opposite ring methylene carbons" }
+                ],
+                svg: `<svg viewBox="0 0 220 140" class="w-full h-36 text-teal-300 font-mono font-bold" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="110,25 160,50 160,95 110,120 60,95 60,50" stroke="#38bdf8"/>
+                    <circle cx="110" cy="25" r="5" fill="#f43f5e"/>
+                    <circle cx="160" cy="50" r="5" fill="#f43f5e"/>
+                    <text x="110" y="15" fill="#fbbf24" font-size="12" text-anchor="middle">OH</text>
+                    <text x="180" y="52" fill="#fbbf24" font-size="12">OH</text>
+                    <line x1="135" y1="10" x2="85" y2="130" stroke="#f59e0b" stroke-dasharray="4 2"/>
+                </svg>`
+            },
+            cyclohexanediol_14: {
+                name: "1,4-Cyclohexanediol",
+                formula: "C₆H₁₂O₂",
+                iupac: "C₆H₁₀(OH)₂ (1,4-isomer)",
+                nominalMr: 116,
+                exactMr: 116.0836,
+                peakCount: 2,
+                pubchemCid: 10483,
+                symmetryDesc: "Highly symmetrical cyclic diol with plane of symmetry through C1 and C4, giving ONLY 2 peaks in 4:2 (2:1) intensity ratio!",
+                environments: [
+                    { shift: 68, count: 2, label: "2× C-OH (C1, C4)", color: "#f43f5e", desc: "Hydroxyl-bearing carbons (Intensity = 2)" },
+                    { shift: 28, count: 4, label: "4× CH₂ (C2, C3, C5, C6)", color: "#38bdf8", desc: "Four equivalent ring methylene carbons (Intensity = 4)" }
+                ],
+                svg: `<svg viewBox="0 0 220 150" class="w-full h-36 text-teal-300 font-mono font-bold" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="110,25 160,50 160,100 110,125 60,100 60,50" stroke="#38bdf8"/>
+                    <circle cx="110" cy="25" r="5" fill="#f43f5e"/>
+                    <circle cx="110" cy="125" r="5" fill="#f43f5e"/>
+                    <text x="110" y="15" fill="#fbbf24" font-size="12" text-anchor="middle">OH</text>
+                    <text x="110" y="142" fill="#fbbf24" font-size="12" text-anchor="middle">OH</text>
+                    <line x1="110" y1="5" x2="110" y2="145" stroke="#f59e0b" stroke-dasharray="4 2"/>
+                </svg>`
+            },
+            propane: {
+                name: "Propane",
+                formula: "C₃H₈",
+                iupac: "CH₃-CH₂-CH₃",
+                nominalMr: 44,
+                exactMr: 44.0626,
+                peakCount: 2,
+                pubchemCid: 6334,
+                symmetryDesc: "Symmetrical linear alkane: 2 equivalent methyl carbons (C1, C3; intensity = 2) and 1 central methylene carbon (C2; intensity = 1).",
+                environments: [
+                    { shift: 16, count: 2, label: "2× CH₃ (C1, C3)", color: "#38bdf8", desc: "Equivalent terminal methyl carbons (Intensity = 2)" },
+                    { shift: 16.5, count: 1, label: "1× CH₂ (C2)", color: "#34d399", desc: "Central methylene carbon (Intensity = 1)" }
+                ],
+                svg: `<svg viewBox="0 0 220 90" class="w-full h-24 text-teal-300 font-mono font-bold" fill="none" stroke="currentColor" stroke-width="2">
+                    <text x="40" y="50" fill="#38bdf8" font-size="18" text-anchor="middle">CH₃</text>
+                    <line x1="70" y1="45" x2="100" y2="45"/>
+                    <text x="120" y="50" fill="#34d399" font-size="18" text-anchor="middle">CH₂</text>
+                    <line x1="140" y1="45" x2="170" y2="45"/>
+                    <text x="190" y="50" fill="#38bdf8" font-size="18" text-anchor="middle">CH₃</text>
+                </svg>`
+            },
+            pentane: {
+                name: "Pentane",
+                formula: "C₅H₁₂",
+                iupac: "CH₃-CH₂-CH₂-CH₂-CH₃",
+                nominalMr: 72,
+                exactMr: 72.0939,
+                peakCount: 3,
+                pubchemCid: 8003,
+                symmetryDesc: "Symmetrical unbranched alkane: C1=C5 (2C), C2=C4 (2C), and central C3 (1C) → peak intensity ratio 2:2:1.",
+                environments: [
+                    { shift: 14, count: 2, label: "2× CH₃ (C1, C5)", color: "#38bdf8", desc: "Terminal methyl carbons" },
+                    { shift: 22, count: 2, label: "2× CH₂ (C2, C4)", color: "#a855f7", desc: "Adjacent methylene carbons" },
+                    { shift: 34, count: 1, label: "1× CH₂ (C3)", color: "#34d399", desc: "Central methylene carbon" }
+                ],
+                svg: `<svg viewBox="0 0 280 90" class="w-full h-24 text-teal-300 font-mono font-bold" fill="none" stroke="currentColor" stroke-width="2">
+                    <text x="30" y="50" fill="#38bdf8" font-size="16">C1</text><line x1="55" y1="45" x2="80" y2="45"/>
+                    <text x="85" y="50" fill="#a855f7" font-size="16">C2</text><line x1="110" y1="45" x2="135" y2="45"/>
+                    <text x="140" y="50" fill="#34d399" font-size="16">C3</text><line x1="165" y1="45" x2="190" y2="45"/>
+                    <text x="195" y="50" fill="#a855f7" font-size="16">C4</text><line x1="220" y1="45" x2="245" y2="45"/>
+                    <text x="250" y="50" fill="#38bdf8" font-size="16">C5</text>
+                </svg>`
+            },
+            methylpropane_2: {
+                name: "2-Methylpropane",
+                formula: "C₄H₁₀",
+                iupac: "CH(CH₃)₃",
+                nominalMr: 58,
+                exactMr: 58.0783,
+                peakCount: 2,
+                pubchemCid: 6360,
+                symmetryDesc: "Branched alkane with 3 equivalent methyl groups attached to C2 → peak intensity ratio 3:1.",
+                environments: [
+                    { shift: 24, count: 3, label: "3× CH₃", color: "#38bdf8", desc: "Three equivalent methyl groups (Intensity = 3)" },
+                    { shift: 25, count: 1, label: "1× CH", color: "#f59e0b", desc: "Central methine carbon (Intensity = 1)" }
+                ],
+                svg: `<svg viewBox="0 0 220 110" class="w-full h-28 text-teal-300 font-mono font-bold" fill="none" stroke="currentColor" stroke-width="2">
+                    <text x="110" y="60" fill="#f59e0b" font-size="18" text-anchor="middle">CH</text>
+                    <text x="40" y="60" fill="#38bdf8" font-size="18" text-anchor="middle">CH₃</text><line x1="70" y1="55" x2="95" y2="55"/>
+                    <text x="180" y="60" fill="#38bdf8" font-size="18" text-anchor="middle">CH₃</text><line x1="125" y1="55" x2="155" y2="55"/>
+                    <text x="110" y="22" fill="#38bdf8" font-size="18" text-anchor="middle">CH₃</text><line x1="110" y1="30" x2="110" y2="42"/>
+                </svg>`
+            },
+            dimethylpropane_22: {
+                name: "2,2-Dimethylpropane",
+                formula: "C₅H₁₂",
+                iupac: "C(CH₃)₄",
+                nominalMr: 72,
+                exactMr: 72.0939,
+                peakCount: 1,
+                pubchemCid: 10041,
+                symmetryDesc: "Highly symmetrical tetrahedral molecule! All 4 methyl carbons are equivalent, giving 1 single tall peak (intensity = 4).",
+                environments: [
+                    { shift: 31, count: 4, label: "4× CH₃ + Quaternary C", color: "#38bdf8", desc: "Four equivalent methyl groups around central C (Intensity = 4)" }
+                ],
+                svg: `<svg viewBox="0 0 220 120" class="w-full h-28 text-teal-300 font-mono font-bold" fill="none" stroke="currentColor" stroke-width="2">
+                    <text x="110" y="65" fill="#f43f5e" font-size="20" text-anchor="middle">C</text>
+                    <text x="40" y="65" fill="#38bdf8" font-size="16" text-anchor="middle">CH₃</text><line x1="70" y1="60" x2="98" y2="60"/>
+                    <text x="180" y="65" fill="#38bdf8" font-size="16" text-anchor="middle">CH₃</text><line x1="122" y1="60" x2="155" y2="60"/>
+                    <text x="110" y="25" fill="#38bdf8" font-size="16" text-anchor="middle">CH₃</text><line x1="110" y1="32" x2="110" y2="48"/>
+                    <text x="110" y="105" fill="#38bdf8" font-size="16" text-anchor="middle">CH₃</text><line x1="110" y1="72" x2="110" y2="88"/>
+                </svg>`
+            },
+            isoamyl_acetate: {
+                name: "Isoamyl Acetate (Banana Oil)",
+                formula: "C₇H₁₄O₂",
+                iupac: "CH₃COOCH₂CH₂CH(CH₃)₂",
+                nominalMr: 130,
+                exactMr: 130.0993,
+                peakCount: 6,
+                pubchemCid: 31276,
+                symmetryDesc: "Ester with terminal isopropyl group rendering two methyl carbons equivalent → 6 peaks (one with intensity = 2).",
+                environments: [
+                    { shift: 172, count: 1, label: "1× C=O (Ester)", color: "#f43f5e", desc: "Carbonyl ester carbon (160-185 ppm)" },
+                    { shift: 63, count: 1, label: "1× CH₂-O", color: "#f59e0b", desc: "Ester oxygen-bonded carbon (50-90 ppm)" },
+                    { shift: 37, count: 1, label: "1× CH₂", color: "#a855f7", desc: "Methylene carbon" },
+                    { shift: 25, count: 1, label: "1× CH", color: "#34d399", desc: "Isopropyl methine carbon" },
+                    { shift: 22, count: 2, label: "2× CH₃ (Isopropyl)", color: "#38bdf8", desc: "Equivalent terminal methyl carbons (Intensity = 2)" },
+                    { shift: 21, count: 1, label: "1× CH₃ (Acetate)", color: "#ec4899", desc: "Acetate methyl carbon" }
+                ],
+                svg: `<svg viewBox="0 0 300 110" class="w-full h-28 text-teal-300 font-mono font-bold" fill="none" stroke="currentColor" stroke-width="2">
+                    <text x="20" y="60" fill="#ec4899" font-size="14">CH₃</text><line x1="50" y1="55" x2="70" y2="55"/>
+                    <text x="75" y="60" fill="#f43f5e" font-size="14">C=O</text><line x1="105" y1="55" x2="125" y2="55"/>
+                    <text x="130" y="60" fill="#f59e0b" font-size="14">O-CH₂</text><line x1="175" y1="55" x2="195" y2="55"/>
+                    <text x="200" y="60" fill="#a855f7" font-size="14">CH₂</text><line x1="230" y1="55" x2="250" y2="55"/>
+                    <text x="255" y="60" fill="#34d399" font-size="12">CH(CH₃)₂</text>
+                </svg>`
+            },
+            amyl_acetate: {
+                name: "Amyl Acetate (Apple Scent)",
+                formula: "C₇H₁₄O₂",
+                iupac: "CH₃COOCH₂CH₂CH₂CH₂CH₃",
+                nominalMr: 130,
+                exactMr: 130.0993,
+                peakCount: 7,
+                pubchemCid: 12228,
+                symmetryDesc: "Unbranched linear pentyl ester. Every carbon atom is in a unique chemical environment → 7 peaks (intensity = 1 each).",
+                environments: [
+                    { shift: 171, count: 1, label: "1× C=O", color: "#f43f5e", desc: "Carbonyl ester carbon" },
+                    { shift: 64, count: 1, label: "1× CH₂-O", color: "#f59e0b", desc: "Ester oxygen carbon" },
+                    { shift: 28, count: 1, label: "1× CH₂ (C3)", color: "#a855f7", desc: "Pentyl C3 methylene" },
+                    { shift: 22, count: 1, label: "1× CH₂ (C4)", color: "#34d399", desc: "Pentyl C4 methylene" },
+                    { shift: 14, count: 1, label: "1× CH₃ (Terminal)", color: "#38bdf8", desc: "Terminal pentyl methyl carbon" },
+                    { shift: 21, count: 1, label: "1× CH₃ (Acetate)", color: "#ec4899", desc: "Acetate methyl carbon" },
+                    { shift: 28.5, count: 1, label: "1× CH₂ (C2)", color: "#818cf8", desc: "Pentyl C2 methylene" }
+                ],
+                svg: `<svg viewBox="0 0 300 90" class="w-full h-24 text-teal-300 font-mono font-bold" fill="none" stroke="currentColor" stroke-width="2">
+                    <text x="15" y="50" fill="#ec4899" font-size="12">CH₃</text><line x1="40" y1="45" x2="60" y2="45"/>
+                    <text x="65" y="50" fill="#f43f5e" font-size="12">C=O</text><line x1="90" y1="45" x2="110" y2="45"/>
+                    <text x="115" y="50" fill="#f59e0b" font-size="12">O-CH₂</text><line x1="155" y1="45" x2="175" y2="45"/>
+                    <text x="180" y="50" fill="#a855f7" font-size="12">(CH₂)₃</text><line x1="220" y1="45" x2="245" y2="45"/>
+                    <text x="250" y="50" fill="#38bdf8" font-size="12">CH₃</text>
+                </svg>`
+            },
+            dimethylbutanoic_acid_22: {
+                name: "2,2-Dimethylbutanoic Acid",
+                formula: "C₆H₁₂O₂",
+                iupac: "CH₃CH₂C(CH₃)₂COOH",
+                nominalMr: 116,
+                exactMr: 116.0836,
+                peakCount: 5,
+                pubchemCid: 14249,
+                symmetryDesc: "Contains 2 equivalent methyl groups on C2 → 5 peaks (one peak with intensity = 2).",
+                environments: [
+                    { shift: 183, count: 1, label: "1× COOH", color: "#f43f5e", desc: "Carboxylic acid carbon (160-185 ppm)" },
+                    { shift: 42, count: 1, label: "1× Quaternary C2", color: "#a855f7", desc: "Substituted C2 carbon" },
+                    { shift: 25, count: 2, label: "2× CH₃ (C2)", color: "#38bdf8", desc: "Two equivalent methyl groups on C2 (Intensity = 2)" },
+                    { shift: 33, count: 1, label: "1× CH₂ (C3)", color: "#34d399", desc: "Ethyl chain methylene carbon" },
+                    { shift: 9, count: 1, label: "1× CH₃ (C4)", color: "#f59e0b", desc: "Terminal methyl carbon" }
+                ],
+                svg: `<svg viewBox="0 0 280 100" class="w-full h-28 text-teal-300 font-mono font-bold" fill="none" stroke="currentColor" stroke-width="2">
+                    <text x="15" y="55" fill="#f59e0b" font-size="14">CH₃</text><line x1="45" y1="50" x2="65" y2="50"/>
+                    <text x="70" y="55" fill="#34d399" font-size="14">CH₂</text><line x1="100" y1="50" x2="120" y2="50"/>
+                    <text x="125" y="55" fill="#a855f7" font-size="14">C(CH₃)₂</text><line x1="180" y1="50" x2="200" y2="50"/>
+                    <text x="205" y="55" fill="#f43f5e" font-size="14">COOH</text>
+                </svg>`
+            },
+            dimethylbutanoic_acid_33: {
+                name: "3,3-Dimethylbutanoic Acid",
+                formula: "C₆H₁₂O₂",
+                iupac: "(CH₃)₃CCH₂COOH",
+                nominalMr: 116,
+                exactMr: 116.0836,
+                peakCount: 4,
+                pubchemCid: 13917,
+                symmetryDesc: "Contains a tert-butyl group with 3 equivalent methyl groups → 4 peaks (one peak with intensity = 3).",
+                environments: [
+                    { shift: 178, count: 1, label: "1× COOH", color: "#f43f5e", desc: "Carboxylic acid carbon" },
+                    { shift: 47, count: 1, label: "1× CH₂", color: "#34d399", desc: "Alpha methylene carbon" },
+                    { shift: 31, count: 1, label: "1× Quaternary C3", color: "#a855f7", desc: "Tert-butyl quaternary carbon" },
+                    { shift: 29, count: 3, label: "3× CH₃ (Tert-butyl)", color: "#38bdf8", desc: "Three equivalent methyl groups (Intensity = 3)" }
+                ],
+                svg: `<svg viewBox="0 0 280 100" class="w-full h-28 text-teal-300 font-mono font-bold" fill="none" stroke="currentColor" stroke-width="2">
+                    <text x="15" y="55" fill="#38bdf8" font-size="14">(CH₃)₃C</text><line x1="80" y1="50" x2="110" y2="50"/>
+                    <text x="115" y="55" fill="#34d399" font-size="14">CH₂</text><line x1="145" y1="50" x2="175" y2="50"/>
+                    <text x="180" y="55" fill="#f43f5e" font-size="14">COOH</text>
+                </svg>`
+            },
+            benzene: {
+                name: "Benzene",
+                formula: "C₆H₆",
+                iupac: "C₆H₆",
+                nominalMr: 78,
+                exactMr: 78.0469,
+                peakCount: 1,
+                pubchemCid: 241,
+                symmetryDesc: "Delocalized aromatic ring with full 6-fold symmetry → ALL 6 carbons are equivalent (1 single tall peak, intensity = 6).",
+                environments: [
+                    { shift: 128, count: 6, label: "6× Aromatic C", color: "#38bdf8", desc: "Aromatic ring carbon (110-160 ppm; Intensity = 6)" }
+                ],
+                svg: `<svg viewBox="0 0 180 140" class="w-full h-32 text-teal-300 font-mono font-bold" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="90,15 135,40 135,90 90,115 45,90 45,40" stroke="#38bdf8"/>
+                    <circle cx="90" cy="65" r="28" stroke="#38bdf8" stroke-dasharray="4 2"/>
+                </svg>`
+            },
+            toluene: {
+                name: "Toluene (Methylbenzene)",
+                formula: "C₇H₈",
+                iupac: "C₆H₅CH₃",
+                nominalMr: 92,
+                exactMr: 92.0626,
+                peakCount: 5,
+                pubchemCid: 1140,
+                symmetryDesc: "Monosubstituted benzene ring: C1 (1C), C2/6 (2C), C3/5 (2C), C4 (1C) + 1 methyl carbon → 5 peaks.",
+                environments: [
+                    { shift: 137, count: 1, label: "1× C1 (Ipso)", color: "#f43f5e", desc: "Substituted ring carbon" },
+                    { shift: 129, count: 2, label: "2× C2,C6 (Ortho)", color: "#a855f7", desc: "Equivalent ortho ring carbons (Intensity = 2)" },
+                    { shift: 128, count: 2, label: "2× C3,C5 (Meta)", color: "#38bdf8", desc: "Equivalent meta ring carbons (Intensity = 2)" },
+                    { shift: 125, count: 1, label: "1× C4 (Para)", color: "#34d399", desc: "Para ring carbon" },
+                    { shift: 21, count: 1, label: "1× CH₃", color: "#ec4899", desc: "Methyl side-chain carbon" }
+                ],
+                svg: `<svg viewBox="0 0 180 150" class="w-full h-36 text-teal-300 font-mono font-bold" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="90,40 130,63 130,108 90,130 50,108 50,63" stroke="#38bdf8"/>
+                    <circle cx="90" cy="85" r="22" stroke="#38bdf8"/>
+                    <line x1="90" y1="40" x2="90" y2="18"/>
+                    <text x="90" y="12" fill="#ec4899" font-size="14" text-anchor="middle">CH₃</text>
+                </svg>`
+            },
+            phenol: {
+                name: "Phenol",
+                formula: "C₆H₆O",
+                iupac: "C₆H₅OH",
+                nominalMr: 94,
+                exactMr: 94.0419,
+                peakCount: 4,
+                pubchemCid: 996,
+                symmetryDesc: "Monosubstituted aromatic alcohol: C1(1C), C2/6(2C), C3/5(2C), C4(1C) → 4 peaks.",
+                environments: [
+                    { shift: 155, count: 1, label: "1× C1 (C-OH)", color: "#f43f5e", desc: "Hydroxyl-bearing ipso carbon" },
+                    { shift: 115, count: 2, label: "2× C2,C6 (Ortho)", color: "#a855f7", desc: "Ortho ring carbons (Intensity = 2)" },
+                    { shift: 129, count: 2, label: "2× C3,C5 (Meta)", color: "#38bdf8", desc: "Meta ring carbons (Intensity = 2)" },
+                    { shift: 120, count: 1, label: "1× C4 (Para)", color: "#34d399", desc: "Para ring carbon" }
+                ],
+                svg: `<svg viewBox="0 0 180 150" class="w-full h-36 text-teal-300 font-mono font-bold" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="90,40 130,63 130,108 90,130 50,108 50,63" stroke="#38bdf8"/>
+                    <circle cx="90" cy="85" r="22" stroke="#38bdf8"/>
+                    <line x1="90" y1="40" x2="90" y2="18"/>
+                    <text x="90" y="12" fill="#f43f5e" font-size="14" text-anchor="middle">OH</text>
+                </svg>`
+            },
+            hydroquinone: {
+                name: "Hydroquinone (1,4-Benzenediol)",
+                formula: "C₆H₆O₂",
+                iupac: "C₆H₄(OH)₂ (1,4-isomer)",
+                nominalMr: 110,
+                exactMr: 110.0368,
+                peakCount: 2,
+                pubchemCid: 785,
+                symmetryDesc: "1,4-disubstituted benzene ring with vertical & horizontal symmetry planes → 2 peaks in 4:2 (2:1) intensity ratio!",
+                environments: [
+                    { shift: 150, count: 2, label: "2× C-OH (C1, C4)", color: "#f43f5e", desc: "Symmetrical hydroxyl-bearing carbons (Intensity = 2)" },
+                    { shift: 116, count: 4, label: "4× CH (C2, C3, C5, C6)", color: "#38bdf8", desc: "Four equivalent unsubstituted ring carbons (Intensity = 4)" }
+                ],
+                svg: `<svg viewBox="0 0 180 160" class="w-full h-40 text-teal-300 font-mono font-bold" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="90,35 130,58 130,103 90,125 50,103 50,58" stroke="#38bdf8"/>
+                    <circle cx="90" cy="80" r="22" stroke="#38bdf8"/>
+                    <line x1="90" y1="35" x2="90" y2="18"/>
+                    <text x="90" y="12" fill="#f43f5e" font-size="14" text-anchor="middle">OH</text>
+                    <line x1="90" y1="125" x2="90" y2="142"/>
+                    <text x="90" y="155" fill="#f43f5e" font-size="14" text-anchor="middle">OH</text>
+                </svg>`
+            }
+        };
+
+        // Unknown Structure Solver Database
+        const SOLVER_PROBLEMS = [
+            {
+                id: 1,
+                formula: "C₆H₁₂O₂",
+                mr: 116.0836,
+                peaks: 5,
+                options: [
+                    { name: "2,2-dimethylbutanoic acid", peaks: 5, correct: true, explanation: "Correct! 2,2-dimethylbutanoic acid has 6 carbons but 2 equivalent methyl groups on C2, giving exactly 5 13C NMR peaks." },
+                    { name: "3,3-dimethylbutanoic acid", peaks: 4, correct: false, explanation: "3,3-dimethylbutanoic acid contains a tert-butyl group with 3 equivalent methyl groups, giving only 4 peaks." },
+                    { name: "Hexanoic acid", peaks: 6, correct: false, explanation: "Hexanoic acid is an unbranched linear acid where all 6 carbons are non-equivalent (6 peaks)." }
+                ]
+            },
+            {
+                id: 2,
+                formula: "C₆H₁₂O₂",
+                mr: 116.0836,
+                peaks: 2,
+                options: [
+                    { name: "1,4-cyclohexanediol", peaks: 2, correct: true, explanation: "Correct! 1,4-cyclohexanediol possesses a central plane of symmetry making C1/C4 equivalent and C2/C3/C5/C6 equivalent (2 peaks)." },
+                    { name: "1,2-cyclohexanediol", peaks: 3, correct: false, explanation: "1,2-cyclohexanediol has an axial line of symmetry yielding 3 peaks for its 6 ring carbons." },
+                    { name: "Hexane-2,5-dione", peaks: 3, correct: false, explanation: "Hexane-2,5-dione exhibits symmetry yielding 3 peaks." }
+                ]
+            },
+            {
+                id: 3,
+                formula: "C₇H₁₄O₂",
+                mr: 130.0993,
+                peaks: 6,
+                options: [
+                    { name: "Isoamyl acetate (3-methylbutyl acetate)", peaks: 6, correct: true, explanation: "Correct! The terminal isopropyl group contains 2 equivalent methyl carbons, giving 6 distinct peaks from 7 total carbons." },
+                    { name: "Amyl acetate (pentyl acetate)", peaks: 7, correct: false, explanation: "Amyl acetate is an unbranched linear pentyl ester with 7 unique carbon environments (7 peaks)." }
+                ]
+            }
+        ];
+
+        function switchTab(tabId) {
+            const tabs = ['predictor-tab', 'solver-tab', 'mass-calc-tab', 'summary-tab', 'ai-tab'];
+            tabs.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.classList.add('hidden');
+                const btn = document.getElementById(`nav-${id}`);
+                if (btn) {
+                    btn.className = "tab-btn px-3 py-2 text-xs font-medium rounded-lg transition-all text-slate-400 hover:text-slate-200 flex items-center gap-1.5 whitespace-nowrap";
+                }
+            });
+
+            const activeTab = document.getElementById(tabId);
+            if (activeTab) activeTab.classList.remove('hidden');
+            const activeBtn = document.getElementById(`nav-${tabId}`);
+            if (activeBtn) {
+                activeBtn.className = "tab-btn px-3 py-2 text-xs font-medium rounded-lg transition-all text-teal-300 bg-slate-800 shadow-sm flex items-center gap-1.5 whitespace-nowrap";
+            }
+
+            currentTab = tabId;
+            if (tabId === 'predictor-tab') {
+                setTimeout(drawNMRCanvas, 50);
+            }
+            renderMath();
+        }
+
+        function updatePredictorMolecule() {
+            const select = document.getElementById('molSelect');
+            if (select) currentMoleculeKey = select.value;
+            const mol = MOLECULES_DB[currentMoleculeKey];
+            if (!mol) return;
+
+            isSpectrumRevealed = false;
+
+            const overlay = document.getElementById('canvasOverlay');
+            if (overlay) overlay.style.display = 'flex';
+
+            const envSection = document.getElementById('envListSection');
+            if (envSection) envSection.classList.add('opacity-40', 'pointer-events-none');
+
+            const badge = document.getElementById('predictStatusBadge');
+            if (badge) {
+                badge.textContent = 'Awaiting Guess';
+                badge.className = 'text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-400 font-mono';
+            }
+
+            const peakBadge = document.getElementById('molPeakCount');
+            if (peakBadge) {
+                peakBadge.textContent = `${mol.peakCount} NMR Peaks`;
+                peakBadge.classList.add('hidden');
+            }
+
+            const guessInput = document.getElementById('userPeakGuess');
+            if (guessInput) guessInput.value = '';
+
+            const feedback = document.getElementById('predictFeedback');
+            if (feedback) feedback.classList.add('hidden');
+
+            const aiOutput = document.getElementById('aiSpectrumOutput');
+            if (aiOutput) aiOutput.classList.add('hidden');
+
+            document.getElementById('molFormula').textContent = mol.formula;
+            document.getElementById('molNominalMr').textContent = mol.nominalMr;
+            document.getElementById('molExactMr').textContent = mol.exactMr.toFixed(4);
+            document.getElementById('molSymmetryDesc').textContent = mol.symmetryDesc;
+            document.getElementById('displayMolName').textContent = mol.name;
+            document.getElementById('displayMolIupac').textContent = `Structural Formula: ${mol.iupac}`;
+
+            renderDisplayedFormulaSvg(currentMoleculeKey);
+            renderEnvironmentList(mol);
+            drawNMRCanvas();
+        }
+
+        function checkPeakPrediction() {
+            const input = document.getElementById('userPeakGuess');
+            if (!input) return;
+            const val = parseInt(input.value);
+            const mol = MOLECULES_DB[currentMoleculeKey];
+            const feedback = document.getElementById('predictFeedback');
+            const badge = document.getElementById('predictStatusBadge');
+            if (!mol || !feedback) return;
+
+            feedback.classList.remove('hidden');
+
+            if (isNaN(val)) {
+                feedback.className = "p-2.5 rounded-lg text-xs leading-relaxed font-mono bg-amber-500/10 border border-amber-500/30 text-amber-300";
+                feedback.textContent = "Please enter a valid number of carbon environments.";
+                return;
+            }
+
+            if (val === mol.peakCount) {
+                badge.textContent = 'Correct Guess!';
+                badge.className = 'text-[10px] px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-mono';
+                feedback.className = "p-2.5 rounded-lg text-xs leading-relaxed font-mono bg-emerald-500/10 border border-emerald-500/40 text-emerald-200";
+                feedback.innerHTML = `🎉 <strong>Correct!</strong> ${mol.name} has <strong>${mol.peakCount}</strong> unique carbon environments. Unmasking spectrum...`;
+                setTimeout(revealSpectrumDirectly, 800);
+            } else {
+                badge.textContent = 'Incorrect';
+                badge.className = 'text-[10px] px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 border border-rose-500/30 font-mono';
+                feedback.className = "p-2.5 rounded-lg text-xs leading-relaxed font-mono bg-rose-500/10 border border-rose-500/40 text-rose-200";
+                feedback.innerHTML = `❌ <strong>Incorrect.</strong> You guessed ${val} peak(s). Examine the symmetry of ${mol.name} closely and try again!`;
+            }
+            renderMath(feedback);
+        }
+
+        function revealSpectrumDirectly() {
+            isSpectrumRevealed = true;
+            const overlay = document.getElementById('canvasOverlay');
+            if (overlay) overlay.style.display = 'none';
+
+            const envSection = document.getElementById('envListSection');
+            if (envSection) envSection.classList.remove('opacity-40', 'pointer-events-none');
+
+            const peakBadge = document.getElementById('molPeakCount');
+            if (peakBadge) peakBadge.classList.remove('hidden');
+
+            const badge = document.getElementById('predictStatusBadge');
+            if (badge) {
+                badge.textContent = 'Spectrum Revealed';
+                badge.className = 'text-[10px] px-2 py-0.5 rounded bg-teal-500/20 text-teal-300 border border-teal-500/30 font-mono';
+            }
+
+            drawNMRCanvas();
+        }
+
+        function toggleStructureView(mode) {
+            currentStructureView = mode;
+            const btnSvg = document.getElementById('btnViewSvg');
+            const btnPub = document.getElementById('btnViewPubchem');
+            if (mode === 'svg') {
+                if (btnSvg) btnSvg.className = "px-2 py-0.5 rounded bg-teal-500/20 text-teal-300 font-mono font-bold transition";
+                if (btnPub) btnPub.className = "px-2 py-0.5 rounded text-slate-400 font-mono hover:text-slate-200 transition";
+            } else {
+                if (btnPub) btnPub.className = "px-2 py-0.5 rounded bg-teal-500/20 text-teal-300 font-mono font-bold transition";
+                if (btnSvg) btnSvg.className = "px-2 py-0.5 rounded text-slate-400 font-mono hover:text-slate-200 transition";
+            }
+            renderDisplayedFormulaSvg(currentMoleculeKey);
+        }
+
+        function renderDisplayedFormulaSvg(molKey) {
+            const container = document.getElementById('displayedFormulaContainer');
+            if (!container) return;
+            const mol = MOLECULES_DB[molKey];
+            if (!mol) return;
+
+            if (currentStructureView === 'pubchem' && mol.pubchemCid) {
+                const imgUrl = `https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/${mol.pubchemCid}/PNG?image_size=300x300`;
+                container.innerHTML = `
+                    <div class="flex flex-col items-center justify-center p-2 space-y-1.5 w-full">
+                        <div class="bg-white p-2 rounded-lg border border-slate-700 shadow-md flex items-center justify-center min-h-[140px] w-full max-w-[260px]">
+                            <img src="${imgUrl}" alt="${mol.name}" class="max-h-32 object-contain" onerror="this.onerror=null; this.parentElement.parentElement.innerHTML='<div class=\\'text-amber-400 text-xs text-center font-mono mb-1\\'>PubChem image unavailable. Displaying explicit structural diagram:</div>${mol.svg.replace(/'/g, "\\'")}';">
+                        </div>
+                        <span class="text-[10px] text-teal-300 font-mono">PubChem Skeletal Formula (CID: ${mol.pubchemCid})</span>
+                    </div>
+                `;
+            } else {
+                container.innerHTML = mol.svg || `<div class="text-xs text-slate-400 font-mono">Formula diagram unavailable</div>`;
+            }
+        }
+
+        function renderEnvironmentList(mol) {
+            const list = document.getElementById('envList');
+            if (!list) return;
+            list.innerHTML = mol.environments.map((env) => `
+                <div class="flex justify-between items-center bg-slate-950 p-2 rounded border border-slate-800 text-[11px] font-mono">
+                    <div class="flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full inline-block" style="background-color: ${env.color}"></span>
+                        <span class="text-slate-200 font-bold">${env.label}</span>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-amber-400 font-bold">${env.shift} ppm</span>
+                        <span class="text-[10px] text-teal-300 font-bold block">[Signal Ratio = ${env.count || 1}C]</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function drawNMRCanvas() {
+            const canvas = document.getElementById('nmrCanvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const dpr = window.devicePixelRatio || 1;
+
+            const rect = canvas.getBoundingClientRect();
+            if (rect.width === 0 || rect.height === 0) return;
+
+            canvas.width = rect.width * dpr;
+            canvas.height = rect.height * dpr;
+            ctx.scale(dpr, dpr);
+
+            const width = rect.width;
+            const height = rect.height;
+
+            ctx.fillStyle = "#020617";
+            ctx.fillRect(0, 0, width, height);
+
+            const paddingLeft = 45;
+            const paddingRight = 35;
+            const paddingTop = 30;
+            const paddingBottom = 40;
+
+            const axisXStart = paddingLeft;
+            const axisXEnd = width - paddingRight;
+            const axisY = height - paddingBottom;
+
+            ctx.beginPath();
+            ctx.strokeStyle = "#475569";
+            ctx.lineWidth = 1.5;
+            ctx.moveTo(axisXStart, axisY);
+            ctx.lineTo(axisXEnd, axisY);
+            ctx.stroke();
+
+            const minShift = viewMinPpm;
+            const maxShift = viewMaxPpm;
+            function shiftToX(shift) {
+                const ratio = (maxShift - shift) / (maxShift - minShift);
+                return axisXStart + ratio * (axisXEnd - axisXStart);
+            }
+
+            // Dynamic tick spacing depending on zoom width
+            const spanPpm = maxShift - minShift;
+            let tickStep = 20;
+            if (spanPpm <= 45) tickStep = 5;
+            else if (spanPpm <= 100) tickStep = 10;
+
+            const firstTick = Math.ceil(minShift / tickStep) * tickStep;
+
+            ctx.fillStyle = "#94a3b8";
+            ctx.font = "10px monospace";
+            ctx.textAlign = "center";
+            for (let s = firstTick; s <= maxShift; s += tickStep) {
+                const x = shiftToX(s);
+                if (x < axisXStart || x > axisXEnd) continue;
+
+                ctx.beginPath();
+                ctx.strokeStyle = "#1e293b";
+                ctx.moveTo(x, paddingTop);
+                ctx.lineTo(x, axisY);
+                ctx.stroke();
+
+                ctx.beginPath();
+                ctx.strokeStyle = "#64748b";
+                ctx.moveTo(x, axisY);
+                ctx.lineTo(x, axisY + 5);
+                ctx.stroke();
+
+                ctx.fillText(s.toString(), x, axisY + 18);
+            }
+
+            ctx.fillStyle = "#cbd5e1";
+            ctx.fillText(`Chemical Shift (δ / ppm) [View Range: ${Math.round(minShift)} - ${Math.round(maxShift)} ppm]`, (axisXStart + axisXEnd) / 2, height - 8);
+
+            const tmsX = shiftToX(0);
+            if (tmsX >= axisXStart && tmsX <= axisXEnd) {
+                ctx.beginPath();
+                ctx.strokeStyle = "#64748b";
+                ctx.lineWidth = 1.5;
+                ctx.moveTo(tmsX, axisY);
+                ctx.lineTo(tmsX, axisY - 80);
+                ctx.stroke();
+                ctx.fillStyle = "#94a3b8";
+                ctx.fillText("TMS", tmsX, axisY - 88);
+            }
+
+            if (isSpectrumRevealed) {
+                const mol = MOLECULES_DB[currentMoleculeKey];
+                if (mol && mol.environments) {
+                    mol.environments.forEach(env => {
+                        const x = shiftToX(env.shift);
+                        if (x < axisXStart || x > axisXEnd) return; // clipped out of zoom view
+
+                        const cCount = env.count || 1;
+                        
+                        // Peak Height proportional to carbon count ratio
+                        const peakHeight = Math.min(190, 20 + cCount * 32);
+
+                        ctx.beginPath();
+                        ctx.strokeStyle = env.color || "#38bdf8";
+                        ctx.lineWidth = 2.5 + (cCount > 1 ? 0.8 : 0);
+                        ctx.moveTo(x, axisY);
+                        ctx.lineTo(x, axisY - peakHeight);
+                        ctx.stroke();
+
+                        ctx.fillStyle = "#fbbf24";
+                        ctx.font = "bold 10px monospace";
+                        ctx.fillText(`${env.shift} (${cCount}C)`, x, axisY - peakHeight - 8);
+                    });
+                }
+            }
+        }
+
+        function loadSolverProblem() {
+            const prob = SOLVER_PROBLEMS[currentSolverIndex];
+            if (!prob) return;
+
+            const idxEl = document.getElementById('problemIndex');
+            if (idxEl) idxEl.textContent = prob.id;
+            const mrEl = document.getElementById('solveMr');
+            if (mrEl) mrEl.textContent = prob.mr.toFixed(4);
+            const formEl = document.getElementById('solveFormula');
+            if (formEl) formEl.textContent = prob.formula;
+            const pkEl = document.getElementById('solvePeaks');
+            if (pkEl) pkEl.textContent = `${prob.peaks} distinct peaks`;
+
+            const optsDiv = document.getElementById('solverOptions');
+            if (!optsDiv) return;
+
+            optsDiv.innerHTML = prob.options.map((opt, i) => `
+                <button onclick="evaluateSolverChoice(${i})" class="w-full text-left bg-slate-950 hover:bg-slate-800 p-3 rounded-lg border border-slate-800 hover:border-teal-500/50 transition space-y-1">
+                    <div class="font-bold text-slate-200 flex justify-between">
+                        <span>${opt.name}</span>
+                        <span class="text-teal-400 font-mono">${opt.peaks} peaks</span>
+                    </div>
+                </button>
+            `).join('');
+
+            const fb = document.getElementById('solverFeedback');
+            if (fb) fb.innerHTML = `<p class="text-slate-400 italic">Select a candidate structure on the left to verify its $^{13}\\text{C}$ NMR peak count against the experimental data.</p>`;
+        }
+
+        function evaluateSolverChoice(optIdx) {
+            const prob = SOLVER_PROBLEMS[currentSolverIndex];
+            const opt = prob.options[optIdx];
+            const fb = document.getElementById('solverFeedback');
+            if (!fb || !opt) return;
+
+            if (opt.correct) {
+                fb.className = "p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/40 text-xs text-emerald-200 space-y-2 leading-relaxed";
+                fb.innerHTML = `
+                    <div class="font-bold text-emerald-300 text-sm">✅ Correct Deduction!</div>
+                    <p>${opt.explanation}</p>
+                `;
+            } else {
+                fb.className = "p-4 rounded-xl bg-rose-500/10 border border-rose-500/40 text-xs text-rose-200 space-y-2 leading-relaxed";
+                fb.innerHTML = `
+                    <div class="font-bold text-rose-300 text-sm">❌ Incorrect Structure Choice</div>
+                    <p>${opt.explanation}</p>
+                `;
+            }
+            renderMath(fb);
+        }
+
+        function nextSolverProblem() {
+            currentSolverIndex = (currentSolverIndex + 1) % SOLVER_PROBLEMS.length;
+            loadSolverProblem();
+            renderMath();
+        }
+
+        function calculateHighResMr() {
+            const numC = parseInt(document.getElementById('numC')?.value || '0');
+            const numH = parseInt(document.getElementById('numH')?.value || '0');
+            const numO = parseInt(document.getElementById('numO')?.value || '0');
+            const numN = parseInt(document.getElementById('numN')?.value || '0');
+            const numCl = parseInt(document.getElementById('numCl')?.value || '0');
+
+            const nominal = (numC * 12) + (numH * 1) + (numO * 16) + (numN * 14) + (numCl * 35);
+            const highRes = (numC * 12.0000) + (numH * 1.0078) + (numO * 15.9949) + (numN * 14.0031) + (numCl * 34.9689);
+
+            const nomEl = document.getElementById('calcNominal');
+            if (nomEl) nomEl.textContent = nominal;
+            const hrEl = document.getElementById('calcHighRes');
+            if (hrEl) hrEl.textContent = highRes.toFixed(4);
+
+            const breakdown = document.getElementById('calcBreakdown');
+            if (breakdown) {
+                breakdown.innerHTML = `
+                    <p>• Carbon: ${numC} × 12.0000 = ${(numC * 12.0000).toFixed(4)}</p>
+                    <p>• Hydrogen: ${numH} × 1.0078 = ${(numH * 1.0078).toFixed(4)}</p>
+                    <p>• Oxygen: ${numO} × 15.9949 = ${(numO * 15.9949).toFixed(4)}</p>
+                    <p>• Nitrogen: ${numN} × 14.0031 = ${(numN * 14.0031).toFixed(4)}</p>
+                    <p>• Chlorine: ${numCl} × 34.9689 = ${(numCl * 34.9689).toFixed(4)}</p>
+                    <p class="text-amber-400 font-bold pt-1 border-t border-slate-800">Sum Total = ${highRes.toFixed(4)} g/mol</p>
+                `;
+            }
+        }
+
+        function setCalcPreset(c, h, o, n, cl) {
+            if (document.getElementById('numC')) document.getElementById('numC').value = c;
+            if (document.getElementById('numH')) document.getElementById('numH').value = h;
+            if (document.getElementById('numO')) document.getElementById('numO').value = o;
+            if (document.getElementById('numN')) document.getElementById('numN').value = n;
+            if (document.getElementById('numCl')) document.getElementById('numCl').value = cl;
+            calculateHighResMr();
+        }
+
+        function toggleKnowledgeBase() {
+            const kb = document.getElementById('kbContainer');
+            const btn = document.getElementById('btnToggleKB');
+            if (kb && btn) {
+                if (kb.classList.contains('hidden')) {
+                    kb.classList.remove('hidden');
+                    btn.textContent = '[Collapse Source]';
+                } else {
+                    kb.classList.add('hidden');
+                    btn.textContent = '[Expand Source]';
+                }
+            }
+        }
+
+        function resetDefaultKnowledgeBase() {
+            const ctx = document.getElementById('aiSourceContext');
+            if (ctx) {
+                ctx.value = `[OFFICIAL EDEXCEL IAL TOPIC 15E SPECTROSCOPY MARK SCHEME & SYLLABUS SOURCE]
+1. High-Resolution Mass Spec (15.17):
+   - Atomic masses (4 d.p.): 12C = 12.0000, 1H = 1.0078, 16O = 15.9949, 14N = 14.0031, 35Cl = 34.9689, 79Br = 78.9183.
+   - High-res Mr differentiates compounds with identical nominal masses (e.g. C3H6O Mr = 58.0417 vs C4H10 Mr = 58.0780).
+
+2. Carbon-13 NMR Spectroscopy (15.18 & 15.19):
+   - Chemical shift (δ / ppm) measured relative to Tetramethylsilane (TMS at 0 ppm).
+   - Number of peaks = number of distinct non-equivalent carbon environments.
+   - Peak ranges: C-C (0-50 ppm), C-N (30-65 ppm), C-Cl/C-Br (30-70 ppm), C-O alcohol/ester (50-90 ppm), C=C alkene/arene (100-160 ppm), C=O ester/acid (160-185 ppm), C=O aldehyde/ketone (190-220 ppm).
+
+3. Symmetry Rules & Isomer Cases (Key Exam Criteria):
+   - 1,2-cyclohexanediol: 6 carbons, 3 peaks (plane of symmetry cutting C1-C2 and C4-C5).
+   - 1,4-cyclohexanediol: 6 carbons, ONLY 2 peaks (plane of symmetry through C1 & C4 makes 4 ring CH2 equivalent).
+   - Isoamyl acetate (3-methylbutyl acetate): 7 carbons, 6 peaks (terminal isopropyl group gives 2 equivalent CH3).
+   - Amyl acetate (pentyl acetate): 7 carbons, 7 peaks (linear unbranched chain).
+   - 2,2-dimethylbutanoic acid: 6 carbons, 5 peaks (2 equivalent CH3 on C2).
+   - 3,3-dimethylbutanoic acid: 6 carbons, 4 peaks (3 equivalent CH3 on C3 tert-butyl block).
+   - Hydroquinone (1,4-benzenediol): 6 carbons, 2 peaks. Toluene: 7 carbons, 5 peaks. Phenol: 6 carbons, 4 peaks. Benzene: 1 peak.`;
+            }
+        }
+
+        async function mockScientificResponse(prompt) {
+            const p = prompt.toLowerCase();
+            if (p.includes('1,4-cyclohexanediol') || p.includes('cyclohexanediol')) {
+                return "<strong>IAL Examiner Feedback:</strong><br>• <strong>Mark 1:</strong> Correctly states 1,4-cyclohexanediol contains 2 unique carbon environments.<br>• <strong>Mark 2:</strong> C1 and C4 are equivalent (bonded to -OH), appearing at ~68 ppm.<br>• <strong>Mark 3:</strong> Internal plane of symmetry passing through C1 and C4 renders the four ring -CH₂- carbons (C2, C3, C5, C6) fully equivalent at ~28 ppm.<br>• <strong>Grade: 3/3 Marks.</strong>";
+            }
+            if (p.includes('isoamyl') || p.includes('amyl')) {
+                return "<strong>Symmetry Comparison:</strong><br>• Isoamyl acetate has a branched terminal isopropyl group $(-\\text{CH(CH}_3)_2)$ with 2 equivalent methyl carbons, giving 6 peaks for 7 carbons.<br>• Amyl acetate is an unbranched linear pentyl chain where all 7 carbons are in distinct chemical environments, giving 7 peaks.";
+            }
+            return "<strong>IAL Spectroscopy Explanation:</strong><br>In $^{13}\\text{C}$ NMR, the number of absorption peaks equals the number of non-equivalent carbon environments. Molecules with internal lines or planes of symmetry yield fewer peaks than their total carbon count.";
+        }
+
+        async function explainSpectrumWithAI() {
+            const out = document.getElementById('aiSpectrumOutput');
+            const btn = document.getElementById('btnAiExplainSpectrum');
+            if (!out) return;
+
+            out.classList.remove('hidden');
+            out.innerHTML = "<span class='text-teal-400 font-mono animate-pulse'>⚡ Generating IAL Symmetry Analysis...</span>";
+            if (btn) btn.disabled = true;
+
+            const mol = MOLECULES_DB[currentMoleculeKey];
+            const response = await mockScientificResponse(`Explain the symmetry, carbon environments, and 13C NMR peaks for ${mol.name} (${mol.formula}).`);
+
+            out.innerHTML = response;
+            if (btn) btn.disabled = false;
+            renderMath(out);
+        }
+
+        async function gradeStudentAnswerWithAI() {
+            const input = document.getElementById('aiStudentAnswerInput')?.value;
+            const out = document.getElementById('aiGradeOutput');
+            const btn = document.getElementById('btnGradeAnswer');
+            if (!input || !out) return;
+
+            out.classList.remove('hidden');
+            out.innerHTML = "<span class='text-teal-400 font-mono animate-pulse'>🤖 Grading written answer against IAL mark scheme...</span>";
+            if (btn) btn.disabled = true;
+
+            const response = await mockScientificResponse(`Grade the student answer: "${input}"`);
+
+            out.innerHTML = response;
+            if (btn) btn.disabled = false;
+            renderMath(out);
+        }
+
+        async function sendAIChatMessage() {
+            const inputEl = document.getElementById('aiChatInput');
+            const stream = document.getElementById('aiChatStream');
+            if (!inputEl || !stream) return;
+
+            const text = inputEl.value.trim();
+            if (!text) return;
+
+            const userMsg = document.createElement('div');
+            userMsg.className = "bg-slate-900 p-3 rounded-xl border border-slate-800 text-slate-100 text-xs text-right font-sans";
+            userMsg.textContent = text;
+            stream.appendChild(userMsg);
+
+            inputEl.value = '';
+            stream.scrollTop = stream.scrollHeight;
+
+            const aiMsg = document.createElement('div');
+            aiMsg.className = "bg-slate-900 p-3.5 rounded-xl border border-teal-500/20 text-slate-200 text-xs space-y-1 font-sans";
+            aiMsg.innerHTML = "<span class='text-teal-400 font-mono animate-pulse'>Analyzing...</span>";
+            stream.appendChild(aiMsg);
+            stream.scrollTop = stream.scrollHeight;
+
+            const response = await mockScientificResponse(text);
+            aiMsg.innerHTML = `<span class='font-bold text-teal-400 text-[11px] block'>🤖 AI Tutor Response:</span><div>${response}</div>`;
+            stream.scrollTop = stream.scrollHeight;
+            renderMath(aiMsg);
+        }
+
+        function sendQuickPrompt(promptText) {
+            const input = document.getElementById('aiChatInput');
+            if (input) {
+                input.value = promptText;
+                sendAIChatMessage();
+            }
+        }
+
+        function clearAIChat() {
+            const stream = document.getElementById('aiChatStream');
+            if (stream) {
+                stream.innerHTML = `
+                    <div class="bg-slate-900 p-3.5 rounded-xl border border-teal-500/20 text-slate-200 space-y-1">
+                        <span class="font-bold text-teal-400 text-[11px] block">👋 Welcome to IAL Spectroscopy AI Studio!</span>
+                        <p class="text-slate-300 leading-relaxed">
+                            I am your specialized Edexcel / CAIE IAL Chemistry Spectroscopy AI Tutor. How can I help you master Topic 15E today?
+                        </p>
+                    </div>
+                `;
+            }
+        }
+
+        window.addEventListener('resize', drawNMRCanvas);
+
+        window.onload = function() {
+            updatePredictorMolecule();
+            loadSolverProblem();
+            calculateHighResMr();
+            switchTab('predictor-tab');
+            renderMath();
+        };
+    </script>
+</body>
+</html>
