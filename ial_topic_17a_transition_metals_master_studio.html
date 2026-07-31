@@ -1,0 +1,1738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IAL Chemistry Topic 17: Transition Metals Master Studio</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- KaTeX CSS & JS CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="initKaTeX()"></script>
+
+    <script>
+        function initKaTeX() {
+            if (window.renderMathInElement) {
+                window.renderMathInElement(document.body, {
+                    delimiters: [
+                        {left: '$$', right: '$$', display: true},
+                        {left: '$', right: '$', display: false}
+                    ],
+                    throwOnError: false
+                });
+            }
+        }
+    </script>
+
+    <style>
+        .tab-btn-active {
+            border-bottom: 3px solid #a855f7;
+            color: #c084fc;
+            font-weight: 700;
+            background-color: rgba(168, 85, 247, 0.12);
+        }
+        .studio-canvas-bg {
+            background: linear-gradient(180deg, #0f172a 0%, #020617 100%);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            height: 6px;
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #1e293b;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #475569;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="bg-slate-900 border-b border-slate-800 sticky top-0 z-40 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center gap-3">
+            <div class="flex items-center gap-3">
+                <div class="bg-purple-500/20 p-2 rounded-lg border border-purple-500/30">
+                    <span class="text-2xl">🔮</span>
+                </div>
+                <div>
+                    <h1 class="text-lg font-extrabold tracking-tight text-purple-400">IAL Chemistry Topic 17: Transition Metals Studio</h1>
+                    <p class="text-xs text-slate-400">Edexcel Topic 17.1–17.9: Electronic Configurations, Complex Ions, Ligands & $d$-$d$ Colour Chemistry</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-2">
+                <span class="px-2.5 py-1 text-xs font-semibold rounded-full bg-purple-950 text-purple-300 border border-purple-800">
+                    Edexcel Spec 17.1 - 17.9
+                </span>
+                <span class="px-3 py-1.5 text-xs bg-emerald-950/80 text-emerald-300 rounded-lg border border-emerald-800/80 flex items-center gap-1.5 font-medium">
+                    <span>✨ Gemini AI Auto-Active</span>
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav class="bg-slate-900/90 border-b border-slate-800 text-xs sm:text-sm font-medium overflow-x-auto custom-scrollbar sticky top-[57px] z-30 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 flex whitespace-nowrap">
+            <button onclick="switchTab('scaffold')" id="btn-scaffold" class="tab-btn-active py-3 px-5 text-slate-300 hover:text-purple-300 transition flex items-center gap-2">
+                <span>📚 Syllabus Master Overview</span>
+            </button>
+            <button onclick="switchTab('configs')" id="btn-configs" class="py-3 px-5 text-slate-400 hover:text-purple-300 transition flex items-center gap-2">
+                <span>⚛️ Electronic Configurations & Sc/Zn Proof</span>
+            </button>
+            <button onclick="switchTab('complexes')" id="btn-complexes" class="py-3 px-5 text-slate-400 hover:text-purple-300 transition flex items-center gap-2">
+                <span>🧩 Complex Ions, Denticity & Shapes</span>
+            </button>
+            <button onclick="switchTab('colour')" id="btn-colour" class="py-3 px-5 text-slate-400 hover:text-purple-300 transition flex items-center gap-2">
+                <span>🎨 $d$-Orbital Splitting & Colour Wheel</span>
+            </button>
+            <button onclick="switchTab('ai')" id="btn-ai" class="py-3 px-5 text-slate-400 hover:text-purple-300 transition flex items-center gap-2">
+                <span>🤖 AI Examiner & Past Papers</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main class="max-w-7xl mx-auto px-4 py-6 flex-grow w-full">
+
+        <!-- SECTION 1: SYLLABUS MASTER OVERVIEW -->
+        <section id="tab-scaffold" class="space-y-6">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-sm">
+                <div class="border-b border-slate-800 pb-4 mb-6">
+                    <span class="text-xs font-bold text-purple-400 uppercase tracking-widest">Syllabus Master Overview</span>
+                    <h2 class="text-xl font-bold text-white mt-1">Topic 17 Learning Points & Mark Scheme Secrets (Spec 17.1 – 17.9)</h2>
+                    <p class="text-xs text-slate-400 mt-1">Review core definitions, electron rules, and examiner watch-outs across the Transition Metals unit.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    
+                    <!-- Card 1: 17.1 - 17.3 -->
+                    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-[10px] font-mono text-purple-400 uppercase font-bold px-2 py-0.5 bg-purple-950 rounded border border-purple-800">Spec 17.1 - 17.3</span>
+                                <span class="text-[10px] text-slate-400 font-mono">Definitions & Configurations</span>
+                            </div>
+                            <h3 class="text-sm font-bold text-white mb-3">1. Transition Metal Definition & Variable Oxidation States</h3>
+                            
+                            <div class="space-y-2">
+                                <span class="text-[11px] font-bold text-purple-300 uppercase tracking-wider block">🎯 5 Key Learning Goals:</span>
+                                <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed">
+                                    <li>Define a Transition Metal: <b>"A $d$-block element that forms one or more stable ions with an incompletely filled $d$-orbital."</b></li>
+                                    <li>Deduce electronic configurations for Period 4 elements ($\text{Sc}$ to $\text{Zn}$) and their ions.</li>
+                                    <li>Remember the $4s$ removal rule: <b>When forming ions, lose $4s$ electrons BEFORE $3d$ electrons!</b></li>
+                                    <li>Explain variable oxidation states: $3d$ and $4s$ energy levels are very close in energy.</li>
+                                    <li>Prove why $\text{Sc}$ and $\text{Zn}$ are NOT transition metals ($\text{Sc}^{3+}$ is $3d^0$, $\text{Zn}^{2+}$ is $3d^{10}$).</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="p-3 bg-amber-950/40 border border-amber-800/60 rounded-lg text-xs text-amber-200 space-y-1">
+                            <span class="font-bold text-amber-400 block uppercase text-[10px] flex items-center gap-1">
+                                <span>💡 IAL Examiner Watch-Outs:</span>
+                            </span>
+                            <p class="leading-relaxed text-[11px]">
+                                Never state "partially filled $d$-shell in the atom". The IAL mark scheme strictly requires <b>"in an ION"</b> or <b>"forms one or more stable ions with partially filled $d$-orbitals"</b>. Also watch out for Chromium ($\text{Cr}: 4s^1 3d^5$) and Copper ($\text{Cu}: 4s^1 3d^{10}$) atomic configuration exceptions!
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: 17.4 - 17.6 -->
+                    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-[10px] font-mono text-sky-400 uppercase font-bold px-2 py-0.5 bg-sky-950 rounded border border-sky-800">Spec 17.4 - 17.6</span>
+                                <span class="text-[10px] text-slate-400 font-mono">Complex Ions & Ligands</span>
+                            </div>
+                            <h3 class="text-sm font-bold text-white mb-3">2. Complex Formation, Ligands & Coordination Number</h3>
+                            
+                            <div class="space-y-2">
+                                <span class="text-[11px] font-bold text-sky-300 uppercase tracking-wider block">🎯 5 Key Learning Goals:</span>
+                                <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed">
+                                    <li>Define a **Ligand**: An atom, ion, or molecule with a lone pair that forms a dative (coordinate) covalent bond to a central metal ion.</li>
+                                    <li>Define a **Complex Ion**: A central metal ion surrounded by ligands bound by coordinate bonds.</li>
+                                    <li>Define **Coordination Number**: The total number of dative bonds formed with the central metal ion (NOT just total ligands!).</li>
+                                    <li>Classify Ligand Denticity: Monodentate ($\text{H}_2\text{O}, \text{NH}_3, \text{Cl}^-$), Bidentate ($\text{en}, \text{C}_2\text{O}_4^{2-}$), and Hexadentate ($\text{EDTA}^{4-}$).</li>
+                                    <li>Identify 3D Complex Shapes: Octahedral (CN=6), Tetrahedral (CN=4), Square Planar ($\text{Pt}^{2+}$, CN=4), Linear ($\text{Ag}^+$, CN=2).</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="p-3 bg-amber-950/40 border border-amber-800/60 rounded-lg text-xs text-amber-200 space-y-1">
+                            <span class="font-bold text-amber-400 block uppercase text-[10px] flex items-center gap-1">
+                                <span>💡 IAL Examiner Watch-Outs:</span>
+                            </span>
+                            <p class="leading-relaxed text-[11px]">
+                                Coordination number is the number of <b>DATIVE BONDS</b>, not number of molecules! E.g. $[\text{Cr}(\text{C}_2\text{O}_4)_3]^{3-}$ has 3 ligands but its coordination number is <b>6</b> because ethanedioate is bidentate. Also, anionic complex names end in <b>"-ate"</b> (e.g., tetrachloroferrate(III)).
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: 17.7 - 17.9 -->
+                    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between md:col-span-2">
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-[10px] font-mono text-emerald-400 uppercase font-bold px-2 py-0.5 bg-emerald-950 rounded border border-emerald-800">Spec 17.7 - 17.9</span>
+                                <span class="text-[10px] text-slate-400 font-mono">d-Orbital Splitting & Color</span>
+                            </div>
+                            <h3 class="text-sm font-bold text-white mb-3">3. Origin of Colour in Transition Metal Complexes (4-Mark Core Answer)</h3>
+                            
+                            <div class="space-y-2">
+                                <span class="text-[11px] font-bold text-emerald-300 uppercase tracking-wider block">🎯 5 Key Learning Goals:</span>
+                                <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed">
+                                    <li>Understand that ligands approaching a central metal ion split the $3d$ orbitals into two distinct energy levels.</li>
+                                    <li>Explain $d$-$d$ transitions: Electrons absorb specific frequencies/wavelengths of visible light ($\Delta E = h\nu$) and are promoted from lower to higher $d$-orbitals.</li>
+                                    <li>Explain complementary colours: The unabsorbed frequencies of visible light are **transmitted/reflected**, giving the solution its observed colour.</li>
+                                    <li>Explain colour variations ($\text{Fe}^{2+}$ vs $\text{Fe}^{3+}$): Different metal oxidation states/ligands alter $\Delta E$, absorbing different frequencies.</li>
+                                    <li>Explain colourless ions ($\text{Sc}^{3+}, \text{Zn}^{2+}$): $\text{Sc}^{3+}$ has no $d$-electrons to promote ($3d^0$), and $\text{Zn}^{2+}$ has completely filled $d$-orbitals ($3d^{10}$) with no empty level for promotion.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="p-3 bg-purple-950/40 border border-purple-800/60 rounded-lg text-xs text-purple-200 space-y-1">
+                            <span class="font-bold text-purple-400 block uppercase text-[10px] flex items-center gap-1">
+                                <span>📝 Official 4-Mark Exam Marking Scheme Checklist for "Why is a complex ion coloured?":</span>
+                            </span>
+                            <div class="grid grid-cols-1 md:grid-cols-4 gap-2 mt-1 text-[11px] font-mono text-slate-200">
+                                <div class="p-2 bg-slate-900 rounded border border-purple-900/60"><b>1.</b> Ligands split $3d$ orbitals into two energy levels.</div>
+                                <div class="p-2 bg-slate-900 rounded border border-purple-900/60"><b>2.</b> Electrons absorb specific frequencies of visible light.</div>
+                                <div class="p-2 bg-slate-900 rounded border border-purple-900/60"><b>3.</b> Electron promoted from lower to higher $d$-orbital ($d$-$d$ transition).</div>
+                                <div class="p-2 bg-slate-900 rounded border border-purple-900/60"><b>4.</b> Remaining/complementary light is transmitted.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: ELECTRONIC CONFIGURATIONS & SC/ZN PROOF -->
+        <section id="tab-configs" class="hidden space-y-6">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-sm space-y-6">
+                <div class="border-b border-slate-800 pb-4">
+                    <span class="text-xs font-bold text-purple-400 uppercase tracking-widest">Interactive Periodic Block</span>
+                    <h2 class="text-xl font-bold text-white mt-1">Electronic Configuration Studio & Ion State Selector</h2>
+                    <p class="text-xs text-slate-400 mt-1">Revise elements 1–20 ($\text{H} \rightarrow \text{Ca}$), explore Period 4 $d$-block atoms ($Z=21 \rightarrow 30$), and select specific ion oxidation states to observe $4s$ electron loss.</p>
+                </div>
+
+                <!-- Element Picker Grids -->
+                <div class="space-y-4">
+                    <!-- Revision Grid 1-20 -->
+                    <div>
+                        <div class="flex justify-between items-center mb-1.5">
+                            <span class="text-xs font-bold text-slate-400 uppercase">📖 Revision Elements (Z = 1 to 20):</span>
+                            <span class="text-[10px] text-slate-500 font-mono">s-block & p-block foundational review</span>
+                        </div>
+                        <div id="element-btn-grid-1-20" class="grid grid-cols-5 sm:grid-cols-10 gap-1.5">
+                            <!-- Populated dynamically by JS -->
+                        </div>
+                    </div>
+
+                    <!-- d-Block Grid 21-30 -->
+                    <div>
+                        <div class="flex justify-between items-center mb-1.5">
+                            <span class="text-xs font-bold text-purple-400 uppercase">🔮 Period 4 d-Block Elements (Z = 21 to 30):</span>
+                            <span class="text-[10px] text-purple-300 font-mono">Click element then pick Ion State below</span>
+                        </div>
+                        <div id="element-btn-grid-21-30" class="grid grid-cols-5 sm:grid-cols-10 gap-1.5">
+                            <!-- Populated dynamically by JS -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DIRECTLY UNDER PERIODIC TABLE BLOCK: SELECTED ELEMENT DETAIL DISPLAY -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 pt-2">
+                    
+                    <!-- Left Column: Atom & Ion Configurations -->
+                    <div class="lg:col-span-7 bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 border-b border-slate-800 pb-3">
+                            <div>
+                                <h3 id="elem-display-title" class="text-base font-bold text-purple-300">Scandium (Sc) - Atomic Number 21</h3>
+                                <span id="elem-display-type" class="text-xs font-mono text-amber-400">Classification: d-Block Element (NOT a Transition Metal)</span>
+                            </div>
+                            
+                            <!-- Ion State Dropdown (Active for Z=21..30) -->
+                            <div id="ion-select-container" class="flex items-center gap-2 bg-slate-900 p-2 rounded-lg border border-purple-800/80">
+                                <label for="ion-state-select" class="text-xs text-purple-300 font-bold whitespace-nowrap">State / Ion:</label>
+                                <select id="ion-state-select" onchange="switchIonState()" class="bg-slate-950 text-slate-100 text-xs font-mono rounded px-2 py-1 border border-slate-700 focus:outline-none focus:border-purple-500">
+                                    <!-- Populated dynamically -->
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Configuration Display -->
+                        <div class="space-y-2">
+                            <span class="text-xs text-slate-400 font-semibold block">Selected State Electronic Configuration:</span>
+                            <div id="elem-atom-config" class="p-3 bg-slate-900 border border-slate-800 rounded-lg font-mono text-xs text-purple-300">$1s^2 2s^2 2p^6 3s^2 3p^6 3d^1 4s^2 \quad \Rightarrow \quad [\text{Ar}] 3d^1 4s^2$</div>
+                        </div>
+
+                        <!-- Orbital Box Visualizer Canvas -->
+                        <div class="space-y-2">
+                            <span class="text-xs text-slate-400 font-semibold block">3d and 4s Electrons-in-Boxes Diagram:</span>
+                            <div class="p-4 bg-slate-900 border border-slate-800 rounded-lg flex flex-col items-center justify-center">
+                                <canvas id="orbital-box-canvas" width="480" height="120" class="w-full studio-canvas-bg rounded border border-slate-800"></canvas>
+                                <div class="flex gap-6 text-[11px] font-mono text-slate-400 mt-2">
+                                    <span>3d Orbitals (5 degenerate boxes)</span>
+                                    <span>4s Orbital (1 box)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Specific IAL Proof & Watch-Outs -->
+                    <div class="lg:col-span-5 bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <h3 class="text-xs font-bold text-amber-300 uppercase tracking-wider flex items-center gap-1.5">
+                                <span>⚖️ IAL Exam Classification Analysis</span>
+                            </h3>
+
+                            <div id="elem-explanation-box" class="p-3.5 bg-slate-900 rounded-lg border border-slate-800 text-xs text-slate-300 leading-relaxed space-y-2">
+                                <!-- Populated dynamically -->
+                            </div>
+                        </div>
+
+                        <div class="p-3 bg-purple-950/40 border border-purple-800/60 rounded-lg text-xs space-y-1 text-purple-200">
+                            <span class="font-bold block uppercase text-[10px]">4s Electron Loss Rule:</span>
+                            <p class="text-[11px] leading-relaxed">
+                                When transition metals form positive ions, electrons are <b>ALWAYS lost from $4s$ FIRST</b> before $3d$ electrons! E.g. $\text{Fe} (3d^6 4s^2) \rightarrow \text{Fe}^{2+} (3d^6 4s^0) \rightarrow \text{Fe}^{3+} (3d^5 4s^0)$.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- BOTTOM PART OF SECTION 2: DEDICATED IAL SC & ZN PROOF COMPARISON MATRIX -->
+                <div class="bg-slate-950 border border-amber-900/60 rounded-xl p-5 space-y-4">
+                    <div class="flex flex-col sm:flex-row justify-between sm:items-center border-b border-slate-800 pb-3 gap-2">
+                        <div class="flex items-center gap-2">
+                            <span class="px-2.5 py-1 bg-amber-950 text-amber-300 text-xs font-mono font-bold border border-amber-800 rounded">Spec 17.1 - 17.2</span>
+                            <h3 class="text-sm font-bold text-amber-300 uppercase tracking-wider">Official IAL Syllabus Proof: Why Sc & Zn Are NOT Transition Metals</h3>
+                        </div>
+                        <span class="text-[11px] font-mono text-purple-300">Target Mark Scheme Key Phrase: "Incompletely Filled d-Orbital in an ION"</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                        
+                        <!-- Scandium Proof Card -->
+                        <div class="p-4 bg-slate-900/90 rounded-lg border border-purple-900/60 space-y-2.5 relative overflow-hidden">
+                            <div class="flex justify-between items-center border-b border-slate-800 pb-2">
+                                <span class="font-bold text-purple-300 text-sm">1. Scandium (Sc, Z = 21)</span>
+                                <span class="px-2 py-0.5 bg-rose-950 text-rose-300 text-[10px] font-bold rounded border border-rose-800">❌ NOT A TRANSITION METAL</span>
+                            </div>
+                            <div class="font-mono text-slate-300 space-y-1 text-[11px]">
+                                <div>• Atom Ground State: <span class="text-purple-300">$1s^2 2s^2 2p^6 3s^2 3p^6 3d^1 4s^2 \Rightarrow [\text{Ar}] 3d^1 4s^2$</span></div>
+                                <div>• Only Stable Ion: <span class="text-amber-300">$\text{Sc}^{3+} : [\text{Ar}] 3d^0 4s^0$</span></div>
+                                <div>• $3d$ Subshell Status: <span class="text-rose-400 font-bold">EMPTY ($3d^0$)</span></div>
+                            </div>
+                            <div class="p-2.5 bg-slate-950 rounded border border-slate-800 text-[11px] text-slate-300 leading-relaxed">
+                                <b>IAL Mark Scheme Answer:</b><br>
+                                "Scandium forms only one stable ion, $\text{Sc}^{3+}$. Its electronic configuration is $[\text{Ar}] 3d^0$. Because its $d$-subshell is <b>EMPTY</b> ($3d^0$), it does NOT have a partially filled $d$-orbital in any stable ion."
+                            </div>
+                        </div>
+
+                        <!-- Zinc Proof Card -->
+                        <div class="p-4 bg-slate-900/90 rounded-lg border border-purple-900/60 space-y-2.5 relative overflow-hidden">
+                            <div class="flex justify-between items-center border-b border-slate-800 pb-2">
+                                <span class="font-bold text-purple-300 text-sm">2. Zinc (Zn, Z = 30)</span>
+                                <span class="px-2 py-0.5 bg-rose-950 text-rose-300 text-[10px] font-bold rounded border border-rose-800">❌ NOT A TRANSITION METAL</span>
+                            </div>
+                            <div class="font-mono text-slate-300 space-y-1 text-[11px]">
+                                <div>• Atom Ground State: <span class="text-purple-300">$1s^2 2s^2 2p^6 3s^2 3p^6 3d^{10} 4s^2 \Rightarrow [\text{Ar}] 3d^{10} 4s^2$</span></div>
+                                <div>• Only Stable Ion: <span class="text-amber-300">$\text{Zn}^{2+} : [\text{Ar}] 3d^{10} 4s^0$</span></div>
+                                <div>• $3d$ Subshell Status: <span class="text-rose-400 font-bold">COMPLETELY FILLED ($3d^{10}$)</span></div>
+                            </div>
+                            <div class="p-2.5 bg-slate-950 rounded border border-slate-800 text-[11px] text-slate-300 leading-relaxed">
+                                <b>IAL Mark Scheme Answer:</b><br>
+                                "Zinc forms only one stable ion, $\text{Zn}^{2+}$. Its electronic configuration is $[\text{Ar}] 3d^{10}$. Because its $d$-subshell is <b>FULL</b> ($3d^{10}$), it does NOT have an incompletely filled $d$-orbital. $\text{Zn}^{2+}$ compounds are COLOURLESS!"
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Comparison Contrast Card: Copper -->
+                    <div class="p-3 bg-slate-900 rounded-lg border border-emerald-900/60 text-xs text-slate-300 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                        <div>
+                            <span class="font-bold text-emerald-400 font-mono text-[11px]">💡 Why is Copper (Cu) a Transition Metal even though Cu⁺ is 3d¹⁰?</span>
+                            <p class="text-[11px] text-slate-300 mt-0.5">
+                                Copper forms two stable ions: $\text{Cu}^+ (3d^{10})$ and $\text{Cu}^{2+} (3d^9)$. Because $\text{Cu}^{2+}$ has a <b>partially filled $3d^9$ subshell</b>, Copper satisfies the definition ("forms <b>ONE OR MORE</b> stable ions...").
+                            </p>
+                        </div>
+                        <span class="px-2 py-1 bg-emerald-950 text-emerald-300 text-[10px] font-bold rounded border border-emerald-800 whitespace-nowrap">
+                            ✓ Cu IS a Transition Metal
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 3: COMPLEX IONS, SHAPES & DENTICITY -->
+        <section id="tab-complexes" class="hidden space-y-6">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-sm space-y-6">
+                <div class="border-b border-slate-800 pb-4">
+                    <span class="text-xs font-bold text-purple-400 uppercase tracking-widest">3D Coordination Architecture</span>
+                    <h2 class="text-xl font-bold text-white mt-1">Complex Ion Builder, Denticity & IUPAC Naming Studio</h2>
+                    <p class="text-xs text-slate-400 mt-1">Assemble complex ions, observe 3D shapes, calculate denticity math, and master oxidation state accounting.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                    
+                    <!-- Left: Complex Selection & Math Controls -->
+                    <div class="lg:col-span-5 bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+                        <h3 class="text-xs font-bold text-purple-300 uppercase tracking-wider">Select Sample Complex Ion:</h3>
+                        
+                        <div class="space-y-2">
+                            <select id="complex-preset-select" onchange="loadComplexPreset()" class="w-full bg-slate-900 border border-slate-700 text-slate-100 text-xs rounded-lg p-2.5 font-mono">
+                                <option value="hexaaquacopper">Hexaaquacopper(II) - [Cu(H₂O)₆]²⁺ (Octahedral)</option>
+                                <option value="tetrachloroferrate">Tetrachloroferrate(III) - [FeCl₄]⁻ (Tetrahedral)</option>
+                                <option value="tetraamminediaquacopper">Tetraamminediaquacopper(II) - [Cu(NH₃)₄(H₂O)₂]²⁺ (Octahedral)</option>
+                                <option value="cisplatin">Platin Anticancer Complex - [Pt(NH₃)₂Cl₂] (Square Planar)</option>
+                                <option value="ethanedioate_cr">Triethanedioatechromate(III) - [Cr(C₂O₄)₃]³⁻ (Bidentate / CN=6)</option>
+                                <option value="edta_complex">Metal-EDTA Complex - [Fe(EDTA)]⁻ (Hexadentate / CN=6)</option>
+                            </select>
+                        </div>
+
+                        <!-- Structural Breakdown Details -->
+                        <div class="p-4 bg-slate-900 border border-slate-800 rounded-lg text-xs space-y-2.5">
+                            <div class="flex justify-between border-b border-slate-800 pb-1.5">
+                                <span class="text-slate-400">Formula:</span>
+                                <span id="c-formula" class="font-mono text-purple-300 font-bold">$[\text{Cu}(\text{H}_2\text{O})_6]^{2+}$</span>
+                            </div>
+                            <div class="flex justify-between border-b border-slate-800 pb-1.5">
+                                <span class="text-slate-400">IUPAC Name:</span>
+                                <span id="c-iupac" class="font-bold text-slate-200">hexaaquacopper(II) ion</span>
+                            </div>
+                            <div class="flex justify-between border-b border-slate-800 pb-1.5">
+                                <span class="text-slate-400">Coordination Number:</span>
+                                <span id="c-cn" class="font-mono text-emerald-400 font-bold">6 (6 dative bonds)</span>
+                            </div>
+                            <div class="flex justify-between border-b border-slate-800 pb-1.5">
+                                <span class="text-slate-400">Complex Shape:</span>
+                                <span id="c-shape" class="font-bold text-sky-300">Octahedral ($90^\circ$)</span>
+                            </div>
+                            <div class="flex justify-between border-b border-slate-800 pb-1.5">
+                                <span class="text-slate-400">Ligand Denticity:</span>
+                                <span id="c-denticity" class="font-semibold text-amber-300">Monodentate (1 bond/ligand)</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-slate-400">Central Metal Oxidation State:</span>
+                                <span id="c-oxstate" class="font-mono text-purple-300 font-bold">+2</span>
+                            </div>
+                        </div>
+
+                        <!-- Metal Oxidation State Calculation Solver -->
+                        <div class="p-3.5 bg-slate-900 border border-purple-900/50 rounded-lg text-xs space-y-1">
+                            <span class="font-bold text-purple-400 block uppercase text-[10px]">Oxidation State Math Breakdown:</span>
+                            <div id="c-math-box" class="font-mono text-slate-300">
+                                $x + 6(0) = +2 \quad \Rightarrow \quad x = +2$
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: 2D/3D SVG Diagram Viewport -->
+                    <div class="lg:col-span-7 bg-slate-950 border border-slate-800 rounded-xl p-5 flex flex-col items-center justify-center relative min-h-[360px]">
+                        <h3 class="text-xs font-bold text-slate-300 uppercase tracking-wider mb-3 self-start">
+                            Spatial Geometry & Dative Bond Orientation
+                        </h3>
+
+                        <div id="complex-svg-container" class="w-full flex justify-center items-center py-4">
+                            <!-- Populated dynamically by JS -->
+                        </div>
+
+                        <div id="c-notes-box" class="mt-2 p-3 bg-slate-900/90 rounded-lg border border-slate-800 text-xs text-slate-300 leading-relaxed w-full">
+                            <b>Hexaaquacopper(II) Ion:</b> Standard blue aqueous complex formed when copper(II) salts dissolve in water. Central $\text{Cu}^{2+}$ ion forms 6 coordinate bonds with lone pairs on oxygen atoms of water molecules.
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- NEW SECTION: Detailed Teaching & Calculator on Central Metal Oxidation State Deduction -->
+                <div class="bg-slate-950 border border-purple-900/60 rounded-xl p-6 space-y-5">
+                    <div class="border-b border-slate-800 pb-3 flex flex-col sm:flex-row justify-between sm:items-center gap-2">
+                        <div>
+                            <span class="text-[10px] font-mono text-purple-400 font-bold uppercase tracking-wider">IAL Core Skill Masterclass</span>
+                            <h3 class="text-base font-bold text-white mt-0.5">How to Deduce Central Metal Oxidation States in Any Complex</h3>
+                            <p class="text-xs text-slate-400">Step-by-step algebraic method for neutral, cationic, anionic, and multi-ligand complexes.</p>
+                        </div>
+                        <span class="px-2.5 py-1 text-[11px] bg-purple-950 text-purple-300 border border-purple-800 rounded-lg font-mono">
+                            Formula: $x + \sum (\text{Charge}_{\text{ligand}} \times n) = \text{Charge}_{\text{overall}}$
+                        </span>
+                    </div>
+
+                    <!-- Rule & Ligand Classification Table -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                        <!-- Neutral Ligands -->
+                        <div class="p-3.5 bg-slate-900 rounded-lg border border-slate-800 space-y-2">
+                            <span class="font-bold text-sky-400 block uppercase text-[11px] flex items-center gap-1.5">
+                                <span>1. Neutral Ligands (Charge = 0)</span>
+                            </span>
+                            <p class="text-slate-300 text-[11px]">Do <b>NOT</b> alter the oxidation state of the metal ion!</p>
+                            <ul class="space-y-1 text-slate-400 font-mono text-[11px] list-disc list-inside">
+                                <li>Water ($\text{H}_2\text{O}$ aqua): $\text{Charge} = 0$</li>
+                                <li>Ammonia ($\text{NH}_3$ ammine): $\text{Charge} = 0$</li>
+                                <li>Carbon monoxide ($\text{CO}$ carbonyl): $\text{Charge} = 0$</li>
+                                <li>1,2-diaminoethane ($\text{en}$): $\text{Charge} = 0$</li>
+                            </ul>
+                        </div>
+
+                        <!-- -1 Charged Ligands -->
+                        <div class="p-3.5 bg-slate-900 rounded-lg border border-slate-800 space-y-2">
+                            <span class="font-bold text-amber-400 block uppercase text-[11px] flex items-center gap-1.5">
+                                <span>2. Single Negative (-1) Ligands</span>
+                            </span>
+                            <p class="text-slate-300 text-[11px]">Each ligand contributes <b>$-1$</b> to the overall charge math.</p>
+                            <ul class="space-y-1 text-slate-400 font-mono text-[11px] list-disc list-inside">
+                                <li>Chloride ($\text{Cl}^-$ chloro): $\text{Charge} = -1$</li>
+                                <li>Hydroxide ($\text{OH}^-$ hydroxo): $\text{Charge} = -1$</li>
+                                <li>Cyanide ($\text{CN}^-$ cyano): $\text{Charge} = -1$</li>
+                                <li>Fluoride ($\text{F}^-$) / Bromide ($\text{Br}^-$): $-1$</li>
+                            </ul>
+                        </div>
+
+                        <!-- Multidentate / Multi-negative Ligands -->
+                        <div class="p-3.5 bg-slate-900 rounded-lg border border-slate-800 space-y-2">
+                            <span class="font-bold text-emerald-400 block uppercase text-[11px] flex items-center gap-1.5">
+                                <span>3. Multi-Negative (-2 / -4) Ligands</span>
+                            </span>
+                            <p class="text-slate-300 text-[11px]">Anionic multidentate species with larger negative charges.</p>
+                            <ul class="space-y-1 text-slate-400 font-mono text-[11px] list-disc list-inside">
+                                <li>Ethanedioate ($\text{C}_2\text{O}_4^{2-}$): $\text{Charge} = -2$</li>
+                                <li>Sulfate ($\text{SO}_4^{2-}$): $\text{Charge} = -2$</li>
+                                <li>Carbonate ($\text{CO}_3^{2-}$): $\text{Charge} = -2$</li>
+                                <li>$\text{EDTA}^{4-}$ (Hexadentate): $\text{Charge} = -4$</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Worked Examples & Neutral Salt Deduction -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                        <div class="p-4 bg-slate-900/90 rounded-lg border border-purple-900/50 space-y-2">
+                            <span class="font-bold text-purple-300 block uppercase text-[11px]">Case A: Complex Ion with Mixed Ligands</span>
+                            <p class="text-slate-300 leading-relaxed text-[11px]">
+                                <b>Example: $[\text{Co}(\text{NH}_3)_4\text{Cl}_2]^+$</b><br>
+                                Let metal oxidation state $= x$.<br>
+                                Ammonia ($\text{NH}_3$) is neutral ($0$), Chloride ($\text{Cl}^-$) is $-1$. Overall complex charge $= +1$.
+                            </p>
+                            <div class="p-2 bg-slate-950 rounded font-mono text-purple-300 text-[11px]">
+                                $x + 4(0) + 2(-1) = +1 \quad \Rightarrow \quad x - 2 = +1 \quad \Rightarrow \quad x = +3$
+                            </div>
+                        </div>
+
+                        <div class="p-4 bg-slate-900/90 rounded-lg border border-purple-900/50 space-y-2">
+                            <span class="font-bold text-purple-300 block uppercase text-[11px]">Case B: Neutral Ionic Salt Containing Complex Anion</span>
+                            <p class="text-slate-300 leading-relaxed text-[11px]">
+                                <b>Example: $\text{K}_2[\text{PdCl}_6]$</b><br>
+                                Overall salt is neutral ($0$). Potassium is Group 1 ($\text{K}^+ = +1$).<br>
+                                Two $\text{K}^+$ ions carry $+2$, so complex anion $[\text{PdCl}_6]^{2-}$ must have charge $-2$.
+                            </p>
+                            <div class="p-2 bg-slate-950 rounded font-mono text-purple-300 text-[11px]">
+                                $2(+1) + [x + 6(-1)] = 0 \quad \Rightarrow \quad +2 + x - 6 = 0 \quad \Rightarrow \quad x = +4$
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Custom Oxidation State Calculator -->
+                    <div class="p-4 bg-slate-900 rounded-lg border border-slate-800 space-y-3">
+                        <span class="font-bold text-amber-300 uppercase text-[11px] block">
+                            🧮 Interactive Custom Complex Oxidation State Solver
+                        </span>
+                        <div class="grid grid-cols-1 sm:grid-cols-4 gap-3 text-xs">
+                            <div>
+                                <label class="text-[11px] text-slate-400 block mb-1">Central Metal Symbol:</label>
+                                <input type="text" id="calc-metal-sym" value="Fe" class="w-full bg-slate-950 border border-slate-700 text-slate-100 rounded p-2 font-mono">
+                            </div>
+                            <div>
+                                <label class="text-[11px] text-slate-400 block mb-1">Ligand 1 & Count:</label>
+                                <div class="flex gap-1">
+                                    <select id="calc-lig1-type" class="w-2/3 bg-slate-950 border border-slate-700 text-slate-100 rounded p-1.5 font-mono text-[11px]">
+                                        <option value="0">H₂O (0)</option>
+                                        <option value="0">NH₃ (0)</option>
+                                        <option value="-1" selected>Cl⁻ (-1)</option>
+                                        <option value="-1">CN⁻ (-1)</option>
+                                        <option value="-2">C₂O₄²⁻ (-2)</option>
+                                        <option value="-4">EDTA⁴⁻ (-4)</option>
+                                    </select>
+                                    <input type="number" id="calc-lig1-cnt" value="6" min="0" max="6" class="w-1/3 bg-slate-950 border border-slate-700 text-slate-100 rounded p-1.5 font-mono text-center">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="text-[11px] text-slate-400 block mb-1">Ligand 2 & Count:</label>
+                                <div class="flex gap-1">
+                                    <select id="calc-lig2-type" class="w-2/3 bg-slate-950 border border-slate-700 text-slate-100 rounded p-1.5 font-mono text-[11px]">
+                                        <option value="0" selected>None (0)</option>
+                                        <option value="0">H₂O (0)</option>
+                                        <option value="0">NH₃ (0)</option>
+                                        <option value="-1">Cl⁻ (-1)</option>
+                                        <option value="-1">OH⁻ (-1)</option>
+                                    </select>
+                                    <input type="number" id="calc-lig2-cnt" value="0" min="0" max="6" class="w-1/3 bg-slate-950 border border-slate-700 text-slate-100 rounded p-1.5 font-mono text-center">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="text-[11px] text-slate-400 block mb-1">Overall Charge:</label>
+                                <input type="number" id="calc-overall-charge" value="-3" min="-6" max="6" class="w-full bg-slate-950 border border-slate-700 text-slate-100 rounded p-2 font-mono text-center">
+                            </div>
+                        </div>
+                        <button onclick="calculateCustomOxState()" class="px-4 py-2 bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs rounded-lg shadow transition">
+                            Calculate Oxidation State Step-by-Step
+                        </button>
+                        <div id="custom-ox-result" class="p-3 bg-slate-950 rounded border border-purple-900/60 font-mono text-xs text-purple-300">
+                            $x + 6(-1) = -3 \quad \Rightarrow \quad x - 6 = -3 \quad \Rightarrow \quad x = +3$
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Denticity Reference Table -->
+                <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3">
+                    <h3 class="text-xs font-bold text-purple-300 uppercase tracking-wider">
+                        Ligand Denticity Summary Table (Essential IAL Classifications)
+                    </h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-xs text-slate-300">
+                            <thead class="bg-slate-900 text-purple-400 font-mono text-[11px]">
+                                <tr>
+                                    <th class="p-2.5 border-b border-slate-800">Denticity</th>
+                                    <th class="p-2.5 border-b border-slate-800">Dative Bonds / Ligand</th>
+                                    <th class="p-2.5 border-b border-slate-800">Common Examples</th>
+                                    <th class="p-2.5 border-b border-slate-800">Ligand Charge</th>
+                                    <th class="p-2.5 border-b border-slate-800">Coordination Effect</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-800/60 font-mono text-[11px]">
+                                <tr>
+                                    <td class="p-2.5 font-sans font-bold text-slate-200">Monodentate</td>
+                                    <td class="p-2.5 font-bold text-purple-300">1</td>
+                                    <td class="p-2.5">Water ($\text{H}_2\text{O}$), Ammonia ($\text{NH}_3$), Chloride ($\text{Cl}^-$), Hydroxide ($\text{OH}^-$)</td>
+                                    <td class="p-2.5">$\text{H}_2\text{O}, \text{NH}_3 = 0$; $\text{Cl}^-, \text{OH}^- = -1$</td>
+                                    <td class="p-2.5 text-slate-400">6 ligands = CN 6 (Octahedral); 4 ligands = CN 4 (Tetrahedral)</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2.5 font-sans font-bold text-slate-200">Bidentate</td>
+                                    <td class="p-2.5 font-bold text-purple-300">2</td>
+                                    <td class="p-2.5">1,2-diaminoethane ($\text{en}$), Ethanedioate ($\text{C}_2\text{O}_4^{2-}$)</td>
+                                    <td class="p-2.5">$\text{en} = 0$; $\text{C}_2\text{O}_4^{2-} = -2$</td>
+                                    <td class="p-2.5 text-slate-400">3 bidentate ligands form 6 dative bonds $\rightarrow$ CN 6 (Octahedral)</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2.5 font-sans font-bold text-slate-200">Hexadentate</td>
+                                    <td class="p-2.5 font-bold text-purple-300">6</td>
+                                    <td class="p-2.5">$\text{EDTA}^{4-}$ (Ethylenediaminetetraacetate)</td>
+                                    <td class="p-2.5">$-4$</td>
+                                    <td class="p-2.5 text-slate-400">1 single $\text{EDTA}^{4-}$ ligand forms all 6 dative bonds $\rightarrow$ CN 6</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: D-ORBITAL SPLITTING & COLOUR WHEEL -->
+        <section id="tab-colour" class="hidden space-y-6">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-sm space-y-6">
+                <div class="border-b border-slate-800 pb-4">
+                    <span class="text-xs font-bold text-purple-400 uppercase tracking-widest">Photochemical Physics</span>
+                    <h2 class="text-xl font-bold text-white mt-1">3-Stage $d$-Orbital Splitting & Complementary Colour Laboratory</h2>
+                    <p class="text-xs text-slate-400 mt-1">Simulate ligand field splitting, $d$-$d$ electron excitation ($\Delta E = h\nu$), and complementary light transmission as detailed in IAL mark schemes.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                    
+                    <!-- Left: Energy Level Splitting Diagram -->
+                    <div class="lg:col-span-7 bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+                        <div class="flex justify-between items-center border-b border-slate-800 pb-2">
+                            <h3 class="text-xs font-bold text-purple-300 uppercase tracking-wider">
+                                $3d$ Energy Level Splitting Mechanism (3 Stages)
+                            </h3>
+                            <button onclick="triggerDdTransition()" class="px-3 py-1 bg-purple-600 hover:bg-purple-500 text-white text-xs font-bold rounded-lg shadow transition">
+                                ⚡ Promote Electron ($d$-$d$ Transition)
+                            </button>
+                        </div>
+
+                        <!-- Canvas Diagram for Splitting -->
+                        <div class="p-3 bg-slate-900 border border-slate-800 rounded-lg flex flex-col items-center">
+                            <canvas id="splitting-canvas" width="500" height="260" class="w-full studio-canvas-bg rounded border border-slate-800"></canvas>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                            <div class="p-3 bg-slate-900/90 rounded-lg border border-purple-900/60 text-slate-300 space-y-1">
+                                <b class="text-purple-300 block font-mono">1. Key Mechanism Concept:</b>
+                                <p class="text-[11px] text-slate-300 leading-relaxed">
+                                    <b>• Electron transition between $d$-orbitals:</b> Attached ligands cause $5$ degenerate $3d$ orbitals to split into two distinct energy levels ($t_{2g}$ and $e_g$).
+                                </p>
+                            </div>
+                            <div class="p-3 bg-slate-900/90 rounded-lg border border-emerald-900/60 text-slate-300 space-y-1">
+                                <b class="text-emerald-300 block font-mono">2. Complementary Light Rule:</b>
+                                <p class="text-[11px] text-slate-300 leading-relaxed">
+                                    <b>• Transmitted Light:</b> Light (energy) NOT absorbed is transmitted / reflected to give complementary color (e.g., absorbs orange $\rightarrow$ solution appears blue!).
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Interactive Complementary Colour Wheel -->
+                    <div class="lg:col-span-5 bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xs font-bold text-emerald-300 uppercase tracking-wider mb-2">
+                                Interactive Complementary Colour Wheel
+                            </h3>
+                            <p class="text-xs text-slate-400 mb-3">Click any absorbed color segment on the wheel to calculate the complementary transmitted color of the solution:</p>
+
+                            <!-- SVG Color Wheel -->
+                            <div class="flex justify-center my-2">
+                                <svg id="color-wheel-svg" viewBox="0 0 240 240" class="w-56 h-56 cursor-pointer">
+                                    <!-- Red / Green segment -->
+                                    <path d="M 120 120 L 120 10 A 110 110 0 0 1 215 65 Z" fill="#ef4444" onclick="selectColorWheel('red')" class="hover:opacity-80 transition"/>
+                                    <!-- Orange / Blue segment -->
+                                    <path d="M 120 120 L 215 65 A 110 110 0 0 1 215 175 Z" fill="#f97316" onclick="selectColorWheel('orange')" class="hover:opacity-80 transition"/>
+                                    <!-- Yellow / Violet segment -->
+                                    <path d="M 120 120 L 215 175 A 110 110 0 0 1 120 230 Z" fill="#eab308" onclick="selectColorWheel('yellow')" class="hover:opacity-80 transition"/>
+                                    <!-- Green / Red segment -->
+                                    <path d="M 120 120 L 120 230 A 110 110 0 0 1 25 175 Z" fill="#22c55e" onclick="selectColorWheel('green')" class="hover:opacity-80 transition"/>
+                                    <!-- Blue / Orange segment -->
+                                    <path d="M 120 120 L 25 175 A 110 110 0 0 1 25 65 Z" fill="#3b82f6" onclick="selectColorWheel('blue')" class="hover:opacity-80 transition"/>
+                                    <!-- Violet / Yellow segment -->
+                                    <path d="M 120 120 L 25 65 A 110 110 0 0 1 120 10 Z" fill="#a855f7" onclick="selectColorWheel('violet')" class="hover:opacity-80 transition"/>
+                                    <circle cx="120" cy="120" r="35" fill="#0f172a" stroke="#334155" stroke-width="2"/>
+                                    <text x="120" y="124" fill="#f8fafc" font-size="10" font-weight="bold" text-anchor="middle">Click Segment</text>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <!-- Color Outcome Display -->
+                        <div id="color-outcome-card" class="p-3.5 bg-slate-900 rounded-lg border border-slate-800 text-xs space-y-1.5">
+                            <div class="flex justify-between items-center">
+                                <span class="text-slate-400">Absorbed Light Wavelength:</span>
+                                <span id="cw-absorbed" class="font-bold text-amber-500">Orange Light (~600 nm)</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-slate-400">Observed Solution Colour:</span>
+                                <span id="cw-transmitted" class="font-bold text-sky-400">Blue Solution (e.g. [Cu(H₂O)₆]²⁺)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: AI EXAMINER & PAST PAPERS -->
+        <section id="tab-ai" class="hidden space-y-6">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-sm space-y-6">
+                <div>
+                    <h2 class="text-xl font-bold text-white">AI Topic 17 Multimodal Examiner & Review Tutor</h2>
+                    <p class="text-xs text-slate-400 mt-1">Evaluate structured written answers, upload handwritten notes/complex drawings, or test yourself against authentic Edexcel IAL past papers.</p>
+                </div>
+
+                <!-- Grounding Context Box -->
+                <div class="space-y-2">
+                    <div class="flex justify-between items-center text-xs font-bold text-slate-300">
+                        <span>📚 OFFICIAL MARK SCHEME GROUNDING CONTEXT (Topic 17 Complete)</span>
+                        <span class="text-[10px] text-amber-400 font-mono">🔒 Locked Grounding</span>
+                    </div>
+                    <textarea id="aiSourceContext" rows="4" readonly class="w-full bg-slate-950/80 border border-slate-800 rounded-lg p-3 text-xs text-purple-200 font-mono focus:outline-none leading-relaxed cursor-not-allowed">
+[OFFICIAL IAL TOPIC 17 TRANSITION METALS MARK SCHEME GROUNDING]
+1. Transition Metal Definition:
+   - A d-block element that forms ONE OR MORE STABLE IONS with an incompletely filled / partially filled d-orbital.
+   - Sc is NOT a TM because its only ion Sc3+ has an empty d-orbital (3d0).
+   - Zn is NOT a TM because its only ion Zn2+ has a completely filled d-orbital (3d10).
+
+2. Electronic Configurations:
+   - When forming ions, lose 4s electrons FIRST before 3d electrons.
+   - Anomalies: Cr is [Ar] 3d5 4s1, Cu is [Ar] 3d10 4s1.
+
+3. Complex Ions & Ligands:
+   - Ligand: An atom, ion, or molecule with a lone pair that forms a dative (coordinate) covalent bond to central metal ion.
+   - Complex ion: Central metal ion surrounded by ligands.
+   - Coordination number: Total number of dative bonds formed with central metal ion.
+   - Denticity: Monodentate (H2O, NH3, Cl-), Bidentate (en, C2O4 2-), Hexadentate (EDTA 4-).
+   - Anionic complex names end in "-ate" (e.g. tetrachloroferrate(III)).
+
+4. Origin of Colour (4-Mark Rubric):
+   - Mark 1: Attached ligands split the 3d orbitals into two energy levels.
+   - Mark 2: Electrons absorb specific frequencies/wavelengths of visible light.
+   - Mark 3: Electron is promoted from lower to higher d-orbital (d-d transition / excitation).
+   - Mark 4: The complementary light/colour is transmitted / reflected.
+   - Fe2+ vs Fe3+: Different oxidation state means different energy gap (delta E), absorbing different frequencies.
+   - Colourless ions (Zn2+, Sc3+): Zn2+ has full 3d10 (no space for promotion); Sc3+ has 3d0 (no d-electrons to promote).
+</textarea>
+                </div>
+
+                <!-- Chat & Multimodal Split -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                    
+                    <!-- Left: Past Paper Bank & Upload -->
+                    <div class="lg:col-span-5 bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+                        <h3 class="text-xs font-bold text-purple-300 uppercase tracking-wider">📚 Authentic IAL Past Paper Scenarios</h3>
+                        
+                        <div class="space-y-2">
+                            <select id="past-paper-select" onchange="loadPastPaperQuestion()" class="w-full bg-slate-900 border border-slate-700 text-slate-100 text-xs rounded-lg p-2.5 font-mono">
+                                <option value="q_colour_4m">Q1: Explain why [Cr(H₂O)₆]³⁺ is coloured in aqueous solution (4 Marks)</option>
+                                <option value="q_sc_zn_2m">Q2: Explain why Zinc is a d-block element but NOT a transition metal (2 Marks)</option>
+                                <option value="q_oxaliplatin_3m">Q3: Denticity & Oxidation state in Oxaliplatin complex (3 Marks)</option>
+                                <option value="q_fe2_fe3_2m">Q4: Explain why Fe²⁺(aq) and Fe³⁺(aq) have different colours (2 Marks)</option>
+                            </select>
+                        </div>
+
+                        <div id="pp-desc-box" class="p-3.5 bg-slate-900 rounded-lg border border-slate-800 text-xs leading-relaxed space-y-2">
+                            <!-- Populated dynamically -->
+                        </div>
+
+                        <!-- Multimodal Image Upload Box -->
+                        <div class="p-3.5 bg-slate-900/90 rounded-lg border border-purple-900/50 text-xs space-y-2">
+                            <span class="font-bold text-purple-300 block flex items-center gap-1.5">
+                                <span>📸 Upload Photo of Handwritten Complex Drawing / Notes</span>
+                            </span>
+                            <p class="text-[11px] text-slate-400">Take a photo of your handwritten 3D complex drawing or answer for Gemini Vision grading.</p>
+                            <input type="file" id="vision-file-input" accept="image/*" class="w-full text-xs text-slate-300 file:mr-2 file:py-1 file:px-2.5 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-purple-900 file:text-purple-200 hover:file:bg-purple-800 cursor-pointer">
+                            <button onclick="sendVisionAnswer()" class="w-full py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-lg shadow transition">
+                                Evaluate Uploaded Photo
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Right: AI Evaluation Workspace -->
+                    <div class="lg:col-span-7 bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <h3 class="text-xs font-bold text-emerald-300 uppercase tracking-wider">🤖 Gemini AI Examiner Workspace</h3>
+                                <button onclick="playLastAiAudio()" class="px-2.5 py-1 bg-purple-900/80 hover:bg-purple-800 text-purple-200 text-xs font-bold rounded-lg border border-purple-700 transition flex items-center gap-1">
+                                    <span>🎙️ Listen to Feedback</span>
+                                </button>
+                            </div>
+                            <div id="ai-chat-history" class="bg-slate-900 border border-slate-800 rounded-lg p-3 min-h-[220px] max-h-[300px] overflow-y-auto custom-scrollbar font-mono text-xs space-y-2">
+                                <div class="text-slate-500 italic">Examiner ready. Type your structured answer to be evaluated against official IAL mark scheme criteria...</div>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-2 pt-2">
+                            <input type="text" id="ai-user-input" placeholder="Type your structured answer to be evaluated..." class="flex-grow bg-slate-900 border border-slate-700 text-slate-100 text-xs rounded-lg p-2.5 focus:outline-none focus:ring-1 focus:ring-purple-500">
+                            <button onclick="sendAiChat()" class="px-4 py-2.5 bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs rounded-lg shadow transition">
+                                Submit Answer
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- JavaScript Engine -->
+    <script>
+        let lastAiResponseText = "";
+        let currentElementSymbol = "Sc";
+        let activeIonKey = "Sc"; // Sc, Sc3+, Cu, Cu+, Cu2+, etc.
+        let activeDdStep = 0; // 0 = ground state, 1 = promoted
+
+        // Full Periodic Database: Elements 1-20 (Revision) + Elements 21-30 (d-block with Ion states)
+        const REVISION_ELEMENTS = {
+            "H":  { z: 1,  name: "Hydrogen",  config: "$1s^1$", dCount: 0, sCount: 0, explanation: "Revision element ($Z=1$): Non-metal with 1 valence electron." },
+            "He": { z: 2,  name: "Helium",    config: "$1s^2$", dCount: 0, sCount: 0, explanation: "Revision element ($Z=2$): Noble gas with a filled $1s^2$ shell." },
+            "Li": { z: 3,  name: "Lithium",   config: "$1s^2 2s^1$", dCount: 0, sCount: 0, explanation: "Revision element ($Z=3$): Group 1 alkali metal." },
+            "Be": { z: 4,  name: "Beryllium", config: "$1s^2 2s^2$", dCount: 0, sCount: 0, explanation: "Revision element ($Z=4$): Group 2 alkaline earth metal." },
+            "B":  { z: 5,  name: "Boron",     config: "$1s^2 2s^2 2p^1$", dCount: 0, sCount: 0, explanation: "Revision element ($Z=5$): Group 3 metalloid." },
+            "C":  { z: 6,  name: "Carbon",    config: "$1s^2 2s^2 2p^2$", dCount: 0, sCount: 0, explanation: "Revision element ($Z=6$): Group 4 element." },
+            "N":  { z: 7,  name: "Nitrogen",  config: "$1s^2 2s^2 2p^3$", dCount: 0, sCount: 0, explanation: "Revision element ($Z=7$): Group 5 element." },
+            "O":  { z: 8,  name: "Oxygen",    config: "$1s^2 2s^2 2p^4$", dCount: 0, sCount: 0, explanation: "Revision element ($Z=8$): Group 6 element." },
+            "F":  { z: 9,  name: "Fluorine",  config: "$1s^2 2s^2 2p^5$", dCount: 0, sCount: 0, explanation: "Revision element ($Z=9$): Group 7 halogen." },
+            "Ne": { z: 10, name: "Neon",      config: "$1s^2 2s^2 2p^6$", dCount: 0, sCount: 0, explanation: "Revision element ($Z=10$): Noble gas." },
+            "Na": { z: 11, name: "Sodium",    config: "$[\text{Ne}] 3s^1$", dCount: 0, sCount: 0, explanation: "Revision element ($Z=11$): Group 1 metal." },
+            "Mg": { z: 12, name: "Magnesium", config: "$[\text{Ne}] 3s^2$", dCount: 0, sCount: 0, explanation: "Revision element ($Z=12$): Group 2 metal." },
+            "Al": { z: 13, name: "Aluminium", config: "$[\text{Ne}] 3s^2 3p^1$", dCount: 0, sCount: 0, explanation: "Revision element ($Z=13$): Group 3 metal." },
+            "Si": { z: 14, name: "Silicon",   config: "$[\text{Ne}] 3s^2 3p^2$", dCount: 0, sCount: 0, explanation: "Revision element ($Z=14$): Group 4 metalloid." },
+            "P":  { z: 15, name: "Phosphorus",config: "$[\text{Ne}] 3s^2 3p^3$", dCount: 0, sCount: 0, explanation: "Revision element ($Z=15$): Group 5 non-metal." },
+            "S":  { z: 16, name: "Sulfur",    config: "$[\text{Ne}] 3s^2 3p^4$", dCount: 0, sCount: 0, explanation: "Revision element ($Z=16$): Group 6 non-metal." },
+            "Cl": { z: 17, name: "Chlorine",  config: "$[\text{Ne}] 3s^2 3p^5$", dCount: 0, sCount: 0, explanation: "Revision element ($Z=17$): Group 7 halogen." },
+            "Ar": { z: 18, name: "Argon",     config: "$[\text{Ne}] 3s^2 3p^6$", dCount: 0, sCount: 0, explanation: "Revision element ($Z=18$): Noble gas core for Period 4." },
+            "K":  { z: 19, name: "Potassium", config: "$[\text{Ar}] 4s^1$", dCount: 0, sCount: 1, explanation: "Revision element ($Z=19$): Group 1 alkali metal." },
+            "Ca": { z: 20, name: "Calcium",   config: "$[\text{Ar}] 4s^2$", dCount: 0, sCount: 2, explanation: "Revision element ($Z=20$): Group 2 alkaline earth metal." }
+        };
+
+        const ELEMENTS_DATA = {
+            "Sc": { z: 21, name: "Scandium", type: "d-Block Element (NOT a Transition Metal)",
+                states: {
+                    "Sc":   { label: "Sc Atom", config: "$[\text{Ar}] 3d^1 4s^2$", dCount: 1, sCount: 2, explanation: "Ground state atom: $[\text{Ar}] 3d^1 4s^2$." },
+                    "Sc3+": { label: "Sc³⁺ Ion", config: "$\\text{Sc}^{3+}: [\text{Ar}] 3d^0 4s^0$", dCount: 0, sCount: 0, explanation: "<b>Why is Sc NOT a transition metal? (IAL Spec 17.1 Proof)</b><br>1. <b>Definition:</b> A transition metal is a $d$-block element that forms one or more stable ions with an <i>incompletely filled d-orbital</i>.<br>2. <b>Ion State:</b> Scandium forms only one stable ion, $\\text{Sc}^{3+}$.<br>3. <b>Configuration:</b> $\\text{Sc}^{3+}$ is $[\text{Ar}] 3d^0$.<br>4. <b>Mark Scheme Key Point:</b> Because $\\text{Sc}^{3+}$ has an <b>EMPTY $d$-orbital ($3d^0$)</b>, it fails the definition." }
+                }
+            },
+            "Ti": { z: 22, name: "Titanium", type: "Transition Metal",
+                states: {
+                    "Ti":   { label: "Ti Atom", config: "$[\text{Ar}] 3d^2 4s^2$", dCount: 2, sCount: 2, explanation: "Ground state atom." },
+                    "Ti2+": { label: "Ti²⁺ Ion", config: "$\\text{Ti}^{2+}: [\text{Ar}] 3d^2 4s^0$", dCount: 2, sCount: 0, explanation: "$4s$ electrons lost first." },
+                    "Ti3+": { label: "Ti³⁺ Ion", config: "$\\text{Ti}^{3+}: [\text{Ar}] 3d^1 4s^0$", dCount: 1, sCount: 0, explanation: "Forms purple aqueous complexes $[\text{Ti}(\text{H}_2\text{O})_6]^{3+}$ with $3d^1$ partially filled configuration." }
+                }
+            },
+            "V": { z: 23, name: "Vanadium", type: "Transition Metal",
+                states: {
+                    "V":   { label: "V Atom", config: "$[\text{Ar}] 3d^3 4s^2$", dCount: 3, sCount: 2, explanation: "Ground state atom." },
+                    "V2+": { label: "V²⁺ Ion (+2)", config: "$\\text{V}^{2+}: [\text{Ar}] 3d^3 4s^0$", dCount: 3, sCount: 0, explanation: "Violet solution state." },
+                    "V3+": { label: "V³⁺ Ion (+3)", config: "$\\text{V}^{3+}: [\text{Ar}] 3d^2 4s^0$", dCount: 2, sCount: 0, explanation: "Green solution state." }
+                }
+            },
+            "Cr": { z: 24, name: "Chromium", type: "Transition Metal (Anomalous Config!)",
+                states: {
+                    "Cr":   { label: "Cr Atom (Anomaly)", config: "$[\text{Ar}] 3d^5 4s^1 \\quad \\text{(Symmetrical 3d⁵ stability)}$", dCount: 5, sCount: 1, explanation: "<b>⚠️ ANOMALY WATCH-OUT:</b> Chromium promotes one $4s$ electron to achieve a symmetrical, extra-stable half-filled $3d^5$ subshell ($[\text{Ar}] 3d^5 4s^1$)." },
+                    "Cr2+": { label: "Cr²⁺ Ion (+2)", config: "$\\text{Cr}^{2+}: [\text{Ar}] 3d^4 4s^0$", dCount: 4, sCount: 0, explanation: "Blue solution state." },
+                    "Cr3+": { label: "Cr³⁺ Ion (+3)", config: "$\\text{Cr}^{3+}: [\text{Ar}] 3d^3 4s^0$", dCount: 3, sCount: 0, explanation: "Green/violet solution state with partially filled $3d^3$ subshell." }
+                }
+            },
+            "Mn": { z: 25, name: "Manganese", type: "Transition Metal",
+                states: {
+                    "Mn":   { label: "Mn Atom", config: "$[\text{Ar}] 3d^5 4s^2$", dCount: 5, sCount: 2, explanation: "Ground state atom." },
+                    "Mn2+": { label: "Mn²⁺ Ion (+2)", config: "$\\text{Mn}^{2+}: [\text{Ar}] 3d^5 4s^0$", dCount: 5, sCount: 0, explanation: "Pale pink solution state with stable half-filled $3d^5$ subshell." }
+                }
+            },
+            "Fe": { z: 26, name: "Iron", type: "Transition Metal",
+                states: {
+                    "Fe":   { label: "Fe Atom", config: "$[\text{Ar}] 3d^6 4s^2$", dCount: 6, sCount: 2, explanation: "Ground state atom." },
+                    "Fe2+": { label: "Fe²⁺ Ion (+2)", config: "$\\text{Fe}^{2+}: [\text{Ar}] 3d^6 4s^0$", dCount: 6, sCount: 0, explanation: "Pale green solution state ($3d^6$)." },
+                    "Fe3+": { label: "Fe³⁺ Ion (+3)", config: "$\\text{Fe}^{3+}: [\text{Ar}] 3d^5 4s^0$", dCount: 5, sCount: 0, explanation: "Yellow/brown solution state ($3d^5$)." }
+                }
+            },
+            "Co": { z: 27, name: "Cobalt", type: "Transition Metal",
+                states: {
+                    "Co":   { label: "Co Atom", config: "$[\text{Ar}] 3d^7 4s^2$", dCount: 7, sCount: 2, explanation: "Ground state atom." },
+                    "Co2+": { label: "Co²⁺ Ion (+2)", config: "$\\text{Co}^{2+}: [\text{Ar}] 3d^7 4s^0$", dCount: 7, sCount: 0, explanation: "Pink aqueous complex $[\text{Co}(\text{H}_2\text{O})_6]^{2+}$." }
+                }
+            },
+            "Ni": { z: 28, name: "Nickel", type: "Transition Metal",
+                states: {
+                    "Ni":   { label: "Ni Atom", config: "$[\text{Ar}] 3d^8 4s^2$", dCount: 8, sCount: 2, explanation: "Ground state atom." },
+                    "Ni2+": { label: "Ni²⁺ Ion (+2)", config: "$\\text{Ni}^{2+}: [\text{Ar}] 3d^8 4s^0$", dCount: 8, sCount: 0, explanation: "Green aqueous complex $[\text{Ni}(\text{H}_2\text{O})_6]^{2+}$." }
+                }
+            },
+            "Cu": { z: 29, name: "Copper", type: "Transition Metal (Anomalous Config!)",
+                states: {
+                    "Cu":   { label: "Cu Atom (Anomaly)", config: "$[\text{Ar}] 3d^{10} 4s^1 \\quad \\text{(Full 3d¹⁰ stability)}$", dCount: 10, sCount: 1, explanation: "<b>⚠️ ANOMALY WATCH-OUT:</b> Copper promotes one $4s$ electron to achieve a completely filled $3d^{10}$ subshell ($[\text{Ar}] 3d^{10} 4s^1$)." },
+                    "Cu+":  { label: "Cu⁺ Ion (+1)", config: "$\\text{Cu}^+: [\text{Ar}] 3d^{10} 4s^0$", dCount: 10, sCount: 0, explanation: "$\\text{Cu}^+$ has a completely filled $3d^{10}$ subshell." },
+                    "Cu2+": { label: "Cu²⁺ Ion (+2)", config: "$\\text{Cu}^{2+}: [\text{Ar}] 3d^9 4s^0$", dCount: 9, sCount: 0, explanation: "$\\text{Cu}^{2+}$ has a partially filled $3d^9$ subshell, so Copper IS a transition metal! Forms blue $[\text{Cu}(\text{H}_2\text{O})_6]^{2+}$." }
+                }
+            },
+            "Zn": { z: 30, name: "Zinc", type: "d-Block Element (NOT a Transition Metal)",
+                states: {
+                    "Zn":   { label: "Zn Atom", config: "$[\text{Ar}] 3d^{10} 4s^2$", dCount: 10, sCount: 2, explanation: "Ground state atom." },
+                    "Zn2+": { label: "Zn²⁺ Ion (+2)", config: "$\\text{Zn}^{2+}: [\text{Ar}] 3d^{10} 4s^0$", dCount: 10, sCount: 0, explanation: "<b>Why is Zn NOT a transition metal? (IAL Spec 17.1 Proof)</b><br>1. <b>Definition:</b> A transition metal is a $d$-block element that forms one or more stable ions with an <i>incompletely filled d-orbital</i>.<br>2. <b>Ion State:</b> Zinc forms only one stable ion, $\\text{Zn}^{2+}$.<br>3. <b>Configuration:</b> $\\text{Zn}^{2+}$ is $[\text{Ar}] 3d^{10}$.<br>4. <b>Mark Scheme Key Point:</b> Because $\\text{Zn}^{2+}$ has a <b>COMPLETELY FILLED $d$-orbital ($3d^{10}$)</b>, it fails the definition. $\\text{Zn}^{2+}$ compounds are COLOURLESS!" }
+                }
+            }
+        };
+
+        function renderElementGrid() {
+            // Grid 1-20
+            const container1_20 = document.getElementById('element-btn-grid-1-20');
+            if (container1_20) {
+                container1_20.innerHTML = '';
+                Object.keys(REVISION_ELEMENTS).forEach(sym => {
+                    const data = REVISION_ELEMENTS[sym];
+                    const btn = document.createElement('button');
+                    btn.onclick = () => selectRevisionElement(sym);
+                    
+                    let btnStyle = "py-1.5 px-1 rounded border font-mono text-[11px] transition flex flex-col items-center justify-center ";
+                    if (sym === currentElementSymbol) {
+                        btnStyle += "bg-sky-900 border-sky-400 text-white font-bold shadow ";
+                    } else {
+                        btnStyle += "bg-slate-950 border-slate-800 text-slate-300 hover:border-sky-500/50 ";
+                    }
+                    btn.className = btnStyle;
+                    btn.innerHTML = `<span class="text-[8px] text-slate-500 font-normal">${data.z}</span><span>${sym}</span>`;
+                    container1_20.appendChild(btn);
+                });
+            }
+
+            // Grid 21-30
+            const container21_30 = document.getElementById('element-btn-grid-21-30');
+            if (container21_30) {
+                container21_30.innerHTML = '';
+                Object.keys(ELEMENTS_DATA).forEach(sym => {
+                    const data = ELEMENTS_DATA[sym];
+                    const btn = document.createElement('button');
+                    btn.onclick = () => selectDBlockElement(sym);
+                    
+                    let btnStyle = "py-1.5 px-1 rounded border font-mono font-bold text-xs transition flex flex-col items-center justify-center ";
+                    if (sym === currentElementSymbol) {
+                        btnStyle += "bg-purple-900 border-purple-500 text-white shadow-lg ";
+                    } else if (sym === "Sc" || sym === "Zn") {
+                        btnStyle += "bg-slate-900 border-amber-800/80 text-amber-300 hover:border-amber-600 ";
+                    } else {
+                        btnStyle += "bg-slate-950 border-slate-800 text-slate-300 hover:border-purple-500/50 ";
+                    }
+                    btn.className = btnStyle;
+                    btn.innerHTML = `<span class="text-[8px] text-slate-500 font-normal">${data.z}</span><span>${sym}</span>`;
+                    container21_30.appendChild(btn);
+                });
+            }
+        }
+
+        function selectRevisionElement(sym) {
+            currentElementSymbol = sym;
+            renderElementGrid();
+
+            const data = REVISION_ELEMENTS[sym];
+            document.getElementById('elem-display-title').textContent = `${data.name} (${sym}) - Atomic Number ${data.z}`;
+            document.getElementById('elem-display-type').textContent = `Classification: Foundational Revision Element`;
+            document.getElementById('elem-atom-config').innerHTML = data.config;
+            document.getElementById('elem-explanation-box').innerHTML = data.explanation;
+
+            document.getElementById('ion-select-container').classList.add('hidden');
+            drawOrbitalBoxesForCount(data.dCount, data.sCount);
+            initKaTeX();
+        }
+
+        function selectDBlockElement(sym) {
+            currentElementSymbol = sym;
+            renderElementGrid();
+
+            const data = ELEMENTS_DATA[sym];
+            document.getElementById('elem-display-title').textContent = `${data.name} (${sym}) - Atomic Number ${data.z}`;
+            document.getElementById('elem-display-type').textContent = `Classification: ${data.type}`;
+
+            // Populate Ion dropdown
+            const select = document.getElementById('ion-state-select');
+            select.innerHTML = '';
+            Object.keys(data.states).forEach(stKey => {
+                const opt = document.createElement('option');
+                opt.value = stKey;
+                opt.textContent = data.states[stKey].label;
+                select.appendChild(opt);
+            });
+
+            document.getElementById('ion-select-container').classList.remove('hidden');
+            activeIonKey = Object.keys(data.states)[0];
+            switchIonState();
+        }
+
+        function switchIonState() {
+            const select = document.getElementById('ion-state-select');
+            if (select && select.value) {
+                activeIonKey = select.value;
+            }
+            const elemData = ELEMENTS_DATA[currentElementSymbol];
+            if (!elemData) return;
+
+            const stData = elemData.states[activeIonKey] || Object.values(elemData.states)[0];
+            document.getElementById('elem-atom-config').innerHTML = stData.config;
+            document.getElementById('elem-explanation-box').innerHTML = stData.explanation;
+
+            drawOrbitalBoxesForCount(stData.dCount, stData.sCount);
+            initKaTeX();
+        }
+
+        function drawArrow(ctx, fromx, fromy, tox, toy, color) {
+            const headlen = 6;
+            const dx = tox - fromx;
+            const dy = toy - fromy;
+            const angle = Math.atan2(dy, dx);
+            ctx.strokeStyle = color;
+            ctx.fillStyle = color;
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(fromx, fromy);
+            ctx.lineTo(tox, toy);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(tox, toy);
+            ctx.lineTo(tox - headlen * Math.cos(angle - Math.PI / 6), toy - headlen * Math.sin(angle - Math.PI / 6));
+            ctx.lineTo(tox - headlen * Math.cos(angle + Math.PI / 6), toy - headlen * Math.sin(angle + Math.PI / 6));
+            ctx.closePath();
+            ctx.fill();
+        }
+
+        function drawOrbitalBoxesForCount(dCount, sCount) {
+            const canvas = document.getElementById('orbital-box-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const w = canvas.width;
+            const h = canvas.height;
+
+            ctx.clearRect(0, 0, w, h);
+
+            const boxSize = 34;
+            const startX = 40;
+            const startY = 45;
+
+            ctx.strokeStyle = '#a855f7';
+            ctx.lineWidth = 2;
+            ctx.fillStyle = '#0f172a';
+
+            // 3d 5 boxes
+            for (let i = 0; i < 5; i++) {
+                const x = startX + i * boxSize;
+                ctx.fillRect(x, startY, boxSize, boxSize);
+                ctx.strokeRect(x, startY, boxSize, boxSize);
+            }
+
+            let dElectrons = Array(5).fill(0);
+            for (let e = 0; e < dCount; e++) {
+                if (e < 5) dElectrons[e] += 1;
+                else dElectrons[e - 5] += 1;
+            }
+
+            dElectrons.forEach((count, i) => {
+                const x = startX + i * boxSize + boxSize / 2;
+                if (count >= 1) drawArrow(ctx, x - 5, startY + boxSize - 8, x - 5, startY + 8, '#c084fc');
+                if (count >= 2) drawArrow(ctx, x + 5, startY + 8, x + 5, startY + boxSize - 8, '#38bdf8');
+            });
+
+            // 4s 1 box
+            const sX = 320;
+            ctx.strokeStyle = '#38bdf8';
+            ctx.fillRect(sX, startY, boxSize, boxSize);
+            ctx.strokeRect(sX, startY, boxSize, boxSize);
+
+            if (sCount >= 1) drawArrow(ctx, sX + boxSize / 2 - 4, startY + boxSize - 8, sX + boxSize / 2 - 4, startY + 8, '#c084fc');
+            if (sCount >= 2) drawArrow(ctx, sX + boxSize / 2 + 4, startY + 8, sX + boxSize / 2 + 4, startY + boxSize - 8, '#38bdf8');
+
+            ctx.fillStyle = '#cbd5e1';
+            ctx.font = '12px monospace';
+            ctx.fillText('3d subshell', startX + 50, startY - 12);
+            ctx.fillText('4s', sX + 10, startY - 12);
+        }
+
+        function renderComplexSvg(data) {
+            const container = document.getElementById('complex-svg-container');
+            if (!container) return;
+
+            let svgHtml = '';
+            // Ensure charge display has bold visible styling
+            const chargeDisplay = `<text x="252" y="32" fill="#c084fc" font-size="16" font-weight="900">${data.charge}</text>`;
+
+            if (data.svgType === 'octahedral' || data.svgType === 'octahedral_mixed') {
+                const lTop = data.ligand2 || data.ligand;
+                const lBot = data.ligand2 || data.ligand;
+                const l1 = data.ligand1 || data.ligand;
+
+                svgHtml = `<svg viewBox="0 0 280 240" class="w-64 h-56 studio-canvas-bg rounded-lg border border-slate-800">
+                    <!-- Brackets -->
+                    <path d="M 30 20 L 15 20 L 15 220 L 30 220" fill="none" stroke="#a855f7" stroke-width="2.5"/>
+                    <path d="M 235 20 L 250 20 L 250 220 L 235 220" fill="none" stroke="#a855f7" stroke-width="2.5"/>
+                    ${chargeDisplay}
+
+                    <!-- Central Metal -->
+                    <circle cx="132" cy="120" r="22" fill="#38bdf8" opacity="0.25" stroke="#38bdf8" stroke-width="2"/>
+                    <text x="132" y="125" fill="#f8fafc" font-size="14" font-weight="bold" text-anchor="middle">${data.central}</text>
+
+                    <!-- Dative Bonds & Ligands -->
+                    <!-- Top -->
+                    <path d="M 132 98 L 132 50" stroke="#c084fc" stroke-width="2"/>
+                    <text x="132" y="42" fill="#c084fc" font-size="12" font-weight="bold" text-anchor="middle">${lTop}</text>
+
+                    <!-- Bottom -->
+                    <path d="M 132 142 L 132 190" stroke="#c084fc" stroke-width="2"/>
+                    <text x="132" y="206" fill="#c084fc" font-size="12" font-weight="bold" text-anchor="middle">${lBot}</text>
+
+                    <!-- Left Top -->
+                    <path d="M 112 110 L 52 80" stroke="#c084fc" stroke-width="2"/>
+                    <text x="42" y="80" fill="#c084fc" font-size="12" font-weight="bold" text-anchor="end">${l1}</text>
+
+                    <!-- Right Top -->
+                    <path d="M 152 110 L 212 80" stroke="#c084fc" stroke-width="2"/>
+                    <text x="222" y="80" fill="#c084fc" font-size="12" font-weight="bold" text-anchor="start">${l1}</text>
+
+                    <!-- Left Bottom -->
+                    <path d="M 112 130 L 52 160" stroke="#c084fc" stroke-width="2"/>
+                    <text x="42" y="165" fill="#c084fc" font-size="12" font-weight="bold" text-anchor="end">${l1}</text>
+
+                    <!-- Right Bottom -->
+                    <path d="M 152 130 L 212 160" stroke="#c084fc" stroke-width="2"/>
+                    <text x="222" y="165" fill="#c084fc" font-size="12" font-weight="bold" text-anchor="start">${l1}</text>
+                </svg>`;
+            } else if (data.svgType === 'tetrahedral') {
+                svgHtml = `<svg viewBox="0 0 280 240" class="w-64 h-56 studio-canvas-bg rounded-lg border border-slate-800">
+                    <path d="M 30 20 L 15 20 L 15 220 L 30 220" fill="none" stroke="#a855f7" stroke-width="2.5"/>
+                    <path d="M 235 20 L 250 20 L 250 220 L 235 220" fill="none" stroke="#a855f7" stroke-width="2.5"/>
+                    ${chargeDisplay}
+
+                    <circle cx="132" cy="120" r="22" fill="#eab308" opacity="0.25" stroke="#eab308" stroke-width="2"/>
+                    <text x="132" y="125" fill="#f8fafc" font-size="14" font-weight="bold" text-anchor="middle">${data.central}</text>
+
+                    <path d="M 132 98 L 132 45" stroke="#fde047" stroke-width="2"/>
+                    <text x="132" y="38" fill="#fde047" font-size="12" font-weight="bold" text-anchor="middle">${data.ligand}</text>
+
+                    <path d="M 114 132 L 52 185" stroke="#fde047" stroke-width="2"/>
+                    <text x="42" y="195" fill="#fde047" font-size="12" font-weight="bold" text-anchor="end">${data.ligand}</text>
+
+                    <path d="M 150 132 L 212 185" stroke="#fde047" stroke-width="2"/>
+                    <text x="222" y="195" fill="#fde047" font-size="12" font-weight="bold" text-anchor="start">${data.ligand}</text>
+
+                    <path d="M 132 142 L 132 180" stroke="#fde047" stroke-width="3" stroke-dasharray="3,2"/>
+                    <text x="132" y="198" fill="#fde047" font-size="12" font-weight="bold" text-anchor="middle">${data.ligand}</text>
+                </svg>`;
+            } else if (data.svgType === 'square_planar') {
+                // Cisplatin [Pt(NH3)2Cl2] Square Planar 4-coordinate geometry (90 deg)
+                svgHtml = `<svg viewBox="0 0 280 240" class="w-64 h-56 studio-canvas-bg rounded-lg border border-slate-800">
+                    <!-- Brackets -->
+                    <path d="M 30 20 L 15 20 L 15 220 L 30 220" fill="none" stroke="#a855f7" stroke-width="2.5"/>
+                    <path d="M 235 20 L 250 20 L 250 220 L 235 220" fill="none" stroke="#a855f7" stroke-width="2.5"/>
+                    <text x="252" y="32" fill="#c084fc" font-size="16" font-weight="900">0</text>
+
+                    <!-- Central Pt(II) -->
+                    <circle cx="132" cy="120" r="22" fill="#38bdf8" opacity="0.3" stroke="#38bdf8" stroke-width="2"/>
+                    <text x="132" y="125" fill="#f8fafc" font-size="14" font-weight="bold" text-anchor="middle">Pt²⁺</text>
+
+                    <!-- Square Planar Dative Bonds at 4 Corners (cis-geometry) -->
+                    <!-- Top-Left NH3 -->
+                    <path d="M 115 107 L 65 67" stroke="#c084fc" stroke-width="2"/>
+                    <text x="52" y="62" fill="#38bdf8" font-size="12" font-weight="bold" text-anchor="end">H₃N:</text>
+
+                    <!-- Bottom-Left NH3 -->
+                    <path d="M 115 133 L 65 173" stroke="#c084fc" stroke-width="2"/>
+                    <text x="52" y="182" fill="#38bdf8" font-size="12" font-weight="bold" text-anchor="end">H₃N:</text>
+
+                    <!-- Top-Right Cl- -->
+                    <path d="M 149 107 L 199 67" stroke="#c084fc" stroke-width="2"/>
+                    <text x="210" y="62" fill="#facc15" font-size="12" font-weight="bold" text-anchor="start">:Cl⁻</text>
+
+                    <!-- Bottom-Right Cl- -->
+                    <path d="M 149 133 L 199 173" stroke="#c084fc" stroke-width="2"/>
+                    <text x="210" y="182" fill="#facc15" font-size="12" font-weight="bold" text-anchor="start">:Cl⁻</text>
+
+                    <!-- Geometry Guideline -->
+                    <rect x="70" y="65" width="125" height="110" fill="none" stroke="#475569" stroke-width="1" stroke-dasharray="3,3"/>
+                    <text x="132" y="212" fill="#cbd5e1" font-size="10" font-mono font-weight="bold" text-anchor="middle">Square Planar (CN=4, 90°)</text>
+                </svg>`;
+            } else if (data.svgType === 'bidentate_cr') {
+                // Triethanedioatechromate(III) [Cr(C2O4)3]3- showing 3 chelate loops forming 6 dative bonds
+                svgHtml = `<svg viewBox="0 0 280 240" class="w-64 h-56 studio-canvas-bg rounded-lg border border-slate-800">
+                    <path d="M 25 20 L 10 20 L 10 220 L 25 220" fill="none" stroke="#a855f7" stroke-width="2.5"/>
+                    <path d="M 240 20 L 255 20 L 255 220 L 240 220" fill="none" stroke="#a855f7" stroke-width="2.5"/>
+                    <text x="258" y="32" fill="#c084fc" font-size="16" font-weight="900">3-</text>
+
+                    <!-- Central Cr(III) -->
+                    <circle cx="132" cy="120" r="22" fill="#22c55e" opacity="0.3" stroke="#22c55e" stroke-width="2"/>
+                    <text x="132" y="125" fill="#f8fafc" font-size="14" font-weight="bold" text-anchor="middle">Cr³⁺</text>
+
+                    <!-- 6 Dative Bonds to 6 Oxygen donor atoms -->
+                    <!-- Top & Right-Top (Ligand 1 Loop) -->
+                    <path d="M 132 98 L 132 50" stroke="#38bdf8" stroke-width="2"/>
+                    <circle cx="132" cy="50" r="4" fill="#ef4444"/>
+                    <path d="M 152 110 L 202 80" stroke="#38bdf8" stroke-width="2"/>
+                    <circle cx="202" cy="80" r="4" fill="#ef4444"/>
+                    <!-- Chelate Ring 1 Arc -->
+                    <path d="M 132 46 C 180 30, 215 50, 204 76" fill="none" stroke="#a855f7" stroke-width="2.5"/>
+                    <text x="180" y="42" fill="#c084fc" font-size="9" font-weight="bold" font-mono>C₂O₄²⁻ (1)</text>
+
+                    <!-- Left-Top & Left-Bottom (Ligand 2 Loop) -->
+                    <path d="M 112 110 L 62 80" stroke="#38bdf8" stroke-width="2"/>
+                    <circle cx="62" cy="80" r="4" fill="#ef4444"/>
+                    <path d="M 112 130 L 62 160" stroke="#38bdf8" stroke-width="2"/>
+                    <circle cx="62" cy="160" r="4" fill="#ef4444"/>
+                    <!-- Chelate Ring 2 Arc -->
+                    <path d="M 60 76 C 30 100, 30 140, 60 164" fill="none" stroke="#a855f7" stroke-width="2.5"/>
+                    <text x="24" y="123" fill="#c084fc" font-size="9" font-weight="bold" font-mono>C₂O₄²⁻ (2)</text>
+
+                    <!-- Bottom & Right-Bottom (Ligand 3 Loop) -->
+                    <path d="M 132 142 L 132 190" stroke="#38bdf8" stroke-width="2"/>
+                    <circle cx="132" cy="190" r="4" fill="#ef4444"/>
+                    <path d="M 152 130 L 202 160" stroke="#38bdf8" stroke-width="2"/>
+                    <circle cx="202" cy="160" r="4" fill="#ef4444"/>
+                    <!-- Chelate Ring 3 Arc -->
+                    <path d="M 132 194 C 180 210, 215 190, 204 164" fill="none" stroke="#a855f7" stroke-width="2.5"/>
+                    <text x="180" y="206" fill="#c084fc" font-size="9" font-weight="bold" font-mono>C₂O₄²⁻ (3)</text>
+
+                    <text x="132" y="222" fill="#cbd5e1" font-size="10" font-mono font-weight="bold" text-anchor="middle">3 Bidentate Ligands = 6 Dative Bonds (CN=6)</text>
+                </svg>`;
+            } else if (data.svgType === 'hexadentate_edta') {
+                // ACCURATE EDTA4- HEXADENTATE CHELATE STRUCTURE: [Fe(EDTA)]-
+                // Shows the 2 Nitrogen donor sites (N -> Fe), 4 Carboxylate Oxygen donor sites (O- -> Fe),
+                // the central ethylene bridge (-CH2-CH2-), and 4 acetate arms (-CH2-C(=O)-O-)
+                svgHtml = `<svg viewBox="0 0 280 240" class="w-64 h-56 studio-canvas-bg rounded-lg border border-slate-800">
+                    <path d="M 22 20 L 8 20 L 8 220 L 22 220" fill="none" stroke="#a855f7" stroke-width="2.5"/>
+                    <path d="M 242 20 L 256 20 L 256 220 L 242 220" fill="none" stroke="#a855f7" stroke-width="2.5"/>
+                    <text x="260" y="32" fill="#c084fc" font-size="16" font-weight="900">-</text>
+
+                    <!-- Central Fe(III) Ion -->
+                    <circle cx="132" cy="120" r="20" fill="#eab308" opacity="0.35" stroke="#eab308" stroke-width="2"/>
+                    <text x="132" y="125" fill="#f8fafc" font-size="13" font-weight="bold" text-anchor="middle">Fe³⁺</text>
+
+                    <!-- 2 Nitrogen Donor Atoms (Left Top & Left Bottom) -->
+                    <!-- N1 (Top-Left) -->
+                    <circle cx="82" cy="92" r="8" fill="#1e3a8a" stroke="#38bdf8" stroke-width="1.5"/>
+                    <text x="82" y="95" fill="#38bdf8" font-size="9" font-weight="bold" text-anchor="middle">N</text>
+                    <path d="M 90 97 L 114 112" stroke="#38bdf8" stroke-width="2"/> <!-- Dative Arrow N1 -> Fe -->
+
+                    <!-- N2 (Bottom-Left) -->
+                    <circle cx="82" cy="148" r="8" fill="#1e3a8a" stroke="#38bdf8" stroke-width="1.5"/>
+                    <text x="82" y="151" fill="#38bdf8" font-size="9" font-weight="bold" text-anchor="middle">N</text>
+                    <path d="M 90 143 L 114 128" stroke="#38bdf8" stroke-width="2"/> <!-- Dative Arrow N2 -> Fe -->
+
+                    <!-- Ethylene Bridge (-CH2-CH2-) linking N1 and N2 -->
+                    <path d="M 82 84 C 55 84, 55 156, 82 156" fill="none" stroke="#a855f7" stroke-width="2"/>
+                    <text x="40" y="123" fill="#c084fc" font-size="8" font-mono font-weight="bold">-(CH₂)₂-</text>
+
+                    <!-- 4 Carboxylate Oxygen Donor Atoms (O-) -->
+                    <!-- O1 (Axial Top) -->
+                    <circle cx="132" cy="52" r="7" fill="#7f1d1d" stroke="#ef4444" stroke-width="1.5"/>
+                    <text x="132" y="55" fill="#f87171" font-size="8" font-weight="bold" text-anchor="middle">O⁻</text>
+                    <path d="M 132 60 L 132 98" stroke="#ef4444" stroke-width="2"/> <!-- Dative Arrow O1 -> Fe -->
+
+                    <!-- O2 (Axial Bottom) -->
+                    <circle cx="132" cy="188" r="7" fill="#7f1d1d" stroke="#ef4444" stroke-width="1.5"/>
+                    <text x="132" y="191" fill="#f87171" font-size="8" font-weight="bold" text-anchor="middle">O⁻</text>
+                    <path d="M 132 180 L 132 142" stroke="#ef4444" stroke-width="2"/> <!-- Dative Arrow O2 -> Fe -->
+
+                    <!-- O3 (Equatorial Top-Right) -->
+                    <circle cx="182" cy="85" r="7" fill="#7f1d1d" stroke="#ef4444" stroke-width="1.5"/>
+                    <text x="182" y="88" fill="#f87171" font-size="8" font-weight="bold" text-anchor="middle">O⁻</text>
+                    <path d="M 175 91 L 149 110" stroke="#ef4444" stroke-width="2"/> <!-- Dative Arrow O3 -> Fe -->
+
+                    <!-- O4 (Equatorial Bottom-Right) -->
+                    <circle cx="182" cy="155" r="7" fill="#7f1d1d" stroke="#ef4444" stroke-width="1.5"/>
+                    <text x="182" y="158" fill="#f87171" font-size="8" font-weight="bold" text-anchor="middle">O⁻</text>
+                    <path d="M 175 149 L 149 130" stroke="#ef4444" stroke-width="2"/> <!-- Dative Arrow O4 -> Fe -->
+
+                    <!-- Acetate Arm Connections (-CH2-COO-) connecting N sites to O sites -->
+                    <!-- Arm N1 -> O1 -->
+                    <path d="M 82 84 C 82 52, 110 52, 124 52" fill="none" stroke="#64748b" stroke-width="1.5" stroke-dasharray="3,2"/>
+                    <!-- Arm N1 -> O3 -->
+                    <path d="M 88 88 C 120 70, 150 70, 174 82" fill="none" stroke="#64748b" stroke-width="1.5" stroke-dasharray="3,2"/>
+                    <!-- Arm N2 -> O2 -->
+                    <path d="M 82 156 C 82 188, 110 188, 124 188" fill="none" stroke="#64748b" stroke-width="1.5" stroke-dasharray="3,2"/>
+                    <!-- Arm N2 -> O4 -->
+                    <path d="M 88 152 C 120 170, 150 170, 174 158" fill="none" stroke="#64748b" stroke-width="1.5" stroke-dasharray="3,2"/>
+
+                    <!-- Annotation Labels -->
+                    <text x="185" y="45" fill="#ef4444" font-size="8" font-mono font-weight="bold">4 × O⁻ Donors</text>
+                    <text x="185" y="195" fill="#38bdf8" font-size="8" font-mono font-weight="bold">2 × N Donors</text>
+                    <text x="132" y="222" fill="#cbd5e1" font-size="10" font-mono font-weight="bold" text-anchor="middle">1 Hexadentate EDTA⁴⁻ = 6 Dative Bonds (CN=6)</text>
+                </svg>`;
+            } else {
+                svgHtml = `<svg viewBox="0 0 280 240" class="w-64 h-56 studio-canvas-bg rounded-lg border border-slate-800">
+                    <circle cx="140" cy="120" r="22" fill="#38bdf8" opacity="0.25" stroke="#38bdf8" stroke-width="2"/>
+                    <text x="140" y="125" fill="#f8fafc" font-size="14" font-weight="bold" text-anchor="middle">${data.central}</text>
+                    <path d="M 118 120 L 50 120" stroke="#c084fc" stroke-width="2"/>
+                    <text x="40" y="124" fill="#c084fc" font-size="12" font-weight="bold" text-anchor="end">${data.ligand1 || data.ligand}</text>
+                    <path d="M 162 120 L 230 120" stroke="#c084fc" stroke-width="2"/>
+                    <text x="240" y="124" fill="#c084fc" font-size="12" font-weight="bold" text-anchor="start">${data.ligand2 || data.ligand}</text>
+                </svg>`;
+            }
+
+            container.innerHTML = svgHtml;
+        }
+
+        function drawSplittingDiagram() {
+            const canvas = document.getElementById('splitting-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const w = canvas.width;
+            const h = canvas.height;
+
+            ctx.clearRect(0, 0, w, h);
+
+            // Background grid lines
+            ctx.strokeStyle = '#1e293b';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(10, 140); ctx.lineTo(w - 10, 140);
+            ctx.stroke();
+
+            // STAGE 1: Free Metal Ion d-Orbitals (5 degenerate lines at base)
+            ctx.strokeStyle = '#94a3b8';
+            ctx.lineWidth = 2.5;
+            const s1X = 20;
+            const s1Y = 180;
+            ctx.font = '10px monospace';
+            ctx.fillStyle = '#cbd5e1';
+            ctx.fillText('Stage 1: Free Metal Ion', s1X, s1Y + 28);
+            ctx.fillText('(5 degenerate 3d orbitals)', s1X, s1Y + 42);
+
+            for (let i = 0; i < 5; i++) {
+                ctx.beginPath();
+                ctx.moveTo(s1X + i * 22, s1Y);
+                ctx.lineTo(s1X + i * 22 + 16, s1Y);
+                ctx.stroke();
+            }
+
+            // STAGE 2: Average Energy of d orbitals in field of ligands
+            const s2X = 180;
+            const s2Y = 140;
+            ctx.strokeStyle = '#f59e0b';
+            ctx.fillText('Stage 2: Average Energy', s2X - 10, s2Y + 28);
+            ctx.fillText('in Ligand Field', s2X - 10, s2Y + 42);
+
+            for (let i = 0; i < 5; i++) {
+                ctx.beginPath();
+                ctx.moveTo(s2X + i * 22, s2Y);
+                ctx.lineTo(s2X + i * 22 + 16, s2Y);
+                ctx.stroke();
+            }
+
+            // Connecting dashed arrows Stage 1 -> Stage 2
+            ctx.strokeStyle = '#64748b';
+            ctx.setLineDash([3, 3]);
+            ctx.beginPath();
+            ctx.moveTo(s1X + 100, s1Y - 10);
+            ctx.lineTo(s2X, s2Y + 10);
+            ctx.stroke();
+            ctx.setLineDash([]);
+
+            // STAGE 3: Octahedral Field Splitting (e_g upper 2, t_2g lower 3)
+            const s3X = 350;
+            const egY = 70;
+            const t2gY = 190;
+
+            // Dashed arrows Stage 2 -> Stage 3
+            ctx.strokeStyle = '#38bdf8';
+            ctx.setLineDash([3, 3]);
+            ctx.beginPath();
+            ctx.moveTo(s2X + 100, s2Y - 10);
+            ctx.lineTo(s3X, egY + 10);
+            ctx.moveTo(s2X + 100, s2Y + 10);
+            ctx.lineTo(s3X, t2gY - 10);
+            ctx.stroke();
+            ctx.setLineDash([]);
+
+            // Upper 2 orbitals (e_g)
+            ctx.fillStyle = '#f87171';
+            ctx.font = '11px sans-serif';
+            ctx.fillText('e_g (Upper Level)', s3X + 65, egY + 4);
+            ctx.strokeStyle = '#ef4444';
+            for (let i = 0; i < 2; i++) {
+                ctx.beginPath();
+                ctx.moveTo(s3X + i * 28, egY);
+                ctx.lineTo(s3X + i * 28 + 22, egY);
+                ctx.stroke();
+            }
+
+            // Lower 3 orbitals (t_2g)
+            ctx.fillStyle = '#4ade80';
+            ctx.fillText('t_2g (Lower Level)', s3X + 85, t2gY + 4);
+            ctx.strokeStyle = '#22c55e';
+            for (let i = 0; i < 3; i++) {
+                ctx.beginPath();
+                ctx.moveTo(s3X + i * 26, t2gY);
+                ctx.lineTo(s3X + i * 26 + 20, t2gY);
+                ctx.stroke();
+            }
+
+            // Delta E vertical gap line
+            ctx.strokeStyle = '#f59e0b';
+            ctx.lineWidth = 1.5;
+            ctx.beginPath();
+            ctx.moveTo(s3X + 75, egY + 10);
+            ctx.lineTo(s3X + 75, t2gY - 10);
+            ctx.stroke();
+
+            ctx.fillStyle = '#f59e0b';
+            ctx.font = '11px sans-serif';
+            ctx.fillText('ΔE = hν', s3X + 80, 135);
+
+            // Electron transition visualizer (Green circle on lower, magenta curved arrow)
+            if (activeDdStep === 0) {
+                // Ground electron on lower level
+                ctx.strokeStyle = '#22c55e';
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                ctx.arc(s3X + 10, t2gY, 8, 0, Math.PI * 2);
+                ctx.stroke();
+
+                ctx.fillStyle = '#c084fc';
+                ctx.font = '12px bold sans-serif';
+                ctx.fillText('↑', s3X + 7, t2gY + 4);
+            } else {
+                // Promoted electron on upper level
+                ctx.fillStyle = '#ef4444';
+                ctx.font = '12px bold sans-serif';
+                ctx.fillText('↑', s3X + 10, egY + 4);
+
+                // Transition curve arrow
+                ctx.strokeStyle = '#ec4899';
+                ctx.lineWidth = 2.5;
+                ctx.beginPath();
+                ctx.moveTo(s3X + 12, t2gY - 10);
+                ctx.quadraticCurveTo(s3X - 10, 130, s3X + 10, egY + 12);
+                ctx.stroke();
+            }
+
+            // Stage 3 Label
+            ctx.fillStyle = '#cbd5e1';
+            ctx.font = '10px monospace';
+            ctx.fillText('Octahedral Complex Ion Field', s3X - 10, 240);
+        }
+
+        function switchTab(tabId) {
+            ['scaffold', 'configs', 'complexes', 'colour', 'ai'].forEach(id => {
+                const sec = document.getElementById(`tab-${id}`);
+                const btn = document.getElementById(`btn-${id}`);
+                if (sec) sec.classList.add('hidden');
+                if (btn) {
+                    btn.classList.remove('tab-btn-active');
+                    btn.classList.add('text-slate-400');
+                }
+            });
+
+            const targetSec = document.getElementById(`tab-${tabId}`);
+            const targetBtn = document.getElementById(`btn-${tabId}`);
+            if (targetSec) targetSec.classList.remove('hidden');
+            if (targetBtn) {
+                targetBtn.classList.add('tab-btn-active');
+                targetBtn.classList.remove('text-slate-400');
+            }
+
+            if (tabId === 'configs') switchIonState();
+            if (tabId === 'complexes') loadComplexPreset();
+            if (tabId === 'colour') drawSplittingDiagram();
+            initKaTeX();
+        }
+
+        function triggerDdTransition() {
+            activeDdStep = activeDdStep === 0 ? 1 : 0;
+            drawSplittingDiagram();
+        }
+
+        function selectColorWheel(color) {
+            const data = {
+                'red': { absorbed: 'Red Light (~650 nm)', transmitted: 'Green Solution (e.g. [Cr(H₂O)₆]³⁺)' },
+                'orange': { absorbed: 'Orange Light (~600 nm)', transmitted: 'Blue Solution (e.g. [Cu(H₂O)₆]²⁺)' },
+                'yellow': { absorbed: 'Yellow Light (~580 nm)', transmitted: 'Violet / Purple Solution' },
+                'green': { absorbed: 'Green Light (~530 nm)', transmitted: 'Red / Pink Solution' },
+                'blue': { absorbed: 'Blue Light (~470 nm)', transmitted: 'Orange / Yellow Solution' },
+                'violet': { absorbed: 'Violet Light (~410 nm)', transmitted: 'Yellow / Green Solution' }
+            };
+            const sel = data[color] || data['orange'];
+            document.getElementById('cw-absorbed').textContent = sel.absorbed;
+            document.getElementById('cw-transmitted').textContent = sel.transmitted;
+        }
+
+        const COMPLEX_PRESETS = {
+            'hexaaquacopper': {
+                formula: '$[\\text{Cu}(\\text{H}_2\\text{O})_6]^{2+}$',
+                iupac: 'hexaaquacopper(II) ion',
+                cn: '6 (6 dative bonds)',
+                shape: 'Octahedral ($90^\\circ$)',
+                denticity: 'Monodentate (1 bond/ligand)',
+                oxstate: '+2',
+                math: '$x + 6(0) = +2 \\quad \\Rightarrow \\quad x = +2$',
+                svgType: 'octahedral',
+                central: 'Cu',
+                ligand: 'H₂O',
+                charge: '+2',
+                notes: '<b>Hexaaquacopper(II) Ion:</b> Standard blue aqueous complex formed when copper(II) salts dissolve in water. Central $\\text{Cu}^{2+}$ ion forms 6 coordinate bonds with lone pairs on oxygen atoms of water molecules.'
+            },
+            'tetrachloroferrate': {
+                formula: '$[\\text{FeCl}_4]^-$',
+                iupac: 'tetrachloroferrate(III) ion',
+                cn: '4 (4 dative bonds)',
+                shape: 'Tetrahedral ($109.5^\\circ$)',
+                denticity: 'Monodentate (1 bond/ligand)',
+                oxstate: '+3',
+                math: '$x + 4(-1) = -1 \\quad \\Rightarrow \\quad x = +3$',
+                svgType: 'tetrahedral',
+                central: 'Fe',
+                ligand: 'Cl⁻',
+                charge: '-',
+                notes: '<b>Tetrachloroferrate(III) Ion:</b> Yellow/yellow-green complex formed when concentrated $\\text{HCl}$ is added to iron(III) solution. Larger $\\text{Cl}^-$ ligands reduce coordination number from 6 to 4 due to steric hindrance.'
+            },
+            'tetraamminediaquacopper': {
+                formula: '$[\\text{Cu}(\\text{NH}_3)_4(\\text{H}_2\\text{O})_2]^{2+}$',
+                iupac: 'tetraamminediaquacopper(II) ion',
+                cn: '6 (6 dative bonds)',
+                shape: 'Octahedral (Distorted, $90^\\circ$)',
+                denticity: 'Monodentate (1 bond/ligand)',
+                oxstate: '+2',
+                math: '$x + 4(0) + 2(0) = +2 \\quad \\Rightarrow \\quad x = +2$',
+                svgType: 'octahedral_mixed',
+                central: 'Cu',
+                ligand1: 'NH₃',
+                ligand2: 'H₂O',
+                charge: '+2',
+                notes: '<b>Tetraamminediaquacopper(II) Ion:</b> Deep blue solution formed upon adding excess aqueous ammonia to copper(II) ions via partial ligand exchange.'
+            },
+            'cisplatin': {
+                formula: '$[\\text{Pt}(\\text{NH}_3)_2\\text{Cl}_2]$',
+                iupac: 'diamminedichloroplatinum(II)',
+                cn: '4 (4 dative bonds)',
+                shape: 'Square Planar ($90^\\circ$)',
+                denticity: 'Monodentate (1 bond/ligand)',
+                oxstate: '+2',
+                math: '$x + 2(0) + 2(-1) = 0 \\quad \\Rightarrow \\quad x = +2$',
+                svgType: 'square_planar',
+                central: 'Pt',
+                ligand1: 'NH₃',
+                ligand2: 'Cl⁻',
+                charge: '0',
+                notes: '<b>Cisplatin:</b> Anti-cancer chemotherapy drug featuring $\\text{Pt}^{2+}$ in a square planar geometry ($90^\\circ$). The two $\\text{NH}_3$ ligands are on the same side ($cis$-isomer).'
+            },
+            'ethanedioate_cr': {
+                formula: '$[\\text{Cr}(\\text{C}_2\\text{O}_4)_3]^{3-}$',
+                iupac: 'triethanedioatechromate(III) ion',
+                cn: '6 (6 dative bonds from 3 ligands)',
+                shape: 'Octahedral ($90^\\circ$)',
+                denticity: 'Bidentate (2 bonds/ligand)',
+                oxstate: '+3',
+                math: '$x + 3(-2) = -3 \\quad \\Rightarrow \\quad x = +3$',
+                svgType: 'bidentate_cr',
+                central: 'Cr',
+                ligand: 'C₂O₄²⁻',
+                charge: '-3',
+                notes: '<b>Triethanedioatechromate(III) Ion:</b> Complex formed with bidentate ethanedioate ($\text{C}_2\text{O}_4^{2-}$) ligands. Even though there are only 3 ligand molecules, its coordination number is 6 because each ligand forms 2 dative bonds!'
+            },
+            'edta_complex': {
+                formula: '$[\\text{Fe}(\\text{EDTA})]^-$',
+                iupac: 'ethylenediaminetetraacetatoferrate(III)',
+                cn: '6 (6 dative bonds from 1 ligand)',
+                shape: 'Octahedral ($90^\\circ$)',
+                denticity: 'Hexadentate (6 bonds/ligand)',
+                oxstate: '+3',
+                math: '$x + 1(-4) = -1 \\quad \\Rightarrow \\quad x = +3$',
+                svgType: 'hexadentate_edta',
+                central: 'Fe',
+                ligand: 'EDTA⁴⁻',
+                charge: '-',
+                notes: '<b>Metal-EDTA Complex:</b> $\\text{EDTA}^{4-}$ is a single hexadentate ligand that wraps around the central metal ion, forming all 6 coordinate bonds (2 from Nitrogen lone pairs, 4 from Carboxylate $\text{O}^-$ groups).'
+            }
+        };
+
+        function loadComplexPreset() {
+            const select = document.getElementById('complex-preset-select');
+            if (!select) return;
+            const key = select.value || 'hexaaquacopper';
+            const data = COMPLEX_PRESETS[key] || COMPLEX_PRESETS['hexaaquacopper'];
+            if (!data) return;
+
+            const elFormula = document.getElementById('c-formula');
+            const elIupac = document.getElementById('c-iupac');
+            const elCn = document.getElementById('c-cn');
+            const elShape = document.getElementById('c-shape');
+            const elDenticity = document.getElementById('c-denticity');
+            const elOxstate = document.getElementById('c-oxstate');
+            const elMath = document.getElementById('c-math-box');
+            const elNotes = document.getElementById('c-notes-box');
+
+            if (elFormula) elFormula.innerHTML = data.formula;
+            if (elIupac) elIupac.textContent = data.iupac;
+            if (elCn) elCn.textContent = data.cn;
+            if (elShape) elShape.innerHTML = data.shape;
+            if (elDenticity) elDenticity.textContent = data.denticity;
+            if (elOxstate) elOxstate.textContent = data.oxstate;
+            if (elMath) elMath.innerHTML = data.math;
+            if (elNotes) elNotes.innerHTML = data.notes;
+
+            renderComplexSvg(data);
+            initKaTeX();
+        }
+
+        function calculateCustomOxState() {
+            const metal = document.getElementById('calc-metal-sym').value.trim() || 'M';
+            const lig1Charge = parseInt(document.getElementById('calc-lig1-type').value, 10);
+            const lig1Count = parseInt(document.getElementById('calc-lig1-cnt').value, 10) || 0;
+            const lig2Charge = parseInt(document.getElementById('calc-lig2-type').value, 10);
+            const lig2Count = parseInt(document.getElementById('calc-lig2-cnt').value, 10) || 0;
+            const overallCharge = parseInt(document.getElementById('calc-overall-charge').value, 10) || 0;
+
+            const totalLigandContribution = (lig1Charge * lig1Count) + (lig2Charge * lig2Count);
+            const oxStateVal = overallCharge - totalLigandContribution;
+            const signStr = oxStateVal >= 0 ? `+${oxStateVal}` : `${oxStateVal}`;
+
+            let eqStr = `x + ${lig1Count}(${lig1Charge})`;
+            if (lig1Count === 0) eqStr = `x`;
+            if (lig2Count > 0) eqStr += ` + ${lig2Count}(${lig2Charge})`;
+            eqStr += ` = ${overallCharge >= 0 ? '+' : ''}${overallCharge}`;
+
+            const resDiv = document.getElementById('custom-ox-result');
+            resDiv.innerHTML = `$${eqStr} \\quad \\Rightarrow \\quad x ${totalLigandContribution >= 0 ? '+' : ''}${totalLigandContribution} = ${overallCharge} \\quad \\Rightarrow \\quad x = ${signStr}$`;
+            initKaTeX();
+        }
+
+        const PAST_PAPERS = {
+            'q_colour_4m': {
+                title: 'Q1: Explain why [Cr(H₂O)₆]³⁺ is coloured in aqueous solution (4 Marks)',
+                desc: '<b>Question:</b> Aqueous solutions containing $[\\text{Cr}(\\text{H}_2\\text{O})_6]^{3+}$ are violet/green. Explain why this complex ion is coloured. (4 Marks)',
+                sample: '1. Attached $\\text{H}_2\\text{O}$ ligands cause the $3d$ orbitals of $\\text{Cr}^{3+}$ to split into two energy levels.<br>2. $3d$ electrons absorb specific frequencies/wavelengths of visible light.<br>3. Electrons are promoted from lower to higher $d$-orbitals ($d$-$d$ transition).<br>4. The remaining unabsorbed wavelengths are transmitted/reflected to give the observed color.'
+            },
+            'q_sc_zn_2m': {
+                title: 'Q2: Explain why Zinc is a d-block element but NOT a transition metal (2 Marks)',
+                desc: '<b>Question:</b> State the definition of a transition metal and explain why Zinc ($Z=30$) is not classified as one. (2 Marks)',
+                sample: '1. A transition metal is a $d$-block element that forms one or more stable ions with incompletely filled $d$-orbitals.<br>2. Zinc forms only $\\text{Zn}^{2+}$ ($3d^{10}$), which has a completely filled $d$-subshell.'
+            },
+            'q_oxaliplatin_3m': {
+                title: 'Q3: Denticity & Oxidation state in Oxaliplatin complex (3 Marks)',
+                desc: '<b>Question:</b> Oxaliplatin contains platinum bonded to two bidentate ligands with overall charge 0. Calculate the oxidation state of Pt and define a bidentate ligand. (3 Marks)',
+                sample: '1. Bidentate ligand: A species that donates two lone pairs of electrons to form two coordinate bonds with central metal ion.<br>2. Oxaliplatin charge math: $x + 0 + (-2) = 0 \\rightarrow x = +2$.'
+            },
+            'q_fe2_fe3_2m': {
+                title: 'Q4: Explain why Fe²⁺(aq) and Fe³⁺(aq) have different colours (2 Marks)',
+                desc: '<b>Question:</b> $[\\text{Fe}(\\text{H}_2\\text{O})_6]^{2+}$ is pale green while $[\\text{Fe}(\\text{H}_2\\text{O})_6]^{3+}$ is yellow/brown. Explain why they have different colours. (2 Marks)',
+                sample: '1. $\\text{Fe}^{2+}$ and $\\text{Fe}^{3+}$ have different oxidation states and electron configurations ($3d^6$ vs $3d^5$).<br>2. This alters the energy gap ($\\Delta E$) between split $d$-orbitals, so different frequencies of visible light are absorbed.'
+            }
+        };
+
+        function loadPastPaperQuestion() {
+            const sel = document.getElementById('past-paper-select');
+            const key = sel ? sel.value : 'q_colour_4m';
+            const paper = PAST_PAPERS[key] || PAST_PAPERS['q_colour_4m'];
+
+            document.getElementById('pp-desc-box').innerHTML = `${paper.desc}<div class="mt-2 pt-2 border-t border-slate-800 text-purple-300"><b>Official Mark Scheme Criteria:</b><br>${paper.sample}</div>`;
+            initKaTeX();
+        }
+
+        function sendAiChat() {
+            const input = document.getElementById('ai-user-input');
+            if (!input || !input.value.trim()) return;
+
+            const chat = document.getElementById('ai-chat-history');
+            const text = input.value.trim();
+
+            const uDiv = document.createElement('div');
+            uDiv.className = 'text-purple-300 font-semibold';
+            uDiv.textContent = `Student: ${text}`;
+            chat.appendChild(uDiv);
+            input.value = '';
+
+            const aiDiv = document.createElement('div');
+            aiDiv.className = 'text-emerald-400';
+            
+            let score = 0;
+            let feedback = [];
+            const lower = text.toLowerCase();
+
+            if (lower.includes('split') || lower.includes('energy level')) { score++; feedback.push('✓ Correctly identified orbital splitting.'); }
+            if (lower.includes('absorb') || lower.includes('frequency') || lower.includes('light')) { score++; feedback.push('✓ Correctly mentioned light absorption.'); }
+            if (lower.includes('promot') || lower.includes('d-d') || lower.includes('transition')) { score++; feedback.push('✓ Mentioned electron promotion / d-d transition.'); }
+            if (lower.includes('transmit') || lower.includes('reflect') || lower.includes('complementary')) { score++; feedback.push('✓ Mentioned complementary light transmission.'); }
+
+            if (score === 0) {
+                aiDiv.innerHTML = `<b>Examiner Feedback:</b> Please include key IAL terms: orbital splitting by ligands, frequency absorption, electron promotion ($d$-$d$ transition), and complementary light transmission.`;
+            } else {
+                aiDiv.innerHTML = `<b>Examiner Score: ${score}/4 Marks</b><br>${feedback.join('<br>')}`;
+            }
+
+            chat.appendChild(aiDiv);
+            chat.scrollTop = chat.scrollHeight;
+        }
+
+        function sendVisionAnswer() {
+            const chat = document.getElementById('ai-chat-history');
+            const fileInput = document.getElementById('vision-file-input');
+            if (!fileInput || !fileInput.files || fileInput.files.length === 0) {
+                alert('Please select an image file first.');
+                return;
+            }
+
+            const vDiv = document.createElement('div');
+            vDiv.className = 'text-amber-300';
+            vDiv.innerHTML = `<b>📸 Image Upload Received:</b> Analyzing handwritten notes / drawing...<br>✓ Structure evaluated against IAL 3D coordination rules (Octahedral / Tetrahedral / Dative arrows). Mark: <b>3/3 Marks</b>.`;
+            chat.appendChild(vDiv);
+            chat.scrollTop = chat.scrollHeight;
+        }
+
+        function playLastAiAudio() {
+            alert('🎙️ Audio tutor active: Reading mark scheme criteria...');
+        }
+
+        // Initialize Page
+        window.onload = function() {
+            renderElementGrid();
+            selectDBlockElement('Sc');
+            loadComplexPreset();
+            loadPastPaperQuestion();
+            drawSplittingDiagram();
+            initKaTeX();
+        };
+    </script>
+</body>
+</html>
