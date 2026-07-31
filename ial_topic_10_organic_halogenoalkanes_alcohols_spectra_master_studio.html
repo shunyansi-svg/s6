@@ -1,0 +1,1385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IAL Chemistry Topic 10: Halogenoalkanes, Alcohols &amp; Spectra Master Studio (WCH12)</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="initKaTeX()"></script>
+
+    <script>
+        function initKaTeX() {
+            if (window.renderMathInElement) {
+                window.renderMathInElement(document.body, {
+                    delimiters: [
+                        {left: '$$', right: '$$', display: true},
+                        {left: '$', right: '$', display: false}
+                    ],
+                    throwOnError: false
+                });
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background:
+                radial-gradient(1000px 480px at 90% -6%, rgba(56,189,248,0.07), transparent 60%),
+                radial-gradient(900px 520px at -8% 24%, rgba(52,211,153,0.06), transparent 55%),
+                radial-gradient(820px 620px at 55% 112%, rgba(251,146,60,0.05), transparent 55%),
+                #020617;
+        }
+        .font-display { font-family: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif; }
+        .tab-btn-active { border-bottom: 3px solid #38bdf8; color: #38bdf8; font-weight: 700; background-color: rgba(56,189,248,0.12); }
+        .blur-answer { filter: blur(6px); transition: filter 0.25s ease, background-color 0.25s ease; user-select: none; cursor: pointer; }
+        .blur-answer:hover, .blur-answer.revealed { filter: blur(0); user-select: auto; background-color: rgba(14,165,233,0.2) !important; }
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        .lift { transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease; }
+        .lift:hover { transform: translateY(-2px); box-shadow: 0 10px 26px -14px rgba(56,189,248,0.3); }
+        .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.5s ease, transform 0.5s ease; }
+        .reveal.in { opacity: 1; transform: none; }
+        #bg-canvas { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+        header, nav, main, footer { position: relative; z-index: 10; }
+        .fg-tile { transition: transform 0.15s ease, box-shadow 0.15s ease; cursor: default; }
+        .fg-tile:hover { transform: translateY(-3px) scale(1.04); box-shadow: 0 8px 20px -8px rgba(56,189,248,0.4); }
+        .press-btn { user-select: none; touch-action: none; }
+        .press-btn:active { transform: scale(0.96); }
+        .tube-liquid { transition: background 1.4s ease; }
+        .custom-scrollbar::-webkit-scrollbar { height: 6px; width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #1e293b; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #475569; border-radius: 3px; }
+    </style>
+</head>
+<body class="text-slate-100 font-sans min-h-screen flex flex-col">
+
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Header -->
+    <header class="bg-slate-900/95 border-b border-slate-800 sticky top-0 z-40 shadow-lg backdrop-blur">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center gap-3">
+            <div class="flex items-center gap-3">
+                <div class="bg-slate-950 p-1.5 rounded-lg border border-slate-700">
+                    <svg width="38" height="38" viewBox="0 0 38 38">
+                        <polygon points="19,5 30,11.5 30,24.5 19,31 8,24.5 8,11.5" fill="none" stroke="#38bdf8" stroke-width="1.6"/>
+                        <circle cx="19" cy="5" r="3" fill="#34d399"/>
+                        <circle cx="30" cy="24.5" r="3" fill="#fb7185"/>
+                        <text x="19" y="20" fill="#7dd3fc" font-size="8" text-anchor="middle" font-weight="bold">C</text>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="font-display text-lg font-bold tracking-tight text-sky-400">IAL Chemistry Topic 10: Halogenoalkanes, Alcohols &amp; Spectra</h1>
+                    <p class="text-xs text-slate-400">WCH12 · Unit 2 · Paper 2 · Spec 10.1–10.23 — Mechanisms, Reactions, Oxidation, Mass Spec &amp; IR</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-2">
+                <span class="px-2.5 py-1 text-xs font-semibold rounded-full bg-sky-950 text-sky-300 border border-sky-800">Edexcel Spec 10.1 – 10.23</span>
+                <span class="px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-950 text-emerald-300 border border-emerald-800">CP5 · CP6 · CP7 · CP8</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Nav -->
+    <nav class="bg-slate-900/90 border-b border-slate-800 sticky top-[57px] z-30 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 flex flex-wrap">
+            <button onclick="switchTab('syllabus')" id="btn-syllabus" class="tab-btn-active py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs text-sky-400 font-bold border-b-2 border-sky-400 bg-sky-950/40 transition flex items-center gap-1.5 rounded-t-md"><span>📚 1. Syllabus</span></button>
+            <button onclick="switchTab('types')" id="btn-types" class="py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs text-slate-400 hover:text-sky-300 font-medium border-b-2 border-transparent hover:border-slate-600 transition flex items-center gap-1.5 rounded-t-md"><span>🧭 2. Reaction Types</span></button>
+            <button onclick="switchTab('halo')" id="btn-halo" class="py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs text-slate-400 hover:text-sky-300 font-medium border-b-2 border-transparent hover:border-slate-600 transition flex items-center gap-1.5 rounded-t-md"><span>🔬 3. Halogenoalkanes</span></button>
+            <button onclick="switchTab('alcohol')" id="btn-alcohol" class="py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs text-slate-400 hover:text-sky-300 font-medium border-b-2 border-transparent hover:border-slate-600 transition flex items-center gap-1.5 rounded-t-md"><span>🍷 4. Alcohols</span></button>
+            <button onclick="switchTab('spectra')" id="btn-spectra" class="py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs text-slate-400 hover:text-sky-300 font-medium border-b-2 border-transparent hover:border-slate-600 transition flex items-center gap-1.5 rounded-t-md"><span>📊 5. Spectra</span></button>
+            <button onclick="switchTab('solver')" id="btn-solver" class="py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs text-slate-400 hover:text-sky-300 font-medium border-b-2 border-transparent hover:border-slate-600 transition flex items-center gap-1.5 rounded-t-md"><span>🛠️ 6. Synthesis Solver</span></button>
+            <button onclick="switchTab('review')" id="btn-review" class="py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs text-slate-400 hover:text-sky-300 font-medium border-b-2 border-transparent hover:border-slate-600 transition flex items-center gap-1.5 rounded-t-md"><span>📋 7. Final Review</span></button>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 py-6 flex-grow w-full">
+
+        <!-- ============ TAB 1: SYLLABUS ============ -->
+        <section id="tab-syllabus" class="space-y-6">
+            <!-- Functional group strip -->
+            <div class="reveal bg-slate-900 border border-slate-800 rounded-xl p-5">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                    <span class="text-xs font-bold text-sky-400 uppercase tracking-widest">The functional groups of Topic 10</span>
+                    <span class="text-[10px] text-slate-500">hover to inspect</span>
+                </div>
+                <div class="flex flex-wrap gap-2.5" id="fg-strip"></div>
+                <p class="text-[11px] text-slate-400 mt-3">Topic 10 is the chemistry of the <b class="text-sky-300">C–X</b> and <b class="text-emerald-300">–OH</b> groups — and how to identify every group here by <b class="text-amber-300">mass &amp; IR spectroscopy</b>. The thread: a polar bond makes a carbon electrophilic, so a nucleophile can attack it.</p>
+            </div>
+
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-sm">
+                <div class="border-b border-slate-800 pb-4 mb-6">
+                    <span class="text-xs font-bold text-sky-400 uppercase tracking-widest">Syllabus Master Overview</span>
+                    <h2 class="font-display text-xl font-bold text-white mt-1">Topic 10 Learning Points &amp; Examiner Watch-Outs (Spec 10.1 – 10.23)</h2>
+                    <p class="text-xs text-slate-400 mt-1">General principles (10A), halogenoalkanes (10B), alcohols (10C) and spectra (10D). Every code elaborated below.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- 10.1-10.5 -->
+                    <div class="reveal lift bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-2"><span class="text-[10px] font-mono text-sky-400 uppercase font-bold px-2 py-0.5 bg-sky-950 rounded border border-sky-800">Spec 10.1 - 10.5</span><span class="text-[10px] text-slate-400 font-mono">General Principles</span></div>
+                            <h3 class="font-display text-sm font-bold text-white mb-3">1. Reaction Types &amp; Mechanisms (10A)</h3>
+                            <div class="space-y-2">
+                                <span class="text-[11px] font-bold text-sky-300 uppercase tracking-wider block">🎯 Key Learning Goals:</span>
+                                <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed">
+                                    <li>Classify reactions as <b>addition, elimination, substitution, oxidation, reduction, hydrolysis or polymerisation</b>.</li>
+                                    <li>A <b>mechanism</b> is the step-by-step route showing electron movement with curly arrows.</li>
+                                    <li><b>Heterolytic</b> bond breaking (both electrons to one atom) gives ions — an <b>electrophile</b> (electron-pair acceptor) and a <b>nucleophile</b> (electron-pair donor).</li>
+                                    <li>A polar bond (e.g. C–X, C=O) creates a $\delta^+$ carbon that a nucleophile attacks.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="p-3 bg-amber-950/40 border border-amber-800/60 rounded-lg text-xs text-amber-200"><span class="font-bold text-amber-400 block uppercase text-[10px]">💡 IAL Examiner Watch-Outs:</span><p class="leading-relaxed text-[11px]">Curly arrows start from a <b>lone pair or a bond</b>, never from a positive charge. A nucleophile <b>donates</b> a pair; an electrophile <b>accepts</b> a pair — don't swap them.</p></div>
+                    </div>
+
+                    <!-- 10.6-10.7 -->
+                    <div class="reveal lift bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-2"><span class="text-[10px] font-mono text-purple-400 uppercase font-bold px-2 py-0.5 bg-purple-950 rounded border border-purple-800">Spec 10.6 - 10.7</span><span class="text-[10px] text-slate-400 font-mono">Halogenoalkane Basics</span></div>
+                            <h3 class="font-display text-sm font-bold text-white mb-3">2. Naming &amp; Classifying Halogenoalkanes</h3>
+                            <div class="space-y-2">
+                                <span class="text-[11px] font-bold text-purple-300 uppercase tracking-wider block">🎯 Key Learning Goals:</span>
+                                <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed">
+                                    <li>Name halogenoalkanes (fluoro-, chloro-, bromo-, iodo-) and draw structural, displayed and skeletal formulae.</li>
+                                    <li><b>Primary (1°):</b> the C–X carbon is attached to <b>one</b> alkyl group.</li>
+                                    <li><b>Secondary (2°):</b> attached to <b>two</b> alkyl groups.</li>
+                                    <li><b>Tertiary (3°):</b> attached to <b>three</b> alkyl groups.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="p-3 bg-amber-950/40 border border-amber-800/60 rounded-lg text-xs text-amber-200"><span class="font-bold text-amber-400 block uppercase text-[10px]">💡 IAL Examiner Watch-Outs:</span><p class="leading-relaxed text-[11px]">Count the <b>carbon</b> neighbours of the C–X carbon, not the hydrogens. 2-chloro-2-methylpropane is <b>tertiary</b> (three methyl groups on the C–Cl carbon).</p></div>
+                    </div>
+
+                    <!-- 10.8 -->
+                    <div class="reveal lift bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-2"><span class="text-[10px] font-mono text-emerald-400 uppercase font-bold px-2 py-0.5 bg-emerald-950 rounded border border-emerald-800">Spec 10.8</span><span class="text-[10px] text-slate-400 font-mono">Halogenoalkane Reactions</span></div>
+                            <h3 class="font-display text-sm font-bold text-white mb-3">3. Five Reactions — the Nucleophile Decides</h3>
+                            <div class="space-y-2">
+                                <span class="text-[11px] font-bold text-emerald-300 uppercase tracking-wider block">🎯 Key Learning Goals:</span>
+                                <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed">
+                                    <li><b>aq. KOH, warm</b> → alcohol (OH⁻ is a <b>nucleophile</b>, substitution).</li>
+                                    <li><b>ethanolic KOH, heat</b> → alkene (OH⁻ is a <b>base</b>, elimination).</li>
+                                    <li><b>aq. AgNO₃ in ethanol</b> → halide precipitate (water is the nucleophile; used to compare rates).</li>
+                                    <li><b>alcoholic NH₃, heat &amp; pressure</b> → amine (NH₃ is the nucleophile).</li>
+                                    <li><b>alcoholic KCN, heat</b> → nitrile (CN⁻ is the nucleophile) — <b>lengthens the carbon chain by one</b>.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="p-3 bg-amber-950/40 border border-amber-800/60 rounded-lg text-xs text-amber-200"><span class="font-bold text-amber-400 block uppercase text-[10px]">💡 IAL Examiner Watch-Outs:</span><p class="leading-relaxed text-[11px]">The <b>solvent is decisive</b>: aqueous KOH gives substitution (alcohol), ethanolic KOH gives elimination (alkene). State the solvent and the role of OH⁻ (nucleophile vs base). KCN adds a carbon; NH₃ gives an amine.</p></div>
+                    </div>
+
+                    <!-- 10.9 -->
+                    <div class="reveal lift bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-2"><span class="text-[10px] font-mono text-amber-400 uppercase font-bold px-2 py-0.5 bg-amber-950 rounded border border-amber-800">Spec 10.9</span><span class="text-[10px] text-slate-400 font-mono">Nucleophilic Substitution Mechanism</span></div>
+                            <h3 class="font-display text-sm font-bold text-white mb-3">4. Drawing the Mechanism (primary)</h3>
+                            <div class="space-y-2">
+                                <span class="text-[11px] font-bold text-amber-300 uppercase tracking-wider block">🎯 Key Learning Goals:</span>
+                                <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed">
+                                    <li>Show the nucleophile's <b>lone pair</b> attacking the $\delta^+$ carbon (curly arrow from lone pair to C).</li>
+                                    <li>Show the <b>C–X bond breaking</b>, both electrons going to the halogen (curly arrow from bond to X).</li>
+                                    <li>Products: the substituted molecule + a halide ion (X⁻).</li>
+                                    <li>Apply to aq. KOH (→ alcohol) and NH₃ (→ amine). (SN1/SN2 detail is Unit 4.)</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="p-3 bg-amber-950/40 border border-amber-800/60 rounded-lg text-xs text-amber-200"><span class="font-bold text-amber-400 block uppercase text-[10px]">💡 IAL Examiner Watch-Outs:</span><p class="leading-relaxed text-[11px]">Two curly arrows, both starting from an electron source. The halogen leaves as <b>X⁻</b> with the bonding pair. Watch it animate in Tab 3.</p></div>
+                    </div>
+
+                    <!-- 10.10-10.13 -->
+                    <div class="reveal lift bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-2"><span class="text-[10px] font-mono text-rose-400 uppercase font-bold px-2 py-0.5 bg-rose-950 rounded border border-rose-800">Spec 10.10 - 10.13</span><span class="text-[10px] text-slate-400 font-mono">Hydrolysis Rates · CP5</span></div>
+                            <h3 class="font-display text-sm font-bold text-white mb-3">5. Rates of Hydrolysis (CP5)</h3>
+                            <div class="space-y-2">
+                                <span class="text-[11px] font-bold text-rose-300 uppercase tracking-wider block">🎯 Key Learning Goals:</span>
+                                <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed">
+                                    <li>Compare rates using <b>aq. AgNO₃ in ethanol</b> — time how fast the silver halide precipitate forms.</li>
+                                    <li>By halogen: <b>C–I fastest &gt; C–Br &gt; C–Cl slowest</b> — explained by <b>bond enthalpy</b> (C–I weakest, breaks most easily).</li>
+                                    <li>By class: <b>tertiary &gt; secondary &gt; primary</b> for the SN1 contribution.</li>
+                                    <li>Precipitate colours: AgCl <b>white</b>, AgBr <b>cream</b>, AgI <b>yellow</b>.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="p-3 bg-amber-950/40 border border-amber-800/60 rounded-lg text-xs text-amber-200"><span class="font-bold text-amber-400 block uppercase text-[10px]">💡 IAL Examiner Watch-Outs:</span><p class="leading-relaxed text-[11px]">The halogen trend is about <b>C–X bond strength</b>, not polarity (C–F is most polar but unreactive — bond too strong). Ethanol is the solvent so the organic halide dissolves. Try the rate lab in Tab 3.</p></div>
+                    </div>
+
+                    <!-- 10.14 -->
+                    <div class="reveal lift bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-2"><span class="text-[10px] font-mono text-cyan-400 uppercase font-bold px-2 py-0.5 bg-cyan-950 rounded border border-cyan-800">Spec 10.14</span><span class="text-[10px] text-slate-400 font-mono">CP6</span></div>
+                            <h3 class="font-display text-sm font-bold text-white mb-3">6. CP6 — Chlorination of 2-methylpropan-2-ol</h3>
+                            <div class="space-y-2">
+                                <span class="text-[11px] font-bold text-cyan-300 uppercase tracking-wider block">🎯 Key Learning Goals:</span>
+                                <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed">
+                                    <li>A tertiary alcohol + <b>concentrated HCl</b> → 2-chloro-2-methylpropane (a tertiary halogenoalkane).</li>
+                                    <li>Tertiary alcohols react with HX directly (no catalyst needed) — the substitution is easy.</li>
+                                    <li>The product is separated in a <b>separating funnel</b>, washed, dried and distilled.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="p-3 bg-amber-950/40 border border-amber-800/60 rounded-lg text-xs text-amber-200"><span class="font-bold text-amber-400 block uppercase text-[10px]">💡 IAL Examiner Watch-Outs:</span><p class="leading-relaxed text-[11px]">This is a <b>substitution</b> of –OH by Cl. Know the purification steps (separating funnel → drying agent → distillation) and why each is done.</p></div>
+                    </div>
+
+                    <!-- 10.15-10.16 -->
+                    <div class="reveal lift bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-2"><span class="text-[10px] font-mono text-sky-400 uppercase font-bold px-2 py-0.5 bg-sky-950 rounded border border-sky-800">Spec 10.15 - 10.16</span><span class="text-[10px] text-slate-400 font-mono">Alcohol Basics</span></div>
+                            <h3 class="font-display text-sm font-bold text-white mb-3">7. Naming &amp; Classifying Alcohols</h3>
+                            <div class="space-y-2">
+                                <span class="text-[11px] font-bold text-sky-300 uppercase tracking-wider block">🎯 Key Learning Goals:</span>
+                                <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed">
+                                    <li>Name alcohols (-ol) and draw structural, displayed and skeletal formulae.</li>
+                                    <li><b>Primary (1°):</b> the C–OH carbon has <b>one</b> alkyl group (e.g. propan-1-ol).</li>
+                                    <li><b>Secondary (2°):</b> <b>two</b> alkyl groups (e.g. propan-2-ol).</li>
+                                    <li><b>Tertiary (3°):</b> <b>three</b> alkyl groups (e.g. 2-methylpropan-2-ol).</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="p-3 bg-amber-950/40 border border-amber-800/60 rounded-lg text-xs text-amber-200"><span class="font-bold text-amber-400 block uppercase text-[10px]">💡 IAL Examiner Watch-Outs:</span><p class="leading-relaxed text-[11px]">The class depends on the carbon <b>bearing the –OH</b>. This classification decides the oxidation product — the single most tested alcohol fact.</p></div>
+                    </div>
+
+                    <!-- 10.17 -->
+                    <div class="reveal lift bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-2"><span class="text-[10px] font-mono text-purple-400 uppercase font-bold px-2 py-0.5 bg-purple-950 rounded border border-purple-800">Spec 10.17</span><span class="text-[10px] text-slate-400 font-mono">Alcohol Reactions</span></div>
+                            <h3 class="font-display text-sm font-bold text-white mb-3">8. Combustion, Halogenation &amp; Elimination</h3>
+                            <div class="space-y-2">
+                                <span class="text-[11px] font-bold text-purple-300 uppercase tracking-wider block">🎯 Key Learning Goals:</span>
+                                <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed">
+                                    <li><b>Combustion</b> in oxygen → CO₂ + H₂O.</li>
+                                    <li><b>PCl₅</b> → chloroalkane + POCl₃ + HCl (steamy fumes) — a <b>test for the –OH group</b>.</li>
+                                    <li><b>50% H₂SO₄ + KBr</b> → bromoalkane; <b>red P + I₂</b> → iodoalkane.</li>
+                                    <li><b>Concentrated H₃PO₄, heat</b> → alkene + water (elimination / dehydration).</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="p-3 bg-amber-950/40 border border-amber-800/60 rounded-lg text-xs text-amber-200"><span class="font-bold text-amber-400 block uppercase text-[10px]">💡 IAL Examiner Watch-Outs:</span><p class="leading-relaxed text-[11px]">PCl₅ gives <b>misty/steamy HCl fumes</b> — the positive test for –OH. Mechanisms are NOT required here. H₃PO₄ (not H₂SO₄) is preferred for dehydration to avoid side reactions.</p></div>
+                    </div>
+
+                    <!-- 10.18 -->
+                    <div class="reveal lift bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-2"><span class="text-[10px] font-mono text-emerald-400 uppercase font-bold px-2 py-0.5 bg-emerald-950 rounded border border-emerald-800">Spec 10.18</span><span class="text-[10px] text-slate-400 font-mono">Alcohol Oxidation · CP7</span></div>
+                            <h3 class="font-display text-sm font-bold text-white mb-3">9. Oxidation with K₂Cr₂O₇ / H⁺ (CP7)</h3>
+                            <div class="space-y-2">
+                                <span class="text-[11px] font-bold text-emerald-300 uppercase tracking-wider block">🎯 Key Learning Goals:</span>
+                                <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed">
+                                    <li><b>Primary → aldehyde</b> if <b>distilled</b> as it forms (positive Benedict's/Fehling's test).</li>
+                                    <li><b>Primary → carboxylic acid</b> if heated under <b>reflux</b> (positive Na₂CO₃/NaHCO₃ test — effervescence).</li>
+                                    <li><b>Secondary → ketone</b> (reflux).</li>
+                                    <li><b>Tertiary → no reaction</b> (no H on the C–OH carbon).</li>
+                                    <li>Dichromate goes <b>orange → green</b> when oxidation occurs; write the oxidant as [O].</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="p-3 bg-amber-950/40 border border-amber-800/60 rounded-lg text-xs text-amber-200"><span class="font-bold text-amber-400 block uppercase text-[10px]">💡 IAL Examiner Watch-Outs:</span><p class="leading-relaxed text-[11px]"><b>Distil</b> to stop at the aldehyde; <b>reflux</b> to go all the way to the acid. Tertiary alcohols stay orange (no reaction). Predict the product in Tab 4.</p></div>
+                    </div>
+
+                    <!-- 10.19 -->
+                    <div class="reveal lift bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-2"><span class="text-[10px] font-mono text-amber-400 uppercase font-bold px-2 py-0.5 bg-amber-950 rounded border border-amber-800">Spec 10.19</span><span class="text-[10px] text-slate-400 font-mono">Preparation Techniques</span></div>
+                            <h3 class="font-display text-sm font-bold text-white mb-3">10. Preparing &amp; Purifying a Liquid Product</h3>
+                            <div class="space-y-2">
+                                <span class="text-[11px] font-bold text-amber-300 uppercase tracking-wider block">🎯 Key Learning Goals:</span>
+                                <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed">
+                                    <li><b>Heating under reflux</b> — boil without losing volatile liquid (condenser returns vapour).</li>
+                                    <li><b>Separating funnel</b> — separate two immiscible liquid layers.</li>
+                                    <li><b>Distillation</b> — collect a pure liquid by boiling point.</li>
+                                    <li><b>Drying with an anhydrous salt</b> (e.g. MgSO₄) — removes traces of water.</li>
+                                    <li><b>Boiling-temperature determination</b> — confirms identity/purity.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="p-3 bg-amber-950/40 border border-amber-800/60 rounded-lg text-xs text-amber-200"><span class="font-bold text-amber-400 block uppercase text-[10px]">💡 IAL Examiner Watch-Outs:</span><p class="leading-relaxed text-[11px]">Know the <b>order</b> and <b>purpose</b> of each step: reflux/react → separate → wash → dry → distil → check bp. A sharp boiling point = pure.</p></div>
+                    </div>
+
+                    <!-- 10.21 -->
+                    <div class="reveal lift bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-2"><span class="text-[10px] font-mono text-rose-400 uppercase font-bold px-2 py-0.5 bg-rose-950 rounded border border-rose-800">Spec 10.21</span><span class="text-[10px] text-slate-400 font-mono">Mass Spectrometry</span></div>
+                            <h3 class="font-display text-sm font-bold text-white mb-3">11. Reading a Mass Spectrum</h3>
+                            <div class="space-y-2">
+                                <span class="text-[11px] font-bold text-rose-300 uppercase tracking-wider block">🎯 Key Learning Goals:</span>
+                                <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed">
+                                    <li>The <b>molecular ion peak (M⁺)</b> has the highest m/z = the relative molecular mass.</li>
+                                    <li><b>Fragmentation:</b> the molecule breaks into pieces; each peak is a fragment ion.</li>
+                                    <li>Use the fragments to suggest a structure (e.g. m/z 15 = CH₃⁺, 29 = C₂H₅⁺ or CHO⁺, 31 = CH₂OH⁺, 43 = CH₃CO⁺).</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="p-3 bg-amber-950/40 border border-amber-800/60 rounded-lg text-xs text-amber-200"><span class="font-bold text-amber-400 block uppercase text-[10px]">💡 IAL Examiner Watch-Outs:</span><p class="leading-relaxed text-[11px]">Read M⁺ for the Mr, then match fragments to lost groups. Practise on the interactive spectrum in Tab 5.</p></div>
+                    </div>
+
+                    <!-- 10.22-10.23 -->
+                    <div class="reveal lift bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-2"><span class="text-[10px] font-mono text-cyan-400 uppercase font-bold px-2 py-0.5 bg-cyan-950 rounded border border-cyan-800">Spec 10.22 - 10.23</span><span class="text-[10px] text-slate-400 font-mono">IR Spectroscopy · CP8</span></div>
+                            <h3 class="font-display text-sm font-bold text-white mb-3">12. Reading an IR Spectrum (CP8)</h3>
+                            <div class="space-y-2">
+                                <span class="text-[11px] font-bold text-cyan-300 uppercase tracking-wider block">🎯 Key Learning Goals:</span>
+                                <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed">
+                                    <li><b>O–H</b>: broad ~3200–3600 (alcohol); very broad ~2500–3300 (acid).</li>
+                                    <li><b>C=O</b>: strong ~1680–1750 (aldehyde/ketone/acid).</li>
+                                    <li><b>C=C</b> ~1620–1680; <b>C–H</b> just below/above 3000; <b>N–H</b> ~3300–3500; <b>C–X</b> ~500–800.</li>
+                                    <li>Use absorptions to deduce which functional groups are present (CP8: analysing unknowns).</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="p-3 bg-amber-950/40 border border-amber-800/60 rounded-lg text-xs text-amber-200"><span class="font-bold text-amber-400 block uppercase text-[10px]">💡 IAL Examiner Watch-Outs:</span><p class="leading-relaxed text-[11px]">A <b>broad</b> absorption ~3300 = O–H; a <b>sharp</b> one ~1700 = C=O. A carboxylic acid shows BOTH a very broad O–H and a C=O. Explore peaks in Tab 5.</p></div>
+                    </div>
+                </div>
+
+                <div class="reveal mt-6 p-4 bg-slate-950 border border-dashed border-slate-700 rounded-xl">
+                    <span class="text-xs font-bold text-slate-300 uppercase tracking-widest block mb-2">🚧 Scope boundary</span>
+                    <p class="text-[11px] text-slate-400 leading-relaxed"><b class="text-slate-300">SN1/SN2 mechanisms</b> are tested in <b class="text-emerald-300">Unit 4 (WCH13)</b> — here you only need the nucleophilic-substitution mechanism for <b>primary</b> halogenoalkanes. Alkene chemistry (electrophilic addition) is <b class="text-sky-300">Topic 5</b>; carbonyl/carboxylic-acid reactions in depth are <b class="text-sky-300">Topic 15</b>.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ TAB 2: REACTION TYPES ============ -->
+        <section id="tab-types" class="hidden space-y-6">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 space-y-5">
+                <div class="border-b border-slate-800 pb-3">
+                    <span class="text-xs font-bold text-sky-400 uppercase tracking-widest">General Principles · Spec 10.1–10.5</span>
+                    <h2 class="font-display text-xl font-bold text-white mt-1">Know Your Reaction Types &amp; the Electron Arrows</h2>
+                    <p class="text-xs text-slate-400 mt-1">Seven reaction classes, plus the nucleophile/electrophile idea that drives organic mechanisms.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="reveal lift bg-slate-950 border border-slate-800 rounded-xl p-4 space-y-2"><div class="flex items-center gap-2"><span class="w-8 h-8 rounded-lg bg-sky-950 border border-sky-800 flex items-center justify-center text-sky-300 font-bold">＋</span><h3 class="font-display font-bold text-sky-300 text-sm">Addition</h3></div><p class="text-[11px] text-slate-300">Two molecules join into one; a double bond opens up. <span class="text-slate-400">e.g. ethene + HBr → bromoethane.</span></p></div>
+                    <div class="reveal lift bg-slate-950 border border-slate-800 rounded-xl p-4 space-y-2"><div class="flex items-center gap-2"><span class="w-8 h-8 rounded-lg bg-rose-950 border border-rose-800 flex items-center justify-center text-rose-300 font-bold">－</span><h3 class="font-display font-bold text-rose-300 text-sm">Elimination</h3></div><p class="text-[11px] text-slate-300">A small molecule (HX or H₂O) is removed; a double bond forms. <span class="text-slate-400">e.g. bromoethane + ethanolic KOH → ethene.</span></p></div>
+                    <div class="reveal lift bg-slate-950 border border-slate-800 rounded-xl p-4 space-y-2"><div class="flex items-center gap-2"><span class="w-8 h-8 rounded-lg bg-emerald-950 border border-emerald-800 flex items-center justify-center text-emerald-300 font-bold">⇄</span><h3 class="font-display font-bold text-emerald-300 text-sm">Substitution</h3></div><p class="text-[11px] text-slate-300">One atom/group swaps for another. <span class="text-slate-400">e.g. bromoethane + aq. KOH → ethanol (Br replaced by OH).</span></p></div>
+                    <div class="reveal lift bg-slate-950 border border-slate-800 rounded-xl p-4 space-y-2"><div class="flex items-center gap-2"><span class="w-8 h-8 rounded-lg bg-amber-950 border border-amber-800 flex items-center justify-center text-amber-300 font-bold">↑O</span><h3 class="font-display font-bold text-amber-300 text-sm">Oxidation</h3></div><p class="text-[11px] text-slate-300">Gain of O / loss of H. <span class="text-slate-400">e.g. ethanol → ethanal (with [O] from dichromate).</span></p></div>
+                    <div class="reveal lift bg-slate-950 border border-slate-800 rounded-xl p-4 space-y-2"><div class="flex items-center gap-2"><span class="w-8 h-8 rounded-lg bg-violet-950 border border-violet-800 flex items-center justify-center text-violet-300 font-bold">↓O</span><h3 class="font-display font-bold text-violet-300 text-sm">Reduction</h3></div><p class="text-[11px] text-slate-300">Loss of O / gain of H. <span class="text-slate-400">e.g. aldehyde → primary alcohol.</span></p></div>
+                    <div class="reveal lift bg-slate-950 border border-slate-800 rounded-xl p-4 space-y-2"><div class="flex items-center gap-2"><span class="w-8 h-8 rounded-lg bg-cyan-950 border border-cyan-800 flex items-center justify-center text-cyan-300 font-bold">💧</span><h3 class="font-display font-bold text-cyan-300 text-sm">Hydrolysis</h3></div><p class="text-[11px] text-slate-300">Breaking a bond with water. <span class="text-slate-400">e.g. halogenoalkane + water → alcohol + HX.</span></p></div>
+                    <div class="reveal lift bg-slate-950 border border-slate-800 rounded-xl p-4 space-y-2"><div class="flex items-center gap-2"><span class="w-8 h-8 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-300 font-bold">⛓</span><h3 class="font-display font-bold text-slate-300 text-sm">Polymerisation</h3></div><p class="text-[11px] text-slate-300">Many monomers join into a long chain. <span class="text-slate-400">e.g. ethene → poly(ethene).</span></p></div>
+                </div>
+
+                <div class="reveal grid md:grid-cols-2 gap-5">
+                    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3">
+                        <span class="font-display font-bold text-emerald-300 text-sm block">🎯 Nucleophiles &amp; electrophiles</span>
+                        <div class="grid grid-cols-2 gap-3 text-[11px]">
+                            <div class="p-3 bg-slate-900 rounded-lg border border-slate-800"><b class="text-emerald-300 block">Nucleophile</b><span class="text-slate-300">electron-pair <b>donor</b> — has a lone pair. e.g. OH⁻, NH₃, CN⁻, H₂O.</span></div>
+                            <div class="p-3 bg-slate-900 rounded-lg border border-slate-800"><b class="text-sky-300 block">Electrophile</b><span class="text-slate-300">electron-pair <b>acceptor</b> — electron-deficient. e.g. the δ⁺ carbon in C–X.</span></div>
+                        </div>
+                        <p class="text-[11px] text-slate-400">Heterolytic fission (both bonding electrons go to one atom) makes these ions. A polar C–X bond leaves the carbon δ⁺ — that's the electrophilic site a nucleophile attacks.</p>
+                    </div>
+                    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3">
+                        <span class="font-display font-bold text-amber-300 text-sm block">🎯 Classify these (click to reveal)</span>
+                        <div class="space-y-2 text-[11px] font-mono">
+                            <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800 cursor-pointer" onclick="this.querySelector('.ans').classList.toggle('hidden')">CH₃CH₂Br + KOH(aq) → CH₃CH₂OH + KBr <span class="ans hidden text-emerald-300">— substitution (hydrolysis)</span></div>
+                            <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800 cursor-pointer" onclick="this.querySelector('.ans').classList.toggle('hidden')">CH₃CH₂Br + KOH(ethanolic) → CH₂=CH₂ + KBr + H₂O <span class="ans hidden text-rose-300">— elimination</span></div>
+                            <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800 cursor-pointer" onclick="this.querySelector('.ans').classList.toggle('hidden')">CH₃CH₂OH + [O] → CH₃CHO + H₂O <span class="ans hidden text-amber-300">— oxidation</span></div>
+                            <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800 cursor-pointer" onclick="this.querySelector('.ans').classList.toggle('hidden')">CH₂=CH₂ + HBr → CH₃CH₂Br <span class="ans hidden text-sky-300">— addition</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ TAB 3: HALOGENOALKANES ============ -->
+        <section id="tab-halo" class="hidden space-y-6">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 space-y-5">
+                <div class="border-b border-slate-800 pb-3 flex flex-col md:flex-row justify-between gap-2">
+                    <div><span class="text-xs font-bold text-sky-400 uppercase tracking-widest">Engine A · Spec 10.6–10.14</span><h2 class="font-display text-xl font-bold text-white mt-1">Halogenoalkanes — the Nucleophile Decides</h2></div>
+                    <span class="px-3 py-1 bg-sky-950 text-sky-300 rounded-lg border border-sky-800 text-xs font-mono h-fit">5 concept cards</span>
+                </div>
+                <div class="flex flex-wrap gap-2 text-xs border-b border-slate-800 pb-3">
+                    <button onclick="switchMode('c1','explorer')" id="c1-mode-btn-explorer" class="px-3.5 py-1.5 rounded-lg bg-sky-600 text-white font-bold text-xs">📚 Module 1: Inspector</button>
+                    <button onclick="switchMode('c1','map')" id="c1-mode-btn-map" class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 text-xs">🗺️ Module 2: Nucleophile → Product</button>
+                    <button onclick="switchMode('c1','quiz')" id="c1-mode-btn-quiz" class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 text-xs">🎯 Module 3: Blanks</button>
+                    <button onclick="switchMode('c1','traps')" id="c1-mode-btn-traps" class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 text-xs">⚡ Module 4: Traps</button>
+                </div>
+
+                <!-- SN2 animation -->
+                <div class="reveal bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3">
+                    <div class="flex flex-wrap items-center justify-between gap-2">
+                        <span class="font-display font-bold text-sky-300 text-sm">🎬 The nucleophilic substitution mechanism (SN2, primary)</span>
+                        <div class="flex items-center gap-2">
+                            <button id="sn2-play" onclick="toggleSN2()" class="px-3 py-1.5 bg-sky-700 hover:bg-sky-600 rounded-lg text-xs font-bold text-white">⏸ Pause</button>
+                            <button onclick="SN2.t=0" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded-lg text-xs font-bold text-slate-300">↺ Replay</button>
+                        </div>
+                    </div>
+                    <canvas id="sn2-canvas" width="760" height="290" class="w-full bg-slate-900 rounded-lg border border-slate-800"></canvas>
+                    <p id="sn2-caption" class="text-[11px] text-amber-200 font-mono min-h-[16px]"></p>
+                    <p class="text-[11px] text-slate-400">Example: 1-bromopropane + OH⁻ → propan-1-ol. The <b class="text-emerald-300">nucleophile's lone pair</b> attacks the δ⁺ carbon as the <b class="text-rose-300">C–Br bond breaks</b> and Br⁻ leaves — both curly arrows start from an electron source.</p>
+                </div>
+
+                <!-- MODULE 1: INSPECTOR -->
+                <div id="c1-mode-explorer" class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                    <div class="lg:col-span-5 space-y-1.5 text-xs">
+                        <button onclick="selectCard('c1',1,5)" id="c1-btn-1" class="p-2.5 rounded-lg border border-sky-500 bg-sky-950/70 text-sky-300 font-bold text-left w-full text-xs">1. aq. KOH → alcohol (substitution)</button>
+                        <button onclick="selectCard('c1',2,5)" id="c1-btn-2" class="p-2.5 rounded-lg border border-slate-800 bg-slate-900/80 text-slate-400 text-left w-full text-xs">2. ethanolic KOH → alkene (elimination)</button>
+                        <button onclick="selectCard('c1',3,5)" id="c1-btn-3" class="p-2.5 rounded-lg border border-slate-800 bg-slate-900/80 text-slate-400 text-left w-full text-xs">3. alcoholic NH₃ → amine</button>
+                        <button onclick="selectCard('c1',4,5)" id="c1-btn-4" class="p-2.5 rounded-lg border border-slate-800 bg-slate-900/80 text-slate-400 text-left w-full text-xs">4. alcoholic KCN → nitrile (chain +1)</button>
+                        <button onclick="selectCard('c1',5,5)" id="c1-btn-5" class="p-2.5 rounded-lg border border-slate-800 bg-slate-900/80 text-slate-400 text-left w-full text-xs">5. AgNO₃/ethanol → hydrolysis rates</button>
+                    </div>
+                    <div class="lg:col-span-7 bg-slate-950 border border-slate-800 rounded-xl p-5 text-xs space-y-4">
+                        <div id="c1-card-1" class="space-y-3 font-sans">
+                            <span class="text-sky-300 font-bold block font-mono text-sm border-b border-slate-800 pb-2">1. Aqueous KOH → alcohol (10.8i)</span>
+                            <div class="p-3 bg-slate-900 rounded font-mono text-emerald-300 border border-slate-800 text-xs">CH₃CH₂Br + KOH(aq) → CH₃CH₂OH + KBr &nbsp;·&nbsp; warm, aqueous</div>
+                            <p class="text-slate-300 text-[11px]"><b>OH⁻ acts as a nucleophile</b>, donating a lone pair to the δ⁺ carbon; Br⁻ leaves. This is <b>nucleophilic substitution</b> (also a hydrolysis).</p>
+                            <div class="mt-2 p-2.5 bg-sky-950/40 border border-sky-900/50 rounded-lg"><b class="text-sky-300 text-[11px]">Learning goals</b><ul class="list-disc ml-4 mt-1 text-slate-300 text-[11px] space-y-0.5"><li>State reagent (aq. KOH/NaOH), conditions (warm) and product (alcohol).</li><li>Name the mechanism and the role of OH⁻.</li></ul></div>
+                            <div class="mt-2 p-2.5 bg-rose-950/30 border border-rose-900/40 rounded-lg"><b class="text-rose-300 text-[11px]">Examiner tips</b><ul class="list-disc ml-4 mt-1 text-slate-300 text-[11px] space-y-0.5"><li>Must say <b>aqueous</b> — ethanolic gives elimination instead.</li><li>OH⁻ is a <b>nucleophile</b> here, not a base.</li></ul></div>
+                        </div>
+                        <div id="c1-card-2" class="hidden space-y-3 font-sans">
+                            <span class="text-sky-300 font-bold block font-mono text-sm border-b border-slate-800 pb-2">2. Ethanolic KOH → alkene (10.8ii)</span>
+                            <div class="p-3 bg-slate-900 rounded font-mono text-emerald-300 border border-slate-800 text-xs">CH₃CH₂Br + KOH(ethanolic) → CH₂=CH₂ + KBr + H₂O &nbsp;·&nbsp; heat</div>
+                            <p class="text-slate-300 text-[11px]"><b>OH⁻ acts as a base</b>, removing an H from an adjacent carbon; the C–Br bond breaks and a C=C forms. This is <b>elimination</b>.</p>
+                            <div class="mt-2 p-2.5 bg-sky-950/40 border border-sky-900/50 rounded-lg"><b class="text-sky-300 text-[11px]">Learning goals</b><ul class="list-disc ml-4 mt-1 text-slate-300 text-[11px] space-y-0.5"><li>State reagent (ethanolic KOH), conditions (heat) and product (alkene).</li><li>Explain OH⁻'s role as a base removing H⁺.</li></ul></div>
+                            <div class="mt-2 p-2.5 bg-rose-950/30 border border-rose-900/40 rounded-lg"><b class="text-rose-300 text-[11px]">Examiner tips</b><ul class="list-disc ml-4 mt-1 text-slate-300 text-[11px] space-y-0.5"><li><b>Ethanolic</b> is the keyword for elimination.</li><li>Unsymmetrical halides can give <b>two alkene products</b> (H removed from either side).</li></ul></div>
+                        </div>
+                        <div id="c1-card-3" class="hidden space-y-3 font-sans">
+                            <span class="text-sky-300 font-bold block font-mono text-sm border-b border-slate-800 pb-2">3. Alcoholic ammonia → amine (10.8iv)</span>
+                            <div class="p-3 bg-slate-900 rounded font-mono text-emerald-300 border border-slate-800 text-xs">CH₃CH₂Br + 2NH₃ → CH₃CH₂NH₂ + NH₄Br &nbsp;·&nbsp; ethanolic NH₃, heat &amp; pressure</div>
+                            <p class="text-slate-300 text-[11px]"><b>NH₃ acts as a nucleophile</b> (lone pair on N) attacking the δ⁺ carbon, giving an amine. Excess NH₃ limits further substitution.</p>
+                            <div class="mt-2 p-2.5 bg-sky-950/40 border border-sky-900/50 rounded-lg"><b class="text-sky-300 text-[11px]">Learning goals</b><ul class="list-disc ml-4 mt-1 text-slate-300 text-[11px] space-y-0.5"><li>State reagent (alcoholic/excess NH₃), conditions (heat, pressure) and product (amine).</li><li>Identify NH₃ as the nucleophile.</li></ul></div>
+                            <div class="mt-2 p-2.5 bg-rose-950/30 border border-rose-900/40 rounded-lg"><b class="text-rose-300 text-[11px]">Examiner tips</b><ul class="list-disc ml-4 mt-1 text-slate-300 text-[11px] space-y-0.5"><li>Use <b>excess NH₃</b> to favour the primary amine (otherwise the amine reacts again).</li><li>The product is an <b>amine</b>, not an amide.</li></ul></div>
+                        </div>
+                        <div id="c1-card-4" class="hidden space-y-3 font-sans">
+                            <span class="text-sky-300 font-bold block font-mono text-sm border-b border-slate-800 pb-2">4. Alcoholic KCN → nitrile (10.8v)</span>
+                            <div class="p-3 bg-slate-900 rounded font-mono text-emerald-300 border border-slate-800 text-xs">CH₃CH₂Br + KCN → CH₃CH₂CN + KBr &nbsp;·&nbsp; ethanolic KCN, heat</div>
+                            <p class="text-slate-300 text-[11px]"><b>CN⁻ acts as a nucleophile</b>. The product has <b>one more carbon</b> than the halogenoalkane — this is how you <b>lengthen the carbon chain</b>.</p>
+                            <div class="mt-2 p-2.5 bg-sky-950/40 border border-sky-900/50 rounded-lg"><b class="text-sky-300 text-[11px]">Learning goals</b><ul class="list-disc ml-4 mt-1 text-slate-300 text-[11px] space-y-0.5"><li>State reagent (alcoholic KCN), conditions (heat) and product (nitrile).</li><li>Explain why this lengthens the chain (the CN carbon is added).</li></ul></div>
+                            <div class="mt-2 p-2.5 bg-rose-950/30 border border-rose-900/40 rounded-lg"><b class="text-rose-300 text-[11px]">Examiner tips</b><ul class="list-disc ml-4 mt-1 text-slate-300 text-[11px] space-y-0.5"><li>Count the carbons: bromoethane (2C) → propanenitrile (3C).</li><li>Attack is through the <b>carbon</b> of CN⁻.</li></ul></div>
+                        </div>
+                        <div id="c1-card-5" class="hidden space-y-3 font-sans">
+                            <span class="text-sky-300 font-bold block font-mono text-sm border-b border-slate-800 pb-2">5. AgNO₃/ethanol — comparing hydrolysis rates (10.10–10.13, CP5)</span>
+                            <div class="p-3 bg-slate-900 rounded font-mono text-emerald-300 border border-slate-800 text-xs">R–X + H₂O → R–OH + H⁺ + X⁻ &nbsp;then&nbsp; Ag⁺ + X⁻ → AgX(s)</div>
+                            <p class="text-slate-300 text-[11px]">Water (the nucleophile) hydrolyses the halide; the released X⁻ gives a silver halide precipitate. <b>Time to precipitate = rate.</b></p>
+                            <div class="mt-2 p-2.5 bg-sky-950/40 border border-sky-900/50 rounded-lg"><b class="text-sky-300 text-[11px]">Learning goals</b><ul class="list-disc ml-4 mt-1 text-slate-300 text-[11px] space-y-0.5"><li>Halogen trend: C–I &gt; C–Br &gt; C–Cl (weaker C–X bond breaks faster).</li><li>Class trend: tertiary &gt; secondary &gt; primary.</li><li>Colours: AgCl white, AgBr cream, AgI yellow.</li></ul></div>
+                            <div class="mt-2 p-2.5 bg-rose-950/30 border border-rose-900/40 rounded-lg"><b class="text-rose-300 text-[11px]">Examiner tips</b><ul class="list-disc ml-4 mt-1 text-slate-300 text-[11px] space-y-0.5"><li>The trend follows <b>bond enthalpy</b>, not polarity. Ethanol dissolves the organic halide. Try the lab below.</li></ul></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hydrolysis rate lab -->
+                <div class="reveal bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3">
+                    <span class="font-display font-bold text-emerald-300 text-sm">🧪 CP5 — Hydrolysis rate lab (silver nitrate test)</span>
+                    <p class="text-[11px] text-slate-400">Pick a halogenoalkane. The tube shows how fast the silver halide precipitate forms and its colour.</p>
+                    <div class="flex flex-wrap gap-2" id="hydro-btns"></div>
+                    <div class="grid md:grid-cols-2 gap-4 items-center">
+                        <div class="flex justify-center"><div class="relative w-16 h-52">
+                            <div class="absolute inset-x-0 top-0 h-4 bg-slate-700 rounded-t-md"></div>
+                            <div class="absolute inset-x-1 top-3 bottom-0 rounded-b-2xl border-2 border-slate-600 bg-slate-900/60 overflow-hidden">
+                                <div id="hydro-liquid" class="absolute inset-x-0 bottom-0 h-3/4 bg-slate-200/10 transition-all duration-700"></div>
+                                <div id="hydro-ppt" class="absolute inset-x-0 bottom-0 h-0 transition-all duration-1000"></div>
+                            </div>
+                        </div></div>
+                        <div id="hydro-info" class="text-[11px] text-slate-400 space-y-2"></div>
+                    </div>
+                </div>
+
+                <!-- MODULE 2: PATHFINDER -->
+                <div id="c1-mode-map" class="hidden p-4 bg-slate-950 border border-slate-800 rounded-xl space-y-3 text-xs">
+                    <span class="font-bold text-sky-300 uppercase">🗺️ Nucleophile → product pathfinder</span>
+                    <p class="text-slate-400 text-[11px]">Choose the reagent/conditions for a primary halogenoalkane (R–X). The studio returns the product, equation and mechanism.</p>
+                    <div class="grid md:grid-cols-2 gap-3">
+                        <select id="nuc-select" class="w-full bg-slate-900 border border-slate-700 text-sky-300 rounded p-2 font-mono">
+                            <option value="aqkoh">aq. KOH, warm</option>
+                            <option value="etkoh">ethanolic KOH, heat</option>
+                            <option value="nh3">alcoholic NH₃, heat &amp; pressure</option>
+                            <option value="kcn">alcoholic KCN, heat</option>
+                            <option value="agno3">aq. AgNO₃ in ethanol</option>
+                        </select>
+                        <button onclick="predictNuc()" class="px-4 py-2 bg-sky-700 hover:bg-sky-600 rounded-lg font-bold text-white">Predict the product</button>
+                    </div>
+                    <div id="nuc-result" class="text-slate-400 text-[11px] p-3 bg-slate-900 rounded-lg border border-slate-800">Product appears here.</div>
+                </div>
+
+                <!-- MODULE 3: QUIZ -->
+                <div id="c1-mode-quiz" class="hidden p-4 bg-slate-950 border border-slate-800 rounded-xl space-y-3 text-xs font-mono">
+                    <div id="c1-quiz-container" class="space-y-3">
+                        <div class="flex justify-between items-center border-b border-slate-800 pb-2"><span class="font-bold text-sky-300">Multi-blank quiz · Halogenoalkanes</span><button id="c1-toggle-all-btn" onclick="toggleActiveRecall('c1-quiz-container','c1-toggle-all-btn')" class="px-3 py-1 bg-sky-950 text-sky-300 border border-sky-800 rounded">👁️ Reveal All Blanks</button></div>
+                        <div class="grid md:grid-cols-2 gap-3">
+                            <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1.5"><span class="text-sky-300 font-bold block">Reagents &amp; products</span>
+                                <p>aq. KOH gives an <span onclick="window.toggleSingleBlur(this)" class="blur-answer px-2 py-0.5 bg-slate-800 text-emerald-300 rounded font-bold cursor-pointer">alcohol</span></p>
+                                <p>ethanolic KOH gives an <span onclick="window.toggleSingleBlur(this)" class="blur-answer px-2 py-0.5 bg-slate-800 text-rose-300 rounded font-bold cursor-pointer">alkene</span></p>
+                                <p>KCN gives a <span onclick="window.toggleSingleBlur(this)" class="blur-answer px-2 py-0.5 bg-slate-800 text-sky-300 rounded font-bold cursor-pointer">nitrile</span> (chain +1)</p>
+                                <p>NH₃ gives an <span onclick="window.toggleSingleBlur(this)" class="blur-answer px-2 py-0.5 bg-slate-800 text-amber-300 rounded font-bold cursor-pointer">amine</span></p>
+                            </div>
+                            <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1.5"><span class="text-sky-300 font-bold block">Mechanism</span>
+                                <p>OH⁻ in aq. KOH is a <span onclick="window.toggleSingleBlur(this)" class="blur-answer px-2 py-0.5 bg-slate-800 text-emerald-300 rounded font-bold cursor-pointer">nucleophile</span></p>
+                                <p>OH⁻ in ethanolic KOH is a <span onclick="window.toggleSingleBlur(this)" class="blur-answer px-2 py-0.5 bg-slate-800 text-rose-300 rounded font-bold cursor-pointer">base</span></p>
+                                <p>The δ⁺ carbon is the <span onclick="window.toggleSingleBlur(this)" class="blur-answer px-2 py-0.5 bg-slate-800 text-sky-300 rounded font-bold cursor-pointer">electrophile</span></p>
+                            </div>
+                            <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1.5"><span class="text-sky-300 font-bold block">Hydrolysis rates</span>
+                                <p>Fastest halide: <span onclick="window.toggleSingleBlur(this)" class="blur-answer px-2 py-0.5 bg-slate-800 text-emerald-300 rounded font-bold cursor-pointer">iodo</span></p>
+                                <p>Because the C–I bond is <span onclick="window.toggleSingleBlur(this)" class="blur-answer px-2 py-0.5 bg-slate-800 text-rose-300 rounded font-bold cursor-pointer">weakest</span></p>
+                                <p>AgBr precipitate is <span onclick="window.toggleSingleBlur(this)" class="blur-answer px-2 py-0.5 bg-slate-800 text-amber-300 rounded font-bold cursor-pointer">cream</span></p>
+                            </div>
+                            <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1.5"><span class="text-sky-300 font-bold block">Classification</span>
+                                <p>2-chloro-2-methylpropane is <span onclick="window.toggleSingleBlur(this)" class="blur-answer px-2 py-0.5 bg-slate-800 text-emerald-300 rounded font-bold cursor-pointer">tertiary</span></p>
+                                <p>1-bromopropane is <span onclick="window.toggleSingleBlur(this)" class="blur-answer px-2 py-0.5 bg-slate-800 text-sky-300 rounded font-bold cursor-pointer">primary</span></p>
+                                <p>Fastest class to hydrolyse: <span onclick="window.toggleSingleBlur(this)" class="blur-answer px-2 py-0.5 bg-slate-800 text-amber-300 rounded font-bold cursor-pointer">tertiary</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MODULE 4: TRAPS -->
+                <div id="c1-mode-traps" class="hidden p-4 bg-slate-950 border border-slate-800 rounded-xl text-xs space-y-3">
+                    <span class="font-bold text-amber-300 uppercase block border-b border-slate-800 pb-1">⚡ Halogenoalkane trap pairs</span>
+                    <div class="grid md:grid-cols-2 gap-3">
+                        <div class="p-3 bg-slate-900 rounded-xl border border-slate-800"><span class="text-rose-300 font-bold block mb-1">❌ Trap: "KOH gives an alkene"</span><span class="text-emerald-300 font-bold block mb-1">✅ Truth: only ETHANOLIC KOH does</span><p class="text-slate-400 text-[11px]">Aqueous KOH → alcohol (substitution). The solvent decides everything.</p></div>
+                        <div class="p-3 bg-slate-900 rounded-xl border border-slate-800"><span class="text-rose-300 font-bold block mb-1">❌ Trap: "OH⁻ is always a base"</span><span class="text-emerald-300 font-bold block mb-1">✅ Truth: in water it's a nucleophile</span><p class="text-slate-400 text-[11px]">aq: nucleophile (attacks C). ethanolic: base (removes H).</p></div>
+                        <div class="p-3 bg-slate-900 rounded-xl border border-slate-800"><span class="text-rose-300 font-bold block mb-1">❌ Trap: "C–F is most reactive (most polar)"</span><span class="text-emerald-300 font-bold block mb-1">✅ Truth: C–I is most reactive (weakest bond)</span><p class="text-slate-400 text-[11px]">Rate follows bond enthalpy, not polarity. C–F is the least reactive.</p></div>
+                        <div class="p-3 bg-slate-900 rounded-xl border border-slate-800"><span class="text-rose-300 font-bold block mb-1">❌ Trap: KCN keeps the same chain length</span><span class="text-emerald-300 font-bold block mb-1">✅ Truth: it adds one carbon</span><p class="text-slate-400 text-[11px]">The CN carbon joins the chain — the key chain-lengthening reaction.</p></div>
+                        <div class="p-3 bg-slate-900 rounded-xl border border-slate-800"><span class="text-rose-300 font-bold block mb-1">❌ Trap: curly arrow from the δ⁺ carbon</span><span class="text-emerald-300 font-bold block mb-1">✅ Truth: arrows start from electrons</span><p class="text-slate-400 text-[11px]">From the nucleophile's lone pair to C; from the C–X bond to X.</p></div>
+                        <div class="p-3 bg-slate-900 rounded-xl border border-slate-800"><span class="text-rose-300 font-bold block mb-1">❌ Trap: AgCl is cream</span><span class="text-emerald-300 font-bold block mb-1">✅ Truth: AgCl white, AgBr cream, AgI yellow</span><p class="text-slate-400 text-[11px]">Learn the three precipitate colours in order.</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ TAB 4: ALCOHOLS ============ -->
+        <section id="tab-alcohol" class="hidden space-y-6">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 space-y-5">
+                <div class="border-b border-slate-800 pb-3 flex flex-col md:flex-row justify-between gap-2">
+                    <div><span class="text-xs font-bold text-emerald-400 uppercase tracking-widest">Engine B · Spec 10.15–10.20</span><h2 class="font-display text-xl font-bold text-white mt-1">Alcohols — Class Decides the Product</h2></div>
+                    <span class="px-3 py-1 bg-emerald-950 text-emerald-300 rounded-lg border border-emerald-800 text-xs font-mono h-fit">4 concept cards</span>
+                </div>
+                <div class="flex flex-wrap gap-2 text-xs border-b border-slate-800 pb-3">
+                    <button onclick="switchMode('c2','explorer')" id="c2-mode-btn-explorer" class="px-3.5 py-1.5 rounded-lg bg-emerald-600 text-white font-bold text-xs">📚 Module 1: Inspector</button>
+                    <button onclick="switchMode('c2','map')" id="c2-mode-btn-map" class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 text-xs">🗺️ Module 2: Oxidation Predictor</button>
+                    <button onclick="switchMode('c2','quiz')" id="c2-mode-btn-quiz" class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 text-xs">🎯 Module 3: Blanks</button>
+                    <button onclick="switchMode('c2','traps')" id="c2-mode-btn-traps" class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 text-xs">⚡ Module 4: Traps</button>
+                </div>
+
+                <!-- MODULE 1: INSPECTOR -->
+                <div id="c2-mode-explorer" class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                    <div class="lg:col-span-5 space-y-1.5 text-xs">
+                        <button onclick="selectCard('c2',1,4)" id="c2-btn-1" class="p-2.5 rounded-lg border border-emerald-500 bg-emerald-950/70 text-emerald-300 font-bold text-left w-full text-xs">1. Combustion &amp; the –OH test (PCl₅)</button>
+                        <button onclick="selectCard('c2',2,4)" id="c2-btn-2" class="p-2.5 rounded-lg border border-slate-800 bg-slate-900/80 text-slate-400 text-left w-full text-xs">2. Halogenation (HBr, HI) &amp; dehydration</button>
+                        <button onclick="selectCard('c2',3,4)" id="c2-btn-3" class="p-2.5 rounded-lg border border-slate-800 bg-slate-900/80 text-slate-400 text-left w-full text-xs">3. Oxidation (1°/2°/3°) — CP7</button>
+                        <button onclick="selectCard('c2',4,4)" id="c2-btn-4" class="p-2.5 rounded-lg border border-slate-800 bg-slate-900/80 text-slate-400 text-left w-full text-xs">4. Preparation &amp; purification techniques</button>
+                    </div>
+                    <div class="lg:col-span-7 bg-slate-950 border border-slate-800 rounded-xl p-5 text-xs space-y-4">
+                        <div id="c2-card-1" class="space-y-3 font-sans">
+                            <span class="text-emerald-300 font-bold block font-mono text-sm border-b border-slate-800 pb-2">1. Combustion &amp; the –OH test (10.17i, ii)</span>
+                            <div class="p-3 bg-slate-900 rounded font-mono text-emerald-300 border border-slate-800 text-xs">C₂H₅OH + 3O₂ → 2CO₂ + 3H₂O (combustion)<br>ROH + PCl₅ → RCl + POCl₃ + HCl↑ (steamy fumes)</div>
+                            <p class="text-slate-300 text-[11px]">Alcohols burn completely in air. <b>PCl₅</b> replaces –OH with Cl and releases <b>misty HCl fumes</b> — the qualitative test for the –OH group.</p>
+                            <div class="mt-2 p-2.5 bg-emerald-950/40 border border-emerald-900/50 rounded-lg"><b class="text-emerald-300 text-[11px]">Learning goals</b><ul class="list-disc ml-4 mt-1 text-slate-300 text-[11px] space-y-0.5"><li>Write the combustion equation.</li><li>Describe the PCl₅ test and its positive result (steamy fumes).</li></ul></div>
+                            <div class="mt-2 p-2.5 bg-rose-950/30 border border-rose-900/40 rounded-lg"><b class="text-rose-300 text-[11px]">Examiner tips</b><ul class="list-disc ml-4 mt-1 text-slate-300 text-[11px] space-y-0.5"><li>The fumes are <b>HCl</b> — test with damp blue litmus (turns red) or NH₃ (white smoke).</li></ul></div>
+                        </div>
+                        <div id="c2-card-2" class="hidden space-y-3 font-sans">
+                            <span class="text-emerald-300 font-bold block font-mono text-sm border-b border-slate-800 pb-2">2. Halogenation &amp; dehydration (10.17ii, iii)</span>
+                            <div class="p-3 bg-slate-900 rounded font-mono text-emerald-300 border border-slate-800 text-xs">ROH + HBr → RBr + H₂O (50% H₂SO₄ + KBr)<br>ROH → alkene + H₂O (conc. H₃PO₄, heat)</div>
+                            <p class="text-slate-300 text-[11px]">Make bromoalkanes from <b>KBr + 50% H₂SO₄</b> (generates HBr in situ); iodoalkanes from <b>red P + I₂</b>. <b>Concentrated H₃PO₄</b> dehydrates an alcohol to an alkene (elimination).</p>
+                            <div class="mt-2 p-2.5 bg-emerald-950/40 border border-emerald-900/50 rounded-lg"><b class="text-emerald-300 text-[11px]">Learning goals</b><ul class="list-disc ml-4 mt-1 text-slate-300 text-[11px] space-y-0.5"><li>State the reagents for making bromo- and iodoalkanes from alcohols.</li><li>State the dehydration conditions (conc. H₃PO₄, heat) and product (alkene).</li></ul></div>
+                            <div class="mt-2 p-2.5 bg-rose-950/30 border border-rose-900/40 rounded-lg"><b class="text-rose-300 text-[11px]">Examiner tips</b><ul class="list-disc ml-4 mt-1 text-slate-300 text-[11px] space-y-0.5"><li>H₃PO₄ is preferred over H₂SO₄ for dehydration (fewer side reactions). Mechanisms not required.</li></ul></div>
+                        </div>
+                        <div id="c2-card-3" class="hidden space-y-3 font-sans">
+                            <span class="text-emerald-300 font-bold block font-mono text-sm border-b border-slate-800 pb-2">3. Oxidation with acidified dichromate (10.18, CP7)</span>
+                            <div class="p-3 bg-slate-900 rounded font-mono text-emerald-300 border border-slate-800 text-xs">1° + [O] → aldehyde (distil) · 1° + 2[O] → acid (reflux)<br>2° + [O] → ketone (reflux) · 3° → no reaction</div>
+                            <p class="text-slate-300 text-[11px]">Oxidant: <b>K₂Cr₂O₇ / dilute H₂SO₄</b>, written as [O]. Colour: <b>orange → green</b> when oxidation happens. Aldehydes give a positive Benedict's/Fehling's test; acids fizz with Na₂CO₃/NaHCO₃.</p>
+                            <div class="mt-2 p-2.5 bg-emerald-950/40 border border-emerald-900/50 rounded-lg"><b class="text-emerald-300 text-[11px]">Learning goals</b><ul class="list-disc ml-4 mt-1 text-slate-300 text-[11px] space-y-0.5"><li>Match each alcohol class to its product(s).</li><li>Distil for aldehyde, reflux for acid; tertiary = no reaction.</li><li>State the colour change and the confirmation tests.</li></ul></div>
+                            <div class="mt-2 p-2.5 bg-rose-950/30 border border-rose-900/40 rounded-lg"><b class="text-rose-300 text-[11px]">Examiner tips</b><ul class="text-[11px] list-disc ml-4 mt-1 space-y-0.5"><li>Distillation vs reflux is the classic exam fork. Predict the product in Module 2.</li></ul></div>
+                        </div>
+                        <div id="c2-card-4" class="hidden space-y-3 font-sans">
+                            <span class="text-emerald-300 font-bold block font-mono text-sm border-b border-slate-800 pb-2">4. Preparation &amp; purification (10.19)</span>
+                            <p class="text-slate-300 text-[11px]"><b>The standard sequence:</b> react (reflux) → separate layers (separating funnel) → wash → dry (anhydrous salt) → distil → measure boiling point.</p>
+                            <div class="overflow-x-auto"><table class="w-full text-[11px] border border-slate-800">
+                                <tr class="bg-slate-900 text-emerald-300"><th class="p-1.5 border border-slate-800 text-left">Technique</th><th class="p-1.5 border border-slate-800 text-left">Purpose</th></tr>
+                                <tr><td class="p-1.5 border border-slate-800">Heating under reflux</td><td class="p-1.5 border border-slate-800 text-slate-300">Boil/react without losing volatile liquid</td></tr>
+                                <tr><td class="p-1.5 border border-slate-800">Separating funnel</td><td class="p-1.5 border border-slate-800 text-slate-300">Separate two immiscible layers</td></tr>
+                                <tr><td class="p-1.5 border border-slate-800">Distillation</td><td class="p-1.5 border border-slate-800 text-slate-300">Collect a pure liquid by boiling point</td></tr>
+                                <tr><td class="p-1.5 border border-slate-800">Drying (anhydrous salt)</td><td class="p-1.5 border border-slate-800 text-slate-300">Remove traces of water</td></tr>
+                                <tr><td class="p-1.5 border border-slate-800">Boiling-point determination</td><td class="p-1.5 border border-slate-800 text-slate-300">Confirm identity / purity (sharp bp)</td></tr>
+                            </table></div>
+                            <div class="mt-2 p-2.5 bg-rose-950/30 border border-rose-900/40 rounded-lg"><b class="text-rose-300 text-[11px]">Examiner tips</b><ul class="list-disc ml-4 mt-1 text-slate-300 text-[11px] space-y-0.5"><li>Know the order and the reason for each step — a favourite practical-exam question.</li></ul></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MODULE 2: OXIDATION PREDICTOR -->
+                <div id="c2-mode-map" class="hidden p-4 bg-slate-950 border border-slate-800 rounded-xl space-y-3 text-xs">
+                    <span class="font-bold text-emerald-300 uppercase">🗺️ Oxidation predictor — watch the dichromate change</span>
+                    <p class="text-slate-400 text-[11px]">Pick an alcohol and the conditions. The tube shows the orange→green colour change (or not) and names the product.</p>
+                    <div class="grid md:grid-cols-3 gap-3">
+                        <select id="ox-alcohol" class="w-full bg-slate-900 border border-slate-700 text-emerald-300 rounded p-2 font-mono">
+                            <option value="1">Primary (propan-1-ol)</option>
+                            <option value="2">Secondary (propan-2-ol)</option>
+                            <option value="3">Tertiary (2-methylpropan-2-ol)</option>
+                        </select>
+                        <select id="ox-cond" class="w-full bg-slate-900 border border-slate-700 text-emerald-300 rounded p-2 font-mono">
+                            <option value="distil">Distil as it forms</option>
+                            <option value="reflux">Heat under reflux</option>
+                        </select>
+                        <button onclick="predictOx()" class="px-4 py-2 bg-emerald-700 hover:bg-emerald-600 rounded-lg font-bold text-white">Oxidise</button>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-4 items-center">
+                        <div class="flex justify-center"><div class="relative w-16 h-52">
+                            <div class="absolute inset-x-0 top-0 h-4 bg-slate-700 rounded-t-md"></div>
+                            <div class="absolute inset-x-1 top-3 bottom-0 rounded-b-2xl border-2 border-slate-600 bg-slate-900/60 overflow-hidden">
+                                <div id="ox-liquid" class="tube-liquid absolute inset-x-0 bottom-0 h-3/4" style="background:#f97316"></div>
+                            </div>
+                        </div></div>
+                        <div id="ox-result" class="text-[11px] text-slate-400 space-y-2"></div>
+                    </div>
+                </div>
+
+                <!-- MODULE 3: QUIZ -->
+                <div id="c2-mode-quiz" class="hidden p-4 bg-slate-950 border border-slate-800 rounded-xl space-y-3 text-xs font-mono">
+                    <div id="c2-quiz-container" class="space-y-3">
+                        <div class="flex justify-between items-center border-b border-slate-800 pb-2"><span class="font-bold text-emerald-300">Multi-blank quiz · Alcohols</span><button id="c2-toggle-all-btn" onclick="toggleActiveRecall('c2-quiz-container','c2-toggle-all-btn')" class="px-3 py-1 bg-emerald-950 text-emerald-300 border border-emerald-800 rounded">👁️ Reveal All Blanks</button></div>
+                        <div class="grid md:grid-cols-2 gap-3">
+                            <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1.5"><span class="text-emerald-300 font-bold block">Oxidation products</span>
+                                <p>1° + distil → <span onclick="window.toggleSingleBlur(this)" class="blur-answer px-2 py-0.5 bg-slate-800 text-emerald-300 rounded font-bold cursor-pointer">aldehyde</span></p>
+                                <p>1° + reflux → <span onclick="window.toggleSingleBlur(this)" class="blur-answer px-2 py-0.5 bg-slate-800 text-sky-300 rounded font-bold cursor-pointer">carboxylic acid</span></p>
+                                <p>2° + reflux → <span onclick="window.toggleSingleBlur(this)" class="blur-answer px-2 py-0.5 bg-slate-800 text-amber-300 rounded font-bold cursor-pointer">ketone</span></p>
+                                <p>3° → <span onclick="window.toggleSingleBlur(this)" class="blur-answer px-2 py-0.5 bg-slate-800 text-rose-300 rounded font-bold cursor-pointer">no reaction</span></p>
+                            </div>
+                            <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1.5"><span class="text-emerald-300 font-bold block">Reagents &amp; tests</span>
+                                <p>Oxidant: acidified <span onclick="window.toggleSingleBlur(this)" class="blur-answer px-2 py-0.5 bg-slate-800 text-emerald-300 rounded font-bold cursor-pointer">potassium dichromate(VI)</span></p>
+                                <p>Colour change: orange → <span onclick="window.toggleSingleBlur(this)" class="blur-answer px-2 py-0.5 bg-slate-800 text-emerald-300 rounded font-bold cursor-pointer">green</span></p>
+                                <p>–OH test reagent: <span onclick="window.toggleSingleBlur(this)" class="blur-answer px-2 py-0.5 bg-slate-800 text-sky-300 rounded font-bold cursor-pointer">PCl₅</span> (steamy fumes)</p>
+                                <p>Aldehyde test: <span onclick="window.toggleSingleBlur(this)" class="blur-answer px-2 py-0.5 bg-slate-800 text-amber-300 rounded font-bold cursor-pointer">Benedict's / Fehling's</span></p>
+                            </div>
+                            <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1.5"><span class="text-emerald-300 font-bold block">Dehydration &amp; halogenation</span>
+                                <p>Alcohol → alkene uses conc. <span onclick="window.toggleSingleBlur(this)" class="blur-answer px-2 py-0.5 bg-slate-800 text-emerald-300 rounded font-bold cursor-pointer">H₃PO₄</span></p>
+                                <p>This reaction type is <span onclick="window.toggleSingleBlur(this)" class="blur-answer px-2 py-0.5 bg-slate-800 text-rose-300 rounded font-bold cursor-pointer">elimination</span></p>
+                                <p>Bromoalkane from alcohol: KBr + <span onclick="window.toggleSingleBlur(this)" class="blur-answer px-2 py-0.5 bg-slate-800 text-sky-300 rounded font-bold cursor-pointer">50% H₂SO₄</span></p>
+                            </div>
+                            <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1.5"><span class="text-emerald-300 font-bold block">Techniques</span>
+                                <p>Boil without losing liquid: heat under <span onclick="window.toggleSingleBlur(this)" class="blur-answer px-2 py-0.5 bg-slate-800 text-emerald-300 rounded font-bold cursor-pointer">reflux</span></p>
+                                <p>Remove water traces: <span onclick="window.toggleSingleBlur(this)" class="blur-answer px-2 py-0.5 bg-slate-800 text-sky-300 rounded font-bold cursor-pointer">anhydrous salt</span></p>
+                                <p>Separate layers: <span onclick="window.toggleSingleBlur(this)" class="blur-answer px-2 py-0.5 bg-slate-800 text-amber-300 rounded font-bold cursor-pointer">separating funnel</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MODULE 4: TRAPS -->
+                <div id="c2-mode-traps" class="hidden p-4 bg-slate-950 border border-slate-800 rounded-xl text-xs space-y-3">
+                    <span class="font-bold text-amber-300 uppercase block border-b border-slate-800 pb-1">⚡ Alcohol trap pairs</span>
+                    <div class="grid md:grid-cols-2 gap-3">
+                        <div class="p-3 bg-slate-900 rounded-xl border border-slate-800"><span class="text-rose-300 font-bold block mb-1">❌ Trap: reflux gives the aldehyde</span><span class="text-emerald-300 font-bold block mb-1">✅ Truth: reflux gives the acid; distil gives the aldehyde</span><p class="text-slate-400 text-[11px]">Reflux keeps oxidising the aldehyde to the acid. Distil removes it before that.</p></div>
+                        <div class="p-3 bg-slate-900 rounded-xl border border-slate-800"><span class="text-rose-300 font-bold block mb-1">❌ Trap: tertiary alcohols oxidise to ketones</span><span class="text-emerald-300 font-bold block mb-1">✅ Truth: tertiary alcohols don't oxidise</span><p class="text-slate-400 text-[11px]">No H on the C–OH carbon ⇒ no reaction ⇒ stays orange.</p></div>
+                        <div class="p-3 bg-slate-900 rounded-xl border border-slate-800"><span class="text-rose-300 font-bold block mb-1">❌ Trap: the colour change is green → orange</span><span class="text-emerald-300 font-bold block mb-1">✅ Truth: orange → green</span><p class="text-slate-400 text-[11px]">Cr₂O₇²⁻ (orange) is reduced to Cr³⁺ (green).</p></div>
+                        <div class="p-3 bg-slate-900 rounded-xl border border-slate-800"><span class="text-rose-300 font-bold block mb-1">❌ Trap: dehydration uses H₂SO₄</span><span class="text-emerald-300 font-bold block mb-1">✅ Truth: concentrated H₃PO₄</span><p class="text-slate-400 text-[11px]">Phosphoric acid avoids oxidation/side reactions.</p></div>
+                        <div class="p-3 bg-slate-900 rounded-xl border border-slate-800"><span class="text-rose-300 font-bold block mb-1">❌ Trap: PCl₅ tests for C=C</span><span class="text-emerald-300 font-bold block mb-1">✅ Truth: PCl₅ tests for –OH</span><p class="text-slate-400 text-[11px]">Misty HCl fumes confirm the alcohol group.</p></div>
+                        <div class="p-3 bg-slate-900 rounded-xl border border-slate-800"><span class="text-rose-300 font-bold block mb-1">❌ Trap: rinse the separating-funnel product with water last</span><span class="text-emerald-300 font-bold block mb-1">✅ Truth: dry after washing, then distil</span><p class="text-slate-400 text-[11px]">Order: separate → wash → dry → distil → bp.</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ TAB 5: SPECTRA ============ -->
+        <section id="tab-spectra" class="hidden space-y-6">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 space-y-5">
+                <div class="border-b border-slate-800 pb-3">
+                    <span class="text-xs font-bold text-amber-400 uppercase tracking-widest">Spectroscopy · Spec 10.21–10.23 · CP8</span>
+                    <h2 class="font-display text-xl font-bold text-white mt-1">Read Mass &amp; IR Spectra Like an Examiner</h2>
+                    <p class="text-xs text-slate-400 mt-1">Pick a compound and explore its spectra — hover the IR peaks, click the mass-spec fragments.</p>
+                </div>
+
+                <!-- IR -->
+                <div class="reveal bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3">
+                    <div class="flex flex-wrap items-center justify-between gap-2">
+                        <span class="font-display font-bold text-amber-300 text-sm">📈 Infrared spectrum (hover a peak)</span>
+                        <select id="ir-select" onchange="drawIR()" class="bg-slate-900 border border-slate-700 text-amber-300 rounded p-2 font-mono text-[11px]">
+                            <option value="ethanol">Ethanol (alcohol)</option>
+                            <option value="propanone">Propanone (ketone)</option>
+                            <option value="ethanal">Ethanal (aldehyde)</option>
+                            <option value="ethanoic">Ethanoic acid (carboxylic acid)</option>
+                            <option value="bromoethane">Bromoethane (halogenoalkane)</option>
+                            <option value="ethylamine">Ethylamine (amine)</option>
+                        </select>
+                    </div>
+                    <div class="relative">
+                        <canvas id="ir-canvas" width="760" height="330" class="w-full bg-slate-900 rounded-lg border border-slate-800"></canvas>
+                        <div id="ir-tip" class="hidden absolute pointer-events-none px-2 py-1 bg-slate-800 border border-amber-600 rounded text-[10px] font-mono text-amber-200"></div>
+                    </div>
+                    <div id="ir-assign" class="text-[11px] text-slate-400 p-3 bg-slate-900 rounded-lg border border-slate-800"></div>
+                </div>
+
+                <!-- MS -->
+                <div class="reveal bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3">
+                    <div class="flex flex-wrap items-center justify-between gap-2">
+                        <span class="font-display font-bold text-sky-300 text-sm">📊 Mass spectrum (click a peak)</span>
+                        <select id="ms-select" onchange="drawMS()" class="bg-slate-900 border border-slate-700 text-sky-300 rounded p-2 font-mono text-[11px]">
+                            <option value="ethanol">Ethanol (Mr 46)</option>
+                            <option value="propanone">Propanone (Mr 58)</option>
+                            <option value="propanal">Propanal (Mr 58)</option>
+                            <option value="butanone">Butanone (Mr 72)</option>
+                        </select>
+                    </div>
+                    <canvas id="ms-canvas" width="760" height="300" class="w-full bg-slate-900 rounded-lg border border-slate-800"></canvas>
+                    <div id="ms-info" class="text-[11px] text-slate-400 p-3 bg-slate-900 rounded-lg border border-slate-800">Click a bar to identify the fragment. The tallest peak at the highest m/z is the molecular ion M⁺ = Mr.</div>
+                </div>
+
+                <!-- IR reference table -->
+                <div class="reveal bg-slate-950 border border-slate-800 rounded-xl p-5">
+                    <span class="font-display font-bold text-amber-300 text-sm block mb-2">🔑 IR absorption reference (wavenumber / cm⁻¹)</span>
+                    <div class="overflow-x-auto"><table class="w-full text-[11px] border border-slate-800">
+                        <tr class="bg-slate-900 text-amber-300"><th class="p-2 border border-slate-800 text-left">Bond</th><th class="p-2 border border-slate-800 text-left">Range</th><th class="p-2 border border-slate-800 text-left">Shape / found in</th></tr>
+                        <tr><td class="p-2 border border-slate-800">O–H (alcohol)</td><td class="p-2 border border-slate-800 font-mono">3200–3600</td><td class="p-2 border border-slate-800 text-slate-300">broad</td></tr>
+                        <tr><td class="p-2 border border-slate-800">O–H (acid)</td><td class="p-2 border border-slate-800 font-mono">2500–3300</td><td class="p-2 border border-slate-800 text-slate-300">very broad</td></tr>
+                        <tr><td class="p-2 border border-slate-800">C–H</td><td class="p-2 border border-slate-800 font-mono">2850–3100</td><td class="p-2 border border-slate-800 text-slate-300">alkanes &lt;3000; alkenes/aldehydes &gt;3000</td></tr>
+                        <tr><td class="p-2 border border-slate-800">C=O</td><td class="p-2 border border-slate-800 font-mono">1680–1750</td><td class="p-2 border border-slate-800 text-slate-300">strong; aldehyde/ketone/acid</td></tr>
+                        <tr><td class="p-2 border border-slate-800">C=C</td><td class="p-2 border border-slate-800 font-mono">1620–1680</td><td class="p-2 border border-slate-800 text-slate-300">alkenes</td></tr>
+                        <tr><td class="p-2 border border-slate-800">N–H</td><td class="p-2 border border-slate-800 font-mono">3300–3500</td><td class="p-2 border border-slate-800 text-slate-300">sharp; amines</td></tr>
+                        <tr><td class="p-2 border border-slate-800">C–X</td><td class="p-2 border border-slate-800 font-mono">500–800</td><td class="p-2 border border-slate-800 text-slate-300">halogenoalkanes</td></tr>
+                    </table></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ TAB 6: SYNTHESIS SOLVER ============ -->
+        <section id="tab-solver" class="hidden space-y-6">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 space-y-5">
+                <div class="border-b border-slate-800 pb-3">
+                    <span class="text-xs font-bold text-violet-400 uppercase tracking-widest">Solver · multi-step synthesis</span>
+                    <h2 class="font-display text-xl font-bold text-white mt-1">Synthesis Pathway Builder</h2>
+                    <p class="text-xs text-slate-400 mt-1">Pick a starting compound and a target. The solver finds the shortest reaction route using Topic 10 chemistry (and a couple of Topic 5 links).</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-3 text-xs">
+                    <label class="space-y-1"><span class="text-slate-400 block">Starting compound</span><select id="syn-start" class="w-full bg-slate-950 border border-slate-700 rounded p-2 text-violet-300 font-mono"></select></label>
+                    <label class="space-y-1"><span class="text-slate-400 block">Target compound</span><select id="syn-target" class="w-full bg-slate-950 border border-slate-700 rounded p-2 text-violet-300 font-mono"></select></label>
+                    <div class="flex items-end"><button onclick="runSynthesis()" class="w-full px-4 py-2 bg-violet-700 hover:bg-violet-600 rounded-lg font-bold text-white">Find the route</button></div>
+                </div>
+                <div id="syn-out" class="text-[11px] font-mono text-slate-400 p-3 bg-slate-950 rounded-lg border border-slate-800 whitespace-pre-wrap">Choose a start and target, then find the route.</div>
+            </div>
+        </section>
+
+        <!-- ============ TAB 7: FINAL REVIEW ============ -->
+        <section id="tab-review" class="hidden space-y-6">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 space-y-4">
+                <div class="border-b border-slate-800 pb-3"><span class="text-xs font-bold text-sky-400 uppercase tracking-widest">Final Review · Spec 10.1–10.23</span><h2 class="font-display text-xl font-bold text-white mt-1">Everything on One Page</h2></div>
+                <div class="flex flex-wrap gap-2 text-[11px]">
+                    <a href="#rev-halo" class="px-3 py-1 bg-sky-950 text-sky-300 border border-sky-800 rounded-full">Halogenoalkane reactions</a>
+                    <a href="#rev-alc" class="px-3 py-1 bg-emerald-950 text-emerald-300 border border-emerald-800 rounded-full">Alcohol reactions</a>
+                    <a href="#rev-rates" class="px-3 py-1 bg-rose-950 text-rose-300 border border-rose-800 rounded-full">Rates &amp; colours</a>
+                    <a href="#rev-spec" class="px-3 py-1 bg-amber-950 text-amber-300 border border-amber-800 rounded-full">Spectra</a>
+                    <a href="#rev-traps" class="px-3 py-1 bg-slate-800 text-slate-300 border border-slate-700 rounded-full">Master trap checklist</a>
+                </div>
+
+                <details open id="rev-halo" class="bg-slate-950 border border-slate-800 rounded-xl">
+                    <summary class="p-4 cursor-pointer font-display font-bold text-sky-300 text-sm flex justify-between items-center"><span>1 · Halogenoalkane reactions</span><span class="text-slate-500 text-xs">collapse</span></summary>
+                    <div class="px-4 pb-4 overflow-x-auto"><table class="w-full text-[11px] border border-slate-800">
+                        <tr class="bg-slate-900 text-sky-300"><th class="p-2 border border-slate-800 text-left">Reagent &amp; conditions</th><th class="p-2 border border-slate-800 text-left">Product</th><th class="p-2 border border-slate-800 text-left">Role / type</th></tr>
+                        <tr><td class="p-2 border border-slate-800">aq. KOH, warm</td><td class="p-2 border border-slate-800 text-slate-300">alcohol</td><td class="p-2 border border-slate-800 text-slate-400">OH⁻ nucleophile · substitution</td></tr>
+                        <tr><td class="p-2 border border-slate-800">ethanolic KOH, heat</td><td class="p-2 border border-slate-800 text-slate-300">alkene</td><td class="p-2 border border-slate-800 text-slate-400">OH⁻ base · elimination</td></tr>
+                        <tr><td class="p-2 border border-slate-800">alcoholic NH₃, heat &amp; pressure</td><td class="p-2 border border-slate-800 text-slate-300">amine</td><td class="p-2 border border-slate-800 text-slate-400">NH₃ nucleophile · substitution</td></tr>
+                        <tr><td class="p-2 border border-slate-800">alcoholic KCN, heat</td><td class="p-2 border border-slate-800 text-slate-300">nitrile (chain +1)</td><td class="p-2 border border-slate-800 text-slate-400">CN⁻ nucleophile · substitution</td></tr>
+                        <tr><td class="p-2 border border-slate-800">aq. AgNO₃ in ethanol</td><td class="p-2 border border-slate-800 text-slate-300">AgX precipitate</td><td class="p-2 border border-slate-800 text-slate-400">H₂O nucleophile · rate test</td></tr>
+                    </table></div>
+                </details>
+
+                <details open id="rev-alc" class="bg-slate-950 border border-slate-800 rounded-xl">
+                    <summary class="p-4 cursor-pointer font-display font-bold text-emerald-300 text-sm flex justify-between items-center"><span>2 · Alcohol reactions</span><span class="text-slate-500 text-xs">collapse</span></summary>
+                    <div class="px-4 pb-4 overflow-x-auto"><table class="w-full text-[11px] border border-slate-800">
+                        <tr class="bg-slate-900 text-emerald-300"><th class="p-2 border border-slate-800 text-left">Reaction</th><th class="p-2 border border-slate-800 text-left">Reagent / conditions</th><th class="p-2 border border-slate-800 text-left">Product / observation</th></tr>
+                        <tr><td class="p-2 border border-slate-800">Combustion</td><td class="p-2 border border-slate-800 text-slate-300">O₂</td><td class="p-2 border border-slate-800 text-slate-400">CO₂ + H₂O</td></tr>
+                        <tr><td class="p-2 border border-slate-800">–OH test</td><td class="p-2 border border-slate-800 text-slate-300">PCl₅</td><td class="p-2 border border-slate-800 text-slate-400">chloroalkane + steamy HCl fumes</td></tr>
+                        <tr><td class="p-2 border border-slate-800">Make bromoalkane</td><td class="p-2 border border-slate-800 text-slate-300">KBr + 50% H₂SO₄</td><td class="p-2 border border-slate-800 text-slate-400">bromoalkane</td></tr>
+                        <tr><td class="p-2 border border-slate-800">Dehydration</td><td class="p-2 border border-slate-800 text-slate-300">conc. H₃PO₄, heat</td><td class="p-2 border border-slate-800 text-slate-400">alkene + H₂O</td></tr>
+                        <tr><td class="p-2 border border-slate-800">Oxidation (1°)</td><td class="p-2 border border-slate-800 text-slate-300">K₂Cr₂O₇/H⁺, distil</td><td class="p-2 border border-slate-800 text-slate-400">aldehyde (orange→green)</td></tr>
+                        <tr><td class="p-2 border border-slate-800">Oxidation (1°)</td><td class="p-2 border border-slate-800 text-slate-300">K₂Cr₂O₇/H⁺, reflux</td><td class="p-2 border border-slate-800 text-slate-400">carboxylic acid</td></tr>
+                        <tr><td class="p-2 border border-slate-800">Oxidation (2°)</td><td class="p-2 border border-slate-800 text-slate-300">K₂Cr₂O₇/H⁺, reflux</td><td class="p-2 border border-slate-800 text-slate-400">ketone</td></tr>
+                        <tr><td class="p-2 border border-slate-800">Oxidation (3°)</td><td class="p-2 border border-slate-800 text-slate-300">K₂Cr₂O₇/H⁺</td><td class="p-2 border border-slate-800 text-slate-400">no reaction (stays orange)</td></tr>
+                    </table></div>
+                </details>
+
+                <details open id="rev-rates" class="bg-slate-950 border border-slate-800 rounded-xl">
+                    <summary class="p-4 cursor-pointer font-display font-bold text-rose-300 text-sm flex justify-between items-center"><span>3 · Hydrolysis rates &amp; precipitate colours</span><span class="text-slate-500 text-xs">collapse</span></summary>
+                    <div class="px-4 pb-4 grid md:grid-cols-2 gap-3 text-[11px]">
+                        <div class="p-3 bg-slate-900 rounded-lg border border-slate-800 text-slate-300"><b class="text-rose-300">Halogen trend:</b> C–I &gt; C–Br &gt; C–Cl (weakest bond breaks fastest — bond enthalpy, not polarity).</div>
+                        <div class="p-3 bg-slate-900 rounded-lg border border-slate-800 text-slate-300"><b class="text-rose-300">Class trend:</b> tertiary &gt; secondary &gt; primary.</div>
+                        <div class="p-3 bg-slate-900 rounded-lg border border-slate-800 text-slate-300"><b class="text-rose-300">Precipitates:</b> AgCl white · AgBr cream · AgI yellow.</div>
+                        <div class="p-3 bg-slate-900 rounded-lg border border-slate-800 text-slate-300"><b class="text-rose-300">Method:</b> aq. AgNO₃ in ethanol; time to precipitate = rate.</div>
+                    </div>
+                </details>
+
+                <details open id="rev-spec" class="bg-slate-950 border border-slate-800 rounded-xl">
+                    <summary class="p-4 cursor-pointer font-display font-bold text-amber-300 text-sm flex justify-between items-center"><span>4 · Spectra quick reference</span><span class="text-slate-500 text-xs">collapse</span></summary>
+                    <div class="px-4 pb-4 grid md:grid-cols-2 gap-3 text-[11px]">
+                        <div class="p-3 bg-slate-900 rounded-lg border border-slate-800 text-slate-300"><b class="text-amber-300">Mass spec:</b> highest m/z peak = M⁺ = Mr. Fragments: 15 CH₃⁺ · 29 C₂H₅⁺/CHO⁺ · 31 CH₂OH⁺ · 43 CH₃CO⁺.</div>
+                        <div class="p-3 bg-slate-900 rounded-lg border border-slate-800 text-slate-300"><b class="text-amber-300">IR:</b> O–H broad ~3300 (alcohol) / very broad 2500–3300 (acid) · C=O strong ~1700 · C=C ~1650 · N–H ~3300–3500 · C–X ~500–800.</div>
+                    </div>
+                </details>
+
+                <details open id="rev-traps" class="bg-slate-950 border border-slate-800 rounded-xl">
+                    <summary class="p-4 cursor-pointer font-display font-bold text-slate-300 text-sm flex justify-between items-center"><span>5 · Master trap checklist</span><span class="text-slate-500 text-xs">collapse</span></summary>
+                    <div class="px-4 pb-4 grid md:grid-cols-2 gap-2 text-[11px]">
+                        <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-slate-300">☐ aq. KOH = substitution (alcohol); ethanolic KOH = elimination (alkene)</div>
+                        <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-slate-300">☐ OH⁻: nucleophile in water, base in ethanol</div>
+                        <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-slate-300">☐ KCN adds a carbon; NH₃ gives an amine</div>
+                        <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-slate-300">☐ Curly arrows start from a lone pair or a bond</div>
+                        <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-slate-300">☐ C–I fastest (weakest bond), not C–F</div>
+                        <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-slate-300">☐ AgCl white / AgBr cream / AgI yellow</div>
+                        <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-slate-300">☐ Distil → aldehyde; reflux → acid; 3° → no reaction</div>
+                        <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-slate-300">☐ Dichromate orange → green on oxidation</div>
+                        <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-slate-300">☐ PCl₅ → steamy HCl fumes = –OH test</div>
+                        <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-slate-300">☐ Dehydration uses conc. H₃PO₄</div>
+                        <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-slate-300">☐ Purification order: separate → wash → dry → distil → bp</div>
+                        <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-slate-300">☐ IR: broad ~3300 = O–H; sharp ~1700 = C=O</div>
+                        <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-slate-300">☐ MS: highest m/z = M⁺ = Mr</div>
+                        <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-slate-300">☐ SN1/SN2 detail is Unit 4, not here</div>
+                    </div>
+                </details>
+            </div>
+        </section>
+    </main>
+
+    <footer class="border-t border-slate-800 bg-slate-900/80 py-4 mt-8">
+        <div class="max-w-7xl mx-auto px-4 text-center text-[11px] text-slate-500">
+            IAL Chemistry Topic 10: Halogenoalkanes, Alcohols &amp; Spectra Master Studio · WCH12 Unit 2 · Paper 2 · Spec 10.1–10.23 · Single-file suite (Tailwind + KaTeX + canvas)
+        </div>
+    </footer>
+
+    <script>
+        // ============ KaTeX ============
+        function safeInitKaTeX() {
+            if (typeof renderMathInElement === 'function') {
+                try {
+                    renderMathInElement(document.body, {
+                        delimiters: [
+                            {left: '$$', right: '$$', display: true},
+                            {left: '$', right: '$', display: false}
+                        ],
+                        throwOnError: false
+                    });
+                } catch (e) { console.warn(e); }
+            }
+        }
+        window.safeInitKaTeX = safeInitKaTeX;
+
+        // ============ Tabs ============
+        const TAB_ACTIVE = "tab-btn-active py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs text-sky-400 font-bold border-b-2 border-sky-400 bg-sky-950/40 transition flex items-center gap-1.5 rounded-t-md";
+        const TAB_INACTIVE = "py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs text-slate-400 hover:text-sky-300 font-medium border-b-2 border-transparent hover:border-slate-600 transition flex items-center gap-1.5 rounded-t-md";
+        let currentTab = 'syllabus';
+        window.switchTab = function(tabId) {
+            const tabs = ['syllabus','types','halo','alcohol','spectra','solver','review'];
+            tabs.forEach(t => {
+                const el = document.getElementById('tab-' + t);
+                const btn = document.getElementById('btn-' + t);
+                if (el) el.classList.toggle('hidden', t !== tabId);
+                if (btn) btn.className = (t === tabId) ? TAB_ACTIVE : TAB_INACTIVE;
+            });
+            currentTab = tabId;
+            if (tabId === 'spectra') { drawIR(); drawMS(); }
+            setTimeout(safeInitKaTeX, 50);
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        };
+
+        // ============ Scroll reveal ============
+        const revealObs = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+        }, {threshold: 0.06});
+        document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+        // ============ Engine mode switching ============
+        window.switchMode = function(prefix, mode) {
+            ['explorer','map','quiz','traps'].forEach(m => {
+                const el = document.getElementById(prefix + '-mode-' + m);
+                const btn = document.getElementById(prefix + '-mode-btn-' + m);
+                if (el) el.classList.toggle('hidden', m !== mode);
+                if (btn) {
+                    const on = m === mode;
+                    if (prefix === 'c1') btn.className = on ? 'px-3.5 py-1.5 rounded-lg bg-sky-600 text-white font-bold text-xs' : 'px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 text-xs';
+                    if (prefix === 'c2') btn.className = on ? 'px-3.5 py-1.5 rounded-lg bg-emerald-600 text-white font-bold text-xs' : 'px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 text-xs';
+                }
+            });
+            setTimeout(safeInitKaTeX, 50);
+        };
+        window.selectCard = function(prefix, n, total) {
+            const colors = { c1:'border-sky-500 bg-sky-950/70 text-sky-300', c2:'border-emerald-500 bg-emerald-950/70 text-emerald-300' };
+            for (let i = 1; i <= total; i++) {
+                const card = document.getElementById(prefix + '-card-' + i);
+                const btn = document.getElementById(prefix + '-btn-' + i);
+                if (card) card.classList.toggle('hidden', i !== n);
+                if (btn) btn.className = (i === n) ? 'p-2.5 rounded-lg ' + colors[prefix] + ' font-bold text-left w-full text-xs' : 'p-2.5 rounded-lg border border-slate-800 bg-slate-900/80 text-slate-400 text-left w-full text-xs';
+            }
+            setTimeout(safeInitKaTeX, 50);
+        };
+        window.toggleSingleBlur = function(el) { if (el) el.classList.toggle('revealed'); };
+        window.toggleActiveRecall = function(containerId, btnId) {
+            const container = document.getElementById(containerId);
+            const btn = document.getElementById(btnId);
+            if (!container) return;
+            const answers = container.querySelectorAll('.blur-answer');
+            let revealed = false;
+            answers.forEach(a => { if (a.classList.contains('revealed')) revealed = true; });
+            answers.forEach(a => { if (revealed) a.classList.remove('revealed'); else a.classList.add('revealed'); });
+            if (btn) btn.innerText = revealed ? '👁️ Reveal All Blanks' : '🙈 Hide All Blanks';
+        };
+
+        // ============ Ambient background (drifting benzene rings) ============
+        const BG = { rings: [], init: false };
+        function initBackground() {
+            const cv = document.getElementById('bg-canvas');
+            cv.width = window.innerWidth; cv.height = window.innerHeight;
+            BG.rings = [];
+            for (let i = 0; i < 12; i++) {
+                BG.rings.push({
+                    x: Math.random()*cv.width, y: Math.random()*cv.height,
+                    r: 22 + Math.random()*40, rot: Math.random()*6.28,
+                    vx: (Math.random()-0.5)*8, vy: (Math.random()-0.5)*7,
+                    vr: (Math.random()-0.5)*0.3,
+                    hue: [199, 160, 30][i % 3], ph: Math.random()*6.28
+                });
+            }
+            BG.init = true;
+        }
+        function drawBackground(dt, t) {
+            const cv = document.getElementById('bg-canvas');
+            if (!cv || !BG.init) return;
+            const ctx = cv.getContext('2d');
+            ctx.clearRect(0,0,cv.width,cv.height);
+            BG.rings.forEach(o => {
+                o.x += o.vx*dt; o.y += o.vy*dt; o.rot += o.vr*dt;
+                if (o.x < -o.r) o.x = cv.width+o.r; if (o.x > cv.width+o.r) o.x = -o.r;
+                if (o.y < -o.r) o.y = cv.height+o.r; if (o.y > cv.height+o.r) o.y = -o.r;
+                const pulse = 0.5 + 0.5*Math.sin(t*0.5 + o.ph);
+                ctx.save();
+                ctx.translate(o.x, o.y); ctx.rotate(o.rot);
+                ctx.strokeStyle = 'hsla('+o.hue+',70%,60%,'+(0.05+0.04*pulse)+')';
+                ctx.lineWidth = 1.5;
+                ctx.beginPath();
+                for (let k = 0; k < 6; k++) {
+                    const a = k*Math.PI/3;
+                    const px = Math.cos(a)*o.r, py = Math.sin(a)*o.r;
+                    if (k === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+                }
+                ctx.closePath(); ctx.stroke();
+                ctx.restore();
+            });
+        }
+        window.addEventListener('resize', function(){
+            const cv = document.getElementById('bg-canvas');
+            if (cv) { cv.width = window.innerWidth; cv.height = window.innerHeight; }
+        });
+
+        // ============ Functional group strip ============
+        const FG = [
+            {g:'C–X', name:'Halogenoalkane', ex:'bromoethane', col:'border-sky-700 bg-sky-950/50 text-sky-300'},
+            {g:'–OH', name:'Alcohol', ex:'ethanol', col:'border-emerald-700 bg-emerald-950/50 text-emerald-300'},
+            {g:'C=C', name:'Alkene', ex:'ethene', col:'border-rose-700 bg-rose-950/50 text-rose-300'},
+            {g:'C=O', name:'Carbonyl (aldehyde/ketone)', ex:'propanone', col:'border-amber-700 bg-amber-950/50 text-amber-300'},
+            {g:'–COOH', name:'Carboxylic acid', ex:'ethanoic acid', col:'border-orange-700 bg-orange-950/50 text-orange-300'},
+            {g:'–NH₂', name:'Amine', ex:'ethylamine', col:'border-violet-700 bg-violet-950/50 text-violet-300'},
+            {g:'C≡N', name:'Nitrile', ex:'ethanenitrile', col:'border-cyan-700 bg-cyan-950/50 text-cyan-300'}
+        ];
+        function buildFGStrip() {
+            const host = document.getElementById('fg-strip');
+            FG.forEach(f => {
+                const d = document.createElement('div');
+                d.className = 'fg-tile border rounded-lg px-3 py-2 text-center min-w-[92px] ' + f.col;
+                d.innerHTML = '<div class="font-display font-bold text-base">'+f.g+'</div><div class="text-[10px] font-bold">'+f.name+'</div><div class="text-[9px] opacity-70">'+f.ex+'</div>';
+                host.appendChild(d);
+            });
+        }
+
+        // ============ SN2 mechanism animation ============
+        const SN2 = { t: 0, playing: true, speed: 0.32 };
+        function easeInOut(x){ return x<0.5 ? 2*x*x : 1 - Math.pow(-2*x+2,2)/2; }
+        window.toggleSN2 = function() {
+            SN2.playing = !SN2.playing;
+            document.getElementById('sn2-play').textContent = SN2.playing ? '⏸ Pause' : '▶ Play';
+        };
+        function drawSN2(dt) {
+            if (SN2.playing) { SN2.t += dt * SN2.speed; if (SN2.t > 1.35) SN2.t = 0; }
+            const cv = document.getElementById('sn2-canvas'); if (!cv) return;
+            const ctx = cv.getContext('2d');
+            const W = cv.width, H = cv.height;
+            ctx.clearRect(0,0,W,H);
+            const t = Math.min(1, SN2.t);
+            const e = easeInOut(t);
+            const cx = W/2, cy = H/2 + 8;
+            const ohX = cx - 210 + 135*e;   // -210 -> -75
+            const brX = cx + 75 + 135*e;     // +75 -> +210
+
+            // static groups around C (R up, H down-left, H down-right)
+            function bond(ax, ay, label, lcol) {
+                ctx.strokeStyle = 'rgba(148,163,184,0.7)'; ctx.lineWidth = 3;
+                ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(ax, ay); ctx.stroke(); ctx.lineWidth = 1;
+                ctx.fillStyle = lcol || '#cbd5e1';
+                ctx.beginPath(); ctx.arc(ax, ay, 13, 0, 6.28); ctx.fill();
+                ctx.fillStyle = '#0f172a'; ctx.font = 'bold 10px monospace'; ctx.textAlign='center';
+                ctx.fillText(label, ax, ay+3.5); ctx.textAlign='left';
+            }
+            bond(cx, cy-62, 'R', '#94a3b8');
+            bond(cx-52, cy+44, 'H', '#e2e8f0');
+            bond(cx+52, cy+44, 'H', '#e2e8f0');
+            ctx.fillStyle = '#64748b'; ctx.font = '9px monospace'; ctx.textAlign='center';
+            ctx.fillText('(R = CH₃CH₂–)', cx, cy-80); ctx.textAlign='left';
+
+            // C–OH bond (grows in)
+            ctx.globalAlpha = Math.max(0.15, t);
+            ctx.strokeStyle = (t < 0.5) ? '#34d399' : '#34d399';
+            ctx.lineWidth = (t < 0.5) ? 1.5 : 3;
+            if (t < 0.5) ctx.setLineDash([5,4]);
+            ctx.beginPath(); ctx.moveTo(cx-16, cy); ctx.lineTo(ohX+16, cy); ctx.stroke();
+            ctx.setLineDash([]); ctx.lineWidth = 1;
+            // C–Br bond (fades out)
+            ctx.globalAlpha = Math.max(0.15, 1-t);
+            ctx.strokeStyle = '#fb7185';
+            ctx.lineWidth = (t > 0.5) ? 1.5 : 3;
+            if (t > 0.5) ctx.setLineDash([5,4]);
+            ctx.beginPath(); ctx.moveTo(cx+16, cy); ctx.lineTo(brX-16, cy); ctx.stroke();
+            ctx.setLineDash([]); ctx.lineWidth = 1;
+            ctx.globalAlpha = 1;
+
+            // OH nucleophile
+            ctx.fillStyle = '#34d399';
+            ctx.beginPath(); ctx.arc(ohX, cy, 16, 0, 6.28); ctx.fill();
+            ctx.fillStyle = '#052e16'; ctx.font = 'bold 11px monospace'; ctx.textAlign='center';
+            ctx.fillText('OH', ohX, cy+4); ctx.textAlign='left';
+            // OH charge
+            if (t < 0.45) { ctx.fillStyle='#34d399'; ctx.font='bold 13px monospace'; ctx.fillText('⁻', ohX+16, cy-8); }
+            else if (t < 0.75) { ctx.fillStyle='#34d399'; ctx.font='bold 11px monospace'; ctx.fillText('δ−', ohX+16, cy-8); }
+
+            // Br leaving group
+            ctx.fillStyle = '#fb7185';
+            ctx.beginPath(); ctx.arc(brX, cy, 17, 0, 6.28); ctx.fill();
+            ctx.fillStyle = '#4c0519'; ctx.font = 'bold 11px monospace'; ctx.textAlign='center';
+            ctx.fillText('Br', brX, cy+4); ctx.textAlign='left';
+            if (t < 0.45) { ctx.fillStyle='#fb7185'; ctx.font='bold 11px monospace'; ctx.fillText('δ−', brX+18, cy-8); }
+            else if (t >= 0.75) { ctx.fillStyle='#fb7185'; ctx.font='bold 13px monospace'; ctx.fillText('⁻', brX+18, cy-8); }
+
+            // central C with δ+
+            ctx.fillStyle = '#334155';
+            ctx.beginPath(); ctx.arc(cx, cy, 17, 0, 6.28); ctx.fill();
+            ctx.fillStyle = '#e2e8f0'; ctx.font = 'bold 12px monospace'; ctx.textAlign='center';
+            ctx.fillText('C', cx, cy+4); ctx.textAlign='left';
+            if (t < 0.8) { ctx.fillStyle='#38bdf8'; ctx.font='bold 11px monospace'; ctx.fillText('δ+', cx-6, cy-22); }
+
+            // curly arrows
+            function curly(x1,y1,x2,y2,col,op) {
+                ctx.globalAlpha = op;
+                ctx.strokeStyle = col; ctx.lineWidth = 2;
+                const mx = (x1+x2)/2, my = (y1+y2)/2 - 34;
+                ctx.beginPath(); ctx.moveTo(x1,y1); ctx.quadraticCurveTo(mx,my,x2,y2); ctx.stroke();
+                const ang = Math.atan2(y2-my, x2-mx);
+                ctx.beginPath();
+                ctx.moveTo(x2,y2);
+                ctx.lineTo(x2-9*Math.cos(ang-0.4), y2-9*Math.sin(ang-0.4));
+                ctx.lineTo(x2-9*Math.cos(ang+0.4), y2-9*Math.sin(ang+0.4));
+                ctx.closePath(); ctx.fillStyle = col; ctx.fill();
+                ctx.globalAlpha = 1; ctx.lineWidth = 1;
+            }
+            if (t > 0.05 && t < 0.6) curly(ohX+14, cy-10, cx-14, cy-6, '#fbbf24', Math.min(1,(t-0.05)/0.15)*(1-Math.max(0,(t-0.45)/0.15)));
+            if (t > 0.35 && t < 0.95) curly(cx+18, cy-6, brX-14, cy-10, '#fbbf24', Math.min(1,(t-0.35)/0.15)*(1-Math.max(0,(t-0.8)/0.15)));
+
+            // phase label
+            const cap = document.getElementById('sn2-caption');
+            let txt;
+            if (t < 0.33) txt = '① Reactants: the nucleophile OH⁻ approaches the δ⁺ carbon; the C–Br bond is polar.';
+            else if (t < 0.66) txt = '② Transition state: OH⁻ forms a bond as the C–Br bond breaks — both curly arrows run from electrons.';
+            else txt = '③ Products: propan-1-ol forms and Br⁻ leaves with the bonding pair.';
+            if (cap && cap.textContent !== txt) cap.textContent = txt;
+        }
+
+        // ============ Hydrolysis rate lab ============
+        const HYDRO = {
+            '1-iodo': {name:'1-iodopropane', ppt:'AgI', col:'#facc15', speed:1.0, cls:'iodo'},
+            '1-bromo': {name:'1-bromopropane', ppt:'AgBr', col:'#fde68a', speed:2.2, cls:'bromo'},
+            '1-chloro': {name:'1-chloropropane', ppt:'AgCl', col:'#f8fafc', speed:4.5, cls:'chloro'},
+            'tert': {name:'2-chloro-2-methylpropane (3°)', ppt:'AgCl', col:'#f8fafc', speed:1.3, cls:'tert'}
+        };
+        let hydroTimer = null;
+        function buildHydroBtns() {
+            const host = document.getElementById('hydro-btns');
+            Object.keys(HYDRO).forEach(k => {
+                const b = document.createElement('button');
+                b.className = 'px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-slate-300 text-xs font-bold';
+                b.textContent = HYDRO[k].name;
+                b.onclick = function(){ runHydro(k); };
+                host.appendChild(b);
+            });
+        }
+        function runHydro(k) {
+            const d = HYDRO[k];
+            const ppt = document.getElementById('hydro-ppt');
+            const liq = document.getElementById('hydro-liquid');
+            const info = document.getElementById('hydro-info');
+            liq.style.background = 'rgba(226,232,240,0.12)';
+            ppt.style.height = '0'; ppt.style.background = d.col;
+            if (hydroTimer) clearTimeout(hydroTimer);
+            info.innerHTML = '<p class="text-slate-300 font-bold">'+d.name+'</p><p>Waiting for the '+d.ppt+' precipitate…</p>';
+            hydroTimer = setTimeout(function(){
+                ppt.style.height = '45%';
+                const rateWord = d.speed < 1.5 ? 'very fast (appears almost immediately)' : (d.speed < 3 ? 'moderate' : 'slow (takes longest)');
+                let why;
+                if (d.cls === 'tert') why = 'Tertiary halogenoalkanes hydrolyse fastest of the classes (the 3° carbocation is most stable — SN1 contribution).';
+                else why = 'Rate follows C–X bond enthalpy: C–I is weakest (breaks fastest), C–Cl strongest (slowest). Polarity is NOT the reason.';
+                info.innerHTML = '<p class="text-slate-300 font-bold">'+d.name+'</p>' +
+                    '<p><span class="inline-block w-3 h-3 rounded-full mr-1 align-middle" style="background:'+d.col+'"></span><b>'+d.ppt+'</b> precipitate forms — '+rateWord+'.</p>' +
+                    '<p class="text-slate-400 mt-1">'+why+'</p>' +
+                    '<p class="text-slate-400">Colours: AgCl white · AgBr cream · AgI yellow.</p>';
+            }, d.speed * 500);
+        }
+
+        // ============ Nucleophile pathfinder ============
+        const NUC = {
+            aqkoh: {prod:'propan-1-ol (an alcohol)', eq:'CH₃CH₂CH₂Br + KOH(aq) → CH₃CH₂CH₂OH + KBr', role:'OH⁻ is the nucleophile', type:'nucleophilic substitution (hydrolysis)', cond:'warm, aqueous'},
+            etkoh: {prod:'propene (an alkene)', eq:'CH₃CH₂CH₂Br + KOH(ethanolic) → CH₃CH=CH₂ + KBr + H₂O', role:'OH⁻ is the base (removes H)', type:'elimination', cond:'heat, ethanolic'},
+            nh3: {prod:'propylamine (an amine)', eq:'CH₃CH₂CH₂Br + 2NH₃ → CH₃CH₂CH₂NH₂ + NH₄Br', role:'NH₃ is the nucleophile', type:'nucleophilic substitution', cond:'alcoholic NH₃, heat & pressure'},
+            kcn: {prod:'butanenitrile (a nitrile — chain +1)', eq:'CH₃CH₂CH₂Br + KCN → CH₃CH₂CH₂CN + KBr', role:'CN⁻ is the nucleophile', type:'nucleophilic substitution (chain lengthening)', cond:'alcoholic KCN, heat'},
+            agno3: {prod:'AgBr precipitate (cream) + propan-1-ol', eq:'CH₃CH₂CH₂Br + H₂O → CH₃CH₂CH₂OH + H⁺ + Br⁻ ; then Ag⁺ + Br⁻ → AgBr(s)', role:'H₂O is the nucleophile', type:'hydrolysis (used to measure rate)', cond:'aq. AgNO₃ in ethanol'}
+        };
+        window.predictNuc = function() {
+            const d = NUC[document.getElementById('nuc-select').value];
+            document.getElementById('nuc-result').innerHTML =
+                '<p class="text-emerald-300 font-bold mb-1">Product: '+d.prod+'</p>' +
+                '<p class="font-mono text-slate-300 mb-1">'+d.eq+'</p>' +
+                '<p class="text-slate-400">Conditions: '+d.cond+' · '+d.role+' · Type: <b class="text-sky-300">'+d.type+'</b>.</p>';
+        };
+
+        // ============ Oxidation predictor ============
+        window.predictOx = function() {
+            const alc = document.getElementById('ox-alcohol').value;
+            const cond = document.getElementById('ox-cond').value;
+            const liq = document.getElementById('ox-liquid');
+            const out = document.getElementById('ox-result');
+            let product, reacts, note;
+            if (alc === '3') { product = 'No reaction'; reacts = false; note = 'A tertiary alcohol has no H on the C–OH carbon, so it cannot be oxidised. The dichromate stays orange.'; }
+            else if (alc === '1' && cond === 'distil') { product = 'Propanal (an aldehyde)'; reacts = true; note = 'Distilling removes the aldehyde as it forms, so it is not oxidised further. Propanal gives a positive Benedict\'s/Fehling\'s test.'; }
+            else if (alc === '1' && cond === 'reflux') { product = 'Propanoic acid (a carboxylic acid)'; reacts = true; note = 'Reflux keeps oxidising: aldehyde → acid. Propanoic acid fizzes with Na₂CO₃/NaHCO₃.'; }
+            else { product = 'Propanone (a ketone)'; reacts = true; note = 'A secondary alcohol oxidises to a ketone under reflux. Ketones resist further oxidation.'; }
+            liq.style.background = reacts ? '#16a34a' : '#f97316';
+            out.innerHTML = '<p class="font-bold '+(reacts?'text-emerald-300':'text-orange-300')+'">'+product+'</p>' +
+                '<p class="text-slate-300">Dichromate colour: '+(reacts?'orange → <b>green</b> (Cr₂O₇²⁻ reduced to Cr³⁺)':'stays <b>orange</b> (no reaction)')+'</p>' +
+                '<p class="text-slate-400 mt-1">'+note+'</p>';
+        };
+
+        // ============ IR spectra ============
+        const IR = {
+            ethanol: {peaks:[{wn:3350,i:0.85,w:280,l:'O–H stretch (alcohol, broad)'},{wn:2920,i:0.5,w:90,l:'C–H stretch (alkane)'},{wn:1050,i:0.6,w:80,l:'C–O stretch'}], note:'Broad O–H ~3350 + C–O ~1050 ⇒ alcohol. No C=O.'},
+            propanone: {peaks:[{wn:2920,i:0.5,w:90,l:'C–H stretch (alkane)'},{wn:1715,i:1.0,w:55,l:'C=O stretch (ketone, strong)'}], note:'Strong sharp C=O ~1715, no O–H ⇒ ketone.'},
+            ethanal: {peaks:[{wn:2920,i:0.5,w:90,l:'C–H stretch (alkane)'},{wn:2720,i:0.3,w:45,l:'C–H stretch (aldehyde)'},{wn:1720,i:1.0,w:55,l:'C=O stretch (aldehyde)'}], note:'C=O ~1720 plus the aldehyde C–H ~2720 ⇒ aldehyde.'},
+            ethanoic: {peaks:[{wn:3000,i:0.95,w:520,l:'O–H stretch (acid, very broad)'},{wn:1710,i:1.0,w:55,l:'C=O stretch (acid)'},{wn:1250,i:0.5,w:70,l:'C–O stretch'}], note:'Very broad O–H (2500–3300) AND a C=O ⇒ carboxylic acid.'},
+            bromoethane: {peaks:[{wn:2920,i:0.5,w:90,l:'C–H stretch (alkane)'},{wn:600,i:0.6,w:90,l:'C–Br stretch'}], note:'C–Br ~600, no O–H or C=O ⇒ halogenoalkane.'},
+            ethylamine: {peaks:[{wn:3350,i:0.5,w:60,l:'N–H stretch (sharp, 2 peaks)'},{wn:3280,i:0.4,w:50,l:'N–H stretch (2nd)'},{wn:2920,i:0.5,w:90,l:'C–H stretch'}], note:'Sharp N–H ~3300–3500 (not broad like O–H) ⇒ amine.'}
+        };
+        function irTrans(wn, peaks) {
+            let tr = 0.95;
+            peaks.forEach(p => {
+                const d = (wn - p.wn) / p.w;
+                tr -= p.i * 0.72 * Math.exp(-d*d);
+            });
+            return Math.max(0.05, tr);
+        }
+        function drawIR() {
+            const cv = document.getElementById('ir-canvas'); if (!cv) return;
+            const ctx = cv.getContext('2d');
+            const W = cv.width, H = cv.height;
+            ctx.clearRect(0,0,W,H);
+            const padL=44, padR=14, padT=16, padB=34;
+            const pw=W-padL-padR, ph=H-padT-padB;
+            function x(wn){ return padL + (1 - (wn-400)/(4000-400))*pw; } // 4000 left, 400 right
+            function y(tr){ return padT + (1-tr)*ph; }
+            // grid
+            ctx.strokeStyle='#1e293b'; ctx.lineWidth=1; ctx.fillStyle='#64748b'; ctx.font='9px monospace';
+            [4000,3500,3000,2500,2000,1500,1000,500].forEach(wn => {
+                ctx.beginPath(); ctx.moveTo(x(wn),padT); ctx.lineTo(x(wn),H-padB); ctx.stroke();
+                ctx.fillText(String(wn), x(wn)-12, H-padB+14);
+            });
+            ctx.strokeStyle='#475569'; ctx.lineWidth=1.5;
+            ctx.beginPath(); ctx.moveTo(padL,padT); ctx.lineTo(padL,H-padB); ctx.lineTo(W-padR,H-padB); ctx.stroke();
+            ctx.fillStyle='#94a3b8'; ctx.font='10px monospace';
+            ctx.fillText('%T', 8, padT+8); ctx.fillText('wavenumber / cm⁻¹', W-150, H-6);
+            // spectrum
+            const key = document.getElementById('ir-select').value;
+            const peaks = IR[key].peaks;
+            ctx.strokeStyle='#fbbf24'; ctx.lineWidth=2;
+            ctx.beginPath();
+            for (let wn=4000; wn>=400; wn-=4) {
+                const px=x(wn), py=y(irTrans(wn,peaks));
+                if (wn===4000) ctx.moveTo(px,py); else ctx.lineTo(px,py);
+            }
+            ctx.stroke();
+            // store mapping for hover
+            cv._peaks = peaks; cv._x = x; cv._y = y;
+            document.getElementById('ir-assign').innerHTML = '<b class="text-amber-300">Diagnosis:</b> ' + IR[key].note;
+        }
+        document.addEventListener('mousemove', function(e){
+            const cv = document.getElementById('ir-canvas');
+            const tip = document.getElementById('ir-tip');
+            if (!cv || !cv._peaks || currentTab !== 'spectra') return;
+            const r = cv.getBoundingClientRect();
+            if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) { tip.classList.add('hidden'); return; }
+            const sx = (e.clientX - r.left) * (cv.width / r.width);
+            let best = null, bd = 1e9;
+            cv._peaks.forEach(p => {
+                const d = Math.abs(cv._x(p.wn) - sx);
+                if (d < bd) { bd = d; best = p; }
+            });
+            if (best && bd < 26) {
+                tip.textContent = best.l + ' (~' + best.wn + ' cm⁻¹)';
+                tip.style.left = (e.clientX - r.left + 12) + 'px';
+                tip.style.top = (e.clientY - r.top - 8) + 'px';
+                tip.classList.remove('hidden');
+            } else tip.classList.add('hidden');
+        });
+
+        // ============ Mass spectra ============
+        const MS = {
+            ethanol: {mr:46, peaks:[{mz:46,a:30,f:'M⁺ (molecular ion, Mr=46)'},{mz:45,a:20,f:'M−1 (loss of H)'},{mz:31,a:100,f:'CH₂OH⁺'},{mz:29,a:40,f:'C₂H₅⁺'},{mz:15,a:35,f:'CH₃⁺'}]},
+            propanone: {mr:58, peaks:[{mz:58,a:25,f:'M⁺ (molecular ion, Mr=58)'},{mz:43,a:100,f:'CH₃CO⁺ (acylium)'},{mz:15,a:45,f:'CH₃⁺'}]},
+            propanal: {mr:58, peaks:[{mz:58,a:20,f:'M⁺ (molecular ion, Mr=58)'},{mz:57,a:30,f:'M−1 (loss of H, CHO lost? = C₂H₅CO⁺)'},{mz:29,a:100,f:'CHO⁺ / C₂H₅⁺'},{mz:15,a:30,f:'CH₃⁺'}]},
+            butanone: {mr:72, peaks:[{mz:72,a:22,f:'M⁺ (molecular ion, Mr=72)'},{mz:57,a:60,f:'CH₃CH₂CO⁺'},{mz:43,a:100,f:'CH₃CO⁺'},{mz:29,a:50,f:'C₂H₅⁺'},{mz:15,a:35,f:'CH₃⁺'}]}
+        };
+        function drawMS() {
+            const cv = document.getElementById('ms-canvas'); if (!cv) return;
+            const ctx = cv.getContext('2d');
+            const W = cv.width, H = cv.height;
+            ctx.clearRect(0,0,W,H);
+            const padL=44, padR=14, padT=16, padB=34;
+            const pw=W-padL-padR, ph=H-padT-padB;
+            const key = document.getElementById('ms-select').value;
+            const data = MS[key];
+            const maxMz = Math.max.apply(null, data.peaks.map(p=>p.mz)) + 8;
+            function x(mz){ return padL + (mz/maxMz)*pw; }
+            function y(a){ return padT + (1 - a/100)*ph; }
+            ctx.strokeStyle='#1e293b'; ctx.lineWidth=1; ctx.fillStyle='#64748b'; ctx.font='9px monospace';
+            for (let a=0; a<=100; a+=25){ ctx.beginPath(); ctx.moveTo(padL,y(a)); ctx.lineTo(W-padR,y(a)); ctx.stroke(); ctx.fillText(String(a), padL-22, y(a)+3); }
+            ctx.strokeStyle='#475569'; ctx.lineWidth=1.5;
+            ctx.beginPath(); ctx.moveTo(padL,padT); ctx.lineTo(padL,H-padB); ctx.lineTo(W-padR,H-padB); ctx.stroke();
+            ctx.fillStyle='#94a3b8'; ctx.font='10px monospace';
+            ctx.fillText('% abundance', 6, padT+8); ctx.fillText('m/z', W-30, H-6);
+            cv._bars = [];
+            data.peaks.forEach(p => {
+                const bx = x(p.mz);
+                const isM = (p.mz === data.mr);
+                ctx.strokeStyle = isM ? '#fb7185' : '#38bdf8';
+                ctx.lineWidth = 3;
+                ctx.beginPath(); ctx.moveTo(bx, y(0)); ctx.lineTo(bx, y(p.a)); ctx.stroke();
+                ctx.fillStyle = isM ? '#fb7185' : '#7dd3fc';
+                ctx.font = '9px monospace'; ctx.textAlign='center';
+                ctx.fillText(String(p.mz), bx, H-padB+13);
+                ctx.fillText(String(p.a), bx, y(p.a)-4);
+                ctx.textAlign='left'; ctx.lineWidth=1;
+                cv._bars.push({x:bx, mz:p.mz, f:p.f, top:y(p.a)});
+            });
+            document.getElementById('ms-info').innerHTML = 'Molecular ion <b class="text-rose-300">M⁺ at m/z '+data.mr+'</b> = Mr. Click any bar to identify its fragment.';
+        }
+        document.addEventListener('click', function(e){
+            const cv = document.getElementById('ms-canvas');
+            if (!cv || !cv._bars || currentTab !== 'spectra') return;
+            const r = cv.getBoundingClientRect();
+            if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) return;
+            const sx = (e.clientX - r.left) * (cv.width / r.width);
+            let best=null, bd=1e9;
+            cv._bars.forEach(b => { const d=Math.abs(b.x-sx); if (d<bd){bd=d;best=b;} });
+            if (best && bd < 20) {
+                document.getElementById('ms-info').innerHTML = '<b class="text-sky-300">m/z '+best.mz+'</b> → '+best.f;
+            }
+        });
+
+        // ============ Synthesis solver (BFS) ============
+        const COMPOUNDS = {
+            ethane:{name:'Ethane', f:'CH₃CH₃'},
+            bromoethane:{name:'Bromoethane', f:'CH₃CH₂Br'},
+            chloroethane:{name:'Chloroethane', f:'CH₃CH₂Cl'},
+            ethanol:{name:'Ethanol', f:'CH₃CH₂OH'},
+            ethanal:{name:'Ethanal', f:'CH₃CHO'},
+            ethanoic:{name:'Ethanoic acid', f:'CH₃COOH'},
+            ethene:{name:'Ethene', f:'CH₂=CH₂'},
+            ethylamine:{name:'Ethylamine', f:'CH₃CH₂NH₂'},
+            ethanenitrile:{name:'Ethanenitrile', f:'CH₃CN'},
+            propan2ol:{name:'Propan-2-ol', f:'CH₃CH(OH)CH₃'},
+            propanone:{name:'Propanone', f:'CH₃COCH₃'}
+        };
+        const EDGES = [
+            ['ethane','bromoethane','Br₂, UV light','free-radical substitution'],
+            ['bromoethane','ethanol','aq. KOH, warm','nucleophilic substitution'],
+            ['bromoethane','ethene','ethanolic KOH, heat','elimination'],
+            ['bromoethane','ethylamine','alcoholic NH₃, heat & pressure','nucleophilic substitution'],
+            ['bromoethane','ethanenitrile','alcoholic KCN, heat','nucleophilic substitution (+1 C)'],
+            ['ethanol','ethanal','acidified K₂Cr₂O₇, distil','oxidation'],
+            ['ethanol','ethanoic','acidified K₂Cr₂O₇, reflux','oxidation'],
+            ['ethanol','ethene','conc. H₃PO₄, heat','elimination (dehydration)'],
+            ['ethanol','bromoethane','KBr + 50% H₂SO₄','substitution'],
+            ['ethanol','chloroethane','PCl₅','substitution'],
+            ['ethene','bromoethane','HBr','electrophilic addition'],
+            ['ethene','ethanol','steam, H₃PO₄ catalyst','hydration (addition)'],
+            ['propan2ol','propanone','acidified K₂Cr₂O₇, reflux','oxidation (2° → ketone)']
+        ];
+        function buildAdj() {
+            const adj = {};
+            Object.keys(COMPOUNDS).forEach(k => adj[k] = []);
+            EDGES.forEach(e => {
+                adj[e[0]].push({to:e[1], reagent:e[2], type:e[3]});
+                // some are reversible in principle; add reverse for ethanol<->ethene etc. where chemically sensible
+            });
+            return adj;
+        }
+        function bfs(start, target) {
+            const adj = buildAdj();
+            const q = [[start]];
+            const seen = new Set([start]);
+            while (q.length) {
+                const path = q.shift();
+                const node = path[path.length-1];
+                if (node === target) return path;
+                (adj[node]||[]).forEach(e => {
+                    if (!seen.has(e.to)) {
+                        seen.add(e.to);
+                        q.push(path.concat([e.to]));
+                    }
+                });
+            }
+            return null;
+        }
+        function fillSynSelects() {
+            const s = document.getElementById('syn-start'), t = document.getElementById('syn-target');
+            Object.keys(COMPOUNDS).forEach(k => {
+                const o1 = document.createElement('option'); o1.value=k; o1.textContent=COMPOUNDS[k].name; s.appendChild(o1);
+                const o2 = o1.cloneNode(true); t.appendChild(o2);
+            });
+            s.value='ethane'; t.value='ethanoic';
+        }
+        window.runSynthesis = function() {
+            const start = document.getElementById('syn-start').value;
+            const target = document.getElementById('syn-target').value;
+            const out = document.getElementById('syn-out');
+            if (start === target) { out.textContent = 'Start and target are the same compound.'; return; }
+            const path = bfs(start, target);
+            if (!path) { out.textContent = 'No route found with the Topic 10 reaction set. Try a different pair (e.g. ethane → ethanoic acid, or ethene → ethylamine).'; return; }
+            const adj = buildAdj();
+            let txt = 'Route: ' + path.map(k => COMPOUNDS[k].f).join('  →  ') + '\n\n';
+            for (let i = 0; i < path.length-1; i++) {
+                const from = path[i], to = path[i+1];
+                const edge = (adj[from]||[]).find(e => e.to === to);
+                txt += 'Step ' + (i+1) + ': ' + COMPOUNDS[from].f + ' → ' + COMPOUNDS[to].f + '\n';
+                txt += '   Reagent: ' + edge.reagent + '\n';
+                txt += '   Type:    ' + edge.type + '\n\n';
+            }
+            txt += '(' + (path.length-1) + ' step' + (path.length-1===1?'':'s') + ')';
+            out.textContent = txt;
+        };
+
+        // ============ Master loop ============
+        let lastTs = 0, globalT = 0;
+        function masterLoop(ts) {
+            const dt = Math.min(0.05, (ts - lastTs)/1000 || 0.016);
+            lastTs = ts; globalT += dt;
+            drawBackground(dt, globalT);
+            if (currentTab === 'halo') drawSN2(dt);
+            requestAnimationFrame(masterLoop);
+        }
+
+        // ============ Init ============
+        window.addEventListener('load', function() {
+            initBackground();
+            buildFGStrip();
+            buildHydroBtns();
+            fillSynSelects();
+            requestAnimationFrame(masterLoop);
+            setTimeout(safeInitKaTeX, 300);
+        });
+    </script>
+</body>
+</html>

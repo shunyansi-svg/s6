@@ -1,0 +1,2088 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IAL Topic 2 — Atomic Structure & the Periodic Table · Master Studio</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="safeInitKaTeX()"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+<script>
+tailwind.config={theme:{extend:{fontFamily:{display:['"Space Grotesk"','sans-serif'],sans:['Inter','sans-serif'],mono:['"Fira Code"','monospace']}}}}
+</script>
+<style>
+body{font-family:'Inter',sans-serif;background:#080e1a;color:#f1f5f9}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(56,189,248,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(56,189,248,.03) 1px,transparent 1px);background-size:52px 52px}
+.glow{position:fixed;border-radius:9999px;filter:blur(100px);pointer-events:none;z-index:0;opacity:.4}
+.glow-a{width:520px;height:520px;top:-180px;left:-120px;background:radial-gradient(circle,rgba(14,165,233,.18),transparent 70%);animation:drift 18s ease-in-out infinite alternate}
+.glow-b{width:480px;height:480px;bottom:-200px;right:-140px;background:radial-gradient(circle,rgba(168,85,247,.12),transparent 70%);animation:drift 22s ease-in-out infinite alternate-reverse}
+.glow-c{width:360px;height:360px;top:40%;left:60%;background:radial-gradient(circle,rgba(16,185,129,.1),transparent 70%);animation:drift 26s ease-in-out infinite alternate}
+@keyframes drift{from{transform:translate(0,0) scale(1)}to{transform:translate(50px,30px) scale(1.1)}}
+.ghost{font-family:'Space Grotesk',sans-serif;color:transparent;-webkit-text-stroke:1.5px rgba(56,189,248,.15);user-select:none;pointer-events:none}
+.kicker{letter-spacing:.22em;text-transform:uppercase;font-size:10px;font-weight:700;color:#38bdf8}
+.card-hover{transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}
+.card-hover:hover{transform:translateY(-2px);border-color:rgba(56,189,248,.3);box-shadow:0 12px 36px -14px rgba(14,165,233,.2)}
+.tab-panel{display:none}.tab-panel.active{display:block;animation:fadeUp .3s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.tab-btn-active{color:#38bdf8!important;font-weight:700!important;border-bottom:2px solid #38bdf8!important;background:rgba(14,165,233,.08)!important}
+.btn-press{transition:transform .1s ease,background-color .2s,border-color .2s,color .2s}
+.btn-press:active:not(:disabled){transform:scale(.96)}
+.blur-answer{filter:blur(6px);transition:filter .35s ease;cursor:pointer;user-select:none}
+.blur-answer.revealed{filter:none;cursor:text}
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+.reveal.revealed{opacity:1;transform:none}
+details>summary{cursor:pointer;list-style:none}
+details>summary::-webkit-details-marker{display:none}
+details>summary::before{content:'▸';display:inline-block;margin-right:.5rem;transition:transform .2s;color:#64748b}
+details[open]>summary::before{transform:rotate(90deg);color:#38bdf8}
+.chain-chip{transition:all .15s ease}
+.chain-chip.used{opacity:.3;pointer-events:none}
+.slot-btn{min-width:90px;transition:all .15s ease}
+.slot-btn.filled{background:rgba(56,189,248,.12);border-color:rgba(56,189,248,.5);color:#7dd3fc}
+.slot-btn.correct{background:rgba(16,185,129,.15);border-color:rgba(16,185,129,.6);color:#6ee7b7}
+.slot-btn.wrong{background:rgba(244,63,94,.15);border-color:rgba(244,63,94,.6);color:#fda4af}
+::-webkit-scrollbar{width:7px;height:7px}
+::-webkit-scrollbar-track{background:#0f172a}
+::-webkit-scrollbar-thumb{background:#334155;border-radius:4px}
+::-webkit-scrollbar-thumb:hover{background:#475569}
+</style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-sky-500 selection:text-slate-900">
+<div class="glow glow-a"></div><div class="glow glow-b"></div><div class="glow glow-c"></div>
+
+<header class="bg-slate-950/90 border-b border-slate-800/80 sticky top-0 z-50 backdrop-blur-md">
+<div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between gap-3 relative z-10">
+  <div class="flex items-center gap-3 shrink-0">
+    <div class="p-1.5 bg-sky-500/10 border border-sky-500/25 rounded-lg text-sky-400">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+    </div>
+    <div>
+      <h1 class="font-display text-base font-bold text-slate-100 leading-tight flex items-center gap-2">Topic 2 Master Studio <span class="text-[10px] font-sans font-normal px-2 py-0.5 rounded bg-sky-500/15 text-sky-300 border border-sky-500/25">WCH11</span></h1>
+      <p class="text-[10px] text-slate-500">Atomic Structure & the Periodic Table · Edexcel IAL</p>
+    </div>
+  </div>
+  <span class="hidden lg:block text-[10px] font-mono text-slate-600">18 spec codes · 3 engines · explanation builder · trends studio · calculator</span>
+</div>
+<div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+  <nav id="mainNav" class="flex flex-wrap gap-0.5 py-1.5">
+    <button onclick="switchTab('syllabus')" data-tab="syllabus" class="tab-btn tab-btn-active py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs text-sky-400 font-bold border-b-2 border-sky-400 bg-sky-950/40 rounded-t-lg">1. Syllabus</button>
+    <button onclick="switchTab('atom')" data-tab="atom" class="tab-btn py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs text-slate-400 hover:text-sky-300 font-medium border-b-2 border-transparent">2. Atom & Isotopes</button>
+    <button onclick="switchTab('ie')" data-tab="ie" class="tab-btn py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs text-slate-400 hover:text-sky-300 font-medium border-b-2 border-transparent">3. Ionisation Energy</button>
+    <button onclick="switchTab('estruct')" data-tab="estruct" class="tab-btn py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs text-slate-400 hover:text-sky-300 font-medium border-b-2 border-transparent">4. Electronic Structure</button>
+    <button onclick="switchTab('explain')" data-tab="explain" class="tab-btn py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs text-amber-300 hover:text-amber-200 font-semibold border-b-2 border-transparent">5. Explanation Builder</button>
+    <button onclick="switchTab('trends')" data-tab="trends" class="tab-btn py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs text-slate-400 hover:text-sky-300 font-medium border-b-2 border-transparent">6. Trends Studio</button>
+    <button onclick="switchTab('calc')" data-tab="calc" class="tab-btn py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs text-slate-400 hover:text-sky-300 font-medium border-b-2 border-transparent">7. Calculator</button>
+    <button onclick="switchTab('review')" data-tab="review" class="tab-btn py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs text-slate-400 hover:text-sky-300 font-medium border-b-2 border-transparent">8. Final Review</button>
+    <button onclick="switchTab('massspec')" data-tab="massspec" class="tab-btn py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs text-emerald-300 hover:text-emerald-200 font-semibold border-b-2 border-transparent">9. Mass Spec Lab</button>
+    <button onclick="switchTab('shells')" data-tab="shells" class="tab-btn py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs text-amber-300 hover:text-amber-200 font-semibold border-b-2 border-transparent">10. Shell Simulator</button>
+    <button onclick="switchTab('orbitals')" data-tab="orbitals" class="tab-btn py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs text-violet-300 hover:text-violet-200 font-semibold border-b-2 border-transparent">11. Orbitals & Config</button>
+  </nav>
+</div>
+</header>
+
+<main class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-grow w-full relative z-10">
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- TAB 1: SYLLABUS MASTER OVERVIEW                            -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="tab-syllabus" class="tab-panel active space-y-6">
+<div class="bg-slate-900/80 border border-slate-800 rounded-xl p-6 relative overflow-hidden">
+  <span class="ghost absolute -top-8 right-3 text-[110px] font-bold leading-none">T2</span>
+  <div class="border-b border-slate-800 pb-4 mb-6">
+    <span class="kicker">Syllabus Master Overview</span>
+    <h2 class="font-display text-xl font-bold text-white mt-1">Topic 2 Learning Points & Mark Scheme Secrets (Spec 2.1 – 2.18)</h2>
+    <p class="text-xs text-slate-400 mt-1">Every assessment point elaborated with Key Learning Goals and IAL Examiner Watch-Outs. The <span class="text-amber-300 font-semibold">Explanation Builder (Tab 5)</span> turns the hardest "explain the trend" questions into step-by-step scaffolds.</p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+    <!-- Card A: 2.1-2.4 -->
+    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between card-hover reveal">
+      <div>
+        <div class="flex justify-between items-center mb-2 gap-2">
+          <span class="text-[10px] font-mono uppercase font-bold px-2 py-0.5 bg-sky-950 text-sky-400 rounded border border-sky-800">Spec 2.1, 2.2, 2.3, 2.4</span>
+          <span class="text-[10px] text-slate-500 font-mono">Atom & particles</span>
+        </div>
+        <h3 class="font-display text-sm font-bold text-white mb-3">Atomic Structure, Z, A & Counting Particles</h3>
+        <div class="space-y-2">
+          <span class="text-[11px] font-bold text-sky-300 uppercase tracking-wider block">🎯 6 Key Learning Goals</span>
+          <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed">
+            <li>Describe the atom: a tiny central <strong>nucleus</strong> (protons + neutrons) surrounded by electrons in shells / energy levels</li>
+            <li>State relative mass & charge: proton = 1, +1; neutron = 1, 0; electron ≈ 0 ($\tfrac{1}{1836}$), −1</li>
+            <li>Define <strong>atomic (proton) number Z</strong> = number of protons (defines the element)</li>
+            <li>Define <strong>mass number A</strong> = protons + neutrons</li>
+            <li>For a neutral atom: electrons = protons = Z</li>
+            <li>For an <strong>ion</strong>: electrons = Z − charge (subtract for cations, add for anions); protons & neutrons unchanged</li>
+          </ul>
+        </div>
+      </div>
+      <div class="p-3 bg-amber-950/40 border border-amber-800/60 rounded-lg text-xs text-amber-200 space-y-1">
+        <span class="font-bold text-amber-400 block uppercase text-[10px]">💡 IAL Examiner Watch-Outs</span>
+        <p class="leading-relaxed text-[11px]">Electron relative mass is ≈ 0, <strong>not exactly 0</strong> — say "negligible / approximately zero". For ions, only the <strong>electrons</strong> change; students wrongly alter the proton count. A 2+ ion has <strong>two fewer</strong> electrons than protons. Notation $^{A}_{Z}\text{X}^{charge}$: top-left = A, bottom-left = Z.</p>
+      </div>
+    </div>
+
+    <!-- Card B: 2.5 -->
+    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between card-hover reveal">
+      <div>
+        <div class="flex justify-between items-center mb-2 gap-2">
+          <span class="text-[10px] font-mono uppercase font-bold px-2 py-0.5 bg-purple-950 text-purple-400 rounded border border-purple-800">Spec 2.5</span>
+          <span class="text-[10px] text-slate-500 font-mono">Isotopes</span>
+        </div>
+        <h3 class="font-display text-sm font-bold text-white mb-3">The Term 'Isotope'</h3>
+        <div class="space-y-2">
+          <span class="text-[11px] font-bold text-purple-300 uppercase tracking-wider block">🎯 4 Key Learning Goals</span>
+          <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed">
+            <li>Define isotope: atoms of the <strong>same element</strong> (same Z / protons) with <strong>different numbers of neutrons</strong> (different A)</li>
+            <li>State that isotopes have the <strong>same electron configuration</strong>, hence the same chemical properties</li>
+            <li>State that isotopes differ in <strong>physical</strong> properties that depend on mass (density, rate of diffusion)</li>
+            <li>Explain why $A_r$ is rarely a whole number (weighted mean of isotopes)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="p-3 bg-amber-950/40 border border-amber-800/60 rounded-lg text-xs text-amber-200 space-y-1">
+        <span class="font-bold text-amber-400 block uppercase text-[10px]">💡 IAL Examiner Watch-Outs</span>
+        <p class="leading-relaxed text-[11px]">The definition must include <strong>same number of protons</strong> AND <strong>different number of neutrons</strong> — "different mass number" alone is acceptable but weaker. Same chemistry <em>because</em> same electron arrangement — give the reason if asked.</p>
+      </div>
+    </div>
+
+    <!-- Card C: 2.6 -->
+    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between card-hover reveal">
+      <div>
+        <div class="flex justify-between items-center mb-2 gap-2">
+          <span class="text-[10px] font-mono uppercase font-bold px-2 py-0.5 bg-emerald-950 text-emerald-400 rounded border border-emerald-800">Spec 2.6</span>
+          <span class="text-[10px] text-slate-500 font-mono">Mass spectrometer</span>
+        </div>
+        <h3 class="font-display text-sm font-bold text-white mb-3">Mass Spectrometry — Principles & Interpreting Spectra</h3>
+        <div class="space-y-2">
+          <span class="text-[11px] font-bold text-emerald-300 uppercase tracking-wider block">🎯 6 Key Learning Goals</span>
+          <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed">
+            <li>Recall the four stages: <strong>vaporise → ionise</strong> (electron bombardment, forming 1+ ions) <strong>→ accelerate</strong> (electric field) <strong>→ deflect</strong> (magnetic field, by m/z) <strong>→ detect</strong></li>
+            <li>Deduce isotopic composition: each peak = one isotope; peak position = its mass; peak height/area ∝ relative abundance</li>
+            <li>Calculate $A_r$ from relative abundances: $A_r = \frac{\sum(\text{mass} \times \%\text{abundance})}{100}$</li>
+            <li>Work backwards: given $A_r$ and one abundance, find the other (two-isotope case)</li>
+            <li>Read the <strong>molecular ion peak M⁺</strong> to obtain the $M_r$ of a molecule, and so identify it</li>
+            <li>Understand that a <strong>2+ ion</strong> is deflected as if it had half the mass → peak at m/z = M/2</li>
+          </ul>
+        </div>
+      </div>
+      <div class="p-3 bg-amber-950/40 border border-amber-800/60 rounded-lg text-xs text-amber-200 space-y-1">
+        <span class="font-bold text-amber-400 block uppercase text-[10px]">💡 IAL Examiner Watch-Outs</span>
+        <p class="leading-relaxed text-[11px]">Deflection depends on <strong>m/z</strong>, not mass alone — that is why a 2+ ion appears at half the m/z. The molecular ion peak is the <strong>highest m/z</strong> peak (ignore tiny isotope/fragment peaks beyond it). Lighter ions deflect <strong>more</strong>.</p>
+      </div>
+    </div>
+
+    <!-- Card D: 2.7 -->
+    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between card-hover reveal">
+      <div>
+        <div class="flex justify-between items-center mb-2 gap-2">
+          <span class="text-[10px] font-mono uppercase font-bold px-2 py-0.5 bg-amber-950 text-amber-400 rounded border border-amber-800">Spec 2.7</span>
+          <span class="text-[10px] text-slate-500 font-mono">Diatomic spectra</span>
+        </div>
+        <h3 class="font-display text-sm font-bold text-white mb-3">Predicting Mass Spectra of Diatomic Molecules (Cl₂, Br₂)</h3>
+        <div class="space-y-2">
+          <span class="text-[11px] font-bold text-amber-300 uppercase tracking-wider block">🎯 4 Key Learning Goals</span>
+          <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed">
+            <li>For Cl (³⁵Cl : ³⁷Cl = 3 : 1), Cl₂ gives peaks at m/z 70, 72, 74 from ³⁵-³⁵, ³⁵-³⁷, ³⁷-³⁷</li>
+            <li>Relative heights follow $a^2 : 2ab : b^2$ → for 3:1, $9 : 6 : 1$</li>
+            <li>For Br (⁷⁹Br : ⁸¹Br ≈ 1 : 1), Br₂ gives 158, 160, 162 in ratio $1 : 2 : 1$</li>
+            <li>Explain the middle peak is tallest when abundances are similar (two ways to form it)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="p-3 bg-amber-950/40 border border-amber-800/60 rounded-lg text-xs text-amber-200 space-y-1">
+        <span class="font-bold text-amber-400 block uppercase text-[10px]">💡 IAL Examiner Watch-Outs</span>
+        <p class="leading-relaxed text-[11px]">The M+2 peak (³⁵-³⁷) has <strong>two</strong> combinations (³⁵+³⁷ and ³⁷+³⁵), hence the factor 2ab — students forget this and write 3:1:1. Peak <strong>heights</strong> reflect probability, not equal spacing.</p>
+      </div>
+    </div>
+
+    <!-- Card E: 2.8 -->
+    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between card-hover reveal">
+      <div>
+        <div class="flex justify-between items-center mb-2 gap-2">
+          <span class="text-[10px] font-mono uppercase font-bold px-2 py-0.5 bg-rose-950 text-rose-400 rounded border border-rose-800">Spec 2.8</span>
+          <span class="text-[10px] text-slate-500 font-mono">IE definitions</span>
+        </div>
+        <h3 class="font-display text-sm font-bold text-white mb-3">First, Second & Third Ionisation Energies</h3>
+        <div class="space-y-2">
+          <span class="text-[11px] font-bold text-rose-300 uppercase tracking-wider block">🎯 5 Key Learning Goals</span>
+          <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed">
+            <li>Define 1st IE: energy to remove one mole of electrons from one mole of <strong>gaseous atoms</strong> to form one mole of gaseous 1+ ions</li>
+            <li>Define 2nd IE: from one mole of gaseous <strong>1+ ions</strong> to 2+ ions (3rd IE from 2+ → 3+)</li>
+            <li>Write the equation: $\text{X(g)} \rightarrow \text{X}^+\text{(g)} + e^-$</li>
+            <li>State that <strong>all</strong> ionisation energies are <strong>endothermic</strong> (energy must be supplied to overcome attraction; $\Delta H$ positive)</li>
+            <li>Recognise units: kJ mol⁻¹</li>
+          </ul>
+        </div>
+      </div>
+      <div class="p-3 bg-amber-950/40 border border-amber-800/60 rounded-lg text-xs text-amber-200 space-y-1">
+        <span class="font-bold text-amber-400 block uppercase text-[10px]">💡 IAL Examiner Watch-Outs</span>
+        <p class="leading-relaxed text-[11px]">The word <strong>gaseous</strong> is a mark — omit it and lose it. The definition is <strong>per mole</strong>. The 2nd IE removes an electron from the <strong>1+ ion</strong>, not the neutral atom. Always endothermic — never write a negative sign.</p>
+      </div>
+    </div>
+
+    <!-- Card F: 2.9 + 2.13 -->
+    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between card-hover reveal">
+      <div>
+        <div class="flex justify-between items-center mb-2 gap-2">
+          <span class="text-[10px] font-mono uppercase font-bold px-2 py-0.5 bg-cyan-950 text-cyan-400 rounded border border-cyan-800">Spec 2.9, 2.13</span>
+          <span class="text-[10px] text-slate-500 font-mono">Orbitals & pairing</span>
+        </div>
+        <h3 class="font-display text-sm font-bold text-white mb-3">Orbitals, Spin & How Electrons Fill (Hund's Rule)</h3>
+        <div class="space-y-2">
+          <span class="text-[11px] font-bold text-cyan-300 uppercase tracking-wider block">🎯 4 Key Learning Goals</span>
+          <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed">
+            <li>Define an orbital as a region within an atom that can hold <strong>up to two</strong> electrons</li>
+            <li>State that two electrons in the same orbital must have <strong>opposite spins</strong></li>
+            <li>Apply Hund's rule: orbitals in a sub-shell each take <strong>one electron first</strong> (parallel spins) before any pairing</li>
+            <li>Draw electron-in-boxes diagrams showing single occupancy then pairing with opposite arrows</li>
+          </ul>
+        </div>
+      </div>
+      <div class="p-3 bg-amber-950/40 border border-amber-800/60 rounded-lg text-xs text-amber-200 space-y-1">
+        <span class="font-bold text-amber-400 block uppercase text-[10px]">💡 IAL Examiner Watch-Outs</span>
+        <p class="leading-relaxed text-[11px]">"Up to two" — an orbital can hold 0, 1 or 2 electrons. Paired electrons must be drawn as <strong>opposite</strong> arrows (↑↓), not parallel. For nitrogen the three 2p boxes are ↑ ↑ ↑ (all single), <strong>not</strong> ↑↓ ↑ _.</p>
+      </div>
+    </div>
+
+    <!-- Card G: 2.10 -->
+    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between card-hover reveal">
+      <div>
+        <div class="flex justify-between items-center mb-2 gap-2">
+          <span class="text-[10px] font-mono uppercase font-bold px-2 py-0.5 bg-sky-950 text-sky-400 rounded border border-sky-800">Spec 2.10</span>
+          <span class="text-[10px] text-slate-500 font-mono">Factors on IE</span>
+        </div>
+        <h3 class="font-display text-sm font-bold text-white mb-3">What Controls Ionisation Energy — The Three Factors</h3>
+        <div class="space-y-2">
+          <span class="text-[11px] font-bold text-sky-300 uppercase tracking-wider block">🎯 5 Key Learning Goals</span>
+          <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed">
+            <li><strong>Nuclear charge:</strong> more protons → stronger attraction → higher IE</li>
+            <li><strong>Shielding:</strong> more inner electron shells → outer electron shielded from nucleus → lower IE</li>
+            <li><strong>Distance:</strong> outer electron in a higher shell → further from nucleus → weaker attraction → lower IE</li>
+            <li><strong>Sub-shell:</strong> an electron in a higher-energy sub-shell (e.g. 2p vs 2s) or a <strong>spin-paired</strong> electron is easier to remove → lower IE (explains the Be→B and N→O dips)</li>
+            <li>Explain that trends are the <strong>balance</strong> of these factors, not any one alone</li>
+          </ul>
+        </div>
+      </div>
+      <div class="p-3 bg-amber-950/40 border border-amber-800/60 rounded-lg text-xs text-amber-200 space-y-1">
+        <span class="font-bold text-amber-400 block uppercase text-[10px]">💡 IAL Examiner Watch-Outs</span>
+        <p class="leading-relaxed text-[11px]">Across a period, shielding is <strong>roughly constant</strong> (same shell) so nuclear charge dominates — say so explicitly. The N→O drop is due to <strong>spin-pair repulsion</strong> in the doubly-occupied 2p orbital, not "more protons". See the Explanation Builder for the full sentence chains.</p>
+      </div>
+    </div>
+
+    <!-- Card H: 2.11 -->
+    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between card-hover reveal">
+      <div>
+        <div class="flex justify-between items-center mb-2 gap-2">
+          <span class="text-[10px] font-mono uppercase font-bold px-2 py-0.5 bg-purple-950 text-purple-400 rounded border border-purple-800">Spec 2.11</span>
+          <span class="text-[10px] text-slate-500 font-mono">Evidence from IE</span>
+        </div>
+        <h3 class="font-display text-sm font-bold text-white mb-3">How Ionisation Energies Reveal Shells & Sub-shells</h3>
+        <div class="space-y-2">
+          <span class="text-[11px] font-bold text-purple-300 uppercase tracking-wider block">🎯 4 Key Learning Goals</span>
+          <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed">
+            <li><strong>Successive IE:</strong> a large jump occurs when an electron is removed from a shell closer to the nucleus → the position of the jump reveals the number of outer electrons → the <strong>group</strong></li>
+            <li>The grouping of successive IE values into clusters provides evidence for <strong>quantum shells</strong></li>
+            <li>The pattern of <strong>first IE across a period</strong> (general rise with small dips at groups 3 and 6) provides evidence for <strong>sub-shells</strong> (s and p)</li>
+            <li>Read a successive-IE graph and deduce the group of the element</li>
+          </ul>
+        </div>
+      </div>
+      <div class="p-3 bg-amber-950/40 border border-amber-800/60 rounded-lg text-xs text-amber-200 space-y-1">
+        <span class="font-bold text-amber-400 block uppercase text-[10px]">💡 IAL Examiner Watch-Outs</span>
+        <p class="leading-relaxed text-[11px]">Count the <strong>small</strong> values before the big jump = number of outer electrons = group (for s/p). The jump itself is because the next electron comes from a <strong>full inner shell</strong> (less shielding, closer to nucleus). Plot successive IE on a log scale to see the jumps clearly.</p>
+      </div>
+    </div>
+
+    <!-- Card I: 2.12 -->
+    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between card-hover reveal">
+      <div>
+        <div class="flex justify-between items-center mb-2 gap-2">
+          <span class="text-[10px] font-mono uppercase font-bold px-2 py-0.5 bg-emerald-950 text-emerald-400 rounded border border-emerald-800">Spec 2.12</span>
+          <span class="text-[10px] text-slate-500 font-mono">Orbital shapes</span>
+        </div>
+        <h3 class="font-display text-sm font-bold text-white mb-3">Shapes of s and p Orbitals</h3>
+        <div class="space-y-2">
+          <span class="text-[11px] font-bold text-emerald-300 uppercase tracking-wider block">🎯 3 Key Learning Goals</span>
+          <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed">
+            <li>Draw / describe the <strong>s orbital</strong> as spherical</li>
+            <li>Draw / describe the <strong>p orbital</strong> as dumb-bell / two-lobed</li>
+            <li>State there are three p orbitals ($p_x, p_y, p_z$) oriented at right angles along the x, y, z axes</li>
+          </ul>
+        </div>
+      </div>
+      <div class="p-3 bg-amber-950/40 border border-amber-800/60 rounded-lg text-xs text-amber-200 space-y-1">
+        <span class="font-bold text-amber-400 block uppercase text-[10px]">💡 IAL Examiner Watch-Outs</span>
+        <p class="leading-relaxed text-[11px]">A p orbital is <strong>one</strong> dumb-bell (two lobes), not two separate orbitals. The three p orbitals are <strong>mutually perpendicular</strong>. The s orbital has no directional lobes — it is a sphere centred on the nucleus.</p>
+      </div>
+    </div>
+
+    <!-- Card J: 2.14 -->
+    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between card-hover reveal">
+      <div>
+        <div class="flex justify-between items-center mb-2 gap-2">
+          <span class="text-[10px] font-mono uppercase font-bold px-2 py-0.5 bg-amber-950 text-amber-400 rounded border border-amber-800">Spec 2.14</span>
+          <span class="text-[10px] text-slate-500 font-mono">Configuration</span>
+        </div>
+        <h3 class="font-display text-sm font-bold text-white mb-3">Electronic Configuration (s, p, d) & Boxes — H to Kr</h3>
+        <div class="space-y-2">
+          <span class="text-[11px] font-bold text-amber-300 uppercase tracking-wider block">🎯 5 Key Learning Goals</span>
+          <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed">
+            <li>Fill in order of energy: 1s 2s 2p 3s 3p <strong>4s 3d 4p</strong> (4s fills before 3d)</li>
+            <li>Write full and shorthand (noble-gas core) configurations for atoms H → Kr</li>
+            <li>Write configurations of <strong>ions</strong>: add electrons to / remove from the <strong>outermost</strong> sub-shell (for transition metals remove <strong>4s before 3d</strong>)</li>
+            <li>Draw electron-in-boxes notation obeying Hund's rule and opposite spins</li>
+            <li>Recall the exceptions <strong>Cr</strong> ([Ar] 3d⁵ 4s¹) and <strong>Cu</strong> ([Ar] 3d¹⁰ 4s¹) — half-full / full d sub-shell stability</li>
+          </ul>
+        </div>
+      </div>
+      <div class="p-3 bg-amber-950/40 border border-amber-800/60 rounded-lg text-xs text-amber-200 space-y-1">
+        <span class="font-bold text-amber-400 block uppercase text-[10px]">💡 IAL Examiner Watch-Outs</span>
+        <p class="leading-relaxed text-[11px]">4s <strong>fills</strong> before 3d but <strong>empties first</strong> when forming ions — e.g. Fe²⁺ is [Ar] 3d⁶, not 3d⁴ 4s². Cr and Cu are the two classic exceptions; writing the "expected" config loses the mark. Superscripts in a sub-shell must not exceed s² p⁶ d¹⁰.</p>
+      </div>
+    </div>
+
+    <!-- Card K: 2.15 + 2.16 -->
+    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between card-hover reveal">
+      <div>
+        <div class="flex justify-between items-center mb-2 gap-2">
+          <span class="text-[10px] font-mono uppercase font-bold px-2 py-0.5 bg-rose-950 text-rose-400 rounded border border-rose-800">Spec 2.15, 2.16</span>
+          <span class="text-[10px] text-slate-500 font-mono">Blocks & properties</span>
+        </div>
+        <h3 class="font-display text-sm font-bold text-white mb-3">Configuration → Properties; s, p, d Blocks & Sub-shell Capacities</h3>
+        <div class="space-y-2">
+          <span class="text-[11px] font-bold text-rose-300 uppercase tracking-wider block">🎯 5 Key Learning Goals</span>
+          <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed">
+            <li>Explain that <strong>electronic configuration determines chemical properties</strong> — elements in the same group have the same outer-shell configuration, hence similar chemistry</li>
+            <li>Know the Periodic Table is divided into <strong>s, p and d blocks</strong>, named by the sub-shell being filled</li>
+            <li>State sub-shell capacities: s = 2, p = 6, d = 10 electrons</li>
+            <li>State the maximum electrons in the first four quantum shells: 2, 8, 18, 32</li>
+            <li>Relate an element's block and group to its outer configuration</li>
+          </ul>
+        </div>
+      </div>
+      <div class="p-3 bg-amber-950/40 border border-amber-800/60 rounded-lg text-xs text-amber-200 space-y-1">
+        <span class="font-bold text-amber-400 block uppercase text-[10px]">💡 IAL Examiner Watch-Outs</span>
+        <p class="leading-relaxed text-[11px]">The block is the sub-shell <strong>receiving the last electron</strong>, not the highest-energy one written. Helium is in the <strong>s block</strong> (1s²) despite sitting above the noble gases. Shell capacities come from $2n^2$ (n = 1→4 gives 2, 8, 18, 32).</p>
+      </div>
+    </div>
+
+    <!-- Card L: 2.17 -->
+    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between card-hover reveal">
+      <div>
+        <div class="flex justify-between items-center mb-2 gap-2">
+          <span class="text-[10px] font-mono uppercase font-bold px-2 py-0.5 bg-cyan-950 text-cyan-400 rounded border border-cyan-800">Spec 2.17</span>
+          <span class="text-[10px] text-slate-500 font-mono">Periodic property</span>
+        </div>
+        <h3 class="font-display text-sm font-bold text-white mb-3">Graphical Data, log(IE) & the Meaning of 'Periodic Property'</h3>
+        <div class="space-y-2">
+          <span class="text-[11px] font-bold text-cyan-300 uppercase tracking-wider block">🎯 4 Key Learning Goals</span>
+          <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed">
+            <li>Represent data graphically, including <strong>log of first IE</strong> against atomic number for elements 1–36</li>
+            <li>Identify the recurring peaks (noble gases) and troughs (group 1) on the log(IE) graph</li>
+            <li>Define a <strong>periodic property</strong>: a property that shows a <strong>recurring / repeating pattern</strong> when the elements are arranged in order of <strong>atomic number</strong></li>
+            <li>Use the graph as evidence that the pattern repeats each period (hence "periodic")</li>
+          </ul>
+        </div>
+      </div>
+      <div class="p-3 bg-amber-950/40 border border-amber-800/60 rounded-lg text-xs text-amber-200 space-y-1">
+        <span class="font-bold text-amber-400 block uppercase text-[10px]">💡 IAL Examiner Watch-Outs</span>
+        <p class="leading-relaxed text-[11px]">The definition must mention arrangement by <strong>atomic number</strong> (not mass) and a <strong>repeating / recurring</strong> pattern — both phrases are marks. A log scale is used because IE values span a huge range; the pattern shape is what matters.</p>
+      </div>
+    </div>
+
+    <!-- Card M: 2.18 -->
+    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between card-hover reveal">
+      <div>
+        <div class="flex justify-between items-center mb-2 gap-2">
+          <span class="text-[10px] font-mono uppercase font-bold px-2 py-0.5 bg-sky-950 text-sky-400 rounded border border-sky-800">Spec 2.18</span>
+          <span class="text-[10px] text-slate-500 font-mono">Trends (explain)</span>
+        </div>
+        <h3 class="font-display text-sm font-bold text-white mb-3">Explaining the Trends — mp/bp & Ionisation Energy</h3>
+        <div class="space-y-2">
+          <span class="text-[11px] font-bold text-sky-300 uppercase tracking-wider block">🎯 5 Key Learning Goals</span>
+          <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed">
+            <li><strong>mp/bp across Periods 2 & 3:</strong> explain in terms of <strong>structure type</strong> (giant metallic → giant covalent → simple molecular) and the <strong>bonding / forces</strong> overcome</li>
+            <li>Metals Na→Al: rising mp as charge & number of delocalised electrons increase → stronger metallic bonding</li>
+            <li>Si (giant covalent) very high; P, S, Cl, Ar (simple molecular) low, with van der Waals forces increasing with molecule size / electron count (S₈ > P₄ > Cl₂)</li>
+            <li><strong>IE across a period:</strong> general increase (nuclear charge up, shielding ~constant, same shell) with dips at group 3 (electron in higher p sub-shell) and group 6 (spin-pair repulsion)</li>
+            <li><strong>IE down a group:</strong> decrease — more shells → more shielding <strong>and</strong> greater distance → weaker attraction, which <strong>outweighs</strong> the extra protons</li>
+          </ul>
+        </div>
+      </div>
+      <div class="p-3 bg-amber-950/40 border border-amber-800/60 rounded-lg text-xs text-amber-200 space-y-1">
+        <span class="font-bold text-amber-400 block uppercase text-[10px]">💡 IAL Examiner Watch-Outs</span>
+        <p class="leading-relaxed text-[11px]">This is the #1 explanation topic — see the <strong class="text-amber-200">Explanation Builder (Tab 5)</strong> for the exact sentence chains. For mp/bp you <strong>must name the structure type and the force overcome</strong>; "more electrons = higher mp" is not enough for metals (mention charge & delocalised electrons). For IE down a group the word <strong>"outweighs"</strong> is the link that wins the mark.</p>
+      </div>
+    </div>
+
+  </div><!-- /grid -->
+
+  <div class="mt-6 p-4 bg-rose-950/20 border border-rose-900/40 rounded-xl text-xs text-slate-300">
+    <b class="text-rose-300">Out of scope in this studio:</b> Detailed transition-metal chemistry and complex ion formation (later units); quantitative Born–Haber / lattice energy (WCH13 Topic 8); full redox & oxidation-number rules (treated as needed in Topic 1 / WCH11 §2 equations). These build on Topic 2 foundations but are taught later.
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- TAB 2: ATOM & ISOTOPES ENGINE                              -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="tab-atom" class="tab-panel space-y-6">
+<div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5">
+  <div class="kicker mb-1">Engine 1 · Spec 2.1 – 2.7</div>
+  <h2 class="font-display text-lg font-bold text-white">Atom & Isotopes Engine</h2>
+  <p class="text-xs text-slate-400 mt-1">Subatomic particles, Z & A, isotopes, and mass spectrometry — inspector cards, a particle map, multi-blank quiz and trap pairs.</p>
+  <div class="flex flex-wrap gap-1.5 mt-3">
+    <button onclick="setMode('atom','explorer')" id="atom-m-explorer" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-sky-700 bg-sky-950/50 text-sky-300">Inspector</button>
+    <button onclick="setMode('atom','map')" id="atom-m-map" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-sky-300">Particle Map</button>
+    <button onclick="setMode('atom','quiz')" id="atom-m-quiz" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-sky-300">Quiz</button>
+    <button onclick="setMode('atom','traps')" id="atom-m-traps" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-sky-300">Traps</button>
+  </div>
+</div>
+<div id="atom-mode-explorer" class="atom-mode"><div id="atom-explorer" class="grid grid-cols-1 lg:grid-cols-12 gap-4"></div></div>
+<div id="atom-mode-map" class="atom-mode hidden">
+  <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+    <h3 class="font-display text-sm font-bold text-sky-300">Counting Particles & the Mass-Spec Path</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      <div class="bg-slate-900 border border-slate-800 rounded-lg p-4 text-xs text-slate-300 space-y-2 font-mono">
+        <p class="text-sky-400 font-bold font-sans">From $^{A}_{Z}\text{X}^{q}$ :</p>
+        <p>protons = Z</p>
+        <p>neutrons = A − Z</p>
+        <p>electrons = Z − q &nbsp;<span class="text-slate-500 font-sans">(q = charge; + means fewer e⁻)</span></p>
+        <p class="text-slate-500 font-sans pt-1">Example $^{27}_{13}\text{Al}^{3+}$: p = 13, n = 14, e = 10</p>
+      </div>
+      <div class="bg-slate-900 border border-slate-800 rounded-lg p-4 text-xs text-slate-300 space-y-1.5">
+        <p class="text-emerald-400 font-bold">Mass spectrometer — 4 stages</p>
+        <p><span class="text-sky-400 font-mono">1</span> Vaporise — turn sample to gas</p>
+        <p><span class="text-sky-400 font-mono">2</span> Ionise — electron bombardment → 1+ ions</p>
+        <p><span class="text-sky-400 font-mono">3</span> Accelerate — electric field</p>
+        <p><span class="text-sky-400 font-mono">4</span> Deflect — magnetic field, by <strong>m/z</strong> (lighter / higher charge deflects more)</p>
+        <p><span class="text-sky-400 font-mono">5</span> Detect — current ∝ abundance</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="atom-mode-quiz" class="atom-mode hidden"><div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4"><h3 class="font-display text-sm font-bold text-sky-300">Multi-Blank Quiz — Atom & Isotopes</h3><p class="text-xs text-slate-400">Click each blurred answer to reveal it.</p><div id="atom-quiz-rows" class="space-y-3"></div><button onclick="revealAll('atom-quiz-rows')" class="btn-press bg-slate-800 hover:bg-slate-700 border border-slate-700 text-sky-300 text-xs font-semibold px-4 py-2 rounded-lg">Reveal All</button></div></div>
+<div id="atom-mode-traps" class="atom-mode hidden"><div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4"><h3 class="font-display text-sm font-bold text-rose-300">Trap Pairs — Atom & Isotopes</h3><div id="atom-traps-grid" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div></div></div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- TAB 3: IONISATION ENERGY ENGINE                            -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="tab-ie" class="tab-panel space-y-6">
+<div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5">
+  <div class="kicker mb-1">Engine 2 · Spec 2.8, 2.10, 2.11</div>
+  <h2 class="font-display text-lg font-bold text-white">Ionisation Energy Engine</h2>
+  <p class="text-xs text-slate-400 mt-1">Definitions, the three controlling factors, and how successive IE reveals shells. <span class="text-amber-300">Pair this with the Explanation Builder to master the trend write-ups.</span></p>
+  <div class="flex flex-wrap gap-1.5 mt-3">
+    <button onclick="setMode('ie','explorer')" id="ie-m-explorer" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-sky-700 bg-sky-950/50 text-sky-300">Inspector</button>
+    <button onclick="setMode('ie','map')" id="ie-m-map" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-sky-300">Factor Map</button>
+    <button onclick="setMode('ie','quiz')" id="ie-m-quiz" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-sky-300">Quiz</button>
+    <button onclick="setMode('ie','traps')" id="ie-m-traps" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-sky-300">Traps</button>
+  </div>
+</div>
+<div id="ie-mode-explorer" class="ie-mode"><div id="ie-explorer" class="grid grid-cols-1 lg:grid-cols-12 gap-4"></div></div>
+<div id="ie-mode-map" class="ie-mode hidden">
+  <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+    <h3 class="font-display text-sm font-bold text-purple-300">The Three Factors — Which Way Does IE Move?</h3>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+      <div class="bg-slate-900 border border-slate-800 rounded-lg p-4 space-y-1.5">
+        <p class="text-sky-400 font-bold">Nuclear charge (protons)</p>
+        <p class="text-slate-300">More protons → stronger pull on outer e⁻ → <span class="text-emerald-300 font-semibold">IE up</span></p>
+        <p class="text-slate-500">Dominates across a period.</p>
+      </div>
+      <div class="bg-slate-900 border border-slate-800 rounded-lg p-4 space-y-1.5">
+        <p class="text-amber-400 font-bold">Shielding (inner shells)</p>
+        <p class="text-slate-300">More inner shells → outer e⁻ screened → <span class="text-rose-300 font-semibold">IE down</span></p>
+        <p class="text-slate-500">~Constant across a period; grows down a group.</p>
+      </div>
+      <div class="bg-slate-900 border border-slate-800 rounded-lg p-4 space-y-1.5">
+        <p class="text-purple-400 font-bold">Distance / sub-shell</p>
+        <p class="text-slate-300">Higher shell or higher-energy sub-shell, or spin-paired e⁻ → easier to remove → <span class="text-rose-300 font-semibold">IE down</span></p>
+        <p class="text-slate-500">Causes the Be→B and N→O dips.</p>
+      </div>
+    </div>
+    <div class="p-3 bg-sky-950/30 border border-sky-800/50 rounded-lg text-xs text-slate-300">
+      <span class="font-bold text-sky-400">Reading successive IE:</span> small values = outer-shell electrons; a <strong>big jump</strong> = you have reached a full inner shell. Count the small values before the jump = outer electrons = <strong>group</strong> (for s/p elements).
+    </div>
+  </div>
+</div>
+<div id="ie-mode-quiz" class="ie-mode hidden"><div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4"><h3 class="font-display text-sm font-bold text-purple-300">Multi-Blank Quiz — Ionisation Energy</h3><p class="text-xs text-slate-400">Click each blurred answer to reveal it.</p><div id="ie-quiz-rows" class="space-y-3"></div><button onclick="revealAll('ie-quiz-rows')" class="btn-press bg-slate-800 hover:bg-slate-700 border border-slate-700 text-sky-300 text-xs font-semibold px-4 py-2 rounded-lg">Reveal All</button></div></div>
+<div id="ie-mode-traps" class="ie-mode hidden"><div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4"><h3 class="font-display text-sm font-bold text-rose-300">Trap Pairs — Ionisation Energy</h3><div id="ie-traps-grid" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div></div></div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- TAB 4: ELECTRONIC STRUCTURE ENGINE                         -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="tab-estruct" class="tab-panel space-y-6">
+<div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5">
+  <div class="kicker mb-1">Engine 3 · Spec 2.9, 2.12 – 2.16</div>
+  <h2 class="font-display text-lg font-bold text-white">Electronic Structure Engine</h2>
+  <p class="text-xs text-slate-400 mt-1">Orbitals, shapes, filling order, configurations H→Kr, blocks and sub-shell capacities.</p>
+  <div class="flex flex-wrap gap-1.5 mt-3">
+    <button onclick="setMode('estruct','explorer')" id="estruct-m-explorer" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-sky-700 bg-sky-950/50 text-sky-300">Inspector</button>
+    <button onclick="setMode('estruct','map')" id="estruct-m-map" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-sky-300">Filling Order</button>
+    <button onclick="setMode('estruct','quiz')" id="estruct-m-quiz" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-sky-300">Quiz</button>
+    <button onclick="setMode('estruct','traps')" id="estruct-m-traps" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-sky-300">Traps</button>
+  </div>
+</div>
+<div id="estruct-mode-explorer" class="estruct-mode"><div id="estruct-explorer" class="grid grid-cols-1 lg:grid-cols-12 gap-4"></div></div>
+<div id="estruct-mode-map" class="estruct-mode hidden">
+  <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+    <h3 class="font-display text-sm font-bold text-cyan-300">Filling Order & Sub-shell Capacities</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      <div class="bg-slate-900 border border-slate-800 rounded-lg p-4 text-center">
+        <p class="text-xs text-slate-400 font-bold uppercase tracking-wider mb-2">Energy order (fill this way)</p>
+        <p class="font-mono text-sm text-cyan-300 leading-loose">1s → 2s → 2p → 3s → 3p → <span class="text-amber-300">4s</span> → 3d → 4p</p>
+        <p class="text-[11px] text-slate-500 mt-2">Note 4s fills <em>before</em> 3d, but empties <em>first</em> when forming ions.</p>
+      </div>
+      <div class="bg-slate-900 border border-slate-800 rounded-lg p-4 text-xs text-slate-300 space-y-2 font-mono">
+        <p class="text-cyan-400 font-bold font-sans">Capacities</p>
+        <p>s sub-shell = 2 &nbsp;(1 orbital)</p>
+        <p>p sub-shell = 6 &nbsp;(3 orbitals)</p>
+        <p>d sub-shell = 10 &nbsp;(5 orbitals)</p>
+        <p class="pt-1 border-t border-slate-800">Shell n: max e⁻ = 2n²</p>
+        <p>n=1→2, n=2→8, n=3→18, n=4→32</p>
+      </div>
+    </div>
+    <div class="p-3 bg-amber-950/40 border border-amber-800/60 rounded-lg text-xs text-amber-200">
+      <span class="font-bold text-amber-400 block uppercase text-[10px] mb-1">💡 Exceptions to memorise</span>
+      <p class="text-[11px]"><strong>Cr</strong> = [Ar] 3d⁵ 4s¹ (half-full d) &nbsp;·&nbsp; <strong>Cu</strong> = [Ar] 3d¹⁰ 4s¹ (full d). A half-full or full d sub-shell is unusually stable, so an electron promotes from 4s.</p>
+    </div>
+  </div>
+</div>
+<div id="estruct-mode-quiz" class="estruct-mode hidden"><div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4"><h3 class="font-display text-sm font-bold text-cyan-300">Multi-Blank Quiz — Electronic Structure</h3><p class="text-xs text-slate-400">Click each blurred answer to reveal it.</p><div id="estruct-quiz-rows" class="space-y-3"></div><button onclick="revealAll('estruct-quiz-rows')" class="btn-press bg-slate-800 hover:bg-slate-700 border border-slate-700 text-sky-300 text-xs font-semibold px-4 py-2 rounded-lg">Reveal All</button></div></div>
+<div id="estruct-mode-traps" class="estruct-mode hidden"><div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4"><h3 class="font-display text-sm font-bold text-rose-300">Trap Pairs — Electronic Structure</h3><div id="estruct-traps-grid" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div></div></div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- TAB 5: EXPLANATION BUILDER (scaffolding workbench)         -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="tab-explain" class="tab-panel space-y-6">
+
+<div class="bg-gradient-to-r from-amber-950/40 via-slate-900 to-slate-900 border border-amber-700/40 rounded-xl p-6 relative overflow-hidden">
+  <span class="ghost absolute -top-8 right-3 text-[88px] font-bold leading-none" style="-webkit-text-stroke-color:rgba(251,191,36,.2)">WHY</span>
+  <div class="kicker mb-1" style="color:#fbbf24">Scaffolding workbench · the highest-mark skill in Topic 2</div>
+  <h2 class="font-display text-xl font-bold text-white">Explanation Builder</h2>
+  <p class="text-xs text-slate-300 mt-2 max-w-3xl leading-relaxed">Knowledge is not the problem in "explain the trend" questions — <strong class="text-amber-300">structure and wording</strong> are. This tab breaks every explanation into its causal chain and the exact phrases that earn marks. Work from the model down to writing your own.</p>
+</div>
+
+<!-- 5.0 Anatomy of an explanation -->
+<div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-3 card-hover reveal">
+  <div class="flex items-center gap-3">
+    <span class="font-display text-2xl font-bold text-amber-400">00</span>
+    <h3 class="font-display text-base font-bold text-slate-100">The Anatomy of a 3-Mark Explanation</h3>
+  </div>
+  <p class="text-xs text-slate-300 leading-relaxed">Examiners award one mark per <strong>logical link</strong> in a cause → effect chain. A list of true facts with no connectives scores poorly. Build every answer as three linked statements using the words <span class="font-mono text-amber-300">because / so / therefore / which means</span>.</p>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+    <div class="bg-slate-950 border border-sky-800/50 rounded-lg p-3 space-y-1"><span class="text-sky-400 font-bold block">LINK 1 — the cause</span><p class="text-slate-300">Name the factor that changes (e.g. number of shells / nuclear charge / structure type).</p></div>
+    <div class="bg-slate-950 border border-purple-800/50 rounded-lg p-3 space-y-1"><span class="text-purple-400 font-bold block">LINK 2 — the mechanism</span><p class="text-slate-300">State its effect on attraction / forces (shielding, distance, bonding strength).</p></div>
+    <div class="bg-slate-950 border border-emerald-800/50 rounded-lg p-3 space-y-1"><span class="text-emerald-400 font-bold block">LINK 3 — the consequence</span><p class="text-slate-300">Connect to the quantity asked (energy needed / temperature / rate) with <em>therefore</em>.</p></div>
+  </div>
+  <div class="p-3 bg-amber-950/40 border border-amber-800/60 rounded-lg text-xs text-amber-200">
+    <span class="font-bold text-amber-400 block uppercase text-[10px] mb-1">💡 The two lost-mark killers</span>
+    <p class="text-[11px] leading-relaxed">(1) For <strong>melting/boiling point</strong> you must <strong>name the structure type</strong> (giant metallic / giant covalent / simple molecular) <strong>and the force overcome</strong> — "more electrons" alone never scores. (2) For <strong>IE down a group</strong> the extra protons and the extra shielding act in <em>opposite</em> directions — you must say the shielding + distance effect <strong>outweighs</strong> the extra nuclear charge.</p>
+  </div>
+</div>
+
+<!-- 5.1 Keyword bank reference -->
+<div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-3 card-hover reveal">
+  <div class="flex items-center gap-3">
+    <span class="font-display text-2xl font-bold text-sky-400">01</span>
+    <h3 class="font-display text-base font-bold text-slate-100">The Must-Use Keyword Bank</h3>
+  </div>
+  <p class="text-xs text-slate-400">If your explanation is missing these words, marks are missing. Keep this open while you write.</p>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+    <div class="bg-slate-950 border border-slate-800 rounded-lg p-3 space-y-1.5">
+      <span class="text-purple-400 font-bold block">Ionisation energy</span>
+      <p class="text-slate-300 font-mono leading-relaxed">nuclear charge · shielding · distance from nucleus · same / inner shell · effective nuclear charge · attraction · spin-pair repulsion · higher-energy sub-shell · <span class="text-amber-300">outweighs</span></p>
+    </div>
+    <div class="bg-slate-950 border border-slate-800 rounded-lg p-3 space-y-1.5">
+      <span class="text-emerald-400 font-bold block">Melting / boiling point</span>
+      <p class="text-slate-300 font-mono leading-relaxed">giant metallic · giant covalent · simple molecular · delocalised electrons · metallic bonding · covalent bonds · van der Waals / London forces · <span class="text-amber-300">forces / bonds overcome</span></p>
+    </div>
+    <div class="bg-slate-950 border border-slate-800 rounded-lg p-3 space-y-1.5">
+      <span class="text-sky-400 font-bold block">Periodic property</span>
+      <p class="text-slate-300 font-mono leading-relaxed">recurring / repeating pattern · in order of atomic number · outer-shell configuration · same group</p>
+    </div>
+  </div>
+</div>
+
+<!-- 5.2 Chain builder 1 -->
+<div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-3 card-hover reveal">
+  <div class="flex items-center gap-3">
+    <span class="font-display text-2xl font-bold text-rose-400">02</span>
+    <div><h3 class="font-display text-base font-bold text-slate-100">Chain Builder — IE down a group</h3>
+    <p class="text-xs text-slate-400">Click the chips in the correct causal order to build the chain. Click a chip in your chain to remove it.</p></div>
+  </div>
+  <p class="text-xs text-slate-200 font-semibold">Explain why the first ionisation energy <em>decreases</em> down a group.</p>
+  <div id="chain1"></div>
+</div>
+
+<!-- 5.3 Chain builder 2 -->
+<div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-3 card-hover reveal">
+  <div class="flex items-center gap-3">
+    <span class="font-display text-2xl font-bold text-rose-400">03</span>
+    <div><h3 class="font-display text-base font-bold text-slate-100">Chain Builder — IE across a period</h3>
+    <p class="text-xs text-slate-400">Build the chain for the <em>general increase</em> across a period.</p></div>
+  </div>
+  <p class="text-xs text-slate-200 font-semibold">Explain why the first ionisation energy <em>generally increases</em> across a period.</p>
+  <div id="chain2"></div>
+</div>
+
+<!-- 5.4 Sentence frame 1 -->
+<div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-3 card-hover reveal">
+  <div class="flex items-center gap-3">
+    <span class="font-display text-2xl font-bold text-cyan-400">04</span>
+    <div><h3 class="font-display text-base font-bold text-slate-100">Sentence Frame — IE down a group</h3>
+    <p class="text-xs text-slate-400">Click each blurred phrase to reveal the missing wording.</p></div>
+  </div>
+  <p class="text-xs text-slate-300 leading-relaxed bg-slate-950 border border-slate-800 rounded-lg p-3">
+    Going down a group, each element has an extra <span class="blur-answer bg-slate-800 px-2 py-0.5 rounded text-cyan-300 font-mono" onclick="this.classList.toggle('revealed')">electron shell</span>, so there is more <span class="blur-answer bg-slate-800 px-2 py-0.5 rounded text-cyan-300 font-mono" onclick="this.classList.toggle('revealed')">shielding</span> and the outer electron is <span class="blur-answer bg-slate-800 px-2 py-0.5 rounded text-cyan-300 font-mono" onclick="this.classList.toggle('revealed')">further from the nucleus</span>. This makes the attraction between the nucleus and the outer electron <span class="blur-answer bg-slate-800 px-2 py-0.5 rounded text-cyan-300 font-mono" onclick="this.classList.toggle('revealed')">weaker</span>, which <span class="blur-answer bg-slate-800 px-2 py-0.5 rounded text-cyan-300 font-mono" onclick="this.classList.toggle('revealed')">outweighs</span> the increase in nuclear charge, so <span class="blur-answer bg-slate-800 px-2 py-0.5 rounded text-cyan-300 font-mono" onclick="this.classList.toggle('revealed')">less energy is needed</span> to remove the outer electron.
+  </p>
+</div>
+
+<!-- 5.5 Sentence frame 2 -->
+<div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-3 card-hover reveal">
+  <div class="flex items-center gap-3">
+    <span class="font-display text-2xl font-bold text-cyan-400">05</span>
+    <div><h3 class="font-display text-base font-bold text-slate-100">Sentence Frame — melting point across Period 3</h3>
+    <p class="text-xs text-slate-400">The hardest explanation. Reveal the structural wording piece by piece.</p></div>
+  </div>
+  <p class="text-xs text-slate-300 leading-relaxed bg-slate-950 border border-slate-800 rounded-lg p-3">
+    Na, Mg and Al have a <span class="blur-answer bg-slate-800 px-2 py-0.5 rounded text-emerald-300 font-mono" onclick="this.classList.toggle('revealed')">giant metallic</span> structure; melting requires overcoming the <span class="blur-answer bg-slate-800 px-2 py-0.5 rounded text-emerald-300 font-mono" onclick="this.classList.toggle('revealed')">metallic bonding</span>, which strengthens from Na to Al as the ion charge and the number of <span class="blur-answer bg-slate-800 px-2 py-0.5 rounded text-emerald-300 font-mono" onclick="this.classList.toggle('revealed')">delocalised electrons</span> increase, so the melting point <span class="blur-answer bg-slate-800 px-2 py-0.5 rounded text-emerald-300 font-mono" onclick="this.classList.toggle('revealed')">rises</span>. Si has a <span class="blur-answer bg-slate-800 px-2 py-0.5 rounded text-emerald-300 font-mono" onclick="this.classList.toggle('revealed')">giant covalent</span> structure with strong <span class="blur-answer bg-slate-800 px-2 py-0.5 rounded text-emerald-300 font-mono" onclick="this.classList.toggle('revealed')">covalent bonds</span> to break, giving a very high melting point. P, S, Cl and Ar are <span class="blur-answer bg-slate-800 px-2 py-0.5 rounded text-emerald-300 font-mono" onclick="this.classList.toggle('revealed')">simple molecular</span>, held by weak <span class="blur-answer bg-slate-800 px-2 py-0.5 rounded text-emerald-300 font-mono" onclick="this.classList.toggle('revealed')">van der Waals forces</span>, so little energy is needed and the melting point is <span class="blur-answer bg-slate-800 px-2 py-0.5 rounded text-emerald-300 font-mono" onclick="this.classList.toggle('revealed')">low</span>.
+  </p>
+</div>
+
+<!-- 5.6 Keyword fill -->
+<div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-3 card-hover reveal">
+  <div class="flex items-center gap-3">
+    <span class="font-display text-2xl font-bold text-purple-400">06</span>
+    <div><h3 class="font-display text-base font-bold text-slate-100">Keyword Fill — the N → O dip</h3>
+    <p class="text-xs text-slate-400">Click words from the bank to fill the slots in order. Click a filled slot to empty it. Then check.</p></div>
+  </div>
+  <p class="text-xs text-slate-200 font-semibold mb-1">Explain why oxygen has a <em>lower</em> first ionisation energy than nitrogen.</p>
+  <div id="kwfill1"></div>
+</div>
+
+<!-- 5.7 Model answer deconstruction -->
+<div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-3 card-hover reveal">
+  <div class="flex items-center gap-3">
+    <span class="font-display text-2xl font-bold text-emerald-400">07</span>
+    <div><h3 class="font-display text-base font-bold text-slate-100">Model Answer Deconstruction — mp across Period 3</h3>
+    <p class="text-xs text-slate-400">Read the model answer, then toggle each sentence to see exactly which mark point and which connective it earns.</p></div>
+  </div>
+  <div class="space-y-2 text-xs" id="model-decon">
+    <div class="bg-slate-950 border border-slate-800 rounded-lg p-3 space-y-2">
+      <p class="text-slate-200 leading-relaxed"><strong class="text-sky-300">[1]</strong> Sodium, magnesium and aluminium have giant metallic structures, so melting them requires overcoming the strong metallic bonding between the positive ions and the delocalised electrons.</p>
+      <button onclick="toggleNote(this)" class="btn-press text-[10px] text-sky-300 border border-sky-800/60 rounded px-2 py-0.5">Show mark point</button>
+      <p class="hidden text-[11px] text-sky-200/80 bg-sky-950/40 rounded p-2">Mark = names structure type (giant metallic) AND the force overcome (metallic bonding). The word "so" links structure → force.</p>
+    </div>
+    <div class="bg-slate-950 border border-slate-800 rounded-lg p-3 space-y-2">
+      <p class="text-slate-200 leading-relaxed"><strong class="text-sky-300">[2]</strong> From Na to Al the charge on the ion and the number of delocalised electrons both increase, therefore the metallic bonding is stronger and the melting point rises.</p>
+      <button onclick="toggleNote(this)" class="btn-press text-[10px] text-sky-300 border border-sky-800/60 rounded px-2 py-0.5">Show mark point</button>
+      <p class="hidden text-[11px] text-sky-200/80 bg-sky-950/40 rounded p-2">Mark = the cause of the rise (charge + delocalised e⁻) linked by "therefore" to stronger bonding → higher mp. Avoid just "more electrons".</p>
+    </div>
+    <div class="bg-slate-950 border border-slate-800 rounded-lg p-3 space-y-2">
+      <p class="text-slate-200 leading-relaxed"><strong class="text-sky-300">[3]</strong> Silicon has a giant covalent (macromolecular) structure, so a very high temperature is needed to break the many strong covalent bonds.</p>
+      <button onclick="toggleNote(this)" class="btn-press text-[10px] text-sky-300 border border-sky-800/60 rounded px-2 py-0.5">Show mark point</button>
+      <p class="hidden text-[11px] text-sky-200/80 bg-sky-950/40 rounded p-2">Mark = correct structure (giant covalent) + correct force (covalent bonds, which are broken, not van der Waals). This explains the peak.</p>
+    </div>
+    <div class="bg-slate-950 border border-slate-800 rounded-lg p-3 space-y-2">
+      <p class="text-slate-200 leading-relaxed"><strong class="text-sky-300">[4]</strong> Phosphorus, sulfur, chlorine and argon are simple molecular, held together only by weak van der Waals forces, so little energy is needed and their melting points are low.</p>
+      <button onclick="toggleNote(this)" class="btn-press text-[10px] text-sky-300 border border-sky-800/60 rounded px-2 py-0.5">Show mark point</button>
+      <p class="hidden text-[11px] text-sky-200/80 bg-sky-950/40 rounded p-2">Mark = simple molecular + weak van der Waals forces overcome (NOT the covalent bonds within the molecules). This explains the drop after Si.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 5.8 Wrong-answer diagnosis -->
+<div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-3 card-hover reveal">
+  <div class="flex items-center gap-3">
+    <span class="font-display text-2xl font-bold text-rose-400">08</span>
+    <div><h3 class="font-display text-base font-bold text-slate-100">Wrong-Answer Diagnosis — IE down a group</h3>
+    <p class="text-xs text-slate-400">A student wrote the answer below. Select every criticism that is <strong>correct</strong>, then check.</p></div>
+  </div>
+  <div class="bg-rose-950/20 border border-rose-900/40 rounded-lg p-3 text-xs text-rose-100 leading-relaxed italic">
+    "Going down the group there are more protons in the nucleus, so the attraction is stronger and it is harder to remove the electron. Also there are more electrons."
+  </div>
+  <div id="wrongdiag1"></div>
+</div>
+
+<!-- 5.9 Write your own -->
+<div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-4 card-hover reveal">
+  <div class="flex items-center gap-3">
+    <span class="font-display text-2xl font-bold text-amber-400">09</span>
+    <div><h3 class="font-display text-base font-bold text-slate-100">Write Your Own — then self-mark</h3>
+    <p class="text-xs text-slate-400">Type your explanation, then tick the mark points you genuinely included. Reveal the model only after.</p></div>
+  </div>
+
+  <div class="space-y-2">
+    <p class="text-xs text-slate-200 font-semibold">Prompt A [3 marks]: Explain the <em>decrease</em> in first ionisation energy down Group 1.</p>
+    <textarea id="writeA" rows="3" placeholder="Write your 3-link chain here (cause → mechanism → consequence)..." class="w-full bg-slate-950 border border-slate-700 rounded-lg p-3 text-xs text-slate-100 focus:border-amber-500 focus:outline-none"></textarea>
+    <div class="space-y-1.5" id="writeA-checks">
+      <label class="flex items-start gap-2.5 bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-xs text-slate-300 cursor-pointer hover:border-amber-500/40"><input type="checkbox" class="wa-chk accent-amber-500 mt-0.5" onchange="countWrite('writeA')"><span><strong class="text-amber-300">[1]</strong> More electron shells / greater shielding down the group.</span></label>
+      <label class="flex items-start gap-2.5 bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-xs text-slate-300 cursor-pointer hover:border-amber-500/40"><input type="checkbox" class="wa-chk accent-amber-500 mt-0.5" onchange="countWrite('writeA')"><span><strong class="text-amber-300">[1]</strong> Outer electron further from nucleus → weaker attraction.</span></label>
+      <label class="flex items-start gap-2.5 bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-xs text-slate-300 cursor-pointer hover:border-amber-500/40"><input type="checkbox" class="wa-chk accent-amber-500 mt-0.5" onchange="countWrite('writeA')"><span><strong class="text-amber-300">[1]</strong> This outweighs the extra protons → less energy needed to remove the electron.</span></label>
+    </div>
+    <div class="flex items-center gap-3">
+      <span id="writeA-score" class="text-xs font-mono text-slate-400">self-awarded: 0 / 3</span>
+      <button onclick="document.getElementById('writeA-model').classList.toggle('hidden')" class="btn-press text-[11px] text-amber-300 border border-amber-800/60 rounded px-3 py-1">Reveal model answer</button>
+    </div>
+    <div id="writeA-model" class="hidden p-3 bg-emerald-950/30 border border-emerald-800/50 rounded-lg text-xs text-emerald-100 leading-relaxed">Down the group, each element has one more electron shell, giving greater shielding, and the outer electron is further from the nucleus, so the attraction between the nucleus and the outer electron is weaker. This outweighs the increase in nuclear charge, therefore less energy is needed to remove the outer electron and the first ionisation energy decreases.</div>
+  </div>
+
+  <div class="space-y-2 pt-3 border-t border-slate-800">
+    <p class="text-xs text-slate-200 font-semibold">Prompt B [2 marks]: Explain why sulfur (S₈) has a higher melting point than phosphorus (P₄), even though both are simple molecular.</p>
+    <textarea id="writeB" rows="2" placeholder="Both are simple molecular, so think about the intermolecular forces..." class="w-full bg-slate-950 border border-slate-700 rounded-lg p-3 text-xs text-slate-100 focus:border-amber-500 focus:outline-none"></textarea>
+    <div class="space-y-1.5" id="writeB-checks">
+      <label class="flex items-start gap-2.5 bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-xs text-slate-300 cursor-pointer hover:border-amber-500/40"><input type="checkbox" class="wb-chk accent-amber-500 mt-0.5" onchange="countWrite('writeB')"><span><strong class="text-amber-300">[1]</strong> S₈ is a larger molecule / has more electrons than P₄.</span></label>
+      <label class="flex items-start gap-2.5 bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-xs text-slate-300 cursor-pointer hover:border-amber-500/40"><input type="checkbox" class="wb-chk accent-amber-500 mt-0.5" onchange="countWrite('writeB')"><span><strong class="text-amber-300">[1]</strong> So the van der Waals / London forces between molecules are stronger, needing more energy to overcome.</span></label>
+    </div>
+    <div class="flex items-center gap-3">
+      <span id="writeB-score" class="text-xs font-mono text-slate-400">self-awarded: 0 / 2</span>
+      <button onclick="document.getElementById('writeB-model').classList.toggle('hidden')" class="btn-press text-[11px] text-amber-300 border border-amber-800/60 rounded px-3 py-1">Reveal model answer</button>
+    </div>
+    <div id="writeB-model" class="hidden p-3 bg-emerald-950/30 border border-emerald-800/50 rounded-lg text-xs text-emerald-100 leading-relaxed">Both are simple molecular, so only van der Waals forces are overcome on melting. S₈ is a larger molecule with more electrons than P₄, so the van der Waals forces between its molecules are stronger and more energy is needed to overcome them — hence the higher melting point. (Note: it is NOT the S–S covalent bonds that are broken.)</div>
+  </div>
+</div>
+
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- TAB 6: TRENDS STUDIO (interactive)                         -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="tab-trends" class="tab-panel space-y-6">
+<div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5">
+  <div class="kicker mb-1">Interactive · Spec 2.17, 2.18</div>
+  <h2 class="font-display text-lg font-bold text-white">Trends Studio</h2>
+  <p class="text-xs text-slate-400 mt-1">Click any point or bar to reveal the scaffolded explanation for that specific element — turning the graph into a teaching tool.</p>
+</div>
+
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+  <div class="lg:col-span-2 bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-3 card-hover">
+    <h3 class="font-display text-sm font-bold text-purple-300">First Ionisation Energy — Elements 1 to 20</h3>
+    <p class="text-[11px] text-slate-400">Click a point. Noble-gas peaks (teal), Group-1 troughs (rose), the group-3 & group-6 dips (amber), general increase (sky).</p>
+    <div class="bg-slate-950 rounded-xl border border-slate-800 p-2"><canvas id="ieCanvas" class="w-full h-[300px] block cursor-pointer"></canvas></div>
+  </div>
+  <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-3 card-hover">
+    <h3 class="font-display text-sm font-bold text-amber-300">Why this point?</h3>
+    <div id="iePointCard" class="bg-slate-950 border border-slate-800 rounded-lg p-4 text-xs text-slate-300 leading-relaxed min-h-[180px]">
+      <p class="text-slate-500">Click a point on the graph to load the explanation scaffold for that element.</p>
+    </div>
+  </div>
+</div>
+
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+  <div class="lg:col-span-2 bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-3 card-hover">
+    <h3 class="font-display text-sm font-bold text-emerald-300">Melting Point — Period 3 (Na → Ar)</h3>
+    <p class="text-[11px] text-slate-400">Bars coloured by structure type. Click a bar for the structural explanation.</p>
+    <div class="flex gap-3 text-[10px] font-mono"><span class="text-sky-300">■ giant metallic</span><span class="text-amber-300">■ giant covalent</span><span class="text-rose-300">■ simple molecular</span></div>
+    <div class="bg-slate-950 rounded-xl border border-slate-800 p-2"><canvas id="mpCanvas" class="w-full h-[260px] block cursor-pointer"></canvas></div>
+  </div>
+  <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-3 card-hover">
+    <h3 class="font-display text-sm font-bold text-emerald-300">Structure & bonding</h3>
+    <div id="mpCard" class="bg-slate-950 border border-slate-800 rounded-lg p-4 text-xs text-slate-300 leading-relaxed min-h-[180px]">
+      <p class="text-slate-500">Click a bar to see the structure type and the force that must be overcome.</p>
+    </div>
+  </div>
+</div>
+
+<div class="bg-slate-900 border border-slate-800 rounded-xl p-5 card-hover">
+  <h3 class="font-display text-sm font-bold text-cyan-300 mb-2">What is a 'periodic property'? (Spec 2.17)</h3>
+  <p class="text-xs text-slate-300 leading-relaxed">A <strong>periodic property</strong> is one that shows a <strong class="text-cyan-300">recurring / repeating pattern</strong> when the elements are arranged in order of <strong class="text-cyan-300">atomic number</strong>. The IE graph above is the classic evidence: peaks at every noble gas and troughs at every Group-1 metal, repeating each period. Plotting <strong>log(IE)</strong> compresses the huge range so the repeating shape is clear.</p>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- TAB 7: CALCULATOR                                          -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="tab-calc" class="tab-panel space-y-6">
+<div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5">
+  <div class="kicker mb-1">Interactive Solver</div>
+  <h2 class="font-display text-lg font-bold text-white">Atomic Structure Calculator</h2>
+  <p class="text-xs text-slate-400 mt-1">Subatomic particles, relative atomic mass from isotopes (forward & reverse), and diatomic mass-spec peak ratios.</p>
+</div>
+
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+  <!-- particles -->
+  <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 card-hover">
+    <h3 class="font-display text-sm font-bold text-sky-300">Subatomic Particles from $^{A}_{Z}\text{X}^{q}$</h3>
+    <div class="grid grid-cols-3 gap-3 text-xs">
+      <div><label class="text-slate-400 block mb-1">Z (proton no.)</label><input type="number" id="p-Z" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-slate-100 font-mono focus:border-sky-500 focus:outline-none" placeholder="e.g. 13"></div>
+      <div><label class="text-slate-400 block mb-1">A (mass no.)</label><input type="number" id="p-A" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-slate-100 font-mono focus:border-sky-500 focus:outline-none" placeholder="e.g. 27"></div>
+      <div><label class="text-slate-400 block mb-1">charge q</label><input type="number" id="p-q" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-slate-100 font-mono focus:border-sky-500 focus:outline-none" placeholder="e.g. 3" value="0"></div>
+    </div>
+    <button onclick="solveParticles()" class="btn-press w-full bg-sky-600 hover:bg-sky-500 text-white font-bold py-2 rounded-lg text-xs">Calculate</button>
+    <div id="p-result" class="hidden p-3 bg-slate-900 border border-sky-800/50 rounded-lg text-xs text-slate-200 font-mono space-y-1"></div>
+  </div>
+
+  <!-- Ar forward -->
+  <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 card-hover">
+    <h3 class="font-display text-sm font-bold text-purple-300">Relative Atomic Mass from Isotopes</h3>
+    <div id="iso-rows" class="space-y-2 text-xs"></div>
+    <div class="flex gap-2">
+      <button onclick="addIsoRow()" class="btn-press bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 text-xs px-3 py-2 rounded-lg">+ isotope</button>
+      <button onclick="solveAr()" class="btn-press flex-1 bg-purple-600 hover:bg-purple-500 text-white font-bold py-2 rounded-lg text-xs">Calculate Ar</button>
+    </div>
+    <div id="ar-result" class="hidden p-3 bg-slate-900 border border-purple-800/50 rounded-lg text-xs text-slate-200 font-mono space-y-1"></div>
+  </div>
+
+  <!-- Ar reverse (2 isotopes) -->
+  <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 card-hover">
+    <h3 class="font-display text-sm font-bold text-emerald-300">Reverse — Find an Abundance (2 isotopes)</h3>
+    <div class="grid grid-cols-2 gap-3 text-xs">
+      <div><label class="text-slate-400 block mb-1">Isotope 1 mass</label><input type="number" step="any" id="r-m1" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-slate-100 font-mono focus:border-emerald-500 focus:outline-none" placeholder="e.g. 35"></div>
+      <div><label class="text-slate-400 block mb-1">Isotope 2 mass</label><input type="number" step="any" id="r-m2" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-slate-100 font-mono focus:border-emerald-500 focus:outline-none" placeholder="e.g. 37"></div>
+      <div><label class="text-slate-400 block mb-1">Ar (given)</label><input type="number" step="any" id="r-ar" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-slate-100 font-mono focus:border-emerald-500 focus:outline-none" placeholder="e.g. 35.5"></div>
+      <div class="flex items-end"><button onclick="solveArReverse()" class="btn-press w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2 rounded-lg text-xs">Solve %</button></div>
+    </div>
+    <div id="r-result" class="hidden p-3 bg-slate-900 border border-emerald-800/50 rounded-lg text-xs text-slate-200 font-mono space-y-1"></div>
+  </div>
+
+  <!-- diatomic peaks -->
+  <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 card-hover">
+    <h3 class="font-display text-sm font-bold text-amber-300">Diatomic Mass-Spec Peaks (X₂)</h3>
+    <div class="grid grid-cols-2 gap-3 text-xs">
+      <div><label class="text-slate-400 block mb-1">Isotope 1 mass</label><input type="number" step="any" id="d-m1" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-slate-100 font-mono focus:border-amber-500 focus:outline-none" placeholder="35"></div>
+      <div><label class="text-slate-400 block mb-1">Isotope 2 mass</label><input type="number" step="any" id="d-m2" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-slate-100 font-mono focus:border-amber-500 focus:outline-none" placeholder="37"></div>
+      <div><label class="text-slate-400 block mb-1">Abundance ratio a</label><input type="number" step="any" id="d-a" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-slate-100 font-mono focus:border-amber-500 focus:outline-none" placeholder="3"></div>
+      <div><label class="text-slate-400 block mb-1">Abundance ratio b</label><input type="number" step="any" id="d-b" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-slate-100 font-mono focus:border-amber-500 focus:outline-none" placeholder="1"></div>
+    </div>
+    <button onclick="solveDiatomic()" class="btn-press w-full bg-amber-600 hover:bg-amber-500 text-white font-bold py-2 rounded-lg text-xs">Predict peaks</button>
+    <div id="d-result" class="hidden p-3 bg-slate-900 border border-amber-800/50 rounded-lg text-xs text-slate-200 font-mono space-y-1"></div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- TAB 8: FINAL REVIEW                                        -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="tab-review" class="tab-panel space-y-4">
+<div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5">
+  <div class="kicker mb-1">Complete Inventory</div>
+  <h2 class="font-display text-lg font-bold text-white">Final Review — Topic 2</h2>
+  <p class="text-xs text-slate-400 mt-1">Every definition, rule and trap in one place.</p>
+  <div class="flex flex-wrap gap-1.5 mt-3">
+    <a href="#rev-def" class="btn-press px-2.5 py-1 text-[10px] font-mono bg-slate-800 border border-slate-700 rounded text-sky-300 hover:border-sky-600">Definitions</a>
+    <a href="#rev-part" class="btn-press px-2.5 py-1 text-[10px] font-mono bg-slate-800 border border-slate-700 rounded text-purple-300 hover:border-purple-600">Particles & MS</a>
+    <a href="#rev-conf" class="btn-press px-2.5 py-1 text-[10px] font-mono bg-slate-800 border border-slate-700 rounded text-cyan-300 hover:border-cyan-600">Configuration</a>
+    <a href="#rev-ie" class="btn-press px-2.5 py-1 text-[10px] font-mono bg-slate-800 border border-slate-700 rounded text-rose-300 hover:border-rose-600">IE & Trends</a>
+    <a href="#rev-traps" class="btn-press px-2.5 py-1 text-[10px] font-mono bg-slate-800 border border-slate-700 rounded text-amber-300 hover:border-amber-600">Master Traps</a>
+  </div>
+</div>
+
+<details open class="bg-slate-950 border border-slate-800 rounded-xl">
+  <summary id="rev-def" class="p-4 font-display text-sm font-bold text-sky-300">Key Definitions</summary>
+  <div class="px-4 pb-4 text-xs text-slate-300 space-y-2 list-disc list-inside leading-relaxed">
+    <li><strong>Isotope:</strong> atoms of the same element (same proton number) with different numbers of neutrons.</li>
+    <li><strong>1st ionisation energy:</strong> energy to remove 1 mol of electrons from 1 mol of gaseous atoms → 1 mol gaseous 1+ ions (kJ mol⁻¹, endothermic).</li>
+    <li><strong>Orbital:</strong> a region within an atom that can hold up to two electrons (with opposite spins).</li>
+    <li><strong>Periodic property:</strong> a property showing a recurring pattern when elements are arranged in order of atomic number.</li>
+    <li><strong>Atomic number Z:</strong> number of protons. <strong>Mass number A:</strong> protons + neutrons.</li>
+  </div>
+</details>
+
+<details open class="bg-slate-950 border border-slate-800 rounded-xl">
+  <summary id="rev-part" class="p-4 font-display text-sm font-bold text-purple-300">Particles & Mass Spectrometry</summary>
+  <div class="px-4 pb-4 text-xs text-slate-300 space-y-2">
+    <p class="font-mono">protons = Z · neutrons = A − Z · electrons = Z − charge</p>
+    <p class="font-mono">Ar = Σ(mass × %abundance) / 100</p>
+    <p>Mass spec stages: vaporise → ionise (e⁻ bombardment) → accelerate (E-field) → deflect (B-field, by m/z) → detect.</p>
+    <p>Molecular ion peak M⁺ = highest m/z = Mr of molecule. A 2+ ion appears at m/z = M/2.</p>
+    <p>Diatomic X₂ peak heights = a² : 2ab : b² (Cl₂ with 3:1 → 9:6:1; Br₂ with 1:1 → 1:2:1).</p>
+  </div>
+</details>
+
+<details open class="bg-slate-950 border border-slate-800 rounded-xl">
+  <summary id="rev-conf" class="p-4 font-display text-sm font-bold text-cyan-300">Electronic Configuration</summary>
+  <div class="px-4 pb-4 text-xs text-slate-300 space-y-2 list-disc list-inside">
+    <li>Fill order: 1s 2s 2p 3s 3p 4s 3d 4p. Capacities s=2, p=6, d=10. Shell n = 2n².</li>
+    <li>Hund's rule: fill each orbital in a sub-shell singly (parallel spins) before pairing; paired = opposite spins.</li>
+    <li>Ions: add/remove from outermost sub-shell; transition metals lose 4s before 3d (Fe²⁺ = [Ar] 3d⁶).</li>
+    <li>Exceptions: Cr = [Ar] 3d⁵ 4s¹; Cu = [Ar] 3d¹⁰ 4s¹.</li>
+    <li>Blocks s/p/d named by sub-shell being filled; He is s block. Same outer config → same group → similar chemistry.</li>
+  </div>
+</details>
+
+<details open class="bg-slate-950 border border-slate-800 rounded-xl">
+  <summary id="rev-ie" class="p-4 font-display text-sm font-bold text-rose-300">Ionisation Energy & Trends (the three explanation chains)</summary>
+  <div class="px-4 pb-4 text-xs text-slate-300 space-y-2">
+    <p><strong class="text-sky-300">IE across a period (general rise):</strong> nuclear charge increases, shielding ~constant (same shell) → stronger attraction → more energy to remove e⁻. Dips: group 3 (e⁻ in higher-energy p sub-shell) and group 6 (spin-pair repulsion).</p>
+    <p><strong class="text-rose-300">IE down a group (decrease):</strong> more shells → more shielding + greater distance → weaker attraction, which <em>outweighs</em> extra protons → less energy needed.</p>
+    <p><strong class="text-emerald-300">mp/bp across Period 3:</strong> giant metallic (Na–Al, rising: charge + delocalised e⁻) → giant covalent (Si, peak) → simple molecular (P–Ar, low: weak van der Waals).</p>
+    <p><strong class="text-purple-300">Successive IE:</strong> big jump = new inner shell; count small values before jump = group (s/p).</p>
+  </div>
+</details>
+
+<details open class="bg-slate-950 border border-slate-800 rounded-xl">
+  <summary id="rev-traps" class="p-4 font-display text-sm font-bold text-amber-300">Master Trap Checklist</summary>
+  <div class="px-4 pb-4 text-xs text-slate-300 space-y-1.5">
+    <p class="text-rose-300 font-bold">□ IE definition missing the word "gaseous" or "per mole"</p>
+    <p class="text-rose-300 font-bold">□ 2nd IE written as removing from the neutral atom (must be from 1+)</p>
+    <p class="text-rose-300 font-bold">□ Ion electron count = Z (forgot to adjust for charge)</p>
+    <p class="text-rose-300 font-bold">□ Electron relative mass written as exactly 0 (it is ≈ 0)</p>
+    <p class="text-rose-300 font-bold">□ Isotope definition missing "same protons / different neutrons"</p>
+    <p class="text-rose-300 font-bold">□ 2+ ion peak not placed at m/z = M/2</p>
+    <p class="text-rose-300 font-bold">□ Cl₂ middle peak ratio wrong (must be 2ab → 9:6:1, not 9:3:1)</p>
+    <p class="text-rose-300 font-bold">□ N's 2p boxes drawn as ↑↓ ↑ _ instead of ↑ ↑ ↑</p>
+    <p class="text-rose-300 font-bold">□ 4s not emptied before 3d for transition-metal ions</p>
+    <p class="text-rose-300 font-bold">□ Cr / Cu written with the "expected" (wrong) configuration</p>
+    <p class="text-rose-300 font-bold">□ He placed in p block (it is s block, 1s²)</p>
+    <p class="text-rose-300 font-bold">□ IE across period: forgot "shielding ~constant, same shell"</p>
+    <p class="text-rose-300 font-bold">□ N→O dip blamed on "more protons" (it is spin-pair repulsion)</p>
+    <p class="text-rose-300 font-bold">□ IE down group: missing the word "outweighs"</p>
+    <p class="text-rose-300 font-bold">□ mp explanation: no structure type named / no force named</p>
+    <p class="text-rose-300 font-bold">□ Simple-molecular melting said to break covalent bonds (it breaks van der Waals)</p>
+    <p class="text-rose-300 font-bold">□ Periodic-property definition missing "atomic number" or "recurring pattern"</p>
+  </div>
+</details>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- TAB 9: MASS SPEC LAB (animated simulation + Ar calculator) -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="tab-massspec" class="tab-panel space-y-6">
+  <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5">
+    <div class="kicker mb-1" style="color:#34d399">Interactive Lab · Spec 2.6 – 2.7</div>
+    <h2 class="font-display text-lg font-bold text-white">Mass Spectrometer Lab — Watch Ions Separate, Then Calculate A<sub>r</sub></h2>
+    <p class="text-xs text-slate-400 mt-1">Fire 500 ions through a real mass spectrometer. Each stage is labelled; ions separate by m/z in the magnetic field and build a live spectrum. Then use the spectrum to calculate the relative atomic mass — the most-tested mass-spec skill.</p>
+  </div>
+
+  <!-- Controls -->
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
+    <div class="lg:col-span-4 bg-slate-950 border border-slate-800 rounded-xl p-4 space-y-4">
+      <div>
+        <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1.5">Element sample</label>
+        <select id="ms-element" onchange="MS.handleElement()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2.5 text-xs font-bold text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 cursor-pointer">
+          <option value="Cl">Chlorine (Cl) — 2 isotopes</option>
+          <option value="Br">Bromine (Br) — 2 isotopes</option>
+          <option value="C">Carbon (C) — 2 isotopes</option>
+          <option value="Ne">Neon (Ne) — 3 isotopes</option>
+          <option value="Mg">Magnesium (Mg) — 3 isotopes</option>
+        </select>
+      </div>
+      <div>
+        <div class="flex justify-between items-center mb-1.5">
+          <label class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Ion beam speed</label>
+          <span id="ms-speed-label" class="font-mono text-[11px] text-emerald-400">0.15×</span>
+        </div>
+        <input type="range" id="ms-speed" min="0.05" max="0.4" step="0.05" value="0.15" oninput="MS.handleSpeed()" class="w-full accent-emerald-500 cursor-pointer">
+      </div>
+      <div id="ms-abundance" class="space-y-1.5 text-xs font-mono"></div>
+      <button id="ms-inject" onclick="MS.inject()" class="btn-press w-full bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold py-3 px-4 rounded-lg shadow transition flex items-center justify-center gap-2">⚡ Inject 500 Ions</button>
+      <div id="ms-queue" class="hidden text-center font-mono text-[11px] text-emerald-400 bg-slate-900 px-2 py-1.5 rounded border border-slate-800">QUEUE: 500 / 500</div>
+    </div>
+
+    <!-- Spectrometer canvas -->
+    <div class="lg:col-span-8 bg-slate-950 border border-slate-800 rounded-xl p-4">
+      <div class="relative w-full" style="aspect-ratio: 900/540;">
+        <canvas id="ms-canvas" width="900" height="540" class="absolute inset-0 w-full h-full"></canvas>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-2 mt-3 text-[10px]">
+        <div class="p-2 rounded-lg border border-slate-800 bg-slate-900"><b class="text-slate-300 block">1 · Vaporise</b><span class="text-slate-500">Turn sample to gas</span></div>
+        <div class="p-2 rounded-lg border border-yellow-800/50 bg-yellow-950/20"><b class="text-yellow-400 block">2 · Ionise</b><span class="text-slate-500">e⁻ bombardment → 1+ ions</span></div>
+        <div class="p-2 rounded-lg border border-blue-800/50 bg-blue-950/20"><b class="text-blue-400 block">3 · Accelerate</b><span class="text-slate-500">Electric field</span></div>
+        <div class="p-2 rounded-lg border border-slate-700 bg-slate-900"><b class="text-slate-300 block">4 · Deflect</b><span class="text-slate-500">Magnetic field — by m/z</span></div>
+        <div class="p-2 rounded-lg border border-rose-800/50 bg-rose-950/20"><b class="text-rose-400 block">5 · Detect</b><span class="text-slate-500">Current ∝ abundance</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Live spectrum + counters -->
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
+    <div class="lg:col-span-7 bg-slate-950 border border-slate-800 rounded-xl p-4">
+      <h3 class="font-display text-sm font-bold text-emerald-300 mb-1">Live Mass Spectrum <span class="text-slate-500 font-sans font-normal text-[11px]">(builds as ions are detected)</span></h3>
+      <div class="relative w-full h-48 bg-slate-900 rounded-lg border border-slate-800 overflow-hidden">
+        <div id="ms-bars" class="w-full h-full pt-6 pb-8 flex justify-around items-end relative z-10"></div>
+      </div>
+      <div id="ms-counters" class="space-y-1.5 font-mono text-[11px] mt-3"></div>
+      <div class="text-right mt-2"><span id="ms-total" class="font-bold text-white bg-slate-900 px-2 py-0.5 rounded border border-slate-800 font-mono text-[11px]">0 / 500 ions</span></div>
+    </div>
+
+    <!-- Ar calculator -->
+    <div class="lg:col-span-5 bg-slate-950 border border-emerald-800/50 rounded-xl p-4 space-y-3">
+      <h3 class="font-display text-sm font-bold text-emerald-300">🧮 Relative Atomic Mass (A<sub>r</sub>) Calculator</h3>
+      <p class="text-[11px] text-slate-400">Once the run completes, the calculator works out A<sub>r</sub> from your simulated spectrum using the weighted average:</p>
+      <div class="p-3 bg-slate-900 rounded-lg border border-slate-800 font-mono text-xs text-emerald-300 text-center">A<sub>r</sub> = Σ (m/z × % abundance) ÷ 100</div>
+      <div id="ms-ar-working" class="p-3 bg-slate-900 rounded-lg border border-slate-800 font-mono text-[11px] text-slate-400 space-y-1.5">Run the spectrometer to see the worked calculation…</div>
+      <div id="ms-ar-compare" class="hidden p-3 bg-emerald-950/40 border border-emerald-800/60 rounded-lg text-[11px] text-emerald-200"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- TAB 10: SHELL SIMULATOR (shells + successive IE graph)     -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="tab-shells" class="tab-panel space-y-6">
+  <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5">
+    <div class="kicker mb-1" style="color:#fbbf24">Interactive Lab · Spec 2.8, 2.10</div>
+    <h2 class="font-display text-lg font-bold text-white">Shell Simulator — Successive Ionisation Energies Reveal Quantum Shells</h2>
+    <p class="text-xs text-slate-400 mt-1">Pick an element (Z = 3–20). The shell diagram and the successive-IE graph update together — every <b class="text-amber-300">big jump</b> in the graph marks an electron being pulled from a new inner shell. This is the experimental evidence for quantum shells.</p>
+  </div>
+
+  <!-- Periodic table selector -->
+  <div class="bg-slate-950 border border-slate-800 rounded-xl p-4">
+    <h3 class="font-display text-xs font-bold uppercase tracking-wider text-amber-300 mb-3">Periodic Table (Periods 2–4)</h3>
+    <div id="shells-ptable" class="flex flex-col gap-1.5"></div>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+    <!-- Shell diagram -->
+    <div class="bg-slate-950 border border-slate-800 rounded-xl p-4 flex flex-col items-center">
+      <h3 class="font-display text-sm font-bold text-amber-300 self-start mb-2">Atomic Shells</h3>
+      <div id="shells-atom" class="w-full max-w-[340px] aspect-square relative"></div>
+      <div id="shells-config" class="font-mono text-xs text-cyan-300 mt-2 bg-slate-900 px-3 py-1.5 rounded-lg border border-slate-800"></div>
+    </div>
+
+    <!-- IE graph -->
+    <div class="bg-slate-950 border border-slate-800 rounded-xl p-4">
+      <h3 class="font-display text-sm font-bold text-amber-300 mb-1">Successive Ionisation Energies <span class="text-slate-500 font-sans font-normal text-[11px]">(log scale)</span></h3>
+      <p class="text-[11px] text-slate-500 mb-2">Click a point to see which shell that electron came from.</p>
+      <div class="relative w-full" style="height:300px"><canvas id="shells-chart"></canvas></div>
+    </div>
+  </div>
+
+  <!-- Ionisation equation + deduction -->
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+    <div class="bg-slate-950 border border-slate-800 rounded-xl p-4 text-center">
+      <h3 class="font-display text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Ionisation Equation (click a point above to change the step)</h3>
+      <div id="shells-equation" class="font-mono text-lg sm:text-xl font-bold text-white py-2"></div>
+      <div id="shells-eq-note" class="text-[11px] text-slate-500 mt-1"></div>
+    </div>
+    <div class="bg-slate-950 border border-slate-800 rounded-xl p-4">
+      <h3 class="font-display text-sm font-bold text-amber-300 mb-2">Deduction Dashboard</h3>
+      <div id="shells-analysis" class="text-xs text-slate-300 space-y-3"></div>
+    </div>
+  </div>
+
+  <div class="p-4 bg-amber-950/30 border border-amber-800/60 rounded-xl text-xs text-amber-200 leading-relaxed">
+    <span class="font-bold text-amber-400 block uppercase text-[10px] mb-1">💡 The exam point</span>
+    A <b>large jump</b> in successive ionisation energy means the next electron is being removed from an <b>inner shell</b> (closer to the nucleus, much less shielding → far harder to remove). Count the small values <b>before</b> the first big jump = number of outer-shell electrons = the element's <b>group</b> (for s/p elements). The number of distinct "steps" = number of occupied shells.
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- TAB 11: ORBITALS & CONFIG (3D shapes + rules + predictor)  -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="tab-orbitals" class="tab-panel space-y-6">
+  <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5">
+    <div class="kicker mb-1" style="color:#a78bfa">Interactive Lab · Spec 2.9, 2.12 – 2.16</div>
+    <h2 class="font-display text-lg font-bold text-white">3D Orbitals, Filling Rules & the Configuration Predictor</h2>
+    <p class="text-xs text-slate-400 mt-1">Rotate real 3D boundary surfaces of s and p orbitals, learn the three filling rules, then predict full electronic configurations for any atom or ion (Z = 1–36) — including the Cr and Cu exceptions.</p>
+  </div>
+
+  <!-- 3D orbital shapes -->
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
+    <div class="lg:col-span-5 bg-slate-950 border border-slate-800 rounded-xl p-4 space-y-3">
+      <h3 class="font-display text-sm font-bold text-violet-300">3D Orbital Boundary Surfaces</h3>
+      <div>
+        <p class="text-[10px] font-bold text-slate-500 mb-1.5 uppercase tracking-wider">s orbitals (size grows with n)</p>
+        <div class="flex flex-wrap gap-1.5">
+          <button onclick="ORB.selectShape('1s')" id="orb-shape-1s" class="orb-shape-btn btn-press px-3 py-1.5 rounded-lg text-xs font-bold border border-emerald-700 bg-emerald-950/50 text-emerald-300">1s</button>
+          <button onclick="ORB.selectShape('2s')" id="orb-shape-2s" class="orb-shape-btn btn-press px-3 py-1.5 rounded-lg text-xs font-bold border border-slate-700 bg-slate-900 text-slate-400">2s</button>
+          <button onclick="ORB.selectShape('3s')" id="orb-shape-3s" class="orb-shape-btn btn-press px-3 py-1.5 rounded-lg text-xs font-bold border border-slate-700 bg-slate-900 text-slate-400">3s</button>
+        </div>
+      </div>
+      <div>
+        <p class="text-[10px] font-bold text-slate-500 mb-1.5 uppercase tracking-wider">p orbitals (dumbbell, along an axis)</p>
+        <div class="flex flex-wrap gap-1.5">
+          <button onclick="ORB.selectShape('2px')" id="orb-shape-2px" class="orb-shape-btn btn-press px-3 py-1.5 rounded-lg text-xs font-bold border border-slate-700 bg-slate-900 text-slate-400">2p<sub>x</sub></button>
+          <button onclick="ORB.selectShape('2py')" id="orb-shape-2py" class="orb-shape-btn btn-press px-3 py-1.5 rounded-lg text-xs font-bold border border-slate-700 bg-slate-900 text-slate-400">2p<sub>y</sub></button>
+          <button onclick="ORB.selectShape('2pz')" id="orb-shape-2pz" class="orb-shape-btn btn-press px-3 py-1.5 rounded-lg text-xs font-bold border border-slate-700 bg-slate-900 text-slate-400">2p<sub>z</sub></button>
+          <button onclick="ORB.selectShape('3px')" id="orb-shape-3px" class="orb-shape-btn btn-press px-3 py-1.5 rounded-lg text-xs font-bold border border-violet-700 bg-violet-950/40 text-violet-300">3p<sub>x</sub></button>
+          <button onclick="ORB.selectShape('3py')" id="orb-shape-3py" class="orb-shape-btn btn-press px-3 py-1.5 rounded-lg text-xs font-bold border border-violet-700 bg-violet-950/40 text-violet-300">3p<sub>y</sub></button>
+          <button onclick="ORB.selectShape('3pz')" id="orb-shape-3pz" class="orb-shape-btn btn-press px-3 py-1.5 rounded-lg text-xs font-bold border border-violet-700 bg-violet-950/40 text-violet-300">3p<sub>z</sub></button>
+        </div>
+      </div>
+      <div>
+        <p class="text-[10px] font-bold text-slate-500 mb-1.5 uppercase tracking-wider">Overlap views</p>
+        <div class="flex flex-wrap gap-1.5">
+          <button onclick="ORB.overlap('all-p')" class="btn-press px-3 py-1.5 rounded-lg text-xs font-bold border border-indigo-700 bg-indigo-950/50 text-indigo-300">All 3 p orbitals</button>
+          <button onclick="ORB.overlap('px-py')" class="btn-press px-3 py-1.5 rounded-lg text-xs font-bold border border-slate-700 bg-slate-900 text-slate-400">p<sub>x</sub>+p<sub>y</sub></button>
+        </div>
+      </div>
+      <div class="p-3 bg-slate-900 rounded-lg border border-slate-800">
+        <h4 id="orb-title" class="font-bold text-violet-300 text-xs mb-0.5">s Orbital</h4>
+        <p id="orb-desc" class="text-slate-400 text-[11px] leading-snug">Spherical probability cloud centred on the nucleus. No directional preference.</p>
+      </div>
+    </div>
+    <div class="lg:col-span-7 bg-slate-950 border border-slate-800 rounded-xl p-4">
+      <canvas id="orb-canvas" width="560" height="400" class="w-full h-full bg-slate-900 cursor-grab active:cursor-grabbing rounded-lg"></canvas>
+      <p class="text-center text-[10px] text-slate-500 font-mono mt-1.5">↻ drag to rotate · an orbital is a region that holds up to 2 e⁻ with opposite spins</p>
+    </div>
+  </div>
+
+  <!-- Filling rules -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div class="p-4 rounded-xl border border-blue-800/50 bg-blue-950/20">
+      <h4 class="font-display text-xs font-bold text-blue-300 uppercase tracking-wider mb-1.5">1 · Aufbau Principle</h4>
+      <p class="text-[11px] text-slate-300 leading-relaxed">Electrons fill orbitals in order of <b>increasing energy</b>: 1s → 2s → 2p → 3s → 3p → <b class="text-amber-300">4s</b> → 3d → 4p. Lower-energy sub-shells fill first. Note 4s fills <em>before</em> 3d but empties <em>first</em> when forming ions.</p>
+    </div>
+    <div class="p-4 rounded-xl border border-amber-800/50 bg-amber-950/20">
+      <h4 class="font-display text-xs font-bold text-amber-300 uppercase tracking-wider mb-1.5">2 · Hund's Rule</h4>
+      <p class="text-[11px] text-slate-300 leading-relaxed">Electrons occupy degenerate (equal-energy) orbitals <b>singly with parallel spins</b> before pairing. E.g. fill all three 2p orbitals with one electron each before any pairing. This minimises repulsion.</p>
+    </div>
+    <div class="p-4 rounded-xl border border-violet-800/50 bg-violet-950/20">
+      <h4 class="font-display text-xs font-bold text-violet-300 uppercase tracking-wider mb-1.5">3 · Pauli Exclusion</h4>
+      <p class="text-[11px] text-slate-300 leading-relaxed">Each orbital holds a <b>maximum of two electrons</b> with <b>opposite spins</b> (+½ and −½). Never draw two electrons with the same spin in one orbital.</p>
+    </div>
+  </div>
+
+  <!-- Configuration predictor -->
+  <div class="bg-slate-950 border border-violet-800/50 rounded-xl p-5 space-y-4">
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
+      <div>
+        <h3 class="font-display text-sm font-bold text-violet-300">Live Electronic Configuration Predictor <span class="text-slate-500 font-sans font-normal text-[11px]">(Z = 1–36, atoms & ions)</span></h3>
+      </div>
+      <div class="flex gap-1 bg-slate-900 p-1 rounded-lg border border-slate-800 text-xs font-bold">
+        <button onclick="CFG.setIon('atom')" id="cfg-ion-atom" class="cfg-ion-btn btn-press bg-slate-700 text-white px-3 py-1.5 rounded-md transition">Neutral</button>
+        <button onclick="CFG.setIon('cat1')" id="cfg-ion-cat1" class="cfg-ion-btn btn-press text-slate-400 hover:text-white px-3 py-1.5 rounded-md transition">+1</button>
+        <button onclick="CFG.setIon('cat2')" id="cfg-ion-cat2" class="cfg-ion-btn btn-press text-slate-400 hover:text-white px-3 py-1.5 rounded-md transition">+2</button>
+        <button onclick="CFG.setIon('an1')" id="cfg-ion-an1" class="cfg-ion-btn btn-press text-slate-400 hover:text-white px-3 py-1.5 rounded-md transition">−1</button>
+      </div>
+    </div>
+
+    <div class="bg-slate-900 border border-slate-800 rounded-xl p-4">
+      <div class="flex justify-between items-center mb-1.5">
+        <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Select element</span>
+        <span id="cfg-badge" class="bg-violet-600 text-white font-bold px-5 py-2.5 rounded-xl font-mono inline-flex items-baseline gap-2.5 shadow-lg shadow-violet-900/40"><span class="text-3xl leading-none">Cl</span><span class="text-sm font-semibold opacity-80">(Z=17, e⁻=17)</span></span>
+      </div>
+      <input type="range" id="cfg-slider" min="1" max="36" value="17" oninput="CFG.update()" class="w-full accent-violet-500 cursor-pointer">
+      <div class="flex justify-between font-mono text-[10px] text-slate-500 mt-0.5"><span>H (1)</span><span>Ne (10)</span><span>Ar (18)</span><span>Kr (36)</span></div>
+    </div>
+
+    <div class="grid grid-cols-1 xl:grid-cols-12 gap-4">
+      <div class="xl:col-span-5 space-y-4">
+        <div class="bg-slate-900 text-white p-4 rounded-xl border border-slate-800">
+          <span class="text-[10px] uppercase font-bold tracking-widest text-slate-400 block mb-1">Full spdf notation</span>
+          <div id="cfg-full" class="font-mono text-sm font-semibold text-emerald-400 break-words">1s² 2s² 2p⁶ 3s² 3p⁵</div>
+          <div class="border-t border-slate-700 pt-2 mt-2">
+            <span class="text-[10px] uppercase font-bold tracking-widest text-slate-400 block mb-1">Noble-gas shorthand</span>
+            <div id="cfg-short" class="font-mono text-sm font-semibold text-sky-400">[Ne] 3s² 3p⁵</div>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div class="bg-emerald-950/40 border border-emerald-800/60 rounded-xl p-3">
+            <div class="text-emerald-300 text-[11px] font-bold uppercase tracking-wider">Fully filled</div>
+            <div id="cfg-fullcount" class="text-3xl font-bold text-emerald-400 mt-1 font-mono">0</div>
+            <div class="text-[10px] text-emerald-500 mt-0.5">orbitals with 2 e⁻</div>
+          </div>
+          <div class="bg-amber-950/40 border border-amber-800/60 rounded-xl p-3">
+            <div class="text-amber-300 text-[11px] font-bold uppercase tracking-wider">Half-filled</div>
+            <div id="cfg-halfcount" class="text-3xl font-bold text-amber-400 mt-1 font-mono">0</div>
+            <div class="text-[10px] text-amber-500 mt-0.5">orbitals with 1 e⁻</div>
+          </div>
+        </div>
+        <div id="cfg-exception" class="hidden bg-rose-950/40 border border-rose-800/60 rounded-xl p-3 text-[11px] text-rose-200 leading-relaxed"></div>
+      </div>
+      <div class="xl:col-span-7 bg-slate-900 p-4 rounded-xl border border-slate-800">
+        <div class="flex justify-between items-center mb-2">
+          <span class="text-white text-xs font-mono font-bold">SUB-SHELL FILLING MAP</span>
+          <span class="text-violet-400 text-[10px]">Energy increases ↑</span>
+        </div>
+        <div id="cfg-boxes" class="space-y-2 py-2 px-1 bg-slate-950 rounded-lg border border-slate-700 text-sm min-h-[200px]"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="bg-slate-950/90 border-t border-slate-800/60 py-4 text-center text-[11px] text-slate-600 relative z-10">
+  Edexcel IAL Chemistry · WCH11 Topic 2 · Atomic Structure & the Periodic Table · Master Studio
+</footer>
+
+<script>
+function safeInitKaTeX(){if(window.renderMathInElement){try{renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false})}catch(e){}}}
+function renderMathIn(el){if(window.renderMathInElement){try{renderMathInElement(el||document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false})}catch(e){}}}
+function $(id){return document.getElementById(id)}
+
+function switchTab(id){
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.toggle('active',p.id==='tab-'+id));
+  document.querySelectorAll('.tab-btn').forEach(b=>{
+    const a=b.dataset.tab===id;
+    const isExplain=b.dataset.tab==='explain';
+    b.className='tab-btn btn-press py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs font-medium border-b-2 rounded-t-lg '+(a?'tab-btn-active '+(isExplain?'text-amber-300 font-bold border-amber-400 bg-amber-950/30':'text-sky-400 font-bold border-sky-400 bg-sky-950/40'):(isExplain?'text-amber-300/80 hover:text-amber-200 border-transparent':'text-slate-400 hover:text-sky-300 border-transparent'));
+  });
+  if(id==='trends')setTimeout(drawTrends,60);
+  if(id==='massspec'&&!MS.initialized)MS.init();
+  if(id==='shells'&&!SHELLS.initialized)SHELLS.init();
+  if(id==='orbitals'&&!ORB.initialized)ORB.init();
+  setTimeout(()=>renderMathIn(),80);
+}
+const revealObs=(typeof IntersectionObserver!=='undefined')?new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('revealed')})},{threshold:.06}):{observe(){}};
+document.querySelectorAll('.reveal').forEach(el=>revealObs.observe(el));
+
+/* ── ENGINE MODE SWITCH ── */
+function setMode(p,mode){
+  ['explorer','map','quiz','traps'].forEach(m=>{
+    const pan=$(p+'-mode-'+m);if(pan)pan.classList.toggle('hidden',m!==mode);
+    const btn=$(p+'-m-'+m);if(btn)btn.className='btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border '+(m===mode?'border-sky-700 bg-sky-950/50 text-sky-300':'border-slate-700 text-slate-400 hover:text-sky-300');
+  });
+  setTimeout(()=>renderMathIn(),60);
+}
+
+/* ── ENGINE DATA ── */
+const ATOM_CARDS=[
+ {t:'Structure of the Atom',eq:'nucleus (p + n)  +  electrons in shells',body:'A tiny, dense, positively charged <strong>nucleus</strong> of protons and neutrons, surrounded by electrons arranged in shells (energy levels). The atom is mostly empty space.',goals:['Locate protons & neutrons in the nucleus, electrons in shells','State the nucleus is small, dense and positive','Explain the atom is mostly empty space'],tips:['Do not say electrons "orbit like planets" as a defined fact — shells / energy levels is the IAL language','Nucleus carries the positive charge and almost all the mass']},
+ {t:'Relative Mass & Charge',eq:'p = 1, +1 · n = 1, 0 · e ≈ 0, −1',body:'Proton: relative mass 1, charge +1. Neutron: relative mass 1, charge 0. Electron: relative mass ≈ 0 ($\\tfrac{1}{1836}$), charge −1.',goals:['Recall the three values for each particle','State electron mass is negligible, not exactly zero','Use these to compare masses and charges'],tips:['Electron relative mass ≈ 0 — "approximately / negligibly small", never "exactly 0"']},
+ {t:'Atomic Number Z & Mass Number A',eq:'Z = protons · A = protons + neutrons',body:'Atomic (proton) number Z defines the element. Mass number A = protons + neutrons. Notation $^{A}_{Z}\\text{X}$.',goals:['Define Z and A precisely','Read A and Z from isotope notation','State Z is unique to each element'],tips:['Top-left = A, bottom-left = Z — swapping them is a common slip']},
+ {t:'Particles in Atoms & Ions',eq:'e⁻ = Z − charge',body:'Neutral atom: electrons = protons = Z. Ion: protons & neutrons unchanged; electrons = Z − charge (a 2+ ion has two fewer electrons).',goals:['Compute electrons for any ion','Remember only electrons change on ionisation','Check charge = protons − electrons'],tips:['A common error is changing the proton number for an ion — only electrons change']},
+ {t:'Isotopes',eq:'same Z, different A',body:'Isotopes are atoms of the same element (same protons & electrons) with different numbers of neutrons. Same chemistry (same electron arrangement); different mass-dependent physical properties.',goals:['Define isotope with both clauses','Explain identical chemical properties','Explain why Ar is non-integer'],tips:['Definition needs same protons AND different neutrons; "different mass number" alone is weaker']},
+ {t:'Mass Spectrometer — Principles',eq:'vapourise → ionise → accelerate → deflect → detect',body:'Sample is vaporised, ionised by electron bombardment (→ 1+ ions), accelerated by an electric field, deflected by a magnetic field according to m/z, then detected (current ∝ abundance).',goals:['Name and order the stages','State ionisation produces 1+ ions','State deflection depends on m/z'],tips:['Lighter ions and higher-charge ions deflect more; deflection is by m/z not mass alone']},
+ {t:'Interpreting Spectra & Calculating Ar',eq:'Ar = Σ(mass × %abundance)/100',body:'Each peak = one isotope (position = mass, height/area ∝ abundance). The molecular ion peak M⁺ (highest m/z) gives the Mr of a molecule.',goals:['Read isotopic composition from peaks','Calculate Ar from abundances','Identify Mr from the M⁺ peak'],tips:['Ignore tiny peaks beyond M⁺; the M⁺ is the highest m/z of the intact molecule']},
+ {t:'2+ Ions in the Spectrum',eq:'2+ peak at m/z = M/2',body:'An ion carrying a 2+ charge is deflected as though it had half its mass, so it appears at m/z = M/2 — a useful extra peak to recognise.',goals:['Predict the position of a 2+ peak','Explain it via the m/z ratio','Distinguish it from a fragment peak'],tips:['A peak at half the molecular-ion mass is the classic 2+ signature']}
+];
+const IE_CARDS=[
+ {t:'First Ionisation Energy',eq:'X(g) → X⁺(g) + e⁻',body:'The energy required to remove one mole of electrons from one mole of gaseous atoms to form one mole of gaseous 1+ ions. Units kJ mol⁻¹.',goals:['Quote the definition with "gaseous" and "per mole"','Write the equation with state symbols','State the units'],tips:['"Gaseous" and "per mole" are each a mark; omitting them loses them']},
+ {t:'Second & Third IE',eq:'X⁺(g) → X²⁺(g) + e⁻',body:'The 2nd IE removes an electron from the 1+ ion; the 3rd from the 2+ ion. Each successive IE is larger because the electron comes from an increasingly positive ion.',goals:['Define 2nd/3rd IE from the correct ion','Explain why successive IE increase','Use jumps to identify shells'],tips:['2nd IE is from the 1+ ion, NOT the neutral atom']},
+ {t:'All IE Are Endothermic',eq:'ΔH > 0',body:'Energy must always be supplied to overcome the attraction between the electron and the nucleus, so every ionisation energy is endothermic (positive ΔH).',goals:['State all IE are endothermic','Give the reason (overcoming attraction)','Never assign a negative sign'],tips:['A negative IE value is always wrong']},
+ {t:'The Three Controlling Factors',eq:'nuclear charge · shielding · distance / sub-shell',body:'IE rises with nuclear charge (more protons), falls with shielding (more inner shells) and distance (higher shell), and falls for an electron in a higher-energy sub-shell or a spin-paired orbital.',goals:['List and explain each factor','State the direction of each effect','Explain trends as a balance of factors'],tips:['Across a period shielding is ~constant — say so; that is why nuclear charge wins']},
+ {t:'The Group-3 & Group-6 Dips',eq:'Be→B and N→O',body:'B (and Al): the electron removed is in a 2p/3p orbital — higher energy, slightly further out, shielded by the s electrons → easier to remove. O (and S): the electron comes from a paired 2p/3p orbital → spin-pair repulsion makes it easier to remove.',goals:['Explain the Be→B / Mg→Al dip (p sub-shell)','Explain the N→O / P→S dip (spin-pair repulsion)','Not blame these dips on "more protons"'],tips:['The N→O dip is spin-pair repulsion, never "more protons"']},
+ {t:'Successive IE → Shells & Group',eq:'big jump = new inner shell',body:'Plotting successive IE, a large jump marks removal from a shell closer to the nucleus. The number of small values before the jump = outer electrons = group (for s/p elements).',goals:['Locate the jump on a successive-IE graph','Deduce the group from it','Link clusters of values to quantum shells'],tips:['Count the small values before the jump, not after']}
+];
+const ESTRUCT_CARDS=[
+ {t:'What an Orbital Is',eq:'≤ 2 electrons, opposite spins',body:'An orbital is a region within an atom that can hold up to two electrons; when two occupy it, they must have opposite spins.',goals:['Define orbital with "up to two"','State opposite spins when paired','Distinguish orbital from shell/sub-shell'],tips:['"Up to two" — an orbital may hold 0, 1 or 2 electrons']},
+ {t:'Shapes of s and p Orbitals',eq:'s = sphere · p = dumb-bell',body:'The s orbital is spherical. A p orbital is two-lobed (dumb-bell); there are three (px, py, pz) at right angles.',goals:['Draw/describe s as spherical','Draw/describe p as dumb-bell','State the three p orbitals are perpendicular'],tips:['One p orbital = one dumb-bell (two lobes), not two orbitals']},
+ {t:"Hund's Rule & Electron Pairing",eq:'fill singly, then pair (↑↓)',body:'Orbitals in a sub-shell each take one electron (parallel spins) before any pairing; pairing then occurs with opposite spins.',goals:['Apply single-occupancy-first','Draw parallel arrows for unpaired','Draw opposite arrows for paired'],tips:['N = 2p³ is ↑ ↑ ↑, never ↑↓ ↑ _']},
+ {t:'Filling Order',eq:'1s 2s 2p 3s 3p 4s 3d 4p',body:'Electrons fill in order of energy; note 4s fills before 3d, but 4s empties first when forming ions.',goals:['Recall the order including 4s before 3d','Apply it to write configurations','Remember 4s empties first for ions'],tips:['Fe²⁺ = [Ar] 3d⁶ (4s lost first), not 3d⁴ 4s²']},
+ {t:'Configurations H → Kr & Ions',eq:'full + noble-gas core + boxes',body:'Write full and shorthand configurations for atoms H–Kr and their ions; include the exceptions Cr ([Ar] 3d⁵ 4s¹) and Cu ([Ar] 3d¹⁰ 4s¹).',goals:['Write atom and ion configurations','Use noble-gas cores','Recall Cr and Cu exceptions'],tips:['Cr and Cu "expected" configs lose the mark; superscripts must not exceed s² p⁶ d¹']},
+ {t:'Blocks, Groups & Capacities',eq:'s=2, p=6, d=10 · shell = 2n²',body:'The block is the sub-shell being filled (He is s block). Same outer configuration → same group → similar chemistry. Shell capacities 2, 8, 18, 32.',goals:['Identify the block of an element','State sub-shell and shell capacities','Link outer config to group & properties'],tips:['Block = sub-shell receiving the last electron; He is s block despite its position']}
+];
+
+const ATOM_QUIZ=[
+ {q:'An atom has 17 protons and 18 neutrons. Its mass number is ___ and, as a 1− ion, it has ___ electrons.',blanks:['35','18']},
+ {q:'Isotopes have the same number of ___ but different numbers of ___, so they share the same ___ properties.',blanks:['protons','neutrons','chemical']},
+ {q:'In a mass spectrometer, ions are deflected according to their ___. A 2+ ion of mass 24 appears at m/z = ___.',blanks:['m/z (mass-to-charge ratio)','12']},
+ {q:'For Cl₂ (³⁵Cl:³⁷Cl = 3:1) the molecular-ion peaks at 70, 72, 74 have relative heights ___.',blanks:['9 : 6 : 1']}
+];
+const IE_QUIZ=[
+ {q:'The first ionisation energy must be defined for ___ atoms and is always ___ (ΔH is ___).',blanks:['gaseous','endothermic','positive']},
+ {q:'Across a period, shielding is roughly ___ because electrons enter the same ___, so the rising ___ dominates and IE ___.',blanks:['constant','shell / quantum shell','nuclear charge','increases']},
+ {q:'Oxygen\'s 1st IE is lower than nitrogen\'s because the electron removed is from a ___ 2p orbital, where ___ makes it easier to remove.',blanks:['doubly-occupied / paired','spin-pair repulsion']},
+ {q:'On a successive-IE graph, a large jump indicates removal from a ___ shell; the number of small values before it gives the ___.',blanks:['full inner / closer-to-nucleus','group (outer electrons)']}
+];
+const ESTRUCT_QUIZ=[
+ {q:'An orbital can hold up to ___ electrons, which when paired must have ___ spins.',blanks:['two','opposite']},
+ {q:'The filling order after 3p is ___, and for transition-metal ions the ___ electrons are lost first.',blanks:['4s then 3d','4s']},
+ {q:'Chromium\'s configuration is [Ar] ___ and copper\'s is [Ar] ___, both for extra stability.',blanks:['3d⁵ 4s¹','3d¹⁰ 4s¹']},
+ {q:'The p sub-shell holds ___ electrons in ___ orbitals; the third shell holds a maximum of ___ electrons.',blanks:['6','3','18']}
+];
+
+const ATOM_TRAPS=[
+ {w:'Electron relative mass = 0',r:'≈ 0 (1/1836) — "negligible", not exactly zero'},
+ {w:'Changing proton number to form an ion',r:'Only electrons change; protons & neutrons fixed'},
+ {w:'Isotope = "different mass number"',r:'Add same protons / different neutrons for full marks'},
+ {w:'Cl₂ peak ratio 9 : 3 : 1',r:'Middle peak = 2ab → 9 : 6 : 1'},
+ {w:'2+ ion peak at the same m/z as M⁺',r:'A 2+ ion appears at m/z = M/2'},
+ {w:'Deflection depends on mass only',r:'It depends on m/z — charge matters too'}
+];
+const IE_TRAPS=[
+ {w:'IE definition without "gaseous"',r:'"Gaseous" is a mark — include it'},
+ {w:'2nd IE from the neutral atom',r:'2nd IE removes from the 1+ ion'},
+ {w:'A negative ionisation energy',r:'All IE are endothermic (ΔH positive)'},
+ {w:'N→O dip due to "more protons"',r:'It is spin-pair repulsion in the paired 2p orbital'},
+ {w:'IE down group: forgetting "outweighs"',r:'State shielding+distance outweigh the extra protons'},
+ {w:'Across period: ignoring shielding is constant',r:'Say shielding ~constant (same shell) so nuclear charge wins'}
+];
+const ESTRUCT_TRAPS=[
+ {w:'N drawn as ↑↓ ↑ _ in 2p',r:'Hund\'s rule: ↑ ↑ ↑ (singly occupied first)'},
+ {w:'Paired electrons drawn parallel (↑↑)',r:'Paired electrons must be opposite spins (↑↓)'},
+ {w:'Fe²⁺ = [Ar] 3d⁴ 4s²',r:'Lose 4s first → [Ar] 3d⁶'},
+ {w:'Cr = [Ar] 3d⁴ 4s²',r:'Exception: [Ar] 3d⁵ 4s¹ (and Cu = 3d¹⁰ 4s¹)'},
+ {w:'Helium placed in the p block',r:'He is 1s² → s block'},
+ {w:'p orbital = two separate orbitals',r:'One p orbital = one dumb-bell (two lobes)'}
+];
+
+/* ── ENGINE RENDER ── */
+function renderEngine(prefix,cards){
+  const wrap=$(prefix+'-explorer');if(!wrap)return;
+  const nav=cards.map((c,i)=>`<button onclick="showEngineCard('${prefix}',${i})" class="${prefix}-nav btn-press w-full text-left px-3 py-2 text-xs rounded-lg border ${i===0?'border-sky-700 bg-sky-950/40 text-sky-300 font-semibold':'border-slate-700 text-slate-400 hover:text-sky-300'}">${i+1}. ${c.t}</button>`).join('');
+  const body=cards.map((c,i)=>`<div id="${prefix}-card-${i}" class="engine-card ${i>0?'hidden':''} space-y-4">
+    <h3 class="font-display text-sm font-bold text-white">${c.t}</h3>
+    <div class="p-3 bg-slate-950 border border-slate-800 rounded-lg font-mono text-xs text-sky-300 text-center">${c.eq}</div>
+    <p class="text-xs text-slate-300 leading-relaxed">${c.body}</p>
+    <div class="p-3 bg-sky-950/30 border border-sky-800/50 rounded-lg text-xs space-y-1"><span class="font-bold text-sky-400 block uppercase text-[10px]">🎯 Learning Goals</span><ul class="list-disc list-inside text-slate-300 space-y-1">${c.goals.map(g=>'<li>'+g+'</li>').join('')}</ul></div>
+    <div class="p-3 bg-rose-950/30 border border-rose-800/50 rounded-lg text-xs space-y-1"><span class="font-bold text-rose-400 block uppercase text-[10px]">⚠️ Examiner Tips</span><ul class="list-disc list-inside text-slate-300 space-y-1">${c.tips.map(g=>'<li>'+g+'</li>').join('')}</ul></div>
+  </div>`).join('');
+  wrap.innerHTML=`<div class="lg:col-span-3 space-y-1.5"><p class="text-[10px] text-slate-500 uppercase tracking-wider font-bold mb-2">Concept Cards</p>${nav}</div><div class="lg:col-span-9 bg-slate-900 border border-slate-800 rounded-xl p-5">${body}</div>`;
+  renderMathIn(wrap);
+}
+function showEngineCard(prefix,i){
+  const cards=document.querySelectorAll('#'+prefix+'-explorer .engine-card');
+  cards.forEach((c,j)=>c.classList.toggle('hidden',j!==i));
+  document.querySelectorAll('.'+prefix+'-nav').forEach((b,j)=>{b.className=prefix+'-nav btn-press w-full text-left px-3 py-2 text-xs rounded-lg border '+(j===i?'border-sky-700 bg-sky-950/40 text-sky-300 font-semibold':'border-slate-700 text-slate-400 hover:text-sky-300')});
+  renderMathIn();
+}
+function renderQuiz(id,data){
+  const c=$(id);if(!c)return;
+  c.innerHTML=data.map(row=>{const parts=row.q.split('___');let h='<div class="bg-slate-900 border border-slate-800 rounded-lg p-3 text-xs text-slate-300 leading-relaxed">';parts.forEach((p,pi)=>{h+=p;if(pi<row.blanks.length)h+='<span class="blur-answer inline-block bg-slate-800 px-2 py-0.5 rounded text-sky-300 font-mono cursor-pointer" onclick="this.classList.toggle(\'revealed\')">'+row.blanks[pi]+'</span>'});return h+'</div>'}).join('');
+  renderMathIn(c);
+}
+function revealAll(id){document.querySelectorAll('#'+id+' .blur-answer').forEach(e=>e.classList.add('revealed'))}
+function renderTraps(id,data){
+  const c=$(id);if(!c)return;
+  c.innerHTML=data.map(t=>`<div class="bg-slate-900 border border-slate-800 rounded-lg p-3 space-y-2"><div class="flex items-start gap-2"><span class="text-rose-400 font-bold text-xs shrink-0">✗</span><p class="text-xs text-rose-300">${t.w}</p></div><div class="flex items-start gap-2"><span class="text-emerald-400 font-bold text-xs shrink-0">✓</span><p class="text-xs text-emerald-300">${t.r}</p></div></div>`).join('');
+}
+
+/* ── EXPLANATION BUILDER: CHAIN BUILDER ── */
+function buildChain(id,task){
+  const host=$(id);if(!host)return;
+  const state={chain:[]};
+  const shuffled=task.chips.slice().sort(()=>Math.random()-0.5);
+  function render(){
+    const bank=shuffled.map(ch=>{const used=state.chain.includes(ch.id);return `<button data-id="${ch.id}" class="chain-chip btn-press text-left text-[11px] px-3 py-2 rounded-lg border ${used?'border-slate-800 text-slate-600 used':'border-slate-700 bg-slate-900 text-slate-200 hover:border-sky-600'}">${ch.t}</button>`}).join('');
+    const chain=state.chain.length?state.chain.map((cid,idx)=>{const ch=task.chips.find(x=>x.id===cid);return `<button data-idx="${idx}" class="chain-item btn-press text-left text-[11px] px-3 py-2 rounded-lg border border-sky-700 bg-sky-950/40 text-sky-200 w-full"><span class="text-sky-500 font-mono mr-1">${idx+1}.</span>${ch.t}</button>`}).join(''):'<p class="text-[11px] text-slate-500 italic">Your chain appears here — click chips above in order.</p>';
+    host.innerHTML=`<div class="space-y-3">
+      <div><p class="text-[10px] text-slate-500 uppercase tracking-wider font-bold mb-1.5">Logic chips (click in order)</p><div class="flex flex-wrap gap-2">${bank}</div></div>
+      <div><p class="text-[10px] text-slate-500 uppercase tracking-wider font-bold mb-1.5">Your chain (click an item to remove)</p><div class="space-y-1.5 bg-slate-950 border border-slate-800 rounded-lg p-3 min-h-[60px]">${chain}</div></div>
+      <div class="flex gap-2"><button class="chain-check btn-press bg-sky-600 hover:bg-sky-500 text-white font-bold px-4 py-2 rounded-lg text-xs">Check order</button><button class="chain-reset btn-press bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 px-4 py-2 rounded-lg text-xs">Reset</button></div>
+      <div class="chain-fb hidden p-3 rounded-lg text-[11px] space-y-1"></div>
+    </div>`;
+    host.querySelectorAll('.chain-chip').forEach(b=>b.onclick=()=>{if(!state.chain.includes(b.dataset.id)){state.chain.push(b.dataset.id);render()}});
+    host.querySelectorAll('.chain-item').forEach(b=>b.onclick=()=>{state.chain.splice(+b.dataset.idx,1);render()});
+    host.querySelector('.chain-reset').onclick=()=>{state.chain=[];render()};
+    host.querySelector('.chain-check').onclick=()=>{
+      const fb=host.querySelector('.chain-fb');fb.classList.remove('hidden');
+      if(state.chain.length!==task.correct.length){fb.className='chain-fb p-3 rounded-lg text-[11px] space-y-1 bg-amber-500/10 text-amber-300 border border-amber-500/30';fb.innerHTML='<strong>⚠️ Your chain has '+state.chain.length+' of '+task.correct.length+' links.</strong> Keep building or trim it.';return}
+      let firstWrong=-1;for(let i=0;i<task.correct.length;i++){if(state.chain[i]!==task.correct[i]){firstWrong=i;break}}
+      const items=host.querySelectorAll('.chain-item');
+      if(firstWrong===-1){items.forEach(it=>{it.classList.remove('border-sky-700','bg-sky-950/40','text-sky-200');it.classList.add('border-emerald-600','bg-emerald-950/40','text-emerald-200')});fb.className='chain-fb p-3 rounded-lg text-[11px] space-y-1 bg-emerald-500/10 text-emerald-300 border border-emerald-500/30';fb.innerHTML='<strong>✅ Perfect causal chain.</strong> Every link is in the right order with the connective logic intact — this is exactly the structure that earns full marks.'}
+      else{items.forEach((it,i)=>{it.classList.remove('border-emerald-600','bg-emerald-950/40','text-emerald-200','border-rose-600','bg-rose-950/40','text-rose-200');if(i<firstWrong){it.classList.add('border-emerald-600','bg-emerald-950/40','text-emerald-200')}else if(i===firstWrong){it.classList.add('border-rose-600','bg-rose-950/40','text-rose-200')}});fb.className='chain-fb p-3 rounded-lg text-[11px] space-y-1 bg-amber-500/10 text-amber-300 border border-amber-500/30';fb.innerHTML='<strong>⚠️ Correct up to link '+firstWrong+', then the logic breaks.</strong> The right order is: '+task.correct.map((c,i)=>(i+1)+'. '+task.chips.find(x=>x.id===c).t).join(' &nbsp;→&nbsp; ')}
+    };
+  }
+  render();
+}
+
+/* ── EXPLANATION BUILDER: KEYWORD FILL ── */
+function buildKwFill(id,task){
+  const host=$(id);if(!host)return;
+  const slotCount=task.segments.filter(s=>s.t==='slot').length;
+  let slotVals=new Array(slotCount).fill(null);
+  let bank=task.bank.slice();
+  function render(){
+    let si=-1;
+    const sentence=task.segments.map(s=>{
+      if(s.t==='text')return '<span class="text-slate-300">'+s.v+'</span>';
+      si++;const idx=si;const v=slotVals[idx];
+      return `<button data-slot="${idx}" class="slot-btn btn-press inline-block text-[11px] px-2 py-0.5 rounded border ${v?'filled border-sky-700':'border-dashed border-slate-600 text-slate-500'}">${v||'?'}</button>`;
+    }).join(' ');
+    const bankHtml=bank.map((w,i)=>`<button data-bi="${i}" class="chain-chip btn-press text-[11px] px-2.5 py-1.5 rounded-lg border border-slate-700 bg-slate-900 text-slate-200 hover:border-purple-600">${w}</button>`).join('');
+    host.innerHTML=`<div class="space-y-3"><p class="text-xs text-slate-300 leading-relaxed bg-slate-950 border border-slate-800 rounded-lg p-3">${sentence}</p><div><p class="text-[10px] text-slate-500 uppercase tracking-wider font-bold mb-1.5">Word bank (click to fill next slot; click a filled slot to return its word)</p><div class="flex flex-wrap gap-2">${bankHtml}</div></div><div class="flex gap-2"><button class="kw-check btn-press bg-purple-600 hover:bg-purple-500 text-white font-bold px-4 py-2 rounded-lg text-xs">Check</button><button class="kw-reset btn-press bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 px-4 py-2 rounded-lg text-xs">Reset</button></div><div class="kw-fb hidden p-3 rounded-lg text-[11px]"></div></div>`;
+    let bi=-1;
+    host.querySelectorAll('[data-bi]').forEach(b=>b.onclick=()=>{const w=bank[+b.dataset.bi];const empty=slotVals.indexOf(null);if(empty===-1)return;slotVals[empty]=w;bank.splice(+b.dataset.bi,1);render()});
+    host.querySelectorAll('[data-slot]').forEach(b=>b.onclick=()=>{const idx=+b.dataset.slot;if(slotVals[idx]===null)return;bank.push(slotVals[idx]);slotVals[idx]=null;render()});
+    host.querySelector('.kw-reset').onclick=()=>{slotVals=new Array(slotCount).fill(null);bank=task.bank.slice();render()};
+    host.querySelector('.kw-check').onclick=()=>{
+      let allFilled=slotVals.every(v=>v!==null);
+      const btns=host.querySelectorAll('[data-slot]');
+      let si2=-1,ok=true;
+      task.segments.forEach(s=>{if(s.t==='slot'){si2++;const correct=slotVals[si2]===s.a;btns[si2].classList.remove('correct','wrong');btns[si2].classList.add(correct?'correct':'wrong');if(!correct)ok=false}});
+      const fb=host.querySelector('.kw-fb');fb.classList.remove('hidden');
+      if(!allFilled){fb.className='kw-fb p-3 rounded-lg text-[11px] bg-amber-500/10 text-amber-300 border border-amber-500/30';fb.innerHTML='⚠️ Fill every slot first.';return}
+      if(ok){fb.className='kw-fb p-3 rounded-lg text-[11px] bg-emerald-500/10 text-emerald-300 border border-emerald-500/30';fb.innerHTML='✅ Every term placed correctly — you have the exact mechanism (spin-pair repulsion in the paired orbital) that explains the dip.'}
+      else{fb.className='kw-fb p-3 rounded-lg text-[11px] bg-amber-500/10 text-amber-300 border border-amber-500/30';fb.innerHTML='⚠️ Some terms are misplaced (red). The paired electrons repel, making one easier to remove — so O\'s IE is lower, not higher.'}
+    };
+  }
+  render();
+}
+
+/* ── EXPLANATION BUILDER: WRONG-ANSWER DIAGNOSIS ── */
+function buildWrongDiag(id,task){
+  const host=$(id);if(!host)return;
+  const sel=new Set();
+  function render(){
+    const list=task.items.map((it,i)=>`<button data-i="${i}" class="wd-item btn-press text-left text-[11px] px-3 py-2 rounded-lg border ${sel.has(i)?'border-sky-600 bg-sky-950/40 text-sky-200':'border-slate-700 bg-slate-900 text-slate-300 hover:border-sky-600'}">${it}</button>`).join('');
+    host.innerHTML=`<div class="space-y-3"><div class="grid grid-cols-1 gap-2">${list}</div><div class="flex gap-2"><button class="wd-check btn-press bg-rose-600 hover:bg-rose-500 text-white font-bold px-4 py-2 rounded-lg text-xs">Check my criticisms</button><button class="wd-reset btn-press bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 px-4 py-2 rounded-lg text-xs">Reset</button></div><div class="wd-fb hidden p-3 rounded-lg text-[11px] space-y-1"></div></div>`;
+    host.querySelectorAll('.wd-item').forEach(b=>b.onclick=()=>{const i=+b.dataset.i;if(sel.has(i))sel.delete(i);else sel.add(i);render()});
+    host.querySelector('.wd-reset').onclick=()=>{sel.clear();render()};
+    host.querySelector('.wd-check').onclick=()=>{
+      const correct=new Set(task.correct);
+      const missed=[...correct].filter(i=>!sel.has(i));
+      const wrong=[...sel].filter(i=>!correct.has(i));
+      const fb=host.querySelector('.wd-fb');fb.classList.remove('hidden');
+      const btns=host.querySelectorAll('.wd-item');
+      btns.forEach((b,i)=>{b.classList.remove('border-emerald-600','bg-emerald-950/40','border-rose-600','bg-rose-950/40');if(correct.has(i)&&sel.has(i))b.classList.add('border-emerald-600','bg-emerald-950/40');else if(!correct.has(i)&&sel.has(i))b.classList.add('border-rose-600','bg-rose-950/40')});
+      if(missed.length===0&&wrong.length===0){fb.className='wd-fb p-3 rounded-lg text-[11px] space-y-1 bg-emerald-500/10 text-emerald-300 border border-emerald-500/30';fb.innerHTML='<strong>✅ Flawless diagnosis.</strong> You spotted every error and added no false ones — that is exactly the scrutiny that turns a 1-mark answer into 3.'}
+      else{let h='<strong>⚠️ Not quite.</strong> ';if(missed.length)h+='<div>You missed valid criticisms: '+missed.map(i=>task.items[i]).join(' · ')+'</div>';if(wrong.length)h+='<div>These are not valid here: '+wrong.map(i=>task.items[i]).join(' · ')+'</div>';fb.className='wd-fb p-3 rounded-lg text-[11px] space-y-1 bg-amber-500/10 text-amber-300 border border-amber-500/30';fb.innerHTML=h}
+    };
+  }
+  render();
+}
+function toggleNote(btn){const n=btn.nextElementSibling;n.classList.toggle('hidden');btn.textContent=n.classList.contains('hidden')?'Show mark point':'Hide mark point'}
+function countWrite(g){const cls=g==='writeA'?'wa-chk':'wb-chk';const n=document.querySelectorAll('#'+g+'-checks .'+cls+':checked').length;const tot=document.querySelectorAll('#'+g+'-checks .'+cls).length;$(g+'-score').textContent='self-awarded: '+n+' / '+tot;$(g+'-score').className='text-xs font-mono '+(n===tot?'text-emerald-300':'text-slate-400')}
+
+/* ── TRENDS STUDIO ── */
+const SYM=['H','He','Li','Be','B','C','N','O','F','Ne','Na','Mg','Al','Si','P','S','Cl','Ar','K','Ca'];
+const IE1=[1312,2372,520,900,801,1086,1402,1314,1681,2081,496,738,578,786,1012,1000,1251,1521,419,590];
+function ieCat(i){const s=SYM[i];if(s==='He'||s==='Ne'||s==='Ar')return'noble';if(s==='Li'||s==='Na'||s==='K')return'alkali';if(s==='B'||s==='Al')return'g3';if(s==='O'||s==='S')return'g6';if(i===0)return'H';return'rise'}
+const IE_COL={noble:'#2dd4bf',alkali:'#fb7185',g3:'#fbbf24',g6:'#fbbf24',H:'#a78bfa',rise:'#38bdf8'};
+function ieExplain(i){const s=SYM[i],c=ieCat(i),v=IE1[i];const head='<div class="font-display text-lg font-bold text-white">'+s+' <span class="text-slate-500 text-xs font-mono">Z='+(i+1)+' · 1st IE = '+v+' kJ mol⁻¹</span></div>';
+ if(c==='H')return head+'<p class="mt-2">Hydrogen\'s single 1s electron has no shielding, so its IE is high for its position — but H is not a noble gas. The repeating peak pattern begins with He.</p>';
+ if(c==='noble')return head+'<p class="mt-2 text-teal-200"><strong>Peak.</strong> '+s+' has a full, stable outer shell; the electron is held tightly (high effective nuclear charge for that shell), so IE is at a maximum. The next element (Group 1) begins a new shell, causing the sharp drop.</p>';
+ if(c==='alkali')return head+'<p class="mt-2 text-rose-200"><strong>Trough.</strong> The single outer electron of '+s+' is in a new shell, far from the nucleus and well shielded by the full inner shell, so it is removed easily → minimum IE.</p>';
+ if(c==='g3')return head+'<p class="mt-2 text-amber-200"><strong>Dip (group 3).</strong> The electron removed from '+s+' is in a 2p/3p orbital — higher in energy than the 2s/3s, slightly further from the nucleus and shielded by the s electrons — so it is easier to remove than the trend predicts.</p>';
+ if(c==='g6')return head+'<p class="mt-2 text-amber-200"><strong>Dip (group 6).</strong> In '+s+' the electron removed comes from a doubly-occupied 2p/3p orbital; the spin-pair repulsion between the two electrons makes one easier to remove, so IE is lower than the previous element despite the extra proton.</p>';
+ return head+'<p class="mt-2 text-sky-200"><strong>General increase.</strong> From the previous element, nuclear charge rises while shielding stays ~constant (same shell), so the attraction on the outer electron increases → more energy is needed to remove it.</p>';}
+let iePts=[];
+function drawIE(){
+  const cv=$('ieCanvas');if(!cv)return;const c=cv.getContext('2d');const w0=cv.parentElement.clientWidth;if(w0<50)return;const dpr=window.devicePixelRatio||1;cv.width=w0*dpr;cv.height=300*dpr;const W=cv.width,H=cv.height;c.clearRect(0,0,W,H);
+  const pL=44*dpr,pB=30*dpr,pR=14*dpr,pT=16*dpr,gW=W-pL-pR,gH=H-pT-pB;const maxV=2500;
+  function mx(i){return pL+(i/(SYM.length-1))*gW}function my(v){return pT+gH-(v/maxV)*gH}
+  c.strokeStyle='#1e293b';c.lineWidth=1*dpr;for(let g=0;g<=2500;g+=500){c.beginPath();c.moveTo(pL,my(g));c.lineTo(pL+gW,my(g));c.stroke();c.fillStyle='#64748b';c.font=(9*dpr)+'px "Fira Code"';c.textAlign='right';c.fillText(g,pL-6*dpr,my(g)+3*dpr)}
+  c.strokeStyle='#475569';c.lineWidth=1.5*dpr;c.beginPath();c.moveTo(pL,pT);c.lineTo(pL,pT+gH);c.lineTo(pL+gW,pT+gH);c.stroke();
+  c.strokeStyle='#334155';c.lineWidth=1.5*dpr;c.beginPath();IE1.forEach((v,i)=>{const x=mx(i),y=my(v);i?c.lineTo(x,y):c.moveTo(x,y)});c.stroke();
+  iePts=[];IE1.forEach((v,i)=>{const x=mx(i),y=my(v);iePts.push({x,y,i});c.fillStyle=IE_COL[ieCat(i)];c.beginPath();c.arc(x,y,4*dpr,0,7);c.fill();c.strokeStyle='#080e1a';c.lineWidth=1.5*dpr;c.stroke();c.fillStyle='#94a3b8';c.font=(8*dpr)+'px "Fira Code"';c.textAlign='center';c.fillText(SYM[i],x,pT+gH+13*dpr)});
+}
+function ieClick(e){const cv=$('ieCanvas');const r=cv.getBoundingClientRect();const dpr=window.devicePixelRatio||1;const px=(e.clientX-r.left)*dpr,py=(e.clientY-r.top)*dpr;let best=null,bd=1e9;iePts.forEach(p=>{const d=Math.hypot(p.x-px,p.y-py);if(d<bd){bd=d;best=p}});if(best&&bd<28*dpr){$('iePointCard').innerHTML=ieExplain(best.i);renderMathIn($('iePointCard'))}
+}
+const MP_SYM=['Na','Mg','Al','Si','P','S','Cl','Ar'];
+const MP=[371,923,933,1687,317,388,172,84];
+const MP_TYPE=['metallic','metallic','metallic','covalent','molecular','molecular','molecular','molecular'];
+const MP_COL={metallic:'#38bdf8',covalent:'#fbbf24',molecular:'#fb7185'};
+const MP_EXPLAIN={
+ Na:'<strong class="text-sky-300">Giant metallic.</strong> Melting overcomes the metallic bonding between Na⁺ ions and the sea of delocalised electrons. Na has a 1+ ion and one delocalised electron → the weakest metallic bonding of the three metals → lowest mp.',
+ Mg:'<strong class="text-sky-300">Giant metallic.</strong> Mg²⁺ with two delocalised electrons gives stronger metallic bonding than Na → higher mp.',
+ Al:'<strong class="text-sky-300">Giant metallic.</strong> Al³⁺ with three delocalised electrons gives the strongest metallic bonding of the three → highest mp among the metals.',
+ Si:'<strong class="text-amber-300">Giant covalent (macromolecular).</strong> Melting requires breaking many strong covalent bonds throughout the lattice → a very high mp (the peak of the period).',
+ P:'<strong class="text-rose-300">Simple molecular (P₄).</strong> Only weak van der Waals forces between molecules are overcome → low mp. The strong P–P covalent bonds within P₄ are NOT broken.',
+ S:'<strong class="text-rose-300">Simple molecular (S₈).</strong> A larger molecule with more electrons than P₄ → stronger van der Waals forces → mp slightly higher than P, but still low.',
+ Cl:'<strong class="text-rose-300">Simple molecular (Cl₂).</strong> A small molecule with few electrons → weak van der Waals forces → very low mp.',
+ Ar:'<strong class="text-rose-300">Simple atomic (monatomic).</strong> Very few electrons → the weakest van der Waals forces → lowest mp in the period.'
+};
+let mpBars=[];
+function drawMP(){
+  const cv=$('mpCanvas');if(!cv)return;const c=cv.getContext('2d');const w0=cv.parentElement.clientWidth;if(w0<50)return;const dpr=window.devicePixelRatio||1;cv.width=w0*dpr;cv.height=260*dpr;const W=cv.width,H=cv.height;c.clearRect(0,0,W,H);
+  const pL=44*dpr,pB=28*dpr,pR=14*dpr,pT=14*dpr,gW=W-pL-pR,gH=H-pT-pB;const maxV=1800;
+  function my(v){return pT+gH-(v/maxV)*gH}
+  c.strokeStyle='#1e293b';c.lineWidth=1*dpr;for(let g=0;g<=1800;g+=600){c.beginPath();c.moveTo(pL,my(g));c.lineTo(pL+gW,my(g));c.stroke();c.fillStyle='#64748b';c.font=(9*dpr)+'px "Fira Code"';c.textAlign='right';c.fillText(g,pL-6*dpr,my(g)+3*dpr)}
+  c.strokeStyle='#475569';c.lineWidth=1.5*dpr;c.beginPath();c.moveTo(pL,pT);c.lineTo(pL,pT+gH);c.lineTo(pL+gW,pT+gH);c.stroke();
+  const bw=gW/MP_SYM.length;mpBars=[];
+  MP.forEach((v,i)=>{const x=pL+i*bw+bw*0.18,bw2=bw*0.64,y=my(v);c.fillStyle=MP_COL[MP_TYPE[i]];c.fillRect(x,y,bw2,pT+gH-y);mpBars.push({x,y,w:bw2,i});c.fillStyle='#cbd5e1';c.font=(9*dpr)+'px "Fira Code"';c.textAlign='center';c.fillText(MP_SYM[i],x+bw2/2,pT+gH+13*dpr)});
+}
+function mpClick(e){const cv=$('mpCanvas');const r=cv.getBoundingClientRect();const dpr=window.devicePixelRatio||1;const px=(e.clientX-r.left)*dpr,py=(e.clientY-r.top)*dpr;const hit=mpBars.find(b=>px>=b.x&&px<=b.x+b.w&&py>=b.y);if(hit){const i=hit.i;$('mpCard').innerHTML='<div class="font-display text-lg font-bold text-white">'+MP_SYM[i]+' <span class="text-slate-500 text-xs font-mono">mp ≈ '+MP[i]+' K · '+MP_TYPE[i]+'</span></div><p class="mt-2 text-slate-300">'+MP_EXPLAIN[MP_SYM[i]]+'</p>'}
+}
+function drawTrends(){drawIE();drawMP()}
+
+/* ── CALCULATOR ── */
+function gv(id){const v=parseFloat($(id).value);return isNaN(v)?null:v}
+function solveParticles(){const Z=gv('p-Z'),A=gv('p-A'),q=gv('p-q')||0;const r=$('p-result');r.classList.remove('hidden');if(Z===null||A===null){r.innerHTML='⚠️ Enter Z and A.';return}const p=Z,n=A-Z,e=Z-q;r.innerHTML='<p>protons = '+p+'</p><p>neutrons = '+n+'</p><p>electrons = '+e+' &nbsp;(Z − charge = '+Z+' − ('+q+'))</p>'}
+let isoN=0;
+function addIsoRow(){isoN++;const d=document.createElement('div');d.className='grid grid-cols-2 gap-2 iso-row';d.innerHTML='<input type="number" step="any" class="iso-m bg-slate-900 border border-slate-700 rounded-lg p-2 text-slate-100 font-mono focus:border-purple-500 focus:outline-none" placeholder="isotope mass"><input type="number" step="any" class="iso-p bg-slate-900 border border-slate-700 rounded-lg p-2 text-slate-100 font-mono focus:border-purple-500 focus:outline-none" placeholder="% abundance">';$('iso-rows').appendChild(d)}
+function solveAr(){const rows=document.querySelectorAll('#iso-rows .iso-row');const r=$('ar-result');r.classList.remove('hidden');let num=0,den=0,ok=true;rows.forEach(row=>{const m=parseFloat(row.querySelector('.iso-m').value),p=parseFloat(row.querySelector('.iso-p').value);if(isNaN(m)||isNaN(p))ok=false;else{num+=m*p;den+=p}});if(!ok||den===0){r.innerHTML='⚠️ Enter mass and % for each isotope.';return}r.innerHTML='<p>Ar = Σ(mass × %)/Σ% = '+num.toFixed(2)+' / '+den.toFixed(2)+' = <strong>'+(num/den).toFixed(3)+'</strong></p>'}
+function solveArReverse(){const m1=gv('r-m1'),m2=gv('r-m2'),ar=gv('r-ar');const r=$('r-result');r.classList.remove('hidden');if(m1===null||m2===null||ar===null){r.innerHTML='⚠️ Enter both masses and Ar.';return}if(m1===m2){r.innerHTML='⚠️ The two isotope masses must differ.';return}const x=(ar-m2)/(m1-m2)*100;r.innerHTML='<p>% of isotope 1 (mass '+m1+') = <strong>'+x.toFixed(1)+'%</strong></p><p>% of isotope 2 (mass '+m2+') = <strong>'+(100-x).toFixed(1)+'%</strong></p><p class="text-slate-500">from Ar = (m1·x + m2·(100−x))/100</p>'}
+function solveDiatomic(){const m1=gv('d-m1'),m2=gv('d-m2'),a=gv('d-a'),b=gv('d-b');const r=$('d-result');r.classList.remove('hidden');if([m1,m2,a,b].some(v=>v===null)){r.innerHTML='⚠️ Enter both masses and the ratio a : b.';return}const lo=Math.min(m1,m2),hi=Math.max(m1,m2);const p1=2*lo,p2=lo+hi,p3=2*hi;const h1=a*a,h2=2*a*b,h3=b*b;r.innerHTML='<p>peaks at m/z: <strong>'+p1+', '+p2+', '+p3+'</strong></p><p>relative heights (a² : 2ab : b²) = <strong>'+h1+' : '+h2+' : '+h3+'</strong></p><p class="text-slate-500">combinations: '+lo+'-'+lo+' , '+lo+'-'+hi+' (×2) , '+hi+'-'+hi+'</p>'}
+
+/* ── INIT ── */
+window.addEventListener('resize',()=>{if($('tab-trends').classList.contains('active'))drawTrends()});
+window.onload=function(){
+  renderEngine('atom',ATOM_CARDS);renderEngine('ie',IE_CARDS);renderEngine('estruct',ESTRUCT_CARDS);
+  renderQuiz('atom-quiz-rows',ATOM_QUIZ);renderQuiz('ie-quiz-rows',IE_QUIZ);renderQuiz('estruct-quiz-rows',ESTRUCT_QUIZ);
+  renderTraps('atom-traps-grid',ATOM_TRAPS);renderTraps('ie-traps-grid',IE_TRAPS);renderTraps('estruct-traps-grid',ESTRUCT_TRAPS);
+  buildChain('chain1',{chips:[
+    {id:'shells',t:'Each element down the group has one more electron shell'},
+    {id:'shield',t:'so the outer electron experiences more shielding from inner shells'},
+    {id:'dist',t:'and the outer electron is further from the nucleus'},
+    {id:'weak',t:'therefore the attraction between nucleus and outer electron is weaker'},
+    {id:'outweigh',t:'this effect outweighs the increase in nuclear charge (more protons)'},
+    {id:'less',t:'so less energy is needed to remove the outer electron → 1st IE decreases'}
+  ],correct:['shells','shield','dist','weak','outweigh','less']});
+  buildChain('chain2',{chips:[
+    {id:'nuc',t:'Across the period the number of protons (nuclear charge) increases'},
+    {id:'same',t:'electrons are added to the same outer shell'},
+    {id:'shieldconst',t:'so shielding by inner shells stays roughly constant'},
+    {id:'attract',t:'therefore the attraction on the outer electron increases'},
+    {id:'more',t:'so more energy is needed to remove it → 1st IE generally increases'}
+  ],correct:['nuc','same','shieldconst','attract','more']});
+  buildKwFill('kwfill1',{segments:[
+    {t:'text',v:'Nitrogen\'s three 2p electrons are '},{t:'slot',a:'singly occupied (one per orbital)'},
+    {t:'text',v:', but in oxygen one 2p orbital holds a '},{t:'slot',a:'pair of electrons'},
+    {t:'text',v:'. The two electrons in the same orbital repel each other ('},{t:'slot',a:'spin-pair repulsion'},
+    {t:'text',v:'), so the paired electron is '},{t:'slot',a:'easier to remove'},
+    {t:'text',v:' — therefore oxygen\'s first ionisation energy is '},{t:'slot',a:'lower'},
+    {t:'text',v:' than nitrogen\'s, despite having more protons.'}
+  ],bank:['singly occupied (one per orbital)','pair of electrons','spin-pair repulsion','easier to remove','lower','stronger','unpaired','higher']});
+  buildWrongDiag('wrongdiag1',{correct:[0,1,2,3,4],items:[
+    'It argues the wrong way — more protons would raise IE, not explain a decrease.',
+    'It omits shielding, the key factor down a group.',
+    'It omits the increasing distance of the outer electron from the nucleus.',
+    'It never states that the shielding/distance effect outweighs the extra nuclear charge.',
+    '"More electrons" without specifying inner-shell shielding is meaningless and misleading.',
+    'It should mention a change in structure type down the group.',
+    'It must give the numerical value of the ionisation energy.'
+  ]});
+  addIsoRow();addIsoRow();
+  const ic=$('ieCanvas');if(ic)ic.addEventListener('click',ieClick);
+  const mc=$('mpCanvas');if(mc)mc.addEventListener('click',mpClick);
+  drawTrends();
+  safeInitKaTeX();
+};
+
+/* ════════════════════════════════════════════════════════════
+   SIMULATION 1 · MASS SPEC LAB  (animated ion stream + Ar calc)
+   ════════════════════════════════════════════════════════════ */
+const MS = {
+  initialized:false, canvas:null, ctx:null, bg:null, bgx:null,
+  elements:{
+    Cl:{name:'Chlorine', ar:35.45, isotopes:[{mass:35,abundance:75.77,color:'rgb(52,211,153)'},{mass:37,abundance:24.23,color:'rgb(248,113,113)'}]},
+    Br:{name:'Bromine', ar:79.90, isotopes:[{mass:79,abundance:50.69,color:'rgb(251,191,36)'},{mass:81,abundance:49.31,color:'rgb(34,211,238)'}]},
+    C:{name:'Carbon', ar:12.01, isotopes:[{mass:12,abundance:98.93,color:'rgb(148,163,184)'},{mass:13,abundance:1.07,color:'rgb(236,72,153)'}]},
+    Ne:{name:'Neon', ar:20.18, isotopes:[{mass:20,abundance:90.48,color:'rgb(167,139,250)'},{mass:21,abundance:0.27,color:'rgb(250,204,21)'},{mass:22,abundance:9.25,color:'rgb(56,189,248)'}]},
+    Mg:{name:'Magnesium', ar:24.31, isotopes:[{mass:24,abundance:78.99,color:'rgb(45,212,191)'},{mass:25,abundance:10.00,color:'rgb(249,115,22)'},{mass:26,abundance:11.01,color:'rgb(219,39,119)'}]}
+  },
+  current:'Cl', speed:0.15, ions:[], hits:{}, total:0,
+  stageW:150, stageH:110, baseY:65, startX:15,
+  arcCX:465, midR:210,
+  get arcCY(){ return this.baseY + this.stageH/2 + this.midR; },
+  get innerR(){ return this.midR - this.stageH/2; },
+  get outerR(){ return this.midR + this.stageH/2; },
+
+  init(){
+    this.canvas=document.getElementById('ms-canvas');
+    if(!this.canvas) return;
+    this.ctx=this.canvas.getContext('2d');
+    this.bg=document.createElement('canvas'); this.bg.width=900; this.bg.height=540;
+    this.bgx=this.bg.getContext('2d');
+    this.drawBg();
+    this.clear();
+    this.loop();
+    this.initialized=true;
+  },
+  handleElement(){ this.current=document.getElementById('ms-element').value; this.clear(); },
+  handleSpeed(){
+    this.speed=parseFloat(document.getElementById('ms-speed').value);
+    document.getElementById('ms-speed-label').textContent=this.speed.toFixed(2)+'×';
+  },
+  clear(){
+    this.ions=[]; this.total=0; this.hits={};
+    const el=this.elements[this.current]; let html='';
+    el.isotopes.forEach(iso=>{
+      this.hits[iso.mass]=0;
+      html+='<div class="flex justify-between items-center"><span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full" style="background:'+iso.color+'"></span>m/z '+iso.mass+':</span><span class="text-slate-300 font-bold">'+iso.abundance.toFixed(2)+'%</span></div>';
+    });
+    document.getElementById('ms-abundance').innerHTML=html;
+    document.getElementById('ms-queue').classList.add('hidden');
+    document.getElementById('ms-inject').disabled=false;
+    document.getElementById('ms-ar-compare').classList.add('hidden');
+    document.getElementById('ms-ar-working').innerHTML='Run the spectrometer to see the worked calculation…';
+    this.refresh();
+  },
+  inject(){
+    this.clear();
+    document.getElementById('ms-inject').disabled=true;
+    const q=document.getElementById('ms-queue'); q.classList.remove('hidden'); q.textContent='QUEUE: 500 / 500';
+    const el=this.elements[this.current];
+    for(let i=0;i<500;i++){
+      let roll=Math.random()*100, acc=0, chosen=el.isotopes[0];
+      for(let j=0;j<el.isotopes.length;j++){ acc+=el.isotopes[j].abundance; if(roll<=acc){chosen=el.isotopes[j];break;} }
+      this.ions.push({
+        x:this.startX-5, y:this.baseY+this.stageH/2+(Math.random()-0.5)*14,
+        stage:1, mass:chosen.mass, color:chosen.color,
+        v:1.4+Math.random()*0.25, angle:null, radius:null,
+        delay:i*(13/(this.speed+0.05))
+      });
+    }
+  },
+  refresh(){
+    const el=this.elements[this.current];
+    let bars='', counters='', max=0;
+    el.isotopes.forEach(iso=>{ const c=this.hits[iso.mass]||0; if(c>max)max=c; });
+    el.isotopes.forEach(iso=>{
+      const c=this.hits[iso.mass]||0;
+      const h=max>0?(c/max)*100:0;
+      bars+='<div class="flex flex-col items-center flex-1 justify-end h-full"><div class="w-10 rounded-t relative transition-all duration-75 shadow-md" style="height:'+h+'%;background:'+iso.color+'"><span class="absolute -top-5 left-1/2 -translate-x-1/2 text-[9px] font-mono font-bold text-slate-300">'+c+'</span></div><span class="text-[11px] font-mono font-bold mt-1.5 text-slate-400">'+iso.mass+'</span></div>';
+      counters+='<div class="flex justify-between items-center bg-slate-900 p-2 rounded border border-slate-800"><span style="color:'+iso.color+'" class="font-bold">m/z '+iso.mass+' peak:</span><span class="font-bold text-slate-200">'+c+' counts</span></div>';
+    });
+    document.getElementById('ms-bars').innerHTML=bars;
+    document.getElementById('ms-counters').innerHTML=counters;
+    document.getElementById('ms-total').textContent=this.total+' / 500 ions';
+    if(this.total>=500){
+      document.getElementById('ms-inject').disabled=false;
+      document.getElementById('ms-queue').textContent='RUN COMPLETED ✓';
+      this.calcAr();
+    }
+  },
+  calcAr(){
+    const el=this.elements[this.current];
+    // Use the simulated counts as the measured abundances
+    let sum=0, working='', total=this.total;
+    el.isotopes.forEach(iso=>{
+      const c=this.hits[iso.mass]||0;
+      const pct=(c/total)*100;
+      sum+=iso.mass*pct;
+      working+='<div>('+iso.mass+' × '+pct.toFixed(2)+'%) = '+(iso.mass*pct).toFixed(2)+'</div>';
+    });
+    const ar=sum/100;
+    working+='<div class="border-t border-slate-700 pt-1.5 mt-1.5 text-emerald-300 font-bold">A<sub>r</sub> = '+sum.toFixed(2)+' ÷ 100 = '+ar.toFixed(2)+'</div>';
+    document.getElementById('ms-ar-working').innerHTML=working;
+    const cmp=document.getElementById('ms-ar-compare');
+    cmp.classList.remove('hidden');
+    cmp.innerHTML='<b>Measured A<sub>r</sub> = '+ar.toFixed(2)+'</b> &nbsp;·&nbsp; accepted value for '+el.name+' = '+el.ar.toFixed(2)+'. The small difference is because your 500-ion sample is random — more ions would converge on the accepted value.';
+  },
+  drawBg(){
+    const g=this.bgx, W=this.stageW, H=this.stageH, Y=this.baseY, X=this.startX;
+    g.lineWidth=3; g.lineJoin='round';
+    g.fillStyle='rgba(51,65,85,0.25)'; g.strokeStyle='#475569';
+    g.fillRect(X,Y,W,H); g.strokeRect(X,Y,W,H);
+    g.fillStyle='rgba(234,179,8,0.04)'; g.strokeStyle='#eab308';
+    g.fillRect(X+W,Y,W,H); g.strokeRect(X+W,Y,W,H);
+    g.fillStyle='rgba(59,130,246,0.04)'; g.strokeStyle='#3b82f6';
+    g.fillRect(X+2*W,Y,W,H); g.strokeRect(X+2*W,Y,W,H);
+    // deflection arc
+    const cx=this.arcCX, cy=this.arcCY, ir=this.innerR, or=this.outerR;
+    g.fillStyle='rgba(30,41,59,0.5)'; g.strokeStyle='#64748b';
+    g.beginPath(); g.moveTo(cx,Y); g.arc(cx,cy,or,-Math.PI/2,0,false);
+    g.lineTo(cx+or,cy+50); g.lineTo(cx+ir,cy+50); g.lineTo(cx+ir,cy);
+    g.arc(cx,cy,ir,0,-Math.PI/2,true); g.closePath(); g.fill(); g.stroke();
+    g.fillStyle='rgba(148,163,184,0.08)';
+    g.beginPath(); g.arc(cx,cy,or,-Math.PI/2,0,false); g.lineTo(cx,cy); g.closePath(); g.fill();
+    // detector
+    g.fillStyle='#0f172a'; g.strokeStyle='#818cf8';
+    g.fillRect(cx+ir-25,cy+50,H+50,110); g.strokeRect(cx+ir-25,cy+50,H+50,110);
+    g.font='bold 10px "Fira Code", monospace';
+    g.fillStyle='#94a3b8'; g.fillText('1. VAPORISATION',X+10,Y-15);
+    g.fillStyle='#eab308'; g.fillText('2. IONISATION',X+W+10,Y-15);
+    g.fillStyle='#3b82f6'; g.fillText('3. ACCELERATE (E-FIELD)',X+2*W+2,Y-15);
+    g.fillStyle='#64748b'; g.fillText('4. DEFLECT (B-FIELD)',cx+25,Y-15);
+    g.fillStyle='#f43f5e'; g.fillText('5. DETECTOR',cx+ir-15,cy+130);
+  },
+  loop(){
+    const c=this.ctx;
+    c.clearRect(0,0,900,540);
+    c.drawImage(this.bg,0,0);
+    // detector strip
+    c.strokeStyle='#f43f5e'; c.lineWidth=5;
+    c.beginPath(); c.moveTo(this.arcCX+this.innerR,this.arcCY+52); c.lineTo(this.arcCX+this.outerR,this.arcCY+52); c.stroke(); c.lineWidth=3;
+    let remaining=0;
+    const masses=this.elements[this.current].isotopes.map(i=>i.mass).sort((a,b)=>a-b);
+    this.ions.forEach(ion=>{
+      if(ion.delay>0){ ion.delay-=(1*(this.speed/0.15)); remaining++; return; }
+      const dv=ion.v*this.speed;
+      if(ion.stage===1){ ion.x+=dv*0.7; if(ion.x>=this.startX+this.stageW) ion.stage=2; }
+      else if(ion.stage===2){ ion.x+=dv*0.7; if(ion.x>=this.startX+2*this.stageW) ion.stage=3; }
+      else if(ion.stage===3){ ion.x+=dv*2.5; if(ion.x>=this.arcCX) ion.stage=4; }
+      else if(ion.stage===4){
+        if(ion.angle===null){
+          ion.angle=-Math.PI/2;
+          const rank=masses.indexOf(ion.mass);
+          const pad=this.stageH/(masses.length+1);
+          ion.radius=this.innerR+pad*(rank+1);
+        }
+        ion.angle+=(40/ion.mass)*0.014*(this.speed/0.15);
+        ion.x=this.arcCX+Math.cos(ion.angle)*ion.radius;
+        ion.y=this.arcCY+Math.sin(ion.angle)*ion.radius;
+        if(ion.angle>=0) ion.stage=5;
+      }
+      else if(ion.stage===5){
+        ion.y+=dv*1.8;
+        if(ion.y>=this.arcCY+52){ ion.stage=6; this.hits[ion.mass]++; this.total++; this.refresh(); }
+      }
+      if(ion.stage<6){
+        c.beginPath(); c.arc(ion.x,ion.y,5,0,Math.PI*2);
+        c.fillStyle=ion.color; c.shadowBlur=5; c.shadowColor=ion.color; c.fill(); c.shadowBlur=0;
+      }
+    });
+    if(remaining>0) document.getElementById('ms-queue').textContent='QUEUE: '+remaining+' / 500';
+    this.ions=this.ions.filter(i=>i.stage<6);
+    requestAnimationFrame(()=>this.loop());
+  }
+};
+
+/* ════════════════════════════════════════════════════════════
+   SIMULATION 2 · SHELL SIMULATOR  (shells + successive IE graph)
+   ════════════════════════════════════════════════════════════ */
+const SHELLS = {
+  initialized:false, chart:null, currentZ:11, currentIE:0,
+  data:{
+    3:{name:'Lithium',symbol:'Li',group:1,shells:[2,1],config:'1s² 2s¹',ies:[520,7298,11815]},
+    4:{name:'Beryllium',symbol:'Be',group:2,shells:[2,2],config:'1s² 2s²',ies:[900,1757,14849,21007]},
+    5:{name:'Boron',symbol:'B',group:3,shells:[2,3],config:'1s² 2s² 2p¹',ies:[801,2427,3660,25026,32827]},
+    6:{name:'Carbon',symbol:'C',group:4,shells:[2,4],config:'1s² 2s² 2p²',ies:[1086,2353,4621,6223,37831,47277]},
+    7:{name:'Nitrogen',symbol:'N',group:5,shells:[2,5],config:'1s² 2s² 2p³',ies:[1402,2856,4578,7475,9445,53267,64360]},
+    8:{name:'Oxygen',symbol:'O',group:6,shells:[2,6],config:'1s² 2s² 2p⁴',ies:[1314,3388,5300,7469,10989,13326,71330,84078]},
+    9:{name:'Fluorine',symbol:'F',group:7,shells:[2,7],config:'1s² 2s² 2p⁵',ies:[1681,3374,6050,8408,11023,15164,17868,92038,106434]},
+    10:{name:'Neon',symbol:'Ne',group:8,shells:[2,8],config:'1s² 2s² 2p⁶',ies:[2081,3952,6122,9371,12177,15238,20000,23070,115380,131430]},
+    11:{name:'Sodium',symbol:'Na',group:1,shells:[2,8,1],config:'1s² 2s² 2p⁶ 3s¹',ies:[496,4562,6912,9543,13354,16613,20117,25496,28932,141362,159076]},
+    12:{name:'Magnesium',symbol:'Mg',group:2,shells:[2,8,2],config:'1s² 2s² 2p⁶ 3s²',ies:[738,1451,7733,10543,13630,18020,21711,25661,31653,35458,169988,189368]},
+    13:{name:'Aluminium',symbol:'Al',group:3,shells:[2,8,3],config:'1s² 2s² 2p⁶ 3s² 3p¹',ies:[578,1817,2745,11577,14842,18379,23326,27465,31853,38473,42647,201266,222316]},
+    14:{name:'Silicon',symbol:'Si',group:4,shells:[2,8,4],config:'1s² 2s² 2p⁶ 3s² 3p²',ies:[787,1577,3232,4356,16091,19805,23780,29287,33878,38726,45962,50502,235196,257910]},
+    15:{name:'Phosphorus',symbol:'P',group:5,shells:[2,8,5],config:'1s² 2s² 2p⁶ 3s² 3p³',ies:[1012,1907,2914,4964,6274,21267,25431,29872,35905,40950,46261,54110,59024,271791,296195]},
+    16:{name:'Sulfur',symbol:'S',group:6,shells:[2,8,6],config:'1s² 2s² 2p⁶ 3s² 3p⁴',ies:[1000,2252,3357,4556,7004,8496,27107,31719,36621,43177,48710,54460,62930,68216,311048,337131]},
+    17:{name:'Chlorine',symbol:'Cl',group:7,shells:[2,8,7],config:'1s² 2s² 2p⁶ 3s² 3p⁵',ies:[1251,2298,3822,5159,6542,9362,11018,33604,38600,43961,51068,57119,63363,72382,78095,352994,380760]},
+    18:{name:'Argon',symbol:'Ar',group:8,shells:[2,8,8],config:'1s² 2s² 2p⁶ 3s² 3p⁶',ies:[1521,2666,3931,5771,7238,8781,11995,13842,40760,46186,52002,59653,66199,72918,82473,88576,397605,427066]},
+    19:{name:'Potassium',symbol:'K',group:1,shells:[2,8,8,1],config:'1s² 2s² 2p⁶ 3s² 3p⁶ 4s¹',ies:[419,3052,4420,5877,7975,9590,11343,14944,16964,48610,54490,60730,68950,75900,83080,93400,99710,444880,476063]},
+    20:{name:'Calcium',symbol:'Ca',group:2,shells:[2,8,8,2],config:'1s² 2s² 2p⁶ 3s² 3p⁶ 4s²',ies:[590,1145,4912,6491,8153,10496,12270,14206,18191,20385,57110,63410,70110,78890,86310,94000,104900,111700,494850,527790]}
+  },
+  shellColors:{1:'#ef4444',2:'#fbbf24',3:'#3b82f6',4:'#a855f7'},
+
+  init(){
+    this.buildPTable();
+    this.select(11);
+    this.initialized=true;
+  },
+  buildPTable(){
+    const wrap=document.getElementById('shells-ptable');
+    const periods={2:[3,4,5,6,7,8,9,10],3:[11,12,13,14,15,16,17,18],4:[19,20]};
+    let html='';
+    Object.keys(periods).forEach(p=>{
+      html+='<div class="flex items-center gap-1.5"><span class="text-[10px] font-mono text-slate-500 w-14 shrink-0">Period '+p+'</span><div class="flex gap-1.5 flex-wrap">';
+      periods[p].forEach(z=>{
+        const el=this.data[z];
+        html+='<button onclick="SHELLS.select('+z+')" id="shells-tile-'+z+'" class="shells-tile btn-press w-12 h-12 rounded-lg border border-slate-700 bg-slate-900 hover:border-amber-400 transition flex flex-col items-center justify-center"><span class="text-[9px] text-slate-500 font-mono">'+z+'</span><span class="text-sm font-bold text-slate-200">'+el.symbol+'</span></button>';
+      });
+      html+='</div></div>';
+    });
+    wrap.innerHTML=html;
+  },
+  select(z){
+    this.currentZ=z; this.currentIE=0;
+    document.querySelectorAll('.shells-tile').forEach(t=>{ t.classList.remove('ring-2','ring-amber-400','border-amber-400'); });
+    const tile=document.getElementById('shells-tile-'+z);
+    if(tile){ tile.classList.add('ring-2','ring-amber-400','border-amber-400'); }
+    const el=this.data[z];
+    document.getElementById('shells-config').textContent=el.name+' ('+el.symbol+') · '+el.config+' · shells: '+el.shells.join(', ');
+    this.drawAtom(el);
+    this.drawChart(el);
+    this.updateEquation(el,0);
+    this.analyse(el);
+  },
+  electronPositions(count, shellN){
+    const base=[-Math.PI/2, Math.PI/2, 0, Math.PI]; const off=0.08; const angles=[];
+    if(shellN===1){ if(count>=1)angles.push(base[0]); if(count>=2)angles.push(base[1]); }
+    else if(count<=4){ for(let i=0;i<count;i++)angles.push(base[i]); }
+    else if(count===5){ angles.push(base[0]-off,base[0]+off,base[1],base[2],base[3]); }
+    else if(count===6){ angles.push(base[0]-off,base[0]+off,base[1]-off,base[1]+off,base[2],base[3]); }
+    else if(count===7){ angles.push(base[0]-off,base[0]+off,base[1]-off,base[1]+off,base[2]-off,base[2]+off,base[3]); }
+    else if(count===8){ angles.push(base[0]-off,base[0]+off,base[1]-off,base[1]+off,base[2]-off,base[2]+off,base[3]-off,base[3]+off); }
+    return angles;
+  },
+  drawAtom(el){
+    const box=document.getElementById('shells-atom'); box.innerHTML='';
+    const NS='http://www.w3.org/2000/svg';
+    const svg=document.createElementNS(NS,'svg');
+    svg.setAttribute('viewBox','0 0 400 400'); svg.setAttribute('width','100%'); svg.setAttribute('height','100%');
+    const defs=document.createElementNS(NS,'defs');
+    defs.innerHTML='<radialGradient id="shells-nuc" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#818cf8"/><stop offset="100%" stop-color="#4f46e5"/></radialGradient>';
+    svg.appendChild(defs);
+    const nuc=document.createElementNS(NS,'circle');
+    nuc.setAttribute('cx',200);nuc.setAttribute('cy',200);nuc.setAttribute('r',28);nuc.setAttribute('fill','url(#shells-nuc)');
+    svg.appendChild(nuc);
+    const nt=document.createElementNS(NS,'text');
+    nt.setAttribute('x',200);nt.setAttribute('y',207);nt.setAttribute('text-anchor','middle');nt.setAttribute('font-size','18');nt.setAttribute('font-weight','bold');nt.setAttribute('fill','white');
+    nt.textContent=el.symbol; svg.appendChild(nt);
+    const maxR=160, step=maxR/(el.shells.length+1);
+    el.shells.forEach((count,idx)=>{
+      const r=step*(idx+1)+24, shellN=idx+1, col=this.shellColors[shellN]||'#6366f1';
+      const circ=document.createElementNS(NS,'circle');
+      circ.setAttribute('cx',200);circ.setAttribute('cy',200);circ.setAttribute('r',r);
+      circ.setAttribute('fill','none');circ.setAttribute('stroke',col);circ.setAttribute('stroke-opacity','0.3');
+      circ.setAttribute('stroke-width','2');circ.setAttribute('stroke-dasharray','4 4');
+      svg.appendChild(circ);
+      this.electronPositions(count,shellN).forEach(a=>{
+        const ex=200+r*Math.cos(a), ey=200+r*Math.sin(a);
+        const e=document.createElementNS(NS,'circle');
+        e.setAttribute('cx',ex);e.setAttribute('cy',ey);e.setAttribute('r',8);
+        e.setAttribute('fill',col);e.setAttribute('stroke','#fff');e.setAttribute('stroke-width','1.5');
+        svg.appendChild(e);
+      });
+    });
+    box.appendChild(svg);
+  },
+  shellOfElectron(el, idx){
+    const shells=[...el.shells]; let rem=idx;
+    for(let s=shells.length-1;s>=0;s--){ if(rem>=shells[s]){rem-=shells[s];shells[s]=0;} else return s+1; }
+    return 1;
+  },
+  drawChart(el){
+    const ctx=document.getElementById('shells-chart').getContext('2d');
+    if(this.chart){ this.chart.destroy(); }
+    const labels=el.ies.map((_,i)=>i+1);
+    const shells=[...el.shells]; let rem=0;
+    const pointColors=el.ies.map((_,i)=>{ const s=this.shellOfElectron(el,i); return this.shellColors[s]||'#6366f1'; });
+    const self=this;
+    this.chart=new Chart(ctx,{
+      type:'line',
+      data:{ labels:labels, datasets:[{ label:'IE (kJ mol⁻¹)', data:el.ies, borderColor:'#fbbf24',
+        backgroundColor:pointColors, pointBackgroundColor:pointColors, pointRadius:6, pointHoverRadius:8,
+        borderWidth:2, tension:0.2 }]},
+      options:{
+        responsive:true, maintainAspectRatio:false,
+        onClick:(e,els)=>{ if(els.length){ self.currentIE=els[0].index; self.updateEquation(el,els[0].index); } },
+        scales:{
+          y:{ type:'logarithmic', title:{display:true,text:'IE (kJ mol⁻¹, log scale)',color:'#64748b',font:{size:10}}, ticks:{color:'#64748b',font:{size:9}}, grid:{color:'rgba(51,65,85,0.4)'} },
+          x:{ title:{display:true,text:'Ionisation number (1st, 2nd, 3rd…)',color:'#64748b',font:{size:10}}, ticks:{color:'#64748b',font:{size:9}}, grid:{color:'rgba(51,65,85,0.4)'} }
+        },
+        plugins:{ legend:{display:false}, tooltip:{callbacks:{label:(c)=>' IE = '+c.parsed.y.toLocaleString()+' kJ mol⁻¹ (shell '+self.shellOfElectron(el,c.dataIndex)+')'}} }
+      }
+    });
+  },
+  updateEquation(el, idx){
+    this.currentIE=idx;
+    const charge=idx; // after removing idx electrons, ion is idx+
+    const sym=el.symbol;
+    const ord=['1st','2nd','3rd','4th','5th','6th','7th','8th','9th','10th','11th','12th','13th','14th','15th','16th','17th','18th','19th','20th'][idx];
+    const left=charge===0?sym+'(g)':sym+'<sup>'+(charge)+'</sup>⁺(g)'.replace('⁺','⁺');
+    const leftStr=charge===0?sym+'(g)':sym+'<sup>'+(charge===1?'':charge)+'</sup><sup>+</sup>(g)';
+    const rightCharge=idx+1;
+    const rightStr=sym+'<sup>'+(rightCharge===1?'':rightCharge)+'</sup><sup>+</sup>(g)';
+    document.getElementById('shells-equation').innerHTML=leftStr+' → '+rightStr+' + e⁻';
+    const shell=this.shellOfElectron(el,idx);
+    document.getElementById('shells-eq-note').innerHTML='This is the <b>'+ord+'</b> ionisation energy = <b>'+el.ies[idx].toLocaleString()+' kJ mol⁻¹</b>. The electron is removed from shell <b style="color:'+(this.shellColors[shell]||'#6366f1')+'">n = '+shell+'</b>.';
+    renderMathIn(document.getElementById('shells-equation'));
+  },
+  analyse(el){
+    const box=document.getElementById('shells-analysis');
+    // find jumps (ratio > 2 between consecutive IEs)
+    let jumps=[];
+    for(let i=1;i<el.ies.length;i++){ const ratio=el.ies[i]/el.ies[i-1]; if(ratio>2) jumps.push({after:i,ratio:ratio}); }
+    let html='<p><b class="text-white">'+el.name+'</b> has configuration <span class="font-mono text-cyan-300">'+el.config+'</span> with <b class="text-white">'+el.shells.length+'</b> occupied shells ('+el.shells.join(', ')+').</p>';
+    html+='<div class="p-3 bg-amber-950/30 border border-amber-800/50 rounded-lg space-y-1.5"><span class="text-[10px] font-bold uppercase tracking-wider text-amber-400 block">Quantum jumps detected</span>';
+    if(jumps.length===0){ html+='<p class="text-slate-400">No large jumps (only one shell).</p>'; }
+    else{
+      jumps.forEach(j=>{
+        const shell=this.shellOfElectron(el,j.after);
+        html+='<p class="text-slate-300">Jump between IE '+j.after+' and IE '+(j.after+1)+' (×'+j.ratio.toFixed(1)+') → electron '+(j.after+1)+' comes from inner shell <b style="color:'+(this.shellColors[shell]||'#6366f1')+'">n='+shell+'</b>.</p>';
+      });
+    }
+    html+='</div>';
+    html+='<p class="text-slate-400 text-[11px]">Outer-shell electrons = <b class="text-white">'+el.shells[el.shells.length-1]+'</b> (the small values before the first big jump) → Group <b class="text-white">'+el.group+'</b>. Within a shell, IE still rises because each removal reduces electron–electron repulsion, so the remaining electrons are held more tightly.</p>';
+    box.innerHTML=html;
+  }
+};
+
+/* ════════════════════════════════════════════════════════════
+   SIMULATION 3 · ORBITALS & CONFIG  (3D shapes + config predictor)
+   ════════════════════════════════════════════════════════════ */
+const ORB = {
+  initialized:false, canvas:null, ctx:null,
+  alpha:0.5, beta:0.3, dragging:false, px:0, py:0,
+  shape:'1s', overlapMode:null,
+
+  init(){
+    this.canvas=document.getElementById('orb-canvas');
+    if(!this.canvas) return;
+    this.ctx=this.canvas.getContext('2d');
+    const cv=this.canvas;
+    cv.addEventListener('mousedown',e=>{this.dragging=true;this.px=e.clientX;this.py=e.clientY;});
+    window.addEventListener('mouseup',()=>{this.dragging=false;});
+    cv.addEventListener('mousemove',e=>{ if(!this.dragging)return; this.alpha+=(e.clientX-this.px)*0.012; this.beta+=(e.clientY-this.py)*0.012; this.px=e.clientX;this.py=e.clientY; });
+    cv.addEventListener('touchstart',e=>{ if(e.touches.length===1){this.dragging=true;this.px=e.touches[0].clientX;this.py=e.touches[0].clientY;} },{passive:true});
+    window.addEventListener('touchend',()=>{this.dragging=false;});
+    cv.addEventListener('touchmove',e=>{ if(!this.dragging||e.touches.length!==1)return; this.alpha+=(e.touches[0].clientX-this.px)*0.012; this.beta+=(e.touches[0].clientY-this.py)*0.012; this.px=e.touches[0].clientX;this.py=e.touches[0].clientY; },{passive:true});
+    this.draw();
+    this.initialized=true;
+  },
+  selectShape(s){
+    this.shape=s; this.overlapMode=null;
+    document.querySelectorAll('.orb-shape-btn').forEach(b=>{ b.classList.remove('ring-2','ring-violet-300'); });
+    const btn=document.getElementById('orb-shape-'+s);
+    if(btn){ btn.classList.add('ring-2','ring-violet-300'); }
+    this.updateInfo();
+  },
+  overlap(mode){ this.overlapMode=mode; this.shape=null; this.updateInfo(); },
+  updateInfo(){
+    const t=document.getElementById('orb-title'), d=document.getElementById('orb-desc');
+    if(this.overlapMode==='all-p'){ t.textContent='All Three p Orbitals'; d.textContent='px (indigo), py (green), pz (pink) are mutually perpendicular and together hold up to 6 electrons.'; }
+    else if(this.overlapMode==='px-py'){ t.textContent='px + py Overlap'; d.textContent='Two perpendicular dumbbell orbitals occupying different regions of space.'; }
+    else if(this.shape==='1s'){ t.textContent='1s Orbital'; d.textContent='Smallest s orbital (n=1). Spherical, lowest energy.'; }
+    else if(this.shape==='2s'){ t.textContent='2s Orbital'; d.textContent='Larger than 1s (n=2). Still spherical, extends further.'; }
+    else if(this.shape==='3s'){ t.textContent='3s Orbital'; d.textContent='Largest s orbital shown (n=3). Size grows with n.'; }
+    else if(this.shape&&this.shape.endsWith('x')){ t.textContent=this.shape+' Orbital'; d.textContent='Dumbbell along the x-axis.'+(this.shape[0]==='3'?' 3p is larger than 2p.':''); }
+    else if(this.shape&&this.shape.endsWith('y')){ t.textContent=this.shape+' Orbital'; d.textContent='Dumbbell along the y-axis.'+(this.shape[0]==='3'?' 3p is larger than 2p.':''); }
+    else if(this.shape&&this.shape.endsWith('z')){ t.textContent=this.shape+' Orbital'; d.textContent='Dumbbell along the z-axis.'+(this.shape[0]==='3'?' 3p is larger than 2p.':''); }
+    else { t.textContent='Orbital'; d.textContent='3D probability distribution.'; }
+  },
+  points(shape){
+    const pts=[]; let scale=1, isS=false, axis=null;
+    if(shape==='1s'){scale=0.65;isS=true;}
+    else if(shape==='2s'){scale=1;isS=true;}
+    else if(shape==='3s'){scale=1.4;isS=true;}
+    else if(shape&&/^[23]?[xyz]$/.test(shape)){ axis=shape.slice(-1); if(shape[0]==='3')scale=1.35; else if(shape.length===1)scale=1; else scale=1; if(shape.startsWith('2'))scale=1; if(shape.startsWith('3'))scale=1.35; }
+    const density=isS?750:520;
+    if(isS){
+      const R=68*scale;
+      for(let i=0;i<density;i++){
+        const r=R*Math.cbrt(Math.random()), th=Math.random()*Math.PI*2, ph=Math.acos(2*Math.random()-1);
+        pts.push({x:r*Math.sin(ph)*Math.cos(th), y:r*Math.sin(ph)*Math.sin(th), z:r*Math.cos(ph), color:'#34d399'});
+      }
+    } else {
+      const ax=axis||'x', off=40*scale, lr=46*scale;
+      const cols={x:'#818cf8',y:'#34d399',z:'#f472b6'}; const col=cols[ax];
+      for(let i=0;i<density;i++){
+        const lobe=Math.random()<0.5?1:-1;
+        const r=lr*Math.cbrt(Math.random()), th=Math.random()*Math.PI*2, ph=Math.acos(2*Math.random()-1);
+        let dx=r*Math.sin(ph)*Math.cos(th), dy=r*Math.sin(ph)*Math.sin(th), dz=r*Math.cos(ph);
+        let x=0,y=0,z=0;
+        if(ax==='x'){x=lobe*off+dx;y=dy;z=dz;}
+        else if(ax==='y'){y=lobe*off+dy;x=dx;z=dz;}
+        else {z=lobe*off+dz;x=dx;y=dy;}
+        pts.push({x,y,z,color:col});
+      }
+    }
+    return pts;
+  },
+  project(x,y,z){
+    const ca=Math.cos(this.alpha),sa=Math.sin(this.alpha),cb=Math.cos(this.beta),sb=Math.sin(this.beta);
+    const x1=x*ca-z*sa, z1=x*sa+z*ca, y2=y*cb-z1*sb;
+    return {x:this.canvas.width/2+x1, y:this.canvas.height/2-y2};
+  },
+  draw(){
+    const c=this.ctx; if(!c) return;
+    c.clearRect(0,0,this.canvas.width,this.canvas.height);
+    const L=110, o=this.project(0,0,0), ax=this.project(L,0,0), ay=this.project(0,L,0), az=this.project(0,0,L);
+    c.strokeStyle='#475569'; c.lineWidth=1.5;
+    c.beginPath();c.moveTo(o.x,o.y);c.lineTo(ax.x,ax.y);c.stroke();
+    c.beginPath();c.moveTo(o.x,o.y);c.lineTo(ay.x,ay.y);c.stroke();
+    c.beginPath();c.moveTo(o.x,o.y);c.lineTo(az.x,az.y);c.stroke();
+    c.font='11px Inter';
+    c.fillStyle='#ef4444';c.fillText('x',ax.x+4,ax.y);
+    c.fillStyle='#22c55e';c.fillText('y',ay.x+2,ay.y-6);
+    c.fillStyle='#3b82f6';c.fillText('z',az.x-8,az.y+8);
+    c.fillStyle='#f1f5f9';c.beginPath();c.arc(o.x,o.y,3.5,0,Math.PI*2);c.fill();
+    let pts=[];
+    if(this.overlapMode==='all-p'){ ['x','y','z'].forEach(a=>{this.points(a).forEach(p=>pts.push(p));}); }
+    else if(this.overlapMode==='px-py'){ ['x','y'].forEach(a=>{this.points(a).forEach(p=>pts.push(p));}); }
+    else { pts=this.points(this.shape||'1s'); }
+    pts.forEach(p=>{ const q=this.project(p.x,p.y,p.z); c.fillStyle=p.color; c.fillRect(q.x,q.y,1.8,1.8); });
+    requestAnimationFrame(()=>this.draw());
+  }
+};
+
+/* Configuration predictor (Z=1–36, atoms & ions) */
+const CFG = {
+  ion:'atom',
+  order:['1s','2s','2p','3s','3p','4s','3d','4p'],
+  cap:{s:2,p:6,d:10},
+  noble:{2:'He',10:'Ne',18:'Ar',36:'Kr'},
+  elements:(()=>{ const s=['H','He','Li','Be','B','C','N','O','F','Ne','Na','Mg','Al','Si','P','S','Cl','Ar','K','Ca','Sc','Ti','V','Cr','Mn','Fe','Co','Ni','Cu','Zn','Ga','Ge','As','Se','Br','Kr']; return s; })(),
+  setIon(i){
+    this.ion=i;
+    ['atom','cat1','cat2','an1'].forEach(k=>{
+      const b=document.getElementById('cfg-ion-'+k);
+      if(k===i){ b.className='cfg-ion-btn btn-press bg-slate-700 text-white px-3 py-1.5 rounded-md transition'; }
+      else { b.className='cfg-ion-btn btn-press text-slate-400 hover:text-white px-3 py-1.5 rounded-md transition'; }
+    });
+    this.update();
+  },
+  // Removal order for cations: highest n first, then highest l → 4s empties BEFORE 3d
+  removeOrder:['4p','4s','3d','3p','3s','2p','2s','1s'],
+  electronCount(z){
+    if(this.ion==='atom')return z;
+    if(this.ion==='cat1')return z-1;
+    if(this.ion==='cat2')return z-2;
+    if(this.ion==='an1')return z+1;
+    return z;
+  },
+  // Fill n electrons in aufbau order (for neutral atoms and anions)
+  fillAufbau(n){
+    const occ={}; let rem=n;
+    for(const sub of this.order){
+      const c=this.cap[sub[1]];
+      const put=Math.min(c,rem);
+      if(put>0)occ[sub]=put;
+      rem-=put; if(rem<=0)break;
+    }
+    return occ;
+  },
+  // Build the NEUTRAL atom configuration (aufbau + Cr/Cu exceptions)
+  buildNeutral(z){
+    const occ=this.fillAufbau(z);
+    let exc=null;
+    if(z===24){ occ['4s']=1; occ['3d']=5; exc='<b>Chromium exception:</b> [Ar] 3d⁵ 4s¹, not [Ar] 3d⁴ 4s². A half-filled d sub-shell (d⁵) is unusually stable, so one 4s electron promotes into 3d.'; }
+    if(z===29){ occ['4s']=1; occ['3d']=10; exc='<b>Copper exception:</b> [Ar] 3d¹⁰ 4s¹, not [Ar] 3d⁹ 4s². A fully-filled d sub-shell (d¹⁰) is unusually stable, so one 4s electron promotes into 3d.'; }
+    return {occ,exc};
+  },
+  // Build the configuration for the current ion state (golden rule: remove 4s before 3d)
+  buildConfig(z){
+    const neutral=this.buildNeutral(z);
+    if(this.ion==='atom') return neutral;
+    const occ={...neutral.occ};
+    if(this.ion==='an1'){
+      // anion: add one electron in aufbau order
+      let rem=1;
+      for(const sub of this.order){
+        const c=this.cap[sub[1]], cur=occ[sub]||0, space=c-cur;
+        const put=Math.min(space,rem);
+        if(put>0)occ[sub]=cur+put;
+        rem-=put; if(rem<=0)break;
+      }
+      return {occ,exc:null};
+    }
+    // cation: remove electrons from the neutral atom, 4s before 3d (highest n first)
+    const removeCount=this.ion==='cat1'?1:2;
+    let rem=removeCount;
+    for(const sub of this.removeOrder){
+      const cur=occ[sub]||0;
+      const take=Math.min(cur,rem);
+      if(take>0){ occ[sub]=cur-take; if(occ[sub]===0) delete occ[sub]; }
+      rem-=take; if(rem<=0)break;
+    }
+    // the Cr/Cu exception note applies to the neutral atom only
+    return {occ,exc:null};
+  },
+  update(){
+    const z=parseInt(document.getElementById('cfg-slider').value);
+    const sym=this.elements[z-1];
+    const n=this.electronCount(z);
+    const ionLabel=this.ion==='atom'?'':(this.ion==='cat1'?'⁺':(this.ion==='cat2'?'²⁺':'⁻'));
+    document.getElementById('cfg-badge').innerHTML='<span class="text-3xl leading-none">'+sym+ionLabel+'</span><span class="text-sm font-semibold opacity-80">(Z='+z+', e⁻='+n+')</span>';
+    const res=this.buildConfig(z);
+    let occ=res.occ;
+    // full notation in energy order
+    const full=this.order.filter(s=>occ[s]).map(s=>s+this.sup(occ[s])).join(' ');
+    document.getElementById('cfg-full').textContent=full||'(no electrons)';
+    // noble gas shorthand
+    let core=0; [2,10,18,36].forEach(nc=>{ if(n>nc) core=nc; });
+    let short=full;
+    if(core>0){
+      const coreOcc=this.fillAufbau(core);
+      const coreStr=this.order.filter(s=>coreOcc[s]).map(s=>s+this.sup(coreOcc[s])).join(' ');
+      short='['+this.noble[core]+'] '+full.replace(coreStr,'').trim();
+    }
+    document.getElementById('cfg-short').textContent=short;
+    // counters
+    let fullCt=0,halfCt=0;
+    Object.keys(occ).forEach(s=>{ const c=occ[s],cap=this.cap[s[1]]; if(c===cap)fullCt++; else if(c===Math.ceil(cap/2)&&cap>1)halfCt++; else if(c===1&&cap===2)halfCt++; });
+    document.getElementById('cfg-fullcount').textContent=fullCt;
+    document.getElementById('cfg-halfcount').textContent=halfCt;
+    // exception box
+    const excBox=document.getElementById('cfg-exception');
+    if(res.exc){ excBox.classList.remove('hidden'); excBox.innerHTML=res.exc; }
+    else excBox.classList.add('hidden');
+    // boxes visual (filling map, in energy order bottom to top)
+    this.drawBoxes(occ);
+  },
+  sup(n){ return String(n).replace(/0/g,'⁰').replace(/1/g,'¹').replace(/2/g,'²').replace(/3/g,'³').replace(/4/g,'⁴').replace(/5/g,'⁵').replace(/6/g,'⁶').replace(/7/g,'⁷').replace(/8/g,'⁸').replace(/9/g,'⁹'); },
+  drawBoxes(occ){
+    const box=document.getElementById('cfg-boxes');
+    const order=[...this.order].reverse(); // energy increases upward
+    let html='';
+    order.forEach(sub=>{
+      const cap=this.cap[sub[1]];
+      const count=occ[sub]||0;
+      const nBoxes=cap/2;
+      let boxes='';
+      // Hund's rule: fill each degenerate orbital singly (↑) first, THEN pair (↓)
+      for(let b=0;b<nBoxes;b++){
+        const hasUp=count>=b+1;              // one ↑ per box before any pairing
+        const hasDown=count>=nBoxes+b+1;     // pairs added only after all boxes have one
+        boxes+='<div class="w-9 h-9 rounded border border-slate-600 bg-slate-900 flex items-center justify-center gap-0.5 relative">'
+          +(hasUp?'<span class="text-emerald-400 font-bold text-sm">↑</span>':'')
+          +(hasDown?'<span class="text-amber-400 font-bold text-sm">↓</span>':'')
+          +'</div>';
+      }
+      const filled=count>0;
+      html+='<div class="flex items-center gap-3 '+(filled?'':'opacity-30')+'"><span class="font-mono text-xs w-8 text-cyan-300 font-bold">'+sub+'</span><div class="flex gap-1">'+boxes+'</div><span class="text-[10px] text-slate-500 font-mono">'+count+'/'+cap+'</span></div>';
+    });
+    box.innerHTML=html;
+  }
+};
+</script>
+</body>
+</html>

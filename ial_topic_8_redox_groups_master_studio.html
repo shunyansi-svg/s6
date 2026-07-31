@@ -1,0 +1,2124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IAL Chemistry Topic 8: Redox &amp; Groups 1, 2, 7 Master Studio (WCH12)</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="initKaTeX()"></script>
+
+    <script>
+        function initKaTeX() {
+            if (window.renderMathInElement) {
+                window.renderMathInElement(document.body, {
+                    delimiters: [
+                        {left: '$$', right: '$$', display: true},
+                        {left: '$', right: '$', display: false}
+                    ],
+                    throwOnError: false
+                });
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background:
+                radial-gradient(1000px 480px at 90% -6%, rgba(251,191,36,0.07), transparent 60%),
+                radial-gradient(900px 520px at -8% 24%, rgba(52,211,153,0.06), transparent 55%),
+                radial-gradient(820px 620px at 55% 112%, rgba(251,113,133,0.05), transparent 55%),
+                #020617;
+        }
+        .font-display { font-family: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif; }
+        .tab-btn-active { border-bottom: 3px solid #38bdf8; color: #38bdf8; font-weight: 700; background-color: rgba(56,189,248,0.12); }
+        .blur-answer { filter: blur(6px); transition: filter 0.25s ease, background-color 0.25s ease; user-select: none; cursor: pointer; }
+        .blur-answer:hover, .blur-answer.revealed { filter: blur(0); user-select: auto; background-color: rgba(14,165,233,0.2) !important; }
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        .lift { transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease; }
+        .lift:hover { transform: translateY(-2px); box-shadow: 0 10px 26px -14px rgba(56,189,248,0.3); }
+        .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.5s ease, transform 0.5s ease; }
+        .reveal.in { opacity: 1; transform: none; }
+        #bg-canvas { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+        header, nav, main, footer { position: relative; z-index: 10; }
+        .ptile { transition: transform 0.15s ease, box-shadow 0.15s ease; cursor: default; }
+        .ptile:hover { transform: scale(1.18); z-index: 20; box-shadow: 0 6px 18px -6px rgba(255,255,255,0.25); }
+        .pulse-g1 { animation: pg1 2.6s ease-in-out infinite; }
+        .pulse-g2 { animation: pg2 2.6s ease-in-out infinite; }
+        .pulse-g7 { animation: pg7 2.6s ease-in-out infinite; }
+        @keyframes pg1 { 0%,100% { box-shadow: 0 0 0 0 rgba(251,191,36,0.0);} 50% { box-shadow: 0 0 10px 1px rgba(251,191,36,0.5);} }
+        @keyframes pg2 { 0%,100% { box-shadow: 0 0 0 0 rgba(52,211,153,0.0);} 50% { box-shadow: 0 0 10px 1px rgba(52,211,153,0.5);} }
+        @keyframes pg7 { 0%,100% { box-shadow: 0 0 0 0 rgba(251,113,133,0.0);} 50% { box-shadow: 0 0 10px 1px rgba(251,113,133,0.5);} }
+        .flame-flicker { animation: ff 0.9s ease-in-out infinite alternate; transform-origin: bottom center; }
+        @keyframes ff { from { transform: scaleY(1) scaleX(1);} to { transform: scaleY(1.06) scaleX(0.97);} }
+        .rope-flag { transition: left 0.6s cubic-bezier(0.34,1.56,0.64,1); }
+        .press-btn { user-select: none; touch-action: none; }
+        .press-btn:active { transform: scale(0.96); }
+        .stair { transition: all 0.4s ease; }
+        .stepchip { animation: chipIn 0.4s ease both; }
+        @keyframes chipIn { from { opacity:0; transform: translateY(8px);} to { opacity:1; transform:none;} }
+        .custom-scrollbar::-webkit-scrollbar { height: 6px; width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #1e293b; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #475569; border-radius: 3px; }
+    </style>
+</head>
+<body class="text-slate-100 font-sans min-h-screen flex flex-col">
+
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Header -->
+    <header class="bg-slate-900/95 border-b border-slate-800 sticky top-0 z-40 shadow-lg backdrop-blur">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center gap-3">
+            <div class="flex items-center gap-3">
+                <div class="bg-slate-950 p-1.5 rounded-lg border border-slate-700">
+                    <svg width="38" height="38" viewBox="0 0 38 38">
+                        <circle cx="12" cy="19" r="9" fill="rgba(52,211,153,0.2)" stroke="#34d399" stroke-width="1.5"/>
+                        <text x="12" y="22.5" fill="#6ee7b7" font-size="9" text-anchor="middle" font-weight="bold">Mg</text>
+                        <circle cx="27" cy="19" r="8" fill="rgba(251,113,133,0.2)" stroke="#fb7185" stroke-width="1.5"/>
+                        <text x="27" y="22" fill="#fda4af" font-size="8" text-anchor="middle" font-weight="bold">Cl</text>
+                        <path d="M18 15 L23 17" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="2 2" class="bond-pulse"/>
+                        <text x="20" y="11" fill="#fbbf24" font-size="7" text-anchor="middle">e⁻→</text>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="font-display text-lg font-bold tracking-tight text-sky-400">IAL Chemistry Topic 8: Redox &amp; Groups 1, 2, 7 Master Studio</h1>
+                    <p class="text-xs text-slate-400">WCH12 · Unit 2 · Paper 2 · Spec 8.1–8.28 — Redox, Group Trends, Ion Tests, Titration &amp; the Halogen Reactions</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-2">
+                <span class="px-2.5 py-1 text-xs font-semibold rounded-full bg-sky-950 text-sky-300 border border-sky-800">Edexcel Spec 8.1 – 8.28</span>
+                <span class="px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-950 text-emerald-300 border border-emerald-800">CP3 · CP4</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Nav -->
+    <nav class="bg-slate-900/90 border-b border-slate-800 sticky top-[57px] z-30 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 flex flex-wrap">
+            <button onclick="switchTab('syllabus')" id="btn-syllabus" class="tab-btn-active py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs text-sky-400 font-bold border-b-2 border-sky-400 bg-sky-950/40 transition flex items-center gap-1.5 rounded-t-md"><span>📚 1. Syllabus</span></button>
+            <button onclick="switchTab('types')" id="btn-types" class="py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs text-slate-400 hover:text-sky-300 font-medium border-b-2 border-transparent hover:border-slate-600 transition flex items-center gap-1.5 rounded-t-md"><span>⚖️ 2. Reaction Types</span></button>
+            <button onclick="switchTab('tests')" id="btn-tests" class="py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs text-slate-400 hover:text-sky-300 font-medium border-b-2 border-transparent hover:border-slate-600 transition flex items-center gap-1.5 rounded-t-md"><span>🧪 3. Ion Tests</span></button>
+            <button onclick="switchTab('titration')" id="btn-titration" class="py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs text-slate-400 hover:text-sky-300 font-medium border-b-2 border-transparent hover:border-slate-600 transition flex items-center gap-1.5 rounded-t-md"><span>💧 4. Titration 3D Lab</span></button>
+            <button onclick="switchTab('memory')" id="btn-memory" class="py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs text-slate-400 hover:text-sky-300 font-medium border-b-2 border-transparent hover:border-slate-600 transition flex items-center gap-1.5 rounded-t-md"><span>🧠 5. Group 2 Memory Lab</span></button>
+            <button onclick="switchTab('halide')" id="btn-halide" class="py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs text-slate-400 hover:text-sky-300 font-medium border-b-2 border-transparent hover:border-slate-600 transition flex items-center gap-1.5 rounded-t-md"><span>⚡ 6. Halide + H₂SO₄</span></button>
+            <button onclick="switchTab('solver')" id="btn-solver" class="py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs text-slate-400 hover:text-sky-300 font-medium border-b-2 border-transparent hover:border-slate-600 transition flex items-center gap-1.5 rounded-t-md"><span>🛠️ 7. Solver</span></button>
+            <button onclick="switchTab('review')" id="btn-review" class="py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs text-slate-400 hover:text-sky-300 font-medium border-b-2 border-transparent hover:border-slate-600 transition flex items-center gap-1.5 rounded-t-md"><span>📋 8. Final Review</span></button>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 py-6 flex-grow w-full">
+
+        <!-- ============ TAB 1: SYLLABUS ============ -->
+        <section id="tab-syllabus" class="space-y-6">
+            <!-- Live periodic strip -->
+            <div class="reveal bg-slate-900 border border-slate-800 rounded-xl p-5">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                    <span class="text-xs font-bold text-sky-400 uppercase tracking-widest">The cast of Topic 8</span>
+                    <div class="flex gap-3 text-[10px] text-slate-400">
+                        <span><span class="inline-block w-2.5 h-2.5 rounded-sm bg-amber-400 mr-1"></span>Group 1</span>
+                        <span><span class="inline-block w-2.5 h-2.5 rounded-sm bg-emerald-400 mr-1"></span>Group 2</span>
+                        <span><span class="inline-block w-2.5 h-2.5 rounded-sm bg-rose-400 mr-1"></span>Group 7</span>
+                    </div>
+                </div>
+                <div id="ptable" class="flex flex-wrap gap-1.5"></div>
+                <p class="text-[11px] text-slate-400 mt-3">Group 1 loses 1 electron (→ +1), Group 2 loses 2 (→ +2), Group 7 gains 1 (→ −1). <b class="text-sky-300">Every reaction in this topic is an electron transfer — that is the redox thread.</b></p>
+            </div>
+
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-sm">
+                <div class="border-b border-slate-800 pb-4 mb-6">
+                    <span class="text-xs font-bold text-sky-400 uppercase tracking-widest">Syllabus Master Overview</span>
+                    <h2 class="font-display text-xl font-bold text-white mt-1">Topic 8 Learning Points &amp; Examiner Watch-Outs (Spec 8.1 – 8.28)</h2>
+                    <p class="text-xs text-slate-400 mt-1">Redox language (8A), the reactive metals of Groups 1 &amp; 2 (8B), and the halogens of Group 7 (8C). Every code elaborated below.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- 8.1-8.4 -->
+                    <div class="reveal lift bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-[10px] font-mono text-sky-400 uppercase font-bold px-2 py-0.5 bg-sky-950 rounded border border-sky-800">Spec 8.1 - 8.4</span>
+                                <span class="text-[10px] text-slate-400 font-mono">Oxidation Numbers</span>
+                            </div>
+                            <h3 class="font-display text-sm font-bold text-white mb-3">1. Oxidation Numbers — the Book-Keeping System</h3>
+                            <div class="space-y-2">
+                                <span class="text-[11px] font-bold text-sky-300 uppercase tracking-wider block">🎯 Key Learning Goals:</span>
+                                <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed">
+                                    <li>Oxidation number = the charge an atom would have if all bonds were ionic.</li>
+                                    <li>Rules: element = <b>0</b>; monatomic ion = its charge; O = <b>−2</b> (peroxide −1); H = <b>+1</b> (metal hydride −1); Group 1 = +1; Group 2 = +2; sum = overall charge.</li>
+                                    <li>Calculate for any atom: S in $\text{H}_2\text{SO}_4$ = +6; N in $\text{NO}_3^-$ = +5; Mn in $\text{MnO}_4^-$ = +7.</li>
+                                    <li>Show oxidation number with a <b>Roman numeral</b>: iron(III) = $\text{Fe}^{3+}$; write formulae from oxidation numbers.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="p-3 bg-amber-950/40 border border-amber-800/60 rounded-lg text-xs text-amber-200 space-y-1">
+                            <span class="font-bold text-amber-400 block uppercase text-[10px]">💡 IAL Examiner Watch-Outs:</span>
+                            <p class="leading-relaxed text-[11px]">Peroxides (O = −1) and metal hydrides (H = −1) are the set-piece exceptions examiners love. Write the sign <b>before</b> the number (+6, not 6+). Roman numerals go in the name, not the formula.</p>
+                        </div>
+                    </div>
+
+                    <!-- 8.5-8.9 -->
+                    <div class="reveal lift bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-[10px] font-mono text-purple-400 uppercase font-bold px-2 py-0.5 bg-purple-950 rounded border border-purple-800">Spec 8.5 - 8.9</span>
+                                <span class="text-[10px] text-slate-400 font-mono">Redox &amp; Disproportionation</span>
+                            </div>
+                            <h3 class="font-display text-sm font-bold text-white mb-3">2. Oxidation, Reduction &amp; Disproportionation</h3>
+                            <div class="space-y-2">
+                                <span class="text-[11px] font-bold text-purple-300 uppercase tracking-wider block">🎯 Key Learning Goals:</span>
+                                <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed">
+                                    <li><b>OIL RIG</b>: Oxidation Is Loss of electrons; Reduction Is Gain. Oxidation number rises on oxidation, falls on reduction.</li>
+                                    <li>Oxidising agent <b>gains</b> electrons and is itself <b>reduced</b>; reducing agent <b>loses</b> electrons and is itself <b>oxidised</b>.</li>
+                                    <li><b>Disproportionation</b>: one element in a single species is <b>simultaneously oxidised and reduced</b> (e.g. Cl₂ in water: 0 → −1 and 0 → +1).</li>
+                                    <li>Metals form positive ions (loss of e⁻, oxidation number ↑); non-metals form negative ions (gain of e⁻, oxidation number ↓).</li>
+                                    <li>Use oxidation-number changes to classify a reaction as redox or not.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="p-3 bg-amber-950/40 border border-amber-800/60 rounded-lg text-xs text-amber-200 space-y-1">
+                            <span class="font-bold text-amber-400 block uppercase text-[10px]">💡 IAL Examiner Watch-Outs:</span>
+                            <p class="leading-relaxed text-[11px]">"The oxidising agent is oxidised" is the classic reversal — it is <b>reduced</b>. For disproportionation you must show the <b>same element</b> going both up and down. Neutralisation and precipitation are usually <b>not</b> redox.</p>
+                        </div>
+                    </div>
+
+                    <!-- 8.10 -->
+                    <div class="reveal lift bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-[10px] font-mono text-emerald-400 uppercase font-bold px-2 py-0.5 bg-emerald-950 rounded border border-emerald-800">Spec 8.10</span>
+                                <span class="text-[10px] text-slate-400 font-mono">Half-Equations</span>
+                            </div>
+                            <h3 class="font-display text-sm font-bold text-white mb-3">3. Ionic Half-Equations</h3>
+                            <div class="space-y-2">
+                                <span class="text-[11px] font-bold text-emerald-300 uppercase tracking-wider block">🎯 Key Learning Goals:</span>
+                                <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed">
+                                    <li>Write reduction and oxidation half-equations separately, balancing atoms then charge with electrons.</li>
+                                    <li>Example: $\text{Cl}_2 + 2\text{e}^- \rightarrow 2\text{Cl}^-$ (reduction); $2\text{I}^- \rightarrow \text{I}_2 + 2\text{e}^-$ (oxidation).</li>
+                                    <li>Combine by equalising electrons: $\text{Cl}_2 + 2\text{I}^- \rightarrow 2\text{Cl}^- + \text{I}_2$.</li>
+                                    <li>Spectator ions are omitted from the full ionic equation.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="p-3 bg-amber-950/40 border border-amber-800/60 rounded-lg text-xs text-amber-200 space-y-1">
+                            <span class="font-bold text-amber-400 block uppercase text-[10px]">💡 IAL Examiner Watch-Outs:</span>
+                            <p class="leading-relaxed text-[11px]">Electrons must cancel exactly when you combine half-equations. State symbols are expected. Diatomic molecules (Cl₂, I₂) must keep their subscript.</p>
+                        </div>
+                    </div>
+
+                    <!-- 8.11-8.12 -->
+                    <div class="reveal lift bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-[10px] font-mono text-amber-400 uppercase font-bold px-2 py-0.5 bg-amber-950 rounded border border-amber-800">Spec 8.11 - 8.12</span>
+                                <span class="text-[10px] text-slate-400 font-mono">Group 1 &amp; 2 Reactivity</span>
+                            </div>
+                            <h3 class="font-display text-sm font-bold text-white mb-3">4. Reactivity Trends Down Groups 1 &amp; 2</h3>
+                            <div class="space-y-2">
+                                <span class="text-[11px] font-bold text-amber-300 uppercase tracking-wider block">🎯 Key Learning Goals:</span>
+                                <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed">
+                                    <li>Reactivity <b>increases down</b> both groups: Li &lt; Na &lt; K; Mg &lt; Ca &lt; Sr &lt; Ba.</li>
+                                    <li>Reason: more shells ⇒ larger atomic radius ⇒ outer electron(s) <b>further from the nucleus</b> and more shielded ⇒ <b>lower ionisation energy</b> ⇒ easier to lose electrons.</li>
+                                    <li>Group 1 loses 1 e⁻ (very reactive, stored under oil); Group 2 loses 2 e⁻ (less reactive than Group 1 in the same period).</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="p-3 bg-amber-950/40 border border-amber-800/60 rounded-lg text-xs text-amber-200 space-y-1">
+                            <span class="font-bold text-amber-400 block uppercase text-[10px]">💡 IAL Examiner Watch-Outs:</span>
+                            <p class="leading-relaxed text-[11px]">Always link reactivity to <b>ionisation energy</b> and ease of losing the outer electron(s) — "bigger atoms" alone is not enough. Potassium is more reactive than sodium because its outer electron is easier to remove.</p>
+                        </div>
+                    </div>
+
+                    <!-- 8.13-8.14 -->
+                    <div class="reveal lift bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-[10px] font-mono text-rose-400 uppercase font-bold px-2 py-0.5 bg-rose-950 rounded border border-rose-800">Spec 8.13 - 8.14</span>
+                                <span class="text-[10px] text-slate-400 font-mono">Group 1 &amp; 2 Reactions</span>
+                            </div>
+                            <h3 class="font-display text-sm font-bold text-white mb-3">5. Reactions with O₂, Cl₂, Water &amp; Acids</h3>
+                            <div class="space-y-2">
+                                <span class="text-[11px] font-bold text-rose-300 uppercase tracking-wider block">🎯 Key Learning Goals:</span>
+                                <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed">
+                                    <li>With water: $2\text{Na} + 2\text{H}_2\text{O} \rightarrow 2\text{NaOH} + \text{H}_2$; $\text{Ca} + 2\text{H}_2\text{O} \rightarrow \text{Ca(OH)}_2 + \text{H}_2$. Mg is slow with cold water, fast with steam ($\text{Mg} + \text{H}_2\text{O} \rightarrow \text{MgO} + \text{H}_2$).</li>
+                                    <li>With oxygen: $4\text{Na} + \text{O}_2 \rightarrow 2\text{Na}_2\text{O}$ (and $\text{Na}_2\text{O}_2$); $2\text{Mg} + \text{O}_2 \rightarrow 2\text{MgO}$ (bright white flame).</li>
+                                    <li>With chlorine: $2\text{Na} + \text{Cl}_2 \rightarrow 2\text{NaCl}$; $\text{Mg} + \text{Cl}_2 \rightarrow \text{MgCl}_2$.</li>
+                                    <li>Oxides + water → hydroxides (alkaline); oxides &amp; hydroxides + dilute acid → salt + water.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="p-3 bg-amber-950/40 border border-amber-800/60 rounded-lg text-xs text-amber-200 space-y-1">
+                            <span class="font-bold text-amber-400 block uppercase text-[10px]">💡 IAL Examiner Watch-Outs:</span>
+                            <p class="leading-relaxed text-[11px]">Mg + <b>steam</b> gives the <b>oxide</b> (MgO), not the hydroxide — a frequent mix-up. All these metal reactions are <b>redox</b>: the metal is oxidised (0 → +1/+2).</p>
+                        </div>
+                    </div>
+
+                    <!-- 8.15-8.16 -->
+                    <div class="reveal lift bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-[10px] font-mono text-cyan-400 uppercase font-bold px-2 py-0.5 bg-cyan-950 rounded border border-cyan-800">Spec 8.15 - 8.16</span>
+                                <span class="text-[10px] text-slate-400 font-mono">Solubility &amp; Thermal Stability</span>
+                            </div>
+                            <h3 class="font-display text-sm font-bold text-white mb-3">6. Group 2 Solubility &amp; Thermal Stability Trends</h3>
+                            <div class="space-y-2">
+                                <span class="text-[11px] font-bold text-cyan-300 uppercase tracking-wider block">🎯 Key Learning Goals:</span>
+                                <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed">
+                                    <li>Hydroxide solubility <b>increases</b> down Group 2; sulfate solubility <b>decreases</b>.</li>
+                                    <li>Thermal stability of nitrates &amp; carbonates <b>increases</b> down the group.</li>
+                                    <li>Reason (stability): larger cation ⇒ lower charge density ⇒ <b>less polarisation</b> of the nitrate/carbonate anion ⇒ N–O / C–O bonds stay strong ⇒ more energy needed to decompose.</li>
+                                    <li>Learn the memory systems in Tab 5 — don't rote-learn these trends.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="p-3 bg-amber-950/40 border border-amber-800/60 rounded-lg text-xs text-amber-200 space-y-1">
+                            <span class="font-bold text-amber-400 block uppercase text-[10px]">💡 IAL Examiner Watch-Outs:</span>
+                            <p class="leading-relaxed text-[11px]">The explanation must use <b>charge density</b> and <b>polarisation</b> — "bigger ions are more stable" alone scores little. Mg²⁺ is small with high charge density ⇒ most polarising ⇒ least stable.</p>
+                        </div>
+                    </div>
+
+                    <!-- 8.17-8.18 -->
+                    <div class="reveal lift bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-[10px] font-mono text-sky-400 uppercase font-bold px-2 py-0.5 bg-sky-950 rounded border border-sky-800">Spec 8.17 - 8.18</span>
+                                <span class="text-[10px] text-slate-400 font-mono">Flame Colours &amp; Decomposition Tests</span>
+                            </div>
+                            <h3 class="font-display text-sm font-bold text-white mb-3">7. Flame Colours &amp; Gas Tests</h3>
+                            <div class="space-y-2">
+                                <span class="text-[11px] font-bold text-sky-300 uppercase tracking-wider block">🎯 Key Learning Goals:</span>
+                                <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed">
+                                    <li>Flame colours: Li <b>red</b>, Na <b>yellow</b>, K <b>lilac</b>, Ca <b>orange-red</b>, Sr <b>red</b>, Ba <b>pale green</b>.</li>
+                                    <li>Cause: heat excites electrons; on relaxation they emit light of a characteristic wavelength — different <b>energy-level gaps</b> per cation.</li>
+                                    <li>Decomposition gases: CO₂ turns limewater <b>milky</b>; O₂ <b>relights a glowing splint</b>; NO₂ is a <b>brown, acidic</b> gas.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="p-3 bg-amber-950/40 border border-amber-800/60 rounded-lg text-xs text-amber-200 space-y-1">
+                            <span class="font-bold text-amber-400 block uppercase text-[10px]">💡 IAL Examiner Watch-Outs:</span>
+                            <p class="leading-relaxed text-[11px]">Ca is <b>orange-red</b> and Sr is <b>red</b> — don't swap them. The flame-colour explanation needs "electrons fall back and release energy as light". Try the live flame in Tab 3.</p>
+                        </div>
+                    </div>
+
+                    <!-- 8.19 -->
+                    <div class="reveal lift bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-[10px] font-mono text-purple-400 uppercase font-bold px-2 py-0.5 bg-purple-950 rounded border border-purple-800">Spec 8.19</span>
+                                <span class="text-[10px] text-slate-400 font-mono">Ion Tests</span>
+                            </div>
+                            <h3 class="font-display text-sm font-bold text-white mb-3">8. Identifying Ions (CO₃²⁻, SO₄²⁻, NH₄⁺)</h3>
+                            <div class="space-y-2">
+                                <span class="text-[11px] font-bold text-purple-300 uppercase tracking-wider block">🎯 Key Learning Goals:</span>
+                                <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed">
+                                    <li><b>Carbonate / hydrogencarbonate:</b> add dilute acid ⇒ effervescence; gas turns limewater milky. $\text{CO}_3^{2-} + 2\text{H}^+ \rightarrow \text{H}_2\text{O} + \text{CO}_2$.</li>
+                                    <li><b>Sulfate:</b> acidify with dilute HCl, add $\text{BaCl}_2$ ⇒ <b>white ppt</b> of $\text{BaSO}_4$.</li>
+                                    <li><b>Ammonium:</b> add NaOH and warm ⇒ $\text{NH}_3$ turns damp red litmus <b>blue</b> (and gives white fumes with HCl).</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="p-3 bg-amber-950/40 border border-amber-800/60 rounded-lg text-xs text-amber-200 space-y-1">
+                            <span class="font-bold text-amber-400 block uppercase text-[10px]">💡 IAL Examiner Watch-Outs:</span>
+                            <p class="leading-relaxed text-[11px]">For sulfate you must <b>acidify first</b> (removes carbonate that would also give a white ppt with Ba²⁺). Full observation = "white precipitate", not just "white". See the labelled bench in Tab 3.</p>
+                        </div>
+                    </div>
+
+                    <!-- 8.20-8.23 -->
+                    <div class="reveal lift bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-[10px] font-mono text-emerald-400 uppercase font-bold px-2 py-0.5 bg-emerald-950 rounded border border-emerald-800">Spec 8.20 - 8.23</span>
+                                <span class="text-[10px] text-slate-400 font-mono">Titration &amp; CP3 / CP4</span>
+                            </div>
+                            <h3 class="font-display text-sm font-bold text-white mb-3">9. Volumetric Analysis &amp; the Two Core Practicals</h3>
+                            <div class="space-y-2">
+                                <span class="text-[11px] font-bold text-emerald-300 uppercase tracking-wider block">🎯 Key Learning Goals:</span>
+                                <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed">
+                                    <li>Calculate concentration in mol dm⁻³ and g dm⁻³ from titration data using the mole ratio.</li>
+                                    <li>Indicators: <b>methyl orange</b> (red in acid / yellow in alkali) and <b>phenolphthalein</b> (colourless in acid / pink in alkali).</li>
+                                    <li><b>CP3</b>: find the concentration of HCl. <b>CP4</b>: prepare a standard solution from a solid acid, use it to find [NaOH].</li>
+                                    <li>Minimise uncertainty: rinse burette/pipette with the solution they will hold, read the meniscus at eye level, repeat for concordant titres (±0.10 cm³), swirl, white tile.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="p-3 bg-amber-950/40 border border-amber-800/60 rounded-lg text-xs text-amber-200 space-y-1">
+                            <span class="font-bold text-amber-400 block uppercase text-[10px]">💡 IAL Examiner Watch-Outs:</span>
+                            <p class="leading-relaxed text-[11px]">Rinsing the conical flask with the solution it will hold <b>adds extra moles</b> — only rinse with water. Record burette readings to <b>±0.05 cm³</b> (two decimal places). Practise the full technique in the 3D lab (Tab 4).</p>
+                        </div>
+                    </div>
+
+                    <!-- 8.24-8.25 -->
+                    <div class="reveal lift bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-[10px] font-mono text-amber-400 uppercase font-bold px-2 py-0.5 bg-amber-950 rounded border border-amber-800">Spec 8.24 - 8.25</span>
+                                <span class="text-[10px] text-slate-400 font-mono">Group 7 Trends &amp; Displacement</span>
+                            </div>
+                            <h3 class="font-display text-sm font-bold text-white mb-3">10. Halogen Trends &amp; Displacement Reactions</h3>
+                            <div class="space-y-2">
+                                <span class="text-[11px] font-bold text-amber-300 uppercase tracking-wider block">🎯 Key Learning Goals:</span>
+                                <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed">
+                                    <li>Down Group 7: melting/boiling points <b>increase</b> (Cl₂ gas, Br₂ liquid, I₂ solid); electronegativity and reactivity <b>decrease</b>.</li>
+                                    <li>Colours: Cl₂ <b>pale green</b>, Br₂ <b>red-brown</b>, I₂ <b>grey solid / purple vapour</b>; in cyclohexane: Cl₂ pale green, Br₂ orange/red-brown, I₂ <b>purple</b>.</li>
+                                    <li>A more reactive halogen <b>displaces</b> a less reactive halide: $\text{Cl}_2 + 2\text{I}^- \rightarrow 2\text{Cl}^- + \text{I}_2$.</li>
+                                    <li>Oxidising ability decreases down the group: Cl₂ &gt; Br₂ &gt; I₂.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="p-3 bg-amber-950/40 border border-amber-800/60 rounded-lg text-xs text-amber-200 space-y-1">
+                            <span class="font-bold text-amber-400 block uppercase text-[10px]">💡 IAL Examiner Watch-Outs:</span>
+                            <p class="leading-relaxed text-[11px]">Displacement is redox: the halogen is <b>reduced</b> (gains e⁻), the halide is <b>oxidised</b>. Iodine in water is yellow/brown but <b>purple in cyclohexane</b> — examiners ask for the organic-layer colour.</p>
+                        </div>
+                    </div>
+
+                    <!-- 8.26 -->
+                    <div class="reveal lift bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-[10px] font-mono text-rose-400 uppercase font-bold px-2 py-0.5 bg-rose-950 rounded border border-rose-800">Spec 8.26</span>
+                                <span class="text-[10px] text-slate-400 font-mono">Disproportionation of Chlorine</span>
+                            </div>
+                            <h3 class="font-display text-sm font-bold text-white mb-3">11. Chlorine with Water &amp; Alkali</h3>
+                            <div class="space-y-2">
+                                <span class="text-[11px] font-bold text-rose-300 uppercase tracking-wider block">🎯 Key Learning Goals:</span>
+                                <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed">
+                                    <li>With water: $\text{Cl}_2 + \text{H}_2\text{O} \rightleftharpoons \text{HCl} + \text{HClO}$ — used in water treatment (HClO kills bacteria).</li>
+                                    <li>With cold dilute NaOH: $\text{Cl}_2 + 2\text{NaOH} \rightarrow \text{NaCl} + \text{NaClO} + \text{H}_2\text{O}$ (bleach, chlorate(I)).</li>
+                                    <li>With hot concentrated NaOH: $3\text{Cl}_2 + 6\text{NaOH} \rightarrow 5\text{NaCl} + \text{NaClO}_3 + 3\text{H}_2\text{O}$ (chlorate(V)).</li>
+                                    <li>In each, Cl goes 0 → −1 (reduced) and 0 → +1 or +5 (oxidised) — disproportionation.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="p-3 bg-amber-950/40 border border-amber-800/60 rounded-lg text-xs text-amber-200 space-y-1">
+                            <span class="font-bold text-amber-400 block uppercase text-[10px]">💡 IAL Examiner Watch-Outs:</span>
+                            <p class="leading-relaxed text-[11px]">Cold dilute gives <b>chlorate(I)</b> (NaClO); hot concentrated gives <b>chlorate(V)</b> (NaClO₃). State the oxidation numbers of Cl in each product to prove disproportionation.</p>
+                        </div>
+                    </div>
+
+                    <!-- 8.27-8.28 -->
+                    <div class="reveal lift bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-[10px] font-mono text-cyan-400 uppercase font-bold px-2 py-0.5 bg-cyan-950 rounded border border-cyan-800">Spec 8.27 - 8.28</span>
+                                <span class="text-[10px] text-slate-400 font-mono">Halides + H₂SO₄ &amp; Halide Tests</span>
+                            </div>
+                            <h3 class="font-display text-sm font-bold text-white mb-3">12. Halides with conc. H₂SO₄ &amp; Silver Nitrate Tests</h3>
+                            <div class="space-y-2">
+                                <span class="text-[11px] font-bold text-cyan-300 uppercase tracking-wider block">🎯 Key Learning Goals:</span>
+                                <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed">
+                                    <li>Reducing power of halides <b>increases</b> down the group: Cl⁻ &lt; Br⁻ &lt; I⁻ (Tab 6 has the full memory system).</li>
+                                    <li>Silver nitrate test (acidify with dilute HNO₃ first): AgCl <b>white</b>, AgBr <b>cream</b>, AgI <b>yellow</b>; solubility in NH₃: AgCl dissolves in dilute, AgBr only in concentrated, AgI insoluble.</li>
+                                    <li>Hydrogen halides + NH₃(g) ⇒ white smoke of ammonium halide; HX + water ⇒ acidic solution.</li>
+                                    <li>Predict F and At from trends (8.28): F₂ most reactive, At least; HF the weakest reducing halide.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="p-3 bg-amber-950/40 border border-amber-800/60 rounded-lg text-xs text-amber-200 space-y-1">
+                            <span class="font-bold text-amber-400 block uppercase text-[10px]">💡 IAL Examiner Watch-Outs:</span>
+                            <p class="leading-relaxed text-[11px]">Use <b>nitric</b> acid (not HCl/H₂SO₄, which would add Cl⁻/SO₄²⁻ and give false precipitates). "Cream" for AgBr is the mark-scheme word. Master the H₂SO₄ cluster with the ladder in Tab 6.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reveal mt-6 p-4 bg-slate-950 border border-dashed border-slate-700 rounded-xl">
+                    <span class="text-xs font-bold text-slate-300 uppercase tracking-widest block mb-2">🚧 Scope boundary</span>
+                    <p class="text-[11px] text-slate-400 leading-relaxed">Group 7 here is <b class="text-slate-300">limited to Cl, Br, I</b> (8C) — fluorine and astatine appear only as predictions (8.28). Transition-metal chemistry and electrode potentials are <b class="text-emerald-300">Topics 16/19 (WCH14)</b>. Halogenoalkane chemistry is <b class="text-sky-300">Topic 10</b>.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ TAB 2: REACTION TYPES ============ -->
+        <section id="tab-types" class="hidden space-y-6">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 space-y-5">
+                <div class="border-b border-slate-800 pb-3">
+                    <span class="text-xs font-bold text-sky-400 uppercase tracking-widest">Reaction Types · Spec 8.5–8.8</span>
+                    <h2 class="font-display text-xl font-bold text-white mt-1">Know Exactly What Kind of Reaction You're Looking At</h2>
+                    <p class="text-xs text-slate-400 mt-1">Six types recur across Topic 8. Each card gives the definition, how to spot it, and a worked example with oxidation numbers.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                    <!-- Redox -->
+                    <div class="reveal lift bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3">
+                        <div class="flex items-center gap-2"><span class="w-8 h-8 rounded-lg bg-sky-950 border border-sky-800 flex items-center justify-center text-sky-300 font-bold">⚡</span><h3 class="font-display font-bold text-sky-300 text-sm">Redox</h3></div>
+                        <p class="text-[11px] text-slate-300"><b>Definition:</b> oxidation numbers change — oxidation (loss of e⁻, number ↑) and reduction (gain of e⁻, number ↓) happen together.</p>
+                        <p class="text-[11px] text-slate-400"><b>Spot it:</b> assign oxidation numbers; if any change, it's redox.</p>
+                        <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800 font-mono text-[11px] text-emerald-300">2Mg + O₂ → 2MgO<br><span class="text-slate-400">Mg: 0→+2 (oxidised) · O: 0→−2 (reduced)</span></div>
+                    </div>
+                    <!-- Disproportionation -->
+                    <div class="reveal lift bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3">
+                        <div class="flex items-center gap-2"><span class="w-8 h-8 rounded-lg bg-rose-950 border border-rose-800 flex items-center justify-center text-rose-300 font-bold">⇌</span><h3 class="font-display font-bold text-rose-300 text-sm">Disproportionation</h3></div>
+                        <p class="text-[11px] text-slate-300"><b>Definition:</b> the <b>same element</b> in one species is simultaneously oxidised and reduced.</p>
+                        <p class="text-[11px] text-slate-400"><b>Spot it:</b> one element's oxidation number goes both up AND down.</p>
+                        <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800 font-mono text-[11px] text-emerald-300">Cl₂ + H₂O ⇌ HCl + HClO<br><span class="text-slate-400">Cl: 0→−1 (reduced) and 0→+1 (oxidised)</span></div>
+                    </div>
+                    <!-- Displacement -->
+                    <div class="reveal lift bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3">
+                        <div class="flex items-center gap-2"><span class="w-8 h-8 rounded-lg bg-amber-950 border border-amber-800 flex items-center justify-center text-amber-300 font-bold">🔁</span><h3 class="font-display font-bold text-amber-300 text-sm">Displacement</h3></div>
+                        <p class="text-[11px] text-slate-300"><b>Definition:</b> a more reactive element pushes a less reactive element out of its compound. A redox reaction underneath.</p>
+                        <p class="text-[11px] text-slate-400"><b>Spot it:</b> element + compound → new element + new compound.</p>
+                        <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800 font-mono text-[11px] text-emerald-300">Cl₂ + 2KI → 2KCl + I₂<br><span class="text-slate-400">Cl₂ reduced (0→−1); I⁻ oxidised (−1→0)</span></div>
+                    </div>
+                    <!-- Thermal decomposition -->
+                    <div class="reveal lift bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3">
+                        <div class="flex items-center gap-2"><span class="w-8 h-8 rounded-lg bg-orange-950 border border-orange-800 flex items-center justify-center text-orange-300 font-bold">🔥</span><h3 class="font-display font-bold text-orange-300 text-sm">Thermal Decomposition</h3></div>
+                        <p class="text-[11px] text-slate-300"><b>Definition:</b> one compound breaks into two or more substances on heating.</p>
+                        <p class="text-[11px] text-slate-400"><b>Spot it:</b> single reactant + heat → multiple products. Often redox (N changes in nitrates).</p>
+                        <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800 font-mono text-[11px] text-emerald-300">2Mg(NO₃)₂ → 2MgO + 4NO₂ + O₂<br><span class="text-slate-400">N: +5→+4 (reduced) · O: −2→0 (oxidised)</span></div>
+                    </div>
+                    <!-- Acid-base -->
+                    <div class="reveal lift bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3">
+                        <div class="flex items-center gap-2"><span class="w-8 h-8 rounded-lg bg-emerald-950 border border-emerald-800 flex items-center justify-center text-emerald-300 font-bold">🧴</span><h3 class="font-display font-bold text-emerald-300 text-sm">Acid–Base (Neutralisation)</h3></div>
+                        <p class="text-[11px] text-slate-300"><b>Definition:</b> proton (H⁺) transfer from acid to base → salt + water. <b>Not redox</b> — no oxidation numbers change.</p>
+                        <p class="text-[11px] text-slate-400"><b>Spot it:</b> acid + base/oxide/carbonate; oxidation numbers all unchanged.</p>
+                        <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800 font-mono text-[11px] text-emerald-300">MgO + 2HCl → MgCl₂ + H₂O<br><span class="text-slate-400">Mg +2, O −2, H +1, Cl −1 throughout</span></div>
+                    </div>
+                    <!-- Precipitation -->
+                    <div class="reveal lift bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3">
+                        <div class="flex items-center gap-2"><span class="w-8 h-8 rounded-lg bg-violet-950 border border-violet-800 flex items-center justify-center text-violet-300 font-bold">⬇️</span><h3 class="font-display font-bold text-violet-300 text-sm">Precipitation</h3></div>
+                        <p class="text-[11px] text-slate-300"><b>Definition:</b> two aqueous solutions react to form an <b>insoluble solid</b> (precipitate). Usually not redox.</p>
+                        <p class="text-[11px] text-slate-400"><b>Spot it:</b> (aq) + (aq) → (s). Ions swap partners.</p>
+                        <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800 font-mono text-[11px] text-emerald-300">Ba²⁺(aq) + SO₄²⁻(aq) → BaSO₄(s)<br><span class="text-slate-400">the sulfate test — white precipitate</span></div>
+                    </div>
+                </div>
+
+                <!-- OIL RIG + agents -->
+                <div class="reveal grid md:grid-cols-2 gap-5">
+                    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5">
+                        <span class="font-display font-bold text-sky-300 text-sm block mb-2">🧭 OIL RIG + the agents</span>
+                        <div class="grid grid-cols-2 gap-3 text-[11px]">
+                            <div class="p-3 bg-slate-900 rounded-lg border border-slate-800"><b class="text-rose-300 block">Oxidation</b><span class="text-slate-300">Is Loss of e⁻</span><br><span class="text-slate-400">oxidation number ↑</span></div>
+                            <div class="p-3 bg-slate-900 rounded-lg border border-slate-800"><b class="text-emerald-300 block">Reduction</b><span class="text-slate-300">Is Gain of e⁻</span><br><span class="text-slate-400">oxidation number ↓</span></div>
+                            <div class="p-3 bg-slate-900 rounded-lg border border-slate-800"><b class="text-amber-300 block">Oxidising agent</b><span class="text-slate-300">gains e⁻, is reduced</span></div>
+                            <div class="p-3 bg-slate-900 rounded-lg border border-slate-800"><b class="text-sky-300 block">Reducing agent</b><span class="text-slate-300">loses e⁻, is oxidised</span></div>
+                        </div>
+                    </div>
+                    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5">
+                        <span class="font-display font-bold text-emerald-300 text-sm block mb-2">🎯 Classify these (click to reveal)</span>
+                        <div class="space-y-2 text-[11px] font-mono">
+                            <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800 cursor-pointer" onclick="this.querySelector('.ans').classList.toggle('hidden')">Cl₂ + 2NaOH(cold) → NaCl + NaClO + H₂O <span class="ans hidden text-rose-300">— disproportionation</span></div>
+                            <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800 cursor-pointer" onclick="this.querySelector('.ans').classList.toggle('hidden')">CaCO₃ + 2HCl → CaCl₂ + H₂O + CO₂ <span class="ans hidden text-emerald-300">— acid–base (not redox)</span></div>
+                            <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800 cursor-pointer" onclick="this.querySelector('.ans').classList.toggle('hidden')">Br₂ + 2KI → 2KBr + I₂ <span class="ans hidden text-amber-300">— displacement (redox)</span></div>
+                            <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800 cursor-pointer" onclick="this.querySelector('.ans').classList.toggle('hidden')">2Ca(NO₃)₂ → 2CaO + 4NO₂ + O₂ <span class="ans hidden text-orange-300">— thermal decomposition (redox)</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ TAB 3: ION TESTS ============ -->
+        <section id="tab-tests" class="hidden space-y-6">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 space-y-5">
+                <div class="border-b border-slate-800 pb-3">
+                    <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest">Ion Test Bench · Spec 8.17–8.19, 8.27ii</span>
+                    <h2 class="font-display text-xl font-bold text-white mt-1">Chemical Tests — Clearly Labelled, With Observations</h2>
+                    <p class="text-xs text-slate-400 mt-1">Every test: reagent → conditions → observation (with colour) → ionic equation. Try the live flame test first.</p>
+                </div>
+
+                <!-- Flame test station -->
+                <div class="reveal bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3">
+                    <div class="flex items-center gap-2"><span class="px-2 py-0.5 rounded bg-orange-950 border border-orange-800 text-orange-300 text-[10px] font-bold uppercase">Station A</span><span class="font-display font-bold text-orange-300 text-sm">Flame Test — Group 1 &amp; 2 Cations (8.17)</span></div>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <canvas id="flame-canvas" width="380" height="300" class="w-full bg-slate-900 rounded-lg border border-slate-800"></canvas>
+                            <p id="flame-label" class="text-center text-sm font-display font-bold mt-2 text-slate-300">Pick a cation ↓</p>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex flex-wrap gap-2" id="flame-btns"></div>
+                            <p class="text-[11px] text-slate-400 leading-relaxed"><b class="text-slate-300">Why the colour?</b> Heat excites the cation's electrons to higher energy levels. When they fall back, they release energy as light of a specific wavelength. Each cation has <b>different gaps between its energy levels</b> ⇒ a characteristic colour.</p>
+                            <p class="text-[11px] text-slate-400"><b class="text-slate-300">Method:</b> clean a nichrome/platinum wire in conc. HCl, dip in the solid, hold in the hot (roaring) Bunsen flame, note the colour.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Anion/cation test cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <!-- Carbonate -->
+                    <div class="reveal lift bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-2.5">
+                        <div class="flex items-center justify-between"><div class="flex items-center gap-2"><span class="px-2 py-0.5 rounded bg-sky-950 border border-sky-800 text-sky-300 text-[10px] font-bold uppercase">Station B</span><span class="font-display font-bold text-sky-300 text-sm">Carbonate / Hydrogencarbonate, CO₃²⁻ / HCO₃⁻</span></div></div>
+                        <div class="flex flex-wrap gap-2 text-[11px]">
+                            <span class="px-2 py-1 bg-slate-900 border border-slate-700 rounded text-slate-300">➕ Reagent: dilute acid (HCl)</span>
+                            <span class="px-2 py-1 bg-slate-900 border border-slate-700 rounded text-slate-300">🌡️ Room temp</span>
+                        </div>
+                        <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-[11px]"><b class="text-emerald-300 block">Observation</b><span class="text-slate-300">Effervescence — a colourless gas (CO₂) that turns <b>limewater milky</b>.</span></div>
+                        <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800 font-mono text-[11px] text-emerald-300">CO₃²⁻ + 2H⁺ → H₂O + CO₂&nbsp;&nbsp;·&nbsp;&nbsp;HCO₃⁻ + H⁺ → H₂O + CO₂<br>CO₂ + Ca(OH)₂ → CaCO₃↓ + H₂O (milky)</div>
+                    </div>
+                    <!-- Sulfate -->
+                    <div class="reveal lift bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-2.5">
+                        <div class="flex items-center gap-2"><span class="px-2 py-0.5 rounded bg-emerald-950 border border-emerald-800 text-emerald-300 text-[10px] font-bold uppercase">Station C</span><span class="font-display font-bold text-emerald-300 text-sm">Sulfate, SO₄²⁻</span></div>
+                        <div class="flex flex-wrap gap-2 text-[11px]">
+                            <span class="px-2 py-1 bg-slate-900 border border-slate-700 rounded text-slate-300">➕ Acidify with dilute HCl, then BaCl₂(aq)</span>
+                        </div>
+                        <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-[11px]"><b class="text-emerald-300 block">Observation</b><span class="text-slate-300"><b>White precipitate</b> of barium sulfate.</span></div>
+                        <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800 font-mono text-[11px] text-emerald-300">Ba²⁺(aq) + SO₄²⁻(aq) → BaSO₄(s)</div>
+                        <p class="text-[11px] text-amber-200">⚠️ Acidify <b>first</b> to remove carbonate ions (which would also give a white ppt with Ba²⁺).</p>
+                    </div>
+                    <!-- Ammonium -->
+                    <div class="reveal lift bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-2.5">
+                        <div class="flex items-center gap-2"><span class="px-2 py-0.5 rounded bg-violet-950 border border-violet-800 text-violet-300 text-[10px] font-bold uppercase">Station D</span><span class="font-display font-bold text-violet-300 text-sm">Ammonium, NH₄⁺</span></div>
+                        <div class="flex flex-wrap gap-2 text-[11px]">
+                            <span class="px-2 py-1 bg-slate-900 border border-slate-700 rounded text-slate-300">➕ NaOH(aq), then warm gently</span>
+                        </div>
+                        <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-[11px]"><b class="text-emerald-300 block">Observation</b><span class="text-slate-300">Pungent gas (NH₃) turns <b>damp red litmus blue</b>; white fumes with conc. HCl.</span></div>
+                        <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800 font-mono text-[11px] text-emerald-300">NH₄⁺ + OH⁻ → NH₃↑ + H₂O</div>
+                    </div>
+                    <!-- Halides -->
+                    <div class="reveal lift bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-2.5">
+                        <div class="flex items-center gap-2"><span class="px-2 py-0.5 rounded bg-rose-950 border border-rose-800 text-rose-300 text-[10px] font-bold uppercase">Station E</span><span class="font-display font-bold text-rose-300 text-sm">Halides Cl⁻ / Br⁻ / I⁻ — Silver Nitrate (8.27ii)</span></div>
+                        <div class="flex flex-wrap gap-2 text-[11px]">
+                            <span class="px-2 py-1 bg-slate-900 border border-slate-700 rounded text-slate-300">➕ Acidify with dilute HNO₃, then AgNO₃(aq)</span>
+                        </div>
+                        <div class="grid grid-cols-3 gap-2 text-[11px] text-center">
+                            <div class="p-2 bg-slate-900 rounded-lg border border-slate-800"><span class="block w-6 h-6 mx-auto rounded-full bg-slate-100 border border-slate-300 mb-1"></span><b class="text-slate-200">AgCl</b><br><span class="text-slate-400">white</span></div>
+                            <div class="p-2 bg-slate-900 rounded-lg border border-slate-800"><span class="block w-6 h-6 mx-auto rounded-full bg-amber-100 border border-amber-200 mb-1"></span><b class="text-slate-200">AgBr</b><br><span class="text-slate-400">cream</span></div>
+                            <div class="p-2 bg-slate-900 rounded-lg border border-slate-800"><span class="block w-6 h-6 mx-auto rounded-full bg-yellow-400 border border-yellow-500 mb-1"></span><b class="text-slate-200">AgI</b><br><span class="text-slate-400">yellow</span></div>
+                        </div>
+                        <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800 font-mono text-[11px] text-emerald-300">Ag⁺(aq) + X⁻(aq) → AgX(s)</div>
+                        <p class="text-[11px] text-slate-400"><b class="text-slate-300">Confirm with NH₃:</b> AgCl dissolves in <b>dilute</b> NH₃ · AgBr dissolves only in <b>concentrated</b> NH₃ · AgI <b>insoluble</b>.</p>
+                        <p class="text-[11px] text-amber-200">⚠️ Use <b>nitric</b> acid to acidify — HCl would add Cl⁻ and give a false positive.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ TAB 4: TITRATION 3D LAB ============ -->
+        <section id="tab-titration" class="hidden space-y-6">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 space-y-5">
+                <div class="border-b border-slate-800 pb-3">
+                    <span class="text-xs font-bold text-sky-400 uppercase tracking-widest">Volumetric Analysis · Spec 8.20–8.23 · CP3 / CP4</span>
+                    <h2 class="font-display text-xl font-bold text-white mt-1">The Titration Lab — Build It, Run It, Watch the pH Curve</h2>
+                    <p class="text-xs text-slate-400 mt-1">Choose your acid, alkali, which one is the standard, what goes in the burette, and the indicator. Then <b>hold the stopcock</b> to deliver and watch the <b>real-time pH curve</b> draw itself — including the jump and the indicator's colour-change band.</p>
+                </div>
+
+                <!-- SETUP -->
+                <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+                    <span class="font-display font-bold text-sky-300 text-sm block">1 · Build your titration</span>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-[11px]">
+                        <label class="space-y-1"><span class="text-slate-400 block">Acid</span>
+                            <select id="sel-acid" onchange="onSetupChange()" class="w-full bg-slate-900 border border-slate-700 rounded p-2 text-rose-300 font-mono">
+                                <option value="HCl">HCl — hydrochloric (strong)</option>
+                                <option value="H2SO4">H₂SO₄ — sulfuric (strong, diprotic)</option>
+                                <option value="HNO3">HNO₃ — nitric (strong)</option>
+                                <option value="CH3COOH">CH₃COOH — ethanoic (weak)</option>
+                            </select>
+                        </label>
+                        <label class="space-y-1"><span class="text-slate-400 block">Alkali</span>
+                            <select id="sel-alkali" onchange="onSetupChange()" class="w-full bg-slate-900 border border-slate-700 rounded p-2 text-sky-300 font-mono">
+                                <option value="NaOH">NaOH — sodium hydroxide (strong)</option>
+                                <option value="KOH">KOH — potassium hydroxide (strong)</option>
+                                <option value="NH3">NH₃ — ammonia (weak)</option>
+                            </select>
+                        </label>
+                        <label class="space-y-1"><span class="text-slate-400 block">Which is the STANDARD (known)?</span>
+                            <select id="sel-standard" onchange="onSetupChange()" class="w-full bg-slate-900 border border-slate-700 rounded p-2 text-emerald-300 font-mono">
+                                <option value="alkali">Alkali is standard</option>
+                                <option value="acid">Acid is standard</option>
+                            </select>
+                        </label>
+                        <label class="space-y-1"><span class="text-slate-400 block">What goes in the BURETTE?</span>
+                            <select id="sel-burette" onchange="onSetupChange()" class="w-full bg-slate-900 border border-slate-700 rounded p-2 text-emerald-300 font-mono">
+                                <option value="alkali">Alkali in burette · acid in flask</option>
+                                <option value="acid">Acid in burette · alkali in flask</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-[11px]">
+                        <label class="space-y-1"><span class="text-slate-400 block">Indicator</span>
+                            <select id="sel-ind" onchange="onSetupChange()" class="w-full bg-slate-900 border border-slate-700 rounded p-2 text-amber-300 font-mono">
+                                <option value="ph">Phenolphthalein (colourless ⇄ pink, pH 8.3–10)</option>
+                                <option value="mo">Methyl orange (red ⇄ yellow, pH 3.1–4.4)</option>
+                            </select>
+                        </label>
+                        <label class="space-y-1"><span class="text-slate-400 block">Standard concentration (mol dm⁻³)</span>
+                            <input id="in-std" type="number" value="0.100" step="0.005" min="0.01" onchange="onSetupChange()" class="w-full bg-slate-900 border border-slate-700 rounded p-2 text-emerald-300 font-mono">
+                        </label>
+                        <div class="flex items-end gap-2 col-span-2">
+                            <button onclick="newTitration()" class="px-3 py-2 bg-sky-700 hover:bg-sky-600 rounded-lg text-xs font-bold text-white">🎲 New unknown</button>
+                            <button onclick="resetTitration()" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded-lg text-xs font-bold text-slate-300">↺ Reset burette &amp; curve</button>
+                        </div>
+                    </div>
+                    <div id="setup-summary" class="text-[11px] font-mono text-slate-300 p-3 bg-slate-900 rounded-lg border border-slate-800"></div>
+                    <div id="conc-warning" class="hidden text-[11px] p-3 rounded-lg border leading-relaxed"></div>
+                    <div id="ind-advice" class="text-[11px] p-3 rounded-lg border leading-relaxed"></div>
+                </div>
+
+                <div class="grid lg:grid-cols-2 gap-5">
+                    <!-- Apparatus -->
+                    <div class="relative">
+                        <canvas id="tit-canvas" width="480" height="600" class="w-full bg-slate-900 rounded-lg border border-slate-800"></canvas>
+                        <div id="tit-flash" class="hidden absolute inset-0 flex items-center justify-center pointer-events-none">
+                            <span class="px-4 py-2 rounded-xl bg-emerald-950/90 border border-emerald-700 text-emerald-300 font-display font-bold text-lg">Endpoint! ✓</span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <!-- pH curve -->
+                        <div class="bg-slate-950 border border-slate-800 rounded-xl p-4 space-y-2">
+                            <div class="flex items-center justify-between">
+                                <span class="font-display font-bold text-violet-300 text-sm">📈 Real-time pH curve</span>
+                                <span class="text-[10px] text-slate-500 font-mono">pH vs volume of titrant</span>
+                            </div>
+                            <canvas id="phcurve-canvas" width="520" height="330" class="w-full bg-slate-900 rounded-lg border border-slate-800"></canvas>
+                            <p class="text-[10px] text-slate-400">The shaded band is your indicator's colour-change range. A good titration needs the <b>vertical pH jump</b> to pass straight through that band — watch what happens when it doesn't.</p>
+                        </div>
+
+                        <!-- Controls -->
+                        <div class="bg-slate-950 border border-slate-800 rounded-xl p-4 space-y-3">
+                            <span class="font-display font-bold text-emerald-300 text-sm block">2 · Titrate</span>
+                            <div class="flex flex-wrap items-center gap-3">
+                                <button id="tap-btn" class="press-btn px-5 py-3 bg-emerald-700 hover:bg-emerald-600 rounded-xl font-display font-bold text-white text-sm shadow-lg">💧 HOLD — drop by drop</button>
+                                <button id="tap-fast-btn" class="press-btn px-5 py-3 bg-sky-700 hover:bg-sky-600 rounded-xl font-display font-bold text-white text-sm shadow-lg">💦 HOLD — fast flow</button>
+                                <label class="flex items-center gap-2 text-[11px] text-slate-300"><input id="tit-dropwise" type="checkbox" class="accent-emerald-400"> extra-slow dropwise</label>
+                            </div>
+                            <p class="text-[10px] text-slate-500">Tip: use <b>fast flow</b> for the bulk of the titration, then release and finish <b>drop by drop</b> as the colour starts to change.</p>
+                            <div class="grid grid-cols-3 gap-2 text-center text-[11px]">
+                                <div class="p-2 bg-slate-900 rounded-lg border border-slate-800"><span class="text-slate-400 block">Burette reading</span><span id="tit-vol" class="font-mono font-bold text-emerald-300 text-base">0.00</span><span class="text-slate-500"> cm³</span></div>
+                                <div class="p-2 bg-slate-900 rounded-lg border border-slate-800"><span class="text-slate-400 block">Flask pH</span><span id="tit-ph" class="font-mono font-bold text-sky-300 text-base">1.0</span></div>
+                                <div class="p-2 bg-slate-900 rounded-lg border border-slate-800"><span class="text-slate-400 block">Status</span><span id="tit-status" class="font-bold text-amber-300 text-[11px]">before endpoint</span></div>
+                            </div>
+                            <p id="tit-hint" class="text-[11px] text-slate-400">Hold the stopcock to deliver the titrant. As you near the endpoint the colour will flash — switch to dropwise and stop at the <b>first permanent</b> colour change.</p>
+                        </div>
+
+                        <!-- Record + calc -->
+                        <div class="bg-slate-950 border border-slate-800 rounded-xl p-4 space-y-3">
+                            <span class="font-display font-bold text-rose-300 text-sm block">3 · Read, record, calculate</span>
+                            <div class="flex flex-wrap items-center gap-2 text-[11px]">
+                                <input id="tit-reading" type="number" step="0.05" placeholder="your burette reading (cm³)" class="flex-1 min-w-[140px] bg-slate-900 border border-slate-700 rounded p-2 text-rose-300 font-mono">
+                                <button onclick="checkTitration()" class="px-3 py-2 bg-rose-700 hover:bg-rose-600 rounded-lg font-bold text-white">Check &amp; calculate</button>
+                            </div>
+                            <div id="tit-calc" class="text-[11px] font-mono text-slate-400 p-3 bg-slate-900 rounded-lg border border-slate-800 whitespace-pre-wrap">Reach the endpoint first, then record your reading.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technique checklist -->
+                <div class="reveal bg-slate-950 border border-slate-800 rounded-xl p-4">
+                    <span class="font-display font-bold text-amber-300 text-sm block mb-2">📋 Technique that earns the marks (CP3 / CP4)</span>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-2 text-[11px] text-slate-300">
+                        <div class="p-2 bg-slate-900 rounded-lg border border-slate-800">Rinse burette &amp; pipette with the solution they will hold (never water for the burette)</div>
+                        <div class="p-2 bg-slate-900 rounded-lg border border-slate-800">Rinse the conical flask with <b>water only</b> — solution would add extra moles</div>
+                        <div class="p-2 bg-slate-900 rounded-lg border border-slate-800">Read the bottom of the meniscus at eye level, to ±0.05 cm³</div>
+                        <div class="p-2 bg-slate-900 rounded-lg border border-slate-800">Swirl constantly so the added drop mixes fully</div>
+                        <div class="p-2 bg-slate-900 rounded-lg border border-slate-800">White tile under the flask to see the colour change clearly</div>
+                        <div class="p-2 bg-slate-900 rounded-lg border border-slate-800">Do a rough run, then accurate runs; keep titres within 0.10 cm³ (concordant) and average them</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ TAB 5: GROUP 2 MEMORY LAB ============ -->
+        <section id="tab-memory" class="hidden space-y-6">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 space-y-5">
+                <div class="border-b border-slate-800 pb-3">
+                    <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest">Memory Lab · Spec 8.15–8.16</span>
+                    <h2 class="font-display text-xl font-bold text-white mt-1">Remember Group 2 Trends by Understanding Them</h2>
+                    <p class="text-xs text-slate-400 mt-1">Three trends students always mix up. Instead of rote facts, here are two stories and a mnemonic — once you see <i>why</i>, you can't forget.</p>
+                </div>
+
+                <!-- Memory hook banner -->
+                <div class="reveal bg-gradient-to-r from-emerald-950/60 to-sky-950/60 border border-emerald-800/60 rounded-xl p-4">
+                    <p class="font-display text-lg font-bold text-center">
+                        <span class="text-emerald-300">Hydroxides Hike UP</span>
+                        <span class="text-slate-500 mx-2">·</span>
+                        <span class="text-sky-300">Sulfates SINK down</span>
+                        <span class="text-slate-500 mx-2">·</span>
+                        <span class="text-amber-300">Nitrates &amp; Carbonates get TOUGHER down</span>
+                    </p>
+                    <p class="text-center text-[11px] text-slate-400 mt-1">Now let's see <b>why</b> each one is true, so the words stick.</p>
+                </div>
+
+                <!-- Tug of war -->
+                <div class="reveal bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3">
+                    <span class="font-display font-bold text-emerald-300 text-sm">🪢 Story 1 — The Tug-of-War (solubility, 8.15)</span>
+                    <p class="text-[11px] text-slate-400">Dissolving is a tug-of-war: <b class="text-rose-300">Lattice energy</b> holds the solid together, <b class="text-sky-300">Hydration</b> pulls the ions into water. Both get weaker as the cation grows — but they weaken at <b>different rates</b> depending on the anion's size. Drag the cation slider and switch the anion.</p>
+                    <div class="flex flex-wrap items-center gap-3 text-[11px]">
+                        <span class="text-slate-400">Cation:</span>
+                        <div class="flex gap-1.5" id="tow-cations">
+                            <button onclick="setTow(0)" class="tow-cat px-3 py-1.5 rounded-lg bg-emerald-700 text-white font-bold">Mg²⁺</button>
+                            <button onclick="setTow(1)" class="tow-cat px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-slate-300">Ca²⁺</button>
+                            <button onclick="setTow(2)" class="tow-cat px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-slate-300">Sr²⁺</button>
+                            <button onclick="setTow(3)" class="tow-cat px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-slate-300">Ba²⁺</button>
+                        </div>
+                        <span class="text-slate-400 ml-3">Anion:</span>
+                        <div class="flex gap-1.5">
+                            <button onclick="setTowAnion('oh')" id="tow-oh" class="px-3 py-1.5 rounded-lg bg-sky-700 text-white font-bold">OH⁻ (small)</button>
+                            <button onclick="setTowAnion('so4')" id="tow-so4" class="px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-slate-300">SO₄²⁻ (large)</button>
+                        </div>
+                    </div>
+                    <!-- rope -->
+                    <div class="relative h-24 bg-slate-900 rounded-xl border border-slate-800 overflow-hidden">
+                        <div class="absolute inset-y-0 left-0 flex items-center pl-3"><span class="text-rose-300 font-display font-bold text-xs">LATTICE<br><span class="text-[10px] font-sans font-normal text-slate-400">holds solid</span></span></div>
+                        <div class="absolute inset-y-0 right-0 flex items-center pr-3 text-right"><span class="text-sky-300 font-display font-bold text-xs">HYDRATION<br><span class="text-[10px] font-sans font-normal text-slate-400">pulls into water</span></span></div>
+                        <div class="absolute top-1/2 left-[12%] right-[12%] h-1.5 -translate-y-1/2 bg-gradient-to-r from-rose-700 via-slate-600 to-sky-700 rounded-full"></div>
+                        <div id="tow-flag" class="rope-flag absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-7 h-9 flex items-end justify-center" style="left:50%">
+                            <span class="block w-5 h-6 bg-amber-400 rounded-sm border-2 border-amber-600"></span>
+                        </div>
+                        <div id="tow-verdict" class="absolute bottom-1 left-1/2 -translate-x-1/2 text-[11px] font-bold text-amber-300">—</div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3 text-[11px]">
+                        <div><span class="text-rose-300 font-bold">Lattice strength</span><div class="h-2.5 bg-slate-900 rounded-full border border-slate-800 mt-1 overflow-hidden"><div id="tow-lat" class="h-full bg-rose-600 transition-all duration-500" style="width:50%"></div></div></div>
+                        <div><span class="text-sky-300 font-bold">Hydration strength</span><div class="h-2.5 bg-slate-900 rounded-full border border-slate-800 mt-1 overflow-hidden"><div id="tow-hyd" class="h-full bg-sky-600 transition-all duration-500" style="width:50%"></div></div></div>
+                    </div>
+                    <p id="tow-explain" class="text-[11px] text-slate-400 leading-relaxed"></p>
+                    <div class="p-3 bg-slate-900 rounded-lg border border-slate-800 text-[11px] text-slate-300">
+                        <b class="text-emerald-300">The takeaway:</b> For the <b>small OH⁻</b>, lattice energy falls faster than hydration down the group ⇒ hydration wins more easily ⇒ <b>more soluble down</b>. For the <b>large SO₄²⁻</b>, hydration falls faster ⇒ lattice wins ⇒ <b>less soluble down</b>. Anchor: Mg(OH)₂ = milk of magnesia (barely dissolves) but Ba(OH)₂ dissolves well; MgSO₄ = Epsom salts (dissolves) but BaSO₄ = the "barium meal" (so insoluble it's safe to swallow for X-rays!).
+                    </div>
+                </div>
+
+                <!-- Bully cation -->
+                <div class="reveal bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3">
+                    <span class="font-display font-bold text-amber-300 text-sm">😤 Story 2 — The Bully Cation (thermal stability, 8.16)</span>
+                    <p class="text-[11px] text-slate-400">A small, highly-charged cation is a <b>bully</b>: its high charge density <b>polarises</b> (distorts) the big nitrate/carbonate anion, weakening the N–O / C–O bonds until they snap on gentle heating. A big, calm cation barely distorts the anion — you need a roaring flame. Pick a cation and watch.</p>
+                    <div class="flex flex-wrap gap-2 text-[11px]">
+                        <button onclick="setBully('mg')" id="bully-mg" class="px-3 py-1.5 rounded-lg bg-rose-700 text-white font-bold">Mg²⁺ — small bully</button>
+                        <button onclick="setBully('ca')" id="bully-ca" class="px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-slate-300">Ca²⁺ — medium</button>
+                        <button onclick="setBully('ba')" id="bully-ba" class="px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-slate-300">Ba²⁺ — big &amp; calm</button>
+                        <button onclick="setBully('na')" id="bully-na" class="px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-slate-300">Na⁺ (Group 1, +1)</button>
+                    </div>
+                    <canvas id="bully-canvas" width="760" height="280" class="w-full bg-slate-900 rounded-lg border border-slate-800"></canvas>
+                    <p id="bully-caption" class="text-[11px] text-amber-200 font-mono"></p>
+                    <div class="p-3 bg-slate-900 rounded-lg border border-slate-800 text-[11px] text-slate-300">
+                        <b class="text-amber-300">The takeaway:</b> <b>Small + highly charged = bully = breaks the anion = decomposes easily.</b> Down Group 2 the cation gets bigger (charge density ↓, polarising power ↓) ⇒ nitrates &amp; carbonates get <b>more thermally stable</b>. MgCO₃ decomposes in a gentle Bunsen flame; BaCO₃ needs a roaring flame. Group 1 (+1 charge) are even gentler — Na₂CO₃ doesn't decompose at Bunsen temperature at all.
+                    </div>
+                </div>
+
+                <!-- Trend sorter game -->
+                <div class="reveal bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3">
+                    <div class="flex items-center justify-between">
+                        <span class="font-display font-bold text-sky-300 text-sm">🎮 Check yourself — Trend Sorter</span>
+                        <span class="text-[11px] text-slate-400">Score: <b id="sort-score" class="text-emerald-300 font-mono">0/0</b></span>
+                    </div>
+                    <p id="sort-q" class="text-sm text-slate-200 font-medium"></p>
+                    <div id="sort-opts" class="flex flex-wrap gap-2"></div>
+                    <p id="sort-fb" class="text-[11px] min-h-[16px]"></p>
+                    <button onclick="nextSort()" class="px-3 py-1.5 bg-sky-700 hover:bg-sky-600 rounded-lg text-xs font-bold text-white">Next question →</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ TAB 6: HALIDE + H2SO4 ============ -->
+        <section id="tab-halide" class="hidden space-y-6">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 space-y-5">
+                <div class="border-b border-slate-800 pb-3">
+                    <span class="text-xs font-bold text-rose-400 uppercase tracking-widest">The Hard One · Spec 8.27i</span>
+                    <h2 class="font-display text-xl font-bold text-white mt-1">Halides + Concentrated H₂SO₄ — a Memory System, Not a Memory Test</h2>
+                    <p class="text-xs text-slate-400 mt-1">This cluster feels impossible because it's taught as a list. It's actually one story: <b>how hard each halide fights back</b>. Learn the story and every equation follows.</p>
+                </div>
+
+                <!-- The WHY -->
+                <div class="reveal grid md:grid-cols-2 gap-5">
+                    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3">
+                        <span class="font-display font-bold text-sky-300 text-sm">🔑 The one idea: reducing power climbs down the group</span>
+                        <p class="text-[11px] text-slate-300 leading-relaxed">All halides can do the <b>acid–base</b> step (give off HX gas). But only a halide that can <b>donate an electron</b> to H₂SO₄ reduces it — and that gets easier down the group:</p>
+                        <div class="space-y-2 text-[11px]">
+                            <div class="flex items-center gap-2"><span class="w-7 h-7 rounded-full bg-emerald-900 border border-emerald-600 flex items-center justify-center text-emerald-300 font-bold text-xs">Cl⁻</span><span class="text-slate-300">small — outer shell close to the nucleus, holds its extra electron <b>tight</b>. Weak reducing agent.</span></div>
+                            <div class="flex items-center gap-2"><span class="w-9 h-9 rounded-full bg-amber-900 border border-amber-600 flex items-center justify-center text-amber-300 font-bold text-xs">Br⁻</span><span class="text-slate-300">bigger — outer electron further out, easier to lose. Moderate reducing agent.</span></div>
+                            <div class="flex items-center gap-2"><span class="w-11 h-11 rounded-full bg-rose-900 border border-rose-600 flex items-center justify-center text-rose-300 font-bold text-xs">I⁻</span><span class="text-slate-300">big — outer electron far from the nucleus, <b>very easy to lose</b>. Strong reducing agent.</span></div>
+                        </div>
+                        <p class="text-[11px] text-slate-400">So: <b class="text-slate-200">Cl⁻ fights 0 times · Br⁻ fights 1 time · I⁻ fights 3 times.</b> That's the whole thing.</p>
+                    </div>
+                    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3">
+                        <span class="font-display font-bold text-emerald-300 text-sm">🪜 The Sulfur Staircase — where each halide pushes S</span>
+                        <p class="text-[11px] text-slate-400">Sulfur in H₂SO₄ starts at <b>+6</b>. A reducing halide knocks it down the stairs. The stronger the halide, the further it falls:</p>
+                        <div class="space-y-1.5">
+                            <div class="stair flex items-center gap-2"><span class="w-24 text-right font-mono text-[11px] text-slate-300">+6 H₂SO₄</span><div class="flex-1 h-7 rounded bg-slate-800 border border-slate-700 flex items-center px-2 text-[10px] text-slate-400">start — everyone begins here</div></div>
+                            <div class="stair flex items-center gap-2"><span class="w-24 text-right font-mono text-[11px] text-amber-300">+4 SO₂</span><div class="flex-1 h-7 rounded bg-amber-900/40 border border-amber-800 flex items-center px-2 text-[10px] text-amber-200">Br⁻ and I⁻ reach here (choking gas)</div></div>
+                            <div class="stair flex items-center gap-2"><span class="w-24 text-right font-mono text-[11px] text-yellow-300">0 S</span><div class="flex-1 h-7 rounded bg-yellow-900/40 border border-yellow-800 flex items-center px-2 text-[10px] text-yellow-200">only I⁻ (yellow solid)</div></div>
+                            <div class="stair flex items-center gap-2"><span class="w-24 text-right font-mono text-[11px] text-rose-300">−2 H₂S</span><div class="flex-1 h-7 rounded bg-rose-900/40 border border-rose-800 flex items-center px-2 text-[10px] text-rose-200">only I⁻ (rotten-egg gas)</div></div>
+                        </div>
+                        <p class="text-[11px] text-slate-400">Cl⁻ never leaves the top step (+6). Remember the stairs: <b class="text-slate-200">+6 → +4 → 0 → −2</b>.</p>
+                    </div>
+                </div>
+
+                <!-- Interactive stage builder -->
+                <div class="reveal bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3">
+                    <div class="flex flex-wrap items-center justify-between gap-2">
+                        <span class="font-display font-bold text-rose-300 text-sm">🎬 Watch the reaction unfold — pick a halide</span>
+                        <div class="flex gap-2">
+                            <button onclick="setHalide('cl')" id="hal-cl" class="px-3 py-1.5 rounded-lg bg-emerald-700 text-white font-bold text-xs">NaCl</button>
+                            <button onclick="setHalide('br')" id="hal-br" class="px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-slate-300 text-xs">NaBr</button>
+                            <button onclick="setHalide('i')" id="hal-i" class="px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-slate-300 text-xs">NaI</button>
+                        </div>
+                    </div>
+                    <div id="hal-stages" class="space-y-2.5"></div>
+                    <p class="text-[11px] text-slate-400">Observation summary for <b id="hal-obs-name" class="text-slate-200">NaCl</b>: <span id="hal-obs" class="text-slate-300"></span></p>
+                </div>
+
+                <!-- Self test -->
+                <div class="reveal bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3">
+                    <span class="font-display font-bold text-amber-300 text-sm">🎯 Check yourself — which products form?</span>
+                    <p class="text-[11px] text-slate-400">Tick everything produced when the halide reacts with <b>excess</b> concentrated H₂SO₄, then check.</p>
+                    <div class="flex flex-wrap items-center gap-2 text-[11px]">
+                        <select id="quiz-halide" class="bg-slate-900 border border-slate-700 rounded p-2 text-rose-300 font-mono">
+                            <option value="cl">NaCl</option><option value="br">NaBr</option><option value="i">NaI</option>
+                        </select>
+                        <button onclick="checkHalQuiz()" class="px-3 py-2 bg-amber-700 hover:bg-amber-600 rounded-lg font-bold text-white">Check</button>
+                    </div>
+                    <div id="quiz-prods" class="flex flex-wrap gap-2 text-[11px]"></div>
+                    <p id="quiz-fb" class="text-[11px] min-h-[16px]"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ TAB 7: SOLVER ============ -->
+        <section id="tab-solver" class="hidden space-y-6">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 space-y-5">
+                <div class="border-b border-slate-800 pb-3 flex flex-col md:flex-row justify-between gap-2">
+                    <div>
+                        <span class="text-xs font-bold text-rose-400 uppercase tracking-widest">Solver · Spec 8.1–8.2, 8.20, 8.25</span>
+                        <h2 class="font-display text-xl font-bold text-white mt-1">Three Worked-Solution Tools</h2>
+                    </div>
+                    <span class="px-3 py-1 bg-rose-950 text-rose-300 rounded-lg border border-rose-800 text-xs font-mono h-fit">3 modes</span>
+                </div>
+                <div class="flex flex-wrap gap-2 text-xs border-b border-slate-800 pb-3">
+                    <button onclick="switchSolver('ox')" id="solver-btn-ox" class="px-3.5 py-1.5 rounded-lg bg-rose-600 text-white font-bold text-xs">🔢 Oxidation number</button>
+                    <button onclick="switchSolver('titcalc')" id="solver-btn-titcalc" class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 text-xs">💧 Titration calc</button>
+                    <button onclick="switchSolver('displ')" id="solver-btn-displ" class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 text-xs">🔁 Displacement predictor</button>
+                </div>
+
+                <!-- Oxidation number -->
+                <div id="solver-ox" class="space-y-3 text-xs">
+                    <p class="text-slate-400 text-[11px]">Type a formula (e.g. KMnO4, Na2SO4, Cr2O7^2-, MnO4^-, H2O2, NH4^+). The solver assigns the known oxidation numbers and solves for the element you pick.</p>
+                    <div class="grid md:grid-cols-3 gap-3">
+                        <input id="ox-formula" type="text" value="KMnO4" class="bg-slate-950 border border-slate-700 rounded p-2 text-rose-300 font-mono" placeholder="formula">
+                        <select id="ox-target" class="bg-slate-950 border border-slate-700 rounded p-2 text-rose-300 font-mono"></select>
+                        <button onclick="solveOx()" class="px-4 py-2 bg-rose-700 hover:bg-rose-600 rounded-lg font-bold text-white">Solve</button>
+                    </div>
+                    <div id="ox-out" class="text-[11px] font-mono text-slate-400 p-3 bg-slate-950 rounded-lg border border-slate-800 whitespace-pre-wrap">Result appears here.</div>
+                </div>
+
+                <!-- Titration calc -->
+                <div id="solver-titcalc" class="hidden space-y-3 text-xs">
+                    <p class="text-slate-400 text-[11px]">Acid (A) in the flask, alkali (B) in the burette. Fill in what you know; the solver finds the unknown concentration with full working, in mol dm⁻³ and g dm⁻³.</p>
+                    <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
+                        <label class="space-y-1"><span class="text-slate-400 block">c(A) mol dm⁻³</span><input id="tc-ca" type="number" step="0.001" placeholder="?" class="w-full bg-slate-950 border border-slate-700 rounded p-2 text-rose-300 font-mono"></label>
+                        <label class="space-y-1"><span class="text-slate-400 block">V(A) cm³</span><input id="tc-va" type="number" value="25.0" class="w-full bg-slate-950 border border-slate-700 rounded p-2 text-rose-300 font-mono"></label>
+                        <label class="space-y-1"><span class="text-slate-400 block">n(A) (coeff)</span><input id="tc-na" type="number" value="1" class="w-full bg-slate-950 border border-slate-700 rounded p-2 text-rose-300 font-mono"></label>
+                        <label class="space-y-1"><span class="text-slate-400 block">V(B) cm³ (titre)</span><input id="tc-vb" type="number" step="0.05" class="w-full bg-slate-950 border border-slate-700 rounded p-2 text-rose-300 font-mono"></label>
+                        <label class="space-y-1"><span class="text-slate-400 block">n(B) (coeff)</span><input id="tc-nb" type="number" value="1" class="w-full bg-slate-950 border border-slate-700 rounded p-2 text-rose-300 font-mono"></label>
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                        <label class="space-y-1"><span class="text-slate-400 block">c(B) mol dm⁻³</span><input id="tc-cb" type="number" step="0.001" placeholder="?" class="w-full bg-slate-950 border border-slate-700 rounded p-2 text-rose-300 font-mono"></label>
+                        <label class="space-y-1"><span class="text-slate-400 block">Mᵣ of the unknown (for g dm⁻³)</span><input id="tc-mr" type="number" step="0.1" placeholder="optional" class="w-full bg-slate-950 border border-slate-700 rounded p-2 text-rose-300 font-mono"></label>
+                        <button onclick="solveTitration()" class="col-span-2 px-4 py-2 bg-rose-700 hover:bg-rose-600 rounded-lg font-bold text-white">Solve</button>
+                    </div>
+                    <div id="tc-out" class="text-[11px] font-mono text-slate-400 p-3 bg-slate-950 rounded-lg border border-slate-800 whitespace-pre-wrap">Leave exactly ONE of c(A) or c(B) blank.</div>
+                </div>
+
+                <!-- Displacement -->
+                <div id="solver-displ" class="hidden space-y-3 text-xs">
+                    <p class="text-slate-400 text-[11px]">Pick a halogen and a halide. A more reactive halogen displaces a less reactive halide from solution.</p>
+                    <div class="grid md:grid-cols-3 gap-3">
+                        <select id="dp-x2" class="bg-slate-950 border border-slate-700 rounded p-2 text-rose-300 font-mono">
+                            <option value="Cl2">Cl₂(aq)</option><option value="Br2">Br₂(aq)</option><option value="I2">I₂(aq)</option>
+                        </select>
+                        <select id="dp-xi" class="bg-slate-950 border border-slate-700 rounded p-2 text-rose-300 font-mono">
+                            <option value="Cl">Cl⁻(aq)</option><option value="Br">Br⁻(aq)</option><option value="I">I⁻(aq)</option>
+                        </select>
+                        <button onclick="solveDispl()" class="px-4 py-2 bg-rose-700 hover:bg-rose-600 rounded-lg font-bold text-white">Predict</button>
+                    </div>
+                    <div id="dp-out" class="text-[11px] font-mono text-slate-400 p-3 bg-slate-950 rounded-lg border border-slate-800 whitespace-pre-wrap">Prediction appears here.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ TAB 8: FINAL REVIEW ============ -->
+        <section id="tab-review" class="hidden space-y-6">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 space-y-4">
+                <div class="border-b border-slate-800 pb-3">
+                    <span class="text-xs font-bold text-sky-400 uppercase tracking-widest">Final Review · Spec 8.1–8.28</span>
+                    <h2 class="font-display text-xl font-bold text-white mt-1">Everything on One Page</h2>
+                </div>
+                <div class="flex flex-wrap gap-2 text-[11px]">
+                    <a href="#rev-flame" class="px-3 py-1 bg-amber-950 text-amber-300 border border-amber-800 rounded-full">Flame colours</a>
+                    <a href="#rev-tests" class="px-3 py-1 bg-emerald-950 text-emerald-300 border border-emerald-800 rounded-full">Ion tests</a>
+                    <a href="#rev-trends" class="px-3 py-1 bg-sky-950 text-sky-300 border border-sky-800 rounded-full">Group 2 trends</a>
+                    <a href="#rev-halogen" class="px-3 py-1 bg-rose-950 text-rose-300 border border-rose-800 rounded-full">Group 7 reactions</a>
+                    <a href="#rev-h2so4" class="px-3 py-1 bg-violet-950 text-violet-300 border border-violet-800 rounded-full">Halide + H₂SO₄</a>
+                    <a href="#rev-traps" class="px-3 py-1 bg-slate-800 text-slate-300 border border-slate-700 rounded-full">Master trap checklist</a>
+                </div>
+
+                <details open id="rev-flame" class="bg-slate-950 border border-slate-800 rounded-xl">
+                    <summary class="p-4 cursor-pointer font-display font-bold text-amber-300 text-sm flex justify-between items-center"><span>1 · Flame colours (8.17)</span><span class="text-slate-500 text-xs">click to collapse</span></summary>
+                    <div class="px-4 pb-4 grid grid-cols-2 md:grid-cols-6 gap-2 text-[11px] text-center">
+                        <div class="p-2 bg-slate-900 rounded-lg border border-slate-800"><span class="block w-8 h-8 mx-auto rounded-full mb-1" style="background:#dc2626"></span>Li⁺<br><b class="text-slate-200">red</b></div>
+                        <div class="p-2 bg-slate-900 rounded-lg border border-slate-800"><span class="block w-8 h-8 mx-auto rounded-full mb-1" style="background:#facc15"></span>Na⁺<br><b class="text-slate-200">yellow</b></div>
+                        <div class="p-2 bg-slate-900 rounded-lg border border-slate-800"><span class="block w-8 h-8 mx-auto rounded-full mb-1" style="background:#c084fc"></span>K⁺<br><b class="text-slate-200">lilac</b></div>
+                        <div class="p-2 bg-slate-900 rounded-lg border border-slate-800"><span class="block w-8 h-8 mx-auto rounded-full mb-1" style="background:#f97316"></span>Ca²⁺<br><b class="text-slate-200">orange-red</b></div>
+                        <div class="p-2 bg-slate-900 rounded-lg border border-slate-800"><span class="block w-8 h-8 mx-auto rounded-full mb-1" style="background:#ef4444"></span>Sr²⁺<br><b class="text-slate-200">red</b></div>
+                        <div class="p-2 bg-slate-900 rounded-lg border border-slate-800"><span class="block w-8 h-8 mx-auto rounded-full mb-1" style="background:#86efac"></span>Ba²⁺<br><b class="text-slate-200">pale green</b></div>
+                    </div>
+                </details>
+
+                <details open id="rev-tests" class="bg-slate-950 border border-slate-800 rounded-xl">
+                    <summary class="p-4 cursor-pointer font-display font-bold text-emerald-300 text-sm flex justify-between items-center"><span>2 · Ion tests summary (8.19, 8.27ii)</span><span class="text-slate-500 text-xs">click to collapse</span></summary>
+                    <div class="px-4 pb-4 overflow-x-auto">
+                        <table class="w-full text-[11px] border border-slate-800">
+                            <tr class="bg-slate-900 text-emerald-300"><th class="p-2 border border-slate-800 text-left">Ion</th><th class="p-2 border border-slate-800 text-left">Reagent</th><th class="p-2 border border-slate-800 text-left">Observation</th><th class="p-2 border border-slate-800 text-left">Equation</th></tr>
+                            <tr><td class="p-2 border border-slate-800">CO₃²⁻ / HCO₃⁻</td><td class="p-2 border border-slate-800 text-slate-300">dilute acid</td><td class="p-2 border border-slate-800 text-slate-300">effervescence; limewater milky</td><td class="p-2 border border-slate-800 font-mono text-slate-400">CO₃²⁻ + 2H⁺ → H₂O + CO₂</td></tr>
+                            <tr><td class="p-2 border border-slate-800">SO₄²⁻</td><td class="p-2 border border-slate-800 text-slate-300">dil. HCl, then BaCl₂</td><td class="p-2 border border-slate-800 text-slate-300">white ppt</td><td class="p-2 border border-slate-800 font-mono text-slate-400">Ba²⁺ + SO₄²⁻ → BaSO₄(s)</td></tr>
+                            <tr><td class="p-2 border border-slate-800">NH₄⁺</td><td class="p-2 border border-slate-800 text-slate-300">NaOH, warm</td><td class="p-2 border border-slate-800 text-slate-300">NH₃ — damp red litmus blue</td><td class="p-2 border border-slate-800 font-mono text-slate-400">NH₄⁺ + OH⁻ → NH₃ + H₂O</td></tr>
+                            <tr><td class="p-2 border border-slate-800">Cl⁻</td><td class="p-2 border border-slate-800 text-slate-300">dil. HNO₃, then AgNO₃</td><td class="p-2 border border-slate-800 text-slate-300">white ppt; dissolves in dil. NH₃</td><td class="p-2 border border-slate-800 font-mono text-slate-400">Ag⁺ + Cl⁻ → AgCl(s)</td></tr>
+                            <tr><td class="p-2 border border-slate-800">Br⁻</td><td class="p-2 border border-slate-800 text-slate-300">dil. HNO₃, then AgNO₃</td><td class="p-2 border border-slate-800 text-slate-300">cream ppt; dissolves in conc. NH₃</td><td class="p-2 border border-slate-800 font-mono text-slate-400">Ag⁺ + Br⁻ → AgBr(s)</td></tr>
+                            <tr><td class="p-2 border border-slate-800">I⁻</td><td class="p-2 border border-slate-800 text-slate-300">dil. HNO₃, then AgNO₃</td><td class="p-2 border border-slate-800 text-slate-300">yellow ppt; insoluble in NH₃</td><td class="p-2 border border-slate-800 font-mono text-slate-400">Ag⁺ + I⁻ → AgI(s)</td></tr>
+                        </table>
+                    </div>
+                </details>
+
+                <details open id="rev-trends" class="bg-slate-950 border border-slate-800 rounded-xl">
+                    <summary class="p-4 cursor-pointer font-display font-bold text-sky-300 text-sm flex justify-between items-center"><span>3 · Group 2 trends + memory hooks (8.15–8.16)</span><span class="text-slate-500 text-xs">click to collapse</span></summary>
+                    <div class="px-4 pb-4 space-y-2 text-[11px]">
+                        <div class="p-3 bg-slate-900 rounded-lg border border-slate-800"><b class="text-emerald-300">Hydroxides Hike UP:</b> <span class="text-slate-300">solubility increases down the group (Mg(OH)₂ sparingly soluble → Ba(OH)₂ soluble). Tug-of-war: for small OH⁻, lattice falls faster than hydration.</span></div>
+                        <div class="p-3 bg-slate-900 rounded-lg border border-slate-800"><b class="text-sky-300">Sulfates SINK down:</b> <span class="text-slate-300">solubility decreases (MgSO₄ soluble → BaSO₄ insoluble, the barium meal). For large SO₄²⁻, hydration falls faster than lattice.</span></div>
+                        <div class="p-3 bg-slate-900 rounded-lg border border-slate-800"><b class="text-amber-300">Nitrates &amp; carbonates get TOUGHER down:</b> <span class="text-slate-300">thermal stability increases. Big cation ⇒ low charge density ⇒ less polarisation ⇒ anion bonds stay strong. Mg = bully (decomposes easily); Ba = calm (needs roaring flame).</span></div>
+                        <div class="p-3 bg-slate-900 rounded-lg border border-slate-800 font-mono text-slate-300">2Mg(NO₃)₂ → 2MgO + 4NO₂ + O₂ · MgCO₃ → MgO + CO₂ · 2NaNO₃ → 2NaNO₂ + O₂ (Group 1 nitrate) · Na₂CO₃ → no decomposition at Bunsen temp</div>
+                    </div>
+                </details>
+
+                <details open id="rev-halogen" class="bg-slate-950 border border-slate-800 rounded-xl">
+                    <summary class="p-4 cursor-pointer font-display font-bold text-rose-300 text-sm flex justify-between items-center"><span>4 · Group 7 reactions (8.24–8.26)</span><span class="text-slate-500 text-xs">click to collapse</span></summary>
+                    <div class="px-4 pb-4 space-y-2 text-[11px] font-mono">
+                        <div class="p-3 bg-slate-900 rounded-lg border border-slate-800 text-slate-300">Displacement (oxidising ability Cl₂ &gt; Br₂ &gt; I₂):<br>Cl₂ + 2Br⁻ → 2Cl⁻ + Br₂ · Cl₂ + 2I⁻ → 2Cl⁻ + I₂ · Br₂ + 2I⁻ → 2Br⁻ + I₂</div>
+                        <div class="p-3 bg-slate-900 rounded-lg border border-slate-800 text-slate-300">Disproportionation of chlorine:<br>Cl₂ + H₂O ⇌ HCl + HClO (water treatment)<br>Cl₂ + 2NaOH (cold, dil.) → NaCl + NaClO + H₂O (bleach, Cl: −1 &amp; +1)<br>3Cl₂ + 6NaOH (hot, conc.) → 5NaCl + NaClO₃ + 3H₂O (Cl: −1 &amp; +5)</div>
+                        <div class="p-3 bg-slate-900 rounded-lg border border-slate-800 text-slate-300">Colours: Cl₂ pale green · Br₂ red-brown · I₂ grey solid / purple vapour. In cyclohexane: Cl₂ pale green, Br₂ orange/red-brown, I₂ purple.</div>
+                        <div class="p-3 bg-slate-900 rounded-lg border border-slate-800 text-slate-300">HX + NH₃(g) → NH₄X (white smoke) · HX + H₂O → H₃O⁺ + X⁻ (acidic)</div>
+                    </div>
+                </details>
+
+                <details open id="rev-h2so4" class="bg-slate-950 border border-slate-800 rounded-xl">
+                    <summary class="p-4 cursor-pointer font-display font-bold text-violet-300 text-sm flex justify-between items-center"><span>5 · Halides + conc. H₂SO₄ — the full cluster (8.27i)</span><span class="text-slate-500 text-xs">click to collapse</span></summary>
+                    <div class="px-4 pb-4 space-y-2 text-[11px] font-mono">
+                        <div class="p-3 bg-slate-900 rounded-lg border border-slate-800 text-emerald-300">NaCl — fights 0 times (acid–base only):<br>NaCl + H₂SO₄ → NaHSO₄ + HCl↑ &nbsp;<span class="text-slate-400">(steamy fumes)</span></div>
+                        <div class="p-3 bg-slate-900 rounded-lg border border-slate-800 text-amber-300">NaBr — fights 1 time:<br>NaBr + H₂SO₄ → NaHSO₄ + HBr↑ &nbsp;<span class="text-slate-400">(steamy)</span><br>2HBr + H₂SO₄ → Br₂ + SO₂ + 2H₂O &nbsp;<span class="text-slate-400">(orange/brown fumes, choking SO₂; S +6→+4)</span></div>
+                        <div class="p-3 bg-slate-900 rounded-lg border border-slate-800 text-rose-300">NaI — fights 3 times:<br>NaI + H₂SO₄ → NaHSO₄ + HI↑ &nbsp;<span class="text-slate-400">(steamy)</span><br>2HI + H₂SO₄ → I₂ + SO₂ + 2H₂O &nbsp;<span class="text-slate-400">(purple vapour; S +6→+4)</span><br>6HI + H₂SO₄ → 3I₂ + S + 4H₂O &nbsp;<span class="text-slate-400">(yellow solid; S +6→0)</span><br>8HI + H₂SO₄ → 4I₂ + H₂S + 4H₂O &nbsp;<span class="text-slate-400">(rotten-egg; S +6→−2)</span></div>
+                        <div class="p-3 bg-slate-900 rounded-lg border border-slate-800 text-slate-300">Story: reducing power Cl⁻ &lt; Br⁻ &lt; I⁻ (bigger ion ⇒ outer electron easier to lose). Sulfur staircase: +6 → +4 → 0 → −2.</div>
+                    </div>
+                </details>
+
+                <details open id="rev-traps" class="bg-slate-950 border border-slate-800 rounded-xl">
+                    <summary class="p-4 cursor-pointer font-display font-bold text-slate-300 text-sm flex justify-between items-center"><span>6 · Master trap checklist</span><span class="text-slate-500 text-xs">click to collapse</span></summary>
+                    <div class="px-4 pb-4 grid md:grid-cols-2 gap-2 text-[11px]">
+                        <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-slate-300">☐ Oxidising agent is REDUCED (gains e⁻) — never reversed</div>
+                        <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-slate-300">☐ Disproportionation = same element up AND down</div>
+                        <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-slate-300">☐ Peroxide O = −1; metal hydride H = −1</div>
+                        <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-slate-300">☐ Mg + steam → MgO (oxide), not the hydroxide</div>
+                        <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-slate-300">☐ Ca flame = orange-red; Sr flame = red</div>
+                        <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-slate-300">☐ Sulfate test: acidify FIRST (remove carbonate)</div>
+                        <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-slate-300">☐ Halide test: use NITRIC acid, not HCl</div>
+                        <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-slate-300">☐ AgBr = cream; dissolves only in conc. NH₃</div>
+                        <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-slate-300">☐ Hydroxides ↑, sulfates ↓ — and know the tug-of-war reason</div>
+                        <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-slate-300">☐ Thermal stability uses charge density + polarisation</div>
+                        <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-slate-300">☐ Iodine in cyclohexane = purple (not brown)</div>
+                        <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-slate-300">☐ Cold dilute NaOH → chlorate(I); hot conc. → chlorate(V)</div>
+                        <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-slate-300">☐ Cl⁻ + H₂SO₄ = HCl only (no redox); I⁻ gives SO₂, S and H₂S</div>
+                        <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-slate-300">☐ Burette readings to ±0.05 cm³; rinse flask with water only</div>
+                    </div>
+                </details>
+            </div>
+        </section>
+    </main>
+
+    <footer class="border-t border-slate-800 bg-slate-900/80 py-4 mt-8">
+        <div class="max-w-7xl mx-auto px-4 text-center text-[11px] text-slate-500">
+            IAL Chemistry Topic 8: Redox &amp; Groups 1, 2, 7 Master Studio · WCH12 Unit 2 · Paper 2 · Spec 8.1–8.28 · Single-file revision suite (Tailwind + KaTeX + canvas simulations)
+        </div>
+    </footer>
+
+    <script>
+        // ============ KaTeX ============
+        function safeInitKaTeX() {
+            if (typeof renderMathInElement === 'function') {
+                try {
+                    renderMathInElement(document.body, {
+                        delimiters: [
+                            {left: '$$', right: '$$', display: true},
+                            {left: '$', right: '$', display: false}
+                        ],
+                        throwOnError: false
+                    });
+                } catch (e) { console.warn(e); }
+            }
+        }
+        window.safeInitKaTeX = safeInitKaTeX;
+
+        // ============ Tabs ============
+        const TAB_ACTIVE = "tab-btn-active py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs text-sky-400 font-bold border-b-2 border-sky-400 bg-sky-950/40 transition flex items-center gap-1.5 rounded-t-md";
+        const TAB_INACTIVE = "py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs text-slate-400 hover:text-sky-300 font-medium border-b-2 border-transparent hover:border-slate-600 transition flex items-center gap-1.5 rounded-t-md";
+        let currentTab = 'syllabus';
+        window.switchTab = function(tabId) {
+            const tabs = ['syllabus','types','tests','titration','memory','halide','solver','review'];
+            tabs.forEach(t => {
+                const el = document.getElementById('tab-' + t);
+                const btn = document.getElementById('btn-' + t);
+                if (el) el.classList.toggle('hidden', t !== tabId);
+                if (btn) btn.className = (t === tabId) ? TAB_ACTIVE : TAB_INACTIVE;
+            });
+            currentTab = tabId;
+            if (tabId === 'tests') drawFlame(0);
+            if (tabId === 'memory') { updateTow(); drawBully(0); }
+            setTimeout(safeInitKaTeX, 50);
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        };
+
+        // ============ Scroll reveal ============
+        const revealObs = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+        }, {threshold: 0.06});
+        document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+        // ============ Blur blanks ============
+        window.toggleSingleBlur = function(el) { if (el) el.classList.toggle('revealed'); };
+
+        // ============ Ambient background (drifting ions) ============
+        const BG = { orbs: [], init: false };
+        function initBackground() {
+            const cv = document.getElementById('bg-canvas');
+            cv.width = window.innerWidth; cv.height = window.innerHeight;
+            BG.orbs = [];
+            for (let i = 0; i < 14; i++) {
+                BG.orbs.push({
+                    x: Math.random()*cv.width, y: Math.random()*cv.height,
+                    r: 30 + Math.random()*70,
+                    vx: (Math.random()-0.5)*10, vy: (Math.random()-0.5)*8,
+                    sign: i % 2 === 0 ? '+' : '−',
+                    hue: [160, 200, 350][i % 3], ph: Math.random()*6.28
+                });
+            }
+            BG.init = true;
+        }
+        function drawBackground(dt, t) {
+            const cv = document.getElementById('bg-canvas');
+            if (!cv || !BG.init) return;
+            const ctx = cv.getContext('2d');
+            ctx.clearRect(0,0,cv.width,cv.height);
+            BG.orbs.forEach(o => {
+                o.x += o.vx*dt; o.y += o.vy*dt;
+                if (o.x < -o.r) o.x = cv.width+o.r; if (o.x > cv.width+o.r) o.x = -o.r;
+                if (o.y < -o.r) o.y = cv.height+o.r; if (o.y > cv.height+o.r) o.y = -o.r;
+                const pulse = 0.5 + 0.5*Math.sin(t*0.5 + o.ph);
+                const g = ctx.createRadialGradient(o.x,o.y,0,o.x,o.y,o.r);
+                g.addColorStop(0, 'hsla('+o.hue+',70%,60%,'+(0.03+0.02*pulse)+')');
+                g.addColorStop(1, 'hsla('+o.hue+',70%,60%,0)');
+                ctx.fillStyle = g;
+                ctx.beginPath(); ctx.arc(o.x,o.y,o.r,0,6.28); ctx.fill();
+                ctx.fillStyle = 'hsla('+o.hue+',70%,70%,'+(0.06+0.04*pulse)+')';
+                ctx.font = 'bold 14px monospace'; ctx.textAlign = 'center';
+                ctx.fillText(o.sign, o.x, o.y+5);
+                ctx.textAlign = 'left';
+            });
+        }
+        window.addEventListener('resize', function(){
+            const cv = document.getElementById('bg-canvas');
+            if (cv) { cv.width = window.innerWidth; cv.height = window.innerHeight; }
+        });
+
+        // ============ Periodic strip ============
+        const PT = [
+            {s:'Li',n:3,g:1},{s:'Na',n:11,g:1},{s:'K',n:19,g:1},
+            {s:'Mg',n:12,g:2},{s:'Ca',n:20,g:2},{s:'Sr',n:38,g:2},{s:'Ba',n:56,g:2},
+            {s:'F',n:9,g:7},{s:'Cl',n:17,g:7},{s:'Br',n:35,g:7},{s:'I',n:53,g:7}
+        ];
+        function buildPTable() {
+            const host = document.getElementById('ptable');
+            const gcol = {1:'bg-amber-950 border-amber-700 text-amber-300', 2:'bg-emerald-950 border-emerald-700 text-emerald-300', 7:'bg-rose-950 border-rose-700 text-rose-300'};
+            const gpulse = {1:'pulse-g1', 2:'pulse-g2', 7:'pulse-g7'};
+            const gname = {1:'Group 1 · +1', 2:'Group 2 · +2', 7:'Group 7 · −1'};
+            PT.forEach(el => {
+                const d = document.createElement('div');
+                d.className = 'ptile '+gcol[el.g]+' '+gpulse[el.g]+' border rounded-lg w-12 h-14 flex flex-col items-center justify-center';
+                d.title = el.s + ' — ' + gname[el.g];
+                d.innerHTML = '<span class="text-[9px] opacity-70">'+el.n+'</span><span class="font-display font-bold text-sm">'+el.s+'</span>';
+                host.appendChild(d);
+            });
+        }
+
+        // ============ Flame test ============
+        const FLAMES = {
+            Li:{c:'#ef4444',name:'Lithium — red'}, Na:{c:'#facc15',name:'Sodium — yellow'},
+            K:{c:'#c084fc',name:'Potassium — lilac'}, Ca:{c:'#f97316',name:'Calcium — orange-red'},
+            Sr:{c:'#dc2626',name:'Strontium — red'}, Ba:{c:'#86efac',name:'Barium — pale green'}
+        };
+        let flameSel = null, flameT = 0;
+        function buildFlameBtns() {
+            const host = document.getElementById('flame-btns');
+            Object.keys(FLAMES).forEach(k => {
+                const b = document.createElement('button');
+                b.className = 'px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-slate-300 text-xs font-bold';
+                b.textContent = k + (['Mg','Ca','Sr','Ba'].indexOf(k)>=0 ? '²⁺' : '⁺');
+                b.onclick = function(){ flameSel = k; document.getElementById('flame-label').textContent = FLAMES[k].name; document.getElementById('flame-label').style.color = FLAMES[k].c; };
+                host.appendChild(b);
+            });
+        }
+        function drawFlame(dt) {
+            flameT += dt;
+            const cv = document.getElementById('flame-canvas');
+            if (!cv) return;
+            const ctx = cv.getContext('2d');
+            const W = cv.width, H = cv.height;
+            ctx.clearRect(0,0,W,H);
+            const cx = W/2, by = H-40;
+            // burner
+            ctx.fillStyle = '#334155';
+            ctx.fillRect(cx-14, by, 28, 34);
+            ctx.fillStyle = '#475569';
+            ctx.fillRect(cx-22, by+30, 44, 8);
+            // flame layers
+            const flick = Math.sin(flameT*13)*3 + Math.sin(flameT*29)*2;
+            function flameLayer(h, w, color, alpha) {
+                const g = ctx.createRadialGradient(cx, by-h*0.4, 5, cx, by-h*0.45, h);
+                g.addColorStop(0, color);
+                g.addColorStop(1, 'rgba(0,0,0,0)');
+                ctx.globalAlpha = alpha;
+                ctx.fillStyle = g;
+                ctx.beginPath();
+                ctx.moveTo(cx-w, by);
+                ctx.quadraticCurveTo(cx-w*0.9, by-h*0.5, cx+flick*0.3, by-h);
+                ctx.quadraticCurveTo(cx+w*0.9, by-h*0.5, cx+w, by);
+                ctx.closePath(); ctx.fill();
+                ctx.globalAlpha = 1;
+            }
+            const col = flameSel ? FLAMES[flameSel].c : null;
+            // base blue cone
+            flameLayer(120, 34, 'rgba(56,189,248,0.9)', 0.5);
+            flameLayer(80, 22, 'rgba(125,211,252,1)', 0.6);
+            if (col) {
+                flameLayer(150+flick, 40, col, 0.55);
+                // glowing particles
+                for (let i = 0; i < 8; i++) {
+                    const py = by - 40 - ((flameT*60 + i*37) % 130);
+                    const px = cx + Math.sin(flameT*3 + i*2.1)*14;
+                    ctx.globalAlpha = 0.7 * (1 - (by-40-py)/130);
+                    ctx.fillStyle = col;
+                    ctx.beginPath(); ctx.arc(px, py, 2.5, 0, 6.28); ctx.fill();
+                    ctx.globalAlpha = 1;
+                }
+            }
+            ctx.fillStyle = '#64748b'; ctx.font = '10px monospace';
+            ctx.fillText('roaring Bunsen flame', 10, 16);
+        }
+
+        // ============ TITRATION SIM ============
+        const ACIDS = {
+            HCl:    {name:'Hydrochloric acid', f:'HCl',     n:1, strong:true,  Ka:1e7},
+            H2SO4:  {name:'Sulfuric acid',     f:'H₂SO₄',   n:2, strong:true,  Ka:1e7},
+            HNO3:   {name:'Nitric acid',       f:'HNO₃',    n:1, strong:true,  Ka:1e7},
+            CH3COOH:{name:'Ethanoic acid',     f:'CH₃COOH', n:1, strong:false, Ka:1.8e-5}
+        };
+        const ALKALIS = {
+            NaOH:{name:'Sodium hydroxide',    f:'NaOH', n:1, strong:true,  Kb:1e7},
+            KOH: {name:'Potassium hydroxide', f:'KOH',  n:1, strong:true,  Kb:1e7},
+            NH3: {name:'Ammonia (aq)',        f:'NH₃',  n:1, strong:false, Kb:1.8e-5}
+        };
+        const INDS = {
+            ph:{name:'phenolphthalein', lo:8.3, hi:10.0, band:'rgba(244,114,182,0.13)', acidCol:'colourless', baseCol:'pink'},
+            mo:{name:'methyl orange',   lo:3.1, hi:4.4,  band:'rgba(251,146,60,0.16)',  acidCol:'red',        baseCol:'yellow'}
+        };
+        const SALTS = {
+            'HCl|NaOH':'NaCl','HCl|KOH':'KCl','HCl|NH3':'NH₄Cl',
+            'H2SO4|NaOH':'Na₂SO₄','H2SO4|KOH':'K₂SO₄','H2SO4|NH3':'(NH₄)₂SO₄',
+            'HNO3|NaOH':'NaNO₃','HNO3|KOH':'KNO₃','HNO3|NH3':'NH₄NO₃',
+            'CH3COOH|NaOH':'CH₃COONa','CH3COOH|KOH':'CH₃COOK','CH3COOH|NH3':'CH₃COONH₄'
+        };
+        const TIT = {
+            acidKey:'HCl', alkaliKey:'NaOH', standardIs:'alkali', buretteIs:'alkali', indKey:'ph',
+            stdConc:0.100, unkConc:0.100,
+            acid:null, alkali:null, flaskIs:'acid', flaskChem:null, buretteChem:null,
+            flaskConc:0, buretteConc:0, flaskVol:25.0, flaskMol:0,
+            veq:25, phEq:7,
+            added:0, curve:[],
+            flow:false, fast:false, dropwise:false, dropY:0, dropGrowing:0, dropActive:false,
+            phase:'running', swirl:0, ripples:[]
+        };
+        function clampPH(x){ return Math.max(0, Math.min(14, x)); }
+        // General pH for an acid–base mixture (strong/weak, mono/diprotic approximations)
+        function titrationPH(molAcid, molBase, V, acid, base) {
+            const KW = 1e-14;
+            const molH = molAcid * acid.n;
+            const molOH = molBase * base.n;
+            if (acid.strong && base.strong) {
+                if (molH > molOH + 1e-12) return clampPH(-Math.log10((molH-molOH)/V));
+                if (molOH > molH + 1e-12) return clampPH(14 + Math.log10((molOH-molH)/V));
+                return 7;
+            }
+            if (!acid.strong && base.strong) {           // weak acid + strong base
+                const Ka = acid.Ka;
+                if (molOH < molAcid - 1e-9) {
+                    if (molOH < 1e-12) return clampPH(-Math.log10(Math.sqrt(Ka*(molAcid/V))));
+                    return clampPH(-Math.log10(Ka) + Math.log10(molOH/(molAcid-molOH)));
+                }
+                if (molOH < molAcid + 1e-9) return clampPH(14 + Math.log10(Math.sqrt((KW/Ka)*(molAcid/V))));
+                return clampPH(14 + Math.log10((molOH-molAcid)/V));
+            }
+            if (acid.strong && !base.strong) {           // strong acid + weak base
+                const Kb = base.Kb;
+                if (molH < molBase - 1e-9) {
+                    if (molH < 1e-12) return clampPH(14 + Math.log10(Math.sqrt(Kb*(molBase/V))));
+                    return clampPH(14 - (-Math.log10(Kb) + Math.log10(molH/(molBase-molH))));
+                }
+                if (molH < molBase + 1e-9) return clampPH(-Math.log10(Math.sqrt((KW/Kb)*(molBase/V))));
+                return clampPH(-Math.log10((molH-molBase)/V));
+            }
+            // weak acid + weak base
+            const Ka = acid.Ka, Kb = base.Kb;
+            if (molBase < molAcid - 1e-9) {
+                if (molBase < 1e-12) return clampPH(-Math.log10(Math.sqrt(Ka*(molAcid/V))));
+                return clampPH(-Math.log10(Ka) + Math.log10(molBase/(molAcid-molBase)));
+            }
+            if (molBase < molAcid + 1e-9) return clampPH(7 + 0.5*((-Math.log10(Ka)) - (-Math.log10(Kb))));
+            return clampPH(14 - (-Math.log10(Kb) + Math.log10(molAcid/(molBase-molAcid))));
+        }
+        function currentPH() {
+            const molTitrant = TIT.buretteConc * TIT.added / 1000;
+            const molAcid = (TIT.flaskIs === 'acid') ? TIT.flaskMol : molTitrant;
+            const molBase = (TIT.flaskIs === 'acid') ? molTitrant : TIT.flaskMol;
+            const V = (TIT.flaskVol + TIT.added) / 1000;
+            return titrationPH(molAcid, molBase, V, TIT.acid, TIT.alkali);
+        }
+        function readSetup() {
+            TIT.acidKey = document.getElementById('sel-acid').value;
+            TIT.alkaliKey = document.getElementById('sel-alkali').value;
+            TIT.standardIs = document.getElementById('sel-standard').value;
+            TIT.buretteIs = document.getElementById('sel-burette').value;
+            TIT.indKey = document.getElementById('sel-ind').value;
+            TIT.stdConc = parseFloat(document.getElementById('in-std').value) || 0.100;
+            TIT.acid = ACIDS[TIT.acidKey];
+            TIT.alkali = ALKALIS[TIT.alkaliKey];
+            TIT.flaskIs = (TIT.buretteIs === 'alkali') ? 'acid' : 'alkali';
+            TIT.flaskChem = (TIT.flaskIs === 'acid') ? TIT.acid : TIT.alkali;
+            TIT.buretteChem = (TIT.flaskIs === 'acid') ? TIT.alkali : TIT.acid;
+            TIT.flaskConc = (TIT.standardIs === TIT.flaskIs) ? TIT.stdConc : TIT.unkConc;
+            TIT.buretteConc = (TIT.standardIs === TIT.buretteIs) ? TIT.stdConc : TIT.unkConc;
+            TIT.flaskMol = TIT.flaskConc * TIT.flaskVol / 1000;
+            TIT.veq = (TIT.flaskChem.n * TIT.flaskMol * 1000) / (TIT.buretteChem.n * TIT.buretteConc);
+            // pH at equivalence
+            const molT = TIT.buretteConc * TIT.veq / 1000;
+            const mA = (TIT.flaskIs==='acid') ? TIT.flaskMol : molT;
+            const mB = (TIT.flaskIs==='acid') ? molT : TIT.flaskMol;
+            TIT.phEq = titrationPH(mA, mB, (TIT.flaskVol + TIT.veq)/1000, TIT.acid, TIT.alkali);
+        }
+        function updateSetupPanels() {
+            const ind = INDS[TIT.indKey];
+            const flStd = (TIT.standardIs === TIT.flaskIs);
+            const buStd = (TIT.standardIs === TIT.buretteIs);
+            document.getElementById('setup-summary').innerHTML =
+                'Burette: <b class="text-emerald-300">' + TIT.buretteConc.toFixed(3) + ' mol dm⁻³ ' + TIT.buretteChem.f + '</b> (' + (buStd?'standard':'UNKNOWN') + ') · ' +
+                'Flask: <b class="text-emerald-300">25.0 cm³ ' + (flStd? TIT.flaskConc.toFixed(3)+' mol dm⁻³':'') + ' ' + TIT.flaskChem.f + '</b> (' + (flStd?'standard':'UNKNOWN') + ') + ' + ind.name;
+            const wA = !TIT.acid.strong, wB = !TIT.alkali.strong;
+            const el = document.getElementById('ind-advice');
+            let cls, html;
+            if (!wA && !wB) { cls='bg-emerald-950/40 border-emerald-800/60 text-emerald-200';
+                html='<b>✓ Strong acid + strong alkali.</b> The pH jump (~3→11) passes through BOTH indicator ranges — either phenolphthalein or methyl orange works. Equivalence pH ≈ 7.'; }
+            else if (wA && wB) { cls='bg-rose-950/40 border-rose-800/60 text-rose-200';
+                html='<b>✗ Weak acid + weak alkali.</b> There is NO sharp pH jump, so no visual indicator gives a clean endpoint. In practice this is done by <b>thermometric titration</b> (full theory in Topic 14).'; }
+            else if (wB) { cls='bg-amber-950/40 border-amber-800/60 text-amber-200';
+                html='<b>⚠ Strong acid + weak alkali (NH₃).</b> The equivalence point is <b>acidic (pH ≈ 5)</b> — the jump sits in the acidic region. <b>Methyl orange (3.1–4.4) is correct.</b> Phenolphthalein (8.3–10) is WRONG here: it only changes well past the equivalence point, so you would overshoot. <i>(Taught fully in Topic 14 — learn the fact now.)</i>'; }
+            else { cls='bg-amber-950/40 border-amber-800/60 text-amber-200';
+                html='<b>⚠ Weak acid + strong alkali.</b> The equivalence point is <b>alkaline (pH ≈ 9)</b> — the jump sits in the alkaline region. <b>Phenolphthalein (8.3–10) is correct.</b> Methyl orange (3.1–4.4) is WRONG here: it changes colour in the buffer region, long before the equivalence point. <i>(Taught fully in Topic 14 — learn the fact now.)</i>'; }
+            el.className = 'text-[11px] p-3 rounded-lg border leading-relaxed ' + cls;
+            el.innerHTML = html;
+            updateConcWarning();
+        }
+        function updateConcWarning() {
+            const el = document.getElementById('conc-warning');
+            if (TIT.veq > 50) {
+                el.className = 'text-[11px] p-3 rounded-lg border leading-relaxed bg-rose-950/50 border-rose-700/70 text-rose-200';
+                el.innerHTML = '⚠ <b>Unsuitable concentrations:</b> this combination would need ≈ <b>' + TIT.veq.toFixed(1) + ' cm³</b> of titrant to reach the endpoint — more than the 50 cm³ the burette holds, so the endpoint would never appear. <b>Fix it:</b> increase the standard concentration, or swap which solution is the standard, so the endpoint lands within 0–50 cm³.';
+                el.classList.remove('hidden');
+            } else if (TIT.veq < 5) {
+                el.className = 'text-[11px] p-3 rounded-lg border leading-relaxed bg-amber-950/40 border-amber-800/60 text-amber-200';
+                el.innerHTML = '⚠ <b>Precision tip:</b> the endpoint is only ≈ <b>' + TIT.veq.toFixed(1) + ' cm³</b> — such a small titre gives a large percentage error. Aim for a titre of roughly 10–40 cm³ by adjusting the concentrations.';
+                el.classList.remove('hidden');
+            } else {
+                el.classList.add('hidden');
+            }
+        }
+        function onSetupChange() {
+            readSetup();
+            updateSetupPanels();
+            resetTitration();
+        }
+        function newTitration() {
+            readSetup();
+            TIT.unkConc = Math.round((0.08 + Math.random()*0.07) * 1000) / 1000;
+            readSetup();
+            updateSetupPanels();
+            resetTitration();
+            document.getElementById('tit-calc').textContent = 'New unknown prepared. Reach the endpoint, then record your reading.';
+            document.getElementById('tit-reading').value = '';
+        }
+        function resetTitration() {
+            TIT.added = 0; TIT.phase = 'running'; TIT.flow = false; TIT.fast = false; TIT.dropActive = false; TIT.dropGrowing = 0;
+            TIT.ripples = [];
+            TIT.curve = [{v:0, ph: currentPH()}];
+            document.getElementById('tit-flash').classList.add('hidden');
+            document.getElementById('tit-status').textContent = 'before endpoint';
+            document.getElementById('tit-status').className = 'font-bold text-amber-300 text-[11px]';
+            document.getElementById('tit-hint').innerHTML = 'Hold the stopcock to deliver the titrant. As you near the endpoint the colour will flash — switch to dropwise and stop at the <b>first permanent</b> colour change.';
+            document.getElementById('tit-vol').textContent = '0.00';
+            document.getElementById('tit-ph').textContent = currentPH().toFixed(1);
+        }
+        function indColor(pH) {
+            if (TIT.indKey === 'ph') {
+                if (pH < 8.3) return {r:255,g:255,b:255,a:0.0};
+                const t = Math.min(1, (pH - 8.3) / 1.7);
+                return {r:255, g:Math.round(182-80*t), b:Math.round(200-20*t), a:0.35+0.45*t};
+            } else {
+                if (pH < 3.1) return {r:239,g:68,b:68,a:0.8};
+                const t = Math.min(1, (pH - 3.1) / 1.3);
+                return {r:250, g:Math.round(68+132*t), b:Math.round((1-t)*68 + t*40), a:0.8};
+            }
+        }
+        function drawTitration(dt) {
+            const cv = document.getElementById('tit-canvas');
+            if (!cv) return;
+            const ctx = cv.getContext('2d');
+            const W = cv.width, H = cv.height;
+            ctx.clearRect(0,0,W,H);
+            TIT.swirl += dt * (TIT.flow ? 6 : 2.5);
+
+            // stand
+            ctx.fillStyle = '#1e293b';
+            ctx.fillRect(56, 40, 10, 520);
+            ctx.fillRect(20, 552, 130, 12);
+            ctx.fillStyle = '#334155';
+            ctx.fillRect(60, 118, 220, 8); // clamp arm
+
+            // burette glass
+            const bx = 278, bw = 44, btop = 55, bbot = 350;
+            const grad = ctx.createLinearGradient(bx, 0, bx+bw, 0);
+            grad.addColorStop(0, 'rgba(148,163,184,0.35)');
+            grad.addColorStop(0.3, 'rgba(226,232,240,0.12)');
+            grad.addColorStop(1, 'rgba(71,85,105,0.3)');
+            ctx.fillStyle = grad;
+            ctx.fillRect(bx, btop, bw, bbot-btop);
+            ctx.strokeStyle = 'rgba(148,163,184,0.5)';
+            ctx.strokeRect(bx, btop, bw, bbot-btop);
+
+            // graduations (0 at top=65, 50 at bottom=335)
+            const gy0 = 65, gy50 = 335;
+            ctx.strokeStyle = 'rgba(148,163,184,0.6)'; ctx.fillStyle = '#94a3b8'; ctx.font = '9px monospace';
+            for (let v = 0; v <= 50; v++) {
+                const y = gy0 + (gy50-gy0) * v/50;
+                const major = v % 5 === 0;
+                ctx.beginPath(); ctx.moveTo(bx+bw, y); ctx.lineTo(bx+bw-(major?12:6), y); ctx.stroke();
+                if (major) ctx.fillText(String(v), bx+bw+4, y+3);
+            }
+
+            // liquid in burette (from level to bottom)
+            const levelY = gy0 + (gy50-gy0) * Math.min(50, TIT.added)/50;
+            const lg = ctx.createLinearGradient(bx,0,bx+bw,0);
+            lg.addColorStop(0,'rgba(125,211,252,0.5)'); lg.addColorStop(1,'rgba(56,189,248,0.35)');
+            ctx.fillStyle = lg;
+            ctx.fillRect(bx+2, levelY, bw-4, bbot-levelY-2);
+            // meniscus
+            ctx.strokeStyle = 'rgba(186,230,253,0.9)';
+            ctx.beginPath(); ctx.ellipse(bx+bw/2, levelY, (bw-4)/2, 3.5, 0, 0, 3.14); ctx.stroke();
+
+            // stopcock
+            ctx.fillStyle = '#475569';
+            ctx.fillRect(bx+bw/2-5, bbot, 10, 16);
+            ctx.save();
+            ctx.translate(bx+bw/2, bbot+8);
+            ctx.rotate(TIT.flow ? 0 : 1.2);
+            ctx.fillStyle = TIT.flow ? '#34d399' : '#64748b';
+            ctx.beginPath(); ctx.ellipse(0,0,16,5,0,0,6.28); ctx.fill();
+            ctx.restore();
+            // tip
+            ctx.fillStyle = 'rgba(148,163,184,0.4)';
+            ctx.fillRect(bx+bw/2-3, bbot+16, 6, 26);
+
+            // drop
+            const tipX = bx+bw/2, tipY = bbot+44;
+            const flaskSurfY = 470;
+            // burette-empty guard (50 cm³ capacity)
+            if (TIT.added >= 50 && TIT.flow) {
+                TIT.added = 50; TIT.flow = false; TIT.fast = false;
+                if (TIT.phase === 'running') {
+                    TIT.phase = 'empty';
+                    document.getElementById('tit-status').textContent = 'burette empty ✗';
+                    document.getElementById('tit-status').className = 'font-bold text-rose-300 text-[11px]';
+                    document.getElementById('tit-hint').innerHTML = 'The burette ran dry before the endpoint — this combination needs more than 50 cm³. Press <b>Reset</b> and fix the concentrations (see the setup warning above).';
+                }
+                updateTitReadout();
+            }
+            if (TIT.flow && TIT.added < 50) {
+                if (TIT.fast) {
+                    // continuous fast stream
+                    TIT.added = Math.min(50, TIT.added + dt * 2.0);
+                    const wob = Math.sin(TIT.swirl*3)*1.3;
+                    ctx.strokeStyle = 'rgba(125,211,252,0.85)';
+                    ctx.lineWidth = 3;
+                    ctx.beginPath(); ctx.moveTo(tipX, tipY); ctx.lineTo(tipX+wob, flaskSurfY); ctx.stroke();
+                    ctx.lineWidth = 1;
+                    if (Math.random() < 0.45) TIT.ripples.push({r:2, a:1});
+                    updateTitReadout();
+                } else {
+                    TIT.dropGrowing += dt * (TIT.dropwise ? 2.2 : 7);
+                    if (TIT.dropGrowing >= 1) {
+                        TIT.dropGrowing = 0;
+                        TIT.dropActive = true; TIT.dropY = tipY;
+                    }
+                }
+            }
+            if (TIT.dropGrowing > 0 && TIT.flow && !TIT.fast) {
+                const r = 2 + TIT.dropGrowing*4;
+                ctx.fillStyle = 'rgba(125,211,252,0.9)';
+                ctx.beginPath(); ctx.arc(tipX, tipY+r*0.4, r, 0, 6.28); ctx.fill();
+            }
+            if (TIT.dropActive) {
+                TIT.dropY += dt * 900;
+                if (TIT.dropY >= flaskSurfY) {
+                    TIT.dropActive = false;
+                    TIT.added = Math.min(50, TIT.added + 0.05);
+                    TIT.ripples.push({r:2, a:1});
+                    updateTitReadout();
+                } else {
+                    ctx.fillStyle = 'rgba(125,211,252,0.9)';
+                    ctx.beginPath(); ctx.ellipse(tipX, TIT.dropY, 3, 5, 0, 0, 6.28); ctx.fill();
+                }
+            }
+
+            // conical flask
+            const fx = 300, neckTop = 415, baseY = 545, baseHW = 95, neckHW = 15;
+            // glass body (cone)
+            ctx.strokeStyle = 'rgba(148,163,184,0.55)';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(fx-neckHW, neckTop);
+            ctx.lineTo(fx-neckHW, 445);
+            ctx.lineTo(fx-baseHW, baseY);
+            ctx.moveTo(fx+neckHW, neckTop);
+            ctx.lineTo(fx+neckHW, 445);
+            ctx.lineTo(fx+baseHW, baseY);
+            ctx.stroke();
+            ctx.lineWidth = 1;
+            // base ellipse
+            ctx.beginPath(); ctx.ellipse(fx, baseY, baseHW, 12, 0, 0, 6.28); ctx.stroke();
+
+            // liquid (clip to cone)
+            ctx.save();
+            ctx.beginPath();
+            ctx.moveTo(fx-neckHW, 445);
+            ctx.lineTo(fx-baseHW, baseY);
+            ctx.lineTo(fx+baseHW, baseY);
+            ctx.lineTo(fx+neckHW, 445);
+            ctx.closePath();
+            ctx.clip();
+            const pH = currentPH();
+            const ic = indColor(pH);
+            const liq = ctx.createLinearGradient(0, flaskSurfY, 0, baseY);
+            liq.addColorStop(0, 'rgba('+ic.r+','+ic.g+','+ic.b+','+ic.a+')');
+            liq.addColorStop(1, 'rgba('+Math.round(ic.r*0.7)+','+Math.round(ic.g*0.7)+','+Math.round(ic.b*0.7)+','+Math.min(1,ic.a+0.15)+')');
+            ctx.fillStyle = 'rgba(148,163,184,0.12)';
+            ctx.fillRect(fx-baseHW, flaskSurfY, baseHW*2, baseY-flaskSurfY);
+            ctx.fillStyle = liq;
+            ctx.fillRect(fx-baseHW, flaskSurfY, baseHW*2, baseY-flaskSurfY);
+            // swirl surface
+            const swx = Math.sin(TIT.swirl)*8;
+            ctx.strokeStyle = 'rgba(255,255,255,0.35)';
+            ctx.beginPath(); ctx.ellipse(fx+swx, flaskSurfY, 40, 6, Math.sin(TIT.swirl)*0.15, 0, 6.28); ctx.stroke();
+            ctx.strokeStyle = 'rgba(255,255,255,0.2)';
+            ctx.beginPath(); ctx.ellipse(fx-swx*0.6, flaskSurfY+6, 26, 4, -Math.sin(TIT.swirl)*0.15, 0, 6.28); ctx.stroke();
+            // ripples
+            TIT.ripples.forEach(rp => { rp.r += dt*60; rp.a -= dt*1.8; });
+            TIT.ripples = TIT.ripples.filter(rp => rp.a > 0);
+            TIT.ripples.forEach(rp => {
+                ctx.globalAlpha = rp.a*0.5;
+                ctx.strokeStyle = '#fff';
+                ctx.beginPath(); ctx.ellipse(fx, flaskSurfY, rp.r, rp.r*0.25, 0, 0, 6.28); ctx.stroke();
+                ctx.globalAlpha = 1;
+            });
+            ctx.restore();
+
+            // white tile
+            ctx.fillStyle = 'rgba(226,232,240,0.9)';
+            ctx.beginPath(); ctx.ellipse(fx, baseY+14, baseHW+14, 10, 0, 0, 6.28); ctx.fill();
+
+            // labels
+            const buStd = (TIT.standardIs === TIT.buretteIs);
+            const flStd = (TIT.standardIs === TIT.flaskIs);
+            ctx.fillStyle = '#64748b'; ctx.font = '10px monospace';
+            ctx.fillText('burette — ' + TIT.buretteChem.f + ' (' + (buStd?'standard':'unknown') + ')', 330, 70);
+            ctx.fillText('flask — ' + TIT.flaskChem.f + ' + ' + INDS[TIT.indKey].name, 330, 470);
+            ctx.fillStyle = TIT.flow ? '#34d399' : '#64748b';
+            ctx.fillText(TIT.flow ? 'stopcock OPEN' : 'stopcock closed (hold button)', 330, 370);
+        }
+        // ============ Real-time pH curve ============
+        function drawPHCurve(dt) {
+            const cv = document.getElementById('phcurve-canvas');
+            if (!cv) return;
+            const ctx = cv.getContext('2d');
+            const W = cv.width, H = cv.height;
+            ctx.clearRect(0,0,W,H);
+            const padL = 40, padB = 34, padT = 14, padR = 14;
+            const pw = W - padL - padR, phh = H - padT - padB;
+            const maxV = Math.max(50, TIT.veq * 1.4);
+            function x(v){ return padL + (v/maxV)*pw; }
+            function y(pH){ return padT + (1 - pH/14)*phh; }
+            // grid + axes
+            ctx.strokeStyle = '#1e293b'; ctx.lineWidth = 1;
+            ctx.fillStyle = '#64748b'; ctx.font = '9px monospace';
+            for (let pH = 0; pH <= 14; pH += 2) {
+                ctx.beginPath(); ctx.moveTo(padL, y(pH)); ctx.lineTo(W-padR, y(pH)); ctx.stroke();
+                ctx.fillText(String(pH), padL-18, y(pH)+3);
+            }
+            const vstep = maxV > 60 ? 20 : 10;
+            for (let v = 0; v <= maxV; v += vstep) {
+                ctx.beginPath(); ctx.moveTo(x(v), padT); ctx.lineTo(x(v), H-padB); ctx.stroke();
+                ctx.fillText(String(v), x(v)-6, H-padB+14);
+            }
+            ctx.strokeStyle = '#475569'; ctx.lineWidth = 1.5;
+            ctx.beginPath(); ctx.moveTo(padL, padT); ctx.lineTo(padL, H-padB); ctx.lineTo(W-padR, H-padB); ctx.stroke();
+            ctx.fillStyle = '#94a3b8'; ctx.font = '10px monospace';
+            ctx.fillText('pH', 8, padT+8);
+            ctx.fillText('volume of titrant / cm³', W-170, H-6);
+            // indicator colour-change band
+            const ind = INDS[TIT.indKey];
+            ctx.fillStyle = ind.band;
+            ctx.fillRect(padL, y(ind.hi), pw, y(ind.lo)-y(ind.hi));
+            ctx.fillStyle = (TIT.indKey==='ph') ? '#f472b6' : '#fb923c';
+            ctx.font = '9px monospace';
+            ctx.fillText(ind.name + ' (' + ind.lo + '–' + ind.hi + ')', padL+6, y(ind.hi)+11);
+            // equivalence marker (revealed once the run ends)
+            if (TIT.phase !== 'running') {
+                ctx.strokeStyle = '#34d399'; ctx.setLineDash([5,4]); ctx.lineWidth = 1.5;
+                ctx.beginPath(); ctx.moveTo(x(TIT.veq), padT); ctx.lineTo(x(TIT.veq), H-padB); ctx.stroke();
+                ctx.setLineDash([]);
+                ctx.fillStyle = '#34d399';
+                ctx.beginPath(); ctx.arc(x(TIT.veq), y(TIT.phEq), 4, 0, 6.28); ctx.fill();
+                ctx.font = 'bold 10px monospace';
+                ctx.fillText('equivalence ≈ ' + TIT.veq.toFixed(2) + ' cm³, pH ' + TIT.phEq.toFixed(1), x(TIT.veq)+6, y(TIT.phEq)-8);
+            }
+            // the curve
+            if (TIT.curve.length > 1) {
+                ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 2.2;
+                ctx.beginPath();
+                TIT.curve.forEach((p, i) => {
+                    if (i === 0) ctx.moveTo(x(p.v), y(p.ph)); else ctx.lineTo(x(p.v), y(p.ph));
+                });
+                ctx.stroke();
+                // current point
+                const last = TIT.curve[TIT.curve.length-1];
+                ctx.fillStyle = '#fbbf24';
+                ctx.beginPath(); ctx.arc(x(last.v), y(last.ph), 4.5, 0, 6.28); ctx.fill();
+            }
+        }
+        function updateTitReadout() {
+            document.getElementById('tit-vol').textContent = TIT.added.toFixed(2);
+            const pH = currentPH();
+            document.getElementById('tit-ph').textContent = pH.toFixed(1);
+            TIT.curve.push({v: TIT.added, ph: pH});
+            const near = Math.abs(TIT.added - TIT.veq) < 1.0;
+            if (TIT.phase === 'running') {
+                if (TIT.added >= TIT.veq && !TIT.flow) {
+                    if (TIT.added <= TIT.veq + 0.25) {
+                        TIT.phase = 'endpoint';
+                        document.getElementById('tit-status').textContent = 'ENDPOINT ✓';
+                        document.getElementById('tit-status').className = 'font-bold text-emerald-300 text-[11px]';
+                        document.getElementById('tit-flash').classList.remove('hidden');
+                        setTimeout(()=>document.getElementById('tit-flash').classList.add('hidden'), 1400);
+                        document.getElementById('tit-hint').innerHTML = 'First permanent colour change reached. <b>Read the burette</b> (bottom of meniscus, ±0.05) and record it in step 3.';
+                    }
+                } else if (TIT.added > TIT.veq + 0.25) {
+                    TIT.phase = 'over';
+                    document.getElementById('tit-status').textContent = 'overshot ✗';
+                    document.getElementById('tit-status').className = 'font-bold text-rose-300 text-[11px]';
+                    document.getElementById('tit-hint').innerHTML = 'You added too much — the colour is past the endpoint. Press <b>Reset burette &amp; curve</b> and try again, going dropwise near the change.';
+                } else if (near) {
+                    document.getElementById('tit-hint').innerHTML = 'Getting close — switch to <b>dropwise</b> and watch for the first permanent colour change.';
+                }
+            }
+        }
+        function checkTitration() {
+            const out = document.getElementById('tit-calc');
+            if (TIT.phase !== 'endpoint') {
+                out.textContent = 'Reach the endpoint first (first permanent colour change), then record your reading.';
+                return;
+            }
+            const reading = parseFloat(document.getElementById('tit-reading').value);
+            if (isNaN(reading)) { out.textContent = 'Enter your burette reading in cm³.'; return; }
+            const ok = Math.abs(reading - TIT.added) <= 0.05;
+            const v = reading;
+            const nA = TIT.acid.n, nB = TIT.alkali.n;
+            const salt = SALTS[TIT.acidKey + '|' + TIT.alkaliKey] || 'salt';
+            // volumes of each solution
+            const vAcid = (TIT.buretteIs === 'acid') ? v : TIT.flaskVol;
+            const vAlkali = (TIT.buretteIs === 'alkali') ? v : TIT.flaskVol;
+            let txt = 'Reading check: you read ' + reading.toFixed(2) + ' cm³, actual ' + TIT.added.toFixed(2) + ' cm³ — ' + (ok ? '✓ well read!' : '✗ read the meniscus again (±0.05).') + '\n\n';
+            txt += 'Equation:  ' + nB + ' ' + TIT.acid.f + ' + ' + nA + ' ' + TIT.alkali.f + ' → ' + salt + ' + ' + (nA*nB) + ' H₂O\n';
+            txt += 'Mole ratio  ' + TIT.acid.f + ' : ' + TIT.alkali.f + ' = ' + nB + ' : ' + nA + '\n\n';
+            // work from the STANDARD
+            if (TIT.standardIs === 'alkali') {
+                const cStd = TIT.stdConc;
+                const molAlk = cStd * vAlkali / 1000;
+                const molAcid = molAlk * nB / nA;
+                const cAcid = molAcid * 1000 / vAcid;
+                txt += 'mol ' + TIT.alkali.f + ' (standard) = c × V = ' + cStd + ' × ' + (vAlkali/1000).toFixed(5) + ' = ' + molAlk.toExponential(3) + ' mol\n';
+                txt += 'mol ' + TIT.acid.f + ' = mol × ' + nB + '/' + nA + ' = ' + molAcid.toExponential(3) + ' mol\n';
+                txt += '[' + TIT.acid.f + '] = mol / V = ' + molAcid.toExponential(3) + ' / ' + (vAcid/1000).toFixed(5) + ' = ' + cAcid.toFixed(3) + ' mol dm⁻³\n';
+                txt += '\nTrue value was ' + TIT.unkConc.toFixed(3) + ' mol dm⁻³. ' + (Math.abs(cAcid - TIT.unkConc) < 0.005 ? 'Excellent accuracy!' : 'Practise stopping exactly at the change.');
+            } else {
+                const cStd = TIT.stdConc;
+                const molAcid = cStd * vAcid / 1000;
+                const molAlk = molAcid * nA / nB;
+                const cAlk = molAlk * 1000 / vAlkali;
+                txt += 'mol ' + TIT.acid.f + ' (standard) = c × V = ' + cStd + ' × ' + (vAcid/1000).toFixed(5) + ' = ' + molAcid.toExponential(3) + ' mol\n';
+                txt += 'mol ' + TIT.alkali.f + ' = mol × ' + nA + '/' + nB + ' = ' + molAlk.toExponential(3) + ' mol\n';
+                txt += '[' + TIT.alkali.f + '] = mol / V = ' + molAlk.toExponential(3) + ' / ' + (vAlkali/1000).toFixed(5) + ' = ' + cAlk.toFixed(3) + ' mol dm⁻³\n';
+                txt += '\nTrue value was ' + TIT.unkConc.toFixed(3) + ' mol dm⁻³. ' + (Math.abs(cAlk - TIT.unkConc) < 0.005 ? 'Excellent accuracy!' : 'Practise stopping exactly at the change.');
+            }
+            out.textContent = txt;
+        }
+        // stopcock hold (dropwise + fast)
+        function bindHold(btnId, fast) {
+            const btn = document.getElementById(btnId);
+            if (!btn) return;
+            const open = function(e){ e.preventDefault(); if (TIT.phase==='running'){ TIT.flow = true; TIT.fast = fast; } };
+            const close = function(e){ e.preventDefault(); TIT.flow = false; TIT.fast = false; updateTitReadout(); };
+            btn.addEventListener('pointerdown', open);
+            btn.addEventListener('pointerup', close);
+            btn.addEventListener('pointerleave', close);
+            btn.addEventListener('touchstart', open);
+            btn.addEventListener('touchend', close);
+        }
+        function bindTap() {
+            bindHold('tap-btn', false);
+            bindHold('tap-fast-btn', true);
+            document.getElementById('tit-dropwise').addEventListener('change', function(){ TIT.dropwise = this.checked; });
+        }
+
+        // ============ Tug of war ============
+        const TOW = { cat: 0, anion: 'oh' };
+        const TOW_CATS = ['Mg²⁺','Ca²⁺','Sr²⁺','Ba²⁺'];
+        function setTow(i) {
+            TOW.cat = i;
+            document.querySelectorAll('.tow-cat').forEach((b,idx)=>{
+                b.className = (idx===i) ? 'tow-cat px-3 py-1.5 rounded-lg bg-emerald-700 text-white font-bold' : 'tow-cat px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-slate-300';
+            });
+            updateTow();
+        }
+        function setTowAnion(a) {
+            TOW.anion = a;
+            document.getElementById('tow-oh').className = (a==='oh') ? 'px-3 py-1.5 rounded-lg bg-sky-700 text-white font-bold' : 'px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-slate-300';
+            document.getElementById('tow-so4').className = (a==='so4') ? 'px-3 py-1.5 rounded-lg bg-sky-700 text-white font-bold' : 'px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-slate-300';
+            updateTow();
+        }
+        function updateTow() {
+            const i = TOW.cat;
+            // relative strengths (0-100). Both fall down group, at different rates per anion.
+            let lat, hyd;
+            if (TOW.anion === 'oh') {
+                lat = [92, 74, 60, 48][i];   // falls fast
+                hyd = [88, 78, 70, 62][i];   // falls slower
+            } else {
+                lat = [90, 82, 76, 70][i];   // falls slower (large anion)
+                hyd = [86, 70, 56, 42][i];   // falls fast
+            }
+            document.getElementById('tow-lat').style.width = lat + '%';
+            document.getElementById('tow-hyd').style.width = hyd + '%';
+            const diff = hyd - lat; // positive => hydration wins => soluble
+            const pos = 50 + Math.max(-32, Math.min(32, diff * 1.6));
+            document.getElementById('tow-flag').style.left = pos + '%';
+            const soluble = diff > 0;
+            document.getElementById('tow-verdict').textContent = TOW_CATS[i] + (TOW.anion==='oh'?' hydroxide':' sulfate') + ' — ' + (soluble ? 'hydration wins ⇒ SOLUBLE' : 'lattice wins ⇒ INSOLUBLE');
+            const trend = TOW.anion === 'oh'
+                ? 'Down the group the hydroxide gets MORE soluble — lattice energy falls faster than hydration, so water wins more easily.'
+                : 'Down the group the sulfate gets LESS soluble — hydration falls faster than lattice, so the solid holds together.';
+            document.getElementById('tow-explain').innerHTML = '<b class="text-slate-300">' + TOW_CATS[i] + ':</b> lattice ' + lat + ' · hydration ' + hyd + '. ' + trend;
+        }
+
+        // ============ Bully cation ============
+        const BULLY = { sel: 'mg', t: 0, popped: false, popT: 0 };
+        function setBully(k) {
+            BULLY.sel = k; BULLY.popped = false; BULLY.popT = 0; BULLY.t = 0;
+            ['mg','ca','ba','na'].forEach(x => {
+                const b = document.getElementById('bully-'+x);
+                if (b) b.className = (x===k) ? 'px-3 py-1.5 rounded-lg bg-rose-700 text-white font-bold' : 'px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-slate-300';
+            });
+        }
+        function drawBully(dt) {
+            BULLY.t += dt;
+            const cv = document.getElementById('bully-canvas');
+            if (!cv) return;
+            const ctx = cv.getContext('2d');
+            const W = cv.width, H = cv.height;
+            ctx.clearRect(0,0,W,H);
+            const cfg = {
+                mg:{r:20, charge:'+2', col:'#fb7185', anger:1.0, label:'Mg²⁺ — small, high charge density (bully)'},
+                ca:{r:27, charge:'+2', col:'#fbbf24', anger:0.55, label:'Ca²⁺ — medium'},
+                ba:{r:36, charge:'+2', col:'#34d399', anger:0.15, label:'Ba²⁺ — large, low charge density (calm)'},
+                na:{r:24, charge:'+1', col:'#38bdf8', anger:0.05, label:'Na⁺ — +1 charge, very gentle (Group 1)'}
+            }[BULLY.sel];
+            const cx = 150, cy = H/2 + 10;
+            const anger = cfg.anger;
+            // decompose threshold
+            if (!BULLY.popped && anger > 0.7 && BULLY.t > 2.2) { BULLY.popped = true; BULLY.popT = 0; }
+            if (BULLY.popped) BULLY.popT += dt;
+
+            // heat flame under anion
+            const flameH = anger > 0.7 ? 40 : (anger > 0.4 ? 55 : 75);
+            const fx = 420, fy = H - 30;
+            const fg = ctx.createRadialGradient(fx, fy-flameH*0.4, 4, fx, fy-flameH*0.45, flameH);
+            fg.addColorStop(0, 'rgba(251,146,60,0.9)'); fg.addColorStop(1, 'rgba(251,146,60,0)');
+            ctx.fillStyle = fg;
+            ctx.beginPath();
+            ctx.moveTo(fx-22, fy); ctx.quadraticCurveTo(fx-18, fy-flameH*0.5, fx+Math.sin(BULLY.t*11)*3, fy-flameH);
+            ctx.quadraticCurveTo(fx+18, fy-flameH*0.5, fx+22, fy); ctx.closePath(); ctx.fill();
+            ctx.fillStyle = '#64748b'; ctx.font = '10px monospace';
+            ctx.fillText(anger>0.7 ? 'gentle heat is enough' : (anger>0.4?'needs more heat':'needs a ROARING flame'), fx-70, H-8);
+
+            // cation (wobbles if angry)
+            const wob = anger * Math.sin(BULLY.t*14) * 6;
+            ctx.fillStyle = cfg.col;
+            ctx.globalAlpha = 0.9;
+            ctx.beginPath(); ctx.arc(cx+wob, cy, cfg.r, 0, 6.28); ctx.fill();
+            ctx.globalAlpha = 1;
+            ctx.fillStyle = '#0f172a'; ctx.font = 'bold 12px monospace'; ctx.textAlign = 'center';
+            ctx.fillText(cfg.charge, cx+wob, cy+4);
+            ctx.fillStyle = '#94a3b8'; ctx.font = '10px monospace';
+            ctx.fillText(cfg.label, cx, cy + cfg.r + 22);
+            // polarisation field lines
+            if (anger > 0.3) {
+                ctx.strokeStyle = 'rgba(251,113,133,'+(anger*0.5)+')';
+                ctx.setLineDash([4,4]);
+                for (let a = -0.5; a <= 0.5; a += 0.25) {
+                    ctx.beginPath(); ctx.moveTo(cx+cfg.r+wob, cy+a*20); ctx.lineTo(380, cy+a*30); ctx.stroke();
+                }
+                ctx.setLineDash([]);
+            }
+            ctx.textAlign = 'left';
+
+            // nitrate anion (triangle of 3 O around N) — distorts with anger
+            const nx = 420, ny = cy;
+            const distort = anger * (BULLY.popped ? 1 : (0.5 + 0.5*Math.sin(BULLY.t*8))) * 14;
+            if (!BULLY.popped) {
+                const oPos = [
+                    [nx - 34 - distort, ny - 26],
+                    [nx + 34, ny - 26],
+                    [nx, ny + 38 + distort*0.6]
+                ];
+                ctx.strokeStyle = 'rgba(148,163,184,0.7)'; ctx.lineWidth = 3;
+                ctx.beginPath(); ctx.moveTo(oPos[0][0],oPos[0][1]); ctx.lineTo(oPos[1][0],oPos[1][1]); ctx.lineTo(oPos[2][0],oPos[2][1]); ctx.closePath(); ctx.stroke();
+                ctx.lineWidth = 1;
+                ctx.fillStyle = '#94a3b8';
+                ctx.beginPath(); ctx.arc(nx, ny, 12, 0, 6.28); ctx.fill();
+                ctx.fillStyle = '#0f172a'; ctx.font='bold 11px monospace'; ctx.textAlign='center'; ctx.fillText('N', nx, ny+4);
+                oPos.forEach(p => {
+                    ctx.fillStyle = '#f87171';
+                    ctx.beginPath(); ctx.arc(p[0],p[1],11,0,6.28); ctx.fill();
+                    ctx.fillStyle = '#0f172a'; ctx.fillText('O', p[0], p[1]+4);
+                });
+                ctx.textAlign='left';
+                ctx.fillStyle = '#94a3b8'; ctx.font='10px monospace';
+                ctx.fillText('NO₃⁻', nx-14, ny+64);
+            } else {
+                // popped: products fly apart
+                const t = Math.min(1, BULLY.popT / 1.2);
+                ctx.globalAlpha = 1 - t*0.3;
+                // NO2 brown fumes rising
+                for (let i = 0; i < 5; i++) {
+                    const px = nx - 30 + i*16 + Math.sin(BULLY.t*3+i)*6;
+                    const py = ny - 20 - t*(60 + i*18);
+                    ctx.fillStyle = 'rgba(180,83,9,'+(0.8 - t*0.5)+')';
+                    ctx.beginPath(); ctx.arc(px, py, 9, 0, 6.28); ctx.fill();
+                }
+                ctx.fillStyle = '#b45309'; ctx.font='bold 11px monospace';
+                ctx.fillText('NO₂ (brown, acidic gas)', nx-60, ny-95);
+                // O2
+                ctx.fillStyle = 'rgba(125,211,252,0.8)';
+                ctx.beginPath(); ctx.arc(nx+55, ny-40-t*50, 8, 0, 6.28); ctx.fill();
+                ctx.fillStyle = '#7dd3fc'; ctx.fillText('O₂', nx+48, ny-50-t*50);
+                // oxide left behind
+                ctx.fillStyle = '#94a3b8';
+                ctx.beginPath(); ctx.arc(nx, ny+30, 13, 0, 6.28); ctx.fill();
+                ctx.fillStyle = '#0f172a'; ctx.textAlign='center'; ctx.fillText('O²⁻', nx, ny+34); ctx.textAlign='left';
+                ctx.fillStyle = '#fbbf24'; ctx.font='bold 11px monospace';
+                ctx.fillText('DECOMPOSED — the bully won', nx-90, ny+70);
+                ctx.globalAlpha = 1;
+            }
+
+            const cap = document.getElementById('bully-caption');
+            const caps = {
+                mg:'Mg²⁺ is small with a high charge density — it polarises the nitrate hard, weakening the N–O bonds. Gentle heating → SNAP: MgO + NO₂ + O₂.',
+                ca:'Ca²⁺ is bigger — less polarising. Needs stronger heating than Mg²⁺ to decompose.',
+                ba:'Ba²⁺ is large with a low charge density — it barely distorts the nitrate. You need a roaring flame; Ba(NO₃)₂ is thermally stable.',
+                na:'Na⁺ has only a +1 charge — so gentle that NaNO₃ barely decomposes (and Na₂CO₃ not at all at Bunsen temperature).'
+            };
+            if (cap && cap.textContent !== caps[BULLY.sel]) cap.textContent = caps[BULLY.sel];
+        }
+
+        // ============ Trend sorter ============
+        const SORTS = [
+            {q:'Which hydroxide is MORE soluble?', a:['Ba(OH)₂','Mg(OH)₂'], correct:0, why:'Hydroxides Hike UP — Ba²⁺ is larger, lattice falls faster than hydration.'},
+            {q:'Which sulfate is MORE soluble?', a:['MgSO₄','BaSO₄'], correct:0, why:'Sulfates SINK down — the small Mg²⁺ hydrates strongly; BaSO₄ lattice wins.'},
+            {q:'Which nitrate needs MORE heat to decompose?', a:['Mg(NO₃)₂','Sr(NO₃)₂'], correct:1, why:'Bigger Sr²⁺ = lower charge density = less polarisation = more stable.'},
+            {q:'Which carbonate decomposes more EASILY?', a:['CaCO₃','BaCO₃'], correct:0, why:'Ca²⁺ is smaller and more polarising — it breaks the carbonate more easily.'},
+            {q:'Which hydroxide is LESS soluble?', a:['Sr(OH)₂','Ca(OH)₂'], correct:1, why:'Hydroxides get more soluble down the group, so Ca(OH)₂ (higher up) is less soluble.'},
+            {q:'Which sulfate is LESS soluble?', a:['SrSO₄','MgSO₄'], correct:0, why:'Sulfates get less soluble down the group — SrSO₄ is below MgSO₄.'}
+        ];
+        let sortIdx = 0, sortScore = 0, sortTotal = 0, sortAnswered = false;
+        function nextSort() {
+            sortIdx = Math.floor(Math.random()*SORTS.length);
+            sortAnswered = false;
+            const s = SORTS[sortIdx];
+            document.getElementById('sort-q').textContent = s.q;
+            document.getElementById('sort-fb').textContent = '';
+            const host = document.getElementById('sort-opts');
+            host.innerHTML = '';
+            s.a.forEach((opt, i) => {
+                const b = document.createElement('button');
+                b.className = 'px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-slate-200 text-xs font-bold font-mono';
+                b.textContent = opt;
+                b.onclick = function() {
+                    if (sortAnswered) return;
+                    sortAnswered = true; sortTotal++;
+                    const fb = document.getElementById('sort-fb');
+                    if (i === s.correct) {
+                        sortScore++;
+                        fb.innerHTML = '<span class="text-emerald-300">✓ Correct.</span> ' + s.why;
+                        b.className = 'px-3 py-1.5 rounded-lg bg-emerald-700 text-white text-xs font-bold font-mono';
+                    } else {
+                        fb.innerHTML = '<span class="text-rose-300">✗ Not quite.</span> ' + s.why;
+                        b.className = 'px-3 py-1.5 rounded-lg bg-rose-700 text-white text-xs font-bold font-mono';
+                    }
+                    document.getElementById('sort-score').textContent = sortScore + '/' + sortTotal;
+                };
+                host.appendChild(b);
+            });
+        }
+
+        // ============ Halide + H2SO4 ============
+        const HAL = {
+            cl:{name:'NaCl', stages:[
+                {t:'Stage 1 — acid–base (no redox)', eq:'NaCl + H₂SO₄ → NaHSO₄ + HCl↑', obs:'steamy white fumes of HCl', col:'text-emerald-300', s:'S stays +6'}
+            ], obs:'steamy white fumes only — Cl⁻ is too weak a reducing agent to reduce H₂SO₄.'},
+            br:{name:'NaBr', stages:[
+                {t:'Stage 1 — acid–base (no redox)', eq:'NaBr + H₂SO₄ → NaHSO₄ + HBr↑', obs:'steamy fumes of HBr', col:'text-emerald-300', s:'S stays +6'},
+                {t:'Stage 2 — Br⁻ fights back (reduces S from +6 to +4)', eq:'2HBr + H₂SO₄ → Br₂ + SO₂ + 2H₂O', obs:'orange/brown Br₂ fumes + choking SO₂', col:'text-amber-300', s:'S: +6 → +4'}
+            ], obs:'steamy fumes, then orange/brown bromine vapour and choking sulfur dioxide.'},
+            i:{name:'NaI', stages:[
+                {t:'Stage 1 — acid–base (no redox)', eq:'NaI + H₂SO₄ → NaHSO₄ + HI↑', obs:'steamy fumes of HI', col:'text-emerald-300', s:'S stays +6'},
+                {t:'Stage 2 — I⁻ reduces S from +6 to +4', eq:'2HI + H₂SO₄ → I₂ + SO₂ + 2H₂O', obs:'purple I₂ vapour + choking SO₂', col:'text-amber-300', s:'S: +6 → +4'},
+                {t:'Stage 3 — I⁻ reduces S all the way to 0', eq:'6HI + H₂SO₄ → 3I₂ + S + 4H₂O', obs:'yellow solid sulfur', col:'text-yellow-300', s:'S: +6 → 0'},
+                {t:'Stage 4 — I⁻ reduces S all the way to −2', eq:'8HI + H₂SO₄ → 4I₂ + H₂S + 4H₂O', obs:'rotten-egg H₂S gas', col:'text-rose-300', s:'S: +6 → −2'}
+            ], obs:'steamy fumes, purple iodine vapour, choking SO₂, yellow sulfur solid AND rotten-egg H₂S — the full fight.'}
+        };
+        function setHalide(k) {
+            ['cl','br','i'].forEach(x => {
+                const b = document.getElementById('hal-'+x);
+                if (b) b.className = (x===k) ? 'px-3 py-1.5 rounded-lg bg-emerald-700 text-white font-bold text-xs' : 'px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-slate-300 text-xs';
+            });
+            const host = document.getElementById('hal-stages');
+            host.innerHTML = '';
+            HAL[k].stages.forEach((st, i) => {
+                const d = document.createElement('div');
+                d.className = 'stepchip p-3 bg-slate-900 rounded-lg border border-slate-800';
+                d.style.animationDelay = (i*0.15) + 's';
+                d.innerHTML = '<div class="flex flex-wrap items-center justify-between gap-2 mb-1"><span class="font-bold text-[11px] '+st.col+'">'+st.t+'</span><span class="text-[10px] font-mono text-slate-500">'+st.s+'</span></div>' +
+                    '<p class="font-mono text-[12px] text-slate-200">'+st.eq+'</p>' +
+                    '<p class="text-[11px] text-slate-400 mt-1">👁 '+st.obs+'</p>';
+                host.appendChild(d);
+            });
+            document.getElementById('hal-obs-name').textContent = HAL[k].name;
+            document.getElementById('hal-obs').textContent = HAL[k].obs;
+        }
+        // halide quiz
+        const HALPRODS = ['NaHSO₄','HX (steamy fumes)','Br₂','I₂','SO₂','S (yellow solid)','H₂S (rotten egg)'];
+        const HALANS = {
+            cl:['NaHSO₄','HX (steamy fumes)'],
+            br:['NaHSO₄','HX (steamy fumes)','Br₂','SO₂'],
+            i:['NaHSO₄','HX (steamy fumes)','I₂','SO₂','S (yellow solid)','H₂S (rotten egg)']
+        };
+        function buildHalQuiz() {
+            const host = document.getElementById('quiz-prods');
+            HALPRODS.forEach(p => {
+                const label = document.createElement('label');
+                label.className = 'flex items-center gap-1.5 px-2.5 py-1.5 bg-slate-900 border border-slate-700 rounded-lg text-slate-300 cursor-pointer';
+                label.innerHTML = '<input type="checkbox" value="'+p+'" class="accent-amber-400"> '+p;
+                host.appendChild(label);
+            });
+        }
+        function checkHalQuiz() {
+            const k = document.getElementById('quiz-halide').value;
+            const checked = Array.from(document.querySelectorAll('#quiz-prods input:checked')).map(i => i.value);
+            const ans = HALANS[k];
+            const correct = checked.length === ans.length && checked.every(c => ans.indexOf(c) >= 0);
+            const fb = document.getElementById('quiz-fb');
+            if (correct) {
+                fb.innerHTML = '<span class="text-emerald-300">✓ Perfect — you know the ' + HAL[k].name + ' story.</span>';
+            } else {
+                fb.innerHTML = '<span class="text-rose-300">✗ For ' + HAL[k].name + ' the products are:</span> <span class="text-slate-300">' + ans.join(', ') + '.</span> <span class="text-slate-400">Remember: Cl⁻ fights 0, Br⁻ fights 1, I⁻ fights 3.</span>';
+            }
+        }
+
+        // ============ Solver ============
+        window.switchSolver = function(mode) {
+            ['ox','titcalc','displ'].forEach(m => {
+                const el = document.getElementById('solver-'+m);
+                const btn = document.getElementById('solver-btn-'+m);
+                if (el) el.classList.toggle('hidden', m !== mode);
+                if (btn) btn.className = (m === mode)
+                    ? 'px-3.5 py-1.5 rounded-lg bg-rose-600 text-white font-bold text-xs'
+                    : 'px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 text-xs';
+            });
+        };
+        // oxidation number parser
+        const OX_FIXED = {O:-2, H:1, F:-1, Li:1, Na:1, K:1, Rb:1, Cs:1, Be:2, Mg:2, Ca:2, Sr:2, Ba:2, Cl:-1, Br:-1, I:-1};
+        function parseFormula(f) {
+            f = f.trim();
+            let charge = 0;
+            const cm = f.match(/\^(\d*)([+-])$/);
+            if (cm) {
+                charge = (cm[1] === '' ? 1 : parseInt(cm[1])) * (cm[2] === '+' ? 1 : -1);
+                f = f.replace(/\^(\d*)([+-])$/, '');
+            }
+            const tokens = [];
+            const re = /([A-Z][a-z]?)(\d*)/g;
+            let m;
+            while ((m = re.exec(f)) !== null) {
+                if (m[1] === '') continue;
+                tokens.push({el: m[1], n: m[2] === '' ? 1 : parseInt(m[2])});
+            }
+            return {tokens, charge};
+        }
+        function fillOxTargets() {
+            const f = document.getElementById('ox-formula').value;
+            const sel = document.getElementById('ox-target');
+            sel.innerHTML = '';
+            try {
+                const p = parseFormula(f);
+                const els = [...new Set(p.tokens.map(t => t.el))];
+                els.forEach(el => {
+                    const o = document.createElement('option');
+                    o.value = el; o.textContent = 'solve for ' + el;
+                    sel.appendChild(o);
+                });
+                // prefer a non-O/H element, else O (e.g. peroxides), else first
+                const pref = els.find(el => el !== 'O' && el !== 'H') || (els.indexOf('O') >= 0 ? 'O' : els[0]);
+                if (pref) sel.value = pref;
+            } catch(e) {}
+        }
+        document.addEventListener('input', function(e){ if (e.target && e.target.id === 'ox-formula') fillOxTargets(); });
+        function solveOx() {
+            const f = document.getElementById('ox-formula').value;
+            const target = document.getElementById('ox-target').value;
+            const out = document.getElementById('ox-out');
+            const p = parseFormula(f);
+            if (!p.tokens.length) { out.textContent = 'Could not read that formula.'; return; }
+            let knownSum = 0, targetCount = 0;
+            const lines = [];
+            p.tokens.forEach(t => {
+                if (t.el === target) { targetCount += t.n; return; }
+                const ox = OX_FIXED[t.el];
+                if (ox === undefined) {
+                    lines.push(t.el + ' — no fixed rule; treating as part of the unknown.');
+                    targetCount += 0; // cannot solve
+                    knownSum += 0;
+                    lines.push('⚠ Cannot auto-assign ' + t.el + '. Try a formula with O, H, or a Group 1/2/halide element.');
+                    return;
+                }
+                knownSum += ox * t.n;
+                lines.push(t.el + ': ' + (ox>0?'+':'') + ox + ' × ' + t.n + ' = ' + (ox*t.n>0?'+':'') + (ox*t.n));
+            });
+            if (targetCount === 0) { out.textContent = lines.join('\n'); return; }
+            const x = (p.charge - knownSum) / targetCount;
+            const xs = (Math.round(x*100)/100);
+            let txt = 'Formula: ' + f + (p.charge !== 0 ? ' (charge ' + (p.charge>0?'+':'') + p.charge + ')' : ' (neutral)') + '\n';
+            txt += lines.join('\n') + '\n';
+            txt += 'Sum of oxidation numbers = overall charge:\n';
+            txt += targetCount + '×(' + target + ') + (' + knownSum + ') = ' + p.charge + '\n';
+            txt += '⇒ oxidation number of ' + target + ' = ' + (xs>0?'+':'') + xs;
+            out.textContent = txt;
+        }
+        // titration calculator
+        function solveTitration() {
+            const ca = parseFloat(document.getElementById('tc-ca').value);
+            const va = parseFloat(document.getElementById('tc-va').value);
+            const na = parseFloat(document.getElementById('tc-na').value);
+            const vb = parseFloat(document.getElementById('tc-vb').value);
+            const nb = parseFloat(document.getElementById('tc-nb').value);
+            const cb = parseFloat(document.getElementById('tc-cb').value);
+            const mr = parseFloat(document.getElementById('tc-mr').value);
+            const out = document.getElementById('tc-out');
+            const caKnown = !isNaN(ca), cbKnown = !isNaN(cb);
+            if (caKnown === cbKnown) { out.textContent = 'Leave exactly ONE of c(A) or c(B) blank.'; return; }
+            if ([va,na,vb,nb].some(isNaN)) { out.textContent = 'Fill in V(A), n(A), V(B), n(B).'; return; }
+            let txt = 'Mole ratio  n(A)/n(B) = ' + na + '/' + nb + '\n';
+            if (cbKnown) {
+                const molB = cb * vb / 1000;
+                const molA = molB * na / nb;
+                const cA = molA * 1000 / va;
+                txt += 'mol B = c × V = ' + cb + ' × ' + (vb/1000).toFixed(5) + ' = ' + molB.toExponential(3) + ' mol\n';
+                txt += 'mol A = mol B × ' + na + '/' + nb + ' = ' + molA.toExponential(3) + ' mol\n';
+                txt += 'c(A) = mol / V = ' + molA.toExponential(3) + ' / ' + (va/1000).toFixed(5) + ' = ' + cA.toFixed(3) + ' mol dm⁻³';
+                if (!isNaN(mr)) txt += '\nc(A) in g dm⁻³ = ' + cA.toFixed(3) + ' × ' + mr + ' = ' + (cA*mr).toFixed(2) + ' g dm⁻³';
+            } else {
+                const molA = ca * va / 1000;
+                const molB = molA * nb / na;
+                const cB = molB * 1000 / vb;
+                txt += 'mol A = c × V = ' + ca + ' × ' + (va/1000).toFixed(5) + ' = ' + molA.toExponential(3) + ' mol\n';
+                txt += 'mol B = mol A × ' + nb + '/' + na + ' = ' + molB.toExponential(3) + ' mol\n';
+                txt += 'c(B) = mol / V = ' + molB.toExponential(3) + ' / ' + (vb/1000).toFixed(5) + ' = ' + cB.toFixed(3) + ' mol dm⁻³';
+                if (!isNaN(mr)) txt += '\nc(B) in g dm⁻³ = ' + cB.toFixed(3) + ' × ' + mr + ' = ' + (cB*mr).toFixed(2) + ' g dm⁻³';
+            }
+            out.textContent = txt;
+        }
+        // displacement predictor
+        const HALORDER = {Cl:0, Br:1, I:1};
+        const HALCOL = {Cl2:'pale green', Br2:'orange/red-brown', I2:'brown (purple in cyclohexane)'};
+        function solveDispl() {
+            const x2 = document.getElementById('dp-x2').value; // Cl2 etc
+            const xi = document.getElementById('dp-xi').value; // Cl etc
+            const out = document.getElementById('dp-out');
+            const xEl = x2.replace('2','');
+            const order = {Cl:3, Br:2, I:1};
+            if (order[xEl] > order[xi]) {
+                const prod = xi + '2';
+                out.textContent = 'REACTION ✓ — ' + x2 + ' is more reactive (stronger oxidising agent) than ' + prod + '.\n' +
+                    x2 + '(aq) + 2' + xi + '⁻(aq) → 2' + xEl + '⁻(aq) + ' + prod + '(aq)\n' +
+                    x2 + ' is reduced (0 → −1); ' + xi + '⁻ is oxidised (−1 → 0).\n' +
+                    'Colour: the solution turns the colour of ' + prod + ' (' + HALCOL[prod] + ').';
+            } else if (order[xEl] === order[xi]) {
+                out.textContent = 'No reaction — a halogen cannot displace its own halide.';
+            } else {
+                out.textContent = 'NO REACTION ✗ — ' + x2 + ' is LESS reactive than ' + xi + '₂, so it cannot take electrons from ' + xi + '⁻.\n' +
+                    'Reactivity (oxidising ability): Cl₂ > Br₂ > I₂. Only a halogen ABOVE the halide in the group displaces it.';
+            }
+        }
+
+        // ============ Master loop ============
+        let lastTs = 0, globalT = 0;
+        function masterLoop(ts) {
+            const dt = Math.min(0.05, (ts - lastTs)/1000 || 0.016);
+            lastTs = ts; globalT += dt;
+            drawBackground(dt, globalT);
+            if (currentTab === 'tests') drawFlame(dt);
+            if (currentTab === 'titration') { drawTitration(dt); drawPHCurve(dt); }
+            if (currentTab === 'memory') drawBully(dt);
+            requestAnimationFrame(masterLoop);
+        }
+
+        // ============ Init ============
+        window.addEventListener('load', function() {
+            initBackground();
+            buildPTable();
+            buildFlameBtns();
+            bindTap();
+            newTitration();
+            updateTow();
+            setBully('mg');
+            nextSort();
+            setHalide('cl');
+            buildHalQuiz();
+            fillOxTargets();
+            requestAnimationFrame(masterLoop);
+            setTimeout(safeInitKaTeX, 300);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IAL Topic 5 — Alkenes · Master Studio (WCH11)</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="safeInitKaTeX()"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+<script>
+tailwind.config={safelist:['bg-sky-950','text-sky-400','border-sky-800','text-sky-300','bg-purple-950','text-purple-400','border-purple-800','text-purple-300','bg-emerald-950','text-emerald-400','border-emerald-800','text-emerald-300','bg-amber-950','text-amber-400','border-amber-800','text-amber-300','bg-rose-950','text-rose-400','border-rose-800','text-rose-300','bg-cyan-950','text-cyan-400','border-cyan-800','text-cyan-300'],theme:{extend:{fontFamily:{display:['"Space Grotesk"','sans-serif'],sans:['Inter','sans-serif'],mono:['"Fira Code"','monospace']}}}}
+</script>
+<style>
+body{font-family:'Inter',sans-serif;background:#07100d;color:#f1f5f9}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(52,211,153,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(52,211,153,.03) 1px,transparent 1px);background-size:52px 52px}
+.glow{position:fixed;border-radius:9999px;filter:blur(110px);pointer-events:none;z-index:0;opacity:.4}
+.glow-a{width:520px;height:520px;top:-180px;left:-120px;background:radial-gradient(circle,rgba(16,185,129,.16),transparent 70%);animation:drift 18s ease-in-out infinite alternate}
+.glow-b{width:480px;height:480px;bottom:-200px;right:-140px;background:radial-gradient(circle,rgba(56,189,248,.12),transparent 70%);animation:drift 22s ease-in-out infinite alternate-reverse}
+.glow-c{width:360px;height:360px;top:40%;left:60%;background:radial-gradient(circle,rgba(168,85,247,.1),transparent 70%);animation:drift 26s ease-in-out infinite alternate}
+@keyframes drift{from{transform:translate(0,0) scale(1)}to{transform:translate(50px,30px) scale(1.1)}}
+.ghost{font-family:'Space Grotesk',sans-serif;color:transparent;-webkit-text-stroke:1.5px rgba(52,211,153,.14);user-select:none;pointer-events:none}
+.kicker{letter-spacing:.22em;text-transform:uppercase;font-size:10px;font-weight:700;color:#34d399}
+.card-hover{transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}
+.card-hover:hover{transform:translateY(-2px);border-color:rgba(52,211,153,.3);box-shadow:0 12px 36px -14px rgba(16,185,129,.2)}
+.tab-panel{display:none}.tab-panel.active{display:block;animation:fadeUp .3s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.tab-btn-active{color:#34d399!important;font-weight:700!important;border-bottom:2px solid #34d399!important;background:rgba(16,185,129,.08)!important}
+.btn-press{transition:transform .1s ease,background-color .2s,border-color .2s,color .2s}
+.btn-press:active:not(:disabled){transform:scale(.96)}
+.blur-answer{filter:blur(6px);transition:filter .35s ease;cursor:pointer;user-select:none}
+.blur-answer.revealed{filter:none;cursor:text}
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+.reveal.revealed{opacity:1;transform:none}
+details>summary{cursor:pointer;list-style:none}
+details>summary::-webkit-details-marker{display:none}
+details>summary::before{content:'▸';display:inline-block;margin-right:.5rem;transition:transform .2s;color:#64748b}
+details[open]>summary::before{transform:rotate(90deg);color:#34d399}
+::-webkit-scrollbar{width:7px;height:7px}
+::-webkit-scrollbar-track{background:#0f172a}
+::-webkit-scrollbar-thumb{background:#334155;border-radius:4px}
+::-webkit-scrollbar-thumb:hover{background:#475569}
+/* animated π bond in header */
+.pi-lobe{animation:piPulse 2.6s ease-in-out infinite}
+.pi-lobe.bottom{animation-delay:1.3s}
+@keyframes piPulse{0%,100%{opacity:.35}50%{opacity:.85}}
+@media (prefers-reduced-motion:reduce){.pi-lobe,.glow-a,.glow-b,.glow-c{animation:none}}
+</style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-emerald-500 selection:text-slate-900">
+<div class="glow glow-a"></div><div class="glow glow-b"></div><div class="glow glow-c"></div>
+
+<header class="sticky top-0 z-50 bg-slate-950/90 border-b border-slate-800/80 backdrop-blur-md px-4 lg:px-8 py-3">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3">
+  <div class="flex items-center gap-3">
+    <!-- distinctive opener: the C=C σ+π bond -->
+    <svg viewBox="0 0 64 56" class="w-12 h-11 shrink-0" aria-hidden="true">
+      <ellipse class="pi-lobe" cx="32" cy="12" rx="20" ry="7" fill="rgba(52,211,153,.5)"/>
+      <ellipse class="pi-lobe bottom" cx="32" cy="44" rx="20" ry="7" fill="rgba(56,189,248,.45)"/>
+      <circle cx="20" cy="28" r="7" fill="#34d399"/><circle cx="44" cy="28" r="7" fill="#34d399"/>
+      <line x1="24" y1="26" x2="40" y2="26" stroke="#07100d" stroke-width="2.4"/>
+      <line x1="24" y1="30.5" x2="40" y2="30.5" stroke="#07100d" stroke-width="2.4"/>
+    </svg>
+    <div>
+      <h1 class="font-display text-lg font-bold text-white leading-tight">Topic 5 Master Studio <span class="text-[10px] font-sans font-normal px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-300 border border-emerald-500/25">WCH11</span></h1>
+      <p class="text-[10px] text-slate-400">Alkenes · Electrophilic Addition · E–Z Isomerism · Polymers (Spec 5.1 – 5.8)</p>
+    </div>
+  </div>
+  <div class="hidden lg:flex items-center gap-2 text-[10px] font-mono text-slate-500">
+    <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800">σ + π</span>
+    <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800">CnH2n</span>
+    <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800">Markovnikov</span>
+    <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800">E / Z</span>
+  </div>
+</div>
+<div class="max-w-7xl mx-auto mt-2 pt-2 border-t border-slate-800/60">
+  <nav class="flex flex-wrap gap-0.5 py-1">
+    <button onclick="switchTab('syllabus')" data-tab="syllabus" class="tab-btn tab-btn-active btn-press py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs font-medium border-b-2 rounded-t-lg">1. Syllabus</button>
+    <button onclick="switchTab('reactions')" data-tab="reactions" class="tab-btn btn-press py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs text-slate-400 hover:text-emerald-300 font-medium border-b-2 border-transparent rounded-t-lg">2. Reactions</button>
+    <button onclick="switchTab('mech')" data-tab="mech" class="tab-btn btn-press py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs text-slate-400 hover:text-emerald-300 font-medium border-b-2 border-transparent rounded-t-lg">3. Mechanism</button>
+    <button onclick="switchTab('ez')" data-tab="ez" class="tab-btn btn-press py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs text-slate-400 hover:text-emerald-300 font-medium border-b-2 border-transparent rounded-t-lg">4. E–Z Isomerism</button>
+    <button onclick="switchTab('polymers')" data-tab="polymers" class="tab-btn btn-press py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs text-slate-400 hover:text-emerald-300 font-medium border-b-2 border-transparent rounded-t-lg">5. Polymers</button>
+    <button onclick="switchTab('builder')" data-tab="builder" class="tab-btn btn-press py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs text-amber-300 hover:text-amber-200 font-semibold border-b-2 border-transparent rounded-t-lg">6. Builder</button>
+    <button onclick="switchTab('review')" data-tab="review" class="tab-btn btn-press py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs text-slate-400 hover:text-emerald-300 font-medium border-b-2 border-transparent rounded-t-lg">7. Final Review</button>
+  </nav>
+</div>
+</header>
+
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-grow w-full relative z-10">
+
+<!-- ==================== TAB 1: SYLLABUS MASTER OVERVIEW ==================== -->
+<section id="tab-syllabus" class="tab-panel active space-y-6">
+<div class="bg-slate-900/80 border border-slate-800 rounded-xl p-6 relative overflow-hidden">
+  <span class="ghost absolute -top-8 right-3 text-[110px] font-bold leading-none">T5</span>
+  <div class="border-b border-slate-800 pb-4 mb-6">
+    <span class="kicker">Syllabus Master Overview</span>
+    <h2 class="font-display text-xl font-bold text-white mt-1">Topic 5 Learning Points &amp; Mark Scheme Secrets (Spec 5.1 – 5.8)</h2>
+    <p class="text-xs text-slate-400 mt-1">Every assessment point across the alkene topic — structure &amp; σ/π bonding, E–Z isomerism, the five addition reactions, electrophilic addition mechanisms, and addition polymerisation — elaborated with Key Learning Goals and IAL Examiner Watch-Outs.</p>
+  </div>
+  <div id="overview-grid" class="grid grid-cols-1 md:grid-cols-2 gap-5"></div>
+  <div class="mt-6 p-4 bg-rose-950/20 border border-rose-900/40 rounded-xl text-xs text-slate-300 space-y-1">
+    <b class="text-rose-300">Scope note (Spec 5.1 – 5.8 only):</b>
+    <p>• <strong>Reactions of haloalkanes &amp; alcohols</strong> (the products of these additions) are Unit 2 (WCH12) chemistry — here we stop at forming them.</p>
+    <p>• <strong>Oxidative cleavage</strong> of the C=C by hot concentrated acidified KMnO₄ (to carbonyls/acids) is beyond 5.4(v), which is limited to <em>diol</em> formation.</p>
+    <p>• <strong>Alkynes</strong> and arene chemistry are not part of this topic. The four suggested practicals (alkane/alkene reactivity, cyclohexene prep, limonene steam distillation, Perspex) are included in the Final Review.</p>
+  </div>
+</div>
+</section>
+
+<!-- ==================== TAB 2: REACTIONS ENGINE ==================== -->
+<section id="tab-reactions" class="tab-panel space-y-6">
+<div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5">
+  <div class="kicker mb-1">Engine 1 · Spec 5.4 – 5.5</div>
+  <h2 class="font-display text-lg font-bold text-white">The Five Addition Reactions of Alkenes</h2>
+  <p class="text-xs text-slate-400 mt-1">Hydrogenation, halogens, hydrogen halides, steam and acidified KMnO₄ — plus the bromine-water test for unsaturation. Inspector cards, a reagent→product map, multi-blank quiz and trap pairs.</p>
+  <div class="flex flex-wrap gap-1.5 mt-3">
+    <button onclick="setMode('rx','explorer')" id="rx-m-explorer" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-emerald-700 bg-emerald-950/50 text-emerald-300">Inspector</button>
+    <button onclick="setMode('rx','map')" id="rx-m-map" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-emerald-300">Reagent Map</button>
+    <button onclick="setMode('rx','quiz')" id="rx-m-quiz" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-emerald-300">Quiz</button>
+    <button onclick="setMode('rx','traps')" id="rx-m-traps" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-emerald-300">Traps</button>
+  </div>
+</div>
+<div id="rx-mode-explorer" class="rx-mode"><div id="rx-explorer" class="grid grid-cols-1 lg:grid-cols-12 gap-4"></div></div>
+<div id="rx-mode-map" class="rx-mode hidden">
+  <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+    <h3 class="font-display text-sm font-bold text-emerald-300">Reagent → Product Decision Map</h3>
+    <p class="text-xs text-slate-400">Pick an alkene and a reagent. The product (and the reaction type) is predicted — note how Markovnikov applies to HX and hydration of unsymmetrical alkenes.</p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+      <select id="rx-alkene" class="bg-slate-900 border border-slate-700 rounded-lg p-2 text-xs text-slate-100 focus:border-emerald-500 focus:outline-none"></select>
+      <select id="rx-reagent" class="bg-slate-900 border border-slate-700 rounded-lg p-2 text-xs text-slate-100 focus:border-emerald-500 focus:outline-none"></select>
+    </div>
+    <button onclick="predictRx()" class="btn-press bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2 px-5 rounded-lg text-xs">Predict the product</button>
+    <div id="rx-map-out" class="p-4 bg-slate-900 border border-slate-800 rounded-lg text-xs text-slate-300 leading-relaxed min-h-[90px]">Choose an alkene and a reagent, then predict.</div>
+  </div>
+</div>
+<div id="rx-mode-quiz" class="rx-mode hidden"><div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4"><h3 class="font-display text-sm font-bold text-emerald-300">Multi-Blank Quiz — Addition Reactions</h3><p class="text-xs text-slate-400">Click each blurred answer to reveal it.</p><div id="rx-quiz-rows" class="space-y-3"></div><button onclick="revealAll('rx-quiz-rows')" class="btn-press bg-slate-800 hover:bg-slate-700 border border-slate-700 text-emerald-300 text-xs font-semibold px-4 py-2 rounded-lg">Reveal All</button></div></div>
+<div id="rx-mode-traps" class="rx-mode hidden"><div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4"><h3 class="font-display text-sm font-bold text-rose-300">Trap Pairs — Addition Reactions</h3><div id="rx-traps-grid" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div></div></div>
+</section>
+
+<!-- ==================== TAB 3: MECHANISM ENGINE ==================== -->
+<section id="tab-mech" class="tab-panel space-y-6">
+<div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5">
+  <div class="kicker mb-1">Engine 2 · Spec 5.6</div>
+  <h2 class="font-display text-lg font-bold text-white">Electrophilic Addition — The Mechanism</h2>
+  <p class="text-xs text-slate-400 mt-1">Why the C=C is a nucleophile, curly-arrow diagrams for Br₂ and HBr on ethene, Markovnikov regioselectivity with propene, and 1°/2°/3° carbocation stability.</p>
+  <div class="flex flex-wrap gap-1.5 mt-3">
+    <button onclick="setMode('me','explorer')" id="me-m-explorer" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-sky-700 bg-sky-950/50 text-sky-300">Inspector</button>
+    <button onclick="setMode('me','map')" id="me-m-map" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-sky-300">Markovnikov Lab</button>
+    <button onclick="setMode('me','quiz')" id="me-m-quiz" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-sky-300">Quiz</button>
+    <button onclick="setMode('me','traps')" id="me-m-traps" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-sky-300">Traps</button>
+  </div>
+</div>
+<div id="me-mode-explorer" class="me-mode"><div id="me-explorer" class="grid grid-cols-1 lg:grid-cols-12 gap-4"></div></div>
+<div id="me-mode-map" class="me-mode hidden">
+  <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+    <h3 class="font-display text-sm font-bold text-sky-300">Markovnikov Product Predictor — HX on an unsymmetrical alkene</h3>
+    <p class="text-xs text-slate-400">Pick an alkene. Both possible carbocations are shown; the more stable one leads to the <b>major</b> product. Hydrogen adds to the carbon that already has <b>more hydrogens</b>.</p>
+    <div class="flex flex-wrap gap-2" id="mk-alkene-btns"></div>
+    <div id="mk-out" class="p-4 bg-slate-900 border border-slate-800 rounded-lg text-xs text-slate-300 leading-relaxed min-h-[120px]">Select an alkene to compare the two carbocation pathways.</div>
+  </div>
+</div>
+<div id="me-mode-quiz" class="me-mode hidden"><div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4"><h3 class="font-display text-sm font-bold text-sky-300">Multi-Blank Quiz — Mechanism</h3><p class="text-xs text-slate-400">Click each blurred answer to reveal it.</p><div id="me-quiz-rows" class="space-y-3"></div><button onclick="revealAll('me-quiz-rows')" class="btn-press bg-slate-800 hover:bg-slate-700 border border-slate-700 text-sky-300 text-xs font-semibold px-4 py-2 rounded-lg">Reveal All</button></div></div>
+<div id="me-mode-traps" class="me-mode hidden"><div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4"><h3 class="font-display text-sm font-bold text-rose-300">Trap Pairs — Mechanism</h3><div id="me-traps-grid" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div></div></div>
+</section>
+
+<!-- ==================== TAB 4: E-Z ENGINE ==================== -->
+<section id="tab-ez" class="tab-panel space-y-6">
+<div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5">
+  <div class="kicker mb-1">Engine 3 · Spec 5.2 – 5.3</div>
+  <h2 class="font-display text-lg font-bold text-white">Geometric (E–Z) Isomerism</h2>
+  <p class="text-xs text-slate-400 mt-1">Restricted rotation about the C=C, the two-different-groups requirement, CIP priority by atomic number, and why cis/trans breaks down.</p>
+  <div class="flex flex-wrap gap-1.5 mt-3">
+    <button onclick="setMode('ez','explorer')" id="ez-m-explorer" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-violet-700 bg-violet-950/50 text-violet-300">Inspector</button>
+    <button onclick="setMode('ez','map')" id="ez-m-map" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-violet-300">E/Z Assigner</button>
+    <button onclick="setMode('ez','quiz')" id="ez-m-quiz" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-violet-300">Quiz</button>
+    <button onclick="setMode('ez','traps')" id="ez-m-traps" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-violet-300">Traps</button>
+  </div>
+</div>
+<div id="ez-mode-explorer" class="ez-mode"><div id="ez-explorer" class="grid grid-cols-1 lg:grid-cols-12 gap-4"></div></div>
+<div id="ez-mode-map" class="ez-mode hidden">
+  <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+    <h3 class="font-display text-sm font-bold text-violet-300">E/Z Assigner — work through the CIP steps</h3>
+    <p class="text-xs text-slate-400">Pick a molecule. The two groups on <b>each</b> double-bond carbon are ranked by atomic number; the verdict follows from whether the two high-priority groups sit on the same side (Z) or opposite sides (E).</p>
+    <div class="flex flex-wrap gap-2" id="ez-mol-btns"></div>
+    <div id="ez-out" class="p-4 bg-slate-900 border border-slate-800 rounded-lg text-xs text-slate-300 leading-relaxed min-h-[120px]">Select a molecule to assign E/Z.</div>
+  </div>
+</div>
+<div id="ez-mode-quiz" class="ez-mode hidden"><div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4"><h3 class="font-display text-sm font-bold text-violet-300">Multi-Blank Quiz — E–Z Isomerism</h3><p class="text-xs text-slate-400">Click each blurred answer to reveal it.</p><div id="ez-quiz-rows" class="space-y-3"></div><button onclick="revealAll('ez-quiz-rows')" class="btn-press bg-slate-800 hover:bg-slate-700 border border-slate-700 text-violet-300 text-xs font-semibold px-4 py-2 rounded-lg">Reveal All</button></div></div>
+<div id="ez-mode-traps" class="ez-mode hidden"><div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4"><h3 class="font-display text-sm font-bold text-rose-300">Trap Pairs — E–Z Isomerism</h3><div id="ez-traps-grid" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div></div></div>
+</section>
+
+<!-- ==================== TAB 5: POLYMERS ENGINE ==================== -->
+<section id="tab-polymers" class="tab-panel space-y-6">
+<div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5">
+  <div class="kicker mb-1">Engine 4 · Spec 5.7 – 5.8</div>
+  <h2 class="font-display text-lg font-bold text-white">Addition Polymerisation &amp; Polymer Disposal</h2>
+  <p class="text-xs text-slate-400 mt-1">From monomer to repeat unit and back, the poly(monomer) naming, why polyalkenes are inert, and how chemists limit disposal problems.</p>
+  <div class="flex flex-wrap gap-1.5 mt-3">
+    <button onclick="setMode('po','explorer')" id="po-m-explorer" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-amber-700 bg-amber-950/50 text-amber-300">Inspector</button>
+    <button onclick="setMode('po','map')" id="po-m-map" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-amber-300">Polymer Match</button>
+    <button onclick="setMode('po','quiz')" id="po-m-quiz" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-amber-300">Quiz</button>
+    <button onclick="setMode('po','traps')" id="po-m-traps" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-amber-300">Traps</button>
+  </div>
+</div>
+<div id="po-mode-explorer" class="po-mode"><div id="po-explorer" class="grid grid-cols-1 lg:grid-cols-12 gap-4"></div></div>
+<div id="po-mode-map" class="po-mode hidden">
+  <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+    <h3 class="font-display text-sm font-bold text-amber-300">Monomer ↔ Repeat Unit ↔ Polymer ↔ Use</h3>
+    <p class="text-xs text-slate-400">Click a monomer to see its repeat unit, polymer name and a common use — the four-way link the exam keeps testing.</p>
+    <div class="flex flex-wrap gap-2" id="po-monomer-btns"></div>
+    <div id="po-out" class="p-4 bg-slate-900 border border-slate-800 rounded-lg text-xs text-slate-300 leading-relaxed min-h-[120px]">Select a monomer.</div>
+  </div>
+</div>
+<div id="po-mode-quiz" class="po-mode hidden"><div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4"><h3 class="font-display text-sm font-bold text-amber-300">Multi-Blank Quiz — Polymers</h3><p class="text-xs text-slate-400">Click each blurred answer to reveal it.</p><div id="po-quiz-rows" class="space-y-3"></div><button onclick="revealAll('po-quiz-rows')" class="btn-press bg-slate-800 hover:bg-slate-700 border border-slate-700 text-amber-300 text-xs font-semibold px-4 py-2 rounded-lg">Reveal All</button></div></div>
+<div id="po-mode-traps" class="po-mode hidden"><div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4"><h3 class="font-display text-sm font-bold text-rose-300">Trap Pairs — Polymers</h3><div id="po-traps-grid" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div></div></div>
+</section>
+
+<!-- ==================== TAB 6: BUILDER ==================== -->
+<section id="tab-builder" class="tab-panel space-y-6">
+<div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5">
+  <div class="kicker mb-1" style="color:#fbbf24">Interactive Workbench · Spec 5.4 &amp; 5.7</div>
+  <h2 class="font-display text-lg font-bold text-white">Repeat-Unit Builder &amp; Reaction Solver</h2>
+  <p class="text-xs text-slate-400 mt-1">Draw the repeat unit from a monomer (and read the monomer back from a repeat unit), then solve addition-reaction products with conditions.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+  <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3 card-hover">
+    <h3 class="font-display text-sm font-bold text-amber-300">① Repeat-Unit Builder</h3>
+    <p class="text-[11px] text-slate-400">Pick a monomer. Break the π bond, extend two single bonds, bracket it, add <i>n</i>. Then test yourself: can you read the monomer back?</p>
+    <select id="bld-monomer" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-xs text-slate-100 focus:border-amber-500 focus:outline-none"></select>
+    <button onclick="buildRepeat()" class="btn-press w-full bg-amber-600 hover:bg-amber-500 text-white font-bold py-2 rounded-lg text-xs">Draw the repeat unit</button>
+    <div id="bld-out" class="p-3 bg-slate-900 border border-slate-800 rounded-lg text-xs text-slate-300 min-h-[110px] flex items-center justify-center">Choose a monomer and draw its repeat unit.</div>
+  </div>
+  <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3 card-hover">
+    <h3 class="font-display text-sm font-bold text-emerald-300">② Addition-Reaction Solver</h3>
+    <p class="text-[11px] text-slate-400">Write the balanced equation for any alkene + reagent. Conditions and the Markovnikov product are filled in — you supply the organic product first, then reveal.</p>
+    <div class="grid grid-cols-2 gap-3">
+      <select id="slv-alkene" class="bg-slate-900 border border-slate-700 rounded-lg p-2 text-xs text-slate-100 focus:border-emerald-500 focus:outline-none"></select>
+      <select id="slv-reagent" class="bg-slate-900 border border-slate-700 rounded-lg p-2 text-xs text-slate-100 focus:border-emerald-500 focus:outline-none"></select>
+    </div>
+    <button onclick="solveAddition()" class="btn-press w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2 rounded-lg text-xs">Solve the equation</button>
+    <div id="slv-out" class="p-3 bg-slate-900 border border-slate-800 rounded-lg text-xs text-slate-300 min-h-[110px]">Pick an alkene and a reagent, then solve.</div>
+  </div>
+</div>
+</section>
+
+<!-- ==================== TAB 7: FINAL REVIEW ==================== -->
+<section id="tab-review" class="tab-panel space-y-4">
+<div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5">
+  <div class="kicker mb-1">Complete Inventory</div>
+  <h2 class="font-display text-lg font-bold text-white">Final Review — Topic 5</h2>
+  <p class="text-xs text-slate-400 mt-1">Every equation, mechanism step, E–Z rule, polymer and practical in one place.</p>
+  <div class="flex flex-wrap gap-1.5 mt-3">
+    <a href="#rev-def" class="btn-press px-2.5 py-1 text-[10px] font-mono bg-slate-800 border border-slate-700 rounded text-emerald-300 hover:border-emerald-600">Definitions</a>
+    <a href="#rev-rx" class="btn-press px-2.5 py-1 text-[10px] font-mono bg-slate-800 border border-slate-700 rounded text-emerald-300 hover:border-emerald-600">Reactions</a>
+    <a href="#rev-mech" class="btn-press px-2.5 py-1 text-[10px] font-mono bg-slate-800 border border-slate-700 rounded text-sky-300 hover:border-sky-600">Mechanism</a>
+    <a href="#rev-ez" class="btn-press px-2.5 py-1 text-[10px] font-mono bg-slate-800 border border-slate-700 rounded text-violet-300 hover:border-violet-600">E–Z</a>
+    <a href="#rev-poly" class="btn-press px-2.5 py-1 text-[10px] font-mono bg-slate-800 border border-slate-700 rounded text-amber-300 hover:border-amber-600">Polymers</a>
+    <a href="#rev-prac" class="btn-press px-2.5 py-1 text-[10px] font-mono bg-slate-800 border border-slate-700 rounded text-cyan-300 hover:border-cyan-600">Practicals</a>
+    <a href="#rev-traps" class="btn-press px-2.5 py-1 text-[10px] font-mono bg-slate-800 border border-slate-700 rounded text-rose-300 hover:border-rose-600">Master Traps</a>
+  </div>
+</div>
+
+<details open class="bg-slate-950 border border-slate-800 rounded-xl">
+  <summary id="rev-def" class="p-4 font-display text-sm font-bold text-emerald-300">Key Definitions</summary>
+  <div class="px-4 pb-4 text-xs text-slate-300 space-y-2 list-disc list-inside leading-relaxed">
+    <li><strong>Alkene:</strong> an unsaturated hydrocarbon with at least one C=C double bond; general formula C<sub>n</sub>H<sub>2n</sub> (acyclic, one double bond).</li>
+    <li><strong>Unsaturated:</strong> contains a C=C double bond (a σ bond + a π bond) — can undergo addition.</li>
+    <li><strong>σ bond:</strong> head-on (axial) overlap of orbitals along the internuclear axis — one region of overlap.</li>
+    <li><strong>π bond:</strong> sideways overlap of two p-orbitals — electron density above and below the internuclear axis; weaker than σ; prevents rotation.</li>
+    <li><strong>Electrophile:</strong> an electron-pair acceptor (electron-deficient species), e.g. H⁺, Br⁺ (in polarised Br₂).</li>
+    <li><strong>Electrophilic addition:</strong> the characteristic alkene reaction — the π bond donates to an electrophile, then a nucleophile adds to the carbocation.</li>
+    <li><strong>Carbocation:</strong> a positively charged carbon intermediate; stability 3° &gt; 2° &gt; 1°.</li>
+    <li><strong>Geometric (E–Z) isomerism:</strong> stereoisomerism from restricted rotation about the C=C, with two different groups on each double-bond carbon.</li>
+    <li><strong>Addition polymerisation:</strong> many alkene monomers join by opening their C=C π bonds to form one long saturated chain.</li>
+  </div>
+</details>
+
+<details class="bg-slate-950 border border-slate-800 rounded-xl">
+  <summary id="rev-rx" class="p-4 font-display text-sm font-bold text-emerald-300">The Five Addition Reactions (Spec 5.4)</summary>
+  <div class="px-4 pb-4 overflow-x-auto"><table class="w-full text-left text-[11px] text-slate-300 min-w-[640px]">
+    <thead class="text-emerald-400 font-mono text-[10px] border-b border-slate-800"><tr><th class="py-2 pr-3">Reaction</th><th class="py-2 pr-3">Reagents &amp; conditions</th><th class="py-2 pr-3">Product (ethene)</th><th class="py-2 pr-3">Note</th></tr></thead>
+    <tbody class="divide-y divide-slate-800/60">
+      <tr><td class="py-1.5 pr-3 text-slate-200">Hydrogenation</td><td class="py-1.5 pr-3">H₂, Ni catalyst, heat</td><td class="py-1.5 pr-3 font-mono">CH₃CH₃ (alkane)</td><td class="py-1.5 pr-3">hardening of oils</td></tr>
+      <tr><td class="py-1.5 pr-3 text-slate-200">Halogenation</td><td class="py-1.5 pr-3">Br₂ or Cl₂, r.t.</td><td class="py-1.5 pr-3 font-mono">CH₂BrCH₂Br (1,2-dibromoethane)</td><td class="py-1.5 pr-3">Br₂ decolourises = test</td></tr>
+      <tr><td class="py-1.5 pr-3 text-slate-200">Hydrohalogenation</td><td class="py-1.5 pr-3">HX (g), r.t.</td><td class="py-1.5 pr-3 font-mono">CH₃CH₂Br (bromoethane)</td><td class="py-1.5 pr-3">Markovnikov if unsymmetrical</td></tr>
+      <tr><td class="py-1.5 pr-3 text-slate-200">Hydration (steam)</td><td class="py-1.5 pr-3">H₂O(g), conc. H₃PO₄, 300 °C, 60 atm</td><td class="py-1.5 pr-3 font-mono">CH₃CH₂OH (ethanol)</td><td class="py-1.5 pr-3">industrial ethanol</td></tr>
+      <tr><td class="py-1.5 pr-3 text-slate-200">Oxidation → diol</td><td class="py-1.5 pr-3">cold, dilute acidified KMnO₄</td><td class="py-1.5 pr-3 font-mono">CH₂(OH)CH₂(OH) (ethane-1,2-diol)</td><td class="py-1.5 pr-3">purple → colourless</td></tr>
+    </tbody></table></div>
+</details>
+
+<details class="bg-slate-950 border border-slate-800 rounded-xl">
+  <summary id="rev-mech" class="p-4 font-display text-sm font-bold text-sky-300">Electrophilic Addition Mechanism (Spec 5.6)</summary>
+  <div class="px-4 pb-4 text-xs text-slate-300 space-y-2 list-disc list-inside leading-relaxed">
+    <li><strong>Step 1:</strong> the π bond (high electron density) acts as a <strong>nucleophile</strong> and attacks the electrophile (δ⁺ atom). Curly arrow <em>from the C=C bond</em> to the electrophile; a second arrow shows the E–Nu bond breaking heterolytically onto the leaving group.</li>
+    <li><strong>Intermediate:</strong> a <strong>carbocation</strong> forms on the other carbon.</li>
+    <li><strong>Step 2:</strong> the nucleophile (anion, e.g. Br⁻) donates a lone pair to the carbocation. Curly arrow <em>from the lone pair</em> to C⁺.</li>
+    <li><strong>Markovnikov:</strong> with an unsymmetrical alkene, H⁺ adds to the carbon with <strong>more H atoms</strong>, giving the <strong>more stable carbocation</strong> → major product. Stability: 3° &gt; 2° &gt; 1° (alkyl groups donate electron density, dispersing the + charge).</li>
+    <li><strong>HBr + propene:</strong> major = 2-bromopropane (via 2° carbocation); minor = 1-bromopropane (via 1° carbocation).</li>
+  </div>
+</details>
+
+<details class="bg-slate-950 border border-slate-800 rounded-xl">
+  <summary id="rev-ez" class="p-4 font-display text-sm font-bold text-violet-300">E–Z Isomerism Rules (Spec 5.2 – 5.3)</summary>
+  <div class="px-4 pb-4 text-xs text-slate-300 space-y-2 list-disc list-inside leading-relaxed">
+    <li><strong>Condition 1:</strong> restricted rotation about the C=C (the π bond locks the groups in place).</li>
+    <li><strong>Condition 2:</strong> each double-bond carbon must carry <strong>two different groups</strong>.</li>
+    <li><strong>Priority:</strong> on each carbon, rank the two attached groups by <strong>atomic number</strong> (higher = higher priority; Cahn–Ingold–Prelog).</li>
+    <li><strong>Z</strong> (zusammen, "together"): the two high-priority groups are on the <strong>same side</strong>. <strong>E</strong> (entgegen, "opposite"): on <strong>opposite sides</strong>.</li>
+    <li>cis/trans works only when each C has a common group (usually H); with 3–4 different groups it is ambiguous → E/Z is needed.</li>
+    <li>No E/Z: chloroethene (CH₂=CHCl — one C has two H) and 2-methylpropene (one C has two CH₃).</li>
+  </div>
+</details>
+
+<details class="bg-slate-950 border border-slate-800 rounded-xl">
+  <summary id="rev-poly" class="p-4 font-display text-sm font-bold text-amber-300">Polymers (Spec 5.7 – 5.8)</summary>
+  <div class="px-4 pb-4 text-xs text-slate-300 space-y-2 list-disc list-inside leading-relaxed">
+    <li><strong>Repeat unit:</strong> break the C=C π bond, draw the two carbons with one outward single bond each, wrap in brackets with <i>n</i>. The repeat unit has the <strong>same atoms</strong> as the monomer (addition polymerisation — no by-product).</li>
+    <li>ethene → poly(ethene) · propene → poly(propene) · chloroethene → poly(chloroethene) (PVC) · phenylethene → poly(phenylethene) (polystyrene) · methyl 2-methylpropenoate → Perspex.</li>
+    <li><strong>Why inert:</strong> strong, non-polar C–C and C–H single bonds → unreactive → durable but <strong>non-biodegradable</strong> (landfill problem).</li>
+    <li><strong>Disposal solutions:</strong> (i) develop <strong>biodegradable polymers</strong> (e.g. hydrolysable links); (ii) remove <strong>toxic gases</strong> from incineration — burning PVC releases <strong>HCl</strong>, scrubbed with an alkaline solution.</li>
+  </div>
+</details>
+
+<details class="bg-slate-950 border border-slate-800 rounded-xl">
+  <summary id="rev-prac" class="p-4 font-display text-sm font-bold text-cyan-300">Suggested Practicals</summary>
+  <div class="px-4 pb-4 text-xs text-slate-300 space-y-2 list-disc list-inside leading-relaxed">
+    <li><strong>Alkane vs alkene reactivity:</strong> alkenes decolourise bromine water and acidified KMnO₄ (alkanes do not, in the dark); alkenes burn with a smokier flame (higher C:H ratio).</li>
+    <li><strong>Cyclohexene from cyclohexanol:</strong> acid-catalysed <em>dehydration</em> (conc. H₃PO₄, heat) — the reverse of hydration; distil off the cyclohexene.</li>
+    <li><strong>Limonene from orange peel:</strong> steam distillation.</li>
+    <li><strong>Perspex from methyl 2-methylpropenoate:</strong> addition polymerisation.</li>
+  </div>
+</details>
+
+<details class="bg-slate-950 border border-slate-800 rounded-xl">
+  <summary id="rev-traps" class="p-4 font-display text-sm font-bold text-rose-300">Master Trap Checklist</summary>
+  <div class="px-4 pb-4 grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-1.5 text-[11px] text-slate-300">
+    <p>☐ Calling alkene + Br₂ a <b>substitution</b> — it is <b>addition</b> (no HBr by-product).</p>
+    <p>☐ Writing HBr + propene as only 1-bromopropane — the <b>major</b> product is 2-bromopropane.</p>
+    <p>☐ Curly arrows starting from an <b>atom</b> — they must start from a <b>bond or lone pair</b>.</p>
+    <p>☐ Forgetting the <b>carbocation intermediate</b> (and its charge).</p>
+    <p>☐ Saying rotation about C=C is "slow" — it is <b>restricted / prevented</b> by the π bond.</p>
+    <p>☐ Assigning E/Z by group <b>size</b> — priority is by <b>atomic number</b>.</p>
+    <p>☐ Using cis/trans for a molecule with 3–4 different groups — use <b>E/Z</b>.</p>
+    <p>☐ Drawing the repeat unit with a <b>double bond</b> — it must be a <b>single</b> C–C with outward bonds.</p>
+    <p>☐ Forgetting the <b>brackets and n</b> on the repeat unit.</p>
+    <p>☐ Saying polyalkenes "rot" — they are <b>non-biodegradable</b>; name the two disposal strategies.</p>
+    <p>☐ Hydration conditions — <b>steam + conc. H₃PO₄, 300 °C, 60 atm</b> (not dilute acid, r.t.).</p>
+    <p>☐ KMnO₄ — cold &amp; dilute gives a <b>diol</b>; the purple colour <b>decolourises</b>.</p>
+  </div>
+</details>
+</section>
+
+</main>
+
+<footer class="border-t border-slate-800 bg-slate-950/80 py-4 mt-6 relative z-10">
+  <div class="max-w-7xl mx-auto px-4 text-center text-[10px] text-slate-500 space-y-1">
+    <p>IAL Chemistry · WCH11/01 Unit 1 · Topic 5: Alkenes · Spec 5.1–5.8 · Paper 1</p>
+    <p>Chemistry aligned to the Paper 1 golden-rule summaries (Jan 2024 – Jan 2026 mark-scheme phrasing).</p>
+  </div>
+</footer>
+
+<script>
+function safeInitKaTeX(){if(window.renderMathInElement){try{renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false})}catch(e){}}}
+function renderMathIn(el){if(window.renderMathInElement){try{renderMathInElement(el||document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false})}catch(e){}}}
+function $(id){return document.getElementById(id)}
+const revealObs=(typeof IntersectionObserver!=='undefined')?new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('revealed')})},{threshold:.06}):{observe(){}};
+function switchTab(id){
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.toggle('active',p.id==='tab-'+id));
+  document.querySelectorAll('.tab-btn').forEach(b=>{
+    const a=b.dataset.tab===id;const isB=b.dataset.tab==='builder';
+    b.className='tab-btn btn-press py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs font-medium border-b-2 rounded-t-lg '+(a?'tab-btn-active '+(isB?'!text-amber-300 !border-amber-400 !bg-amber-950/30':''):(isB?'text-amber-300/80 hover:text-amber-200 border-transparent':'text-slate-400 hover:text-emerald-300 border-transparent'));
+  });
+  setTimeout(()=>renderMathIn(),80);
+}
+function setMode(p,mode){
+  ['explorer','map','quiz','traps'].forEach(m=>{
+    const pan=$(p+'-mode-'+m);if(pan)pan.classList.toggle('hidden',m!==mode);
+    const btn=$(p+'-m-'+m);if(btn){
+      const col={rx:'emerald',me:'sky',ez:'violet',po:'amber'}[p]||'emerald';
+      btn.className='btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border '+(m===mode?('border-'+col+'-700 bg-'+col+'-950/50 text-'+col+'-300'):'border-slate-700 text-slate-400 hover:text-'+col+'-300');
+    }
+  });
+  setTimeout(()=>renderMathIn(),60);
+}
+function renderEngine(prefix,cards,accent){
+  const wrap=$(prefix+'-explorer');if(!wrap)return;
+  const nav=cards.map((c,i)=>`<button onclick="showEngineCard('${prefix}',${i})" class="${prefix}-nav btn-press w-full text-left px-3 py-2 text-xs rounded-lg border ${i===0?('border-'+accent+'-700 bg-'+accent+'-950/40 text-'+accent+'-300 font-semibold'):'border-slate-700 text-slate-400 hover:text-'+accent+'-300'}">${i+1}. ${c.t}</button>`).join('');
+  const body=cards.map((c,i)=>`<div id="${prefix}-card-${i}" class="engine-card ${i>0?'hidden':''} space-y-4">
+    <h3 class="font-display text-sm font-bold text-white">${c.t}</h3>
+    ${c.eq?('<div class="p-3 bg-slate-950 border border-slate-800 rounded-lg font-mono text-xs text-'+accent+'-300 text-center overflow-x-auto">'+c.eq+'</div>'):''}
+    ${c.svg||''}
+    <p class="text-xs text-slate-300 leading-relaxed">${c.body}</p>
+    <div class="p-3 bg-sky-950/30 border border-sky-800/50 rounded-lg text-xs space-y-1"><span class="font-bold text-sky-400 block uppercase text-[10px]">🎯 Learning Goals</span><ul class="list-disc list-inside text-slate-300 space-y-1">${c.goals.map(g=>'<li>'+g+'</li>').join('')}</ul></div>
+    <div class="p-3 bg-rose-950/30 border border-rose-800/50 rounded-lg text-xs space-y-1"><span class="font-bold text-rose-400 block uppercase text-[10px]">⚠️ Examiner Tips</span><ul class="list-disc list-inside text-slate-300 space-y-1">${c.tips.map(g=>'<li>'+g+'</li>').join('')}</ul></div>
+  </div>`).join('');
+  wrap.innerHTML=`<div class="lg:col-span-3 space-y-1.5"><p class="text-[10px] text-slate-500 uppercase tracking-wider font-bold mb-2">Concept Cards</p>${nav}</div><div class="lg:col-span-9 bg-slate-900 border border-slate-800 rounded-xl p-5">${body}</div>`;
+  renderMathIn(wrap);
+}
+function showEngineCard(prefix,i){
+  document.querySelectorAll('#'+prefix+'-explorer .engine-card').forEach((c,j)=>c.classList.toggle('hidden',j!==i));
+  const accent={rx:'emerald',me:'sky',ez:'violet',po:'amber'}[prefix]||'emerald';
+  document.querySelectorAll('.'+prefix+'-nav').forEach((b,j)=>{b.className=prefix+'-nav btn-press w-full text-left px-3 py-2 text-xs rounded-lg border '+(j===i?('border-'+accent+'-700 bg-'+accent+'-950/40 text-'+accent+'-300 font-semibold'):'border-slate-700 text-slate-400 hover:text-'+accent+'-300')});
+  renderMathIn();
+}
+function renderQuiz(id,data){
+  const c=$(id);if(!c)return;
+  c.innerHTML=data.map(row=>{const parts=row.q.split('___');let h='<div class="bg-slate-900 border border-slate-800 rounded-lg p-3 text-xs text-slate-300 leading-relaxed">';parts.forEach((p,pi)=>{h+=p;if(pi<row.blanks.length)h+='<span class="blur-answer inline-block bg-slate-800 px-2 py-0.5 rounded text-emerald-300 font-mono cursor-pointer" onclick="this.classList.toggle(\'revealed\')">'+row.blanks[pi]+'</span>'});return h+'</div>'}).join('');
+  renderMathIn(c);
+}
+function revealAll(id){document.querySelectorAll('#'+id+' .blur-answer').forEach(e=>e.classList.add('revealed'))}
+function renderTraps(id,data){
+  const c=$(id);if(!c)return;
+  c.innerHTML=data.map(t=>`<div class="p-3.5 bg-slate-900 rounded-lg border border-rose-900/40 space-y-1.5"><span class="font-bold text-rose-300 block text-xs">✗ ${t.w}</span><p class="text-[11px] text-slate-300 leading-relaxed"><b class="text-emerald-300">✓</b> ${t.r}</p></div>`).join('');
+  renderMathIn(c);
+}
+
+/* ================= OVERVIEW ================= */
+const OV_COLORS=['sky','purple','emerald','amber','rose','cyan'];
+const OVERVIEW=[
+ {codes:'5.1',theme:'5 · Structure',title:'Alkenes — Unsaturated Hydrocarbons with a σ + π Double Bond',goals:[
+   'State the general formula <strong>C<sub>n</sub>H<sub>2n</sub></strong> (acyclic, one C=C) and that alkenes/cycloalkenes are <strong>unsaturated</strong> hydrocarbons',
+   'Describe the C=C as <strong>one σ bond + one π bond</strong>',
+   'σ bond = <strong>head-on (axial) overlap</strong> of orbitals along the internuclear axis (one region of overlap)',
+   'π bond = <strong>sideways overlap of two p-orbitals</strong> — electron density <strong>above and below</strong> the internuclear axis',
+   'Link the π bond to reactivity: it is weaker and its exposed electron density makes the C=C a nucleophile'],
+  watch:'"Unsaturated" means a <strong>C=C is present</strong>, not "can add more atoms" vaguely. For the π bond you must say <strong>sideways overlap of p-orbitals</strong> with density <strong>above and below</strong> the axis — "parallel overlap" alone is thin. Do not say the double bond is "two σ bonds".'},
+ {codes:'5.2',theme:'5 · Stereoisomerism',title:'Geometric Isomerism — Restricted Rotation about the C=C',goals:[
+   'Explain geometric isomerism arises because rotation about the C=C is <strong>restricted</strong> (the π bond locks the carbons)',
+   'State the requirement: <strong>each</strong> double-bond carbon must carry <strong>two different groups</strong>',
+   'Recognise that the isomers have the same structural formula but different <strong>spatial arrangement</strong> (stereoisomers)',
+   'Draw both arrangements for a given alkene (e.g. but-2-ene)'],
+  watch:'Say rotation is <strong>restricted / prevented</strong>, never "slow". Both conditions (restricted rotation <em>and</em> two different groups on <em>each</em> carbon) are separate marks. If either carbon has two identical groups, there is <strong>no</strong> geometric isomerism.'},
+ {codes:'5.3',theme:'5 · E–Z naming',title:'The E–Z System & Why cis/trans Breaks Down',goals:[
+   'Assign <strong>priority by atomic number</strong> to the two groups on each double-bond carbon (Cahn–Ingold–Prelog)',
+   '<strong>Z</strong> (zusammen, together) = the two higher-priority groups on the <strong>same side</strong>',
+   '<strong>E</strong> (entgegen, opposite) = the two higher-priority groups on <strong>opposite sides</strong>',
+   'Explain that cis/trans only works when each C has a common group (usually H); with 3–4 different groups it is ambiguous, so E/Z is required'],
+  watch:'Priority is by <strong>atomic number of the atom directly attached</strong>, not by group size or mass (e.g. –OH outranks –CH₃ because O &gt; C). Z ≠ "cis" automatically — assign by priority every time. For isotopes, higher mass number wins (D &gt; H).'},
+ {codes:'5.4 i–iii',theme:'5 · Additions',title:'Addition of H₂, Halogens and Hydrogen Halides',goals:[
+   '<strong>Hydrogenation:</strong> H₂ with a <strong>Ni catalyst</strong>, heat → alkane (e.g. hardening of vegetable oils)',
+   '<strong>Halogenation:</strong> Br₂ or Cl₂ at r.t. → a <strong>di</strong>-substituted halogenoalkane (e.g. ethene + Br₂ → 1,2-dibromoethane)',
+   '<strong>Hydrohalogenation:</strong> HX → a <strong>mono</strong>-substituted halogenoalkane (e.g. ethene + HBr → bromoethane)',
+   'Apply <strong>Markovnikov</strong> to unsymmetrical alkenes + HX (major product via the more stable carbocation)'],
+  watch:'Halogenation gives a <strong>di</strong>halide; hydrohalogenation gives a <strong>mono</strong>halide — students swap these. These are <strong>addition</strong> reactions (no HX/H₂ by-product) — if you write a small molecule leaving, it is not addition. Hydrogenation needs the <strong>catalyst</strong> named.'},
+ {codes:'5.4 iv–v',theme:'5 · Additions',title:'Addition of Steam and Oxidation to a Diol',goals:[
+   '<strong>Hydration:</strong> steam (H₂O gas) with <strong>conc. H₃PO₄</strong> catalyst, ~300 °C, ~60 atm → alcohol (ethene → ethanol, industrial)',
+   '<strong>Oxidation to a diol:</strong> cold, dilute <strong>acidified KMnO₄</strong> adds two –OH groups across the C=C → ethane-1,2-diol',
+   'Note the KMnO₄ purple colour <strong>decolourises</strong> (also a test for unsaturation)',
+   'Apply Markovnikov to hydration of unsymmetrical alkenes (e.g. propene → propan-2-ol major)'],
+  watch:'Hydration conditions are <strong>steam + conc. H₃PO₄ + 300 °C + 60 atm</strong> — "dilute acid, room temperature" scores nothing. For the diol, say <strong>cold, dilute acidified KMnO₄</strong>; hot concentrated KMnO₄ <em>cleaves</em> the bond (out of scope). The diol has <strong>two</strong> –OH groups.'},
+ {codes:'5.5',theme:'5 · Test',title:'The Bromine-Water Test for a C=C',goals:[
+   'Add <strong>bromine water</strong> (orange/brown) to the sample',
+   'Positive test: the orange/brown colour <strong>decolourises</strong> (Br₂ adds across the C=C → colourless dibromoalkane)',
+   'Use it to distinguish an alkene (decolourises) from an alkane (stays orange/brown, in the dark)',
+   'State that this is an <strong>electrophilic addition</strong>'],
+  watch:'The observation is <strong>"orange/brown → colourless (decolourised)"</strong> — say both the starting and end colours. Alkanes only react with Br₂ under <strong>UV</strong> (free-radical substitution), so in the dark there is no change. Do not write "clear" for the starting bromine water.'},
+ {codes:'5.6',theme:'5 · Mechanism',title:'Electrophilic Addition — Curly Arrows & Carbocations',goals:[
+   'Identify the C=C π bond as the <strong>nucleophile</strong> (region of high electron density) and the reagent as the <strong>electrophile</strong>',
+   'Draw step 1: curly arrow <strong>from the C=C bond</strong> to the δ⁺ atom; the E–Nu bond breaks onto the leaving group (heterolytic)',
+   'Show the <strong>carbocation intermediate</strong> with its charge',
+   'Draw step 2: curly arrow <strong>from the nucleophile\'s lone pair</strong> to the carbocation',
+   'Rank carbocation stability <strong>3° &gt; 2° &gt; 1°</strong> (alkyl groups donate electron density, dispersing the charge) and use it to predict the <strong>major</strong> product (Markovnikov)'],
+  watch:'Curly arrows must start from a <strong>bond or a lone pair</strong>, never an atom. For HBr + propene the <strong>major</strong> product is <strong>2-bromopropane</strong> (via the 2° carbocation) — drawing only 1-bromopropane loses the mark. Show the <strong>charge</strong> on the carbocation and state why 2° &gt; 1°.'},
+ {codes:'5.7',theme:'5 · Polymers',title:'Addition Polymerisation — Monomer ↔ Repeat Unit',goals:[
+   'Describe addition polymerisation: many alkene monomers join as the <strong>C=C π bonds open</strong> to form one long saturated chain (no by-product)',
+   'Draw the <strong>repeat unit</strong> from a monomer: break the π bond, give each C one outward single bond, wrap in <strong>brackets with n</strong>',
+   'Read the <strong>monomer back</strong> from a repeat unit (restore the C=C)',
+   'Name the polymer as <strong>poly(monomer)</strong>: ethene→poly(ethene), propene→poly(propene), chloroethene→poly(chloroethene)/PVC, phenylethene→poly(phenylethene)/polystyrene'],
+  watch:'The repeat unit must have a <strong>single</strong> C–C bond (the π bond has opened) with <strong>two outward bonds, brackets and n</strong> — leaving the double bond in is the classic lost mark. The repeat unit contains the <strong>same atoms</strong> as the monomer (addition, nothing lost).'},
+ {codes:'5.8',theme:'5 · Disposal',title:'Limiting Polymer Disposal Problems',goals:[
+   'Explain why polyalkenes are a disposal problem: strong, non-polar C–C/C–H bonds → <strong>inert and non-biodegradable</strong> → persist in landfill',
+   'Strategy (i): develop <strong>biodegradable polymers</strong> (e.g. incorporating hydrolysable/breakable links so microbes can degrade them)',
+   'Strategy (ii): remove <strong>toxic gases</strong> from incineration — e.g. burning PVC releases <strong>HCl</strong>, which is scrubbed with an alkaline solution',
+   'Link the disposal chemistry back to the structure (saturation, bond strength, polarity)'],
+  watch:'Do not say polyalkenes "biodegrade" — they are <strong>non-biodegradable</strong>; the fix is to <em>design</em> biodegradable ones. For incineration, name the <strong>specific toxic gas</strong> (HCl from PVC) and that it is <strong>removed/neutralised</strong> (e.g. by a base) — "burn it carefully" scores nothing.'}
+];
+function renderOverview(){
+  const g=$('overview-grid');if(!g)return;
+  g.innerHTML=OVERVIEW.map((c,i)=>{const col=OV_COLORS[i%6];
+    return `<div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between card-hover reveal">
+      <div>
+        <div class="flex justify-between items-center mb-2 gap-2">
+          <span class="text-[10px] font-mono uppercase font-bold px-2 py-0.5 bg-${col}-950 text-${col}-400 rounded border border-${col}-800">Spec ${c.codes}</span>
+          <span class="text-[10px] text-slate-500 font-mono">${c.theme}</span>
+        </div>
+        <h3 class="font-display text-sm font-bold text-white mb-3">${c.title}</h3>
+        <div class="space-y-2">
+          <span class="text-[11px] font-bold text-${col}-300 uppercase tracking-wider block">🎯 ${c.goals.length} Key Learning Goals</span>
+          <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed">${c.goals.map(x=>'<li>'+x+'</li>').join('')}</ul>
+        </div>
+      </div>
+      <div class="p-3 bg-amber-950/40 border border-amber-800/60 rounded-lg text-xs text-amber-200 space-y-1">
+        <span class="font-bold text-amber-400 block uppercase text-[10px]">💡 IAL Examiner Watch-Outs</span>
+        <p class="leading-relaxed text-[11px]">${c.watch}</p>
+      </div>
+    </div>`}).join('');
+  g.querySelectorAll('.reveal').forEach(el=>revealObs.observe(el));
+  renderMathIn(g);
+}
+
+/* ================= ENGINE 1: REACTIONS ================= */
+const RX_CARDS=[
+ {t:'Hydrogenation — H₂ / Ni (5.4 i)',eq:'CH₂=CH₂ + H₂ →[Ni, heat] CH₃CH₃',body:'Addition of hydrogen across the C=C in the presence of a <b>nickel catalyst</b> and heat gives an alkane. Industrially used to harden unsaturated vegetable oils into solid fats.',goals:['State reagents: H₂ + Ni catalyst + heat','Name the product type: alkane','Give the industrial application (hardening oils)'],tips:['The catalyst must be named — H₂ alone does not react at r.t.','This is how margarine is made from vegetable oil.']},
+ {t:'Halogenation — Br₂ / Cl₂ (5.4 ii)',eq:'CH₂=CH₂ + Br₂ → CH₂BrCH₂Br',body:'Addition of a halogen at room temperature gives a <b>di</b>-substituted halogenoalkane (a vicinal dihalide). Ethene + bromine → 1,2-dibromoethane. The rapid decolourisation of bromine is the classic unsaturation test.',goals:['State reagent: Br₂ or Cl₂, r.t. (no catalyst, no UV)','Name the product: a 1,2-dihalogenoalkane','Link to the bromine-water test (5.5)'],tips:['This is ADDITION — both Br atoms end up in the product; no HBr is released.','Do not confuse with alkane + Br₂ (UV, free-radical substitution).']},
+ {t:'Hydrohalogenation — HX (5.4 iii)',eq:'CH₂=CH₂ + HBr → CH₃CH₂Br',body:'Addition of a hydrogen halide gives a <b>mono</b>-substituted halogenoalkane. With ethene the product is bromoethane; with an unsymmetrical alkene, Markovnikov\'s rule decides the major product (see the Mechanism tab).',goals:['State reagent: HX (g), r.t.','Name the product: a monohalogenoalkane','Predict the Markovnikov product for propene'],tips:['Mono- vs di-: HX adds ONE halogen; Br₂ adds TWO.','For propene + HBr, the major product is 2-bromopropane.']},
+ {t:'Hydration — steam / H₃PO₄ (5.4 iv)',eq:'CH₂=CH₂ + H₂O(g) →[conc. H₃PO₄, 300 °C, 60 atm] CH₃CH₂OH',body:'Addition of <b>steam</b> across the C=C, catalysed by concentrated phosphoric acid at high temperature and pressure, gives an alcohol. This is the industrial route to ethanol. Hydration of propene gives propan-2-ol as the major product (Markovnikov).',goals:['State conditions: steam + conc. H₃PO₄ + ~300 °C + ~60 atm','Name the product: an alcohol','Apply Markovnikov to propene → propan-2-ol'],tips:['Write H₂O as <b>steam/gas</b>, not liquid water.','This is the reverse of alcohol dehydration (Unit 2).']},
+ {t:'Oxidation to a Diol — KMnO₄ (5.4 v)',eq:'CH₂=CH₂ + [O] + H₂O →[cold dil. acidified KMnO₄] CH₂(OH)CH₂(OH)',body:'Cold, dilute <b>acidified potassium manganate(VII)</b> adds two hydroxyl groups across the double bond, forming a <b>diol</b> (ethane-1,2-diol). The purple permanganate colour is decolourised — another test for unsaturation.',goals:['State reagent: cold, dilute acidified KMnO₄','Name the product: a diol (two –OH groups)','State the observation: purple → colourless'],tips:['COLD and DILUTE give the diol; hot concentrated KMnO₄ cleaves the C=C (beyond this spec).','The diol is ethane-1,2-diol — two –OH on adjacent carbons.']},
+ {t:'The Bromine-Water Test (5.5)',eq:'alkene + Br₂(aq) → colourless dibromoalkane',body:'Bromine water is orange/brown. When added to an alkene, the bromine adds across the C=C and the solution <b>decolourises</b>. An alkane (in the dark) shows no change — this distinguishes saturated from unsaturated hydrocarbons.',goals:['State the reagent and its starting colour','Give the positive observation: orange/brown → colourless','Use it to distinguish alkene vs alkane'],tips:['Say "decolourised" and give BOTH colours.','Alkanes react with Br₂ only under UV (substitution) — in the dark, no reaction.']},
+ {t:'Alkane vs Alkene Reactivity (Practical i)',eq:'compare: combustion · Br₂(aq) · acidified KMnO₄',body:'Alkenes are far more reactive than alkanes because of the exposed π electron density. They decolourise bromine water and acidified KMnO₄ (alkanes do not, in the dark) and burn with a <b>smokier</b> flame (higher carbon:hydrogen ratio → more incomplete combustion).',goals:['Compare the three tests for an alkane vs an alkene','Explain the smokier flame (C:H ratio)','Link reactivity to the π bond'],tips:['Give the conditions (dark) when comparing with alkanes.','The smokier flame = higher C:H ratio, not "more reactive".']}
+];
+const RX_QUIZ=[
+ {q:'Hydrogenation of an alkene uses ___ gas with a ___ catalyst and heat to give an ___.',blanks:['H₂','nickel (Ni)','alkane']},
+ {q:'Ethene + bromine at room temperature gives ___ — this is an ___ reaction.',blanks:['1,2-dibromoethane','addition (electrophilic)']},
+ {q:'The bromine-water test: a positive result is the orange/brown colour ___ because Br₂ ___ across the C=C.',blanks:['decolourises (→ colourless)','adds']},
+ {q:'Hydration of ethene uses ___ with a ___ catalyst at about ___ °C and ___ atm to give ethanol.',blanks:['steam (H₂O gas)','conc. H₃PO₄','300','60']},
+ {q:'Cold dilute acidified KMnO₄ converts an alkene into a ___; the purple colour ___.',blanks:['diol (ethane-1,2-diol from ethene)','decolourises']},
+ {q:'Propene + HBr gives mainly ___ because the ___ carbocation is more stable.',blanks:['2-bromopropane','secondary (2°)']}
+];
+const RX_TRAPS=[
+ {w:'Alkene + Br₂ is a substitution (HBr released)',r:'It is ADDITION — both bromine atoms add across the C=C; nothing is eliminated.'},
+ {w:'Halogenation gives a monohalide; HX gives a dihalide',r:'Reversed: Br₂ gives a DIhalide (1,2-dibromoalkane); HX gives a MONOhalide.'},
+ {w:'Hydration with dilute acid at room temperature',r:'Hydration needs STEAM + conc. H₃PO₄ + ~300 °C + ~60 atm.'},
+ {w:'Hot concentrated KMnO₄ gives the diol',r:'COLD, dilute acidified KMnO₄ gives the diol; hot concentrated cleaves the C=C.'},
+ {w:'Bromine water test: "clear → orange"',r:'It is orange/brown → colourless (decolourised). State both colours.'},
+ {w:'Alkanes decolourise bromine water in the dark',r:'Alkanes do NOT react in the dark (only with Br₂ under UV, by substitution).'}
+];
+
+/* ================= ENGINE 2: MECHANISM ================= */
+const CUR='stroke="#38bdf8" stroke-width="1.8" fill="none"';
+const ME_CARDS=[
+ {t:'Why Alkenes React — the π Bond is a Nucleophile',eq:'C=C: high electron density → attracts electrophiles',body:'The π bond\'s electron density sits <b>above and below</b> the C–C axis, exposed and relatively weak. It acts as a <b>nucleophile</b> (electron-pair donor), attacking electron-deficient species — <b>electrophiles</b> such as H⁺ or the δ⁺ end of a polarised Br–Br bond. This is why addition, not substitution, is the characteristic alkene reaction.',goals:['Identify the C=C as the nucleophile / region of high electron density','Define an electrophile as an electron-pair acceptor','Explain why addition (not substitution) is favoured'],tips:['"The double bond is electron-rich and attacks the electrophile" is the sentence examiners want.','Do not call the alkene an electrophile.']},
+ {t:'Mechanism: Br₂ + Ethene (5.6 i)',eq:'CH₂=CH₂ + Br₂ → CH₂BrCH₂Br',
+  svg:`<div class="p-3 bg-slate-950 border border-slate-800 rounded-lg overflow-x-auto"><svg viewBox="0 0 470 210" class="w-full max-w-[520px] mx-auto">
+   <defs><marker id="mArr" markerWidth="8" markerHeight="8" refX="6" refY="3.5" orient="auto"><path d="M0,0 L6,3.5 L0,7" fill="none" stroke="#38bdf8" stroke-width="1.5"/></marker></defs>
+   <text x="8" y="16" fill="#94a3b8" font-size="11" font-family="Fira Code">Step 1 — π bond attacks the electrophile</text>
+   <text x="40" y="80" fill="#e2e8f0" font-size="15" font-family="Fira Code" font-weight="700">H</text><text x="40" y="120" fill="#e2e8f0" font-size="15" font-family="Fira Code" font-weight="700">H</text>
+   <text x="120" y="80" fill="#e2e8f0" font-size="15" font-family="Fira Code" font-weight="700">H</text><text x="120" y="120" fill="#e2e8f0" font-size="15" font-family="Fira Code" font-weight="700">H</text>
+   <text x="78" y="105" fill="#e2e8f0" font-size="16" font-family="Fira Code" font-weight="700">C</text><text x="98" y="105" fill="#e2e8f0" font-size="16" font-family="Fira Code" font-weight="700">C</text>
+   <line x1="88" y1="94" x2="104" y2="94" stroke="#94a3b8" stroke-width="2"/><line x1="88" y1="100" x2="104" y2="100" stroke="#94a3b8" stroke-width="2"/>
+   <text x="185" y="105" fill="#fbbf24" font-size="16" font-family="Fira Code" font-weight="700">Br</text><text x="235" y="105" fill="#fbbf24" font-size="16" font-family="Fira Code" font-weight="700">Br</text>
+   <line x1="203" y1="100" x2="233" y2="100" stroke="#94a3b8" stroke-width="2"/>
+   <text x="188" y="84" fill="#7dd3fc" font-size="11" font-family="Fira Code">δ+</text><text x="238" y="84" fill="#fda4af" font-size="11" font-family="Fira Code">δ−</text>
+   <path d="M 96 90 C 120 55, 160 50, 184 88" ${CUR} marker-end="url(#mArr)"/>
+   <path d="M 218 96 C 226 84, 234 80, 240 84" ${CUR} marker-end="url(#mArr)"/>
+   <text x="8" y="150" fill="#94a3b8" font-size="11" font-family="Fira Code">Step 2 — nucleophile (Br⁻) attacks the carbocation</text>
+   <text x="60" y="195" fill="#e2e8f0" font-size="15" font-family="Fira Code" font-weight="700">BrH₂C—CH₂</text><text x="160" y="185" fill="#7dd3fc" font-size="13" font-family="Fira Code" font-weight="700">+</text>
+   <text x="200" y="195" fill="#fbbf24" font-size="15" font-family="Fira Code" font-weight="700">:Br:</text><text x="238" y="185" fill="#fda4af" font-size="13" font-family="Fira Code" font-weight="700">−</text>
+   <path d="M 210 182 C 195 165, 175 162, 162 176" ${CUR} marker-end="url(#mArr)"/>
+   <text x="290" y="195" fill="#34d399" font-size="15" font-family="Fira Code" font-weight="700">→  BrCH₂—CH₂Br</text>
+   </svg></div>`,
+  body:'Step 1: the π bond donates to the δ⁺ bromine of the polarised Br–Br bond; the Br–Br bond breaks heterolytically onto the other bromine, giving a <b>carbocation</b> and Br⁻. Step 2: the Br⁻ lone pair attacks the carbocation → 1,2-dibromoethane.',goals:['Draw both curly arrows in step 1 (from the C=C and from the Br–Br bond)','Show the carbocation intermediate with its charge','Draw step 2 from the Br⁻ lone pair to C⁺'],tips:['The Br–Br bond is polarised (induced dipole) as it approaches the electron-rich C=C.','Curly arrows start from a bond or a lone pair — never an atom.']},
+ {t:'Mechanism: HBr + Ethene (5.6 i)',eq:'CH₂=CH₂ + HBr → CH₃CH₂Br',
+  svg:`<div class="p-3 bg-slate-950 border border-slate-800 rounded-lg overflow-x-auto"><svg viewBox="0 0 470 210" class="w-full max-w-[520px] mx-auto">
+   <defs><marker id="mArr2" markerWidth="8" markerHeight="8" refX="6" refY="3.5" orient="auto"><path d="M0,0 L6,3.5 L0,7" fill="none" stroke="#38bdf8" stroke-width="1.5"/></marker></defs>
+   <text x="8" y="16" fill="#94a3b8" font-size="11" font-family="Fira Code">Step 1 — π bond attacks H(δ+)</text>
+   <text x="40" y="80" fill="#e2e8f0" font-size="15" font-family="Fira Code" font-weight="700">H</text><text x="40" y="120" fill="#e2e8f0" font-size="15" font-family="Fira Code" font-weight="700">H</text>
+   <text x="120" y="80" fill="#e2e8f0" font-size="15" font-family="Fira Code" font-weight="700">H</text><text x="120" y="120" fill="#e2e8f0" font-size="15" font-family="Fira Code" font-weight="700">H</text>
+   <text x="78" y="105" fill="#e2e8f0" font-size="16" font-family="Fira Code" font-weight="700">C</text><text x="98" y="105" fill="#e2e8f0" font-size="16" font-family="Fira Code" font-weight="700">C</text>
+   <line x1="88" y1="94" x2="104" y2="94" stroke="#94a3b8" stroke-width="2"/><line x1="88" y1="100" x2="104" y2="100" stroke="#94a3b8" stroke-width="2"/>
+   <text x="195" y="105" fill="#e2e8f0" font-size="16" font-family="Fira Code" font-weight="700">H</text><text x="235" y="105" fill="#fbbf24" font-size="16" font-family="Fira Code" font-weight="700">Br</text>
+   <line x1="207" y1="100" x2="233" y2="100" stroke="#94a3b8" stroke-width="2"/>
+   <text x="193" y="84" fill="#7dd3fc" font-size="11" font-family="Fira Code">δ+</text><text x="236" y="84" fill="#fda4af" font-size="11" font-family="Fira Code">δ−</text>
+   <path d="M 96 90 C 120 55, 165 50, 192 88" ${CUR} marker-end="url(#mArr2)"/>
+   <path d="M 220 96 C 228 84, 236 80, 242 84" ${CUR} marker-end="url(#mArr2)"/>
+   <text x="8" y="150" fill="#94a3b8" font-size="11" font-family="Fira Code">Step 2 — Br⁻ attacks the carbocation</text>
+   <text x="60" y="195" fill="#e2e8f0" font-size="15" font-family="Fira Code" font-weight="700">H₃C—CH₂</text><text x="150" y="185" fill="#7dd3fc" font-size="13" font-family="Fira Code" font-weight="700">+</text>
+   <text x="195" y="195" fill="#fbbf24" font-size="15" font-family="Fira Code" font-weight="700">:Br:</text><text x="233" y="185" fill="#fda4af" font-size="13" font-family="Fira Code" font-weight="700">−</text>
+   <path d="M 205 182 C 190 165, 170 162, 157 176" ${CUR} marker-end="url(#mArr2)"/>
+   <text x="285" y="195" fill="#34d399" font-size="15" font-family="Fira Code" font-weight="700">→  CH₃—CH₂Br</text>
+   </svg></div>`,
+  body:'Step 1: the π bond attacks the δ⁺ hydrogen of the polar H–Br; the H–Br bond breaks onto bromine, forming an ethyl <b>carbocation</b> and Br⁻. Step 2: Br⁻ donates its lone pair to the carbocation → bromoethane.',goals:['Show the π bond attacking H(δ+)','Break H–Br heterolytically onto Br','Complete with the Br⁻ lone-pair attack'],tips:['H–Br is permanently polar (H δ+, Br δ−) — no induced dipole needed.','The intermediate is a carbocation, not a free radical.']},
+ {t:'Markovnikov: HBr + Propene (5.6 ii)',eq:'CH₃CH=CH₂ + HBr → CH₃CHBrCH₃ (major) + CH₃CH₂CH₂Br (minor)',body:'Adding H⁺ to the <b>CH₂</b> end (the carbon with more H atoms) gives a <b>secondary</b> carbocation; adding H⁺ to the CH end gives a <b>primary</b> carbocation. The 2° carbocation is more stable, so it forms faster and <b>2-bromopropane is the major product</b>. This is Markovnikov\'s rule: H adds to the carbon already bearing more hydrogens.',goals:['Draw both possible carbocations from propene + H⁺','Identify the 2° carbocation as the more stable / major pathway','State the major and minor products'],tips:['Major = 2-bromopropane (via 2°). Writing only 1-bromopropane loses the mark.','State WHY: "the secondary carbocation is more stable".']},
+ {t:'Carbocation Stability — 3° > 2° > 1°',eq:'(CH₃)₃C⁺ > (CH₃)₂CH⁺ > CH₃CH₂⁺ > CH₃⁺',body:'Alkyl groups are <b>electron-donating</b> (they release electron density toward the positively charged carbon by the inductive effect). The more alkyl groups attached, the more the positive charge is <b>dispersed</b>, and the more stable the carbocation. Hence tertiary &gt; secondary &gt; primary &gt; methyl.',goals:['Rank carbocation stability correctly','Explain the origin: alkyl groups donate electron density, dispersing the charge','Use the ranking to predict Markovnikov products'],tips:['The explanation is charge dispersal by electron-donating alkyl groups — "more stable" alone is not enough.','Hyperconjugation is a bonus, not required at IAL.']},
+ {t:'Curly-Arrow Conventions (5.6)',eq:'arrows start from a bond or a lone pair',body:'A full curly arrow shows the movement of an <b>electron pair</b>. It must start from a <b>bond</b> (the π bond, or the σ bond being broken) or from a <b>lone pair</b>, and end on an atom (forming a new bond or a lone pair). In electrophilic addition: step 1 has an arrow from the C=C and an arrow from the H–Nu bond; step 2 has an arrow from the nucleophile\'s lone pair.',goals:['State where curly arrows must start','Distinguish full arrows (electron pair) from half-arrows (single electron, Topic 4)','Draw the two arrows of step 1 and the one of step 2'],tips:['An arrow starting on an atom (not a bond/lone pair) is wrong.','Do not use half-arrows here — this is heterolytic, two-electron chemistry.']}
+];
+const ME_QUIZ=[
+ {q:'The C=C double bond acts as a ___ because its π electron density is ___ — it attacks an ___.',blanks:['nucleophile','high / exposed','electrophile']},
+ {q:'In step 1, the curly arrow starts from the ___ and goes to the ___ atom of the electrophile.',blanks:['C=C (π) bond','δ⁺ (electrophilic)']},
+ {q:'The intermediate formed in electrophilic addition is a ___, which carries a ___ charge.',blanks:['carbocation','positive (+)']},
+ {q:'In step 2, the nucleophile donates a ___ to the carbocation; the arrow starts from the ___.',blanks:['lone pair','lone pair (on the nucleophile)']},
+ {q:'Carbocation stability order is ___ > ___ > ___, because alkyl groups ___ electron density and disperse the charge.',blanks:['3°','2°','1°','donate (release)']},
+ {q:'HBr + propene: the major product is ___ because it forms via the more stable ___ carbocation.',blanks:['2-bromopropane','secondary (2°)']}
+];
+const ME_TRAPS=[
+ {w:'Curly arrow starts from an atom',r:'It must start from a BOND or a LONE PAIR (movement of an electron pair).'},
+ {w:'HBr + propene gives only 1-bromopropane',r:'The MAJOR product is 2-bromopropane, via the more stable 2° carbocation (Markovnikov).'},
+ {w:'The intermediate is a free radical',r:'Electrophilic addition is heterolytic — the intermediate is a CARBOCATION (radicals are Topic 4, UV).'},
+ {w:'Using half-arrows (fishhooks) for this mechanism',r:'Half-arrows show single electrons. Electrophilic addition uses FULL arrows (electron pairs).'},
+ {w:'"The carbocation is stable, so it is the product"',r:'The carbocation is a reactive INTERMEDIATE; the nucleophile attacks it in step 2 to give the product.'},
+ {w:'Explaining Markovnikov as "H goes to the bigger carbon"',r:'H adds to the carbon with MORE HYDROGENS, giving the more stable (more substituted) carbocation.'}
+];
+
+/* ================= ENGINE 3: E-Z ================= */
+const EZ_CARDS=[
+ {t:'Why Rotation is Restricted (5.2)',eq:'π bond = sideways p-orbital overlap → no free rotation',body:'The π bond is formed by <b>sideways overlap of p-orbitals</b> above and below the C–C axis. Rotating one carbon would break that overlap (costing energy), so rotation about the C=C is <b>restricted</b>. The groups attached to each carbon are therefore locked in position — allowing distinct isomers to exist.',goals:['Explain restricted rotation in terms of the π bond','Contrast with the free rotation about a C–C single bond','State that this locks the substituents in space'],tips:['Say rotation is "restricted/prevented", not "slow".','Single (σ) bonds rotate freely — that is why alkanes have no geometric isomers.']},
+ {t:'The Two-Different-Groups Requirement (5.2)',eq:'each C of the C=C needs two different groups',body:'Geometric isomerism needs <b>two different groups on EACH double-bond carbon</b>. If either carbon carries two identical groups (e.g. the CH₂ in chloroethene, or the C(CH₃)₂ in 2-methylpropene), swapping the groups gives the same molecule — no isomerism.',goals:['State both conditions for geometric isomerism','Test a molecule: check each C of the C=C separately','Give a molecule that does NOT show E/Z and explain why'],tips:['Check EACH carbon — one carbon with two identical groups kills it.','chloroethene (CH₂=CHCl) and 2-methylpropene show NO E/Z isomerism.']},
+ {t:'Assigning E / Z — CIP Priority (5.3)',eq:'priority by atomic number; Z = same side, E = opposite',body:'On <b>each</b> double-bond carbon, rank the two attached groups by the <b>atomic number</b> of the atom directly attached (higher = higher priority). Then look at the two high-priority groups: if they are on the <b>same side</b> of the C=C it is <b>Z</b> (zusammen, "together"); on <b>opposite sides</b> it is <b>E</b> (entgegen, "opposite").',goals:['Assign priority by atomic number on each carbon','Decide Z (same side) vs E (opposite side)','Work through a full example (e.g. 1-chloropropene)'],tips:['Priority is by ATOMIC NUMBER of the directly-attached atom — not group size or mass.','–OH outranks –CH₃ (O=8 > C=6); –Cl outranks –CH₃ (Cl=17).','For isotopes, higher mass number wins (D > H).']},
+ {t:'Why cis/trans Breaks Down (5.3)',eq:'cis/trans needs a common group on each C',body:'The cis/trans labels only work when <b>each</b> double-bond carbon carries a common reference group (usually H): cis = the two H on the same side, trans = opposite. When there are 3 or 4 <b>different</b> groups, there is no common reference and cis/trans is ambiguous — the unambiguous E/Z system (based on priority) must be used.',goals:['Explain the limitation of cis/trans naming','State when E/Z is required (3–4 different groups)','Show that cis-but-2-ene = Z-but-2-ene and trans-but-2-ene = E-but-2-ene'],tips:['cis ≠ Z automatically — always assign by priority (though for but-2-ene they coincide).','E/Z works for ALL cases; cis/trans is a special case.']},
+ {t:'Worked Examples (5.2 – 5.3)',eq:'but-2-ene · 1-chloropropene · chloroethene · 2-methylpropene',body:'<b>But-2-ene</b> (CH₃CH=CHCH₃): each C has H and CH₃ → shows E/Z; cis = Z, trans = E. <b>1-Chloropropene</b> (CH₃CH=CHCl): one C has H/CH₃, the other H/Cl → shows E/Z. <b>Chloroethene</b> (CH₂=CHCl): one C has two H → NO E/Z. <b>2-Methylpropene</b> ((CH₃)₂C=CH₂): one C has two CH₃, the other two H → NO E/Z.',goals:['Decide which of a set of alkenes show E/Z isomerism','Assign E or Z for those that do','Justify "no isomerism" by pointing to the identical groups'],tips:['The exam loves "which does NOT show geometric isomerism" — find the carbon with two identical groups.','1-chloropropene DOES show E/Z (a Jan 2025 / golden-rule example).']}
+];
+const EZ_QUIZ=[
+ {q:'Geometric isomerism needs (i) ___ rotation about the C=C and (ii) ___ on each double-bond carbon.',blanks:['restricted (no free)','two different groups']},
+ {q:'Rotation about the C=C is restricted because of the ___ bond, formed by ___ overlap of p-orbitals.',blanks:['π (pi)','sideways']},
+ {q:'Priority of groups is assigned by the ___ of the atom directly attached to the double-bond carbon.',blanks:['atomic number']},
+ {q:'Z (___) means the two higher-priority groups are on the ___ side; E (___) means they are on ___ sides.',blanks:['zusammen, "together"','same','entgegen, "opposite"','opposite']},
+ {q:'Chloroethene (CH₂=CHCl) does not show E/Z isomerism because ___.',blanks:['one double-bond carbon carries two identical groups (two H)']},
+ {q:'cis/trans naming breaks down when ___, so the ___ system is used instead.',blanks:['there are 3–4 different groups (no common group on each C)','E/Z (priority-based)']}
+];
+const EZ_TRAPS=[
+ {w:'Rotation about the C=C is "slow"',r:'It is RESTRICTED / PREVENTED by the π bond (sideways p-orbital overlap would have to break).'},
+ {w:'Priority by group size or mass',r:'Priority is by ATOMIC NUMBER of the atom directly attached to the double-bond carbon.'},
+ {w:'Z always means cis',r:'Z means the two HIGH-PRIORITY groups are on the same side — assign by priority, not by H positions.'},
+ {w:'Any alkene shows geometric isomerism',r:'Each double-bond carbon must have TWO DIFFERENT groups; one carbon with two identical groups = no E/Z.'},
+ {w:'Checking only one carbon of the C=C',r:'Check BOTH carbons — both must carry two different groups.'},
+ {w:'E/Z applies to alkanes too',r:'Geometric isomerism needs the restricted rotation of a C=C (or ring); free rotation about C–C prevents it.'}
+];
+
+/* ================= ENGINE 4: POLYMERS ================= */
+const PO_CARDS=[
+ {t:'Addition Polymerisation (5.7)',eq:'n CH₂=CH₂ → [–CH₂–CH₂–]ₙ',body:'Under suitable conditions (catalyst/initiator, heat, pressure), the <b>π bonds of many alkene monomers open</b> and the molecules join end-to-end into one very long saturated chain — an <b>addition polymer</b>. No small molecule is eliminated, so the polymer has the same empirical formula as the monomer.',goals:['Describe addition polymerisation as π bonds opening and monomers joining','State that no by-product is formed (addition, 100% atom economy)','Write the general equation: n monomer → polymer'],tips:['It is ADDITION polymerisation — nothing is lost (contrast with condensation, Unit 4).','The long chain is saturated (all single bonds).']},
+ {t:'Drawing the Repeat Unit (5.7)',eq:'break the π bond → –C–C– with outward bonds, brackets, n',body:'To draw the <b>repeat unit</b> from a monomer: take the two C=C carbons, <b>break the π bond</b> (leaving a single C–C bond), give each carbon <b>one outward single bond</b>, and wrap the unit in <b>brackets with a subscript n</b>. The side groups (H, CH₃, Cl, C₆H₅…) stay attached to the same carbons.',goals:['Convert a monomer to its repeat unit correctly','Remember: single C–C bond, two outward bonds, brackets, n','Keep the substituents on the correct carbons'],tips:['Leaving the C=C double bond in the repeat unit is the classic error — it must be a SINGLE bond.','Do not forget the brackets and the n.']},
+ {t:'Reading the Monomer Back (5.7)',eq:'repeat unit → restore the C=C',body:'Given a repeat unit, reverse the process: remove the brackets and n, take the two outward bonds and use them to <b>reform the C=C double bond</b> between the two carbons. This recovers the monomer. Being able to go both directions is what the question will ask.',goals:['Recover the monomer from a given repeat unit','Recognise the polymer is saturated, the monomer unsaturated','Name the monomer from the polymer name (poly(X) → X)'],tips:['poly(propene) → propene; the repeat unit has the CH₃ side group on every other carbon.','Check your monomer has a C=C — if it does not, you have not reversed it correctly.']},
+ {t:'Naming & Common Polymers (5.7)',eq:'poly(monomer)',body:'The polymer is named <b>poly(monomer)</b>: ethene → <b>poly(ethene)</b> (polythene, bags/bottles); propene → <b>poly(propene)</b> (ropes, crates); chloroethene → <b>poly(chloroethene)</b> (PVC, pipes/window frames); phenylethene → <b>poly(phenylethene)</b> (polystyrene, packaging); methyl 2-methylpropenoate → <b>Perspex</b> (acrylic glass).',goals:['Name a polymer from its monomer and vice versa','Match monomer → repeat unit → polymer → use','Know PVC and polystyrene by their common names'],tips:['Write poly(ethene), not "polyethene" without brackets — the brackets matter.','PVC = poly(chloroethene); the Cl side group is what makes it rigid and flame-retardant.']},
+ {t:'Why Polyalkenes are a Disposal Problem (5.8)',eq:'strong, non-polar C–C / C–H bonds → inert',body:'Polyalkenes consist of long saturated chains held by <b>strong, non-polar C–C and C–H single bonds</b>. This makes them chemically <b>inert</b> and <b>non-biodegradable</b> — microorganisms cannot break them down, so they persist in landfill and the environment for very long times.',goals:['Link the inertness to the bond type (strong, non-polar single bonds)','State that polyalkenes are non-biodegradable','Connect this to the accumulation problem'],tips:['Do not say polyalkenes "biodegrade slowly" — they are essentially NON-biodegradable.','The explanation is bond strength + non-polarity → chemically inert.']},
+ {t:'Limiting the Disposal Problems (5.8)',eq:'(i) biodegradable polymers · (ii) scrub toxic incineration gases',body:'Chemists limit the problems two ways. (i) <b>Developing biodegradable polymers</b> — building in hydrolysable/breakable links (e.g. ester groups) so microbes can degrade them. (ii) <b>Removing toxic gases from incineration</b> — burning chlorinated polymers such as PVC releases <b>HCl</b>, which is scrubbed/neutralised with an alkaline solution before release.',goals:['State both strategies from the spec','Name the toxic gas from PVC incineration (HCl) and how it is removed','Explain how biodegradable polymers are designed to break down'],tips:['Name the SPECIFIC toxic gas (HCl from PVC) and that it is removed/neutralised by a base.','"Burn it more carefully" is not an answer — name the gas and the treatment.']}
+];
+const PO_QUIZ=[
+ {q:'In addition polymerisation, the ___ bond of each monomer opens and the monomers join; ___ small molecule is produced.',blanks:['π (C=C double)','no']},
+ {q:'The repeat unit has a ___ C–C bond, two ___ bonds, and is wrapped in ___ with a subscript ___.',blanks:['single','outward (single)','brackets','n']},
+ {q:'poly(propene) is made from the monomer ___; its repeat unit is ___.',blanks:['propene (CH₃CH=CH₂)','–[CH₂–CH(CH₃)]–']},
+ {q:'PVC is the common name for ___, made from the monomer ___.',blanks:['poly(chloroethene)','chloroethene (CH₂=CHCl)']},
+ {q:'Polyalkenes are non-biodegradable because they have strong, ___ C–C and C–H bonds, making them chemically ___.',blanks:['non-polar','inert (unreactive)']},
+ {q:'Burning PVC releases toxic ___ gas, which is removed by ___ with an alkaline solution.',blanks:['HCl (hydrogen chloride)','scrubbing / neutralising']}
+];
+const PO_TRAPS=[
+ {w:'The repeat unit still has a C=C double bond',r:'The π bond has OPENED — the repeat unit has a SINGLE C–C bond with two outward bonds.'},
+ {w:'Forgetting the brackets and n',r:'The repeat unit must be in brackets with subscript n (it repeats many times).'},
+ {w:'Addition polymerisation releases water/HCl',r:'ADDITION releases nothing (100% atom economy). Condensation polymers (Unit 4) release a small molecule.'},
+ {w:'poly(ethene) is unsaturated',r:'The polymer chain is SATURATED (all single bonds); only the monomer has the C=C.'},
+ {w:'Polyalkenes biodegrade in landfill',r:'They are NON-biodegradable (strong, non-polar bonds) — that IS the disposal problem.'},
+ {w:'Incineration of PVC is clean',r:'PVC releases toxic HCl on burning — it must be scrubbed/neutralised with a base.'}
+];
+
+/* ================= INTERACTIVE: RX MAP ================= */
+const RX_ALKENES=[
+ {name:'Ethene',f:'CH₂=CH₂',sym:false},
+ {name:'Propene',f:'CH₃CH=CH₂',sym:false},
+ {name:'But-2-ene',f:'CH₃CH=CHCH₃',sym:true}
+];
+const RX_REAGENTS=[
+ {name:'H₂ / Ni, heat',type:'hydrogenation'},
+ {name:'Br₂ (r.t.)',type:'halogenation'},
+ {name:'HBr (g)',type:'hydrohalogenation'},
+ {name:'steam / conc. H₃PO₄, 300 °C, 60 atm',type:'hydration'},
+ {name:'cold dil. acidified KMnO₄',type:'diol'}
+];
+function predictRx(){
+  const a=RX_ALKENES[+$('rx-alkene').value], r=RX_REAGENTS[+$('rx-reagent').value];
+  let prod='',cond='',note='';
+  const isProp=(a.name==='Propene');
+  switch(r.type){
+    case 'hydrogenation': prod=isProp?'CH₃CH₂CH₃ (propane)':(a.name==='But-2-ene'?'CH₃CH₂CH₂CH₃ (butane)':'CH₃CH₃ (ethane)');cond='H₂, Ni catalyst, heat';note='Addition of H₂ across the C=C → alkane.';break;
+    case 'halogenation': prod=isProp?'CH₃CHBrCH₂Br (1,2-dibromopropane)':(a.name==='But-2-ene'?'CH₃CHBrCHBrCH₃ (2,3-dibromobutane)':'CH₂BrCH₂Br (1,2-dibromoethane)');cond='Br₂, room temperature';note='Both Br atoms add across the C=C → vicinal dibromide (decolourises Br₂).';break;
+    case 'hydrohalogenation': prod=isProp?'CH₃CHBrCH₃ (2-bromopropane) — MAJOR (Markovnikov)':(a.name==='But-2-ene'?'CH₃CHBrCH₂CH₃ (2-bromobutane)':'CH₃CH₂Br (bromoethane)');cond='HBr (g), r.t.';note=isProp?'Unsymmetrical alkene: H adds to the CH₂ (more H) → 2° carbocation → 2-bromopropane is the MAJOR product.':(a.name==='But-2-ene'?'Symmetrical alkene — one product.':'');break;
+    case 'hydration': prod=isProp?'CH₃CH(OH)CH₃ (propan-2-ol) — MAJOR (Markovnikov)':(a.name==='But-2-ene'?'CH₃CH(OH)CH₂CH₃ (butan-2-ol)':'CH₃CH₂OH (ethanol)');cond='steam, conc. H₃PO₄, ~300 °C, ~60 atm';note=isProp?'OH ends up on the more substituted carbon (Markovnikov) → secondary alcohol major.':'';break;
+    case 'diol': prod=isProp?'CH₃CH(OH)CH₂OH (propane-1,2-diol)':(a.name==='But-2-ene'?'CH₃CH(OH)CH(OH)CH₃ (butane-2,3-diol)':'CH₂(OH)CH₂(OH) (ethane-1,2-diol)');cond='cold, dilute acidified KMnO₄';note='Two –OH add across the C=C → diol; purple decolourises.';break;
+  }
+  $('rx-map-out').innerHTML='<p class="font-mono text-emerald-300 mb-1">'+a.f+' + reagent → '+prod+'</p>'+
+   '<p><span class="text-slate-400">Reaction:</span> <b class="text-sky-300">'+r.type+'</b> (electrophilic addition)</p>'+
+   '<p><span class="text-slate-400">Conditions:</span> '+cond+'</p>'+
+   (note?'<p class="text-amber-200 mt-1">'+note+'</p>':'');
+  renderMathIn($('rx-map-out'));
+}
+
+/* ================= INTERACTIVE: MARKOVNIKOV ================= */
+const MK_ALKENES=[
+ {name:'Propene',f:'CH₃–CH=CH₂',
+  pathA:{add:'H⁺ adds to the CH₂ carbon (more H)',carb:'CH₃–C⁺H–CH₃',deg:'2° (secondary)',stab:'more stable',prod:'CH₃–CHBr–CH₃ (2-bromopropane)',major:true},
+  pathB:{add:'H⁺ adds to the CH carbon (fewer H)',carb:'CH₃–CH₂–CH₂⁺',deg:'1° (primary)',stab:'less stable',prod:'CH₃–CH₂–CH₂Br (1-bromopropane)',major:false}},
+ {name:'But-1-ene',f:'CH₃CH₂–CH=CH₂',
+  pathA:{add:'H⁺ adds to the CH₂ carbon (more H)',carb:'CH₃CH₂–C⁺H–CH₃',deg:'2° (secondary)',stab:'more stable',prod:'CH₃CH₂–CHBr–CH₃ (2-bromobutane)',major:true},
+  pathB:{add:'H⁺ adds to the CH carbon (fewer H)',carb:'CH₃CH₂–CH₂–CH₂⁺',deg:'1° (primary)',stab:'less stable',prod:'CH₃CH₂–CH₂–CH₂Br (1-bromobutane)',major:false}},
+ {name:'2-Methylpropene',f:'(CH₃)₂C=CH₂',
+  pathA:{add:'H⁺ adds to the CH₂ carbon (more H)',carb:'(CH₃)₃C⁺',deg:'3° (tertiary)',stab:'most stable',prod:'(CH₃)₃CBr (2-bromo-2-methylpropane)',major:true},
+  pathB:{add:'H⁺ adds to the C(CH₃)₂ carbon (fewer H)',carb:'(CH₃)₂C⁺–CH₃ … → primary',deg:'1° (primary)',stab:'least stable',prod:'(CH₃)₂CH–CH₂Br (1-bromo-2-methylpropane)',major:false}}
+];
+function renderMkBtns(){
+  $('mk-alkene-btns').innerHTML=MK_ALKENES.map((m,i)=>`<button onclick="showMk(${i})" class="btn-press px-3 py-1.5 text-[11px] font-mono rounded-lg border border-slate-700 bg-slate-900 text-slate-300 hover:border-sky-600">${m.name}</button>`).join('');
+}
+function showMk(i){
+  const m=MK_ALKENES[i];
+  const card=(p,label,col)=>`<div class="p-3 rounded-lg border ${p.major?'border-emerald-700 bg-emerald-950/30':'border-slate-800 bg-slate-950'}">
+    <p class="font-bold ${col} text-xs mb-1">${label} ${p.major?'<span class="px-1.5 py-0.5 rounded bg-emerald-600 text-white text-[9px]">MAJOR</span>':'<span class="px-1.5 py-0.5 rounded bg-slate-700 text-slate-300 text-[9px]">MINOR</span>'}</p>
+    <p class="text-[11px] text-slate-300">${p.add}</p>
+    <p class="font-mono text-[11px] text-sky-300 mt-1">carbocation: ${p.carb} <span class="text-amber-300">(${p.deg}, ${p.stab})</span></p>
+    <p class="font-mono text-[11px] text-emerald-300 mt-1">→ ${p.prod}</p></div>`;
+  $('mk-out').innerHTML='<p class="font-mono text-sm text-white mb-2">'+m.f+' + HBr</p>'+
+   '<div class="grid grid-cols-1 md:grid-cols-2 gap-3">'+card(m.pathA,'Pathway A','text-emerald-300')+card(m.pathB,'Pathway B','text-slate-300')+'</div>'+
+   '<p class="text-[11px] text-amber-200 mt-2"><b>Markovnikov:</b> H adds to the carbon with MORE hydrogens, giving the more stable carbocation → the major product. Stability: 3° &gt; 2° &gt; 1° (alkyl groups donate electron density, dispersing the + charge).</p>';
+  renderMathIn($('mk-out'));
+}
+
+/* ================= INTERACTIVE: E/Z ASSIGNER ================= */
+const EZ_MOLS=[
+ {name:'But-2-ene',f:'CH₃–CH=CH–CH₃',has:true,
+  left:{hi:'CH₃ (C, Z=6)',lo:'H (Z=1)'},right:{hi:'CH₃ (C, Z=6)',lo:'H (Z=1)'},
+  z:'Z-but-2-ene (cis): the two CH₃ (high priority) on the SAME side',e:'E-but-2-ene (trans): the two CH₃ on OPPOSITE sides'},
+ {name:'1-Chloropropene',f:'CH₃–CH=CH–Cl',has:true,
+  left:{hi:'CH₃ (C, Z=6)',lo:'H (Z=1)'},right:{hi:'Cl (Z=17)',lo:'H (Z=1)'},
+  z:'Z-1-chloropropene: CH₃ and Cl (the two high-priority groups) on the SAME side',e:'E-1-chloropropene: CH₃ and Cl on OPPOSITE sides'},
+ {name:'Chloroethene',f:'CH₂=CH–Cl',has:false,
+  why:'The left carbon carries TWO identical H atoms → no geometric isomerism.'},
+ {name:'2-Methylpropene',f:'(CH₃)₂C=CH₂',has:false,
+  why:'The left carbon has two identical CH₃ groups AND the right carbon has two identical H atoms → no geometric isomerism.'}
+];
+function renderEzBtns(){
+  $('ez-mol-btns').innerHTML=EZ_MOLS.map((m,i)=>`<button onclick="showEz(${i})" class="btn-press px-3 py-1.5 text-[11px] font-mono rounded-lg border border-slate-700 bg-slate-900 text-slate-300 hover:border-violet-600">${m.name}</button>`).join('');
+}
+function showEz(i){
+  const m=EZ_MOLS[i];
+  let h='<p class="font-mono text-sm text-white mb-2">'+m.f+'</p>';
+  if(!m.has){
+    h+='<div class="p-3 rounded-lg border border-rose-800 bg-rose-950/30 text-[11px] text-rose-200">✗ '+m.why+'</div>';
+  }else{
+    h+='<div class="grid grid-cols-1 md:grid-cols-2 gap-3">'+
+      '<div class="p-3 rounded-lg border border-slate-800 bg-slate-950"><p class="font-bold text-violet-300 text-xs mb-1">Left C priority</p><p class="text-[11px] text-emerald-300">High: '+m.left.hi+'</p><p class="text-[11px] text-slate-400">Low: '+m.left.lo+'</p></div>'+
+      '<div class="p-3 rounded-lg border border-slate-800 bg-slate-950"><p class="font-bold text-violet-300 text-xs mb-1">Right C priority</p><p class="text-[11px] text-emerald-300">High: '+m.right.hi+'</p><p class="text-[11px] text-slate-400">Low: '+m.right.lo+'</p></div></div>'+
+      '<div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-3">'+
+      '<div class="p-3 rounded-lg border border-emerald-700 bg-emerald-950/30 text-[11px] text-emerald-200"><b>Z isomer:</b> '+m.z+'</div>'+
+      '<div class="p-3 rounded-lg border border-sky-700 bg-sky-950/30 text-[11px] text-sky-200"><b>E isomer:</b> '+m.e+'</div></div>';
+  }
+  $('ez-out').innerHTML=h;renderMathIn($('ez-out'));
+}
+
+/* ================= INTERACTIVE: POLYMER MATCH + BUILDER ================= */
+const PO_MOLS=[
+ {mon:'Ethene',f:'CH₂=CH₂',rep:'–[CH₂–CH₂]ₙ–',poly:'poly(ethene) (polythene)',use:'Plastic bags, bottles, cling film'},
+ {mon:'Propene',f:'CH₃CH=CH₂',rep:'–[CH₂–CH(CH₃)]ₙ–',poly:'poly(propene)',use:'Ropes, crates, carpets'},
+ {mon:'Chloroethene',f:'CH₂=CHCl',rep:'–[CH₂–CHCl]ₙ–',poly:'poly(chloroethene) (PVC)',use:'Pipes, window frames, cable insulation'},
+ {mon:'Phenylethene',f:'CH₂=CHC₆H₅',rep:'–[CH₂–CH(C₆H₅)]ₙ–',poly:'poly(phenylethene) (polystyrene)',use:'Packaging foam, cups'},
+ {mon:'Methyl 2-methylpropenoate',f:'CH₂=C(CH₃)COOCH₃',rep:'–[CH₂–C(CH₃)(COOCH₃)]ₙ–',poly:'Perspex (acrylic glass)',use:'Shatterproof glazing, signs'}
+];
+function renderPoBtns(){
+  $('po-monomer-btns').innerHTML=PO_MOLS.map((m,i)=>`<button onclick="showPo(${i})" class="btn-press px-3 py-1.5 text-[11px] font-mono rounded-lg border border-slate-700 bg-slate-900 text-slate-300 hover:border-amber-600">${m.mon}</button>`).join('');
+  $('bld-monomer').innerHTML=PO_MOLS.map((m,i)=>`<option value="${i}">${m.mon} (${m.f})</option>`).join('');
+}
+function showPo(i){
+  const m=PO_MOLS[i];
+  $('po-out').innerHTML='<p class="font-mono text-sm text-white mb-2">'+m.f+'  →  '+m.rep+'</p>'+
+   '<p><span class="text-slate-400">Polymer:</span> <b class="text-amber-300">'+m.poly+'</b></p>'+
+   '<p><span class="text-slate-400">Repeat unit:</span> <span class="font-mono text-emerald-300">'+m.rep+'</span></p>'+
+   '<p><span class="text-slate-400">Common use:</span> '+m.use+'</p>';
+  renderMathIn($('po-out'));
+}
+function buildRepeat(){
+  const m=PO_MOLS[+$('bld-monomer').value];
+  $('bld-out').innerHTML='<div class="text-center space-y-2">'+
+   '<p class="font-mono text-sm text-slate-300">monomer: <span class="text-emerald-300">'+m.f+'</span></p>'+
+   '<p class="text-slate-500 text-lg">↓ break the π bond, add outward bonds, bracket + n</p>'+
+   '<p class="font-mono text-base text-amber-300 font-bold">'+m.rep+'</p>'+
+   '<p class="text-[11px] text-slate-400">polymer: <b class="text-amber-200">'+m.poly+'</b> · use: '+m.use+'</p>'+
+   '<p class="text-[11px] text-emerald-200 mt-1">Read it back: remove the brackets &amp; n, reform the C=C → you recover '+m.mon+'.</p></div>';
+  renderMathIn($('bld-out'));
+}
+function solveAddition(){
+  const a=RX_ALKENES[+$('slv-alkene').value], r=RX_REAGENTS[+$('slv-reagent').value];
+  const isProp=(a.name==='Propene');
+  let prod='',cond='';
+  switch(r.type){
+    case 'hydrogenation': prod=isProp?'CH₃CH₂CH₃':(a.name==='But-2-ene'?'CH₃CH₂CH₂CH₃':'CH₃CH₃');cond='H₂ / Ni, heat';break;
+    case 'halogenation': prod=isProp?'CH₃CHBrCH₂Br':(a.name==='But-2-ene'?'CH₃CHBrCHBrCH₃':'CH₂BrCH₂Br');cond='Br₂, r.t.';break;
+    case 'hydrohalogenation': prod=isProp?'CH₃CHBrCH₃ (major)':(a.name==='But-2-ene'?'CH₃CHBrCH₂CH₃':'CH₃CH₂Br');cond='HBr (g)';break;
+    case 'hydration': prod=isProp?'CH₃CH(OH)CH₃ (major)':(a.name==='But-2-ene'?'CH₃CH(OH)CH₂CH₃':'CH₃CH₂OH');cond='steam / conc. H₃PO₄, 300 °C, 60 atm';break;
+    case 'diol': prod=isProp?'CH₃CH(OH)CH₂OH':(a.name==='But-2-ene'?'CH₃CH(OH)CH(OH)CH₃':'CH₂(OH)CH₂(OH)');cond='cold dil. acidified KMnO₄';break;
+  }
+  $('slv-out').innerHTML='<p class="font-mono text-emerald-300 leading-relaxed">'+a.f+'  →['+cond+']  '+prod+'</p>'+
+   '<p class="text-[11px] text-slate-400 mt-2">Type: <b class="text-sky-300">electrophilic addition</b>'+(isProp&&r.type!=='diol'&&r.type!=='halogenation'?' · <span class="text-amber-200">Markovnikov: the H adds to the carbon with more H atoms, so the nucleophile lands on the more substituted carbon (major product shown).</span>':'')+'</p>';
+  renderMathIn($('slv-out'));
+}
+
+/* ================= INIT ================= */
+window.onload=function(){
+  renderOverview();
+  renderEngine('rx',RX_CARDS,'emerald');
+  renderEngine('me',ME_CARDS,'sky');
+  renderEngine('ez',EZ_CARDS,'violet');
+  renderEngine('po',PO_CARDS,'amber');
+  renderQuiz('rx-quiz-rows',RX_QUIZ);renderQuiz('me-quiz-rows',ME_QUIZ);renderQuiz('ez-quiz-rows',EZ_QUIZ);renderQuiz('po-quiz-rows',PO_QUIZ);
+  renderTraps('rx-traps-grid',RX_TRAPS);renderTraps('me-traps-grid',ME_TRAPS);renderTraps('ez-traps-grid',EZ_TRAPS);renderTraps('po-traps-grid',PO_TRAPS);
+  $('rx-alkene').innerHTML=RX_ALKENES.map((a,i)=>'<option value="'+i+'">'+a.name+' ('+a.f+')</option>').join('');
+  $('rx-reagent').innerHTML=RX_REAGENTS.map((r,i)=>'<option value="'+i+'">'+r.name+'</option>').join('');
+  $('slv-alkene').innerHTML=RX_ALKENES.map((a,i)=>'<option value="'+i+'">'+a.name+' ('+a.f+')</option>').join('');
+  $('slv-reagent').innerHTML=RX_REAGENTS.map((r,i)=>'<option value="'+i+'">'+r.name+'</option>').join('');
+  renderMkBtns();renderEzBtns();renderPoBtns();
+  safeInitKaTeX();
+};
+</script>
+</body>
+</html>

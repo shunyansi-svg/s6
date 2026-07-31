@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IAL Topic 1 — Formulae, Equations & Amount of Substance · Master Studio</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="safeInitKaTeX()"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+<script>
+tailwind.config={theme:{extend:{fontFamily:{display:['"Space Grotesk"','sans-serif'],sans:['Inter','sans-serif'],mono:['"Fira Code"','monospace']}}}}
+</script>
+<style>
+body{font-family:'Inter',sans-serif;background:#080e1a;color:#f1f5f9}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(56,189,248,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(56,189,248,.03) 1px,transparent 1px);background-size:52px 52px}
+.glow{position:fixed;border-radius:9999px;filter:blur(100px);pointer-events:none;z-index:0;opacity:.4}
+.glow-a{width:520px;height:520px;top:-180px;left:-120px;background:radial-gradient(circle,rgba(14,165,233,.18),transparent 70%);animation:drift 18s ease-in-out infinite alternate}
+.glow-b{width:480px;height:480px;bottom:-200px;right:-140px;background:radial-gradient(circle,rgba(168,85,247,.12),transparent 70%);animation:drift 22s ease-in-out infinite alternate-reverse}
+.glow-c{width:360px;height:360px;top:40%;left:60%;background:radial-gradient(circle,rgba(16,185,129,.1),transparent 70%);animation:drift 26s ease-in-out infinite alternate}
+@keyframes drift{from{transform:translate(0,0) scale(1)}to{transform:translate(50px,30px) scale(1.1)}}
+.ghost{font-family:'Space Grotesk',sans-serif;color:transparent;-webkit-text-stroke:1.5px rgba(56,189,248,.15);user-select:none;pointer-events:none}
+.kicker{letter-spacing:.22em;text-transform:uppercase;font-size:10px;font-weight:700;color:#38bdf8}
+.card-hover{transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}
+.card-hover:hover{transform:translateY(-2px);border-color:rgba(56,189,248,.3);box-shadow:0 12px 36px -14px rgba(14,165,233,.2)}
+.tab-panel{display:none}.tab-panel.active{display:block;animation:fadeUp .3s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.tab-btn-active{color:#38bdf8!important;font-weight:700!important;border-bottom:2px solid #38bdf8!important;background:rgba(14,165,233,.08)!important}
+.btn-press{transition:transform .1s ease,background-color .2s,border-color .2s,color .2s}
+.btn-press:active:not(:disabled){transform:scale(.96)}
+.blur-answer{filter:blur(6px);transition:filter .35s ease;cursor:pointer;user-select:none}
+.blur-answer.revealed{filter:none;cursor:text}
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+.reveal.revealed{opacity:1;transform:none}
+details>summary{cursor:pointer;list-style:none}
+details>summary::-webkit-details-marker{display:none}
+details>summary::before{content:'▸';display:inline-block;margin-right:.5rem;transition:transform .2s;color:#64748b}
+details[open]>summary::before{transform:rotate(90deg);color:#38bdf8}
+::-webkit-scrollbar{width:7px;height:7px}
+::-webkit-scrollbar-track{background:#0f172a}
+::-webkit-scrollbar-thumb{background:#334155;border-radius:4px}
+::-webkit-scrollbar-thumb:hover{background:#475569}
+</style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-sky-500 selection:text-slate-900">
+<div class="glow glow-a"></div><div class="glow glow-b"></div><div class="glow glow-c"></div>
+
+<header class="bg-slate-950/90 border-b border-slate-800/80 sticky top-0 z-50 backdrop-blur-md">
+<div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between gap-3 relative z-10">
+  <div class="flex items-center gap-3 shrink-0">
+    <div class="p-1.5 bg-sky-500/10 border border-sky-500/25 rounded-lg text-sky-400">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+    </div>
+    <div>
+      <h1 class="font-display text-base font-bold text-slate-100 leading-tight flex items-center gap-2">Topic 1 Master Studio <span class="text-[10px] font-sans font-normal px-2 py-0.5 rounded bg-sky-500/15 text-sky-300 border border-sky-500/25">WCH11</span></h1>
+      <p class="text-[10px] text-slate-500">Formulae, Equations & Amount of Substance · Edexcel IAL</p>
+    </div>
+  </div>
+  <span class="hidden sm:block text-[10px] font-mono text-slate-600">12 spec codes · 4 engines · calculator · final review</span>
+</div>
+<div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+  <nav id="mainNav" class="flex flex-wrap gap-0.5 py-1.5">
+    <button onclick="switchTab('syllabus')" data-tab="syllabus" class="tab-btn tab-btn-active py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs text-sky-400 font-bold border-b-2 border-sky-400 bg-sky-950/40 rounded-t-lg">1. Syllabus</button>
+    <button onclick="switchTab('mole')" data-tab="mole" class="tab-btn py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs text-slate-400 hover:text-sky-300 font-medium border-b-2 border-transparent">2. Mole & Mass</button>
+    <button onclick="switchTab('eqn')" data-tab="eqn" class="tab-btn py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs text-slate-400 hover:text-sky-300 font-medium border-b-2 border-transparent">3. Equations</button>
+    <button onclick="switchTab('conc')" data-tab="conc" class="tab-btn py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs text-slate-400 hover:text-sky-300 font-medium border-b-2 border-transparent">4. Conc & Gas</button>
+    <button onclick="switchTab('formula')" data-tab="formula" class="tab-btn py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs text-slate-400 hover:text-sky-300 font-medium border-b-2 border-transparent">5. Formulae & Yield</button>
+    <button onclick="switchTab('calc')" data-tab="calc" class="tab-btn py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs text-slate-400 hover:text-sky-300 font-medium border-b-2 border-transparent">6. Calculator</button>
+    <button onclick="switchTab('review')" data-tab="review" class="tab-btn py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs text-slate-400 hover:text-sky-300 font-medium border-b-2 border-transparent">7. Final Review</button>
+  </nav>
+</div>
+</header>
+
+<main class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-grow w-full relative z-10">
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- TAB 1: SYLLABUS MASTER OVERVIEW                            -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="tab-syllabus" class="tab-panel active space-y-6">
+<div class="bg-slate-900/80 border border-slate-800 rounded-xl p-6 relative overflow-hidden">
+  <span class="ghost absolute -top-8 right-3 text-[110px] font-bold leading-none">T1</span>
+  <div class="border-b border-slate-800 pb-4 mb-6">
+    <span class="kicker">Syllabus Master Overview</span>
+    <h2 class="font-display text-xl font-bold text-white mt-1">Topic 1 Learning Points & Mark Scheme Secrets (Spec 1.1 – 1.12)</h2>
+    <p class="text-xs text-slate-400 mt-1">Every assessment point elaborated with Key Learning Goals and IAL Examiner Watch-Outs. Application of ideas from this topic will be applied to all other units.</p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+    <!-- Card 1.1 -->
+    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between card-hover reveal">
+      <div>
+        <div class="flex justify-between items-center mb-2 gap-2">
+          <span class="text-[10px] font-mono uppercase font-bold px-2 py-0.5 bg-sky-950 text-sky-400 rounded border border-sky-800">Spec 1.1</span>
+          <span class="text-[10px] text-slate-500 font-mono">Terminology</span>
+        </div>
+        <h3 class="font-display text-sm font-bold text-white mb-3">Chemical Terminology — Atoms to Formulae</h3>
+        <div class="space-y-2">
+          <span class="text-[11px] font-bold text-sky-300 uppercase tracking-wider block">🎯 5 Key Learning Goals</span>
+          <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed">
+            <li>Define <strong>atom</strong> (smallest particle of an element), <strong>element</strong> (one type of atom), <strong>ion</strong> (charged particle), <strong>molecule</strong> (two or more atoms covalently bonded), <strong>compound</strong> (two or more elements chemically combined)</li>
+            <li>Distinguish <strong>empirical formula</strong> (simplest whole-number ratio of atoms) from <strong>molecular formula</strong> (actual number of each atom in a molecule)</li>
+            <li>Predict common ion charges from group number: Group I → +1, Group II → +2, Group VII → −1, O → −2</li>
+            <li>Recognise that ionic compounds (e.g. NaCl, MgO) use empirical formulae; covalent molecules (e.g. C₆H₁₂O₆) may have molecular formulae different from empirical</li>
+            <li>Identify polyatomic ions: OH⁻, SO₄²⁻, NO⁻, CO₃²⁻, NH₄⁺ — and use them correctly in formulae</li>
+          </ul>
+        </div>
+      </div>
+      <div class="p-3 bg-amber-950/40 border border-amber-800/60 rounded-lg text-xs text-amber-200 space-y-1">
+        <span class="font-bold text-amber-400 block uppercase text-[10px]">💡 IAL Examiner Watch-Outs</span>
+        <p class="leading-relaxed text-[11px]">Empirical formula of glucose is CH₂O, <strong>not</strong> C₆H₁₂O₆ — confusing the two is a classic lost mark. An ion <strong>must</strong> carry a charge; a neutral atom is not an ion. "Compound" requires chemical bonding — a mixture is not a compound.</p>
+      </div>
+    </div>
+
+    <!-- Card 1.2 -->
+    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between card-hover reveal">
+      <div>
+        <div class="flex justify-between items-center mb-2 gap-2">
+          <span class="text-[10px] font-mono uppercase font-bold px-2 py-0.5 bg-purple-950 text-purple-400 rounded border border-purple-800">Spec 1.2</span>
+          <span class="text-[10px] text-slate-500 font-mono">The Mole</span>
+        </div>
+        <h3 class="font-display text-sm font-bold text-white mb-3">The Mole & Avogadro Constant</h3>
+        <div class="space-y-2">
+          <span class="text-[11px] font-bold text-purple-300 uppercase tracking-wider block">🎯 5 Key Learning Goals</span>
+          <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed">
+            <li>Define the mole as the amount of substance containing the same number of particles as exactly 12 g of carbon-12</li>
+            <li>State the Avogadro constant $L = 6.02 \times 10^{23}\ \text{mol}^{-1}$ — note the unit mol⁻¹</li>
+            <li>Calculate number of particles: $N = n \times L$</li>
+            <li>Convert between mass, moles, and particles using $n = \frac{m}{M}$ and $N = nL$</li>
+            <li>Distinguish <strong>amount of substance</strong> (mol) from <strong>mass</strong> (g) — they measure different things</li>
+          </ul>
+        </div>
+      </div>
+      <div class="p-3 bg-amber-950/40 border border-amber-800/60 rounded-lg text-xs text-amber-200 space-y-1">
+        <span class="font-bold text-amber-400 block uppercase text-[10px]">💡 IAL Examiner Watch-Outs</span>
+        <p class="leading-relaxed text-[11px]">$L = 6.02 \times 10^{23}\ \text{mol}^{-1}$ — the unit mol⁻¹ is a mark; writing just $6.02 \times 10^{23}$ loses it. "Number of moles" is acceptable; "moles" alone as the quantity name is not. Do not confuse $n$ (amount) with $N$ (number of particles).</p>
+      </div>
+    </div>
+
+    <!-- Card 1.3 -->
+    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between card-hover reveal">
+      <div>
+        <div class="flex justify-between items-center mb-2 gap-2">
+          <span class="text-[10px] font-mono uppercase font-bold px-2 py-0.5 bg-emerald-950 text-emerald-400 rounded border border-emerald-800">Spec 1.3</span>
+          <span class="text-[10px] text-slate-500 font-mono">Equations</span>
+        </div>
+        <h3 class="font-display text-sm font-bold text-white mb-3">Balanced Equations & State Symbols</h3>
+        <div class="space-y-2">
+          <span class="text-[11px] font-bold text-emerald-300 uppercase tracking-wider block">🎯 5 Key Learning Goals</span>
+          <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed">
+            <li>Write balanced full equations with correct stoichiometric coefficients — check atom counts on both sides</li>
+            <li>Include state symbols (s), (l), (g), (aq) for <strong>every</strong> species</li>
+            <li>Derive ionic equations: split aqueous strong electrolytes into ions, cancel spectator ions</li>
+            <li>Check both <strong>mass balance</strong> and <strong>charge balance</strong> in ionic equations</li>
+            <li>Recognise that weak acids (e.g. CH₃COOH) and insoluble solids are <strong>not</strong> split into ions</li>
+          </ul>
+        </div>
+      </div>
+      <div class="p-3 bg-amber-950/40 border border-amber-800/60 rounded-lg text-xs text-amber-200 space-y-1">
+        <span class="font-bold text-amber-400 block uppercase text-[10px]">💡 IAL Examiner Watch-Outs</span>
+        <p class="leading-relaxed text-[11px]">Spectator ions left in the ionic equation = lost mark. State symbols required even when the question doesn't explicitly ask. CH₃COOH is a weak acid — write it as a molecule, not H⁺ + CH₃COO⁻. Charge balance: total charge on left must equal total charge on right.</p>
+      </div>
+    </div>
+
+    <!-- Card 1.4 -->
+    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between card-hover reveal">
+      <div>
+        <div class="flex justify-between items-center mb-2 gap-2">
+          <span class="text-[10px] font-mono uppercase font-bold px-2 py-0.5 bg-amber-950 text-amber-400 rounded border border-amber-800">Spec 1.4</span>
+          <span class="text-[10px] text-slate-500 font-mono">Relative Masses</span>
+        </div>
+        <h3 class="font-display text-sm font-bold text-white mb-3">Relative Masses, Molar Mass & ppm</h3>
+        <div class="space-y-2">
+          <span class="text-[11px] font-bold text-amber-300 uppercase tracking-wider block">🎯 6 Key Learning Goals</span>
+          <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed">
+            <li>Define $A_r$ (relative atomic mass) on the ¹²C scale: weighted mean mass of an atom relative to $\frac{1}{12}$ of ¹²C</li>
+            <li>Define $M_r$ (relative molecular mass) for covalent molecules; use <strong>relative formula mass</strong> for ionic / giant structures</li>
+            <li>Define molar mass as mass per mole in g mol⁻¹ (numerically equal to $A_r$ or $M_r$)</li>
+            <li>Calculate $A_r$ from isotopic data: $A_r = \frac{\sum(\text{isotope mass} \times \% \text{abundance})}{100}$</li>
+            <li>Define parts per million (ppm): $\text{ppm} = \frac{\text{mass of solute}}{\text{mass of solution}} \times 10^6$</li>
+            <li>Apply ppm to atmospheric gases and dilute aqueous solutions</li>
+          </ul>
+        </div>
+      </div>
+      <div class="p-3 bg-amber-950/40 border border-amber-800/60 rounded-lg text-xs text-amber-200 space-y-1">
+        <span class="font-bold text-amber-400 block uppercase text-[10px]">💡 IAL Examiner Watch-Outs</span>
+        <p class="leading-relaxed text-[11px]">Say "relative formula mass of NaCl" — <strong>not</strong> "relative molecular mass" (NaCl is ionic). Molar mass unit is g mol⁻¹; writing just "g" loses the mark. Isotopic $A_r$ calculations: use percentage or fractional abundance consistently — mixing them gives wrong answers.</p>
+      </div>
+    </div>
+
+    <!-- Card 1.5 -->
+    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between card-hover reveal">
+      <div>
+        <div class="flex justify-between items-center mb-2 gap-2">
+          <span class="text-[10px] font-mono uppercase font-bold px-2 py-0.5 bg-rose-950 text-rose-400 rounded border border-rose-800">Spec 1.5</span>
+          <span class="text-[10px] text-slate-500 font-mono">Concentration</span>
+        </div>
+        <h3 class="font-display text-sm font-bold text-white mb-3">Concentration of Solutions</h3>
+        <div class="space-y-2">
+          <span class="text-[11px] font-bold text-rose-300 uppercase tracking-wider block">🎯 5 Key Learning Goals</span>
+          <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed">
+            <li>Define concentration in mol dm⁻³ (molarity): $c = \frac{n}{V}$ where $V$ is in dm³</li>
+            <li>Define concentration in g dm⁻³: $c = \frac{m}{V}$ where $V$ is in dm³</li>
+            <li>Convert between mol dm⁻³ and g dm⁻³: $\text{g dm}^{-3} = \text{mol dm}^{-3} \times M$</li>
+            <li>Convert volumes: $1\ \text{dm}^3 = 1000\ \text{cm}^3$; divide cm³ by 1000 for dm³</li>
+            <li>Note: titration calculations are <strong>not</strong> required at this stage (deferred to Topic 3 / WCH12)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="p-3 bg-amber-950/40 border border-amber-800/60 rounded-lg text-xs text-amber-200 space-y-1">
+        <span class="font-bold text-amber-400 block uppercase text-[10px]">💡 IAL Examiner Watch-Outs</span>
+        <p class="leading-relaxed text-[11px]">The #1 error: using cm³ directly in $c = n/V$ without converting to dm³. Write "mol dm⁻³" — not "mol/dm³" or "M" in IAL answers. If the question gives 250 cm³, you must write 0.250 dm³ in your working.</p>
+      </div>
+    </div>
+
+    <!-- Card 1.6 -->
+    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between card-hover reveal">
+      <div>
+        <div class="flex justify-between items-center mb-2 gap-2">
+          <span class="text-[10px] font-mono uppercase font-bold px-2 py-0.5 bg-cyan-950 text-cyan-400 rounded border border-cyan-800">Spec 1.6</span>
+          <span class="text-[10px] text-slate-500 font-mono">Formulae</span>
+        </div>
+        <h3 class="font-display text-sm font-bold text-white mb-3">Empirical & Molecular Formulae from Data</h3>
+        <div class="space-y-2">
+          <span class="text-[11px] font-bold text-cyan-300 uppercase tracking-wider block">🎯 5 Key Learning Goals</span>
+          <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed">
+            <li>Determine empirical formula from % composition or masses: convert each element to moles ($n = m/A_r$), divide by smallest, find simplest whole-number ratio</li>
+            <li>Determine molecular formula from empirical formula and $M_r$: multiply by $\frac{M_r}{\text{empirical mass}}$</li>
+            <li>Handle non-integer ratios: if ratio is 1 : 1.5, multiply all by 2 → 2 : 3 (do <strong>not</strong> round)</li>
+            <li>Use combustion data: mass of CO₂ → moles C; mass of H₂O → moles H; O by difference</li>
+            <li>Present working clearly in a table: element | mass | moles | ratio | empirical formula</li>
+          </ul>
+        </div>
+      </div>
+      <div class="p-3 bg-amber-950/40 border border-amber-800/60 rounded-lg text-xs text-amber-200 space-y-1">
+        <span class="font-bold text-amber-400 block uppercase text-[10px]">💡 IAL Examiner Watch-Outs</span>
+        <p class="leading-relaxed text-[11px]">Divide by the <strong>smallest</strong> number of moles, not the largest. Ratio 1 : 1.33 → multiply by 3 (→ 3 : 4), not round to 1 : 1. Show the table — examiners award method marks even if arithmetic slips. O by difference: mass O = total mass − mass C − mass H.</p>
+      </div>
+    </div>
+
+    <!-- Card 1.7 -->
+    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between card-hover reveal">
+      <div>
+        <div class="flex justify-between items-center mb-2 gap-2">
+          <span class="text-[10px] font-mono uppercase font-bold px-2 py-0.5 bg-sky-950 text-sky-400 rounded border border-sky-800">Spec 1.7</span>
+          <span class="text-[10px] text-slate-500 font-mono">Reacting Masses</span>
+        </div>
+        <h3 class="font-display text-sm font-bold text-white mb-3">Reacting Masses & Limiting Reagent</h3>
+        <div class="space-y-2">
+          <span class="text-[11px] font-bold text-sky-300 uppercase tracking-wider block">🎯 5 Key Learning Goals</span>
+          <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed">
+            <li>Use balanced equation mole ratios to link reactant and product amounts</li>
+            <li>Calculate mass of product: $m \xrightarrow{\div M} n \xrightarrow{\text{ratio}} n \xrightarrow{\times M} m$</li>
+            <li>Identify the <strong>limiting reagent</strong> when amounts of both reactants are given — compare mole ratios</li>
+            <li>Calculate mass of excess reagent remaining after reaction</li>
+            <li>Work backwards: from mass of product, find mass of reactant needed</li>
+          </ul>
+        </div>
+      </div>
+      <div class="p-3 bg-amber-950/40 border border-amber-800/60 rounded-lg text-xs text-amber-200 space-y-1">
+        <span class="font-bold text-amber-400 block uppercase text-[10px]">💡 IAL Examiner Watch-Outs</span>
+        <p class="leading-relaxed text-[11px]">Always identify the limiting reagent <strong>first</strong> — assuming the wrong one gives a completely wrong answer. The mole ratio comes from the <strong>balanced</strong> equation coefficients, not from the masses. "Reacting masses" means stoichiometric calculation, not just adding masses together.</p>
+      </div>
+    </div>
+
+    <!-- Card 1.8 -->
+    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between card-hover reveal">
+      <div>
+        <div class="flex justify-between items-center mb-2 gap-2">
+          <span class="text-[10px] font-mono uppercase font-bold px-2 py-0.5 bg-purple-950 text-purple-400 rounded border border-purple-800">Spec 1.8</span>
+          <span class="text-[10px] text-slate-500 font-mono">Gas Volumes</span>
+        </div>
+        <h3 class="font-display text-sm font-bold text-white mb-3">Volumes of Gases & the Ideal Gas Equation</h3>
+        <div class="space-y-2">
+          <span class="text-[11px] font-bold text-purple-300 uppercase tracking-wider block">🎯 6 Key Learning Goals</span>
+          <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed">
+            <li>Use molar volume at r.t.p.: $V_m = 24\ \text{dm}^3\ \text{mol}^{-1}$ (or 24 000 cm³ mol⁻¹)</li>
+            <li>Convert moles ↔ volume: $n = \frac{V}{24}$ (V in dm³) or $n = \frac{V}{24000}$ (V in cm³)</li>
+            <li>Apply $pV = nRT$ for non-standard conditions; $R = 8.31\ \text{J mol}^{-1}\ \text{K}^{-1}$</li>
+            <li>Convert temperature: $T(\text{K}) = T(°\text{C}) + 273$</li>
+            <li>Ensure consistent SI units in $pV = nRT$: $p$ in Pa, $V$ in m³, $n$ in mol, $T$ in K</li>
+            <li>Use Avogadro's law: volume ratio = mole ratio for gases at same $T$ and $p$</li>
+          </ul>
+        </div>
+      </div>
+      <div class="p-3 bg-amber-950/40 border border-amber-800/60 rounded-lg text-xs text-amber-200 space-y-1">
+        <span class="font-bold text-amber-400 block uppercase text-[10px]">💡 IAL Examiner Watch-Outs</span>
+        <p class="leading-relaxed text-[11px]">In $pV = nRT$: pressure <strong>must</strong> be in Pa (not kPa or atm) and volume in m³ (not dm³ or cm³). Convert kPa → Pa (×1000); dm³ → m³ (÷1000). At r.t.p. use 24 dm³ mol⁻¹; at s.t.p. use 22.4 dm³ mol⁻¹ — do <strong>not</strong> mix them up.</p>
+      </div>
+    </div>
+
+    <!-- Card 1.9 -->
+    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between card-hover reveal">
+      <div>
+        <div class="flex justify-between items-center mb-2 gap-2">
+          <span class="text-[10px] font-mono uppercase font-bold px-2 py-0.5 bg-emerald-950 text-emerald-400 rounded border border-emerald-800">Spec 1.9</span>
+          <span class="text-[10px] text-slate-500 font-mono">Yield & Atom Economy</span>
+        </div>
+        <h3 class="font-display text-sm font-bold text-white mb-3">Percentage Yield & Atom Economy</h3>
+        <div class="space-y-2">
+          <span class="text-[11px] font-bold text-emerald-300 uppercase tracking-wider block">🎯 5 Key Learning Goals</span>
+          <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed">
+            <li>Calculate percentage yield: $\% \text{yield} = \frac{\text{actual yield}}{\text{theoretical yield}} \times 100\%$</li>
+            <li>Calculate theoretical yield from stoichiometry using the limiting reagent</li>
+            <li>Calculate atom economy: $\% \text{atom economy} = \frac{M_r \text{ of desired product}}{\sum M_r \text{ of ALL products}} \times 100\%$</li>
+            <li>Explain why high atom economy matters: less waste, greener process, more sustainable</li>
+            <li>Distinguish yield (practical efficiency of a specific run) from atom economy (theoretical waste measure of the reaction itself)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="p-3 bg-amber-950/40 border border-amber-800/60 rounded-lg text-xs text-amber-200 space-y-1">
+        <span class="font-bold text-amber-400 block uppercase text-[10px]">💡 IAL Examiner Watch-Outs</span>
+        <p class="leading-relaxed text-[11px]">Atom economy denominator = <strong>all products</strong>, not reactants. A reaction can have 100% yield but poor atom economy (e.g. substitution). Addition reactions have 100% atom economy (one product). Do not confuse the two concepts — they measure different things.</p>
+      </div>
+    </div>
+
+    <!-- Card 1.10 -->
+    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between card-hover reveal">
+      <div>
+        <div class="flex justify-between items-center mb-2 gap-2">
+          <span class="text-[10px] font-mono uppercase font-bold px-2 py-0.5 bg-amber-950 text-amber-400 rounded border border-amber-800">Spec 1.10</span>
+          <span class="text-[10px] text-slate-500 font-mono">Experimental Formulae</span>
+        </div>
+        <h3 class="font-display text-sm font-bold text-white mb-3">Determine Formula by Experiment</h3>
+        <div class="space-y-2">
+          <span class="text-[11px] font-bold text-amber-300 uppercase tracking-wider block">🎯 4 Key Learning Goals</span>
+          <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed">
+            <li>Design or interpret experiments to find empirical formulae (e.g. heating a metal in oxygen, measuring mass change)</li>
+            <li>Use mass data before and after reaction to find mass of each element, then convert to moles</li>
+            <li>Evaluate experimental data: identify sources of error (incomplete reaction, product loss, moisture absorption)</li>
+            <li>Confirm a balanced equation by comparing experimental mole ratios with theoretical coefficients</li>
+          </ul>
+        </div>
+      </div>
+      <div class="p-3 bg-amber-950/40 border border-amber-800/60 rounded-lg text-xs text-amber-200 space-y-1">
+        <span class="font-bold text-amber-400 block uppercase text-[10px]">💡 IAL Examiner Watch-Outs</span>
+        <p class="leading-relaxed text-[11px]">"Evaluate the data" = discuss reliability <strong>and</strong> suggest improvements — not just "the results are inaccurate". Common errors: incomplete combustion, product lost as smoke/gas, crucible not dried before first weighing, lid not replaced during heating.</p>
+      </div>
+    </div>
+
+    <!-- Card 1.11 -->
+    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between card-hover reveal">
+      <div>
+        <div class="flex justify-between items-center mb-2 gap-2">
+          <span class="text-[10px] font-mono uppercase font-bold px-2 py-0.5 bg-rose-950 text-rose-400 rounded border border-rose-800">Spec 1.11</span>
+          <span class="text-[10px] text-slate-500 font-mono">Core Practical 1</span>
+        </div>
+        <h3 class="font-display text-sm font-bold text-white mb-3">CP1 — Measurement of Molar Volume of a Gas</h3>
+        <div class="space-y-2">
+          <span class="text-[11px] font-bold text-rose-300 uppercase tracking-wider block">🎯 5 Key Learning Goals</span>
+          <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed">
+            <li>Describe the method: react known mass of metal (e.g. Mg ribbon) with excess dilute acid; collect gas in a gas syringe or by water displacement</li>
+            <li>Calculate moles of gas from measured volume: $n = \frac{V}{24}$ (at r.t.p.) or use $pV = nRT$</li>
+            <li>Compare experimental molar volume with accepted value (24 dm³ mol⁻¹ at r.t.p.); calculate % error</li>
+            <li>Identify systematic errors: gas escaping before bung inserted, gas dissolving in water, $T$/$p$ not at r.t.p.</li>
+            <li>State the <strong>direction</strong> of each error's effect on the calculated molar volume</li>
+          </ul>
+        </div>
+      </div>
+      <div class="p-3 bg-amber-950/40 border border-amber-800/60 rounded-lg text-xs text-amber-200 space-y-1">
+        <span class="font-bold text-amber-400 block uppercase text-[10px]">💡 IAL Examiner Watch-Outs</span>
+        <p class="leading-relaxed text-[11px]">Gas dissolving in water → <strong>lower</strong> measured volume → lower molar volume. Gas escaping before bung sealed → also <strong>lower</strong> volume. You must state the direction of the error, not just "there is an error". Excess acid ensures all metal reacts — this is a control, not an error source.</p>
+      </div>
+    </div>
+
+    <!-- Card 1.12 -->
+    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between card-hover reveal">
+      <div>
+        <div class="flex justify-between items-center mb-2 gap-2">
+          <span class="text-[10px] font-mono uppercase font-bold px-2 py-0.5 bg-cyan-950 text-cyan-400 rounded border border-cyan-800">Spec 1.12</span>
+          <span class="text-[10px] text-slate-500 font-mono">Ionic from Observations</span>
+        </div>
+        <h3 class="font-display text-sm font-bold text-white mb-3">Ionic & Full Equations from Test-Tube Observations</h3>
+        <div class="space-y-2">
+          <span class="text-[11px] font-bold text-cyan-300 uppercase tracking-wider block">🎯 5 Key Learning Goals</span>
+          <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed">
+            <li>Write full and ionic equations for <strong>displacement reactions</strong>: more reactive metal displaces less reactive (e.g. Zn + CuSO₄ → ZnSO₄ + Cu)</li>
+            <li>Write full and ionic equations for <strong>acid reactions</strong>: acid + metal → salt + H₂; acid + base → salt + H₂O; acid + carbonate → salt + H₂O + CO₂</li>
+            <li>Write full and ionic equations for <strong>precipitation reactions</strong>: two soluble salts → insoluble precipitate + soluble salt</li>
+            <li>Relate observations to species: colour change (transition metal ions), effervescence (gas = CO₂ or H₂), precipitate (insoluble solid)</li>
+            <li>Include state symbols and cancel spectator ions in every ionic equation</li>
+          </ul>
+        </div>
+      </div>
+      <div class="p-3 bg-amber-950/40 border border-amber-800/60 rounded-lg text-xs text-amber-200 space-y-1">
+        <span class="font-bold text-amber-400 block uppercase text-[10px]">💡 IAL Examiner Watch-Outs</span>
+        <p class="leading-relaxed text-[11px]">Displacement: check the reactivity series — a metal cannot displace one above it. Precipitation ionic equations show <strong>only</strong> the ions forming the precipitate (e.g. Ag⁺(aq) + Cl⁻(aq) → AgCl(s)). Effervescence with acid + carbonate = CO₂, not O₂. H₂ from acid + metal is colourless and odourless — "pops" with a lit splint.</p>
+      </div>
+    </div>
+
+  </div><!-- /grid -->
+
+  <div class="mt-6 p-4 bg-rose-950/20 border border-rose-900/40 rounded-xl text-xs text-slate-300">
+    <b class="text-rose-300">Out of scope in this studio:</b> Titration calculations (deferred to Topic 3 / WCH12); redox equations and oxidation numbers (Topic 2 / WCH11 §2); enthalpy changes (Topic 8 / WCH13). These build on Topic 1 foundations but are taught in later units.
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- TAB 2: MOLE & MASS ENGINE                                  -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="tab-mole" class="tab-panel space-y-6">
+<div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5">
+  <div class="kicker mb-1">Engine 1 · Spec 1.1, 1.2, 1.4, 1.7</div>
+  <h2 class="font-display text-lg font-bold text-white">Mole & Mass Engine</h2>
+  <p class="text-xs text-slate-400 mt-1">Inspector cards, conversion map, multi-blank quiz, and trap pairs for mole calculations.</p>
+  <div class="flex flex-wrap gap-1.5 mt-3">
+    <button onclick="setMoleMode('explorer')" id="mole-m-explorer" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-sky-700 bg-sky-950/50 text-sky-300">Inspector</button>
+    <button onclick="setMoleMode('map')" id="mole-m-map" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-sky-300">Conversion Map</button>
+    <button onclick="setMoleMode('quiz')" id="mole-m-quiz" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-sky-300">Quiz</button>
+    <button onclick="setMoleMode('traps')" id="mole-m-traps" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-sky-300">Traps</button>
+  </div>
+</div>
+
+<!-- Module 1: Inspector -->
+<div id="mole-mode-explorer" class="mole-mode space-y-4">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
+    <div class="lg:col-span-3 space-y-1.5">
+      <p class="text-[10px] text-slate-500 uppercase tracking-wider font-bold mb-2">Concept Cards</p>
+      <button onclick="showMoleCard(0)" class="mole-nav-btn btn-press w-full text-left px-3 py-2 text-xs rounded-lg border border-sky-700 bg-sky-950/40 text-sky-300 font-semibold">1. Atom, Ion, Molecule</button>
+      <button onclick="showMoleCard(1)" class="mole-nav-btn btn-press w-full text-left px-3 py-2 text-xs rounded-lg border border-slate-700 text-slate-400 hover:text-sky-300">2. The Mole & L</button>
+      <button onclick="showMoleCard(2)" class="mole-nav-btn btn-press w-full text-left px-3 py-2 text-xs rounded-lg border border-slate-700 text-slate-400 hover:text-sky-300">3. Ar from Isotopes</button>
+      <button onclick="showMoleCard(3)" class="mole-nav-btn btn-press w-full text-left px-3 py-2 text-xs rounded-lg border border-slate-700 text-slate-400 hover:text-sky-300">4. Mr & Molar Mass</button>
+      <button onclick="showMoleCard(4)" class="mole-nav-btn btn-press w-full text-left px-3 py-2 text-xs rounded-lg border border-slate-700 text-slate-400 hover:text-sky-300">5. ppm</button>
+      <button onclick="showMoleCard(5)" class="mole-nav-btn btn-press w-full text-left px-3 py-2 text-xs rounded-lg border border-slate-700 text-slate-400 hover:text-sky-300">6. Reacting Masses</button>
+      <button onclick="showMoleCard(6)" class="mole-nav-btn btn-press w-full text-left px-3 py-2 text-xs rounded-lg border border-slate-700 text-slate-400 hover:text-sky-300">7. Limiting Reagent</button>
+      <button onclick="showMoleCard(7)" class="mole-nav-btn btn-press w-full text-left px-3 py-2 text-xs rounded-lg border border-slate-700 text-slate-400 hover:text-sky-300">8. Mass ↔ Moles ↔ Particles</button>
+    </div>
+    <div class="lg:col-span-9" id="mole-cards-container">
+      <!-- JS-populated -->
+    </div>
+  </div>
+</div>
+
+<!-- Module 2: Conversion Map -->
+<div id="mole-mode-map" class="mole-mode hidden space-y-4">
+  <div class="bg-slate-950 border border-slate-800 rounded-xl p-5">
+    <h3 class="font-display text-sm font-bold text-sky-300 mb-3">Mole Conversion Triangle & Flowchart</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="bg-slate-900 border border-slate-800 rounded-lg p-4 text-center space-y-3">
+        <p class="text-xs text-slate-400 font-bold uppercase tracking-wider">The Mole Triangle</p>
+        <svg viewBox="0 0 300 220" class="w-full max-w-[300px] mx-auto">
+          <polygon points="150,20 30,200 270,200" fill="none" stroke="#334155" stroke-width="2"/>
+          <text x="150" y="15" text-anchor="middle" fill="#38bdf8" font-size="13" font-weight="bold" font-family="Space Grotesk">mass (g)</text>
+          <text x="20" y="218" text-anchor="middle" fill="#a78bfa" font-size="13" font-weight="bold" font-family="Space Grotesk">moles (n)</text>
+          <text x="280" y="218" text-anchor="middle" fill="#34d399" font-size="13" font-weight="bold" font-family="Space Grotesk">particles (N)</text>
+          <text x="75" y="100" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="Fira Code">÷ M</text>
+          <text x="75" y="120" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="Fira Code">× M</text>
+          <text x="225" y="100" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="Fira Code">× L</text>
+          <text x="225" y="120" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="Fira Code">÷ L</text>
+          <text x="150" y="215" text-anchor="middle" fill="#94a3b8" font-size="10" font-family="Fira Code">n = m/M = N/L</text>
+        </svg>
+      </div>
+      <div class="space-y-3 text-xs text-slate-300">
+        <p class="font-bold text-sky-300">Conversion pathways:</p>
+        <div class="bg-slate-900 border border-slate-800 rounded-lg p-3 space-y-2 font-mono text-[11px]">
+          <p><span class="text-sky-400">mass → moles:</span> $n = \frac{m}{M}$</p>
+          <p><span class="text-purple-400">moles → mass:</span> $m = n \times M$</p>
+          <p><span class="text-emerald-400">moles → particles:</span> $N = n \times L$</p>
+          <p><span class="text-amber-400">particles → moles:</span> $n = \frac{N}{L}$</p>
+          <p><span class="text-rose-400">moles → volume (gas, r.t.p.):</span> $V = n \times 24$</p>
+          <p><span class="text-cyan-400">moles → volume (solution):</span> $V = \frac{n}{c}$</p>
+        </div>
+        <p class="text-slate-500 text-[11px]">Cover the quantity you want to find — the operation between the other two tells you what to do.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Module 3: Quiz -->
+<div id="mole-mode-quiz" class="mole-mode hidden space-y-4" id="mole-quiz-area">
+  <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+    <h3 class="font-display text-sm font-bold text-sky-300">Multi-Blank Quiz — Mole & Mass</h3>
+    <p class="text-xs text-slate-400">Click each blurred answer to reveal it. Test yourself before peeking.</p>
+    <div id="mole-quiz-rows" class="space-y-3">
+      <!-- JS-populated -->
+    </div>
+    <button onclick="revealAllMoleQuiz()" class="btn-press bg-slate-800 hover:bg-slate-700 border border-slate-700 text-sky-300 text-xs font-semibold px-4 py-2 rounded-lg">Reveal All</button>
+  </div>
+</div>
+
+<!-- Module 4: Traps -->
+<div id="mole-mode-traps" class="mole-mode hidden space-y-4">
+  <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+    <h3 class="font-display text-sm font-bold text-rose-300">Trap Pairs — Mole & Mass</h3>
+    <p class="text-xs text-slate-400">High-yield confusions that cost marks every session.</p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-3" id="mole-traps-grid">
+      <!-- JS-populated -->
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- TAB 3: EQUATIONS & IONS ENGINE                             -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="tab-eqn" class="tab-panel space-y-6">
+<div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5">
+  <div class="kicker mb-1">Engine 2 · Spec 1.3, 1.12</div>
+  <h2 class="font-display text-lg font-bold text-white">Equations & Ions Engine</h2>
+  <p class="text-xs text-slate-400 mt-1">Balancing, ionic equations, state symbols, and test-tube observations.</p>
+  <div class="flex flex-wrap gap-1.5 mt-3">
+    <button onclick="setEqnMode('explorer')" id="eqn-m-explorer" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-sky-700 bg-sky-950/50 text-sky-300">Inspector</button>
+    <button onclick="setEqnMode('map')" id="eqn-m-map" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-sky-300">Decision Tree</button>
+    <button onclick="setEqnMode('quiz')" id="eqn-m-quiz" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-sky-300">Quiz</button>
+    <button onclick="setEqnMode('traps')" id="eqn-m-traps" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-sky-300">Traps</button>
+  </div>
+</div>
+<div id="eqn-mode-explorer" class="eqn-mode space-y-4">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
+    <div class="lg:col-span-3 space-y-1.5">
+      <p class="text-[10px] text-slate-500 uppercase tracking-wider font-bold mb-2">Equation Cards</p>
+      <button onclick="showEqnCard(0)" class="eqn-nav-btn btn-press w-full text-left px-3 py-2 text-xs rounded-lg border border-sky-700 bg-sky-950/40 text-sky-300 font-semibold">1. Balancing Rules</button>
+      <button onclick="showEqnCard(1)" class="eqn-nav-btn btn-press w-full text-left px-3 py-2 text-xs rounded-lg border border-slate-700 text-slate-400">2. State Symbols</button>
+      <button onclick="showEqnCard(2)" class="eqn-nav-btn btn-press w-full text-left px-3 py-2 text-xs rounded-lg border border-slate-700 text-slate-400">3. Ionic Equations</button>
+      <button onclick="showEqnCard(3)" class="eqn-nav-btn btn-press w-full text-left px-3 py-2 text-xs rounded-lg border border-slate-700 text-slate-400">4. Displacement</button>
+      <button onclick="showEqnCard(4)" class="eqn-nav-btn btn-press w-full text-left px-3 py-2 text-xs rounded-lg border border-slate-700 text-slate-400">5. Acid + Metal</button>
+      <button onclick="showEqnCard(5)" class="eqn-nav-btn btn-press w-full text-left px-3 py-2 text-xs rounded-lg border border-slate-700 text-slate-400">6. Acid + Base</button>
+      <button onclick="showEqnCard(6)" class="eqn-nav-btn btn-press w-full text-left px-3 py-2 text-xs rounded-lg border border-slate-700 text-slate-400">7. Acid + Carbonate</button>
+      <button onclick="showEqnCard(7)" class="eqn-nav-btn btn-press w-full text-left px-3 py-2 text-xs rounded-lg border border-slate-700 text-slate-400">8. Precipitation</button>
+    </div>
+    <div class="lg:col-span-9" id="eqn-cards-container"></div>
+  </div>
+</div>
+<div id="eqn-mode-map" class="eqn-mode hidden">
+  <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3">
+    <h3 class="font-display text-sm font-bold text-emerald-300">Equation Type Decision Tree</h3>
+    <div class="text-xs text-slate-300 space-y-2 font-mono leading-relaxed">
+      <p class="text-sky-400 font-bold">Start: What type of reaction?</p>
+      <p>├─ <span class="text-emerald-400">Metal + acid?</span> → salt + H₂(g) — ionic: metal + 2H⁺ → metal²⁺ + H₂</p>
+      <p>├─ <span class="text-emerald-400">Acid + base/alkali?</span> → salt + H₂O — ionic: H⁺ + OH → H₂O</p>
+      <p>├─ <span class="text-emerald-400">Acid + carbonate?</span> → salt + H₂O + CO₂(g) — ionic: 2H⁺ + CO₃²⁻ → H₂O + CO₂</p>
+      <p>├─ <span class="text-purple-400">Metal + salt solution?</span> → displacement if metal is more reactive</p>
+      <p>├─ <span class="text-amber-400">Two solutions mixed?</span> → check solubility rules → precipitate if insoluble product forms</p>
+      <p>└─ <span class="text-rose-400">Combustion?</span> → substance + O₂ → oxides (usually CO₂ + H₂O for hydrocarbons)</p>
+    </div>
+    <div class="p-3 bg-amber-950/40 border border-amber-800/60 rounded-lg text-xs text-amber-200">
+      <span class="font-bold text-amber-400 block uppercase text-[10px] mb-1">💡 Solubility Quick Rules</span>
+      <p class="text-[11px]">All nitrates soluble. All Na⁺, K⁺, NH₄⁺ salts soluble. Most chlorides soluble (except AgCl, PbCl₂). Most sulfates soluble (except BaSO₄, PbSO₄, CaSO₄). Most carbonates insoluble (except Na₂CO₃, K₂CO₃). Most hydroxides insoluble (except NaOH, KOH, Ba(OH)₂).</p>
+    </div>
+  </div>
+</div>
+<div id="eqn-mode-quiz" class="eqn-mode hidden">
+  <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+    <h3 class="font-display text-sm font-bold text-emerald-300">Multi-Blank Quiz — Equations</h3>
+    <div id="eqn-quiz-rows" class="space-y-3"></div>
+    <button onclick="revealAllEqnQuiz()" class="btn-press bg-slate-800 hover:bg-slate-700 border border-slate-700 text-sky-300 text-xs font-semibold px-4 py-2 rounded-lg">Reveal All</button>
+  </div>
+</div>
+<div id="eqn-mode-traps" class="eqn-mode hidden">
+  <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+    <h3 class="font-display text-sm font-bold text-rose-300">Trap Pairs — Equations</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-3" id="eqn-traps-grid"></div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- TAB 4: CONCENTRATION & GAS VOLUME ENGINE                   -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="tab-conc" class="tab-panel space-y-6">
+<div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5">
+  <div class="kicker mb-1">Engine 3 · Spec 1.5, 1.8</div>
+  <h2 class="font-display text-lg font-bold text-white">Concentration & Gas Volume Engine</h2>
+  <p class="text-xs text-slate-400 mt-1">Solution concentration, molar volume, ideal gas equation, and unit conversions.</p>
+  <div class="flex flex-wrap gap-1.5 mt-3">
+    <button onclick="setConcMode('explorer')" id="conc-m-explorer" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-sky-700 bg-sky-950/50 text-sky-300">Inspector</button>
+    <button onclick="setConcMode('map')" id="conc-m-map" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-sky-300">Unit Map</button>
+    <button onclick="setConcMode('quiz')" id="conc-m-quiz" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-sky-300">Quiz</button>
+    <button onclick="setConcMode('traps')" id="conc-m-traps" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-sky-300">Traps</button>
+  </div>
+</div>
+<div id="conc-mode-explorer" class="conc-mode space-y-4">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
+    <div class="lg:col-span-3 space-y-1.5">
+      <p class="text-[10px] text-slate-500 uppercase tracking-wider font-bold mb-2">Concept Cards</p>
+      <button onclick="showConcCard(0)" class="conc-nav-btn btn-press w-full text-left px-3 py-2 text-xs rounded-lg border border-sky-700 bg-sky-950/40 text-sky-300 font-semibold">1. mol dm⁻³</button>
+      <button onclick="showConcCard(1)" class="conc-nav-btn btn-press w-full text-left px-3 py-2 text-xs rounded-lg border border-slate-700 text-slate-400">2. g dm⁻³</button>
+      <button onclick="showConcCard(2)" class="conc-nav-btn btn-press w-full text-left px-3 py-2 text-xs rounded-lg border border-slate-700 text-slate-400">3. cm³ ↔ dm³</button>
+      <button onclick="showConcCard(3)" class="conc-nav-btn btn-press w-full text-left px-3 py-2 text-xs rounded-lg border border-slate-700 text-slate-400">4. Molar Volume</button>
+      <button onclick="showConcCard(4)" class="conc-nav-btn btn-press w-full text-left px-3 py-2 text-xs rounded-lg border border-slate-700 text-slate-400">5. pV = nRT</button>
+      <button onclick="showConcCard(5)" class="conc-nav-btn btn-press w-full text-left px-3 py-2 text-xs rounded-lg border border-slate-700 text-slate-400">6. Gas Volume Ratios</button>
+    </div>
+    <div class="lg:col-span-9" id="conc-cards-container"></div>
+  </div>
+</div>
+<div id="conc-mode-map" class="conc-mode hidden">
+  <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3">
+    <h3 class="font-display text-sm font-bold text-amber-300">Unit Conversion Map</h3>
+    <div class="text-xs text-slate-300 space-y-2 font-mono leading-relaxed">
+      <p class="text-sky-400 font-bold">Volume:</p>
+      <p>cm³ <span class="text-slate-500">÷ 1000 →</span> dm³ <span class="text-slate-500">÷ 1000 →</span> m³</p>
+      <p class="text-purple-400 font-bold mt-2">Pressure:</p>
+      <p>kPa <span class="text-slate-500">× 1000 →</span> Pa &nbsp;|&nbsp; atm <span class="text-slate-500">× 101325 →</span> Pa</p>
+      <p class="text-emerald-400 font-bold mt-2">Temperature:</p>
+      <p>°C <span class="text-slate-500">+ 273 →</span> K</p>
+      <p class="text-amber-400 font-bold mt-2">Concentration:</p>
+      <p>mol dm⁻³ <span class="text-slate-500">× M →</span> g dm⁻³ &nbsp;|&nbsp; g dm⁻³ <span class="text-slate-500">÷ M →</span> mol dm⁻³</p>
+    </div>
+  </div>
+</div>
+<div id="conc-mode-quiz" class="conc-mode hidden">
+  <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+    <h3 class="font-display text-sm font-bold text-amber-300">Multi-Blank Quiz — Conc & Gas</h3>
+    <div id="conc-quiz-rows" class="space-y-3"></div>
+    <button onclick="revealAllConcQuiz()" class="btn-press bg-slate-800 hover:bg-slate-700 border border-slate-700 text-sky-300 text-xs font-semibold px-4 py-2 rounded-lg">Reveal All</button>
+  </div>
+</div>
+<div id="conc-mode-traps" class="conc-mode hidden">
+  <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+    <h3 class="font-display text-sm font-bold text-rose-300">Trap Pairs — Conc & Gas</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-3" id="conc-traps-grid"></div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- TAB 5: FORMULAE & YIELD ENGINE                             -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="tab-formula" class="tab-panel space-y-6">
+<div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5">
+  <div class="kicker mb-1">Engine 4 · Spec 1.6, 1.9, 1.10, 1.11</div>
+  <h2 class="font-display text-lg font-bold text-white">Formulae & Yield Engine</h2>
+  <p class="text-xs text-slate-400 mt-1">Empirical/molecular formulae, percentage yield, atom economy, and Core Practical 1.</p>
+  <div class="flex flex-wrap gap-1.5 mt-3">
+    <button onclick="setFormulaMode('explorer')" id="formula-m-explorer" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-sky-700 bg-sky-950/50 text-sky-300">Inspector</button>
+    <button onclick="setFormulaMode('map')" id="formula-m-map" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-sky-300">Flowchart</button>
+    <button onclick="setFormulaMode('quiz')" id="formula-m-quiz" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-sky-300">Quiz</button>
+    <button onclick="setFormulaMode('traps')" id="formula-m-traps" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-sky-300">Traps</button>
+  </div>
+</div>
+<div id="formula-mode-explorer" class="formula-mode space-y-4">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
+    <div class="lg:col-span-3 space-y-1.5">
+      <p class="text-[10px] text-slate-500 uppercase tracking-wider font-bold mb-2">Concept Cards</p>
+      <button onclick="showFormulaCard(0)" class="formula-nav-btn btn-press w-full text-left px-3 py-2 text-xs rounded-lg border border-sky-700 bg-sky-950/40 text-sky-300 font-semibold">1. Empirical Formula</button>
+      <button onclick="showFormulaCard(1)" class="formula-nav-btn btn-press w-full text-left px-3 py-2 text-xs rounded-lg border border-slate-700 text-slate-400">2. Molecular Formula</button>
+      <button onclick="showFormulaCard(2)" class="formula-nav-btn btn-press w-full text-left px-3 py-2 text-xs rounded-lg border border-slate-700 text-slate-400">3. Combustion Analysis</button>
+      <button onclick="showFormulaCard(3)" class="formula-nav-btn btn-press w-full text-left px-3 py-2 text-xs rounded-lg border border-slate-700 text-slate-400">4. % Yield</button>
+      <button onclick="showFormulaCard(4)" class="formula-nav-btn btn-press w-full text-left px-3 py-2 text-xs rounded-lg border border-slate-700 text-slate-400">5. Atom Economy</button>
+      <button onclick="showFormulaCard(5)" class="formula-nav-btn btn-press w-full text-left px-3 py-2 text-xs rounded-lg border border-slate-700 text-slate-400">6. CP1 Molar Volume</button>
+    </div>
+    <div class="lg:col-span-9" id="formula-cards-container"></div>
+  </div>
+</div>
+<div id="formula-mode-map" class="formula-mode hidden">
+  <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3">
+    <h3 class="font-display text-sm font-bold text-cyan-300">Formula Determination Flowchart</h3>
+    <div class="text-xs text-slate-300 space-y-2 font-mono leading-relaxed">
+      <p class="text-sky-400 font-bold">Given % or mass data:</p>
+      <p>1. List each element with its mass (or % as mass in 100 g)</p>
+      <p>2. Convert each to moles: $n = m / A_r$</p>
+      <p>3. Divide all by the <span class="text-amber-400">smallest</span> mole value</p>
+      <p>4. If ratios are not whole numbers, multiply all by 2, 3, … until they are</p>
+      <p>5. Write empirical formula from the whole-number ratio</p>
+      <p class="text-purple-400 font-bold mt-3">If Mr is also given:</p>
+      <p>6. Calculate empirical mass; $n = M_r / \text{empirical mass}$</p>
+      <p>7. Multiply empirical formula subscripts by $n$ → molecular formula</p>
+    </div>
+  </div>
+</div>
+<div id="formula-mode-quiz" class="formula-mode hidden">
+  <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+    <h3 class="font-display text-sm font-bold text-cyan-300">Multi-Blank Quiz — Formulae & Yield</h3>
+    <div id="formula-quiz-rows" class="space-y-3"></div>
+    <button onclick="revealAllFormulaQuiz()" class="btn-press bg-slate-800 hover:bg-slate-700 border border-slate-700 text-sky-300 text-xs font-semibold px-4 py-2 rounded-lg">Reveal All</button>
+  </div>
+</div>
+<div id="formula-mode-traps" class="formula-mode hidden">
+  <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+    <h3 class="font-display text-sm font-bold text-rose-300">Trap Pairs — Formulae & Yield</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-3" id="formula-traps-grid"></div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- TAB 6: MOLE CALCULATOR                                     -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="tab-calc" class="tab-panel space-y-6">
+<div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5">
+  <div class="kicker mb-1">Interactive Solver</div>
+  <h2 class="font-display text-lg font-bold text-white">Mole Calculator Workbench</h2>
+  <p class="text-xs text-slate-400 mt-1">Enter known values — the calculator solves for the unknown. Covers mass ↔ moles ↔ particles ↔ volume ↔ concentration, plus % yield and atom economy.</p>
+</div>
+
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+  <!-- Mass / Moles / Particles -->
+  <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 card-hover">
+    <h3 class="font-display text-sm font-bold text-sky-300">Mass ↔ Moles ↔ Particles</h3>
+    <div class="grid grid-cols-3 gap-3 text-xs">
+      <div><label class="text-slate-400 block mb-1">Mass (g)</label><input type="number" step="any" id="calc-mass" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-slate-100 font-mono focus:border-sky-500 focus:outline-none" placeholder="?"></div>
+      <div><label class="text-slate-400 block mb-1">Molar mass M (g mol⁻¹)</label><input type="number" step="any" id="calc-M" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-slate-100 font-mono focus:border-sky-500 focus:outline-none" placeholder="e.g. 44"></div>
+      <div><label class="text-slate-400 block mb-1">Moles (n)</label><input type="number" step="any" id="calc-moles" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-slate-100 font-mono focus:border-sky-500 focus:outline-none" placeholder="?"></div>
+    </div>
+    <div class="grid grid-cols-2 gap-3 text-xs">
+      <div><label class="text-slate-400 block mb-1">Particles (N)</label><input type="number" step="any" id="calc-particles" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-slate-100 font-mono focus:border-sky-500 focus:outline-none" placeholder="?"></div>
+      <div class="flex items-end"><button onclick="solveMoleTriangle()" class="btn-press w-full bg-sky-600 hover:bg-sky-500 text-white font-bold py-2 rounded-lg text-xs">Solve</button></div>
+    </div>
+    <div id="calc-mole-result" class="hidden p-3 bg-slate-900 border border-sky-800/50 rounded-lg text-xs text-slate-200 font-mono space-y-1"></div>
+  </div>
+
+  <!-- Gas Volume -->
+  <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 card-hover">
+    <h3 class="font-display text-sm font-bold text-purple-300">Gas Volume (r.t.p. or pV = nRT)</h3>
+    <div class="grid grid-cols-2 gap-3 text-xs">
+      <div><label class="text-slate-400 block mb-1">Moles (n)</label><input type="number" step="any" id="calc-gas-n" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-slate-100 font-mono focus:border-purple-500 focus:outline-none" placeholder="?"></div>
+      <div><label class="text-slate-400 block mb-1">Volume (dm³)</label><input type="number" step="any" id="calc-gas-v" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-slate-100 font-mono focus:border-purple-500 focus:outline-none" placeholder="?"></div>
+    </div>
+    <div class="grid grid-cols-3 gap-3 text-xs">
+      <div><label class="text-slate-400 block mb-1">p (kPa)</label><input type="number" step="any" id="calc-gas-p" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-slate-100 font-mono focus:border-purple-500 focus:outline-none" placeholder="101.3"></div>
+      <div><label class="text-slate-400 block mb-1">T (°C)</label><input type="number" step="any" id="calc-gas-t" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-slate-100 font-mono focus:border-purple-500 focus:outline-none" placeholder="25"></div>
+      <div class="flex items-end"><button onclick="solveGasVolume()" class="btn-press w-full bg-purple-600 hover:bg-purple-500 text-white font-bold py-2 rounded-lg text-xs">Solve</button></div>
+    </div>
+    <div id="calc-gas-result" class="hidden p-3 bg-slate-900 border border-purple-800/50 rounded-lg text-xs text-slate-200 font-mono space-y-1"></div>
+  </div>
+
+  <!-- Concentration -->
+  <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 card-hover">
+    <h3 class="font-display text-sm font-bold text-emerald-300">Concentration</h3>
+    <div class="grid grid-cols-3 gap-3 text-xs">
+      <div><label class="text-slate-400 block mb-1">Moles (n)</label><input type="number" step="any" id="calc-conc-n" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-slate-100 font-mono focus:border-emerald-500 focus:outline-none" placeholder="?"></div>
+      <div><label class="text-slate-400 block mb-1">Volume (cm³)</label><input type="number" step="any" id="calc-conc-v" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-slate-100 font-mono focus:border-emerald-500 focus:outline-none" placeholder="?"></div>
+      <div><label class="text-slate-400 block mb-1">Conc (mol dm⁻³)</label><input type="number" step="any" id="calc-conc-c" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-slate-100 font-mono focus:border-emerald-500 focus:outline-none" placeholder="?"></div>
+    </div>
+    <div class="flex items-end"><button onclick="solveConc()" class="btn-press w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2 rounded-lg text-xs">Solve</button></div>
+    <div id="calc-conc-result" class="hidden p-3 bg-slate-900 border border-emerald-800/50 rounded-lg text-xs text-slate-200 font-mono space-y-1"></div>
+  </div>
+
+  <!-- % Yield & Atom Economy -->
+  <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 card-hover">
+    <h3 class="font-display text-sm font-bold text-amber-300">% Yield & Atom Economy</h3>
+    <div class="grid grid-cols-2 gap-3 text-xs">
+      <div><label class="text-slate-400 block mb-1">Actual yield (g)</label><input type="number" step="any" id="calc-yield-act" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-slate-100 font-mono focus:border-amber-500 focus:outline-none" placeholder="?"></div>
+      <div><label class="text-slate-400 block mb-1">Theoretical yield (g)</label><input type="number" step="any" id="calc-yield-theo" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-slate-100 font-mono focus:border-amber-500 focus:outline-none" placeholder="?"></div>
+    </div>
+    <div class="grid grid-cols-2 gap-3 text-xs">
+      <div><label class="text-slate-400 block mb-1">Mr desired product</label><input type="number" step="any" id="calc-ae-desired" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-slate-100 font-mono focus:border-amber-500 focus:outline-none" placeholder="?"></div>
+      <div><label class="text-slate-400 block mb-1">Σ Mr all products</label><input type="number" step="any" id="calc-ae-total" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-slate-100 font-mono focus:border-amber-500 focus:outline-none" placeholder="?"></div>
+    </div>
+    <div class="flex items-end"><button onclick="solveYieldAE()" class="btn-press w-full bg-amber-600 hover:bg-amber-500 text-white font-bold py-2 rounded-lg text-xs">Solve</button></div>
+    <div id="calc-yield-result" class="hidden p-3 bg-slate-900 border border-amber-800/50 rounded-lg text-xs text-slate-200 font-mono space-y-1"></div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- TAB 7: FINAL REVIEW                                        -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section id="tab-review" class="tab-panel space-y-4">
+<div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5">
+  <div class="kicker mb-1">Complete Inventory</div>
+  <h2 class="font-display text-lg font-bold text-white">Final Review — Topic 1</h2>
+  <p class="text-xs text-slate-400 mt-1">Every key equation, formula, and trap in one place. Collapsible sections with jump links.</p>
+  <div class="flex flex-wrap gap-1.5 mt-3">
+    <a href="#rev-key" class="btn-press px-2.5 py-1 text-[10px] font-mono bg-slate-800 border border-slate-700 rounded text-sky-300 hover:border-sky-600">Key Formulae</a>
+    <a href="#rev-eqn" class="btn-press px-2.5 py-1 text-[10px] font-mono bg-slate-800 border border-slate-700 rounded text-emerald-300 hover:border-emerald-600">Equations</a>
+    <a href="#rev-gas" class="btn-press px-2.5 py-1 text-[10px] font-mono bg-slate-800 border border-slate-700 rounded text-purple-300 hover:border-purple-600">Gas & Conc</a>
+    <a href="#rev-yield" class="btn-press px-2.5 py-1 text-[10px] font-mono bg-slate-800 border border-slate-700 rounded text-amber-300 hover:border-amber-600">Yield & AE</a>
+    <a href="#rev-traps" class="btn-press px-2.5 py-1 text-[10px] font-mono bg-slate-800 border border-slate-700 rounded text-rose-300 hover:border-rose-600">Master Traps</a>
+  </div>
+</div>
+
+<details open class="bg-slate-950 border border-slate-800 rounded-xl">
+  <summary id="rev-key" class="p-4 font-display text-sm font-bold text-sky-300">Key Formulae & Constants</summary>
+  <div class="px-4 pb-4 text-xs text-slate-300 space-y-2 font-mono">
+    <p>$n = \frac{m}{M}$ &nbsp;|&nbsp; $N = n \times L$ &nbsp;|&nbsp; $L = 6.02 \times 10^{23}\ \text{mol}^{-1}$</p>
+    <p>$c = \frac{n}{V}$ (V in dm³) &nbsp;|&nbsp; $c_{g} = c_{mol} \times M$</p>
+    <p>$V_{gas} = n \times 24$ (r.t.p., dm³) &nbsp;|&nbsp; $pV = nRT$ ($R = 8.31$ J mol⁻¹ K⁻¹)</p>
+    <p>$\%\text{yield} = \frac{\text{actual}}{\text{theoretical}} \times 100$ &nbsp;|&nbsp; $\%\text{AE} = \frac{M_r\text{ desired}}{\sum M_r\text{ all products}} \times 100$</p>
+    <p>$A_r = \frac{\sum(\text{isotope mass} \times \%\text{abundance})}{100}$</p>
+    <p>$\text{ppm} = \frac{\text{mass solute}}{\text{mass solution}} \times 10^6$</p>
+  </div>
+</details>
+
+<details open class="bg-slate-950 border border-slate-800 rounded-xl">
+  <summary id="rev-eqn" class="p-4 font-display text-sm font-bold text-emerald-300">Key Equations & Ionic Equations</summary>
+  <div class="px-4 pb-4 overflow-x-auto">
+    <table class="w-full text-left text-xs border-collapse">
+      <thead><tr class="bg-slate-900 text-slate-400 border-b border-slate-800"><th class="p-2">#</th><th class="p-2">Reaction</th><th class="p-2">Full Equation</th><th class="p-2">Ionic Equation</th><th class="p-2">Observation</th></tr></thead>
+      <tbody class="text-slate-300 divide-y divide-slate-800/50">
+        <tr><td class="p-2 text-sky-400">1</td><td class="p-2">Acid + metal</td><td class="p-2 font-mono">Mg + 2HCl → MgCl₂ + H₂</td><td class="p-2 font-mono">Mg + 2H⁺ → Mg²⁺ + H₂</td><td class="p-2">Effervescence, metal dissolves</td></tr>
+        <tr><td class="p-2 text-sky-400">2</td><td class="p-2">Acid + base</td><td class="p-2 font-mono">NaOH + HCl → NaCl + H₂O</td><td class="p-2 font-mono">H⁺ + OH⁻ → H₂O</td><td class="p-2">Neutralisation, temperature rise</td></tr>
+        <tr><td class="p-2 text-sky-400">3</td><td class="p-2">Acid + carbonate</td><td class="p-2 font-mono">CaCO₃ + 2HCl → CaCl₂ + H₂O + CO₂</td><td class="p-2 font-mono">CaCO₃ + 2H⁺ → Ca²⁺ + H₂O + CO₂</td><td class="p-2">Effervescence (CO₂)</td></tr>
+        <tr><td class="p-2 text-sky-400">4</td><td class="p-2">Displacement</td><td class="p-2 font-mono">Zn + CuSO₄ → ZnSO₄ + Cu</td><td class="p-2 font-mono">Zn + Cu²⁺ → Zn²⁺ + Cu</td><td class="p-2">Blue fades, brown solid</td></tr>
+        <tr><td class="p-2 text-sky-400">5</td><td class="p-2">Precipitation</td><td class="p-2 font-mono">AgNO₃ + NaCl → AgCl + NaNO₃</td><td class="p-2 font-mono">Ag⁺ + Cl⁻ → AgCl</td><td class="p-2">White precipitate</td></tr>
+      </tbody>
+    </table>
+  </div>
+</details>
+
+<details open class="bg-slate-950 border border-slate-800 rounded-xl">
+  <summary id="rev-gas" class="p-4 font-display text-sm font-bold text-purple-300">Gas & Concentration Reminders</summary>
+  <div class="px-4 pb-4 text-xs text-slate-300 space-y-1.5 list-disc list-inside">
+    <li>r.t.p. molar volume = 24 dm³ mol⁻¹ = 24 000 cm³ mol⁻¹</li>
+    <li>s.t.p. molar volume = 22.4 dm³ mol⁻¹ (do not mix with r.t.p.)</li>
+    <li>$pV = nRT$: p in Pa, V in m³, T in K, R = 8.31 J mol⁻¹ K⁻¹</li>
+    <li>1 dm³ = 1000 cm³ = 0.001 m³</li>
+    <li>1 kPa = 1000 Pa; 1 atm = 101 325 Pa</li>
+    <li>Concentration: always convert cm³ → dm³ before using $c = n/V$</li>
+  </div>
+</details>
+
+<details open class="bg-slate-950 border border-slate-800 rounded-xl">
+  <summary id="rev-yield" class="p-4 font-display text-sm font-bold text-amber-300">Yield & Atom Economy</summary>
+  <div class="px-4 pb-4 text-xs text-slate-300 space-y-1.5 list-disc list-inside">
+    <li>% yield measures practical efficiency of a specific run</li>
+    <li>% atom economy measures theoretical waste of the reaction itself</li>
+    <li>Addition reactions: 100% atom economy (one product)</li>
+    <li>Substitution / elimination: lower atom economy (by-products)</li>
+    <li>High atom economy = greener, less waste, more sustainable</li>
+  </div>
+</details>
+
+<details open class="bg-slate-950 border border-slate-800 rounded-xl">
+  <summary id="rev-traps" class="p-4 font-display text-sm font-bold text-rose-300">Master Trap Checklist</summary>
+  <div class="px-4 pb-4 text-xs text-slate-300 space-y-1.5">
+    <p class="text-rose-300 font-bold">□ cm³ not converted to dm³ in concentration calculations</p>
+    <p class="text-rose-300 font-bold">□ kPa not converted to Pa in pV = nRT</p>
+    <p class="text-rose-300 font-bold">□ °C not converted to K in pV = nRT</p>
+    <p class="text-rose-300 font-bold">□ "Relative molecular mass" used for ionic compound (should be "relative formula mass")</p>
+    <p class="text-rose-300 font-bold">□ Molar mass written as "g" instead of "g mol⁻¹"</p>
+    <p class="text-rose-300 font-bold">□ Avogadro constant written without unit mol⁻¹</p>
+    <p class="text-rose-300 font-bold">□ Spectator ions left in ionic equation</p>
+    <p class="text-rose-300 font-bold">□ Weak acid (CH₃COOH) split into ions in ionic equation</p>
+    <p class="text-rose-300 font-bold">□ State symbols missing</p>
+    <p class="text-rose-300 font-bold">□ Empirical formula ratio rounded instead of multiplied (1.5 → 2 instead of ×2 → 3)</p>
+    <p class="text-rose-300 font-bold">□ Limiting reagent not identified before calculating product mass</p>
+    <p class="text-rose-300 font-bold">□ Atom economy denominator uses reactants instead of all products</p>
+    <p class="text-rose-300 font-bold">□ r.t.p. (24) and s.t.p. (22.4) molar volumes mixed up</p>
+    <p class="text-rose-300 font-bold">□ CP1 error direction not stated (just "there is an error")</p>
+  </div>
+</details>
+</section>
+
+</main>
+
+<footer class="bg-slate-950/90 border-t border-slate-800/60 py-4 text-center text-[11px] text-slate-600 relative z-10">
+  Edexcel IAL Chemistry · WCH11 Topic 1 · Formulae, Equations & Amount of Substance · Master Studio
+</footer>
+
+<script>
+function safeInitKaTeX(){if(window.renderMathInElement){try{renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false})}catch(e){}}}
+function renderMathIn(el){if(window.renderMathInElement){try{renderMathInElement(el||document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false})}catch(e){}}}
+
+function switchTab(id){
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.toggle('active',p.id==='tab-'+id));
+  document.querySelectorAll('.tab-btn').forEach(b=>{
+    const isActive=b.dataset.tab===id;
+    b.className='tab-btn btn-press py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs font-medium border-b-2 rounded-t-lg '+(isActive?'tab-btn-active text-sky-400 font-bold border-sky-400 bg-sky-950/40':'text-slate-400 hover:text-sky-300 border-transparent');
+  });
+  setTimeout(()=>renderMathIn(),80);
+}
+
+const revealObs=(typeof IntersectionObserver!=='undefined')?new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('revealed')})},{threshold:.06}):{observe(){}};
+document.querySelectorAll('.reveal').forEach(el=>revealObs.observe(el));
+
+/* ── ENGINE MODE SWITCHERS ── */
+function setEngineMode(prefix,mode,modes){
+  modes.forEach(m=>{
+    const panel=document.getElementById(prefix+'-mode-'+m);
+    if(panel)panel.classList.toggle('hidden',m!==mode);
+    const btn=document.getElementById(prefix+'-m-'+m);
+    if(btn){btn.className='btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border '+(m===mode?'border-sky-700 bg-sky-950/50 text-sky-300':'border-slate-700 text-slate-400 hover:text-sky-300')}
+  });
+  setTimeout(()=>renderMathIn(),60);
+}
+function setMoleMode(m){setEngineMode('mole',m,['explorer','map','quiz','traps'])}
+function setEqnMode(m){setEngineMode('eqn',m,['explorer','map','quiz','traps'])}
+function setConcMode(m){setEngineMode('conc',m,['explorer','map','quiz','traps'])}
+function setFormulaMode(m){setEngineMode('formula',m,['explorer','map','quiz','traps'])}
+
+/* ── INSPECTOR CARD DATA ── */
+const MOLE_CARDS=[
+  {title:'Atom, Ion, Molecule, Compound',eq:'Na → Na⁺ + e',body:'An <strong>atom</strong> is the smallest unit of an element. An <strong>ion</strong> is a charged atom or group of atoms. A <strong>molecule</strong> is two or more atoms covalently bonded. A <strong>compound</strong> contains two or more elements chemically combined.',goals:['Define each term precisely','Predict ion charges from group number','Distinguish empirical from molecular formulae'],tips:['An ion must carry a charge — neutral atom ≠ ion','Polyatomic ions (SO₄²⁻, OH⁻, NH₄⁺) count as single units in formulae']},
+  {title:'The Mole & Avogadro Constant',eq:'n = m / M  and  N = n × L',body:'The mole is the SI unit of amount of substance. One mole contains exactly $6.02 \\times 10^{23}$ particles (the Avogadro constant, $L$).',goals:['Define mole via 12 g of ¹²C','State L = 6.02 × 10²³ mol⁻¹ with unit','Convert mass ↔ moles ↔ particles'],tips:['Unit of L is mol⁻¹ — a mark on its own','"Number of moles" not just "moles" for the quantity']},
+  {title:'Ar from Isotopic Abundances',eq:'Ar = Σ(mass × %abundance) / 100',body:'Relative atomic mass is the weighted mean of isotopic masses. Example: Cl has ³⁵Cl (75%) and ³⁷Cl (25%): $A_r = (35 \\times 75 + 37 \\times 25)/100 = 35.5$',goals:['Calculate Ar from isotopic data','Use percentage or fractional abundance consistently','Explain why Ar is not a whole number'],tips:['Do not mix % and fraction in the same calculation','Ar has no units — it is a ratio']},
+  {title:'Mr & Molar Mass',eq:'M = Mr g mol⁻¹',body:'Relative molecular mass ($M_r$) applies to covalent molecules. For ionic compounds use <strong>relative formula mass</strong>. Molar mass $M$ is numerically equal but carries the unit g mol⁻¹.',goals:['Distinguish Mr (covalent) from relative formula mass (ionic)','State molar mass with unit g mol⁻¹','Calculate Mr from atomic masses'],tips:['"Relative molecular mass of NaCl" is wrong — NaCl is ionic','Molar mass without unit loses a mark']},
+  {title:'Parts Per Million (ppm)',eq:'ppm = (mass solute / mass solution) × 10⁶',body:'ppm expresses very dilute concentrations. 1 ppm = 1 mg per kg or 1 mg per dm³ (for dilute aqueous solutions where 1 dm³ ≈ 1 kg).',goals:['Define and calculate ppm','Convert between ppm and g dm⁻³','Apply to atmospheric gas concentrations'],tips:['For dilute aqueous solutions, 1 ppm ≈ 1 mg dm⁻³','ppm is dimensionless — it is a ratio × 10⁶']},
+  {title:'Reacting Masses',eq:'m → n (÷M) → ratio → n → m (×M)',body:'Use the balanced equation\'s mole ratio to convert between masses of reactants and products. Always work through moles — never convert masses directly.',goals:['Use mole ratios from balanced equations','Calculate product mass from reactant mass','Work backwards from product to reactant'],tips:['The ratio comes from coefficients, not masses','Show each step: mass → moles → ratio → moles → mass']},
+  {title:'Limiting Reagent',eq:'Compare n/coefficient for each reactant',body:'When amounts of both reactants are given, calculate moles of each, divide by its coefficient, and the smallest value identifies the limiting reagent. All product calculations use the limiting reagent.',goals:['Identify limiting reagent from given masses','Calculate mass of product from limiting reagent','Calculate mass of excess reagent remaining'],tips:['Assuming the wrong limiting reagent gives a completely wrong answer','Excess remaining = initial moles − moles reacted (via ratio)']},
+  {title:'Mass ↔ Moles ↔ Particles Triangle',eq:'n = m/M = N/L',body:'The three quantities form a triangle: cover the one you want, and the remaining two tell you the operation. Add volume (gas) and concentration (solution) as extensions.',goals:['Navigate the conversion triangle fluently','Include gas volume (×24) and concentration (÷c) extensions','Choose the correct pathway for any given question'],tips:['Always write the formula before substituting numbers','Check units at each step']}
+];
+const EQN_CARDS=[
+  {title:'Balancing Rules',eq:'2H₂ + O₂ → 2H₂O',body:'Coefficients multiply the entire formula. Never change subscripts. Balance metals first, then non-metals, then H and O last. Check atom counts on both sides.',goals:['Balance equations by adjusting coefficients only','Check atom counts systematically','Balance charges in ionic equations too'],tips:['Changing subscripts changes the substance — never do it','Fractional coefficients are acceptable intermediate steps (×2 at end)']},
+  {title:'State Symbols',eq:'(s) (l) (g) (aq)',body:'Every species in an equation should carry a state symbol. (s) = solid, (l) = liquid, (g) = gas, (aq) = dissolved in water. These are required even when not explicitly asked.',goals:['Assign correct state symbols to all species','Recognise (aq) for dissolved ionic compounds','Use (l) for water and pure liquids, not (aq)'],tips:['Water as a product of neutralisation is (l), not (aq)','Precipitates are (s) even though they form from (aq) solutions']},
+  {title:'Writing Ionic Equations',eq:'Split (aq) strong electrolytes; cancel spectators',body:'Step 1: Write the full balanced equation with states. Step 2: Split all (aq) strong electrolytes into ions. Step 3: Cancel identical ions on both sides (spectators). Step 4: Check mass and charge balance.',goals:['Derive ionic equations from full equations','Identify and cancel spectator ions','Check charge balance in the final ionic equation'],tips:['Weak acids (CH₃COOH), insoluble solids, gases, and liquids are NOT split','Spectator ions left in = lost mark']},
+  {title:'Displacement Reactions',eq:'Zn(s) + Cu²⁺(aq) → Zn²⁺(aq) + Cu(s)',body:'A more reactive metal displaces a less reactive metal from its salt solution. Check the reactivity series. Observation: colour of solution changes, solid metal deposits.',goals:['Predict whether displacement occurs using reactivity series','Write full and ionic equations','Describe observations (colour change, solid deposit)'],tips:['A metal cannot displace one above it in the reactivity series','The ionic equation shows only the metal atoms and ions involved']},
+  {title:'Acid + Metal',eq:'Mg(s) + 2H⁺(aq) → Mg²⁺(aq) + H₂(g)',body:'Acid + reactive metal → salt + hydrogen gas. Observation: effervescence (bubbles of H₂), metal dissolves, solution may warm up. H₂ is colourless, odourless, pops with lit splint.',goals:['Write full and ionic equations for acid + metal','Identify H₂ as the gas produced','Describe observations correctly'],tips:['Cu and Ag do not react with dilute acids (below H in reactivity series)','The ionic equation always has 2H⁺ → H₂ for a divalent metal']},
+  {title:'Acid + Base / Alkali',eq:'H⁺(aq) + OH⁻(aq) → H₂O(l)',body:'Acid + base → salt + water. This is neutralisation. The ionic equation is always H⁺ + OH⁻ → H₂O regardless of which acid and alkali are used.',goals:['Write full and ionic equations for neutralisation','Recognise the universal ionic equation H⁺ + OH⁻ → H₂O','Identify the salt formed from the cation and anion'],tips:['The salt name = metal from base + anion from acid','If the base is insoluble (e.g. CuO), it is NOT split into ions']},
+  {title:'Acid + Carbonate',eq:'2H⁺(aq) + CO₃²⁻(aq) → H₂O(l) + CO₂(g)',body:'Acid + carbonate → salt + water + carbon dioxide. Observation: effervescence (CO₂ turns limewater milky). If the carbonate is insoluble (e.g. CaCO₃), write it as a solid in the ionic equation.',goals:['Write full and ionic equations for acid + carbonate','Identify CO₂ as the gas (limewater test)','Distinguish soluble vs insoluble carbonates in ionic equations'],tips:['Insoluble carbonate (CaCO₃) stays as a molecule in the ionic equation','Effervescence with acid = CO₂ from carbonate, not O₂']},
+  {title:'Precipitation Reactions',eq:'Ag⁺(aq) + Cl⁻(aq) → AgCl(s)',body:'Mixing two soluble salt solutions can produce an insoluble solid (precipitate). The ionic equation shows only the ions forming the precipitate. Use solubility rules to predict.',goals:['Predict precipitate formation using solubility rules','Write the ionic equation showing only precipitate-forming ions','Describe the observation (colour of precipitate)'],tips:['Common precipitate colours: AgCl = white, AgBr = cream, AgI = yellow, Cu(OH)₂ = blue, Fe(OH)₃ = brown','Spectator ions are the ones NOT in the precipitate']}
+];
+const CONC_CARDS=[
+  {title:'Concentration in mol dm⁻³',eq:'c = n / V  (V in dm³)',body:'Molarity is moles of solute per cubic decimetre of solution. To use this formula, volume must be in dm³. If given in cm³, divide by 1000.',goals:['Calculate concentration from moles and volume','Convert cm³ to dm³ before substituting','Rearrange to find n = cV or V = n/c'],tips:['The #1 error: forgetting to convert cm³ → dm³','Write "mol dm⁻³" not "M" or "mol/dm³" in IAL']},
+  {title:'Concentration in g dm⁻³',eq:'c(g dm⁻³) = c(mol dm⁻³) × M',body:'Mass concentration is mass of solute per dm³ of solution. Convert between mol dm⁻³ and g dm⁻³ using molar mass.',goals:['Calculate g dm⁻³ from mass and volume','Convert between mol dm⁻³ and g dm⁻³','Recognise when each unit is appropriate'],tips:['g dm⁻³ = mol dm⁻³ × molar mass — not the other way round','Both units use dm³, not cm³']},
+  {title:'Volume Conversions',eq:'1 dm³ = 1000 cm³ = 0.001 m³',body:'IAL questions frequently give volumes in cm³. You must convert to dm³ for concentration or to m³ for pV = nRT.',goals:['Convert cm³ ↔ dm³ ↔ m³ fluently','Know which unit each formula requires','Avoid the ×1000 vs ÷1000 direction error'],tips:['cm³ → dm³: ÷1000. dm³ → m³: ÷1000. cm³ → m³: ÷1 000 000','Draw the conversion chain if unsure']},
+  {title:'Molar Volume of a Gas',eq:'V = n × 24 dm³ (at r.t.p.)',body:'At room temperature and pressure (r.t.p., 20°C, 1 atm), one mole of any gas occupies 24 dm³. At s.t.p. (0°C, 1 atm) it is 22.4 dm³.',goals:['Use 24 dm³ mol⁻¹ at r.t.p. to convert moles ↔ volume','Distinguish r.t.p. from s.t.p. molar volumes','Apply Avogadro\'s law: volume ratio = mole ratio'],tips:['Do not use 22.4 when the question says r.t.p. — use 24','If volume is in cm³, use 24 000 cm³ mol⁻¹']},
+  {title:'The Ideal Gas Equation pV = nRT',eq:'pV = nRT,  R = 8.31 J mol⁻¹ K⁻¹',body:'For non-standard conditions, use pV = nRT. Units must be SI: p in Pa, V in m³, n in mol, T in K. Convert kPa → Pa (×1000), dm³ → m³ (÷1000), °C → K (+273).',goals:['Apply pV = nRT with correct SI units','Convert kPa → Pa, dm³ → m³, °C → K','Rearrange to solve for any variable'],tips:['Pressure in kPa without converting to Pa is the #1 pV=nRT error','R = 8.31 — not 0.0821 (that is for atm·dm³)']},
+  {title:'Gas Volume Ratios (Avogadro\'s Law)',eq:'V₁/V₂ = n₁/n₂ (same T, p)',body:'Equal volumes of gases at the same temperature and pressure contain equal numbers of moles. Therefore volume ratios in equations equal mole ratios.',goals:['Use volume ratios directly from balanced equations','Predict volume of product gas from volume of reactant gas','Apply to combustion volume calculations'],tips:['Only valid for gases — solids and liquids do not follow this','Same T and p is a required condition']}
+];
+const FORMULA_CARDS=[
+  {title:'Empirical Formula from Data',eq:'mass → moles → ÷ smallest → ratio',body:'Convert each element\'s mass (or % as mass in 100 g) to moles. Divide all by the smallest. If not whole numbers, multiply all by 2, 3, etc.',goals:['Set up the empirical formula table','Divide by the smallest mole value','Handle non-integer ratios by multiplying'],tips:['Ratio 1:1.5 → ×2 = 2:3. Ratio 1:1.33 → ×3 = 3:4. Never round.','Show the table — method marks even if arithmetic slips']},
+  {title:'Molecular Formula from Empirical',eq:'n = Mr / empirical mass',body:'Calculate the empirical formula mass. Divide the given Mr by this mass to get the multiplier n. Multiply all subscripts in the empirical formula by n.',goals:['Calculate empirical formula mass','Find n = Mr / empirical mass','Write the molecular formula'],tips:['n must be a whole number — if it isn\'t, check your empirical formula','Molecular formula = (empirical formula)ₙ']},
+  {title:'Combustion Analysis',eq:'CO₂ → C;  H₂O → H;  O by difference',body:'Burn a compound in excess O₂. Mass of CO₂ gives moles of C. Mass of H₂O gives moles of H (×2). Mass of O = total mass − mass C − mass H.',goals:['Extract C from CO₂ mass: n(C) = n(CO₂)','Extract H from H₂O mass: n(H) = 2 × n(H₂O)','Find O by difference from total mass'],tips:['H₂O contains 2 H atoms — multiply moles of H₂O by 2','If no O in the compound, mass C + mass H = total mass']},
+  {title:'Percentage Yield',eq:'% yield = (actual / theoretical) × 100',body:'Theoretical yield is the maximum mass of product calculated from stoichiometry (using the limiting reagent). Actual yield is what was obtained in the lab.',goals:['Calculate theoretical yield from limiting reagent','Calculate % yield from actual and theoretical','Explain reasons for yield < 100%'],tips:['Theoretical yield uses the limiting reagent, not the excess','Reasons for low yield: incomplete reaction, product lost during transfer/purification, side reactions']},
+  {title:'Atom Economy',eq:'% AE = (Mr desired / Σ Mr all products) × 100',body:'Atom economy measures what fraction of the product mass is the desired product. The denominator is the sum of molar masses of ALL products (not reactants).',goals:['Calculate atom economy from the balanced equation','Distinguish atom economy from % yield','Explain why high AE is desirable (less waste, greener)'],tips:['Denominator = ALL products, not reactants','Addition reactions: 100% AE. Substitution: lower AE.']},
+  {title:'CP1 — Molar Volume of a Gas',eq:'Vm = V(measured) / n(metal)',body:'React known mass of Mg with excess acid. Measure gas volume. Calculate moles of Mg (= moles of H₂). Molar volume = measured volume / moles. Compare with 24 dm³ mol⁻¹.',goals:['Describe the experimental method','Calculate experimental molar volume','Identify systematic errors and their direction'],tips:['Gas dissolving in water → lower volume → lower Vm','Gas escaping before bung sealed → lower volume → lower Vm','State the DIRECTION of each error']}
+];
+
+/* ── QUIZ DATA ── */
+const MOLE_QUIZ=[
+  {q:'0.5 mol of CO₂ (M = 44) has a mass of ___ g and contains ___ molecules.',blanks:['22','3.01 × 10²³']},
+  {q:'The Ar of chlorine is 35.5 because it is a ___ of ³⁵Cl and ³⁷Cl. The unit of Ar is ___.',blanks:['weighted mean','no units (dimensionless)']},
+  {q:'To find moles from mass: n = ___. To find particles from moles: N = ___.',blanks:['m / M','n × L']},
+  {q:'If 4.0 g of NaOH (M = 40) reacts, the number of moles is ___ and the number of Na⁺ ions is ___.',blanks:['0.1','6.02 × 10²²']}
+];
+const EQN_QUIZ=[
+  {q:'The ionic equation for HCl + NaOH is ___. The spectator ions are ___.',blanks:['H⁺ + OH⁻ → H₂O','Na⁺ and Cl⁻']},
+  {q:'In the ionic equation for AgNO₃ + NaCl, the precipitate is ___ and its state symbol is ___.',blanks:['AgCl','(s)']},
+  {q:'CH₃COOH is a ___ acid, so in ionic equations it is written as a ___, not split into ions.',blanks:['weak','molecule']},
+  {q:'Zn + CuSO₄ → ZnSO₄ + Cu. The ionic equation is ___. The observation is ___.',blanks:['Zn + Cu²⁺ → Zn²⁺ + Cu','blue solution fades, brown solid deposits']}
+];
+const CONC_QUIZ=[
+  {q:'250 cm³ = ___ dm³. 0.5 mol in 250 cm³ gives concentration = ___ mol dm⁻³.',blanks:['0.250','2.0']},
+  {q:'In pV = nRT, if p = 101.3 kPa, convert to ___ Pa. If V = 2.4 dm³, convert to ___ m³.',blanks:['101300','0.0024']},
+  {q:'At r.t.p., 0.25 mol of gas occupies ___ dm³. At s.t.p. it would occupy ___ dm³.',blanks:['6.0','5.6']},
+  {q:'A solution of 0.1 mol dm⁻³ NaOH (M = 40) has a mass concentration of ___ g dm⁻³.',blanks:['4.0']}
+];
+const FORMULA_QUIZ=[
+  {q:'A compound is 40% C, 6.7% H, 53.3% O. Moles ratio C:H:O = 1:2:1, so empirical formula is ___. If Mr = 180, molecular formula is ___.',blanks:['CH₂O','C₆H₁₂O₆']},
+  {q:'% yield = (___ / ___) × 100. Atom economy denominator = sum of Mr of ___.',blanks:['actual yield','theoretical yield','all products']},
+  {q:'In CP1, gas dissolving in water gives a ___ measured volume, so the calculated molar volume is ___ than 24.',blanks:['lower','lower']},
+  {q:'If ratio is 1 : 1.33, multiply by ___ to get whole numbers: ___.',blanks:['3','3 : 4']}
+];
+
+/* ── TRAP DATA ── */
+const MOLE_TRAPS=[
+  {wrong:'Writing L = 6.02 × 10²³ (no unit)',right:'L = 6.02 × 10²³ mol⁻¹ — the unit is a mark'},
+  {wrong:'"Relative molecular mass of NaCl"',right:'NaCl is ionic → "relative formula mass"'},
+  {wrong:'Molar mass = 44 g',right:'Molar mass = 44 g mol⁻¹ — unit required'},
+  {wrong:'Dividing by the largest mole value',right:'Divide by the SMALLEST to get the ratio'},
+  {wrong:'Rounding 1.5 to 2 in empirical ratio',right:'Multiply all by 2 → 2:3, do not round'},
+  {wrong:'Assuming reactant A is limiting without checking',right:'Calculate n/coefficient for both; smallest = limiting'}
+];
+const EQN_TRAPS=[
+  {wrong:'Splitting CH₃COOH into H⁺ + CH₃COO⁻',right:'Weak acid — write as molecule in ionic equations'},
+  {wrong:'Leaving Na⁺ and Cl⁻ in the ionic equation for AgCl ppt',right:'Cancel spectator ions — only Ag⁺ + Cl⁻ → AgCl'},
+  {wrong:'Writing H₂O as (aq) in neutralisation',right:'Water is (l), not (aq)'},
+  {wrong:'Missing state symbols entirely',right:'Required for every species — even when not asked'},
+  {wrong:'Cu + dilute HCl → reaction',right:'Cu is below H in reactivity series — no reaction'},
+  {wrong:'Writing CaCO₃ as Ca²⁺ + CO₃²⁻ in ionic eq',right:'Insoluble solid — keep as CaCO₃(s)'}
+];
+const CONC_TRAPS=[
+  {wrong:'Using 250 cm³ directly in c = n/V',right:'Convert to 0.250 dm³ first'},
+  {wrong:'p = 101.3 kPa in pV = nRT without converting',right:'Must be in Pa: 101300 Pa'},
+  {wrong:'V = 2.4 dm³ in pV = nRT without converting',right:'Must be in m³: 0.0024 m³'},
+  {wrong:'Using 22.4 dm³ mol⁻¹ at r.t.p.',right:'r.t.p. = 24 dm³ mol⁻¹; s.t.p. = 22.4'},
+  {wrong:'T = 25 in pV = nRT',right:'Must be in Kelvin: 25 + 273 = 298 K'},
+  {wrong:'Writing "M" for concentration in IAL',right:'Write "mol dm⁻³" — not M or mol/dm³'}
+];
+const FORMULA_TRAPS=[
+  {wrong:'Atom economy denominator = reactants',right:'Denominator = sum of Mr of ALL products'},
+  {wrong:'% yield and atom economy are the same thing',right:'Yield = practical efficiency; AE = theoretical waste measure'},
+  {wrong:'CP1: "there is an error" without direction',right:'State direction: gas dissolving → lower volume → lower Vm'},
+  {wrong:'O by difference: forgetting to subtract',right:'mass O = total − mass C − mass H'},
+  {wrong:'n(H) = n(H₂O) in combustion analysis',right:'n(H) = 2 × n(H₂O) — two H atoms per water molecule'},
+  {wrong:'Empirical mass = Mr',right:'Empirical mass ≤ Mr; molecular formula = empirical × (Mr/empirical mass)'}
+];
+
+/* ── RENDER ENGINES ── */
+function renderInspectorCards(containerId,navClass,cards){
+  const c=document.getElementById(containerId);
+  if(!c)return;
+  c.innerHTML=cards.map((card,i)=>`<div id="${containerId.replace('-container','')}-card-${i}" class="engine-card ${i>0?'hidden':''} bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-4">
+    <h3 class="font-display text-sm font-bold text-white">${card.title}</h3>
+    <div class="p-3 bg-slate-950 border border-slate-800 rounded-lg font-mono text-xs text-sky-300 text-center">${card.eq}</div>
+    <p class="text-xs text-slate-300 leading-relaxed">${card.body}</p>
+    <div class="p-3 bg-sky-950/30 border border-sky-800/50 rounded-lg text-xs space-y-1">
+      <span class="font-bold text-sky-400 block uppercase text-[10px]">🎯 Learning Goals</span>
+      <ul class="list-disc list-inside text-slate-300 space-y-1">${card.goals.map(g=>'<li>'+g+'</li>').join('')}</ul>
+    </div>
+    <div class="p-3 bg-rose-950/30 border border-rose-800/50 rounded-lg text-xs space-y-1">
+      <span class="font-bold text-rose-400 block uppercase text-[10px]">⚠️ Examiner Tips</span>
+      <ul class="list-disc list-inside text-slate-300 space-y-1">${card.tips.map(t=>'<li>'+t+'</li>').join('')}</ul>
+    </div>
+  </div>`).join('');
+  renderMathIn(c);
+}
+function showCard(prefix,navClass,idx,total){
+  for(let i=0;i<total;i++){
+    const card=document.getElementById(prefix+'-card-'+i);
+    if(card)card.classList.toggle('hidden',i!==idx);
+  }
+  document.querySelectorAll('.'+navClass).forEach((b,i)=>{
+    b.className=navClass+' btn-press w-full text-left px-3 py-2 text-xs rounded-lg border '+(i===idx?'border-sky-700 bg-sky-950/40 text-sky-300 font-semibold':'border-slate-700 text-slate-400 hover:text-sky-300');
+  });
+  renderMathIn();
+}
+function showMoleCard(i){showCard('mole-cards','mole-nav-btn',i,MOLE_CARDS.length)}
+function showEqnCard(i){showCard('eqn-cards','eqn-nav-btn',i,EQN_CARDS.length)}
+function showConcCard(i){showCard('conc-cards','conc-nav-btn',i,CONC_CARDS.length)}
+function showFormulaCard(i){showCard('formula-cards','formula-nav-btn',i,FORMULA_CARDS.length)}
+
+function renderQuiz(containerId,quizData){
+  const c=document.getElementById(containerId);
+  if(!c)return;
+  c.innerHTML=quizData.map((row,ri)=>{
+    const parts=row.q.split('___');
+    let html='<div class="bg-slate-900 border border-slate-800 rounded-lg p-3 text-xs text-slate-300 leading-relaxed">';
+    parts.forEach((p,pi)=>{
+      html+=p;
+      if(pi<row.blanks.length)html+='<span class="blur-answer inline-block bg-slate-800 px-2 py-0.5 rounded text-sky-300 font-mono cursor-pointer" onclick="this.classList.toggle(\'revealed\')">'+row.blanks[pi]+'</span>';
+    });
+    html+='</div>';
+    return html;
+  }).join('');
+  renderMathIn(c);
+}
+function revealAllQuiz(containerId){document.querySelectorAll('#'+containerId+' .blur-answer').forEach(el=>el.classList.add('revealed'))}
+function revealAllMoleQuiz(){revealAllQuiz('mole-quiz-rows')}
+function revealAllEqnQuiz(){revealAllQuiz('eqn-quiz-rows')}
+function revealAllConcQuiz(){revealAllQuiz('conc-quiz-rows')}
+function revealAllFormulaQuiz(){revealAllQuiz('formula-quiz-rows')}
+
+function renderTraps(containerId,trapData){
+  const c=document.getElementById(containerId);
+  if(!c)return;
+  c.innerHTML=trapData.map(t=>`<div class="bg-slate-900 border border-slate-800 rounded-lg p-3 space-y-2">
+    <div class="flex items-start gap-2"><span class="text-rose-400 font-bold text-xs shrink-0">✗</span><p class="text-xs text-rose-300">${t.wrong}</p></div>
+    <div class="flex items-start gap-2"><span class="text-emerald-400 font-bold text-xs shrink-0">✓</span><p class="text-xs text-emerald-300">${t.right}</p></div>
+  </div>`).join('');
+}
+
+/* ── CALCULATOR ── */
+const L=6.02e23;
+function gv(id){const v=parseFloat(document.getElementById(id).value);return isNaN(v)?null:v}
+function sv(id,v){document.getElementById(id).value=v}
+function solveMoleTriangle(){
+  const m=gv('calc-mass'),M=gv('calc-M'),n=gv('calc-moles'),N=gv('calc-particles');
+  const r=document.getElementById('calc-mole-result');r.classList.remove('hidden');
+  let moles=n;
+  if(moles===null&&m!==null&&M!==null)moles=m/M;
+  else if(moles===null&&N!==null)moles=N/L;
+  if(moles===null){r.innerHTML='⚠️ Provide at least two of: mass+M, or particles, or moles.';return}
+  const mass=m!==null?m:moles*M;
+  const particles=N!==null?N:moles*L;
+  sv('calc-mass',mass.toFixed(4));sv('calc-moles',moles.toFixed(6));sv('calc-particles',particles.toExponential(4));
+  r.innerHTML=`<p>n = ${moles.toFixed(6)} mol</p><p>m = ${mass.toFixed(4)} g</p><p>N = ${particles.toExponential(4)} particles</p>`;
+}
+function solveGasVolume(){
+  const n=gv('calc-gas-n'),v=gv('calc-gas-v'),p=gv('calc-gas-p'),t=gv('calc-gas-t');
+  const r=document.getElementById('calc-gas-result');r.classList.remove('hidden');
+  if(p!==null&&t!==null&&(n!==null||v!==null)){
+    const pPa=p*1000;const TK=t+273;const R=8.31;
+    if(n!==null&&v===null){const Vm3=n*R*TK/pPa;const Vdm3=Vm3*1000;sv('calc-gas-v',Vdm3.toFixed(4));r.innerHTML=`<p>V = ${Vdm3.toFixed(4)} dm³ (via pV=nRT, p=${pPa} Pa, T=${TK} K)</p>`}
+    else if(v!==null&&n===null){const Vm3=v/1000;const nn=pPa*Vm3/(R*TK);sv('calc-gas-n',nn.toFixed(6));r.innerHTML=`<p>n = ${nn.toFixed(6)} mol (via pV=nRT)</p>`}
+    else{r.innerHTML='⚠️ Provide p, T, and one of n or V.'}
+  }else if(n!==null&&v===null){const Vdm3=n*24;sv('calc-gas-v',Vdm3.toFixed(3));r.innerHTML=`<p>V = ${Vdm3.toFixed(3)} dm³ at r.t.p. (n × 24)</p>`}
+  else if(v!==null&&n===null){const nn=v/24;sv('calc-gas-n',nn.toFixed(6));r.innerHTML=`<p>n = ${nn.toFixed(6)} mol at r.t.p. (V ÷ 24)</p>`}
+  else{r.innerHTML='⚠️ Provide n or V (for r.t.p.), or p + T + one of n/V (for pV=nRT).'}
+}
+function solveConc(){
+  const n=gv('calc-conc-n'),v=gv('calc-conc-v'),c=gv('calc-conc-c');
+  const r=document.getElementById('calc-conc-result');r.classList.remove('hidden');
+  const Vdm3=v!==null?v/1000:null;
+  if(n!==null&&Vdm3!==null){const cc=n/Vdm3;sv('calc-conc-c',cc.toFixed(4));r.innerHTML=`<p>c = ${cc.toFixed(4)} mol dm⁻³</p>`}
+  else if(n!==null&&c!==null){const VV=n/c*1000;sv('calc-conc-v',VV.toFixed(2));r.innerHTML=`<p>V = ${VV.toFixed(2)} cm³</p>`}
+  else if(Vdm3!==null&&c!==null){const nn=c*Vdm3;sv('calc-conc-n',nn.toFixed(6));r.innerHTML=`<p>n = ${nn.toFixed(6)} mol</p>`}
+  else{r.innerHTML='⚠️ Provide any two of n, V (cm³), c (mol dm⁻³).'}
+}
+function solveYieldAE(){
+  const act=gv('calc-yield-act'),theo=gv('calc-yield-theo'),des=gv('calc-ae-desired'),tot=gv('calc-ae-total');
+  const r=document.getElementById('calc-yield-result');r.classList.remove('hidden');
+  let html='';
+  if(act!==null&&theo!==null&&theo>0){const y=act/theo*100;html+=`<p>% yield = ${y.toFixed(1)}%</p>`}
+  if(des!==null&&tot!==null&&tot>0){const ae=des/tot*100;html+=`<p>% atom economy = ${ae.toFixed(1)}%</p>`}
+  if(!html)html='⚠️ Provide actual+theoretical for yield, or desired+total for AE.';
+  r.innerHTML=html;
+}
+
+/* ── INIT ── */
+window.onload=function(){
+  renderInspectorCards('mole-cards-container','mole-nav-btn',MOLE_CARDS);
+  renderInspectorCards('eqn-cards-container','eqn-nav-btn',EQN_CARDS);
+  renderInspectorCards('conc-cards-container','conc-nav-btn',CONC_CARDS);
+  renderInspectorCards('formula-cards-container','formula-nav-btn',FORMULA_CARDS);
+  renderQuiz('mole-quiz-rows',MOLE_QUIZ);
+  renderQuiz('eqn-quiz-rows',EQN_QUIZ);
+  renderQuiz('conc-quiz-rows',CONC_QUIZ);
+  renderQuiz('formula-quiz-rows',FORMULA_QUIZ);
+  renderTraps('mole-traps-grid',MOLE_TRAPS);
+  renderTraps('eqn-traps-grid',EQN_TRAPS);
+  renderTraps('conc-traps-grid',CONC_TRAPS);
+  renderTraps('formula-traps-grid',FORMULA_TRAPS);
+  safeInitKaTeX();
+};
+</script>
+</body>
+</html>
