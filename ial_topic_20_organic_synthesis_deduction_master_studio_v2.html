@@ -14,46 +14,210 @@
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
 
     <style>
+        :root {
+            --bg: #0c1118;
+            --surface: #161d28;
+            --accent: #3dd6c6;
+            --accent-ink: #06201c;
+            --text: #eef2f7;
+            --muted: #8b95a8;
+            --line: rgba(255, 255, 255, 0.08);
+            --spring: cubic-bezier(0.32, 0.72, 0.22, 1);
+            --frost: blur(20px) saturate(1.7);
+            --font: -apple-system, "SF Pro Text", "Segoe UI", "PingFang HK", "Noto Sans HK", system-ui, sans-serif;
+            --font-mono: ui-monospace, "SF Mono", "IBM Plex Mono", Consolas, monospace;
+            --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.35);
+            --inset-top: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font);
+            color: var(--text);
+            background:
+                radial-gradient(1400px 620px at 80% -14%, rgba(61, 214, 198, 0.10), transparent 60%),
+                radial-gradient(1000px 500px at 4% 116%, rgba(70, 130, 210, 0.08), transparent 60%),
+                linear-gradient(178deg, #0d131c 0%, #0a0e15 55%, #080c12 100%);
+            background-attachment: fixed;
+            min-height: 100dvh;
+            overflow-x: hidden;
+        }
+        .ambient { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+        .ambient .blob { position: absolute; border-radius: 50%; will-change: transform; }
+        .ambient .blob--teal { width: 46vmax; height: 46vmax; left: -8vmax; top: -14vmax;
+            background: radial-gradient(circle at 32% 34%, rgba(61,214,198,.16), rgba(61,214,198,.05) 46%, transparent 72%);
+            animation: driftA 26s ease-in-out infinite alternate; }
+        .ambient .blob--blue { width: 42vmax; height: 42vmax; right: -10vmax; top: 8vmax;
+            background: radial-gradient(circle at 60% 40%, rgba(70,130,210,.14), rgba(70,130,210,.04) 48%, transparent 74%);
+            animation: driftB 32s ease-in-out infinite alternate; }
+        .ambient .blob--deep { width: 38vmax; height: 38vmax; left: 28vmax; bottom: -16vmax;
+            background: radial-gradient(circle at 50% 30%, rgba(90,150,220,.10), rgba(90,150,220,.03) 50%, transparent 76%);
+            animation: driftC 38s ease-in-out infinite alternate; }
+        .ambient .vignette { position: absolute; inset: 0;
+            background: radial-gradient(120% 90% at 50% 40%, transparent 55%, rgba(4,7,12,.55) 100%); }
+        @keyframes driftA { from { transform: translate3d(0,0,0) scale(1); } to { transform: translate3d(9vmax,7vmax,0) scale(1.08); } }
+        @keyframes driftB { from { transform: translate3d(0,0,0) scale(1); } to { transform: translate3d(-8vmax,6vmax,0) scale(1.1); } }
+        @keyframes driftC { from { transform: translate3d(0,0,0) scale(1); } to { transform: translate3d(6vmax,-7vmax,0) scale(1.06); } }
+        @media (prefers-reduced-motion: reduce) { .ambient .blob { animation: none !important; } }
+
+        main { position: relative; z-index: 1; }
+        header, nav, footer { position: sticky; z-index: 40; }
+        nav { z-index: 30; }
+
+        main .bg-slate-900.border.border-slate-800.rounded-xl,
+        main .bg-slate-900.border.border-slate-800.rounded-lg,
+        main .bg-slate-950.border.border-slate-800.rounded-xl,
+        main .bg-slate-950.border.border-slate-800.rounded-lg {
+            background:
+                linear-gradient(180deg, rgba(61,214,198,.045), transparent 34%),
+                color-mix(in srgb, var(--surface) 90%, transparent) !important;
+            border-color: color-mix(in srgb, var(--line) 70%, rgba(61,214,198,.10)) !important;
+            box-shadow: var(--inset-top), var(--shadow-md);
+            backdrop-filter: var(--frost);
+            -webkit-backdrop-filter: var(--frost);
+        }
+        main .bg-slate-950.border.border-slate-800.rounded-xl.p-5,
+        main .bg-slate-950.border.border-slate-800.rounded-lg.p-5 {
+            background:
+                linear-gradient(180deg, rgba(61,214,198,.035), transparent 26%),
+                color-mix(in srgb, var(--surface) 78%, #000) !important;
+            border-color: color-mix(in srgb, var(--line) 75%, transparent) !important;
+            box-shadow: var(--inset-top);
+        }
+        main .border-slate-800 { border-color: var(--line) !important; }
+        main .border-slate-700 { border-color: var(--line) !important; }
+
+        main > section { animation: tabIn 0.34s var(--spring) both; }
+        @keyframes tabIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+        nav {
+            background: transparent;
+            border-bottom: none;
+            box-shadow: none;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+            padding: 0.6rem 1rem 0.4rem;
+        }
+        nav > div {
+            max-width: 100%;
+            width: fit-content;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.25rem;
+            padding: 0.3rem;
+            background: color-mix(in srgb, var(--surface) 82%, transparent);
+            border: 1px solid var(--line);
+            border-radius: 9999px;
+            box-shadow: var(--inset-top), 0 10px 30px rgba(0,0,0,0.35);
+            backdrop-filter: var(--frost);
+            -webkit-backdrop-filter: var(--frost);
+        }
+        nav button {
+            transition: color 0.2s var(--spring), background-color 0.2s var(--spring),
+                        box-shadow 0.2s var(--spring), transform 0.15s var(--spring);
+            min-height: 40px;
+            border-radius: 9999px;
+            border: none;
+            white-space: nowrap;
+        }
+        nav button:active { transform: scale(0.96); }
+
+        header {
+            background: color-mix(in srgb, var(--surface) 88%, transparent);
+            border-color: var(--line) !important;
+            box-shadow: var(--inset-top), 0 8px 28px rgba(0,0,0,0.25);
+            backdrop-filter: var(--frost);
+            -webkit-backdrop-filter: var(--frost);
+        }
+
         .tab-btn-active {
-            border-bottom: 3px solid #38bdf8;
-            color: #38bdf8;
-            font-weight: 700;
-            background-color: rgba(56, 189, 248, 0.12);
+            color: var(--accent-ink) !important;
+            font-weight: 700 !important;
+            background: var(--accent) !important;
+            border-bottom: none !important;
+            box-shadow: 0 2px 10px color-mix(in srgb, var(--accent) 30%, transparent);
         }
-        .subtab-btn-active {
-            background-color: #0284c7;
-            color: #ffffff;
-            font-weight: 700;
+        nav button[onclick*="switchTab"] { border-radius: 9999px; }
+
+        main button[class*="bg-sky-600"],
+        main button[class*="bg-emerald-600"],
+        main button[class*="bg-amber-600"],
+        main button[class*="bg-violet-600"],
+        main button[class*="bg-blue-600"],
+        main button[class*="bg-rose-600"] {
+            background: var(--accent) !important;
+            color: var(--accent-ink) !important;
+            border-radius: 9999px !important;
+            border: none !important;
+            box-shadow: var(--inset-top), 0 4px 14px color-mix(in srgb, var(--accent) 25%, transparent);
+            font-weight: 700 !important;
+            transition: transform 0.15s var(--spring), filter 0.15s ease;
         }
-        .custom-scrollbar::-webkit-scrollbar {
-            height: 6px;
-            width: 6px;
+        main button[class*="bg-sky-600"]:active,
+        main button[class*="bg-emerald-600"]:active,
+        main button[class*="bg-amber-600"]:active,
+        main button[class*="bg-violet-600"]:active,
+        main button[class*="bg-blue-600"]:active,
+        main button[class*="bg-rose-600"]:active { transform: scale(0.97); }
+        main button.bg-slate-900.border.border-slate-800 {
+            border-radius: 9999px !important;
+            border-color: var(--line) !important;
+            background: color-mix(in srgb, var(--surface) 80%, transparent) !important;
+            min-height: 40px;
+            transition: transform 0.15s var(--spring), color 0.15s ease, border-color 0.15s ease;
         }
-        .custom-scrollbar::-webkit-scrollbar-track {
-            background: #0f172a;
+        main button.bg-slate-900.border.border-slate-800:hover { color: var(--accent) !important; border-color: color-mix(in srgb,var(--accent) 45%,transparent) !important; }
+        main button.bg-slate-900.border.border-slate-800:active { transform: scale(0.97); }
+
+        main select, main input[type="number"], main input[type="text"] {
+            background: color-mix(in srgb, var(--surface) 92%, #000) !important;
+            border-color: var(--line) !important;
+            color: var(--text) !important;
+            border-radius: 0.75rem !important;
+            font-variant-numeric: tabular-nums;
         }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: #334155;
-            border-radius: 3px;
+        main select:focus, main input:focus {
+            border-color: color-mix(in srgb, var(--accent) 55%, transparent) !important;
+            box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent) !important;
         }
-        .blur-answer {
-            filter: blur(6px);
-            transition: filter 0.25s ease, background-color 0.25s ease;
-            user-select: none;
-            cursor: pointer;
+
+        main .text-sky-400, main .text-sky-300, main .text-blue-400, main .text-blue-300 { color: var(--accent) !important; }
+        main .bg-sky-950, main .bg-sky-950\/40, main .bg-blue-950, main .bg-blue-950\/40 { background: color-mix(in srgb, var(--accent) 12%, var(--surface)) !important; }
+        main .border-sky-800, main .border-blue-800, main .border-sky-900\/50 { border-color: color-mix(in srgb, var(--accent) 40%, transparent) !important; }
+
+        main table { font-variant-numeric: tabular-nums; }
+        main thead { background: color-mix(in srgb, var(--surface) 95%, #000) !important; }
+        main .font-mono, main [class*="font-mono"] { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+
+        main .bg-amber-950\/40, main .bg-amber-950\/60, main .border-amber-800\/60, main .border-amber-800,
+        main .text-amber-200, main .text-amber-300, main .text-amber-400,
+        main .bg-rose-950\/20, main .bg-rose-950\/30, main .bg-rose-950\/60, main .border-rose-900\/40,
+        main .text-rose-300, main .text-rose-200 { /* keep Tailwind pedagogy colours */ }
+
+        .studio-canvas-bg { background: linear-gradient(180deg, #0e1420 0%, #080c12 100%); }
+        .custom-scrollbar::-webkit-scrollbar { height: 6px; width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #121820; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #3a4556; border-radius: 3px; }
+        :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+            main > section { animation: none !important; }
+            nav button:active, main button:active { transform: none !important; }
         }
-        .blur-answer:hover, .blur-answer.revealed {
-            filter: blur(0px);
-            user-select: auto;
-            background-color: rgba(14, 165, 233, 0.2) !important;
-        }
-        .node-box {
-            transition: all 0.2s ease-in-out;
-        }
-        .node-box:hover {
-            transform: scale(1.03);
-            border-color: #38bdf8;
-            box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
+        @media (prefers-reduced-transparency: reduce) {
+            header, nav > div, main .bg-slate-900.border.border-slate-800.rounded-xl,
+            main .bg-slate-950.border.border-slate-800.rounded-xl {
+                backdrop-filter: none !important;
+                -webkit-backdrop-filter: none !important;
+                background: var(--surface) !important;
+            }
         }
     </style>
 
@@ -639,10 +803,16 @@ window.findCycle3Route = function() {
         });
     </script>
 </head>
-<body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex flex-col">
+<body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex flex-col" style="background:transparent">
+    <div class="ambient" aria-hidden="true">
+        <div class="blob blob--teal"></div>
+        <div class="blob blob--blue"></div>
+        <div class="blob blob--deep"></div>
+        <div class="vignette"></div>
+    </div>
 
     <!-- HEADER -->
-    <header class="bg-slate-900 border-b border-slate-800 sticky top-0 z-40 shadow-lg">
+    <header class="sticky top-0 z-40" style="border-bottom:1px solid var(--line)">
         <div class="max-w-7xl mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center gap-3">
             <div class="flex items-center gap-3">
                 <div class="bg-sky-500/20 p-2.5 rounded-xl border border-sky-500/30">
@@ -666,34 +836,34 @@ window.findCycle3Route = function() {
     </header>
 
         <!-- NAVIGATION TABS (wrap to two rows — no horizontal scroll) -->
-    <nav class="bg-slate-900/95 border-b border-slate-800 text-xs font-medium sticky top-[57px] z-30 backdrop-blur-md shadow-md">
+    <nav class="sticky top-[57px] z-30" aria-label="Studio sections" style="background:transparent;border-bottom:none;box-shadow:none;backdrop-filter:none">
         <div class="max-w-7xl mx-auto px-3 sm:px-4 py-1.5 flex flex-wrap items-stretch gap-x-0.5 gap-y-1">
             <button onclick="window.switchTab('syllabus')" id="btn-syllabus" class="tab-btn-active py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs text-sky-400 font-bold border-b-2 border-sky-400 bg-sky-950/40 transition flex items-center gap-1.5 rounded-t-md">
-                <span>📚 1. Syllabus</span>
+                <span> 1. Syllabus</span>
             </button>
             <button onclick="window.switchTab('special')" id="btn-special" class="py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs text-slate-400 hover:text-sky-300 font-medium border-b-2 border-transparent hover:border-slate-600 transition flex items-center gap-1.5 rounded-t-md">
-                <span>⚡ 2. Special</span>
+                <span> 2. Special</span>
             </button>
             <button onclick="window.switchTab('grignard')" id="btn-grignard" class="py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs text-slate-400 hover:text-sky-300 font-medium border-b-2 border-transparent hover:border-slate-600 transition flex items-center gap-1.5 rounded-t-md">
-                <span>🧪 3. Grignard</span>
+                <span> 3. Grignard</span>
             </button>
             <button onclick="window.switchTab('cycle1')" id="btn-cycle1" class="py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs text-slate-400 hover:text-sky-300 font-medium border-b-2 border-transparent hover:border-slate-600 transition flex items-center gap-1.5 rounded-t-md">
-                <span>🔄 4. Cycle 1</span>
+                <span> 4. Cycle 1</span>
             </button>
             <button onclick="window.switchTab('cycle2')" id="btn-cycle2" class="py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs text-slate-400 hover:text-sky-300 font-medium border-b-2 border-transparent hover:border-slate-600 transition flex items-center gap-1.5 rounded-t-md">
-                <span>🧪 5. Cycle 2</span>
+                <span> 5. Cycle 2</span>
             </button>
             <button onclick="window.switchTab('cycle3')" id="btn-cycle3" class="py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs text-slate-400 hover:text-sky-300 font-medium border-b-2 border-transparent hover:border-slate-600 transition flex items-center gap-1.5 rounded-t-md">
-                <span>⚖️ 6. Cycle 3</span>
+                <span> 6. Cycle 3</span>
             </button>
             <button onclick="window.switchTab('cycle4')" id="btn-cycle4" class="py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs text-slate-400 hover:text-sky-300 font-medium border-b-2 border-transparent hover:border-slate-600 transition flex items-center gap-1.5 rounded-t-md">
-                <span>🗺️ 7. Cycle 4</span>
+                <span> 7. Cycle 4</span>
             </button>
             <button onclick="window.switchTab('builder')" id="btn-builder" class="py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs text-slate-400 hover:text-sky-300 font-medium border-b-2 border-transparent hover:border-slate-600 transition flex items-center gap-1.5 rounded-t-md">
-                <span>🛠️ 8. Solver</span>
+                <span> 8. Solver</span>
             </button>
             <button onclick="window.switchTab('matrix')" id="btn-matrix" class="py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs text-slate-400 hover:text-sky-300 font-medium border-b-2 border-transparent hover:border-slate-600 transition flex items-center gap-1.5 rounded-t-md">
-                <span>📋 9. Final Review</span>
+                <span> 9. Final Review</span>
             </button>
         </div>
     </nav>

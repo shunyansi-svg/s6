@@ -6,36 +6,65 @@
   <title>Chromatography &amp; GC-MS Studio | WCH14 · 15E · 15.21–15.23</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    :root { --bg:#030712; --panel:rgba(15,23,42,.72); --border:rgba(255,255,255,.08); --primary:#06b6d4; }
-    body{font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;background:var(--bg);
-      background-image:radial-gradient(at 0% 0%,rgba(6,182,212,.12) 0,transparent 50%),radial-gradient(at 100% 100%,rgba(99,102,241,.08) 0,transparent 50%);background-attachment:fixed;}
+    :root { --bg:#0c1118; --surface:#161d28; --panel:rgba(22,29,40,.72); --border:rgba(255,255,255,.08); --primary:#3dd6c6; --accent:#3dd6c6; --accent-ink:#06201c; --text:#eef2f7; --muted:#8b95a8; --line:rgba(255,255,255,.08); --spring:cubic-bezier(.32,.72,.22,1); --frost:blur(20px) saturate(1.7); }
+    html{scroll-behavior:smooth;}
+    body{font-family:-apple-system,'SF Pro Text','Segoe UI','PingFang HK','Noto Sans HK',system-ui,sans-serif;background:var(--bg);color:var(--text);
+      background-image:radial-gradient(1400px 620px at 80% -14%,rgba(61,214,198,.10),transparent 60%),radial-gradient(1000px 500px at 4% 116%,rgba(70,130,210,.08),transparent 60%),linear-gradient(178deg,#0d131c 0%,#0a0e15 55%,#080c12 100%);background-attachment:fixed;}
+    .ambient{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+    .ambient .blob{position:absolute;border-radius:50%;will-change:transform;}
+    .ambient .blob--teal{width:46vmax;height:46vmax;left:-8vmax;top:-14vmax;background:radial-gradient(circle at 32% 34%,rgba(61,214,198,.16),rgba(61,214,198,.05) 46%,transparent 72%);animation:driftA 26s ease-in-out infinite alternate;}
+    .ambient .blob--blue{width:42vmax;height:42vmax;right:-10vmax;top:8vmax;background:radial-gradient(circle at 60% 40%,rgba(70,130,210,.14),rgba(70,130,210,.04) 48%,transparent 74%);animation:driftB 32s ease-in-out infinite alternate;}
+    .ambient .blob--deep{width:38vmax;height:38vmax;left:28vmax;bottom:-16vmax;background:radial-gradient(circle at 50% 30%,rgba(90,150,220,.10),rgba(90,150,220,.03) 50%,transparent 76%);animation:driftC 38s ease-in-out infinite alternate;}
+    .ambient .vignette{position:absolute;inset:0;background:radial-gradient(120% 90% at 50% 40%,transparent 55%,rgba(4,7,12,.55) 100%);}
+    @keyframes driftA{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(9vmax,7vmax,0) scale(1.08)}}
+    @keyframes driftB{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(-8vmax,6vmax,0) scale(1.1)}}
+    @keyframes driftC{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(6vmax,-7vmax,0) scale(1.06)}}
+    @media (prefers-reduced-motion:reduce){.ambient .blob{animation:none!important}}
+    main,header,nav,footer{position:relative;z-index:1;}
+    main>section,main>div>.tab-panel{animation:tabIn .34s var(--spring) both;}
+    @keyframes tabIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
     .mono{font-family:ui-monospace,Consolas,monospace;}
     canvas{touch-action:none;display:block;max-width:100%;}
     .canvas-wrap{min-height:300px;}
-    .glass{background:var(--panel);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--border);box-shadow:0 8px 32px rgba(0,0,0,.35);}
+    .glass{background:color-mix(in srgb,var(--surface) 88%,transparent);backdrop-filter:var(--frost);-webkit-backdrop-filter:var(--frost);border:1px solid var(--line);box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 10px 30px rgba(0,0,0,.35);}
     .kw-hit{background:linear-gradient(120deg,rgba(250,204,21,.25),rgba(253,224,71,.35));padding:0 .2rem;border-radius:4px;color:#fef08c;}
-    .tab-btn{transition:all .2s ease;}
-    .tab-btn.active{background:linear-gradient(135deg,#0891b2,#06b6d4);color:#fff;border-color:transparent;box-shadow:0 4px 18px rgba(6,182,212,.4);}
+    .tab-btn{transition:all .2s ease;border-radius:9999px;}
+    .tab-btn.active{background:var(--accent);color:var(--accent-ink);border-color:transparent;box-shadow:0 2px 10px color-mix(in srgb,var(--accent) 30%,transparent);}
     .tab-panel{display:none;}.tab-panel.active{display:block;}
-    .sim-mode-btn.active{background:linear-gradient(135deg,#0e7490,#06b6d4);color:#fff;border-color:transparent;}
-    .speed-btn.active,.viz-btn.active{border-color:#22d3ee;background:rgba(6,182,212,.2);color:#e0f2fe;}
-    .syllabus-pill{background:linear-gradient(135deg,rgba(6,182,212,.2),rgba(99,102,241,.15));border:1px solid rgba(6,182,212,.35);}
+    .sim-mode-btn.active{background:var(--accent);color:var(--accent-ink);border-color:transparent;}
+    .speed-btn.active,.viz-btn.active{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 20%,transparent);color:#e0f2fe;}
+    .syllabus-pill{background:linear-gradient(135deg,color-mix(in srgb,var(--accent) 20%,transparent),rgba(99,102,241,.15));border:1px solid color-mix(in srgb,var(--accent) 35%,transparent);}
     .myth-card{cursor:pointer;transition:all .2s;}
     .myth-card.flipped .myth-front{display:none;}
     .myth-card.flipped .myth-back{display:block;}
     .myth-back{display:none;}
-    input[type=range]{accent-color:#06b6d4;}
+    input[type=range]{accent-color:var(--accent);}
     .cmp-table th,.cmp-table td{border:1px solid rgba(255,255,255,.1);padding:.5rem .75rem;font-size:.75rem;}
-    .cmp-table th{background:rgba(6,182,212,.15);text-align:left;}
-    .studio-canvas-bg{background:linear-gradient(180deg,#0f172a 0%,#020617 100%);}
+    .cmp-table th{background:color-mix(in srgb,var(--accent) 15%,transparent);text-align:left;}
+    .studio-canvas-bg{background:linear-gradient(180deg,#0e1420 0%,#080c12 100%);}
     .custom-scrollbar::-webkit-scrollbar{height:6px;width:6px;}
-    .custom-scrollbar::-webkit-scrollbar-track{background:#1e293b;}
-    .custom-scrollbar::-webkit-scrollbar-thumb{background:#475569;border-radius:3px;}
+    .custom-scrollbar::-webkit-scrollbar-track{background:#121820;}
+    .custom-scrollbar::-webkit-scrollbar-thumb{background:#3a4556;border-radius:3px;}
+    main .bg-slate-900.border.border-slate-800.rounded-xl,main .bg-slate-950.border.border-slate-800.rounded-xl{background:linear-gradient(180deg,rgba(61,214,198,.045),transparent 34%),color-mix(in srgb,var(--surface) 90%,transparent)!important;border-color:color-mix(in srgb,var(--line) 70%,rgba(61,214,198,.10))!important;backdrop-filter:var(--frost);box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 10px 30px rgba(0,0,0,.35);}
+    main .text-cyan-200,main .text-cyan-300,main .text-cyan-400{color:var(--accent)!important;}
+    main .border-cyan-800,main .border-cyan-500{border-color:color-mix(in srgb,var(--accent) 40%,transparent)!important;}
+    main .bg-cyan-950,main .bg-cyan-950\/40{background:color-mix(in srgb,var(--accent) 12%,var(--surface))!important;}
+    main table{font-variant-numeric:tabular-nums;}
+    main .font-mono,main [class*="font-mono"]{font-family:var(--font-mono);
+      font-variant-numeric:tabular-nums;}
+    :focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+    @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important;}.tab-btn:active,button:active{transform:none!important;}}
   </style>
 </head>
-<body class="text-slate-100 min-h-screen">
+<body class="text-slate-100 min-h-screen" style="background:transparent">
+<div class="ambient" aria-hidden="true">
+  <div class="blob blob--teal"></div>
+  <div class="blob blob--blue"></div>
+  <div class="blob blob--deep"></div>
+  <div class="vignette"></div>
+</div>
 
-<header class="border-b border-white/10 glass sticky top-0 z-40">
+<header class="border-b glass sticky top-0 z-40" style="border-color:var(--line)">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
     <div>
       <div class="flex flex-wrap items-center gap-2 mb-1">
