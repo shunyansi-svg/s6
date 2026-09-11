@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>IAL Topic 2 — Atomic Structure & the Periodic Table · Master Studio</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
@@ -40,6 +40,28 @@ details>summary{cursor:pointer;list-style:none}
 details>summary::-webkit-details-marker{display:none}
 details>summary::before{content:'▸';display:inline-block;margin-right:.5rem;transition:transform .2s;color:#64748b}
 details[open]>summary::before{transform:rotate(90deg);color:#38bdf8}
+/* ═══ MOBILE UX LAYER (chrome/behaviour only — no content added or removed from markup) ═══ */
+:root{--hdr:112px}
+html{scroll-padding-top:calc(var(--hdr) + 10px)}
+.toc-strip{display:none;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:2px 0 6px;margin-bottom:2px}
+.toc-strip::-webkit-scrollbar{display:none}
+.toc-chip{flex-shrink:0;font-size:10px;line-height:1;padding:7px 11px;border-radius:9999px;border:1px solid rgba(51,65,85,.9);background:rgba(15,23,42,.85);color:#94a3b8;font-weight:600;white-space:nowrap;cursor:pointer}
+.toc-chip:active{border-color:rgba(56,189,248,.5);color:#7dd3fc}
+#ieCanvas,#mpCanvas,#shells-chart,#ms-canvas{touch-action:pan-y}
+@media (pointer:coarse){#orb-canvas{touch-action:none}}
+#backTop{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:70;width:44px;height:44px;border-radius:9999px;border:1px solid rgba(56,189,248,.35);background:rgba(8,14,26,.92);color:#7dd3fc;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transform:translateY(8px);transition:opacity .25s ease,transform .25s ease;box-shadow:0 8px 24px -8px rgba(0,0,0,.6)}
+#backTop.show{opacity:1;pointer-events:auto;transform:none}
+#scrollProg{position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,#0ea5e9,#38bdf8);z-index:80;pointer-events:none;border-radius:0 2px 2px 0}
+@media (max-width:1023.98px){
+  header{background-color:rgba(2,6,23,.97)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;padding-top:env(safe-area-inset-top)}
+  #mainNav{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:4px}
+  #mainNav::-webkit-scrollbar{display:none}
+  #mainNav .tab-btn{flex-shrink:0}
+  .glow{animation-play-state:paused}
+  select,input[type="number"]{font-size:16px!important}
+  .toc-strip{display:flex}
+}
+@media (prefers-reduced-motion:reduce){.glow{animation:none!important}.tab-panel.active{animation:none}}
 .chain-chip{transition:all .15s ease}
 .chain-chip.used{opacity:.3;pointer-events:none}
 .slot-btn{min-width:90px;transition:all .15s ease}
@@ -1664,10 +1686,14 @@ function switchTab(id){
     const isExplain=b.dataset.tab==='explain';
     b.className='tab-btn btn-press py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs font-medium border-b-2 rounded-t-lg '+(a?'tab-btn-active '+(isExplain?'text-amber-300 font-bold border-amber-400 bg-amber-950/30':'text-sky-400 font-bold border-sky-400 bg-sky-950/40'):(isExplain?'text-amber-300/80 hover:text-amber-200 border-transparent':'text-slate-400 hover:text-sky-300 border-transparent'));
   });
+  window.scrollTo(0,0); /* mobile-ux: every tab opens at its own top (RC2) */
   if(id==='trends')setTimeout(drawTrends,60);
   if(id==='massspec'&&!MS.initialized)MS.init();
   if(id==='shells'&&!SHELLS.initialized)SHELLS.init();
   if(id==='orbitals'&&!ORB.initialized)ORB.init();
+  MS.setRunning(id==='massspec'); /* mobile-ux: only the visible sim burns frames (RC3) */
+  ORB.setRunning(id==='orbitals');
+  if(typeof MOBILE_UX!=='undefined'){MOBILE_UX.syncHeader();MOBILE_UX.centerNav(id);}
   setTimeout(()=>renderMathIn(),80);
 }
 const revealObs=(typeof IntersectionObserver!=='undefined')?new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('revealed')})},{threshold:.06}):{observe(){}};
@@ -1983,6 +2009,12 @@ window.onload=function(){
    ════════════════════════════════════════════════════════════ */
 const MS = {
   initialized:false, canvas:null, ctx:null, bg:null, bgx:null,
+  running:true, raf:null, /* mobile-ux: pause loop when tab hidden (RC3) */
+  setRunning(on){
+    if(this.raf){ cancelAnimationFrame(this.raf); this.raf=null; }
+    this.running=!!on;
+    if(this.running && this.initialized) this.loop();
+  },
   elements:{
     Cl:{name:'Chlorine', ar:35.45, isotopes:[{mass:35,abundance:75.77,color:'rgb(52,211,153)'},{mass:37,abundance:24.23,color:'rgb(248,113,113)'}]},
     Br:{name:'Bromine', ar:79.90, isotopes:[{mass:79,abundance:50.69,color:'rgb(251,191,36)'},{mass:81,abundance:49.31,color:'rgb(34,211,238)'}]},
@@ -2001,8 +2033,12 @@ const MS = {
     this.canvas=document.getElementById('ms-canvas');
     if(!this.canvas) return;
     this.ctx=this.canvas.getContext('2d');
-    this.bg=document.createElement('canvas'); this.bg.width=900; this.bg.height=540;
+    const dpr=window.devicePixelRatio||1; /* mobile-ux: sharp on retina tablets */
+    this.canvas.width=900*dpr; this.canvas.height=540*dpr;
+    this.ctx.setTransform(dpr,0,0,dpr,0,0);
+    this.bg=document.createElement('canvas'); this.bg.width=900*dpr; this.bg.height=540*dpr;
     this.bgx=this.bg.getContext('2d');
+    this.bgx.setTransform(dpr,0,0,dpr,0,0);
     this.drawBg();
     this.clear();
     this.loop();
@@ -2109,7 +2145,7 @@ const MS = {
   loop(){
     const c=this.ctx;
     c.clearRect(0,0,900,540);
-    c.drawImage(this.bg,0,0);
+    c.drawImage(this.bg,0,0,900,540); /* mobile-ux: dest size keeps 1:1 under DPR transform */
     // detector strip
     c.strokeStyle='#f43f5e'; c.lineWidth=5;
     c.beginPath(); c.moveTo(this.arcCX+this.innerR,this.arcCY+52); c.lineTo(this.arcCX+this.outerR,this.arcCY+52); c.stroke(); c.lineWidth=3;
@@ -2144,7 +2180,7 @@ const MS = {
     });
     if(remaining>0) document.getElementById('ms-queue').textContent='QUEUE: '+remaining+' / 500';
     this.ions=this.ions.filter(i=>i.stage<6);
-    requestAnimationFrame(()=>this.loop());
+    if(this.running) this.raf=requestAnimationFrame(()=>this.loop()); /* mobile-ux: gated loop (RC3) */
   }
 };
 
@@ -2315,6 +2351,12 @@ const SHELLS = {
    ════════════════════════════════════════════════════════════ */
 const ORB = {
   initialized:false, canvas:null, ctx:null,
+  running:true, raf:null, /* mobile-ux: pause loop when tab hidden (RC3) */
+  setRunning(on){
+    if(this.raf){ cancelAnimationFrame(this.raf); this.raf=null; }
+    this.running=!!on;
+    if(this.running && this.initialized) this.draw();
+  },
   alpha:0.5, beta:0.3, dragging:false, px:0, py:0,
   shape:'1s', overlapMode:null,
 
@@ -2322,6 +2364,7 @@ const ORB = {
     this.canvas=document.getElementById('orb-canvas');
     if(!this.canvas) return;
     this.ctx=this.canvas.getContext('2d');
+    this.resize(); /* mobile-ux: DPR-crisp backing store */
     const cv=this.canvas;
     cv.addEventListener('mousedown',e=>{this.dragging=true;this.px=e.clientX;this.py=e.clientY;});
     window.addEventListener('mouseup',()=>{this.dragging=false;});
@@ -2381,14 +2424,23 @@ const ORB = {
     }
     return pts;
   },
+  resize(){ /* mobile-ux: match backing store to CSS size × DPR (sharp on iPad) */
+    const cv=this.canvas; if(!cv) return;
+    const r=cv.getBoundingClientRect(); if(r.width<40) return;
+    const dpr=window.devicePixelRatio||1;
+    cv.width=Math.round(r.width*dpr); cv.height=Math.round(r.height*dpr);
+    this.VW=r.width; this.VH=r.height;
+  },
   project(x,y,z){
     const ca=Math.cos(this.alpha),sa=Math.sin(this.alpha),cb=Math.cos(this.beta),sb=Math.sin(this.beta);
     const x1=x*ca-z*sa, z1=x*sa+z*ca, y2=y*cb-z1*sb;
-    return {x:this.canvas.width/2+x1, y:this.canvas.height/2-y2};
+    return {x:(this.VW||this.canvas.width)/2+x1, y:(this.VH||this.canvas.height)/2-y2};
   },
   draw(){
     const c=this.ctx; if(!c) return;
-    c.clearRect(0,0,this.canvas.width,this.canvas.height);
+    const dpr=window.devicePixelRatio||1;
+    c.setTransform(dpr,0,0,dpr,0,0); /* mobile-ux: draw in logical CSS px */
+    c.clearRect(0,0,this.VW||this.canvas.width,this.VH||this.canvas.height);
     const L=110, o=this.project(0,0,0), ax=this.project(L,0,0), ay=this.project(0,L,0), az=this.project(0,0,L);
     c.strokeStyle='#475569'; c.lineWidth=1.5;
     c.beginPath();c.moveTo(o.x,o.y);c.lineTo(ax.x,ax.y);c.stroke();
@@ -2404,7 +2456,7 @@ const ORB = {
     else if(this.overlapMode==='px-py'){ ['x','y'].forEach(a=>{this.points(a).forEach(p=>pts.push(p));}); }
     else { pts=this.points(this.shape||'1s'); }
     pts.forEach(p=>{ const q=this.project(p.x,p.y,p.z); c.fillStyle=p.color; c.fillRect(q.x,q.y,1.8,1.8); });
-    requestAnimationFrame(()=>this.draw());
+    if(this.running) this.raf=requestAnimationFrame(()=>this.draw()); /* mobile-ux: gated loop (RC3) */
   }
 };
 
@@ -2537,6 +2589,126 @@ const CFG = {
     box.innerHTML=html;
   }
 };
+
+/* ════════════════════════════════════════════════════════════
+   MOBILE_UX · chrome/behaviour layer — adds no content, removes none.
+   Back-to-top + scroll progress, TOC chips for mega-tabs, anchor
+   de-collision with sticky header, tab-hidden detail collapse,
+   rAF pause on backgrounded page.
+   ════════════════════════════════════════════════════════════ */
+const MOBILE_UX = {
+          jumpTo(el){ /* rect-math scrollTo - smooth scrollIntoView no-ops on some mobile engines */
+            const hdr=document.querySelector('header'), n=document.querySelector('nav.sticky');
+            const off=(hdr?hdr.offsetHeight:0)+(n?n.offsetHeight:0)+14;
+            const y=Math.max(0, Math.round(el.getBoundingClientRect().top+window.scrollY-off));
+            window.scrollTo({top:y, behavior:'smooth'});
+            setTimeout(()=>{ if(Math.abs(window.scrollY-y)>48) window.scrollTo(0,y); },420);
+          },
+  phone(){ return window.innerWidth < 768; },
+  syncHeader(){
+    const h=document.querySelector('header');
+    if(h) document.documentElement.style.setProperty('--hdr', h.offsetHeight+'px');
+  },
+  watchHeader(){ /* keep --hdr exact as web fonts / KaTeX settle (ResizeObserver, with timer fallback) */
+    const h=document.querySelector('header');
+    if(h && window.ResizeObserver){ const ro=new ResizeObserver(()=>this.syncHeader()); ro.observe(h); }
+    [800,2000,4000].forEach(ms=>setTimeout(()=>this.syncHeader(),ms));
+  },
+  centerNav(id){
+    const nav=document.getElementById('mainNav');
+    const btn=nav && nav.querySelector('[data-tab="'+id+'"]');
+    if(nav && btn && getComputedStyle(nav).flexWrap==='nowrap'){
+      nav.scrollTo({left: btn.offsetLeft - nav.clientWidth/2 + btn.offsetWidth/2, behavior:'smooth'});
+    }
+  },
+  chip(text,targetId,title){
+    const b=document.createElement('button');
+    b.type='button'; b.className='toc-chip'; b.textContent=text;
+    if(title) b.title=title;
+    b.addEventListener('click',()=>{
+      const t=document.getElementById(targetId);
+      if(!t) return;
+      const d=t.closest('details'); if(d) d.open=true;
+      MOBILE_UX.jumpTo(t);
+    });
+    return b;
+  },
+  buildToc(){
+    const specs=[...document.querySelectorAll('#tab-syllabus .font-mono.uppercase')].map(s=>s.textContent.trim()).filter(t=>/^Spec/.test(t));
+    const mk=(secId,labelSel,numbers)=>{
+      const sec=document.getElementById(secId); if(!sec||sec.querySelector('.toc-strip')) return;
+      const heads=[...sec.querySelectorAll(labelSel)];
+      if(heads.length<4) return;
+      const strip=document.createElement('div'); strip.className='toc-strip'; strip.setAttribute('aria-hidden','true');
+      heads.forEach((h,i)=>{
+        if(!h.id) h.id=secId.slice(4)+'-sec-'+i;
+        h.style.scrollMarginTop='calc(var(--hdr) + 12px)';
+        let label=h.textContent.trim().replace(/\s+/g,' ');
+        if(numbers && specs[i]) label=specs[i].replace('Spec','').trim()+' · '+label;
+        if(label.length>34) label=label.slice(0,33)+'…';
+        strip.appendChild(MOBILE_UX.chip(label,h.id,h.textContent.trim()));
+      });
+      sec.insertBefore(strip,sec.firstElementChild);
+    };
+    mk('tab-syllabus','h3.font-display',true);
+    mk('tab-explain','h3.font-display',false);
+  },
+  collapseDetailsOnPhone(){
+    if(!this.phone()) return;
+    document.querySelectorAll('#tab-review details[open] > summary, #tab-syllabus details[open] > summary')
+      .forEach(s=>{ s.parentElement.removeAttribute('open'); });
+  },
+  installChrome(){
+    if(document.getElementById('backTop')) return;
+    const bar=document.createElement('div'); bar.id='scrollProg'; document.body.appendChild(bar);
+    const up=document.createElement('button'); up.id='backTop'; up.type='button'; up.setAttribute('aria-label','Back to top');
+    up.textContent='↑';
+    up.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+    document.body.appendChild(up);
+    const upd=()=>{
+      const max=document.documentElement.scrollHeight-innerHeight;
+      const y=window.scrollY;
+      bar.style.width=(max>0?(y/max)*100:0)+'%';
+      up.classList.toggle('show', y>innerHeight*1.2);
+    };
+    window.addEventListener('scroll',()=>{ if(window.__mobRaf) return; window.__mobRaf=requestAnimationFrame(()=>{window.__mobRaf=0;upd();}); },{passive:true});
+    upd();
+  },
+  openDetailsForHash(){
+    const d=document.getElementById(location.hash.slice(1));
+    if(d){ const p=d.closest('details'); if(p) p.open=true; }
+  },
+  init(){
+    this.syncHeader(); this.watchHeader(); this.buildToc(); this.collapseDetailsOnPhone(); this.installChrome();
+    window.addEventListener('resize',()=>{ this.syncHeader(); this.centerNav(document.querySelector('.tab-btn-active') && document.querySelector('.tab-btn-active').dataset.tab); });
+    window.addEventListener('hashchange',()=>this.openDetailsForHash());
+    document.querySelectorAll('a[href^="#rev-"]').forEach(a=>a.addEventListener('click',()=>this.openDetailsForHash()));
+    setTimeout(()=>this.syncHeader(),600); setTimeout(()=>this.syncHeader(),2000); /* web-font settle */
+    document.addEventListener('visibilitychange',()=>{
+      const on=!document.hidden;
+      if(!on){ MS.setRunning(false); ORB.setRunning(false); }
+      else{
+        const act=document.querySelector('.tab-panel.active');
+        if(act){ MS.setRunning(act.id==='tab-massspec'); ORB.setRunning(act.id==='tab-orbitals'); }
+      }
+    });
+  }
+};
+if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',()=>MOBILE_UX.init());
+else MOBILE_UX.init();
+
+/* mobile-ux retrofit: exact --hdr as fonts settle + retry TOC build for deferred-render grids */
+(function(){
+  const M = window.MOBILE_UX || (typeof MOBILE_UX!=='undefined' ? MOBILE_UX : null);
+  if(!M) return;
+  if(!M.watchHeaderInstalled){
+    M.watchHeaderInstalled = true;
+    const hs = document.querySelectorAll('header, nav.sticky, #mainNav');
+    if(window.ResizeObserver){ const ro=new ResizeObserver(()=>M.syncHeader()); hs.forEach(x=>ro.observe(x)); }
+    [800,2000,4000,6000].forEach(ms=>setTimeout(()=>M.syncHeader(),ms));
+  }
+  [1500,4000].forEach(ms=>setTimeout(()=>{ if(M.buildToc) M.buildToc(); },ms));
+})();
 </script>
 </body>
 </html>

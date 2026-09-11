@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>IAL Topic 5 — Alkenes · Master Studio (WCH11)</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
@@ -48,6 +48,25 @@ details[open]>summary::before{transform:rotate(90deg);color:#34d399}
 .pi-lobe.bottom{animation-delay:1.3s}
 @keyframes piPulse{0%,100%{opacity:.35}50%{opacity:.85}}
 @media (prefers-reduced-motion:reduce){.pi-lobe,.glow-a,.glow-b,.glow-c{animation:none}}
+/* ===== MOBILE UX LAYER ===== */
+:root{--hdr:118px}
+html{scroll-padding-top:calc(var(--hdr) + 10px)}
+.toc-strip{display:none;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:2px 0 6px;margin-bottom:2px}
+.toc-strip::-webkit-scrollbar{display:none}
+.toc-chip{flex-shrink:0;font-size:10px;line-height:1;padding:7px 11px;border-radius:9999px;border:1px solid rgba(51,65,85,.9);background:rgba(15,23,42,.85);color:#94a3b8;font-weight:600;white-space:nowrap;cursor:pointer}
+#backTop{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:70;width:44px;height:44px;border-radius:9999px;border:1px solid rgba(52,211,153,.35);background:rgba(8,14,26,.92);color:#6ee7b7;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transform:translateY(8px);transition:opacity .25s,transform .25s}
+#backTop.show{opacity:1;pointer-events:auto;transform:none}
+#scrollProg{position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,#10b981,#34d399);z-index:80;pointer-events:none}
+@media (max-width:1023.98px){
+  header{background-color:rgba(2,6,23,.97)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;padding-top:env(safe-area-inset-top)}
+  header nav{flex-wrap:nowrap!important;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:4px}
+  header nav::-webkit-scrollbar{display:none}
+  header nav .tab-btn{flex-shrink:0}
+  .glow{animation-play-state:paused}
+  select,input[type="number"]{font-size:16px!important}
+  .toc-strip{display:flex}
+}
+@media (prefers-reduced-motion:reduce){.glow{animation:none!important}.tab-panel.active{animation:none}}
 </style>
 </head>
 <body class="min-h-screen flex flex-col selection:bg-emerald-500 selection:text-slate-900">
@@ -447,6 +466,8 @@ function switchTab(id){
     const a=b.dataset.tab===id;const isB=b.dataset.tab==='builder';
     b.className='tab-btn btn-press py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs font-medium border-b-2 rounded-t-lg '+(a?'tab-btn-active '+(isB?'!text-amber-300 !border-amber-400 !bg-amber-950/30':''):(isB?'text-amber-300/80 hover:text-amber-200 border-transparent':'text-slate-400 hover:text-emerald-300 border-transparent'));
   });
+  window.scrollTo(0,0);
+  if(typeof MOBILE_UX!=='undefined'){MOBILE_UX.syncHeader();MOBILE_UX.centerNav(id);}
   setTimeout(()=>renderMathIn(),80);
 }
 function setMode(p,mode){
@@ -871,6 +892,86 @@ window.onload=function(){
   renderMkBtns();renderEzBtns();renderPoBtns();
   safeInitKaTeX();
 };
+
+/* ================= MOBILE UX ================= */
+const MOBILE_UX = {
+          jumpTo(el){ /* rect-math scrollTo - smooth scrollIntoView no-ops on some mobile engines */
+            const hdr=document.querySelector('header'), n=document.querySelector('nav.sticky');
+            const off=(hdr?hdr.offsetHeight:0)+(n?n.offsetHeight:0)+14;
+            const y=Math.max(0, Math.round(el.getBoundingClientRect().top+window.scrollY-off));
+            window.scrollTo({top:y, behavior:'smooth'});
+            setTimeout(()=>{ if(Math.abs(window.scrollY-y)>48) window.scrollTo(0,y); },420);
+          },
+  phone(){ return window.innerWidth < 768; },
+  syncHeader(){ const h=document.querySelector('header');
+    if(h) document.documentElement.style.setProperty('--hdr', h.offsetHeight+'px'); },
+  centerNav(id){ const nav=document.querySelector('header nav');
+    const btn=nav && nav.querySelector('[data-tab="'+id+'"]');
+    if(nav && btn && getComputedStyle(nav).flexWrap==='nowrap')
+      nav.scrollTo({left: btn.offsetLeft - nav.clientWidth/2 + btn.offsetWidth/2, behavior:'smooth'}); },
+  chip(text,targetId,title){ const b=document.createElement('button');
+    b.type='button'; b.className='toc-chip'; b.textContent=text; if(title) b.title=title;
+    b.addEventListener('click',()=>{ const t=document.getElementById(targetId); if(!t) return;
+      const d=t.closest('details'); if(d) d.open=true;
+      MOBILE_UX.jumpTo(t); });
+    return b; },
+  buildToc(){
+    const mk=(secId,labelSel,numbers)=>{ const sec=document.getElementById(secId);
+      if(!sec||sec.querySelector('.toc-strip')) return;
+      const heads=[...sec.querySelectorAll(labelSel)]; if(heads.length<4) return;
+      const strip=document.createElement('div'); strip.className='toc-strip'; strip.setAttribute('aria-hidden','true');
+      heads.forEach((h,i)=>{ if(!h.id) h.id=secId.slice(4)+'-sec-'+i;
+        if(h.tagName!=='SUMMARY') h.style.scrollMarginTop='calc(var(--hdr) + 12px)';
+        let label=h.textContent.trim().replace(/\s+/g,' ');
+        if(numbers && numbers[i]) label=numbers[i]+' · '+label;
+        if(label.length>34) label=label.slice(0,33)+'…';
+        strip.appendChild(MOBILE_UX.chip(label,h.id,h.textContent.trim())); });
+      sec.insertBefore(strip,sec.firstElementChild); };
+    mk('tab-syllabus','#overview-grid h3.font-display',OVERVIEW.map(c=>c.codes));
+    mk('tab-review','details > summary',null); },
+  collapseDetailsOnPhone(){ if(!this.phone()) return;
+    document.querySelectorAll('#tab-review details[open] > summary, #tab-syllabus details[open] > summary')
+      .forEach(s=>{ s.parentElement.removeAttribute('open'); }); },
+  installChrome(){ if(document.getElementById('backTop')) return;
+    const bar=document.createElement('div'); bar.id='scrollProg'; document.body.appendChild(bar);
+    const up=document.createElement('button'); up.id='backTop'; up.type='button';
+    up.setAttribute('aria-label','Back to top'); up.textContent='↑';
+    up.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+    document.body.appendChild(up);
+    const upd=()=>{ const max=document.documentElement.scrollHeight-innerHeight, y=window.scrollY;
+      bar.style.width=(max>0?(y/max)*100:0)+'%';
+      up.classList.toggle('show', y>innerHeight*1.2); };
+    window.addEventListener('scroll',()=>{ if(window.__mobRaf) return;
+      window.__mobRaf=requestAnimationFrame(()=>{window.__mobRaf=0;upd();}); },{passive:true});
+    upd(); },
+  openDetailsForHash(){ const d=document.getElementById(location.hash.slice(1));
+    if(d){ const p=d.closest('details'); if(p) p.open=true; } },
+  init(){
+    this.syncHeader(); this.buildToc(); this.collapseDetailsOnPhone(); this.installChrome();
+    if(document.readyState==='complete') setTimeout(()=>this.buildToc(),100);
+    else window.addEventListener('load',()=>this.buildToc()); /* overview cards are JS-rendered on load */
+    window.addEventListener('resize',()=>{ this.syncHeader();
+      const a=document.querySelector('.tab-btn-active'); if(a) this.centerNav(a.dataset.tab); });
+    window.addEventListener('hashchange',()=>this.openDetailsForHash());
+    document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',()=>this.openDetailsForHash()));
+    setTimeout(()=>this.syncHeader(),600); setTimeout(()=>this.syncHeader(),2000); /* web-font settle */
+  }
+};
+if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',()=>MOBILE_UX.init());
+else MOBILE_UX.init();
+
+/* mobile-ux retrofit: exact --hdr as fonts settle + retry TOC build for deferred-render grids */
+(function(){
+  const M = window.MOBILE_UX || (typeof MOBILE_UX!=='undefined' ? MOBILE_UX : null);
+  if(!M) return;
+  if(!M.watchHeaderInstalled){
+    M.watchHeaderInstalled = true;
+    const hs = document.querySelectorAll('header, nav.sticky, #mainNav');
+    if(window.ResizeObserver){ const ro=new ResizeObserver(()=>M.syncHeader()); hs.forEach(x=>ro.observe(x)); }
+    [800,2000,4000,6000].forEach(ms=>setTimeout(()=>M.syncHeader(),ms));
+  }
+  [1500,4000].forEach(ms=>setTimeout(()=>{ if(M.buildToc) M.buildToc(); },ms));
+})();
 </script>
 </body>
 </html>
