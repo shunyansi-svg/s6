@@ -202,6 +202,167 @@ nav, nav > div { max-width: 100% !important; }
 }
 /* ===== /MUX mobile layer ===== */
 </style>
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+<style id="apple-hig-redox-theme">
+/* ===== APPLE HIG / macOS SEQUOIA DARK GLASSMORPHISM & SPRING ANIMATIONS ===== */
+:root {
+  --apple-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --apple-spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --apple-glass: rgba(18, 23, 34, 0.74);
+  --apple-glass-elevated: rgba(26, 32, 46, 0.82);
+  --apple-border: rgba(255, 255, 255, 0.085);
+  --apple-specular: inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Inter", sans-serif !important;
+  background:
+    radial-gradient(ellipse 110% 70% at 88% -6%, rgba(251, 191, 36, 0.10), transparent 58%),
+    radial-gradient(ellipse 95% 65% at -8% 24%, rgba(52, 211, 153, 0.09), transparent 55%),
+    radial-gradient(ellipse 90% 65% at 55% 110%, rgba(56, 189, 248, 0.08), transparent 55%),
+    #04070e !important;
+  color: #f5f5f7 !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.011em;
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Space Grotesk", sans-serif !important;
+  letter-spacing: -0.022em;
+}
+
+header {
+  background: rgba(10, 14, 22, 0.76) !important;
+  -webkit-backdrop-filter: saturate(190%) blur(28px) !important;
+  backdrop-filter: saturate(190%) blur(28px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.55), inset 0 -1px 0 0 rgba(255, 255, 255, 0.04) !important;
+}
+
+nav {
+  background: rgba(12, 16, 26, 0.78) !important;
+  -webkit-backdrop-filter: saturate(190%) blur(26px) !important;
+  backdrop-filter: saturate(190%) blur(26px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.075) !important;
+  padding: 6px 0 !important;
+}
+
+nav > div {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.075);
+  border-radius: 14px;
+  padding: 4px !important;
+  gap: 4px !important;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.45);
+}
+
+nav > div > button {
+  border-radius: 10px !important;
+  border-bottom: none !important;
+  padding: 7px 12px !important;
+  transition: all 0.28s var(--apple-spring) !important;
+}
+
+.tab-btn-active {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  border-bottom: none !important;
+  background: linear-gradient(180deg, rgba(56, 189, 248, 0.26) 0%, rgba(14, 165, 233, 0.15) 100%) !important;
+  box-shadow: 0 2px 10px -2px rgba(56, 189, 248, 0.35), inset 0 1px 0 0 rgba(255, 255, 255, 0.22), 0 0 0 1px rgba(56, 189, 248, 0.34) !important;
+}
+
+.bg-slate-900, .bg-slate-950, .bg-slate-900\/95, .bg-slate-900\/80 {
+  background: var(--apple-glass) !important;
+  -webkit-backdrop-filter: saturate(180%) blur(22px);
+  backdrop-filter: saturate(180%) blur(22px);
+  border-color: var(--apple-border) !important;
+  box-shadow: var(--apple-specular), 0 14px 34px -12px rgba(0, 0, 0, 0.48);
+  border-radius: 18px !important;
+  transition: transform 0.36s var(--apple-spring), border-color 0.36s var(--apple-ease), box-shadow 0.36s var(--apple-ease);
+}
+
+.lift {
+  transition: transform 0.38s var(--apple-spring), border-color 0.38s var(--apple-ease), box-shadow 0.38s var(--apple-ease) !important;
+}
+
+.lift:hover {
+  transform: translateY(-3px) scale(1.003) !important;
+  border-color: rgba(56, 189, 248, 0.34) !important;
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.2), 0 22px 44px -14px rgba(0, 0, 0, 0.65), 0 0 28px -8px rgba(56, 189, 248, 0.22) !important;
+}
+
+main > section:not(.hidden) {
+  animation: appleSectionIn 0.44s var(--apple-spring) both;
+}
+
+@keyframes appleSectionIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.994);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+button {
+  transition: transform 0.18s var(--apple-spring), background-color 0.24s var(--apple-ease), border-color 0.24s var(--apple-ease), box-shadow 0.24s var(--apple-ease), color 0.2s var(--apple-ease) !important;
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+button:active:not(:disabled) {
+  transform: scale(0.96) !important;
+}
+
+select, input[type="text"], input[type="number"] {
+  background: rgba(13, 17, 26, 0.86) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 11px !important;
+  padding: 8px 12px !important;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
+  transition: border-color 0.25s var(--apple-ease), box-shadow 0.25s var(--apple-ease);
+}
+
+select:focus, input[type="text"]:focus, input[type="number"]:focus {
+  border-color: rgba(56, 189, 248, 0.65) !important;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.18) !important;
+  outline: none !important;
+}
+
+.apple-pill {
+  background: rgba(255, 255, 255, 0.055);
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 9999px;
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(16px);
+}
+
+.apple-segmented {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 4px;
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+#spotlight-modal {
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  transition: opacity 0.25s var(--apple-ease);
+}
+</style>
 </head>
 <body class="text-slate-100 font-sans min-h-screen flex flex-col">
 
@@ -226,9 +387,18 @@ nav, nav > div { max-width: 100% !important; }
                     <p class="text-xs text-slate-400">WCH12 · Unit 2 · Paper 2 · Spec 8.1–8.28 — Redox, Group Trends, Ion Tests, Titration &amp; the Halogen Reactions</p>
                 </div>
             </div>
-            <div class="flex items-center gap-2">
-                <span class="px-2.5 py-1 text-xs font-semibold rounded-full bg-sky-950 text-sky-300 border border-sky-800">Edexcel Spec 8.1 – 8.28</span>
-                <span class="px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-950 text-emerald-300 border border-emerald-800">CP3 · CP4</span>
+            <div class="flex flex-wrap items-center gap-2">
+                <span class="hidden lg:inline-block px-2.5 py-1 text-xs font-semibold rounded-full apple-pill text-sky-300">Edexcel Spec 8.1 – 8.28</span>
+                <span class="hidden sm:inline-block px-2.5 py-1 text-xs font-semibold rounded-full apple-pill text-emerald-300">CP3 · CP4</span>
+                <button type="button" onclick="openSpotlight()" class="flex items-center gap-2 px-3 py-1.5 rounded-full apple-pill text-slate-200 hover:text-sky-300 text-xs font-medium" title="Quick Search & Concept Jump (⌘K)">
+                    <svg class="w-3.5 h-3.5 text-sky-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                    <span>Quick Search</span>
+                    <kbd class="px-1.5 py-0.5 text-[9px] font-mono bg-slate-950/80 text-slate-400 rounded border border-slate-700/80">⌘K</kbd>
+                </button>
+                <button type="button" onclick="switchTab('solver');switchSolver('sim');" class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-sky-500/15 border border-sky-500/35 text-sky-300 hover:bg-sky-500/25 text-xs font-semibold">
+                    <span class="w-2 h-2 rounded-full bg-sky-400 animate-pulse"></span>
+                    <span>Mastery: <strong id="mastery-percentage" class="font-mono text-sky-200">0%</strong></span>
+                </button>
             </div>
         </div>
     </header>
@@ -585,6 +755,69 @@ nav, nav > div { max-width: 100% !important; }
                     <p class="text-[11px] text-slate-400 leading-relaxed">Group 7 here is <b class="text-slate-300">limited to Cl, Br, I</b> (8C) — fluorine and astatine appear only as predictions (8.28). Transition-metal chemistry and electrode potentials are <b class="text-emerald-300">Topics 16/19 (WCH14)</b>. Halogenoalkane chemistry is <b class="text-sky-300">Topic 10</b>.</p>
                 </div>
             </div>
+
+            <!-- NEW: INTERACTIVE SPEC 8.1-8.28 CONCEPT LAB -->
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 space-y-5">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-slate-800 pb-4">
+                    <div>
+                        <span class="text-xs font-bold text-sky-400 uppercase tracking-widest">Interactive Concept Lab · Spec 8.1–8.28 &amp; Examiner Reports (2019–2026)</span>
+                        <h3 class="font-display text-lg font-bold text-white mt-1">Oxidation-State Exceptions, Chlorine Disproportionation Decoder &amp; Spec Self-Audit</h3>
+                        <p class="text-xs text-slate-400 mt-0.5">Directly targets WCH12 pitfalls on peroxides/hydrides, balancing hot vs cold NaOH + Cl₂ disproportionation, half-equation electron counts, and Spec 8.1–8.28 competencies.</p>
+                    </div>
+                    <div class="apple-segmented">
+                        <button type="button" onclick="switchSyl8Lab('oxdisp')" id="s8-btn-oxdisp" class="px-3 py-1.5 text-xs font-semibold rounded-lg bg-sky-500/20 text-sky-300 border border-sky-500/40">1. Exceptions &amp; Cl₂ Decoder</button>
+                        <button type="button" onclick="switchSyl8Lab('halfeq')" id="s8-btn-halfeq" class="px-3 py-1.5 text-xs font-semibold rounded-lg text-slate-400 hover:text-white border border-transparent">2. Half-Equation Builder</button>
+                        <button type="button" onclick="switchSyl8Lab('audit')" id="s8-btn-audit" class="px-3 py-1.5 text-xs font-semibold rounded-lg text-slate-400 hover:text-white border border-transparent">3. Spec 8.1–8.28 Self-Audit</button>
+                    </div>
+                </div>
+
+                <!-- Sub-panel 1: Oxidation Number Exceptions & Cl2 Disproportionation -->
+                <div id="s8-panel-oxdisp" class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
+                    <div class="lg:col-span-5 space-y-2">
+                        <p class="text-xs text-slate-300 font-semibold">Select a high-frequency WCH12 Oxidation-State or Disproportionation case:</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5" id="oxdisp-btns"></div>
+                    </div>
+                    <div class="lg:col-span-7 bg-slate-950 border border-slate-800 rounded-xl p-4 space-y-3" id="oxdisp-out"></div>
+                </div>
+
+                <!-- Sub-panel 2: Half-Equation & Electron-Count Combiner -->
+                <div id="s8-panel-halfeq" class="hidden grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
+                    <div class="lg:col-span-6 p-4 bg-slate-950 border border-slate-800 rounded-xl space-y-3">
+                        <span class="text-xs font-bold text-emerald-300 uppercase">⚖️ Interactive Half-Equation Electron-Balance Combiner (Spec 8.10)</span>
+                        <p class="text-xs text-slate-400">Examiner reports (Jun 2024) highlight that students miscount electrons in $\text{ClO}_3^- \rightarrow \text{Cl}^-$ ($6\text{e}^-$) or $\text{SO}_4^{2-} \rightarrow \text{H}_2\text{S}$ ($8\text{e}^-$). Pick a redox pair to see the step-by-step electron equalisation:</p>
+                        <select id="heq-pair-sel" onchange="showHalfEqPair()" class="w-full text-xs text-emerald-300 font-mono">
+                            <option value="0">3Cl₂ + 6OH⁻ (hot) → 5Cl⁻ + ClO₃⁻ + 3H₂O  [5:1 electron ratio]</option>
+                            <option value="1">2HBr + H₂SO₄ → Br₂ + SO₂ + 2H₂O  [2e⁻ redox]</option>
+                            <option value="2">8HI + H₂SO₄ → 4I₂ + H₂S + 4H₂O  [8e⁻ redox]</option>
+                            <option value="3">MnO₄⁻ + 8H⁺ + 5Fe²⁺ → Mn²⁺ + 5Fe³⁺ + 4H₂O  [5e⁻ redox]</option>
+                            <option value="4">2S₂O₃²⁻ + I₂ → S₄O₆²⁻ + 2I⁻  [Iodometric titration · S: +2 → +2.5]</option>
+                        </select>
+                        <div id="heq-pair-out" class="p-3.5 bg-slate-900 border border-slate-800 rounded-lg font-mono text-[11px] space-y-1.5 text-slate-200"></div>
+                    </div>
+                    <div class="lg:col-span-6 p-4 bg-slate-950 border border-slate-800 rounded-xl space-y-3">
+                        <span class="text-xs font-bold text-amber-300 uppercase">⚡ Instant Concept Check (WCH12 Jun 2024 PEF)</span>
+                        <p class="text-xs text-slate-300 leading-relaxed">When chlorate(V) ions ($\text{ClO}_3^-$) react with chloride ions ($\text{Cl}^-$) in acidic solution to form chlorine gas ($\text{Cl}_2$), how many electrons are transferred per $\text{ClO}_3^-$ ion, and what is the mole ratio $\text{ClO}_3^- : \text{Cl}^-$?</p>
+                        <div class="space-y-2">
+                            <button type="button" onclick="checkClo3Concept(false)" class="w-full text-left p-2.5 rounded-lg border border-slate-800 bg-slate-900 text-[11px] text-slate-300">
+                                <b>A.</b> 4 electrons transferred; mole ratio $\text{ClO}_3^- : \text{Cl}^- = 1 : 3$.
+                            </button>
+                            <button type="button" onclick="checkClo3Concept(true)" class="w-full text-left p-2.5 rounded-lg border border-slate-800 bg-slate-900 text-[11px] text-slate-300">
+                                <b>B.</b> 5 electrons gained per Cl in $\text{ClO}_3^-$ ($+5 \rightarrow 0$) and 1 electron lost per $\text{Cl}^-$ ($-1 \rightarrow 0$); mole ratio $\text{ClO}_3^- : \text{Cl}^- = 1 : 5$ ($\text{ClO}_3^- + 5\text{Cl}^- + 6\text{H}^+ \rightarrow 3\text{Cl}_2 + 3\text{H}_2\text{O}$).
+                            </button>
+                        </div>
+                        <div id="clo3-concept-fb" class="hidden p-2.5 rounded-lg text-[11px] leading-relaxed"></div>
+                    </div>
+                </div>
+
+                <!-- Sub-panel 3: Spec 8.1-8.28 Self-Audit -->
+                <div id="s8-panel-audit" class="hidden space-y-3">
+                    <div class="flex flex-wrap items-center justify-between gap-2">
+                        <p class="text-xs text-slate-300">Tick each Edexcel IAL Topic 8 competency as you master it. Your header Mastery % updates live.</p>
+                        <button type="button" onclick="toggleAllSpec8(true)" class="px-3 py-1 text-xs font-semibold rounded-lg bg-sky-500/20 text-sky-300 border border-sky-500/30">Check All</button>
+                    </div>
+                    <div id="spec8-audit-grid" class="grid grid-cols-1 md:grid-cols-2 gap-2.5"></div>
+                </div>
+            </div>
         </section>
 
         <!-- ============ TAB 2: REACTION TYPES ============ -->
@@ -662,6 +895,23 @@ nav, nav > div { max-width: 100% !important; }
                         </div>
                     </div>
                 </div>
+
+                <!-- NEW: INTERACTIVE GROUP 1 & 2 REACTIONS & THERMAL DECOMPOSITION MATRIX -->
+                <div class="reveal bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 border-b border-slate-800 pb-3">
+                        <div>
+                            <span class="font-display font-bold text-amber-300 text-sm">🔥 Interactive Group 1 &amp; 2 Reactions &amp; Thermal Decomposition Matrix (Spec 8.13, 8.14, 8.16)</span>
+                            <p class="text-xs text-slate-400 mt-0.5">Compare cold water vs steam for Mg, oxide/hydroxide reactions, and the Group 1 vs Group 2 nitrate &amp; carbonate decomposition rules (including the Lithium diagonal anomaly!):</p>
+                        </div>
+                        <div class="flex flex-wrap gap-1.5" id="g12-rx-btns">
+                            <button type="button" onclick="showG12Rx(0)" class="px-2.5 py-1 text-[11px] font-semibold rounded bg-amber-600 text-white">Mg: Cold H₂O vs Steam</button>
+                            <button type="button" onclick="showG12Rx(1)" class="px-2.5 py-1 text-[11px] font-semibold rounded bg-slate-800 text-slate-300">Group 1 vs 2 Nitrates</button>
+                            <button type="button" onclick="showG12Rx(2)" class="px-2.5 py-1 text-[11px] font-semibold rounded bg-slate-800 text-slate-300">Group 1 vs 2 Carbonates</button>
+                            <button type="button" onclick="showG12Rx(3)" class="px-2.5 py-1 text-[11px] font-semibold rounded bg-slate-800 text-slate-300">Oxides + H₂O / Acids</button>
+                        </div>
+                    </div>
+                    <div id="g12-rx-out" class="p-4 bg-slate-900 border border-slate-800 rounded-xl text-xs space-y-2 leading-relaxed"></div>
+                </div>
             </div>
         </section>
 
@@ -735,6 +985,41 @@ nav, nav > div { max-width: 100% !important; }
                         <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800 font-mono text-[11px] text-emerald-300">Ag⁺(aq) + X⁻(aq) → AgX(s)</div>
                         <p class="text-[11px] text-slate-400"><b class="text-slate-300">Confirm with NH₃:</b> AgCl dissolves in <b>dilute</b> NH₃ · AgBr dissolves only in <b>concentrated</b> NH₃ · AgI <b>insoluble</b>.</p>
                         <p class="text-[11px] text-amber-200">⚠️ Use <b>nitric</b> acid to acidify — HCl would add Cl⁻ and give a false positive.</p>
+                    </div>
+                </div>
+
+                <!-- NEW: STATION F — SEQUENTIAL ION TEST PROTOCOL & UNKNOWN DOUBLE-SALT DETECTIVE -->
+                <div class="reveal bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 border-b border-slate-800 pb-3">
+                        <div class="flex items-center gap-2">
+                            <span class="px-2 py-0.5 rounded bg-cyan-950 border border-cyan-800 text-cyan-300 text-[10px] font-bold uppercase">Station F</span>
+                            <span class="font-display font-bold text-cyan-300 text-sm">Unknown Inorganic Salt Detective &amp; WCH13 Sequential Test Order (Spec 8.17–8.19, 8.27ii)</span>
+                        </div>
+                        <span class="text-[10px] font-mono text-amber-300">Why Order Matters: CO₃²⁻ → SO₄²⁻ → X⁻</span>
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+                        <div class="lg:col-span-5 p-4 bg-slate-900 border border-slate-800 rounded-xl space-y-2.5 text-xs">
+                            <span class="font-bold text-white block">🧭 Why must you test in the order CO₃²⁻ → SO₄²⁻ → X⁻ on a single unknown solution?</span>
+                            <ol class="list-decimal list-inside space-y-1.5 text-[11px] text-slate-300 leading-relaxed">
+                                <li><b>Step 1 — Add dilute HNO₃:</b> Tests for $\text{CO}_3^{2-}$ (effervescence of $\text{CO}_2$) AND destroys any carbonate so it cannot form white $\text{BaCO}_3(\text{s})$ or $\text{Ag}_2\text{CO}_3(\text{s})$ later. (Never use HCl or $\text{H}_2\text{SO}_4$!)</li>
+                                <li><b>Step 2 — Add Ba(NO₃)₂(aq):</b> Tests for $\text{SO}_4^{2-}$ (white ppt of $\text{BaSO}_4$) AND precipitates out any sulfate (if present, filter it off) so $\text{Ag}_2\text{SO}_4$ cannot interfere. (Never use $\text{BaCl}_2$ if testing the same tube for halides next!)</li>
+                                <li><b>Step 3 — Add AgNO₃(aq) then NH₃(aq):</b> Tests for $\text{Cl}^- / \text{Br}^- / \text{I}^-$. Never add $\text{NaOH}$ (PEF Jan 2021: $\text{OH}^-$ reacts with $\text{Ag}^+$ to form brown/white $\text{Ag}_2\text{O}/\text{AgOH}$ precipitate!).</li>
+                            </ol>
+                        </div>
+                        <div class="lg:col-span-7 p-4 bg-slate-900 border border-slate-800 rounded-xl space-y-3 text-xs">
+                            <div class="flex flex-wrap items-center justify-between gap-2">
+                                <span class="font-bold text-emerald-300">🕵️ Identify the Unknown Salt (Flame + Anion Tests)</span>
+                                <select id="salt-det-sel" onchange="loadSaltMystery()" class="text-xs text-emerald-300 font-mono">
+                                    <option value="0">Mystery Salt X1 (WCH13 Style)</option>
+                                    <option value="1">Mystery Salt X2 (Thermal Decomp + Halide)</option>
+                                    <option value="2">Mystery Salt X3 (Ammonium Double Test)</option>
+                                    <option value="3">Mystery Salt X4 (Group 2 Sulfate vs Carbonate)</option>
+                                </select>
+                            </div>
+                            <div id="salt-det-clue" class="p-3 bg-slate-950 border border-slate-800 rounded-lg text-[11px] text-slate-200 space-y-1"></div>
+                            <div id="salt-det-opts" class="grid grid-cols-1 sm:grid-cols-3 gap-2"></div>
+                            <div id="salt-det-fb" class="hidden p-2.5 rounded-lg text-[11px] leading-relaxed"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -862,6 +1147,54 @@ nav, nav > div { max-width: 100% !important; }
                         <div class="p-2 bg-slate-900 rounded-lg border border-slate-800">Do a rough run, then accurate runs; keep titres within 0.10 cm³ (concordant) and average them</div>
                     </div>
                 </div>
+
+                <!-- NEW: CP3 & CP4 CONCORDANT TITRE SELECTOR & TECHNIQUE FAULT / UNCERTAINTY DOCTOR -->
+                <div class="reveal grid grid-cols-1 lg:grid-cols-2 gap-5 text-xs">
+                    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3">
+                        <span class="font-display font-bold text-sky-300 text-sm block">4 · Interactive Concordant Titre Selector (Within ±0.10 cm³)</span>
+                        <p class="text-[11px] text-slate-400">In WCH12/WCH13, you must tick ONLY the <b>concordant titres (within 0.10 cm³ of each other)</b> and exclude the rough/overshot runs when calculating the mean titre. Tick the runs to include below:</p>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-[11px] border border-slate-800 text-center font-mono">
+                                <tr class="bg-slate-900 text-sky-300">
+                                    <th class="p-2 border border-slate-800">Run</th>
+                                    <th class="p-2 border border-slate-800">Rough</th>
+                                    <th class="p-2 border border-slate-800">Run 1</th>
+                                    <th class="p-2 border border-slate-800">Run 2</th>
+                                    <th class="p-2 border border-slate-800">Run 3</th>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 border border-slate-800 text-slate-400">Titre / cm³</td>
+                                    <td class="p-2 border border-slate-800 text-amber-300">24.65</td>
+                                    <td class="p-2 border border-slate-800 text-slate-200">23.85</td>
+                                    <td class="p-2 border border-slate-800 text-rose-300">24.15</td>
+                                    <td class="p-2 border border-slate-800 text-slate-200">23.75</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 border border-slate-800 text-slate-400">Include?</td>
+                                    <td class="p-2 border border-slate-800"><input type="checkbox" id="ct-0" onchange="evalConcordant()" class="accent-sky-400"></td>
+                                    <td class="p-2 border border-slate-800"><input type="checkbox" id="ct-1" checked onchange="evalConcordant()" class="accent-sky-400"></td>
+                                    <td class="p-2 border border-slate-800"><input type="checkbox" id="ct-2" onchange="evalConcordant()" class="accent-sky-400"></td>
+                                    <td class="p-2 border border-slate-800"><input type="checkbox" id="ct-3" checked onchange="evalConcordant()" class="accent-sky-400"></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div id="concordant-out" class="p-3 bg-slate-900 border border-slate-800 rounded-lg font-mono text-[11px] text-slate-300"></div>
+                    </div>
+
+                    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3">
+                        <span class="font-display font-bold text-amber-300 text-sm block">5 · CP3 / CP4 Procedural Fault &amp; % Uncertainty Doctor</span>
+                        <p class="text-[11px] text-slate-400">Select a common student error during volumetric analysis to see whether it makes the recorded titre <b>too high, too low, or unchanged</b> (and why):</p>
+                        <select id="tit-fault-sel" onchange="showTitFault()" class="w-full text-xs text-amber-300 font-mono">
+                            <option value="0">1. Air bubble in burette jet dislodges during the titration</option>
+                            <option value="1">2. Conical flask rinsed with the analyte solution instead of deionised water</option>
+                            <option value="2">3. Burette rinsed with deionised water instead of the titrant solution</option>
+                            <option value="3">4. Filter funnel left in top of burette during titration (drips into burette)</option>
+                            <option value="4">5. Washing down the inside of the conical flask with deionised water near endpoint</option>
+                            <option value="5">6. Burette (±0.05 cm³ × 2 readings) vs Pipette (±0.06 cm³ × 1 reading) % Uncertainty</option>
+                        </select>
+                        <div id="tit-fault-out" class="p-3.5 bg-slate-900 border border-slate-800 rounded-lg text-[11px] space-y-1.5 text-slate-300 leading-relaxed"></div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -952,6 +1285,38 @@ nav, nav > div { max-width: 100% !important; }
                     <p id="sort-fb" class="text-[11px] min-h-[16px]"></p>
                     <button onclick="nextSort()" class="px-3 py-1.5 bg-sky-700 hover:bg-sky-600 rounded-lg text-xs font-bold text-white">Next question →</button>
                 </div>
+
+                <!-- NEW: GROUP 2 PRECIPITATE MATRIX & 4-POINT THERMAL STABILITY QWC BUILDER -->
+                <div class="reveal grid grid-cols-1 lg:grid-cols-2 gap-5 text-xs">
+                    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3">
+                        <span class="font-display font-bold text-emerald-300 text-sm block">🧪 Group 2 Aqueous Precipitate Matrix (Adding OH⁻ vs SO₄²⁻)</span>
+                        <p class="text-[11px] text-slate-400">WCH12 &amp; WCH13 test tubes: what do you observe when you add a few drops of $\text{NaOH(aq)}$ or $\text{Na}_2\text{SO}_4\text{(aq)}$ to equal concentrations of $\text{Mg}^{2+}, \text{Ca}^{2+}, \text{Sr}^{2+}, \text{Ba}^{2+}$?</p>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-[11px] border border-slate-800">
+                                <tr class="bg-slate-900 text-emerald-300">
+                                    <th class="p-2 border border-slate-800 text-left">Ion</th>
+                                    <th class="p-2 border border-slate-800 text-left">+ NaOH(aq) [OH⁻ solubility ↑]</th>
+                                    <th class="p-2 border border-slate-800 text-left">+ Na₂SO₄(aq) [SO₄²⁻ solubility ↓]</th>
+                                </tr>
+                                <tr><td class="p-2 border border-slate-800 font-mono text-white">Mg²⁺(aq)</td><td class="p-2 border border-slate-800 text-rose-300 font-semibold">Thick white ppt of Mg(OH)₂</td><td class="p-2 border border-slate-800 text-emerald-300">No precipitate (colourless solution)</td></tr>
+                                <tr><td class="p-2 border border-slate-800 font-mono text-white">Ca²⁺(aq)</td><td class="p-2 border border-slate-800 text-amber-200">Faint white ppt / slight cloudiness</td><td class="p-2 border border-slate-800 text-amber-200">Slight white ppt (sparingly soluble)</td></tr>
+                                <tr><td class="p-2 border border-slate-800 font-mono text-white">Sr²⁺(aq)</td><td class="p-2 border border-slate-800 text-emerald-300">Slight / no ppt (soluble)</td><td class="p-2 border border-slate-800 text-rose-300 font-semibold">White ppt of SrSO₄</td></tr>
+                                <tr><td class="p-2 border border-slate-800 font-mono text-white">Ba²⁺(aq)</td><td class="p-2 border border-slate-800 text-emerald-300">No precipitate (strongly alkaline soln)</td><td class="p-2 border border-slate-800 text-rose-300 font-semibold">Thick white ppt of BaSO₄ (insoluble)</td></tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3">
+                        <span class="font-display font-bold text-amber-300 text-sm block">📝 The 4-Mark Examiner QWC Template for Thermal Stability (PEF 2019–2024)</span>
+                        <p class="text-[11px] text-slate-400">Examiner reports warn that saying "bigger atoms are more stable" scores 0/4. Every full-mark explanation of why $\text{BaCO}_3$ (or $\text{Ba(NO}_3)_2$) is more thermally stable than $\text{MgCO}_3$ must hit these 4 sequential points:</p>
+                        <ol class="list-decimal list-inside space-y-1.5 text-[11px] text-slate-300 leading-relaxed">
+                            <li><b>Ionic radius &amp; Charge density:</b> Down Group 2, the <b>ionic radius of the $\text{M}^{2+}$ cation increases</b> while the $+2$ charge stays the same, so the <b>charge density decreases</b> (or $\text{Mg}^{2+}$ has a smaller ionic radius and higher charge density).</li>
+                            <li><b>Polarising power of CATION:</b> The smaller $\text{Mg}^{2+}$ cation has a greater <b>polarising power</b> than $\text{Ba}^{2+}$. (Always say <i>ions</i>, never atoms!).</li>
+                            <li><b>Polarisation of ANION:</b> $\text{Mg}^{2+}$ <b>polarises (distorts) the electron cloud</b> of the large $\text{CO}_3^{2-}$ (or $\text{NO}_3^-$) anion to a greater extent.</li>
+                            <li><b>Bond weakening:</b> This weakens the <b>C–O (or N–O) covalent bond</b> within the anion more strongly, so less heat energy is needed to break it.</li>
+                        </ol>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -1016,6 +1381,28 @@ nav, nav > div { max-width: 100% !important; }
                     <div id="quiz-prods" class="flex flex-wrap gap-2 text-[11px]"></div>
                     <p id="quiz-fb" class="text-[11px] min-h-[16px]"></p>
                 </div>
+
+                <!-- NEW: GAS IDENTIFICATION TESTS & SPEC 8.28 FLUORINE / ASTATINE EXTRAPOLATOR -->
+                <div class="reveal grid grid-cols-1 lg:grid-cols-2 gap-5 text-xs">
+                    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3">
+                        <span class="font-display font-bold text-sky-300 text-sm block">🧪 Chemical Tests for the Gaseous Products of NaX + conc. H₂SO₄</span>
+                        <div class="space-y-2 text-[11px] text-slate-300">
+                            <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800"><b class="text-emerald-300">HCl / HBr / HI(g) (steamy/misty white fumes):</b> Bring a glass rod dipped in conc. $\text{NH}_3\text{(aq)}$ near the mouth of the tube ⇒ <b>dense white smoke</b> of solid $\text{NH}_4\text{X(s)}$ ($	ext{HX(g)} + \text{NH}_3\text{(g)} \rightarrow \text{NH}_4\text{X(s)}$).</div>
+                            <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800"><b class="text-amber-300">SO₂(g) (choking acidic gas, S = +4):</b> Bubble through or hold filter paper soaked in <b>acidified potassium dichromate(VI), $\text{K}_2\text{Cr}_2\text{O}_7$</b> ⇒ colour changes from <b>orange to green</b> ($\text{Cr}_2\text{O}_7^{2-} \rightarrow \text{Cr}^{3+}$).</div>
+                            <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800"><b class="text-rose-300">H₂S(g) (toxic rotten-egg gas, S = −2):</b> Hold moist <b>lead(II) ethanoate (or lead(II) nitrate) paper</b> at the mouth ⇒ turns <b>black</b> due to $\text{PbS(s)}$ precipitate.</div>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3">
+                        <span class="font-display font-bold text-rose-300 text-sm block">🔭 Spec 8.28 — Predicting Fluorine (F) &amp; Astatine (At) from Group 7 Trends</span>
+                        <p class="text-[11px] text-slate-400">Examiners test Spec 8.28 by asking you to extrapolate Group 7 trends to $\text{F}_2 / \text{F}^-$ at the top and $\text{At}_2 / \text{At}^-$ at the bottom. Click to inspect:</p>
+                        <div class="flex flex-wrap gap-1.5" id="f-at-btns">
+                            <button type="button" onclick="showFAtPred(0)" class="px-3 py-1.5 rounded-lg bg-rose-950 border border-rose-600 text-rose-300 font-mono text-[11px]">Fluorine (F₂) &amp; Fluoride (F⁻)</button>
+                            <button type="button" onclick="showFAtPred(1)" class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 font-mono text-[11px]">Astatine (At₂) &amp; Astatide (At⁻)</button>
+                        </div>
+                        <div id="f-at-out" class="p-3.5 bg-slate-900 border border-slate-800 rounded-lg text-[11px] space-y-1.5 text-slate-300 leading-relaxed"></div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -1033,6 +1420,7 @@ nav, nav > div { max-width: 100% !important; }
                     <button onclick="switchSolver('ox')" id="solver-btn-ox" class="px-3.5 py-1.5 rounded-lg bg-rose-600 text-white font-bold text-xs">🔢 Oxidation number</button>
                     <button onclick="switchSolver('titcalc')" id="solver-btn-titcalc" class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 text-xs">💧 Titration calc</button>
                     <button onclick="switchSolver('displ')" id="solver-btn-displ" class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 text-xs">🔁 Displacement predictor</button>
+                    <button onclick="switchSolver('sim')" id="solver-btn-sim" class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-sky-300 text-xs">🎓 10-Q WCH12/13 Exam Simulator</button>
                 </div>
 
                 <!-- Oxidation number -->
@@ -1077,6 +1465,22 @@ nav, nav > div { max-width: 100% !important; }
                         <button onclick="solveDispl()" class="px-4 py-2 bg-rose-700 hover:bg-rose-600 rounded-lg font-bold text-white">Predict</button>
                     </div>
                     <div id="dp-out" class="text-[11px] font-mono text-slate-400 p-3 bg-slate-950 rounded-lg border border-slate-800 whitespace-pre-wrap">Prediction appears here.</div>
+                </div>
+
+                <!-- Solver 4: 10-Question WCH12/WCH13 Past-Paper Concept & Calculation Simulator -->
+                <div id="solver-sim" class="hidden space-y-4 text-xs">
+                    <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 pb-3">
+                        <div>
+                            <span class="text-xs font-bold text-sky-400 uppercase">WCH12 &amp; WCH13 Past-Paper Concept Diagnostic (2020–2026 Series)</span>
+                            <p class="text-slate-400 text-[11px] mt-0.5">Test your mastery across Spec 8.1–8.28 (Redox, Disproportionation, Group 1 &amp; 2 Trends, CP3/CP4 Titration &amp; Group 7 Halogens).</p>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span id="t8-sim-score" class="px-3 py-1 rounded-full apple-pill text-xs font-mono text-sky-300">Score: 0 / 10</span>
+                            <button type="button" onclick="resetT8Sim()" class="px-2.5 py-1 text-[10px] font-semibold rounded-lg bg-slate-800 text-slate-300 border border-slate-700">Reset</button>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-1.5" id="t8-sim-pills"></div>
+                    <div id="t8-sim-box" class="p-4 bg-slate-950 border border-slate-800 rounded-xl space-y-3"></div>
                 </div>
             </div>
         </section>
@@ -1153,6 +1557,8 @@ nav, nav > div { max-width: 100% !important; }
                     <a href="#rev-halogen" class="px-3 py-1 bg-rose-950 text-rose-300 border border-rose-800 rounded-full">Group 7 reactions</a>
                     <a href="#rev-h2so4" class="px-3 py-1 bg-violet-950 text-violet-300 border border-violet-800 rounded-full">Halide + H₂SO₄</a>
                     <a href="#rev-traps" class="px-3 py-1 bg-slate-800 text-slate-300 border border-slate-700 rounded-full">Master trap checklist</a>
+                    <a href="#rev-pef-2026" class="px-3 py-1 bg-emerald-950 text-emerald-300 border border-emerald-800 rounded-full">2021–2026 Examiner Deep-Dive</a>
+                    <a href="#rev-flashcards" class="px-3 py-1 bg-sky-950 text-sky-300 border border-sky-800 rounded-full">Active-Recall Flashcards</a>
                 </div>
 
                 <details open id="rev-flame" class="bg-slate-950 border border-slate-800 rounded-xl">
@@ -1231,9 +1637,50 @@ nav, nav > div { max-width: 100% !important; }
                         <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-slate-300">☐ Burette readings to ±0.05 cm³; rinse flask with water only</div>
                     </div>
                 </details>
+
+                <details open id="rev-pef-2026" class="bg-slate-950 border border-slate-800 rounded-xl">
+                    <summary class="p-4 cursor-pointer font-display font-bold text-emerald-300 text-sm flex justify-between items-center"><span>7 · 2021–2026 WCH12 &amp; WCH13 Examiner Report Deep-Dive</span><span class="text-slate-500 text-xs">click to collapse</span></summary>
+                    <div class="px-4 pb-4 overflow-x-auto">
+                        <table class="w-full text-[11px] border border-slate-800">
+                            <tr class="bg-slate-900 text-emerald-300"><th class="p-2 border border-slate-800 text-left">Exam Topic &amp; Series</th><th class="p-2 border border-slate-800 text-left">Common Candidate Error</th><th class="p-2 border border-slate-800 text-left">Full-Mark Edexcel WCH12 / WCH13 Phrasing</th></tr>
+                            <tr><td class="p-2 border border-slate-800 font-semibold text-white">Oxidation Number per Atom (Oct 2019, Jan 2020, Jun 2024R)</td><td class="p-2 border border-slate-800 text-rose-300">Writing O in $\text{SO}_3 = -6$, O in $\text{H}_2\text{SO}_4 = -8$, or Cl in $\text{CaCl}_2 = -2$</td><td class="p-2 border border-slate-800 text-slate-300">Oxidation number is always stated <b>per single atom</b> with the sign before the number: O is $-2$ (except $-1$ in peroxides like $\text{H}_2\text{O}_2/\text{BaO}_2$ and $+2$ in $\text{OF}_2$); H is $+1$ (except $-1$ in metal hydrides like $\text{NaH}/\text{CaH}_2$).</td></tr>
+                            <tr><td class="p-2 border border-slate-800 font-semibold text-white">Thermal Stability of Group 2 Carbonates/Nitrates (Jan 2022–Oct 2024)</td><td class="p-2 border border-slate-800 text-rose-300">Saying "Mg atom is smaller so it polarises $\text{CO}_3$ more" or "ionic bond breaks"</td><td class="p-2 border border-slate-800 text-slate-300">Refer to <b>IONS</b> not atoms: $\text{Mg}^{2+}$ has a smaller ionic radius and higher charge density than $\text{Ba}^{2+}$ $\Rightarrow$ greater <b>polarising power</b> $\Rightarrow$ distorts/polarises the $\text{CO}_3^{2-}/\text{NO}_3^-$ anion electron cloud more $\Rightarrow$ weakens the <b>C–O (or N–O) covalent bond</b> inside the anion.</td></tr>
+                            <tr><td class="p-2 border border-slate-800 font-semibold text-white">Nitrate Decomposition Gas &amp; Indicator (Jan 2024)</td><td class="p-2 border border-slate-800 text-rose-300">Saying $\text{NO}_2$ turns universal indicator blue (confusing with $\text{NH}_3$)</td><td class="p-2 border border-slate-800 text-slate-300">Brown $\text{NO}_2(\text{g})$ is an <b>acidic gas</b> (dissolves in water to form $\text{HNO}_3 + \text{HNO}_2$) $\Rightarrow$ turns damp blue litmus or universal indicator <b>red</b>.</td></tr>
+                            <tr><td class="p-2 border border-slate-800 font-semibold text-white">Disproportionation of Chlorine (Jun 2024)</td><td class="p-2 border border-slate-800 text-rose-300">Failing to balance charges on $\text{Cl}^-$ and $\text{ClO}_3^-$ first, or omitting both oxidation state changes</td><td class="p-2 border border-slate-800 text-slate-300">State explicitly that <b>chlorine is simultaneously oxidised and reduced</b> from $0$ in $\text{Cl}_2$ to $-1$ in $\text{NaCl}$ and $+1$ in $\text{NaClO}$ (cold dilute NaOH) or $+5$ in $\text{NaClO}_3$ (hot conc. NaOH, 5:1 ratio).</td></tr>
+                            <tr><td class="p-2 border border-slate-800 font-semibold text-white">Halide Precipitate Confirmation (Jan 2021, Oct 2023)</td><td class="p-2 border border-slate-800 text-rose-300">Reversing AgCl/AgI colours, using HCl to acidify, or adding NaOH instead of $\text{NH}_3$</td><td class="p-2 border border-slate-800 text-slate-300">Acidify with <b>dilute $\text{HNO}_3$</b>, add $\text{AgNO}_3(\text{aq})$: $\text{AgCl}$ white (soluble in dil. $\text{NH}_3$), $\text{AgBr}$ cream (soluble in conc. $\text{NH}_3$), $\text{AgI}$ yellow (insoluble in conc. $\text{NH}_3$).</td></tr>
+                        </table>
+                    </div>
+                </details>
+
+                <div id="rev-flashcards" class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+                    <div class="flex flex-wrap items-center justify-between gap-2">
+                        <div>
+                            <span class="text-xs font-bold text-sky-400 uppercase tracking-widest">Active Recall Deck</span>
+                            <h3 class="font-display text-sm font-bold text-white mt-0.5">Topic 8 Rapid-Fire Flashcards (Click Card to Flip)</h3>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button type="button" onclick="stepT8Card(-1)" class="px-3 py-1 text-xs font-semibold rounded-lg bg-slate-800 text-slate-200 border border-slate-700">← Prev</button>
+                            <span id="t8-fc-counter" class="text-xs font-mono text-sky-300 px-2">1 / 12</span>
+                            <button type="button" onclick="stepT8Card(1)" class="px-3 py-1 text-xs font-semibold rounded-lg bg-slate-800 text-slate-200 border border-slate-700">Next →</button>
+                        </div>
+                    </div>
+                    <div id="t8-fc-box" onclick="flipT8Card()" class="cursor-pointer p-6 bg-slate-900 border border-slate-800 hover:border-sky-500/40 rounded-2xl min-h-[135px] flex flex-col items-center justify-center text-center select-none"></div>
+                </div>
             </div>
         </section>
     </main>
+
+    <!-- APPLE SPOTLIGHT QUICK COMMAND & CONCEPT SEARCH MODAL -->
+    <div id="spotlight-modal" class="fixed inset-0 z-[960] hidden items-start justify-center pt-16 sm:pt-24 px-4 bg-black/60" onclick="if(event.target===this)closeSpotlight()">
+        <div class="w-full max-w-xl bg-slate-900 border border-slate-700/80 rounded-2xl shadow-2xl overflow-hidden">
+            <div class="flex items-center gap-3 px-4 py-3 border-b border-slate-800">
+                <svg class="w-4 h-4 text-sky-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                <input id="spotlight-input" type="text" oninput="filterSpotlight()" placeholder="Search Spec 8.1–8.28 redox, disproportionation, Group 2 trends, flame tests, CP3/CP4, halides..." class="w-full bg-transparent border-0 text-xs sm:text-sm text-white focus:outline-none focus:ring-0" style="border:none!important;box-shadow:none!important;background:transparent!important;padding:2px 0!important"/>
+                <button type="button" onclick="closeSpotlight()" class="px-2 py-1 text-[10px] font-mono bg-slate-800 text-slate-400 rounded">ESC</button>
+            </div>
+            <div id="spotlight-results" class="max-h-80 overflow-y-auto divide-y divide-slate-800/60 p-2 space-y-1"></div>
+        </div>
+    </div>
 
     <footer class="border-t border-slate-800 bg-slate-900/80 py-4 mt-8">
         <div class="max-w-7xl mx-auto px-4 text-center text-[11px] text-slate-500">
@@ -2171,7 +2618,7 @@ nav, nav > div { max-width: 100% !important; }
 
         // ============ Solver ============
         window.switchSolver = function(mode) {
-            ['ox','titcalc','displ'].forEach(m => {
+            ['ox','titcalc','displ','sim'].forEach(m => {
                 const el = document.getElementById('solver-'+m);
                 const btn = document.getElementById('solver-btn-'+m);
                 if (el) el.classList.toggle('hidden', m !== mode);
@@ -2331,8 +2778,652 @@ nav, nav > div { max-width: 100% !important; }
             setHalide('cl');
             buildHalQuiz();
             fillOxTargets();
+            const oxdBtns = document.getElementById('oxdisp-btns');
+            if (oxdBtns) {
+                oxdBtns.innerHTML = OXDISP_CASES.map((c, i) => `<button type="button" onclick="showOxDisp(${i})" class="p-2 rounded-lg border border-slate-800 bg-slate-950 text-slate-400 text-left text-[11px] font-mono">${c.name}</button>`).join('');
+                showOxDisp(0);
+            }
+            showHalfEqPair();
+            renderSpec8Audit();
+            showG12Rx(0);
+            loadSaltMystery();
+            evalConcordant();
+            showTitFault();
+            showFAtPred(0);
+            renderT8Sim();
+            renderT8Card();
+            updateT8Mastery();
             requestAnimationFrame(masterLoop);
             setTimeout(safeInitKaTeX, 300);
+        });
+
+        // ============ NEW INTERACTIVE MODULES (SPEC 8.1-8.28 LAB, GROUP 1/2 MATRIX, SALT DETECTIVE, CONCORDANT TITRES & FAULT DOCTOR, F/At EXTRAPOLATOR, EXAM SIM, FLASHCARDS, SPOTLIGHT) ============
+        const T8_MASTERY = {
+            specChecked: new Set([0, 1]),
+            simSolved: new Set(),
+            conceptsChecked: new Set()
+        };
+
+        const SPEC8_AUDIT_ITEMS = [
+            {code:'8.1–8.4', text:'Assign oxidation numbers (including peroxides O = −1, metal hydrides H = −1, OF₂ O = +2) and use Roman numerals in nomenclature.'},
+            {code:'8.5–8.9', text:'Define redox in terms of electron transfer and oxidation number; identify oxidising/reducing agents and disproportionation.'},
+            {code:'8.10', text:'Construct and combine ionic half-equations by balancing atoms and equalising electrons.'},
+            {code:'8.11–8.12', text:'Explain reactivity increasing down Groups 1 & 2 via atomic radius, shielding, nuclear attraction, and decreasing ionisation energy.'},
+            {code:'8.13–8.14', text:'Write equations for Group 1 & 2 metals with O₂, Cl₂, and H₂O (including Mg + steam → MgO + H₂), and oxides/hydroxides with water and dilute acids.'},
+            {code:'8.15', text:'State and explain Group 2 solubility trends: hydroxides increase down the group; sulfates decrease down the group (BaSO₄ insoluble).'},
+            {code:'8.16', text:'Explain thermal stability of Group 1 & 2 nitrates and carbonates via cation radius, charge density, and polarisation of the anion.'},
+            {code:'8.17–8.18', text:'Recall flame colours (Li⁺ red, Na⁺ yellow, K⁺ lilac, Ca²⁺ orange-red, Sr²⁺ red, Ba²⁺ pale green), electron excitation/emission origin, and gas tests (CO₂, O₂, NO₂).'},
+            {code:'8.19', text:'Test for CO₃²⁻/HCO₃⁻ (dilute acid → CO₂ limewater milky), SO₄²⁻ (dilute HCl/HNO₃ + Ba²⁺ → white ppt), and NH₄⁺ (NaOH + warm → NH₃ turns damp red litmus blue).'},
+            {code:'8.20–8.23', text:'Perform volumetric calculations (CP3/CP4), choose indicators (methyl orange vs phenolphthalein), select concordant titres (±0.10 cm³), and evaluate uncertainties.'},
+            {code:'8.24–8.26', text:'Explain Group 7 physical/oxidising trends, displacement reactions, cyclohexane colours, and disproportionation of Cl₂ in water, cold dilute NaOH, and hot conc. NaOH.'},
+            {code:'8.27–8.28', text:'Write equations & observations for NaX + conc. H₂SO₄ (reducing power Cl⁻ < Br⁻ < I⁻), AgNO₃ + HNO₃ + NH₃ halide tests, and predict F₂/At₂ properties.'}
+        ];
+
+        function updateT8Mastery() {
+            const total = T8_MASTERY.specChecked.size + T8_MASTERY.simSolved.size + T8_MASTERY.conceptsChecked.size;
+            const pct = Math.min(100, Math.round((total / 28) * 100));
+            const el = document.getElementById('mastery-percentage');
+            if (el) el.textContent = pct + '%';
+        }
+
+        window.switchSyl8Lab = function(view) {
+            ['oxdisp', 'halfeq', 'audit'].forEach(v => {
+                const pan = document.getElementById('s8-panel-' + v);
+                const btn = document.getElementById('s8-btn-' + v);
+                if (pan) pan.classList.toggle('hidden', v !== view);
+                if (btn) {
+                    btn.className = 'px-3 py-1.5 text-xs font-semibold rounded-lg ' +
+                        (v === view ? 'bg-sky-500/20 text-sky-300 border border-sky-500/40' : 'text-slate-400 hover:text-white border border-transparent');
+                }
+            });
+            setTimeout(safeInitKaTeX, 40);
+        };
+
+        const OXDISP_CASES = [
+            {name:'Peroxides: H₂O₂, Na₂O₂, BaO₂', eq:'In H₂O₂: H = +1, so 2(+1) + 2(O) = 0 ⇒ O = −1', ox:'Oxygen is −1 (NOT −2!)', note:'<b>WCH12 Exception #1:</b> When Group 1 Na burns in excess O₂, it forms sodium peroxide $\text{Na}_2\text{O}_2$ ($\text{O} = -1$). In $\text{OF}_2$, fluorine is more electronegative ($-1$), so oxygen is $+2$!'},
+            {name:'Metal Hydrides: NaH, CaH₂, LiAlH₄', eq:'In CaH₂: Ca = +2 (Group 2), so +2 + 2(H) = 0 ⇒ H = −1', ox:'Hydrogen is −1 (NOT +1!)', note:'<b>WCH12 Exception #2:</b> Bonded to a less electronegative metal, hydrogen forms the hydride ion $\text{H}^-$ (oxidation number $-1$). In $\text{NH}_3$, H is $+1$ and N is $-3$ (PEF Jan 2024).'},
+            {name:'Cl₂ + H₂O (Water Treatment · 8.26)', eq:'Cl₂(aq) + H₂O(l) ⇌ HCl(aq) + HClO(aq)', ox:'Cl goes 0 → −1 (in HCl) AND 0 → +1 (in HClO)', note:'<b>Disproportionation #1:</b> Chlorine is simultaneously reduced ($0 \rightarrow -1$) and oxidised ($0 \rightarrow +1$). Chloric(I) acid ($\text{HClO}$) kills bacteria in drinking water.'},
+            {name:'Cl₂ + Cold Dilute NaOH(aq) (Bleach · 8.26)', eq:'Cl₂(aq) + 2NaOH(aq) → NaCl(aq) + NaClO(aq) + H₂O(l)', ox:'Cl goes 0 → −1 (in NaCl) AND 0 → +1 (in NaClO, sodium chlorate(I))', note:'<b>Disproportionation #2:</b> Ionic equation: $\text{Cl}_2 + 2\text{OH}^- \rightarrow \text{Cl}^- + \text{ClO}^- + \text{H}_2\text{O}$. Produces household bleach ($\text{NaClO}$).'},
+            {name:'Cl₂ + Hot Conc. NaOH(aq) (Chlorate(V) · 8.26)', eq:'3Cl₂(aq) + 6NaOH(aq) → 5NaCl(aq) + NaClO₃(aq) + 3H₂O(l)', ox:'Cl goes 0 → −1 (5 Cl atoms gain 1e⁻ each) AND 0 → +5 (1 Cl atom loses 5e⁻)', note:'<b>Disproportionation #3 (PEF Jun 2024):</b> Balance the electron transfer first! Oxidation $0 \rightarrow +5$ ($5\text{e}^-$ lost) requires 5 Cl atoms reduced $0 \rightarrow -1$ ($5 \times 1\text{e}^-$ gained) $\Rightarrow$ 5 $\text{NaCl}$ : 1 $\text{NaClO}_3$.'},
+            {name:'Thermal Decomp of Nitrates (Redox · 8.16)', eq:'2Mg(NO₃)₂(s) → 2MgO(s) + 4NO₂(g) + O₂(g)', ox:'N goes +5 (in NO₃⁻) → +4 (in NO₂, reduced); O goes −2 → 0 (in O₂, oxidised)', note:'<b>Examiner Favourite:</b> Carbonate decomposition ($\text{MgCO}_3 \rightarrow \text{MgO} + \text{CO}_2$) is <b>NOT redox</b>, whereas nitrate decomposition <b>IS redox</b> (N reduced, O oxidised)!'}
+        ];
+
+        window.showOxDisp = function(idx) {
+            const c = OXDISP_CASES[idx];
+            const btns = document.querySelectorAll('#oxdisp-btns button');
+            btns.forEach((b, i) => {
+                b.className = 'p-2 rounded-lg border text-left text-[11px] font-mono ' +
+                    (i === idx ? 'bg-sky-950/70 border-sky-500 text-sky-300 font-bold' : 'bg-slate-950 border-slate-800 text-slate-400');
+            });
+            const out = document.getElementById('oxdisp-out');
+            if (out) {
+                out.innerHTML = `<div class="border-b border-slate-800 pb-2">
+                        <span class="font-display font-bold text-white text-sm">${c.name}</span>
+                    </div>
+                    <div class="p-3 bg-slate-900 rounded-lg border border-slate-800 font-mono text-xs text-emerald-300">${c.eq}</div>
+                    <p class="text-xs text-sky-300 font-semibold">Oxidation-State Tracking: ${c.ox}</p>
+                    <p class="text-xs text-amber-200/95 bg-amber-950/30 border border-amber-800/50 rounded-lg p-2.5">${c.note}</p>`;
+            }
+            T8_MASTERY.conceptsChecked.add('oxdisp');
+            updateT8Mastery();
+            setTimeout(safeInitKaTeX, 30);
+        };
+
+        const HEQ_PAIRS = [
+            {
+                ox:'½Cl₂ + 6OH⁻ → ClO₃⁻ + 3H₂O + 5e⁻   (Cl: 0 → +5, loses 5e⁻)',
+                red:'½Cl₂ + e⁻ → Cl⁻                     (Cl: 0 → −1, gains 1e⁻)  [×5]',
+                full:'3Cl₂ + 6OH⁻ → 5Cl⁻ + ClO₃⁻ + 3H₂O',
+                note:'Multiply reduction by 5 so 5e⁻ cancel, giving 5/2 Cl₂ + 1/2 Cl₂ = 3Cl₂!'
+            },
+            {
+                ox:'2Br⁻ → Br₂ + 2e⁻                     (Br: −1 → 0, loses 2e⁻)',
+                red:'H₂SO₄ + 2H⁺ + 2e⁻ → SO₂ + 2H₂O       (S: +6 → +4, gains 2e⁻)',
+                full:'2HBr + H₂SO₄ → Br₂ + SO₂ + 2H₂O  (or 2Br⁻ + 4H⁺ + SO₄²⁻ → Br₂ + SO₂ + 2H₂O)',
+                note:'Both half-equations involve 2 electrons, so they combine 1 : 1.'
+            },
+            {
+                ox:'2I⁻ → I₂ + 2e⁻                       (I: −1 → 0)  [×4 → 8I⁻ → 4I₂ + 8e⁻]',
+                red:'H₂SO₄ + 8H⁺ + 8e⁻ → H₂S + 4H₂O       (S: +6 → −2, gains 8e⁻)',
+                full:'8HI + H₂SO₄ → 4I₂ + H₂S + 4H₂O',
+                note:'Sulfur drops by 8 oxidation units (+6 to −2), requiring 4 × 2 = 8 moles of HI!'
+            },
+            {
+                ox:'Fe²⁺ → Fe³⁺ + e⁻                     (Fe: +2 → +3)  [×5]',
+                red:'MnO₄⁻ + 8H⁺ + 5e⁻ → Mn²⁺ + 4H₂O      (Mn: +7 → +2, gains 5e⁻)',
+                full:'MnO₄⁻ + 8H⁺ + 5Fe²⁺ → Mn²⁺ + 5Fe³⁺ + 4H₂O',
+                note:'Classic redox titration (self-indicating: purple MnO₄⁻ turns pale pink at endpoint).'
+            },
+            {
+                ox:'2S₂O₃²⁻ → S₄O₆²⁻ + 2e⁻               (Average S: +2.0 → +2.5)',
+                red:'I₂ + 2e⁻ → 2I⁻                       (I: 0 → −1)',
+                full:'2S₂O₃²⁻(aq) + I₂(aq) → S₄O₆²⁻(aq) + 2I⁻(aq)',
+                note:'Used to titrate liberated iodine (starch indicator added near endpoint: blue-black → colourless).'
+            }
+        ];
+
+        window.showHalfEqPair = function() {
+            const idx = +(document.getElementById('heq-pair-sel') ? document.getElementById('heq-pair-sel').value : 0);
+            const p = HEQ_PAIRS[idx];
+            const out = document.getElementById('heq-pair-out');
+            if (out) {
+                out.innerHTML = `<p class="text-rose-300"><b>Oxidation:</b> ${p.ox}</p>
+                    <p class="text-sky-300"><b>Reduction:</b> ${p.red}</p>
+                    <p class="text-emerald-300 font-bold pt-1 border-t border-slate-800"><b>Combined:</b> ${p.full}</p>
+                    <p class="text-slate-400 font-sans">${p.note}</p>`;
+            }
+            T8_MASTERY.conceptsChecked.add('halfeq');
+            updateT8Mastery();
+        };
+
+        window.checkClo3Concept = function(isCorrect) {
+            const fb = document.getElementById('clo3-concept-fb');
+            if (!fb) return;
+            fb.classList.remove('hidden');
+            if (isCorrect) {
+                fb.className = 'p-2.5 rounded-lg text-[11px] leading-relaxed bg-emerald-950/50 border border-emerald-700 text-emerald-200';
+                fb.innerHTML = '<b>✓ Full Marks (PEF Jun 2024):</b> This is the reverse of disproportionation (comproportionation)! In $\text{ClO}_3^-$, Cl is $+5$ (gains $5\text{e}^-$ to reach $0$ in $\text{Cl}_2$). In $\text{Cl}^-$, Cl is $-1$ (loses $1\text{e}^-$ to reach $0$). Equalising electrons gives $1\text{ClO}_3^- : 5\text{Cl}^-$.';
+                T8_MASTERY.conceptsChecked.add('clo3_q');
+                updateT8Mastery();
+            } else {
+                fb.className = 'p-2.5 rounded-lg text-[11px] leading-relaxed bg-rose-950/50 border border-rose-700 text-rose-200';
+                fb.innerHTML = '<b>✗ Check Oxidation Numbers:</b> In $\text{ClO}_3^-$, three oxygens are $3(-2) = -6$ and overall charge is $-1$, so Cl is $+5$! Going from $+5 \rightarrow 0$ requires $5\text{e}^-$.';
+            }
+            setTimeout(safeInitKaTeX, 30);
+        };
+
+        function renderSpec8Audit() {
+            const box = document.getElementById('spec8-audit-grid');
+            if (!box) return;
+            box.innerHTML = SPEC8_AUDIT_ITEMS.map((it, idx) => {
+                const on = T8_MASTERY.specChecked.has(idx);
+                return `<button type="button" onclick="toggleSpec8(${idx})" class="text-left p-3 rounded-xl border flex items-start gap-3 ${on ? 'bg-sky-950/40 border-sky-600/70 text-slate-100' : 'bg-slate-950 border-slate-800 text-slate-300'}">
+                    <span class="mt-0.5 w-4 h-4 rounded flex items-center justify-center text-[10px] font-bold shrink-0 ${on ? 'bg-sky-400 text-slate-950' : 'border border-slate-600 text-transparent'}">✓</span>
+                    <span class="text-xs leading-relaxed"><strong class="font-mono text-sky-300 mr-1.5">[Spec ${it.code}]</strong>${it.text}</span>
+                </button>`;
+            }).join('');
+        }
+
+        window.toggleSpec8 = function(idx) {
+            if (T8_MASTERY.specChecked.has(idx)) T8_MASTERY.specChecked.delete(idx);
+            else T8_MASTERY.specChecked.add(idx);
+            renderSpec8Audit();
+            updateT8Mastery();
+        };
+
+        window.toggleAllSpec8 = function(val) {
+            SPEC8_AUDIT_ITEMS.forEach((_, i) => { if (val) T8_MASTERY.specChecked.add(i); else T8_MASTERY.specChecked.delete(i); });
+            renderSpec8Audit();
+            updateT8Mastery();
+        };
+
+        // --- TAB 2: GROUP 1 & 2 REACTIONS & DECOMPOSITION MATRIX ---
+        const G12_RX_DATA = [
+            {
+                title:'Magnesium with Cold Water vs Steam (Spec 8.13b) — Classic Exam Contrast',
+                body:`<div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div class="p-3 bg-slate-950 rounded-lg border border-slate-800">
+                        <b class="text-sky-300 block mb-1">1. Mg(s) + Cold Water (Very Slow)</b>
+                        <p class="font-mono text-emerald-300 text-[11px]">Mg(s) + 2H₂O(l) → Mg(OH)₂(aq/s) + H₂(g)</p>
+                        <p class="text-[11px] text-slate-300 mt-1">Only a few bubbles of $\text{H}_2$ form very slowly because $\text{Mg(OH)}_2$ is sparingly soluble and coats the metal surface. (By contrast, Ca, Sr, Ba react with increasing vigour with cold water!)</p>
+                    </div>
+                    <div class="p-3 bg-slate-950 rounded-lg border border-slate-800">
+                        <b class="text-amber-300 block mb-1">2. Mg(s) + Steam (Vigorous · Bright White Flame!)</b>
+                        <p class="font-mono text-emerald-300 text-[11px]">Mg(s) + H₂O(g) → MgO(s) + H₂(g)</p>
+                        <p class="text-[11px] text-slate-300 mt-1"><b>Examiner Watch-Out:</b> With steam, magnesium burns with a bright white light to form the white solid <b>oxide $\text{MgO(s)}$</b>, NOT the hydroxide!</p>
+                    </div>
+                </div>`
+            },
+            {
+                title:'Thermal Decomposition of Group 1 vs Group 2 Nitrates (Spec 8.16a)',
+                body:`<div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div class="p-3 bg-slate-950 rounded-lg border border-slate-800">
+                        <b class="text-amber-300 block mb-1">Group 1 Nitrates (NaNO₃, KNO₃) — EXCEPT LiNO₃!</b>
+                        <p class="font-mono text-emerald-300 text-[11px]">2NaNO₃(s) → 2NaNO₂(s) + O₂(g)</p>
+                        <p class="text-[11px] text-slate-300 mt-1">Decompose to the <b>nitrite ($\text{MNO}_2$) + oxygen gas only</b> (no brown $\text{NO}_2$ gas! Glowing splint relights). Why? $+1$ cations (except tiny $\text{Li}^+$) have low charge density and weak polarising power.</p>
+                    </div>
+                    <div class="p-3 bg-slate-950 rounded-lg border border-slate-800">
+                        <b class="text-rose-300 block mb-1">Group 2 Nitrates &amp; Lithium Nitrate (LiNO₃)</b>
+                        <p class="font-mono text-emerald-300 text-[11px]">2Mg(NO₃)₂(s) → 2MgO(s) + 4NO₂(g) + O₂(g)<br>4LiNO₃(s) → 2Li₂O(s) + 4NO₂(g) + O₂(g)</p>
+                        <p class="text-[11px] text-slate-300 mt-1">Decompose to the <b>oxide + brown acidic $\text{NO}_2$ gas + $\text{O}_2$ gas</b>! Tiny $\text{Li}^+$ has a charge density similar to $\text{Mg}^{2+}$, so $\text{LiNO}_3$ decomposes like a Group 2 nitrate.</p>
+                    </div>
+                </div>`
+            },
+            {
+                title:'Thermal Decomposition of Group 1 vs Group 2 Carbonates (Spec 8.16b)',
+                body:`<div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div class="p-3 bg-slate-950 rounded-lg border border-slate-800">
+                        <b class="text-amber-300 block mb-1">Group 1 Carbonates (Na₂CO₃, K₂CO₃) — EXCEPT Li₂CO₃!</b>
+                        <p class="font-mono text-emerald-300 text-[11px]">Na₂CO₃(s) → NO decomposition at Bunsen temperatures</p>
+                        <p class="text-[11px] text-slate-300 mt-1">$\text{Na}^+$ and $\text{K}^+$ (+1 charge, large radius) have too low a charge density to polarise $\text{CO}_3^{2-}$ sufficiently. Only $\text{Li}_2\text{CO}_3(s) \rightarrow \text{Li}_2\text{O}(s) + \text{CO}_2(g)$ decomposes on heating!</p>
+                    </div>
+                    <div class="p-3 bg-slate-950 rounded-lg border border-slate-800">
+                        <b class="text-emerald-300 block mb-1">Group 2 Carbonates (MgCO₃ → BaCO₃)</b>
+                        <p class="font-mono text-emerald-300 text-[11px]">MCO₃(s) → MO(s) + CO₂(g)</p>
+                        <p class="text-[11px] text-slate-300 mt-1">All decompose to oxide + $\text{CO}_2$ (turns limewater milky), requiring progressively higher temperatures down the group ($\text{MgCO}_3 \approx 540^\circ\text{C}$ vs $\text{BaCO}_3 \approx 1360^\circ\text{C}$).</p>
+                    </div>
+                </div>`
+            },
+            {
+                title:'Group 2 Oxides & Hydroxides with Water and Dilute Acids (Spec 8.14)',
+                body:`<div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div class="p-3 bg-slate-950 rounded-lg border border-slate-800">
+                        <b class="text-sky-300 block mb-1">With Water: MO(s) + H₂O(l) → M(OH)₂(aq/s)</b>
+                        <p class="text-[11px] text-slate-300">As hydroxide solubility increases down Group 2 ($\text{Mg(OH)}_2$ sparingly soluble, $\text{pH} \approx 9–10$; $\text{Ba(OH)}_2$ soluble, $\text{pH} \approx 13$), the resulting solutions become <b>more alkaline</b> down the group ($[\text{OH}^-(\text{aq})]$ increases).</p>
+                    </div>
+                    <div class="p-3 bg-slate-950 rounded-lg border border-slate-800">
+                        <b class="text-emerald-300 block mb-1">With Dilute HCl vs Dilute H₂SO₄ (Watch the BaSO₄ Trap!)</b>
+                        <p class="text-[11px] text-slate-300">With $\text{HCl(aq)}$, all form colourless soluble $\text{MCl}_2(\text{aq}) + \text{H}_2\text{O(l)}$. With $\text{H}_2\text{SO}_4(\text{aq})$, $\text{BaO/Ba(OH)}_2/\text{BaCO}_3$ quickly stops reacting because an insoluble layer of white <b>$\text{BaSO}_4(\text{s})$</b> coats the solid!</p>
+                    </div>
+                </div>`
+            }
+        ];
+
+        window.showG12Rx = function(idx) {
+            const d = G12_RX_DATA[idx];
+            const btns = document.querySelectorAll('#g12-rx-btns button');
+            btns.forEach((b, i) => {
+                b.className = 'px-2.5 py-1 text-[11px] font-semibold rounded ' +
+                    (i === idx ? 'bg-amber-600 text-white' : 'bg-slate-800 text-slate-300');
+            });
+            const out = document.getElementById('g12-rx-out');
+            if (out) {
+                out.innerHTML = `<p class="font-bold text-white">${d.title}</p>${d.body}`;
+            }
+            T8_MASTERY.conceptsChecked.add('g12_rx');
+            updateT8Mastery();
+            setTimeout(safeInitKaTeX, 30);
+        };
+
+        // --- TAB 3 STATION F: UNKNOWN SALT DETECTIVE ---
+        const SALT_MYSTERIES = [
+            {
+                clue:'1. Nichrome wire flame test gives a <b>pale apple-green</b> flame.<br>2. Adding dilute HNO₃ then AgNO₃(aq) gives a <b>cream precipitate</b> that dissolves in concentrated NH₃(aq) but not in dilute NH₃(aq).',
+                opts:['Barium bromide, BaBr₂', 'Calcium iodide, CaI₂', 'Barium chloride, BaCl₂'],
+                ans:0,
+                exp:'Pale green flame = Ba²⁺. Cream precipitate soluble only in conc. NH₃ = AgBr (Br⁻). Therefore the salt is barium bromide, BaBr₂.'
+            },
+            {
+                clue:'1. Heating the white solid strongly produces a <b>brown acidic gas</b> (turns damp blue litmus red) and a gas that relights a glowing splint.<br>2. Flame test on the solid gives a <b>brick/orange-red</b> flame.',
+                opts:['Sodium nitrate, NaNO₃', 'Calcium nitrate, Ca(NO₃)₂', 'Strontium carbonate, SrCO₃'],
+                ans:1,
+                exp:'Orange-red flame = Ca²⁺. Brown acidic gas (NO₂) + O₂ on heating = Group 2 nitrate decomposition: 2Ca(NO₃)₂ → 2CaO + 4NO₂ + O₂. (NaNO₃ only gives O₂, no NO₂!).'
+            },
+            {
+                clue:'1. Warming the solid with NaOH(aq) releases a pungent gas that turns <b>damp red litmus paper blue</b>.<br>2. Acidifying a solution of the salt with dilute HCl and adding BaCl₂(aq) produces a <b>thick white precipitate</b>.',
+                opts:['Ammonium chloride, NH₄Cl', 'Ammonium sulfate, (NH₄)₂SO₄', 'Potassium sulfate, K₂SO₄'],
+                ans:1,
+                exp:'Alkaline gas on warming with NaOH = NH₃ from NH₄⁺. White precipitate with acidified BaCl₂ = BaSO₄ from SO₄²⁻. Formula is (NH₄)₂SO₄.'
+            },
+            {
+                clue:'1. Flame test gives a <b>bright carmine/crimson-red</b> flame.<br>2. Adding dilute HCl produces <b>effervescence</b> of a colourless gas that turns limewater milky, leaving a colourless solution.',
+                opts:['Strontium carbonate, SrCO₃', 'Calcium sulfate, CaSO₄', 'Barium hydroxide, Ba(OH)₂'],
+                ans:0,
+                exp:'Red flame = Sr²⁺ (or Li⁺). Effervescence with dilute acid turning limewater milky = CO₂ from CO₃²⁻. Thus strontium carbonate, SrCO₃.'
+            }
+        ];
+
+        window.loadSaltMystery = function() {
+            const idx = +(document.getElementById('salt-det-sel') ? document.getElementById('salt-det-sel').value : 0);
+            const m = SALT_MYSTERIES[idx];
+            const clue = document.getElementById('salt-det-clue');
+            const opts = document.getElementById('salt-det-opts');
+            const fb = document.getElementById('salt-det-fb');
+            if (clue) clue.innerHTML = m.clue;
+            if (fb) fb.classList.add('hidden');
+            if (opts) {
+                opts.innerHTML = m.opts.map((o, oi) => `<button type="button" onclick="gradeSaltMystery(${idx}, ${oi})" class="p-2.5 rounded-lg border border-slate-800 bg-slate-950 hover:border-emerald-500/50 text-[11px] font-mono text-slate-200 text-left">${String.fromCharCode(65 + oi)}. ${o}</button>`).join('');
+            }
+        };
+
+        window.gradeSaltMystery = function(idx, oi) {
+            const m = SALT_MYSTERIES[idx];
+            const fb = document.getElementById('salt-det-fb');
+            if (!fb) return;
+            fb.classList.remove('hidden');
+            if (oi === m.ans) {
+                fb.className = 'p-2.5 rounded-lg text-[11px] leading-relaxed bg-emerald-950/50 border border-emerald-700 text-emerald-200';
+                fb.innerHTML = `<b>✓ Correct Identification:</b> ${m.exp}`;
+                T8_MASTERY.conceptsChecked.add('salt_det');
+                updateT8Mastery();
+            } else {
+                fb.className = 'p-2.5 rounded-lg text-[11px] leading-relaxed bg-rose-950/50 border border-rose-700 text-rose-200';
+                fb.innerHTML = `<b>✗ Check the Flame &amp; Anion Observations:</b> ${m.exp}`;
+            }
+        };
+
+        // --- TAB 4: CONCORDANT TITRE SELECTOR & PROCEDURAL FAULT DOCTOR ---
+        const TITRE_VALS = [24.65, 23.85, 24.15, 23.75];
+        window.evalConcordant = function() {
+            const picked = [];
+            for (let i = 0; i < 4; i++) {
+                const cb = document.getElementById('ct-' + i);
+                if (cb && cb.checked) picked.push({i, v: TITRE_VALS[i]});
+            }
+            const out = document.getElementById('concordant-out');
+            if (!out) return;
+            if (picked.length === 0) {
+                out.innerHTML = '<span class="text-rose-300">Tick at least two concordant titres!</span>';
+                return;
+            }
+            const avg = picked.reduce((s, x) => s + x.v, 0) / picked.length;
+            const isExact = (picked.length === 2 && picked[0].i === 1 && picked[1].i === 3);
+            if (isExact) {
+                out.innerHTML = `<span class="text-emerald-300 font-bold">✓ Full Marks (2/2):</span> Runs 1 (23.85) and 3 (23.75) are within 0.10 cm³. Rough (24.65) and overshot Run 2 (24.15) are excluded.<br>Mean titre = (23.85 + 23.75) ÷ 2 = <b class="text-white">${avg.toFixed(2)} cm³</b>.`;
+            } else {
+                out.innerHTML = `<span class="text-amber-300 font-bold">⚠ Examiner Warning:</span> Your selected runs have a spread of <b>${(Math.max(...picked.map(x=>x.v)) - Math.min(...picked.map(x=>x.v))).toFixed(2)} cm³</b> (mean = ${avg.toFixed(2)} cm³). Only Run 1 (23.85) and Run 3 (23.75) are within <b>0.10 cm³</b> of each other!`;
+            }
+        };
+
+        const TIT_FAULTS = [
+            {verdict:'Recorded titre is TOO HIGH (Overestimated)', why:'Part of the liquid volume measured by the burette scale went into filling the empty air space in the jet rather than entering the conical flask. Always flush the jet before taking the initial reading!'},
+            {verdict:'Recorded titre is TOO HIGH (Overestimated)', why:'Rinsing the conical flask with the analyte solution leaves extra moles of reactant clinging to the walls, requiring MORE titrant from the burette to neutralise. Always rinse the conical flask with deionised water only!'},
+            {verdict:'Recorded titre is TOO HIGH (Overestimated)', why:'Water left in the burette dilutes the titrant solution, lowering its concentration so a LARGER volume must be added to deliver the required moles.'},
+            {verdict:'Recorded titre is TOO LOW (Underestimated)', why:'Drops of titrant draining from the funnel into the burette during the run raise the meniscus level, making the final reading numerically smaller than the true volume delivered. Always remove the funnel before reading!'},
+            {verdict:'NO EFFECT on the titre (Good practice!)', why:'Adding deionised water to the conical flask washes splashed drops of reactant down into the bulk mixture; it does NOT change the number of moles of reactant in the flask.'},
+            {verdict:'Burette % Uncertainty = (2 × 0.05 / 23.80) × 100 = 0.42%  ·  Pipette = (1 × 0.06 / 25.0) × 100 = 0.24%', why:'<b>WCH13 Rule:</b> A burette titre is a difference between TWO readings (initial and final), so multiply ±0.05 cm³ by 2 (= ±0.10 cm³). A volumetric pipette has a single graduation mark, so use 1 × ±0.06 cm³!'}
+        ];
+
+        window.showTitFault = function() {
+            const idx = +(document.getElementById('tit-fault-sel') ? document.getElementById('tit-fault-sel').value : 0);
+            const f = TIT_FAULTS[idx];
+            const out = document.getElementById('tit-fault-out');
+            if (out) {
+                out.innerHTML = `<p class="font-bold text-amber-300">${f.verdict}</p><p class="text-slate-300">${f.why}</p>`;
+            }
+        };
+
+        // --- TAB 6: SPEC 8.28 FLUORINE & ASTATINE EXTRAPOLATOR ---
+        const FAT_PREDS = [
+            {
+                title:'Fluorine (F₂) &amp; Fluoride (F⁻) — Top of Group 7 (Spec 8.28)',
+                items:[
+                    '<b>Physical state &amp; appearance:</b> Pale yellow gas at room temperature (lowest melting/boiling point in Group 7 — weakest London forces, only 18 e⁻).',
+                    '<b>Oxidising power of F₂:</b> Strongest oxidising agent in Group 7 (smallest atomic radius, least shielding, highest electronegativity) — oxidises water to oxygen ($2\text{F}_2 + 2\text{H}_2\text{O} \rightarrow 4\text{HF} + \text{O}_2$).',
+                    '<b>Reducing power of F⁻ with conc. H₂SO₄:</b> Weakest reducing agent — undergoes acid–base reaction ONLY: $\text{NaF} + \text{H}_2\text{SO}_4 \rightarrow \text{NaHSO}_4 + \text{HF(g)}$ (steamy fumes, NO redox!).',
+                    '<b>Silver nitrate test:</b> $\text{AgF(aq)}$ is <b>soluble in water</b> — NO precipitate forms with $\text{AgNO}_3(\text{aq})$!'
+                ]
+            },
+            {
+                title:'Astatine (At₂) &amp; Astatide (At⁻) — Bottom of Group 7 (Spec 8.28)',
+                items:[
+                    '<b>Physical state &amp; appearance:</b> Black/dark solid at room temperature with the highest melting/boiling point in Group 7 (most electrons $\Rightarrow$ strongest London forces).',
+                    '<b>Oxidising power of At₂:</b> Weakest oxidising agent in Group 7 — cannot displace $\text{Cl}^-, \text{Br}^-$ or $\text{I}^-$.',
+                    '<b>Reducing power of At⁻ with conc. H₂SO₄:</b> Strongest reducing halide (largest ionic radius, outer electron furthest from nucleus &amp; most shielded) — reduces $\text{H}_2\text{SO}_4$ all the way to $\text{H}_2\text{S}$ ($8\text{HAt} + \text{H}_2\text{SO}_4 \rightarrow 4\text{At}_2 + \text{H}_2\text{S} + 4\text{H}_2\text{O}$).',
+                    '<b>Silver nitrate test:</b> Forms a yellow/dark precipitate of $\text{AgAt(s)}$ which is <b>insoluble</b> in both dilute and concentrated $\text{NH}_3(\text{aq})$.'
+                ]
+            }
+        ];
+
+        window.showFAtPred = function(idx) {
+            const p = FAT_PREDS[idx];
+            const btns = document.querySelectorAll('#f-at-btns button');
+            btns.forEach((b, i) => {
+                b.className = 'px-3 py-1.5 rounded-lg font-mono text-[11px] border ' +
+                    (i === idx ? 'bg-rose-950 border-rose-600 text-rose-300' : 'bg-slate-900 border-slate-800 text-slate-300');
+            });
+            const out = document.getElementById('f-at-out');
+            if (out) {
+                out.innerHTML = `<p class="font-bold text-white">${p.title}</p><ul class="list-disc list-inside space-y-1">${p.items.map(x => `<li>${x}</li>`).join('')}</ul>`;
+            }
+            setTimeout(safeInitKaTeX, 30);
+        };
+
+        // --- TAB 7 SOLVER 4: 10-QUESTION WCH12/WCH13 PAST-PAPER EXAM SIMULATOR ---
+        const T8_SIM_QUESTIONS = [
+            {
+                spec:'8.1–8.3', series:'WCH12 Jun 2024R PEF',
+                q:'What are the oxidation numbers of nitrogen in NH₃, NO₂⁻, and N₂O respectively?',
+                opts:[
+                    '−3, +3, +1',
+                    '+3, −3, +2',
+                    '−3, +5, +1',
+                    '−1, +3, +2'
+                ],
+                ans:0,
+                exp:'In NH₃, H is +1 so N is −3. In NO₂⁻, N + 2(−2) = −1 ⇒ N = +3. In N₂O, 2(N) + (−2) = 0 ⇒ N = +1.'
+            },
+            {
+                spec:'8.8 & 8.26', series:'WCH12 Jun 2024',
+                q:'Chlorine reacts with hot concentrated aqueous sodium hydroxide according to: 3Cl₂ + 6NaOH → 5NaCl + NaClO₃ + 3H₂O. Which statement about the oxidation number of chlorine is correct?',
+                opts:[
+                    'Chlorine is oxidised from 0 to +5 and reduced from 0 to −1 (disproportionation).',
+                    'Chlorine is oxidised from 0 to +3 and reduced from 0 to −1.',
+                    'Sodium is oxidised and chlorine is reduced.',
+                    'Chlorine is only oxidised from 0 to +5.'
+                ],
+                ans:0,
+                exp:'In Cl₂ the oxidation number is 0. In NaCl it is −1 (reduced) and in NaClO₃ it is +5 (oxidised). Simultaneous oxidation and reduction of the same element is disproportionation.'
+            },
+            {
+                spec:'8.11–8.12', series:'WCH12 Jan 2023',
+                q:'Why is barium more reactive with water than magnesium?',
+                opts:[
+                    'Barium has a higher first ionisation energy than magnesium.',
+                    'Barium atoms have more shells and greater shielding, so the outer electrons are further from the nucleus and experience weaker nuclear attraction, requiring less energy to remove.',
+                    'Barium forms a less soluble hydroxide than magnesium.',
+                    'Barium has a smaller atomic radius than magnesium.'
+                ],
+                ans:1,
+                exp:'Down Group 2, atomic radius and electron shielding increase, outweighing the increased nuclear charge. The sum of the 1st and 2nd ionisation energies decreases, so Ba loses its two outer electrons more easily.'
+            },
+            {
+                spec:'8.15', series:'WCH12 Oct 2023',
+                q:'Which row correctly describes the trends in solubility of the Group 2 hydroxides and sulfates as you go DOWN the group from Mg to Ba?',
+                opts:[
+                    'Hydroxide solubility increases · Sulfate solubility increases',
+                    'Hydroxide solubility decreases · Sulfate solubility increases',
+                    'Hydroxide solubility increases · Sulfate solubility decreases',
+                    'Hydroxide solubility decreases · Sulfate solubility decreases'
+                ],
+                ans:2,
+                exp:'Spec 8.15: Group 2 hydroxide solubility increases down the group (Mg(OH)₂ sparingly soluble → Ba(OH)₂ soluble), whereas sulfate solubility decreases down the group (MgSO₄ soluble → BaSO₄ insoluble).'
+            },
+            {
+                spec:'8.16', series:'WCH12 Jan 2024 / Oct 2024 PEF',
+                q:'Which statement best explains why magnesium carbonate decomposes at a lower temperature than barium carbonate?',
+                opts:[
+                    'The Mg²⁺ ion has a smaller ionic radius and higher charge density than Ba²⁺, so it polarises the CO₃²⁻ ion more strongly and weakens the C–O bonds.',
+                    'The magnesium atom is smaller than the barium atom and polarises the carbonate molecule.',
+                    'Magnesium carbonate has weaker ionic bonds than barium carbonate.',
+                    'Barium is more electronegative than magnesium.'
+                ],
+                ans:0,
+                exp:'PEF Jan 2024 / Oct 2024: Always refer to IONS (Mg²⁺ and CO₃²⁻), charge density / polarising power of the cation, polarisation of the carbonate anion, and weakening of the C–O covalent bond.'
+            },
+            {
+                spec:'8.16 & 8.18', series:'WCH12 Jan 2024 PEF',
+                q:'Solid calcium nitrate, Ca(NO₃)₂, is heated strongly in a test tube. What is observed, and what is the effect of the gaseous product on damp universal indicator paper?',
+                opts:[
+                    'Colourless gas only; indicator turns blue.',
+                    'Brown gas evolved and a glowing splint relights; damp indicator turns red.',
+                    'Brown gas evolved; damp indicator turns blue.',
+                    'White smoke evolved; damp indicator stays green.'
+                ],
+                ans:1,
+                exp:'2Ca(NO₃)₂ → 2CaO + 4NO₂ + O₂. NO₂ is a brown acidic gas (turns damp indicator RED — PEF Jan 2024 trap!) and O₂ relights a glowing splint.'
+            },
+            {
+                spec:'8.17', series:'WCH13 Jun 2023',
+                q:'What is the physical origin of the characteristic flame colours produced by Group 1 and Group 2 metal ions in a flame test?',
+                opts:[
+                    'Heat energy causes electrons to be completely removed (ionised), emitting visible light.',
+                    'Heat energy excites electrons to higher energy levels; visible light of a specific wavelength/frequency is emitted when the electrons fall back to lower energy levels.',
+                    'Visible light is absorbed as electrons jump from higher to lower orbitals.',
+                    'The metal ions undergo thermal decomposition to form coloured metal oxides.'
+                ],
+                ans:1,
+                exp:'Spec 8.17: Electrons absorb thermal energy and are promoted to higher energy levels; when they relax/return to lower energy levels, they emit photons of visible light corresponding to the energy gap ΔE = hf.'
+            },
+            {
+                spec:'8.20–8.22', series:'WCH12 Oct 2022',
+                q:'25.0 cm³ of a solution of barium hydroxide, Ba(OH)₂, required 22.50 cm³ of 0.100 mol dm⁻³ hydrochloric acid, HCl, for complete neutralisation. What is the concentration of the Ba(OH)₂ solution?',
+                opts:[
+                    '0.0900 mol dm⁻³',
+                    '0.0450 mol dm⁻³',
+                    '0.180 mol dm⁻³',
+                    '0.111 mol dm⁻³'
+                ],
+                ans:1,
+                exp:'Equation: Ba(OH)₂ + 2HCl → BaCl₂ + 2H₂O (1 : 2 mole ratio!). n(HCl) = 0.02250 × 0.100 = 2.25 × 10⁻³ mol. n(Ba(OH)₂) = ½ × 2.25 × 10⁻³ = 1.125 × 10⁻³ mol. [Ba(OH)₂] = 1.125 × 10⁻³ / 0.0250 = 0.0450 mol dm⁻³.'
+            },
+            {
+                spec:'8.27i', series:'WCH12 Jun 2023',
+                q:'Solid sodium bromide, NaBr, is reacted with concentrated sulfuric acid. Which set of products is formed?',
+                opts:[
+                    'HBr only',
+                    'HBr, Br₂, and SO₂ (plus NaHSO₄ and H₂O)',
+                    'HBr, Br₂, SO₂, S, and H₂S',
+                    'Br₂ and H₂ only'
+                ],
+                ans:1,
+                exp:'Br⁻ is a moderate reducing agent: it first forms misty fumes of HBr (acid–base), then reduces H₂SO₄ (+6) to SO₂ (+4) while being oxidised to orange/brown Br₂ vapour. Only I⁻ is strong enough to produce S and H₂S.'
+            },
+            {
+                spec:'8.27ii', series:'WCH13 Oct 2023 PEF',
+                q:'An aqueous solution contains bromide ions, Br⁻. What is observed when dilute nitric acid followed by aqueous silver nitrate is added, and then dilute followed by concentrated aqueous ammonia is added?',
+                opts:[
+                    'White precipitate, soluble in dilute ammonia.',
+                    'Yellow precipitate, insoluble in concentrated ammonia.',
+                    'Cream precipitate, insoluble in dilute ammonia but soluble in concentrated ammonia.',
+                    'Cream precipitate, soluble in dilute ammonia.'
+                ],
+                ans:2,
+                exp:'AgBr is a cream precipitate. It does not dissolve in dilute NH₃(aq), but dissolves in concentrated NH₃(aq) to form [Ag(NH₃)₂]⁺.'
+            }
+        ];
+
+        let curT8Sim = 0;
+        function renderT8Sim() {
+            const pills = document.getElementById('t8-sim-pills');
+            if (!pills) return;
+            pills.innerHTML = T8_SIM_QUESTIONS.map((q, i) => {
+                const done = T8_MASTERY.simSolved.has(i);
+                return `<button type="button" onclick="selectT8Sim(${i})" class="px-2.5 py-1 text-[11px] font-mono rounded-lg border ${i === curT8Sim ? 'border-sky-500 bg-sky-950/70 text-sky-200 font-bold' : (done ? 'border-emerald-800 bg-emerald-950/30 text-emerald-400' : 'border-slate-800 bg-slate-900 text-slate-400')}">${done ? '✓ ' : ''}Q${i + 1}</button>`;
+            }).join('');
+            const q = T8_SIM_QUESTIONS[curT8Sim];
+            const box = document.getElementById('t8-sim-box');
+            if (box) {
+                box.innerHTML = `<div class="flex items-center justify-between text-[10px] font-mono text-slate-400">
+                        <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-sky-300">Spec ${q.spec}</span>
+                        <span class="text-amber-300">${q.series}</span>
+                    </div>
+                    <p class="text-xs sm:text-sm font-semibold text-white leading-relaxed">${curT8Sim + 1}. ${q.q}</p>
+                    <div class="space-y-2">
+                        ${q.opts.map((o, oi) => `<button type="button" onclick="gradeT8Sim(${curT8Sim}, ${oi})" class="w-full text-left p-2.5 rounded-lg border border-slate-800 bg-slate-900 hover:border-sky-500/50 text-xs text-slate-200">${String.fromCharCode(65 + oi)}. ${o}</button>`).join('')}
+                    </div>
+                    <div id="t8-sim-fb" class="hidden p-3 rounded-lg text-xs leading-relaxed"></div>`;
+            }
+            const sc = document.getElementById('t8-sim-score');
+            if (sc) sc.textContent = `Score: ${T8_MASTERY.simSolved.size} / ${T8_SIM_QUESTIONS.length}`;
+        }
+
+        window.selectT8Sim = function(i) { curT8Sim = i; renderT8Sim(); };
+        window.gradeT8Sim = function(qIdx, oIdx) {
+            const q = T8_SIM_QUESTIONS[qIdx];
+            const fb = document.getElementById('t8-sim-fb');
+            if (!fb) return;
+            fb.classList.remove('hidden');
+            if (oIdx === q.ans) {
+                T8_MASTERY.simSolved.add(qIdx);
+                updateT8Mastery();
+                const sc = document.getElementById('t8-sim-score');
+                if (sc) sc.textContent = `Score: ${T8_MASTERY.simSolved.size} / ${T8_SIM_QUESTIONS.length}`;
+                fb.className = 'p-3 rounded-lg text-xs leading-relaxed bg-emerald-950/50 border border-emerald-700 text-emerald-200';
+                fb.innerHTML = `<b>✓ Correct (1/1 Mark):</b> ${q.exp}`;
+            } else {
+                fb.className = 'p-3 rounded-lg text-xs leading-relaxed bg-rose-950/50 border border-rose-700 text-rose-200';
+                fb.innerHTML = `<b>✗ Examiner Distractor Alert:</b> ${q.exp}`;
+            }
+        };
+
+        window.resetT8Sim = function() {
+            T8_MASTERY.simSolved.clear();
+            curT8Sim = 0;
+            renderT8Sim();
+            updateT8Mastery();
+        };
+
+        // --- TAB 8: 12-CARD ACTIVE RECALL FLASHCARD DECK ---
+        const T8_FLASHCARDS = [
+            {q:'Define disproportionation and give the equation for chlorine with cold dilute aqueous NaOH.', a:'Disproportionation is a reaction in which the same element in a single species is simultaneously oxidised and reduced. Cl₂ + 2NaOH → NaCl + NaClO + H₂O (Cl goes 0 → −1 and 0 → +1).'},
+            {q:'Write the equation for chlorine reacting with hot concentrated aqueous NaOH and state the oxidation numbers of Cl.', a:'3Cl₂ + 6NaOH → 5NaCl + NaClO₃ + 3H₂O. Chlorine is reduced from 0 to −1 in NaCl and oxidised from 0 to +5 in NaClO₃ (sodium chlorate(V)).'},
+            {q:'Why does reactivity increase down Group 1 and Group 2?', a:'Down the group, atoms have more electron shells, a larger atomic radius, and greater inner-shell shielding. Despite higher nuclear charge, the outer electron(s) experience weaker nuclear attraction and require less ionisation energy to remove.'},
+            {q:'Compare the reaction of magnesium with cold water versus steam.', a:'With cold water (very slow): Mg(s) + 2H₂O(l) → Mg(OH)₂(aq) + H₂(g). With steam (vigorous, bright white flame): Mg(s) + H₂O(g) → MgO(s) + H₂(g) (forms the oxide, not hydroxide!).'},
+            {q:'State the trends in solubility of Group 2 hydroxides and Group 2 sulfates down the group.', a:'Group 2 hydroxide solubility INCREASES down the group (Mg(OH)₂ sparingly soluble → Ba(OH)₂ soluble). Group 2 sulfate solubility DECREASES down the group (MgSO₄ soluble → BaSO₄ insoluble).'},
+            {q:'Give the 4-mark explanation for why thermal stability of Group 2 carbonates increases down the group.', a:'1. Down the group, the M²⁺ cation radius increases so charge density decreases. 2. Smaller cations (like Mg²⁺) have greater polarising power. 3. Mg²⁺ polarises/distorts the large CO₃²⁻ anion electron cloud more strongly. 4. This weakens the C–O covalent bond in the carbonate ion more, so less heat is needed to break it.'},
+            {q:'Compare the thermal decomposition of Group 1 nitrates (NaNO₃, KNO₃) with Group 2 nitrates and LiNO₃.', a:'NaNO₃/KNO₃ decompose to the nitrite + oxygen only: 2NaNO₃ → 2NaNO₂ + O₂. Group 2 nitrates and LiNO₃ decompose to the oxide + brown acidic NO₂ + O₂: 2Mg(NO₃)₂ → 2MgO + 4NO₂ + O₂.'},
+            {q:'Recall all six required flame test colours for Group 1 and Group 2 cations (Spec 8.17).', a:'Li⁺ = red (crimson); Na⁺ = yellow; K⁺ = lilac; Ca²⁺ = orange-red (brick red); Sr²⁺ = red; Ba²⁺ = pale green (apple green). (Mg²⁺ has no flame colour as emitted photons are in the UV region).'},
+            {q:'Explain why dilute nitric acid (and not HCl or H₂SO₄) is added before AgNO₃(aq) when testing for halide ions.', a:'Dilute acid removes carbonate/hydroxide ions that would otherwise form pale precipitates (Ag₂CO₃ / Ag₂O) with Ag⁺. HCl or H₂SO₄ cannot be used because they introduce Cl⁻ or SO₄²⁻ ions, giving false precipitates.'},
+            {q:'State the colours of AgCl, AgBr, and AgI precipitates and their solubility in aqueous ammonia.', a:'AgCl = white ppt, soluble in dilute NH₃(aq). AgBr = cream ppt, insoluble in dilute NH₃ but soluble in concentrated NH₃(aq). AgI = yellow ppt, insoluble in both dilute and concentrated NH₃(aq).'},
+            {q:'Explain why reducing ability increases down Group 7 from Cl⁻ to I⁻, and state the sulfur products formed with conc. H₂SO₄.', a:'Ionic radius increases from Cl⁻ to I⁻ (more shells/shielding), so the outer electron is further from the nucleus and lost more easily. Cl⁻ gives HCl only (no redox); Br⁻ gives HBr + Br₂ + SO₂ (+4); I⁻ gives HI + I₂ + SO₂ (+4) + S (0) + H₂S (−2).'},
+            {q:'In an acid–base titration, why is the conical flask rinsed with deionised water whereas the burette and pipette are rinsed with the solutions they will contain?', a:'Rinsing the burette/pipette with their solutions prevents dilution of the solutions. Rinsing the conical flask with deionised water does not change the number of moles of reagent pipetted into it (rinsing with solution would add extra moles!).'}
+        ];
+
+        let t8FcIdx = 0, t8FcFlip = false;
+        function renderT8Card() {
+            const box = document.getElementById('t8-fc-box'), cnt = document.getElementById('t8-fc-counter');
+            if (!box) return;
+            const c = T8_FLASHCARDS[t8FcIdx];
+            if (cnt) cnt.textContent = `${t8FcIdx + 1} / ${T8_FLASHCARDS.length}`;
+            box.innerHTML = `<span class="text-[10px] font-mono uppercase px-2.5 py-0.5 rounded-full mb-2 ${t8FcFlip ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40' : 'bg-sky-500/20 text-sky-300 border border-sky-500/40'}">${t8FcFlip ? '✓ Mark-Scheme Answer (Click to flip back)' : '❓ Question Prompt (Click to reveal answer)'}</span>
+                <p class="text-xs sm:text-sm ${t8FcFlip ? 'text-emerald-200 font-medium' : 'text-white font-bold'} max-w-2xl leading-relaxed">${t8FcFlip ? c.a : c.q}</p>`;
+        }
+        window.flipT8Card = function() { t8FcFlip = !t8FcFlip; renderT8Card(); };
+        window.stepT8Card = function(d) { t8FcIdx = (t8FcIdx + d + T8_FLASHCARDS.length) % T8_FLASHCARDS.length; t8FcFlip = false; renderT8Card(); };
+
+        // --- APPLE SPOTLIGHT QUICK COMMAND ---
+        const T8_SPOTLIGHT = [
+            {title:'Spec 8.1–8.9 — Oxidation-State Exceptions & Cl₂ Disproportionation Decoder', tag:'Tab 1 · Syllabus Lab', act:()=>{switchTab('syllabus');switchSyl8Lab('oxdisp');}},
+            {title:'Spec 8.10 — Interactive Half-Equation Electron-Balance Combiner', tag:'Tab 1 · Half-Equations', act:()=>{switchTab('syllabus');switchSyl8Lab('halfeq');}},
+            {title:'Spec 8.1–8.28 — Interactive Specification Self-Audit Checklist', tag:'Tab 1 · Syllabus Audit', act:()=>{switchTab('syllabus');switchSyl8Lab('audit');}},
+            {title:'Spec 8.5–8.16 — Six Reaction Types & Group 1/2 Decomposition Matrix', tag:'Tab 2 · Reaction Types', act:()=>{switchTab('types');}},
+            {title:'Spec 8.17 — Live Bunsen Burner Flame Test Simulator (Li⁺ to Ba²⁺)', tag:'Tab 3 · Station A', act:()=>{switchTab('tests');}},
+            {title:'Spec 8.18–8.19, 8.27ii — Unknown Salt Detective & Sequential Test Order', tag:'Tab 3 · Station F', act:()=>{switchTab('tests');setTimeout(()=>{const el=document.getElementById('salt-det-sel');if(el)el.scrollIntoView({behavior:'smooth'});},100);}},
+            {title:'Spec 8.20–8.23 — Interactive 3D Titration Lab & Real-Time pH Curve (CP3/CP4)', tag:'Tab 4 · Titration Lab', act:()=>{switchTab('titration');}},
+            {title:'Spec 8.23 — Concordant Titre Selector (±0.10 cm³) & Procedural Fault Doctor', tag:'Tab 4 · CP3/CP4 Doctor', act:()=>{switchTab('titration');setTimeout(()=>{const el=document.getElementById('concordant-out');if(el)el.scrollIntoView({behavior:'smooth'});},100);}},
+            {title:'Spec 8.15–8.16 — Group 2 Solubility Tug-of-War & Bully Cation Polarisation Lab', tag:'Tab 5 · Memory Lab', act:()=>{switchTab('memory');}},
+            {title:'Spec 8.27i & 8.28 — Halides + Conc. H₂SO₄ Sulfur Staircase & F₂/At₂ Predictor', tag:'Tab 6 · Halide + H₂SO₄', act:()=>{switchTab('halide');}},
+            {title:'Spec 8.1–8.28 — 10-Question WCH12/WCH13 Past-Paper Exam Simulator', tag:'Tab 7 · Exam Sim', act:()=>{switchTab('solver');switchSolver('sim');}},
+            {title:'2021–2026 Examiner Report Deep-Dive & 12 Active-Recall Flashcards', tag:'Tab 8 · Final Review', act:()=>{switchTab('review');}}
+        ];
+
+        window.openSpotlight = function() {
+            const m = document.getElementById('spotlight-modal');
+            if (!m) return;
+            m.classList.remove('hidden'); m.classList.add('flex');
+            const inp = document.getElementById('spotlight-input');
+            if (inp) { inp.value = ''; inp.focus(); }
+            filterSpotlight();
+        };
+        window.closeSpotlight = function() {
+            const m = document.getElementById('spotlight-modal');
+            if (!m) return;
+            m.classList.add('hidden'); m.classList.remove('flex');
+        };
+        window.filterSpotlight = function() {
+            const q = (document.getElementById('spotlight-input') ? document.getElementById('spotlight-input').value : '').toLowerCase().trim();
+            const box = document.getElementById('spotlight-results');
+            if (!box) return;
+            const matches = T8_SPOTLIGHT.filter(it => !q || it.title.toLowerCase().includes(q) || it.tag.toLowerCase().includes(q));
+            box.innerHTML = matches.map(it => {
+                const idx = T8_SPOTLIGHT.indexOf(it);
+                return `<button type="button" onclick="runT8Spotlight(${idx})" class="w-full text-left px-3 py-2.5 rounded-xl hover:bg-slate-800/80 flex items-center justify-between gap-2">
+                    <span class="text-xs text-slate-100 font-medium">${it.title}</span>
+                    <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-950 text-sky-300 border border-slate-800 shrink-0">${it.tag}</span>
+                </button>`;
+            }).join('') || '<p class="text-xs text-slate-500 p-3 text-center">No matching concept found.</p>';
+        };
+        window.runT8Spotlight = function(idx) {
+            closeSpotlight();
+            if (T8_SPOTLIGHT[idx]) T8_SPOTLIGHT[idx].act();
+        };
+
+        document.addEventListener('keydown', function(e) {
+            if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+                e.preventDefault();
+                openSpotlight();
+            }
         });
 
         // ============ MOBILE UX boot layer ============

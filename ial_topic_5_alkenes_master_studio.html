@@ -178,6 +178,225 @@ nav, nav > div { max-width: 100% !important; }
 }
 /* ===== /MUX mobile layer ===== */
 </style>
+
+<style id="apple-hig-theme">
+/* ===== APPLE HIG / macOS SEQUOIA DARK GLASSMORPHISM & SPRING ANIMATIONS ===== */
+:root {
+  --apple-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --apple-spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --apple-glass: rgba(24, 26, 32, 0.72);
+  --apple-glass-elevated: rgba(32, 35, 44, 0.78);
+  --apple-glass-subtle: rgba(18, 20, 26, 0.62);
+  --apple-border: rgba(255, 255, 255, 0.085);
+  --apple-border-highlight: rgba(255, 255, 255, 0.16);
+  --apple-specular: inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Inter", sans-serif !important;
+  background: radial-gradient(ellipse 120% 80% at 50% -10%, rgba(16, 185, 129, 0.11), transparent 60%),
+              radial-gradient(ellipse 90% 70% at 90% 20%, rgba(56, 189, 248, 0.08), transparent 55%),
+              #05070b !important;
+  color: #f5f5f7 !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.011em;
+}
+
+h1, h2, h3, .font-display {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Space Grotesk", sans-serif !important;
+  letter-spacing: -0.024em;
+}
+
+/* Subtle dot-matrix ambient background */
+body::before {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.055) 1px, transparent 1px) !important;
+  background-size: 28px 28px !important;
+}
+
+/* Apple Glass Header */
+header {
+  background: rgba(12, 14, 18, 0.76) !important;
+  -webkit-backdrop-filter: saturate(190%) blur(28px) !important;
+  backdrop-filter: saturate(190%) blur(28px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6), inset 0 -1px 0 0 rgba(255, 255, 255, 0.04) !important;
+  transition: background 0.35s var(--apple-ease), box-shadow 0.35s var(--apple-ease);
+}
+
+/* Segmented Control Navigation Track */
+header nav {
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(255, 255, 255, 0.075);
+  border-radius: 14px;
+  padding: 4px !important;
+  gap: 4px !important;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.45);
+}
+
+header nav .tab-btn {
+  border-radius: 10px !important;
+  border-bottom: none !important;
+  padding: 7px 14px !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.01em;
+  color: rgba(235, 235, 245, 0.68) !important;
+  transition: all 0.28s var(--apple-spring) !important;
+  position: relative;
+}
+
+header nav .tab-btn:hover:not(.tab-btn-active) {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+}
+
+.tab-btn-active {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  border-bottom: none !important;
+  background: linear-gradient(180deg, rgba(52, 211, 153, 0.24) 0%, rgba(16, 185, 129, 0.14) 100%) !important;
+  box-shadow: 0 2px 10px -2px rgba(16, 185, 129, 0.35), inset 0 1px 0 0 rgba(255, 255, 255, 0.22), 0 0 0 1px rgba(52, 211, 153, 0.32) !important;
+}
+
+/* Apple Glass Cards & Containers */
+.bg-slate-900\/80, .bg-slate-900, .bg-slate-950 {
+  background: var(--apple-glass) !important;
+  -webkit-backdrop-filter: saturate(180%) blur(22px);
+  backdrop-filter: saturate(180%) blur(22px);
+  border-color: var(--apple-border) !important;
+  box-shadow: var(--apple-specular), 0 14px 34px -12px rgba(0, 0, 0, 0.48);
+  border-radius: 18px !important;
+  transition: transform 0.36s var(--apple-spring), border-color 0.36s var(--apple-ease), box-shadow 0.36s var(--apple-ease), background-color 0.36s var(--apple-ease);
+}
+
+.card-hover {
+  transition: transform 0.38s var(--apple-spring), border-color 0.38s var(--apple-ease), box-shadow 0.38s var(--apple-ease) !important;
+}
+
+.card-hover:hover {
+  transform: translateY(-3px) scale(1.003) !important;
+  border-color: rgba(52, 211, 153, 0.34) !important;
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.2), 0 22px 44px -14px rgba(0, 0, 0, 0.65), 0 0 28px -8px rgba(16, 185, 129, 0.22) !important;
+}
+
+/* Tab Panel Apple Spring Entrance */
+.tab-panel.active {
+  animation: applePanelIn 0.44s var(--apple-spring) both !important;
+}
+
+@keyframes applePanelIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.994);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* Tactile Buttons & Selects */
+.btn-press {
+  border-radius: 10px !important;
+  transition: transform 0.18s var(--apple-spring), background-color 0.25s var(--apple-ease), border-color 0.25s var(--apple-ease), box-shadow 0.25s var(--apple-ease), color 0.2s var(--apple-ease) !important;
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+}
+
+.btn-press:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.btn-press:active:not(:disabled) {
+  transform: scale(0.96) !important;
+}
+
+select, input[type="text"], input[type="number"] {
+  background: rgba(15, 18, 24, 0.85) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 11px !important;
+  padding: 9px 12px !important;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
+  transition: border-color 0.25s var(--apple-ease), box-shadow 0.25s var(--apple-ease);
+}
+
+select:focus, input[type="text"]:focus, input[type="number"]:focus {
+  border-color: rgba(52, 211, 153, 0.65) !important;
+  box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.18) !important;
+  outline: none !important;
+}
+
+/* Blur-answer Apple Frosted Pill */
+.blur-answer {
+  filter: blur(5.5px);
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 7px !important;
+  padding: 2px 9px !important;
+  margin: 0 2px;
+  transition: filter 0.35s var(--apple-spring), background-color 0.35s var(--apple-ease), border-color 0.35s var(--apple-ease), transform 0.25s var(--apple-spring) !important;
+}
+
+.blur-answer:hover:not(.revealed) {
+  background: rgba(52, 211, 153, 0.14) !important;
+  border-color: rgba(52, 211, 153, 0.35);
+  transform: scale(1.03);
+}
+
+.blur-answer.revealed {
+  filter: none;
+  background: rgba(16, 185, 129, 0.16) !important;
+  border-color: rgba(52, 211, 153, 0.4);
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.18);
+}
+
+/* Apple Segmented Sub-bar for Engine Modes */
+.apple-segmented {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 4px;
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+/* Interactive Mastery Pill & Progress Ring */
+.apple-pill {
+  background: rgba(255, 255, 255, 0.055);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 9999px;
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(16px);
+}
+
+/* Custom Apple Accordion Details */
+details {
+  transition: all 0.3s var(--apple-ease);
+}
+details[open] {
+  border-color: rgba(52, 211, 153, 0.25) !important;
+}
+
+/* Pulse highlight for interactive SVG orbitals and arrows */
+@keyframes orbitalFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-2.5px); }
+}
+.orbital-anim {
+  animation: orbitalFloat 3.6s ease-in-out infinite;
+}
+
+/* Apple Modal / Spotlight Sheet */
+#spotlight-modal {
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  transition: opacity 0.25s var(--apple-ease);
+}
+</style>
+
 </head>
 <body class="min-h-screen flex flex-col selection:bg-emerald-500 selection:text-slate-900">
 <div class="glow glow-a"></div><div class="glow glow-b"></div><div class="glow glow-c"></div>
@@ -198,11 +417,22 @@ nav, nav > div { max-width: 100% !important; }
       <p class="text-[10px] text-slate-400">Alkenes · Electrophilic Addition · E–Z Isomerism · Polymers (Spec 5.1 – 5.8)</p>
     </div>
   </div>
-  <div class="hidden lg:flex items-center gap-2 text-[10px] font-mono text-slate-500">
-    <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800">σ + π</span>
-    <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800">CnH2n</span>
-    <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800">Markovnikov</span>
-    <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800">E / Z</span>
+  <div class="flex flex-wrap items-center gap-2 text-[10px] font-mono text-slate-400">
+    <div class="hidden xl:flex items-center gap-1.5">
+      <span class="px-2.5 py-1 rounded-full apple-pill text-slate-300">σ + π (120°)</span>
+      <span class="px-2.5 py-1 rounded-full apple-pill text-slate-300">CnH2n</span>
+      <span class="px-2.5 py-1 rounded-full apple-pill text-slate-300">Markovnikov</span>
+      <span class="px-2.5 py-1 rounded-full apple-pill text-slate-300">CIP E / Z</span>
+    </div>
+    <button type="button" onclick="openSpotlight()" class="btn-press flex items-center gap-2 px-3 py-1.5 rounded-full apple-pill text-slate-200 hover:text-emerald-300 hover:border-emerald-500/40 text-[11px] font-sans font-medium" title="Quick Search & Concept Jump (⌘K)">
+      <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      <span>Quick Search</span>
+      <kbd class="px-1.5 py-0.5 text-[9px] font-mono bg-slate-950/80 text-slate-400 rounded border border-slate-700/80">⌘K</kbd>
+    </button>
+    <button type="button" onclick="switchTab('builder');setTimeout(()=>{const el=document.getElementById('exam-sim-panel');if(el)el.scrollIntoView({behavior:'smooth'});},120);" class="btn-press flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-500/35 text-emerald-300 hover:bg-emerald-500/25 text-[11px] font-sans font-semibold">
+      <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+      <span>Mastery: <strong id="mastery-percentage" class="font-mono text-emerald-200">0%</strong></span>
+    </button>
   </div>
 </div>
 <div class="max-w-7xl mx-auto mt-2 pt-2 border-t border-slate-800/60">
@@ -257,6 +487,182 @@ nav, nav > div { max-width: 100% !important; }
     <p>• <strong>Alkynes</strong> and arene chemistry are not part of this topic. The four suggested practicals (alkane/alkene reactivity, cyclohexene prep, limonene steam distillation, Perspex) are included in the Final Review.</p>
   </div>
 </div>
+
+<!-- NEW: INTERACTIVE SPEC 5.1 ORBITAL & UNSATURATION CONCEPT CHECK STUDIO -->
+<div class="bg-slate-900/80 border border-slate-800 rounded-xl p-6 space-y-6">
+  <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-slate-800/80 pb-4">
+    <div>
+      <span class="kicker">Interactive Concept Lab · Spec 5.1 &amp; Examiner Updates (2021–2026)</span>
+      <h3 class="font-display text-lg font-bold text-white mt-1">σ vs π Bonding Visualizer, Formula Disambiguator &amp; Spec Mastery Tracker</h3>
+      <p class="text-xs text-slate-400 mt-0.5">Directly tests the high-frequency WCH11 questions on orbital overlap, bond angles (120° → 109.5°), C<sub>n</sub>H<sub>2n</sub> isomers (alkene vs cycloalkane), and quantitative H₂ / Br₂ mole-ratio addition.</p>
+    </div>
+    <div class="flex flex-wrap gap-1.5 apple-segmented">
+      <button type="button" onclick="switchSylLab('orbital')" id="syllab-btn-orbital" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">1. σ &amp; π Orbital Lab</button>
+      <button type="button" onclick="switchSylLab('formula')" id="syllab-btn-formula" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg text-slate-400 hover:text-white border border-transparent">2. CₙH₂ₙ &amp; Mole Stoichiometry</button>
+      <button type="button" onclick="switchSylLab('checklist')" id="syllab-btn-checklist" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg text-slate-400 hover:text-white border border-transparent">3. Spec 5.1–5.8 Self-Audit</button>
+    </div>
+  </div>
+
+  <!-- Sub-panel 1: Interactive Orbital & Geometry Lab -->
+  <div id="syllab-panel-orbital" class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-center">
+    <div class="lg:col-span-6 bg-slate-950 border border-slate-800 rounded-xl p-4 flex flex-col items-center">
+      <div class="flex flex-wrap gap-2 mb-3 w-full justify-between items-center">
+        <span class="text-[11px] font-mono text-emerald-300 font-semibold" id="orb-view-title">View: Complete C=C Double Bond (σ + π)</span>
+        <div class="flex gap-1.5">
+          <button type="button" onclick="setOrbitalView('both')" id="orb-v-both" class="btn-press px-2.5 py-1 text-[10px] font-semibold rounded bg-emerald-600 text-white">σ + π</button>
+          <button type="button" onclick="setOrbitalView('sigma')" id="orb-v-sigma" class="btn-press px-2.5 py-1 text-[10px] font-semibold rounded bg-slate-800 text-slate-300">σ Only (Axial)</button>
+          <button type="button" onclick="setOrbitalView('pi')" id="orb-v-pi" class="btn-press px-2.5 py-1 text-[10px] font-semibold rounded bg-slate-800 text-slate-300">π Only (Sideways)</button>
+          <button type="button" onclick="setOrbitalView('after')" id="orb-v-after" class="btn-press px-2.5 py-1 text-[10px] font-semibold rounded bg-slate-800 text-slate-300">After Addition (sp³)</button>
+        </div>
+      </div>
+      <svg viewBox="0 0 460 220" class="w-full max-w-[440px] h-auto" aria-label="Interactive Sigma and Pi Bond Diagram">
+        <defs>
+          <radialGradient id="sigGrad" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#34d399" stop-opacity="0.75"/>
+            <stop offset="100%" stop-color="#10b981" stop-opacity="0.08"/>
+          </radialGradient>
+          <linearGradient id="piGradTop" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.65"/>
+            <stop offset="50%" stop-color="#818cf8" stop-opacity="0.75"/>
+            <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.65"/>
+          </linearGradient>
+        </defs>
+        <!-- C-H sigma bonds -->
+        <g id="svg-ch-trigonal">
+          <line x1="150" y1="110" x2="75" y2="55" stroke="#64748b" stroke-width="2.5"/>
+          <line x1="150" y1="110" x2="75" y2="165" stroke="#64748b" stroke-width="2.5"/>
+          <line x1="310" y1="110" x2="385" y2="55" stroke="#64748b" stroke-width="2.5"/>
+          <line x1="310" y1="110" x2="385" y2="165" stroke="#64748b" stroke-width="2.5"/>
+          <circle cx="70" cy="52" r="10" fill="#1e293b" stroke="#94a3b8" stroke-width="1.5"/>
+          <text x="70" y="56" text-anchor="middle" fill="#e2e8f0" font-size="11" font-family="Fira Code">H</text>
+          <circle cx="70" cy="168" r="10" fill="#1e293b" stroke="#94a3b8" stroke-width="1.5"/>
+          <text x="70" y="172" text-anchor="middle" fill="#e2e8f0" font-size="11" font-family="Fira Code">H</text>
+          <circle cx="390" cy="52" r="10" fill="#1e293b" stroke="#94a3b8" stroke-width="1.5"/>
+          <text x="390" y="56" text-anchor="middle" fill="#e2e8f0" font-size="11" font-family="Fira Code">H</text>
+          <circle cx="390" cy="168" r="10" fill="#1e293b" stroke="#94a3b8" stroke-width="1.5"/>
+          <text x="390" y="172" text-anchor="middle" fill="#e2e8f0" font-size="11" font-family="Fira Code">H</text>
+          <!-- 120 deg arc -->
+          <path d="M 118 87 A 38 38 0 0 0 118 133" fill="none" stroke="#34d399" stroke-width="1.3" stroke-dasharray="3,2"/>
+          <text x="86" y="114" fill="#34d399" font-size="10" font-family="Fira Code">120°</text>
+        </g>
+        <!-- Pi cloud lobes -->
+        <g id="svg-pi-cloud" class="orbital-anim">
+          <ellipse cx="150" cy="72" rx="18" ry="34" fill="rgba(56,189,248,0.22)" stroke="#38bdf8" stroke-width="1" stroke-dasharray="3,2"/>
+          <ellipse cx="310" cy="72" rx="18" ry="34" fill="rgba(56,189,248,0.22)" stroke="#38bdf8" stroke-width="1" stroke-dasharray="3,2"/>
+          <ellipse cx="150" cy="148" rx="18" ry="34" fill="rgba(56,189,248,0.22)" stroke="#38bdf8" stroke-width="1" stroke-dasharray="3,2"/>
+          <ellipse cx="310" cy="148" rx="18" ry="34" fill="rgba(56,189,248,0.22)" stroke="#38bdf8" stroke-width="1" stroke-dasharray="3,2"/>
+          <ellipse cx="230" cy="52" rx="95" ry="20" fill="url(#piGradTop)"/>
+          <ellipse cx="230" cy="168" rx="95" ry="20" fill="url(#piGradTop)"/>
+          <text x="230" y="56" text-anchor="middle" fill="#ffffff" font-size="11" font-family="Fira Code" font-weight="600">π lobe (above axis)</text>
+          <text x="230" y="172" text-anchor="middle" fill="#ffffff" font-size="11" font-family="Fira Code" font-weight="600">π lobe (below axis)</text>
+        </g>
+        <!-- Sigma axial overlap -->
+        <g id="svg-sigma-cloud">
+          <ellipse cx="230" cy="110" rx="76" ry="18" fill="url(#sigGrad)" stroke="#34d399" stroke-width="1.4"/>
+          <text x="230" y="114" text-anchor="middle" fill="#ecfdf5" font-size="11" font-family="Fira Code" font-weight="700">σ head-on overlap</text>
+        </g>
+        <!-- After addition substituents (hidden initially) -->
+        <g id="svg-after-add" style="display:none">
+          <line x1="150" y1="110" x2="150" y2="38" stroke="#f59e0b" stroke-width="2.5"/>
+          <line x1="310" y1="110" x2="310" y2="182" stroke="#f59e0b" stroke-width="2.5"/>
+          <circle cx="150" cy="30" r="13" fill="#451a03" stroke="#fbbf24" stroke-width="1.6"/>
+          <text x="150" y="34" text-anchor="middle" fill="#fde68a" font-size="11" font-family="Fira Code" font-weight="700">Br</text>
+          <circle cx="310" cy="190" r="13" fill="#451a03" stroke="#fbbf24" stroke-width="1.6"/>
+          <text x="310" y="194" text-anchor="middle" fill="#fde68a" font-size="11" font-family="Fira Code" font-weight="700">Br</text>
+          <text x="230" y="88" text-anchor="middle" fill="#fbbf24" font-size="10" font-family="Fira Code">Tetrahedral · 109.5° · Free rotation</text>
+        </g>
+        <!-- Carbon nuclei -->
+        <circle cx="150" cy="110" r="15" fill="#065f46" stroke="#34d399" stroke-width="2"/>
+        <text x="150" y="114" text-anchor="middle" fill="#ffffff" font-size="12" font-family="Fira Code" font-weight="700">C</text>
+        <circle cx="310" cy="110" r="15" fill="#065f46" stroke="#34d399" stroke-width="2"/>
+        <text x="310" y="114" text-anchor="middle" fill="#ffffff" font-size="12" font-family="Fira Code" font-weight="700">C</text>
+      </svg>
+      <p id="orb-view-caption" class="text-[11px] text-slate-300 text-center mt-2 leading-relaxed">
+        The C=C bond (612 kJ mol⁻¹, 0.134 nm) combines a strong axial <b>σ bond</b> (348 kJ mol⁻¹) and a weaker sideways <b>π bond</b> (~264 kJ mol⁻¹). Because the π electron density sits exposed above and below the plane, electrophiles attack the π bond while the σ framework remains intact.
+      </p>
+    </div>
+
+    <div class="lg:col-span-6 space-y-3">
+      <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl space-y-2">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-bold text-emerald-300">⚡ Instant Concept Check: Why is C=C MORE reactive than C–C even though 612 &gt; 348 kJ mol⁻¹?</span>
+          <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-800">WCH11 Classic</span>
+        </div>
+        <p class="text-xs text-slate-300 leading-relaxed">Students often lose marks by saying "the double bond is weaker than a single bond". Test the exact mark-scheme distinction:</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
+          <button type="button" onclick="checkOrbitalConcept(false, this)" class="btn-press text-left p-2.5 rounded-lg border border-slate-800 bg-slate-900/90 text-[11px] text-slate-300 hover:border-slate-600">
+            <b>Option A:</b> The entire C=C double bond is weaker than a C–C single bond, so both bonds break easily.
+          </button>
+          <button type="button" onclick="checkOrbitalConcept(true, this)" class="btn-press text-left p-2.5 rounded-lg border border-slate-800 bg-slate-900/90 text-[11px] text-slate-300 hover:border-slate-600">
+            <b>Option B:</b> Sideways p-orbital overlap makes the <b>π bond weaker</b> (~264 kJ mol⁻¹) than the σ bond (348 kJ mol⁻¹), with exposed high electron density.
+          </button>
+        </div>
+        <div id="orb-concept-feedback" class="hidden p-2.5 rounded-lg text-[11px] leading-relaxed"></div>
+      </div>
+
+      <div class="overflow-x-auto bg-slate-950 border border-slate-800 rounded-xl p-3">
+        <table class="w-full text-left text-[11px] text-slate-300">
+          <thead class="text-[10px] font-mono uppercase text-slate-400 border-b border-slate-800">
+            <tr><th class="py-1.5 pr-2">Feature</th><th class="py-1.5 pr-2 text-emerald-300">Alkene (C=C)</th><th class="py-1.5 text-sky-300">Alkane / Addition Product (C–C)</th></tr>
+          </thead>
+          <tbody class="divide-y divide-slate-800/60">
+            <tr><td class="py-1.5 pr-2 font-medium">Bonding components</td><td class="py-1.5 pr-2">1 σ (head-on) + 1 π (sideways p–p)</td><td class="py-1.5">1 σ (head-on) only</td></tr>
+            <tr><td class="py-1.5 pr-2 font-medium">Shape &amp; Bond angle around C</td><td class="py-1.5 pr-2 font-mono text-emerald-300">Trigonal planar · 120°</td><td class="py-1.5 font-mono text-sky-300">Tetrahedral · 109.5°</td></tr>
+            <tr><td class="py-1.5 pr-2 font-medium">Rotation at room temp.</td><td class="py-1.5 pr-2">Restricted / prevented by π overlap</td><td class="py-1.5">Free rotation around σ axis</td></tr>
+            <tr><td class="py-1.5 pr-2 font-medium">Bond length &amp; enthalpy</td><td class="py-1.5 pr-2 font-mono">0.134 nm · ~612 kJ mol⁻¹</td><td class="py-1.5 font-mono">0.154 nm · ~348 kJ mol⁻¹</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sub-panel 2: CnH2n Isomer Disambiguator & Mole Stoichiometry Calculator -->
+  <div id="syllab-panel-formula" class="hidden grid grid-cols-1 lg:grid-cols-2 gap-5">
+    <div class="bg-slate-950 border border-slate-800 rounded-xl p-4 space-y-3">
+      <h4 class="font-display text-sm font-bold text-emerald-300">① Homologous Formula &amp; Unsaturation Decoder (Spec 5.1 &amp; 5.5)</h4>
+      <p class="text-xs text-slate-400">Examiner reports (WCH11 Jan 2022, Jan 2024) highlight that students see <b>C<sub>n</sub>H<sub>2n</sub></b> and assume it MUST decolourise bromine water — forgetting <b>cycloalkanes</b>! Select a hydrocarbon class to compare:</p>
+      <div class="flex flex-wrap gap-1.5" id="hc-class-btns">
+        <button type="button" onclick="showHcClass(0)" class="btn-press px-3 py-1.5 text-[11px] font-mono rounded-lg bg-emerald-950/60 border border-emerald-700 text-emerald-300">Acyclic Alkene (CnH2n)</button>
+        <button type="button" onclick="showHcClass(1)" class="btn-press px-3 py-1.5 text-[11px] font-mono rounded-lg bg-slate-900 border border-slate-700 text-slate-300">Cycloalkane (CnH2n)</button>
+        <button type="button" onclick="showHcClass(2)" class="btn-press px-3 py-1.5 text-[11px] font-mono rounded-lg bg-slate-900 border border-slate-700 text-slate-300">Cycloalkene (CnH2n-2)</button>
+        <button type="button" onclick="showHcClass(3)" class="btn-press px-3 py-1.5 text-[11px] font-mono rounded-lg bg-slate-900 border border-slate-700 text-slate-300">Alkadiene (CnH2n-2)</button>
+      </div>
+      <div id="hc-class-out" class="p-3.5 bg-slate-900 border border-slate-800 rounded-lg text-xs text-slate-300 space-y-1.5 leading-relaxed"></div>
+    </div>
+
+    <div class="bg-slate-950 border border-slate-800 rounded-xl p-4 space-y-3">
+      <h4 class="font-display text-sm font-bold text-sky-300">② Quantitative Unsaturation Calculator (WCH11 June 2021 / Oct 2023 Style)</h4>
+      <p class="text-xs text-slate-400">In WCH11 calculation questions, you deduce the number of <b>C=C double bonds</b> from the volume or moles of H₂(g) or Br₂ that react completely with a known amount of alkene ($1	ext{ mol C=C} : 1	ext{ mol H}_2	ext{ or Br}_2$).</p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+        <div>
+          <label class="block text-[10px] font-mono text-slate-400 mb-1" for="quant-mol-alk">Moles of hydrocarbon</label>
+          <input id="quant-mol-alk" type="number" step="0.005" value="0.010" min="0.001" oninput="calcUnsat()" class="w-full text-xs text-white font-mono"/>
+        </div>
+        <div>
+          <label class="block text-[10px] font-mono text-slate-400 mb-1" for="quant-vol-h2">Vol of H₂ at r.t.p. (cm³)</label>
+          <input id="quant-vol-h2" type="number" step="120" value="480" min="0" oninput="calcUnsat()" class="w-full text-xs text-white font-mono"/>
+        </div>
+        <div>
+          <label class="block text-[10px] font-mono text-slate-400 mb-1" for="quant-vm">Molar vol Vₘ (cm³ mol⁻¹)</label>
+          <select id="quant-vm" onchange="calcUnsat()" class="w-full text-xs text-white font-mono">
+            <option value="24000">24 000 (r.t.p.)</option>
+            <option value="22400">22 400 (s.t.p.)</option>
+          </select>
+        </div>
+      </div>
+      <div id="quant-unsat-out" class="p-3.5 bg-slate-900 border border-slate-800 rounded-lg text-xs text-slate-300 space-y-1"></div>
+    </div>
+  </div>
+
+  <!-- Sub-panel 3: Spec 5.1-5.8 Interactive Self-Audit -->
+  <div id="syllab-panel-checklist" class="hidden space-y-3">
+    <div class="flex flex-wrap items-center justify-between gap-2">
+      <p class="text-xs text-slate-300">Tick each official Edexcel IAL specification competency once you can write its mark-scheme phrasing from memory. Your live mastery badge in the top bar updates automatically.</p>
+      <button type="button" onclick="toggleAllSpecChecks(true)" class="btn-press px-3 py-1 text-[11px] font-semibold rounded-lg bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">Check All</button>
+    </div>
+    <div id="spec-audit-list" class="grid grid-cols-1 md:grid-cols-2 gap-2.5"></div>
+  </div>
+</div>
 </section>
 
 <!-- ==================== TAB 2: REACTIONS ENGINE ==================== -->
@@ -270,6 +676,7 @@ nav, nav > div { max-width: 100% !important; }
     <button onclick="setMode('rx','map')" id="rx-m-map" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-emerald-300">Reagent Map</button>
     <button onclick="setMode('rx','quiz')" id="rx-m-quiz" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-emerald-300">Quiz</button>
     <button onclick="setMode('rx','traps')" id="rx-m-traps" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-emerald-300">Traps</button>
+    <button onclick="setMode('rx','lab')" id="rx-m-lab" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-emerald-300 hover:text-emerald-200">⚡ Test-Tube &amp; Br₂(aq) Lab</button>
   </div>
 </div>
 <div id="rx-mode-explorer" class="rx-mode"><div id="rx-explorer" class="grid grid-cols-1 lg:grid-cols-12 gap-4"></div></div>
@@ -287,6 +694,61 @@ nav, nav > div { max-width: 100% !important; }
 </div>
 <div id="rx-mode-quiz" class="rx-mode hidden"><div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4"><h3 class="font-display text-sm font-bold text-emerald-300">Multi-Blank Quiz — Addition Reactions</h3><p class="text-xs text-slate-400">Click each blurred answer to reveal it.</p><div id="rx-quiz-rows" class="space-y-3"></div><button onclick="revealAll('rx-quiz-rows')" class="btn-press bg-slate-800 hover:bg-slate-700 border border-slate-700 text-emerald-300 text-xs font-semibold px-4 py-2 rounded-lg">Reveal All</button></div></div>
 <div id="rx-mode-traps" class="rx-mode hidden"><div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4"><h3 class="font-display text-sm font-bold text-rose-300">Trap Pairs — Addition Reactions</h3><div id="rx-traps-grid" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div></div></div>
+<div id="rx-mode-lab" class="rx-mode hidden">
+  <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-5">
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 border-b border-slate-800 pb-3">
+      <div>
+        <h3 class="font-display text-sm font-bold text-emerald-300">Interactive Qualitative Test-Tube Bench &amp; Br₂(aq) vs Br₂(l) Solver</h3>
+        <p class="text-xs text-slate-400">WCH11 &amp; WCH13 Examiner Favourite: Compare pure Br₂ (or Br₂ in CCl₄) against aqueous bromine water Br₂(aq) where H₂O acts as a competing nucleophile to form a bromohydrin!</p>
+      </div>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+      <div class="p-4 bg-slate-900 border border-slate-800 rounded-xl space-y-3">
+        <p class="text-xs font-bold text-white">1. Virtual Test-Tube Bench (Observation &amp; Product Simulator)</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+          <div>
+            <label class="block text-[10px] font-mono text-slate-400 mb-1" for="tt-substrate">Unknown Sample</label>
+            <select id="tt-substrate" onchange="runTestTubeSim()" class="w-full text-xs text-slate-100">
+              <option value="ethene">Ethene (CH₂=CH₂)</option>
+              <option value="propene">Propene (CH₃CH=CH₂)</option>
+              <option value="cyclohexene">Cyclohexene (C₆H₁₀)</option>
+              <option value="cyclohexane">Cyclohexane (C₆H₁₂, dark)</option>
+              <option value="hexane_uv">Hexane (C₆H₁₄, with UV light)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-[10px] font-mono text-slate-400 mb-1" for="tt-reagent">Test Reagent</label>
+            <select id="tt-reagent" onchange="runTestTubeSim()" class="w-full text-xs text-slate-100">
+              <option value="br2_aq">Bromine water, Br₂(aq)</option>
+              <option value="br2_ccl4">Br₂ in inert CCl₄ (anhydrous)</option>
+              <option value="kmno4_acid">Cold dil. acidified KMnO₄</option>
+              <option value="kmno4_alk">Cold dil. alkaline KMnO₄</option>
+              <option value="h2so4_conc">Cold conc. H₂SO₄ then warm H₂O</option>
+            </select>
+          </div>
+        </div>
+        <div id="tt-sim-out" class="p-3.5 bg-slate-950 border border-slate-800 rounded-lg text-xs text-slate-300 space-y-2"></div>
+      </div>
+
+      <div class="p-4 bg-slate-900 border border-slate-800 rounded-xl space-y-3">
+        <p class="text-xs font-bold text-amber-300">2. Examiner Concept Check: Why does Ethene + Br₂(aq) give CH₂BrCH₂OH as well as CH₂BrCH₂Br?</p>
+        <p class="text-[11px] text-slate-300 leading-relaxed">In WCH11 mark schemes, when an alkene reacts with <b>bromine water</b>, the major product is actually the <b>bromohydrin (2-bromoethanol)</b> rather than 1,2-dibromoethane. Test your understanding of Step 2:</p>
+        <div class="space-y-2" id="br2aq-check-btns">
+          <button type="button" onclick="gradeBr2AqCheck(0, this)" class="btn-press w-full text-left p-2.5 rounded-lg border border-slate-800 bg-slate-950 text-[11px] text-slate-300">
+            <b>A.</b> Br₂ reacts with H₂O first to make NaOH, which substitutes the bromine atom on 1,2-dibromoethane.
+          </button>
+          <button type="button" onclick="gradeBr2AqCheck(1, this)" class="btn-press w-full text-left p-2.5 rounded-lg border border-slate-800 bg-slate-950 text-[11px] text-slate-300">
+            <b>B.</b> After Step 1 forms the [BrCH₂–CH₂⁺] carbocation intermediate, H₂O is in huge excess over Br⁻ and attacks C⁺ via an oxygen lone pair (followed by loss of H⁺).
+          </button>
+          <button type="button" onclick="gradeBr2AqCheck(2, this)" class="btn-press w-full text-left p-2.5 rounded-lg border border-slate-800 bg-slate-950 text-[11px] text-slate-300">
+            <b>C.</b> On propene + Br₂(aq), the major product is 2-bromo-1-propanol because OH⁻ is the electrophile in Step 1.
+          </button>
+        </div>
+        <div id="br2aq-check-feedback" class="hidden p-3 rounded-lg text-[11px] leading-relaxed"></div>
+      </div>
+    </div>
+  </div>
+</div>
 </section>
 
 <!-- ==================== TAB 3: MECHANISM ENGINE ==================== -->
@@ -300,6 +762,7 @@ nav, nav > div { max-width: 100% !important; }
     <button onclick="setMode('me','map')" id="me-m-map" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-sky-300">Markovnikov Lab</button>
     <button onclick="setMode('me','quiz')" id="me-m-quiz" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-sky-300">Quiz</button>
     <button onclick="setMode('me','traps')" id="me-m-traps" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-sky-300">Traps</button>
+    <button onclick="setMode('me','doctor')" id="me-m-doctor" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-sky-300 hover:text-sky-200">🩺 Curly-Arrow Examiner Doctor</button>
   </div>
 </div>
 <div id="me-mode-explorer" class="me-mode"><div id="me-explorer" class="grid grid-cols-1 lg:grid-cols-12 gap-4"></div></div>
@@ -313,6 +776,19 @@ nav, nav > div { max-width: 100% !important; }
 </div>
 <div id="me-mode-quiz" class="me-mode hidden"><div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4"><h3 class="font-display text-sm font-bold text-sky-300">Multi-Blank Quiz — Mechanism</h3><p class="text-xs text-slate-400">Click each blurred answer to reveal it.</p><div id="me-quiz-rows" class="space-y-3"></div><button onclick="revealAll('me-quiz-rows')" class="btn-press bg-slate-800 hover:bg-slate-700 border border-slate-700 text-sky-300 text-xs font-semibold px-4 py-2 rounded-lg">Reveal All</button></div></div>
 <div id="me-mode-traps" class="me-mode hidden"><div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4"><h3 class="font-display text-sm font-bold text-rose-300">Trap Pairs — Mechanism</h3><div id="me-traps-grid" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div></div></div>
+<div id="me-mode-doctor" class="me-mode hidden">
+  <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 border-b border-slate-800 pb-3">
+      <div>
+        <h3 class="font-display text-sm font-bold text-sky-300">🩺 Curly-Arrow Examiner Doctor — Diagnose Real WCH11 Script Errors</h3>
+        <p class="text-xs text-slate-400">Principal Examiner Reports (2021–2025) state that most students know the general shape of the mechanism but lose 1–3 marks on arrow origins, dipoles, or carbocation labels. Inspect each candidate script and select the exact examiner verdict.</p>
+      </div>
+      <span id="doc-score-pill" class="px-3 py-1 rounded-full apple-pill text-xs font-mono text-sky-300">Diagnosed: 0 / 6</span>
+    </div>
+    <div class="flex flex-wrap gap-1.5" id="doc-case-btns"></div>
+    <div id="doc-case-view" class="p-4 bg-slate-900 border border-slate-800 rounded-xl space-y-4"></div>
+  </div>
+</div>
 </section>
 
 <!-- ==================== TAB 4: E-Z ENGINE ==================== -->
@@ -326,6 +802,7 @@ nav, nav > div { max-width: 100% !important; }
     <button onclick="setMode('ez','map')" id="ez-m-map" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-violet-300">E/Z Assigner</button>
     <button onclick="setMode('ez','quiz')" id="ez-m-quiz" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-violet-300">Quiz</button>
     <button onclick="setMode('ez','traps')" id="ez-m-traps" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-violet-300">Traps</button>
+    <button onclick="setMode('ez','sandbox')" id="ez-m-sandbox" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-violet-300 hover:text-violet-200">🧪 Live CIP Substituent Sandbox</button>
   </div>
 </div>
 <div id="ez-mode-explorer" class="ez-mode"><div id="ez-explorer" class="grid grid-cols-1 lg:grid-cols-12 gap-4"></div></div>
@@ -339,6 +816,46 @@ nav, nav > div { max-width: 100% !important; }
 </div>
 <div id="ez-mode-quiz" class="ez-mode hidden"><div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4"><h3 class="font-display text-sm font-bold text-violet-300">Multi-Blank Quiz — E–Z Isomerism</h3><p class="text-xs text-slate-400">Click each blurred answer to reveal it.</p><div id="ez-quiz-rows" class="space-y-3"></div><button onclick="revealAll('ez-quiz-rows')" class="btn-press bg-slate-800 hover:bg-slate-700 border border-slate-700 text-violet-300 text-xs font-semibold px-4 py-2 rounded-lg">Reveal All</button></div></div>
 <div id="ez-mode-traps" class="ez-mode hidden"><div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4"><h3 class="font-display text-sm font-bold text-rose-300">Trap Pairs — E–Z Isomerism</h3><div id="ez-traps-grid" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div></div></div>
+<div id="ez-mode-sandbox" class="ez-mode hidden">
+  <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-5">
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 border-b border-slate-800 pb-3">
+      <div>
+        <h3 class="font-display text-sm font-bold text-violet-300">🧪 Live Cahn–Ingold–Prelog (CIP) Substituent Sandbox &amp; Tie-Breaker Engine</h3>
+        <p class="text-xs text-slate-400">Attach any four groups to the C=C double bond. Watch the CIP atomic-number comparator rank Left C and Right C in real time (including 2nd-atom tie-breakers like –CH₂CH₃ vs –CH₃ and isotopes –D vs –H), or click <b>Random Challenge</b> to test yourself!</p>
+      </div>
+      <div class="flex gap-2">
+        <button type="button" onclick="loadCipPreset('tiebreak')" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg bg-slate-800 text-violet-300 border border-slate-700">2nd-Atom Tie-Breaker</button>
+        <button type="button" onclick="loadCipChallenge()" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg bg-violet-600 hover:bg-violet-500 text-white">🎲 Random CIP Challenge</button>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-center">
+      <div class="lg:col-span-5 grid grid-cols-2 gap-3">
+        <div class="p-3 bg-slate-900 border border-slate-800 rounded-xl space-y-1.5">
+          <label class="block text-[10px] font-mono text-violet-300 uppercase" for="cip-tl">Top-Left (C1 Top)</label>
+          <select id="cip-tl" onchange="updateCipSandbox()" class="w-full text-xs text-white font-mono"></select>
+        </div>
+        <div class="p-3 bg-slate-900 border border-slate-800 rounded-xl space-y-1.5">
+          <label class="block text-[10px] font-mono text-violet-300 uppercase" for="cip-tr">Top-Right (C2 Top)</label>
+          <select id="cip-tr" onchange="updateCipSandbox()" class="w-full text-xs text-white font-mono"></select>
+        </div>
+        <div class="p-3 bg-slate-900 border border-slate-800 rounded-xl space-y-1.5">
+          <label class="block text-[10px] font-mono text-violet-300 uppercase" for="cip-bl">Bottom-Left (C1 Bottom)</label>
+          <select id="cip-bl" onchange="updateCipSandbox()" class="w-full text-xs text-white font-mono"></select>
+        </div>
+        <div class="p-3 bg-slate-900 border border-slate-800 rounded-xl space-y-1.5">
+          <label class="block text-[10px] font-mono text-violet-300 uppercase" for="cip-br">Bottom-Right (C2 Bottom)</label>
+          <select id="cip-br" onchange="updateCipSandbox()" class="w-full text-xs text-white font-mono"></select>
+        </div>
+      </div>
+
+      <div class="lg:col-span-7 bg-slate-900 border border-slate-800 rounded-xl p-4 space-y-3">
+        <div id="cip-svg-box" class="w-full flex justify-center"></div>
+        <div id="cip-verdict-box" class="p-3.5 bg-slate-950 border border-slate-800 rounded-lg text-xs text-slate-300 leading-relaxed"></div>
+      </div>
+    </div>
+  </div>
+</div>
 </section>
 
 <!-- ==================== TAB 5: POLYMERS ENGINE ==================== -->
@@ -352,6 +869,7 @@ nav, nav > div { max-width: 100% !important; }
     <button onclick="setMode('po','map')" id="po-m-map" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-amber-300">Polymer Match</button>
     <button onclick="setMode('po','quiz')" id="po-m-quiz" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-amber-300">Quiz</button>
     <button onclick="setMode('po','traps')" id="po-m-traps" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-amber-300">Traps</button>
+    <button onclick="setMode('po','sustain')" id="po-m-sustain" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-amber-300 hover:text-amber-200">♻️ 2-Carbon Backbone &amp; Disposal Lab</button>
   </div>
 </div>
 <div id="po-mode-explorer" class="po-mode"><div id="po-explorer" class="grid grid-cols-1 lg:grid-cols-12 gap-4"></div></div>
@@ -365,6 +883,39 @@ nav, nav > div { max-width: 100% !important; }
 </div>
 <div id="po-mode-quiz" class="po-mode hidden"><div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4"><h3 class="font-display text-sm font-bold text-amber-300">Multi-Blank Quiz — Polymers</h3><p class="text-xs text-slate-400">Click each blurred answer to reveal it.</p><div id="po-quiz-rows" class="space-y-3"></div><button onclick="revealAll('po-quiz-rows')" class="btn-press bg-slate-800 hover:bg-slate-700 border border-slate-700 text-amber-300 text-xs font-semibold px-4 py-2 rounded-lg">Reveal All</button></div></div>
 <div id="po-mode-traps" class="po-mode hidden"><div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4"><h3 class="font-display text-sm font-bold text-rose-300">Trap Pairs — Polymers</h3><div id="po-traps-grid" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div></div></div>
+<div id="po-mode-sustain" class="po-mode hidden">
+  <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-5">
+    <div class="border-b border-slate-800 pb-3">
+      <h3 class="font-display text-sm font-bold text-amber-300">♻️ The 2-Carbon Backbone Visualizer &amp; Spec 5.8 Disposal Evaluator</h3>
+      <p class="text-xs text-slate-400">Examiner reports (WCH11 Jan 2021, Jan 2023, Jun 2024) emphasize that every addition polymer repeat unit has <b>exactly 2 carbons in the horizontal chain</b> per monomer — even for but-2-ene, but-1-ene, or methyl 2-methylpropenoate. Toggle between 1 and 2 repeat units below!</p>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+      <div class="p-4 bg-slate-900 border border-slate-800 rounded-xl space-y-3">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <label class="text-xs font-bold text-white" for="poly-vis-sel">1. Displayed Repeat-Unit Structural Visualizer</label>
+          <div class="flex gap-1.5">
+            <button type="button" onclick="setPolyUnits(1)" id="poly-u-1" class="btn-press px-2.5 py-1 text-[10px] font-semibold rounded bg-amber-600 text-white">1 Repeat Unit (2 C backbone)</button>
+            <button type="button" onclick="setPolyUnits(2)" id="poly-u-2" class="btn-press px-2.5 py-1 text-[10px] font-semibold rounded bg-slate-800 text-slate-300">2 Repeat Units (4 C backbone)</button>
+          </div>
+        </div>
+        <select id="poly-vis-sel" onchange="renderPolyVis()" class="w-full text-xs text-white font-mono"></select>
+        <div id="poly-vis-svg" class="p-3 bg-slate-950 border border-slate-800 rounded-lg flex flex-col items-center justify-center min-h-[155px]"></div>
+      </div>
+
+      <div class="p-4 bg-slate-900 border border-slate-800 rounded-xl space-y-3">
+        <p class="text-xs font-bold text-emerald-300">2. Spec 5.8 Polymer Disposal &amp; Sustainability Decision Matrix</p>
+        <p class="text-[11px] text-slate-400">Click each strategy to inspect its chemical basis, mark-scheme equations (including Ca(OH)₂/CaO scrubbing of HCl from PVC), advantages, and limitations:</p>
+        <div class="flex flex-wrap gap-1.5" id="disp-strat-btns">
+          <button type="button" onclick="showDispStrat(0)" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg bg-emerald-950/60 border border-emerald-700 text-emerald-300">Biodegradable / Photodegradable</button>
+          <button type="button" onclick="showDispStrat(1)" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg bg-slate-950 border border-slate-700 text-slate-300">Incineration + Gas Scrubbing</button>
+          <button type="button" onclick="showDispStrat(2)" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg bg-slate-950 border border-slate-700 text-slate-300">Feedstock vs Mechanical Recycling</button>
+          <button type="button" onclick="showDispStrat(3)" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg bg-slate-950 border border-slate-700 text-slate-300">Landfill &amp; Atom Economy</button>
+        </div>
+        <div id="disp-strat-out" class="p-3.5 bg-slate-950 border border-slate-800 rounded-lg text-xs text-slate-300 space-y-1.5 leading-relaxed"></div>
+      </div>
+    </div>
+  </div>
+</div>
 </section>
 
 <!-- ==================== TAB 6: BUILDER ==================== -->
@@ -391,6 +942,36 @@ nav, nav > div { max-width: 100% !important; }
     </div>
     <button onclick="solveAddition()" class="btn-press w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2 rounded-lg text-xs">Solve the equation</button>
     <div id="slv-out" class="p-3 bg-slate-900 border border-slate-800 rounded-lg text-xs text-slate-300 min-h-[110px]">Pick an alkene and a reagent, then solve.</div>
+  </div>
+</div>
+
+<!-- NEW: WORKBENCH 3 & 4 — REVERSE MONOMER DETECTIVE & WCH11 EXAM CONCEPT DIAGNOSTIC SIMULATOR -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6" id="exam-sim-panel">
+  <div class="lg:col-span-5 bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3 card-hover">
+    <div class="flex items-center justify-between">
+      <h3 class="font-display text-sm font-bold text-violet-300">③ Reverse Monomer Detective (Spec 5.7)</h3>
+      <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-violet-950 text-violet-300 border border-violet-800">Polymer → Monomer</span>
+    </div>
+    <p class="text-[11px] text-slate-400">Given a polymer chain segment, deduce the <b>IUPAC name and structure of the alkene monomer</b> before revealing the mark-scheme solution.</p>
+    <select id="rev-poly-sel" onchange="loadReverseMonomer()" class="w-full text-xs text-slate-100 font-mono"></select>
+    <div id="rev-poly-prompt" class="p-3 bg-slate-900 border border-slate-800 rounded-lg text-xs font-mono text-amber-300 text-center"></div>
+    <div id="rev-poly-options" class="grid grid-cols-1 gap-2"></div>
+    <div id="rev-poly-feedback" class="hidden p-3 rounded-lg text-xs leading-relaxed"></div>
+  </div>
+
+  <div class="lg:col-span-7 bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 card-hover">
+    <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 pb-3">
+      <div>
+        <span class="kicker" style="color:#38bdf8">Interactive Exam Check · WCH11 Past-Paper Style</span>
+        <h3 class="font-display text-base font-bold text-white mt-0.5">④ Topic 5 Concept Diagnostic &amp; Examiner Feedback Simulator</h3>
+      </div>
+      <div class="flex items-center gap-2">
+        <span id="sim-score-badge" class="px-3 py-1 rounded-full apple-pill text-xs font-mono text-emerald-300">Score: 0 / 10</span>
+        <button type="button" onclick="resetExamSim()" class="btn-press px-2.5 py-1 text-[10px] font-semibold rounded-lg bg-slate-800 text-slate-300 hover:text-white border border-slate-700">Reset</button>
+      </div>
+    </div>
+    <div class="flex flex-wrap gap-1.5" id="sim-q-pills"></div>
+    <div id="sim-q-container" class="p-4 bg-slate-900 border border-slate-800 rounded-xl space-y-3"></div>
   </div>
 </div>
 </section>
@@ -463,6 +1044,8 @@ nav, nav > div { max-width: 100% !important; }
     <a href="#rev-poly" class="btn-press px-2.5 py-1 text-[10px] font-mono bg-slate-800 border border-slate-700 rounded text-amber-300 hover:border-amber-600">Polymers</a>
     <a href="#rev-prac" class="btn-press px-2.5 py-1 text-[10px] font-mono bg-slate-800 border border-slate-700 rounded text-cyan-300 hover:border-cyan-600">Practicals</a>
     <a href="#rev-traps" class="btn-press px-2.5 py-1 text-[10px] font-mono bg-slate-800 border border-slate-700 rounded text-rose-300 hover:border-rose-600">Master Traps</a>
+    <a href="#rev-pef-2026" class="btn-press px-2.5 py-1 text-[10px] font-mono bg-slate-800 border border-slate-700 rounded text-emerald-300 hover:border-emerald-600">2021–2026 Examiner &amp; WCH13 Deep-Dive</a>
+    <a href="#rev-flashcards" class="btn-press px-2.5 py-1 text-[10px] font-mono bg-slate-800 border border-slate-700 rounded text-sky-300 hover:border-sky-600">Active-Recall Flashcards</a>
   </div>
 </div>
 
@@ -554,9 +1137,56 @@ nav, nav > div { max-width: 100% !important; }
     <p>☐ KMnO₄ — cold &amp; dilute gives a <b>diol</b>; the purple colour <b>decolourises</b>.</p>
   </div>
 </details>
+
+<details open class="bg-slate-950 border border-slate-800 rounded-xl">
+  <summary id="rev-pef-2026" class="p-4 font-display text-sm font-bold text-emerald-300">2021–2026 Examiner Report Reminders &amp; WCH13 Organic Purification Protocol</summary>
+  <div class="px-4 pb-4 space-y-3 text-xs text-slate-300">
+    <div class="overflow-x-auto">
+      <table class="w-full text-left text-[11px] text-slate-300 min-w-[660px]">
+        <thead class="text-emerald-400 font-mono text-[10px] border-b border-slate-800">
+          <tr><th class="py-2 pr-3">Examiner Topic</th><th class="py-2 pr-3">Common Candidate Error</th><th class="py-2 pr-3">Full-Mark Edexcel WCH11 / WCH13 Phrasing</th></tr>
+        </thead>
+        <tbody class="divide-y divide-slate-800/60">
+          <tr><td class="py-1.5 pr-3 font-semibold text-white">Interhalogens (ICl / BrCl) + Propene</td><td class="py-1.5 pr-3 text-rose-300">Adding Cl first or writing 1-chloro-2-iodopropane</td><td class="py-1.5 pr-3">Cl is more electronegative than I → dipole is <b>I(δ+)–Cl(δ−)</b>. I(δ+) adds to C1 to form the more stable 2° carbocation; :Cl⁻ attacks C2⁺ → <b>2-chloro-1-iodopropane</b>.</td></tr>
+          <tr><td class="py-1.5 pr-3 font-semibold text-white">Br₂(aq) vs Br₂ in CCl₄</td><td class="py-1.5 pr-3 text-rose-300">Giving only 1,2-dibromoalkane for aqueous bromine water</td><td class="py-1.5 pr-3">In <b>Br₂(aq)</b>, abundant H₂O attacks the carbocation intermediate in Step 2 (followed by loss of H⁺) to form the <b>bromohydrin</b> (e.g. CH₂BrCH₂OH or CH₃CH(OH)CH₂Br) + HBr.</td></tr>
+          <tr><td class="py-1.5 pr-3 font-semibold text-white">Carbocation vs Product Stability</td><td class="py-1.5 pr-3 text-rose-300">"2-bromopropane is a more stable secondary carbocation"</td><td class="py-1.5 pr-3">State explicitly that the <b>secondary carbocation intermediate</b> is more stable than the primary carbocation intermediate (due to electron-releasing alkyl groups).</td></tr>
+          <tr><td class="py-1.5 pr-3 font-semibold text-white">Cyclohexene Prep &amp; Purification (WCH13)</td><td class="py-1.5 pr-3 text-rose-300">Forgetting how to remove acid/water before final distillation</td><td class="py-1.5 pr-3">1. Distil crude cyclohexene from cyclohexanol + conc. H₃PO₄. 2. Shake in separating funnel with aq. <b>Na₂CO₃ / NaHCO₃</b> (neutralise acid). 3. Discard lower aqueous layer. 4. Dry organic layer with <b>anhydrous CaCl₂ / MgSO₄ / Na₂SO₄</b> (until liquid goes from cloudy to clear). 5. Redistil collecting fraction at 81–85 °C.</td></tr>
+          <tr><td class="py-1.5 pr-3 font-semibold text-white">PVC Incineration Scrubbing (Spec 5.8)</td><td class="py-1.5 pr-3 text-rose-300">Vague "use a filter to stop pollution"</td><td class="py-1.5 pr-3">Burning poly(chloroethene) releases toxic acidic <b>HCl(g)</b>; remove by gas scrubbing/neutralisation with an alkali/base such as <b>CaO, Ca(OH)₂, CaCO₃ or NaOH</b>.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</details>
+
+<div id="rev-flashcards" class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+  <div class="flex flex-wrap items-center justify-between gap-2">
+    <div>
+      <span class="kicker">Active Recall Deck</span>
+      <h3 class="font-display text-sm font-bold text-white mt-0.5">Topic 5 Rapid-Fire Flashcards (Click Card to Flip)</h3>
+    </div>
+    <div class="flex items-center gap-2">
+      <button type="button" onclick="stepFlashcard(-1)" class="btn-press px-3 py-1 text-xs font-semibold rounded-lg bg-slate-800 text-slate-200 border border-slate-700">← Prev</button>
+      <span id="fc-counter" class="text-xs font-mono text-emerald-300 px-2">1 / 8</span>
+      <button type="button" onclick="stepFlashcard(1)" class="btn-press px-3 py-1 text-xs font-semibold rounded-lg bg-slate-800 text-slate-200 border border-slate-700">Next →</button>
+    </div>
+  </div>
+  <div id="fc-card-box" onclick="flipFlashcard()" class="cursor-pointer p-6 bg-slate-900 border border-slate-800 hover:border-emerald-500/40 rounded-2xl min-h-[135px] flex flex-col items-center justify-center text-center transition-all select-none"></div>
+</div>
 </section>
 
 </main>
+
+<!-- APPLE SPOTLIGHT QUICK COMMAND & CONCEPT SEARCH MODAL -->
+<div id="spotlight-modal" class="fixed inset-0 z-[960] hidden items-start justify-center pt-16 sm:pt-24 px-4 bg-black/60" onclick="if(event.target===this)closeSpotlight()">
+  <div class="w-full max-w-xl bg-slate-900 border border-slate-700/80 rounded-2xl shadow-2xl overflow-hidden">
+    <div class="flex items-center gap-3 px-4 py-3 border-b border-slate-800">
+      <svg class="w-4 h-4 text-emerald-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      <input id="spotlight-input" type="text" oninput="filterSpotlight()" placeholder="Search Spec 5.1–5.8 concepts, reagents, mechanisms, E/Z, polymers..." class="w-full bg-transparent border-0 text-xs sm:text-sm text-white focus:outline-none focus:ring-0" style="border:none!important;box-shadow:none!important;background:transparent!important;padding:2px 0!important"/>
+      <button type="button" onclick="closeSpotlight()" class="btn-press px-2 py-1 text-[10px] font-mono bg-slate-800 text-slate-400 rounded">ESC</button>
+    </div>
+    <div id="spotlight-results" class="max-h-80 overflow-y-auto divide-y divide-slate-800/60 p-2 space-y-1"></div>
+  </div>
+</div>
 
 <footer class="border-t border-slate-800 bg-slate-950/80 py-4 mt-6 relative z-10">
   <div class="max-w-7xl mx-auto px-4 text-center text-[10px] text-slate-500 space-y-1">
@@ -581,7 +1211,7 @@ function switchTab(id){
   setTimeout(()=>renderMathIn(),80);
 }
 function setMode(p,mode){
-  ['explorer','map','quiz','traps'].forEach(m=>{
+  ['explorer','map','quiz','traps','lab','doctor','sandbox','sustain'].forEach(m=>{
     const pan=$(p+'-mode-'+m);if(pan)pan.classList.toggle('hidden',m!==mode);
     const btn=$(p+'-m-'+m);if(btn){
       const col={rx:'emerald',me:'sky',ez:'violet',po:'amber'}[p]||'emerald';
@@ -853,25 +1483,32 @@ const PO_TRAPS=[
 const RX_ALKENES=[
  {name:'Ethene',f:'CH₂=CH₂',sym:false},
  {name:'Propene',f:'CH₃CH=CH₂',sym:false},
- {name:'But-2-ene',f:'CH₃CH=CHCH₃',sym:true}
+ {name:'But-2-ene',f:'CH₃CH=CHCH₃',sym:true},
+ {name:'2-Methylpropene',f:'(CH₃)₂C=CH₂',sym:false},
+ {name:'Cyclohexene',f:'C₆H₁₀ (cyclic C=C)',sym:true}
 ];
 const RX_REAGENTS=[
  {name:'H₂ / Ni, heat',type:'hydrogenation'},
  {name:'Br₂ (r.t.)',type:'halogenation'},
  {name:'HBr (g)',type:'hydrohalogenation'},
  {name:'steam / conc. H₃PO₄, 300 °C, 60 atm',type:'hydration'},
- {name:'cold dil. acidified KMnO₄',type:'diol'}
+ {name:'cold dil. acidified KMnO₄',type:'diol'},
+ {name:'Br₂(aq) — bromine water (halohydrin + dibromo)',type:'bromohydrin'},
+ {name:'ICl — iodine monochloride (interhalogen)',type:'interhalogen'}
 ];
 function predictRx(){
   const a=RX_ALKENES[+$('rx-alkene').value], r=RX_REAGENTS[+$('rx-reagent').value];
   let prod='',cond='',note='';
   const isProp=(a.name==='Propene');
+  const isMP=(a.name==='2-Methylpropene'), isCyc=(a.name==='Cyclohexene');
   switch(r.type){
-    case 'hydrogenation': prod=isProp?'CH₃CH₂CH₃ (propane)':(a.name==='But-2-ene'?'CH₃CH₂CH₂CH₃ (butane)':'CH₃CH₃ (ethane)');cond='H₂, Ni catalyst, heat';note='Addition of H₂ across the C=C → alkane.';break;
-    case 'halogenation': prod=isProp?'CH₃CHBrCH₂Br (1,2-dibromopropane)':(a.name==='But-2-ene'?'CH₃CHBrCHBrCH₃ (2,3-dibromobutane)':'CH₂BrCH₂Br (1,2-dibromoethane)');cond='Br₂, room temperature';note='Both Br atoms add across the C=C → vicinal dibromide (decolourises Br₂).';break;
-    case 'hydrohalogenation': prod=isProp?'CH₃CHBrCH₃ (2-bromopropane) — MAJOR (Markovnikov)':(a.name==='But-2-ene'?'CH₃CHBrCH₂CH₃ (2-bromobutane)':'CH₃CH₂Br (bromoethane)');cond='HBr (g), r.t.';note=isProp?'Unsymmetrical alkene: H adds to the CH₂ (more H) → 2° carbocation → 2-bromopropane is the MAJOR product.':(a.name==='But-2-ene'?'Symmetrical alkene — one product.':'');break;
-    case 'hydration': prod=isProp?'CH₃CH(OH)CH₃ (propan-2-ol) — MAJOR (Markovnikov)':(a.name==='But-2-ene'?'CH₃CH(OH)CH₂CH₃ (butan-2-ol)':'CH₃CH₂OH (ethanol)');cond='steam, conc. H₃PO₄, ~300 °C, ~60 atm';note=isProp?'OH ends up on the more substituted carbon (Markovnikov) → secondary alcohol major.':'';break;
-    case 'diol': prod=isProp?'CH₃CH(OH)CH₂OH (propane-1,2-diol)':(a.name==='But-2-ene'?'CH₃CH(OH)CH(OH)CH₃ (butane-2,3-diol)':'CH₂(OH)CH₂(OH) (ethane-1,2-diol)');cond='cold, dilute acidified KMnO₄';note='Two –OH add across the C=C → diol; purple decolourises.';break;
+    case 'hydrogenation': prod=isProp?'CH₃CH₂CH₃ (propane)':(a.name==='But-2-ene'?'CH₃CH₂CH₂CH₃ (butane)':(isMP?'(CH₃)₃CH (methylpropane)':(isCyc?'C₆H₁₂ (cyclohexane)':'CH₃CH₃ (ethane)')));cond='H₂, Ni catalyst, heat';note='Addition of H₂ across the C=C → alkane (not electrophilic; heterogeneous catalysis on Ni surface).';break;
+    case 'halogenation': prod=isProp?'CH₃CHBrCH₂Br (1,2-dibromopropane)':(a.name==='But-2-ene'?'CH₃CHBrCHBrCH₃ (2,3-dibromobutane)':(isMP?'(CH₃)₂CBrCH₂Br (1,2-dibromo-2-methylpropane)':(isCyc?'1,2-dibromocyclohexane':'CH₂BrCH₂Br (1,2-dibromoethane)')));cond='Br₂ (pure or in CCl₄), room temperature';note='Both Br atoms add across the C=C → vicinal dibromide (decolourises Br₂).';break;
+    case 'hydrohalogenation': prod=isProp?'CH₃CHBrCH₃ (2-bromopropane) — MAJOR (Markovnikov)':(a.name==='But-2-ene'?'CH₃CHBrCH₂CH₃ (2-bromobutane)':(isMP?'(CH₃)₃CBr (2-bromo-2-methylpropane) — MAJOR (via 3° carbocation)':(isCyc?'bromocyclohexane':'CH₃CH₂Br (bromoethane)')));cond='HBr (g), r.t.';note=(isProp||isMP)?'Unsymmetrical alkene: H adds to the CH₂ (more H) → more stable (2° or 3°) carbocation → major product.':(a.name==='But-2-ene'||isCyc?'Symmetrical alkene — one product.':'');break;
+    case 'hydration': prod=isProp?'CH₃CH(OH)CH₃ (propan-2-ol) — MAJOR (Markovnikov)':(a.name==='But-2-ene'?'CH₃CH(OH)CH₂CH₃ (butan-2-ol)':(isMP?'(CH₃)₃COH (2-methylpropan-2-ol) — MAJOR (3° alcohol)':(isCyc?'cyclohexanol':'CH₃CH₂OH (ethanol)')));cond='steam, conc. H₃PO₄, ~300 °C, ~60 atm';note=(isProp||isMP)?'OH ends up on the more substituted carbon (Markovnikov) via the more stable carbocation.':'';break;
+    case 'diol': prod=isProp?'CH₃CH(OH)CH₂OH (propane-1,2-diol)':(a.name==='But-2-ene'?'CH₃CH(OH)CH(OH)CH₃ (butane-2,3-diol)':(isMP?'(CH₃)₂C(OH)CH₂OH (2-methylpropane-1,2-diol)':(isCyc?'cyclohexane-1,2-diol':'CH₂(OH)CH₂(OH) (ethane-1,2-diol)')));cond='cold, dilute acidified KMnO₄';note='Two –OH add across the C=C → diol; purple decolourises.';break;
+    case 'bromohydrin': prod=isProp?'CH₃CH(OH)CH₂Br (1-bromo-2-propanol, major) + CH₃CHBrCH₂Br':(isMP?'(CH₃)₂C(OH)CH₂Br (1-bromo-2-methylpropan-2-ol, major)':'CH₂BrCH₂OH (2-bromoethanol, major) + CH₂BrCH₂Br');cond='Br₂(aq) (aqueous bromine water), r.t.';note='WCH11 Examiner Point: In Step 1 Br(δ+) adds to give the more stable carbocation; in Step 2 abundant H₂O attacks C⁺ (then loses H⁺) to form the bromohydrin!';break;
+    case 'interhalogen': prod=isProp?'CH₃CHClCH₂I (2-chloro-1-iodopropane) — MAJOR':(isMP?'(CH₃)₂CClCH₂I (2-chloro-1-iodo-2-methylpropane) — MAJOR':'CH₂ICh₂Cl (1-chloro-2-iodoethane)');cond='ICl, room temperature';note='WCH11 June 2021 Question: Cl is more electronegative than I, so the dipole is I(δ+)–Cl(δ−). I⁺ adds first to the CH₂ carbon to form the more stable 2°/3° carbocation, then Cl⁻ attacks!';break;
   }
   $('rx-map-out').innerHTML='<p class="font-mono text-emerald-300 mb-1">'+a.f+' + reagent → '+prod+'</p>'+
    '<p><span class="text-slate-400">Reaction:</span> <b class="text-sky-300">'+r.type+'</b> (electrophilic addition)</p>'+
@@ -890,7 +1527,13 @@ const MK_ALKENES=[
   pathB:{add:'H⁺ adds to the CH carbon (fewer H)',carb:'CH₃CH₂–CH₂–CH₂⁺',deg:'1° (primary)',stab:'less stable',prod:'CH₃CH₂–CH₂–CH₂Br (1-bromobutane)',major:false}},
  {name:'2-Methylpropene',f:'(CH₃)₂C=CH₂',
   pathA:{add:'H⁺ adds to the CH₂ carbon (more H)',carb:'(CH₃)₃C⁺',deg:'3° (tertiary)',stab:'most stable',prod:'(CH₃)₃CBr (2-bromo-2-methylpropane)',major:true},
-  pathB:{add:'H⁺ adds to the C(CH₃)₂ carbon (fewer H)',carb:'(CH₃)₂C⁺–CH₃ … → primary',deg:'1° (primary)',stab:'least stable',prod:'(CH₃)₂CH–CH₂Br (1-bromo-2-methylpropane)',major:false}}
+  pathB:{add:'H⁺ adds to the C(CH₃)₂ carbon (fewer H)',carb:'(CH₃)₂CH–CH₂⁺',deg:'1° (primary)',stab:'least stable',prod:'(CH₃)₂CH–CH₂Br (1-bromo-2-methylpropane)',major:false}},
+ {name:'Propene + ICl (June 2021)',f:'CH₃–CH=CH₂ + I(δ+)–Cl(δ−)',
+  pathA:{add:'Electrophilic I(δ+) adds to CH₂ (C1)',carb:'CH₃–C⁺H–CH₂I',deg:'2° (secondary)',stab:'more stable',prod:'CH₃–CHCl–CH₂I (2-chloro-1-iodopropane)',major:true},
+  pathB:{add:'Electrophilic I(δ+) adds to CH (C2)',carb:'CH₃–CH(I)–CH₂⁺',deg:'1° (primary)',stab:'less stable',prod:'CH₃–CH(I)–CH₂Cl (1-chloro-2-iodopropane)',major:false}},
+ {name:'Propene + Br₂(aq)',f:'CH₃–CH=CH₂ + Br₂(aq) / H₂O',
+  pathA:{add:'Br(δ+) adds to C1; abundant H₂O attacks C2⁺',carb:'CH₃–C⁺H–CH₂Br',deg:'2° (secondary)',stab:'more stable',prod:'CH₃–CH(OH)–CH₂Br (1-bromo-2-propanol)',major:true},
+  pathB:{add:'Br(δ+) adds to C2; H₂O attacks C1⁺',carb:'CH₃–CHBr–CH₂⁺',deg:'1° (primary)',stab:'less stable',prod:'CH₃–CHBr–CH₂OH (2-bromo-1-propanol)',major:false}}
 ];
 function renderMkBtns(){
   $('mk-alkene-btns').innerHTML=MK_ALKENES.map((m,i)=>`<button onclick="showMk(${i})" class="btn-press px-3 py-1.5 text-[11px] font-mono rounded-lg border border-slate-700 bg-slate-900 text-slate-300 hover:border-sky-600">${m.name}</button>`).join('');
@@ -919,7 +1562,15 @@ const EZ_MOLS=[
  {name:'Chloroethene',f:'CH₂=CH–Cl',has:false,
   why:'The left carbon carries TWO identical H atoms → no geometric isomerism.'},
  {name:'2-Methylpropene',f:'(CH₃)₂C=CH₂',has:false,
-  why:'The left carbon has two identical CH₃ groups AND the right carbon has two identical H atoms → no geometric isomerism.'}
+  why:'The left carbon has two identical CH₃ groups AND the right carbon has two identical H atoms → no geometric isomerism.'},
+ {name:'3-Methylpent-2-ene (Tie-Breaker)',f:'CH₃–CH=C(CH₃)(CH₂CH₃)',has:true,
+  left:{hi:'–CH₃ (C, Z=6)',lo:'–H (Z=1)'},right:{hi:'–CH₂CH₃ (C bonded to C,H,H beats C bonded to H,H,H)',lo:'–CH₃ (C bonded to H,H,H)'},
+  z:'(Z)-3-methylpent-2-ene: –CH₃ (left) and –CH₂CH₃ (right) on the SAME side of C=C',e:'(E)-3-methylpent-2-ene: –CH₃ (left) and –CH₂CH₃ (right) on OPPOSITE sides'},
+ {name:'1-Bromo-1-chloropropene',f:'CH₃–CH=C(Br)(Cl)',has:true,
+  left:{hi:'–CH₃ (C, Z=6)',lo:'–H (Z=1)'},right:{hi:'–Br (Z=35)',lo:'–Cl (Z=17)'},
+  z:'(Z)-1-bromo-1-chloropropene: –CH₃ and –Br on the SAME side (note why cis/trans fails here: 4 different groups!)',e:'(E)-1-bromo-1-chloropropene: –CH₃ and –Br on OPPOSITE sides'},
+ {name:'Pent-1-ene (Terminal Trap)',f:'CH₂=CH–CH₂CH₂CH₃',has:false,
+  why:'C1 is a terminal =CH₂ carbon carrying TWO identical H atoms → no E/Z isomerism (even though C4–C5 chain is long!).'}
 ];
 function renderEzBtns(){
   $('ez-mol-btns').innerHTML=EZ_MOLS.map((m,i)=>`<button onclick="showEz(${i})" class="btn-press px-3 py-1.5 text-[11px] font-mono rounded-lg border border-slate-700 bg-slate-900 text-slate-300 hover:border-violet-600">${m.name}</button>`).join('');
@@ -946,7 +1597,10 @@ const PO_MOLS=[
  {mon:'Propene',f:'CH₃CH=CH₂',rep:'–[CH₂–CH(CH₃)]ₙ–',poly:'poly(propene)',use:'Ropes, crates, carpets'},
  {mon:'Chloroethene',f:'CH₂=CHCl',rep:'–[CH₂–CHCl]ₙ–',poly:'poly(chloroethene) (PVC)',use:'Pipes, window frames, cable insulation'},
  {mon:'Phenylethene',f:'CH₂=CHC₆H₅',rep:'–[CH₂–CH(C₆H₅)]ₙ–',poly:'poly(phenylethene) (polystyrene)',use:'Packaging foam, cups'},
- {mon:'Methyl 2-methylpropenoate',f:'CH₂=C(CH₃)COOCH₃',rep:'–[CH₂–C(CH₃)(COOCH₃)]ₙ–',poly:'Perspex (acrylic glass)',use:'Shatterproof glazing, signs'}
+ {mon:'Methyl 2-methylpropenoate',f:'CH₂=C(CH₃)COOCH₃',rep:'–[CH₂–C(CH₃)(COOCH₃)]ₙ–',poly:'Perspex (acrylic glass)',use:'Shatterproof glazing, signs'},
+ {mon:'Tetrafluoroethene',f:'CF₂=CF₂',rep:'–[CF₂–CF₂]ₙ–',poly:'poly(tetrafluoroethene) (PTFE / Teflon)',use:'Non-stick pans, chemical-resistant seals'},
+ {mon:'But-2-ene (Backbone Trap)',f:'CH₃CH=CHCH₃',rep:'–[CH(CH₃)–CH(CH₃)]ₙ–',poly:'poly(but-2-ene)',use:'WCH11 Exam favourite: only 2 carbons in the horizontal backbone, each with a –CH₃ branch!'},
+ {mon:'But-1-ene',f:'CH₃CH₂CH=CH₂',rep:'–[CH(C₂H₅)–CH₂]ₙ–',poly:'poly(but-1-ene)',use:'Hot-water pipes, flexible packaging (–C₂H₅ is a side branch on C1)'}
 ];
 function renderPoBtns(){
   $('po-monomer-btns').innerHTML=PO_MOLS.map((m,i)=>`<button onclick="showPo(${i})" class="btn-press px-3 py-1.5 text-[11px] font-mono rounded-lg border border-slate-700 bg-slate-900 text-slate-300 hover:border-amber-600">${m.mon}</button>`).join('');
@@ -974,12 +1628,15 @@ function solveAddition(){
   const a=RX_ALKENES[+$('slv-alkene').value], r=RX_REAGENTS[+$('slv-reagent').value];
   const isProp=(a.name==='Propene');
   let prod='',cond='';
+  const isMP=(a.name==='2-Methylpropene'), isCyc=(a.name==='Cyclohexene');
   switch(r.type){
-    case 'hydrogenation': prod=isProp?'CH₃CH₂CH₃':(a.name==='But-2-ene'?'CH₃CH₂CH₂CH₃':'CH₃CH₃');cond='H₂ / Ni, heat';break;
-    case 'halogenation': prod=isProp?'CH₃CHBrCH₂Br':(a.name==='But-2-ene'?'CH₃CHBrCHBrCH₃':'CH₂BrCH₂Br');cond='Br₂, r.t.';break;
-    case 'hydrohalogenation': prod=isProp?'CH₃CHBrCH₃ (major)':(a.name==='But-2-ene'?'CH₃CHBrCH₂CH₃':'CH₃CH₂Br');cond='HBr (g)';break;
-    case 'hydration': prod=isProp?'CH₃CH(OH)CH₃ (major)':(a.name==='But-2-ene'?'CH₃CH(OH)CH₂CH₃':'CH₃CH₂OH');cond='steam / conc. H₃PO₄, 300 °C, 60 atm';break;
-    case 'diol': prod=isProp?'CH₃CH(OH)CH₂OH':(a.name==='But-2-ene'?'CH₃CH(OH)CH(OH)CH₃':'CH₂(OH)CH₂(OH)');cond='cold dil. acidified KMnO₄';break;
+    case 'hydrogenation': prod=isProp?'CH₃CH₂CH₃':(a.name==='But-2-ene'?'CH₃CH₂CH₂CH₃':(isMP?'(CH₃)₃CH':(isCyc?'C₆H₁₂':'CH₃CH₃')));cond='H₂ / Ni, heat';break;
+    case 'halogenation': prod=isProp?'CH₃CHBrCH₂Br':(a.name==='But-2-ene'?'CH₃CHBrCHBrCH₃':(isMP?'(CH₃)₂CBrCH₂Br':(isCyc?'C₆H₁₀Br₂':'CH₂BrCH₂Br')));cond='Br₂, r.t.';break;
+    case 'hydrohalogenation': prod=isProp?'CH₃CHBrCH₃ (major)':(a.name==='But-2-ene'?'CH₃CHBrCH₂CH₃':(isMP?'(CH₃)₃CBr (major)':(isCyc?'C₆H₁₁Br':'CH₃CH₂Br')));cond='HBr (g)';break;
+    case 'hydration': prod=isProp?'CH₃CH(OH)CH₃ (major)':(a.name==='But-2-ene'?'CH₃CH(OH)CH₂CH₃':(isMP?'(CH₃)₃COH (major)':(isCyc?'C₆H₁₁OH':'CH₃CH₂OH')));cond='steam / conc. H₃PO₄, 300 °C, 60 atm';break;
+    case 'diol': prod=isProp?'CH₃CH(OH)CH₂OH':(a.name==='But-2-ene'?'CH₃CH(OH)CH(OH)CH₃':(isMP?'(CH₃)₂C(OH)CH₂OH':(isCyc?'C₆H₁₀(OH)₂':'CH₂(OH)CH₂(OH)')));cond='cold dil. acidified KMnO₄';break;
+    case 'bromohydrin': prod=isProp?'CH₃CH(OH)CH₂Br (major) + HBr':(isMP?'(CH₃)₂C(OH)CH₂Br (major) + HBr':'CH₂BrCH₂OH (major) + HBr');cond='Br₂(aq) + H₂O, r.t.';break;
+    case 'interhalogen': prod=isProp?'CH₃CHClCH₂I (2-chloro-1-iodopropane, major)':(isMP?'(CH₃)₂CClCH₂I (major)':'CH₂IClCH₂ (1-chloro-2-iodoethane)');cond='ICl (I δ+, Cl δ−), r.t.';break;
   }
   $('slv-out').innerHTML='<p class="font-mono text-emerald-300 leading-relaxed">'+a.f+'  →['+cond+']  '+prod+'</p>'+
    '<p class="text-[11px] text-slate-400 mt-2">Type: <b class="text-sky-300">electrophilic addition</b>'+(isProp&&r.type!=='diol'&&r.type!=='halogenation'?' · <span class="text-amber-200">Markovnikov: the H adds to the carbon with more H atoms, so the nucleophile lands on the more substituted carbon (major product shown).</span>':'')+'</p>';
@@ -987,6 +1644,960 @@ function solveAddition(){
 }
 
 /* ================= INIT ================= */
+
+/* ================= NEW INTERACTIVE MODULES (SYLLABUS LAB, TEST-TUBE, ARROW DOCTOR, CIP SANDBOX, POLYMER VIS, EXAM SIM, SPOTLIGHT) ================= */
+const MASTERY_STATE = {
+  specChecked: new Set([0, 1]),
+  quizRevealed: 0,
+  doctorSolved: new Set(),
+  simSolved: new Set(),
+  conceptsChecked: new Set()
+};
+
+const SPEC_AUDIT_ITEMS = [
+  {code:'5.1a', text:'Alkenes (CnH2n) & cycloalkenes (CnH2n-2) are unsaturated hydrocarbons; C=C is 1 σ (head-on) + 1 π (sideways p-orbital overlap).'},
+  {code:'5.1b', text:'Trigonal planar (120°) around each C=C carbon → tetrahedral (109.5°) in saturated addition products.'},
+  {code:'5.2', text:'Geometric isomerism requires BOTH restricted rotation about C=C AND two different groups on EACH carbon of the C=C.'},
+  {code:'5.3', text:'Cahn–Ingold–Prelog (CIP) ranks groups by atomic number of attached atoms: Z = high-priority on same side; E = opposite sides.'},
+  {code:'5.4 i–iii', text:'Additions: H₂/Ni + heat → alkane; X₂ → 1,2-dihaloalkane; HX → monohaloalkane (Markovnikov major product).'},
+  {code:'5.4 iv–v', text:'Hydration: steam + conc. H₃PO₄, 300 °C, 60 atm → alcohol. Oxidation: cold dil. acidified KMnO₄ → diol (purple → colourless).'},
+  {code:'5.5', text:'Bromine water test: orange/brown → colourless; Br₂(aq) also forms bromohydrin (–OH on more substituted C, –Br on less substituted C).'},
+  {code:'5.6', text:'Electrophilic addition mechanism: heterolytic fission, dipole on electrophile, curly arrow from C=C bond, 3° > 2° > 1° carbocation intermediate, arrow from lone pair.'},
+  {code:'5.7', text:'Addition polymerisation: draw repeat unit with 2 backbone carbons, single C–C bond, extension bonds through brackets, and n (100% atom economy).'},
+  {code:'5.8', text:'Polymer disposal: non-biodegradable due to strong non-polar C–C/C–H bonds; mitigate via biodegradable polyesters, recycling, or incineration with alkaline scrubbing of HCl.'}
+];
+
+function updateMasteryBadge() {
+  const specScore = MASTERY_STATE.specChecked.size; // max 10
+  const docScore = MASTERY_STATE.doctorSolved.size; // max 6
+  const simScore = MASTERY_STATE.simSolved.size; // max 10
+  const extraScore = MASTERY_STATE.conceptsChecked.size; // max 4
+  const totalEarned = specScore + docScore + simScore + extraScore;
+  const pct = Math.min(100, Math.round((totalEarned / 30) * 100));
+  const el = $('mastery-percentage');
+  if (el) el.textContent = pct + '%';
+}
+
+function switchSylLab(view) {
+  ['orbital', 'formula', 'checklist'].forEach(v => {
+    const pan = $('syllab-panel-' + v);
+    const btn = $('syllab-btn-' + v);
+    if (pan) pan.classList.toggle('hidden', v !== view);
+    if (btn) {
+      btn.className = 'btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg ' +
+        (v === view ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40' : 'text-slate-400 hover:text-white border border-transparent');
+    }
+  });
+}
+
+function setOrbitalView(mode) {
+  ['both', 'sigma', 'pi', 'after'].forEach(m => {
+    const b = $('orb-v-' + m);
+    if (b) b.className = 'btn-press px-2.5 py-1 text-[10px] font-semibold rounded ' + (m === mode ? 'bg-emerald-600 text-white' : 'bg-slate-800 text-slate-300');
+  });
+  const pi = $('svg-pi-cloud'), sig = $('svg-sigma-cloud'), aft = $('svg-after-add');
+  const title = $('orb-view-title'), cap = $('orb-view-caption');
+  if (pi) pi.style.display = (mode === 'both' || mode === 'pi') ? 'block' : 'none';
+  if (sig) sig.style.display = (mode === 'both' || mode === 'sigma' || mode === 'after') ? 'block' : 'none';
+  if (aft) aft.style.display = (mode === 'after') ? 'block' : 'none';
+  if (mode === 'both') {
+    title.textContent = 'View: Complete C=C Double Bond (σ + π)';
+    cap.innerHTML = 'The C=C bond (612 kJ mol⁻¹, 0.134 nm) combines a strong axial <b>σ bond</b> (348 kJ mol⁻¹) and a weaker sideways <b>π bond</b> (~264 kJ mol⁻¹). Because the π electron density sits exposed above and below the plane, electrophiles attack the π bond while the σ framework remains intact.';
+  } else if (mode === 'sigma') {
+    title.textContent = 'View: σ Bond Framework Only (Head-On Axial Overlap)';
+    cap.innerHTML = '<b>σ bond (Spec 5.1):</b> Formed by <b>head-on (axial) overlap</b> of orbitals directly between the two carbon nuclei. High electron density along the internuclear axis makes it strong (348 kJ mol⁻¹).';
+  } else if (mode === 'pi') {
+    title.textContent = 'View: π Bond Only (Sideways Overlap of Two p-Orbitals)';
+    cap.innerHTML = '<b>π bond (Spec 5.1 &amp; 5.2):</b> Formed by <b>sideways overlap of two parallel p-orbitals</b>, creating two lobes of electron density <b>above and below</b> the internuclear axis. Prevents free rotation and acts as a nucleophile.';
+  } else if (mode === 'after') {
+    title.textContent = 'View: Saturated 1,2-Dibromoethane Product After Addition';
+    cap.innerHTML = '<b>After Electrophilic Addition:</b> The π bond has opened to form two new C–Br σ bonds. Hybridisation changes from planar <b>120°</b> (3 electron pairs) to tetrahedral <b>109.5°</b> (4 bonding pairs) with free C–C rotation.';
+  }
+  MASTERY_STATE.conceptsChecked.add('orbital');
+  updateMasteryBadge();
+}
+
+function checkOrbitalConcept(isCorrect, btn) {
+  const fb = $('orb-concept-feedback');
+  if (!fb) return;
+  fb.classList.remove('hidden');
+  if (isCorrect) {
+    fb.className = 'p-2.5 rounded-lg text-[11px] leading-relaxed bg-emerald-950/50 border border-emerald-700 text-emerald-200';
+    fb.innerHTML = '<b>✓ Full Marks (WCH11 Examiner Phrasing):</b> The C=C double bond (612 kJ mol⁻¹) is stronger overall than a C–C single bond (348 kJ mol⁻¹), <i>but</i> the <b>π bond is weaker than the σ bond</b> (~264 vs 348 kJ mol⁻¹) because sideways p-orbital overlap is less effective than head-on axial overlap, and its high electron density is exposed above and below the plane to attract electrophiles.';
+    MASTERY_STATE.conceptsChecked.add('orb_q');
+    updateMasteryBadge();
+  } else {
+    fb.className = 'p-2.5 rounded-lg text-[11px] leading-relaxed bg-rose-950/50 border border-rose-700 text-rose-200';
+    fb.innerHTML = '<b>✗ Examiner Trap:</b> Never state that "the double bond is weaker than a single bond" (612 &gt; 348 kJ mol⁻¹!). You must specify that the <b>π bond is weaker than the σ bond</b> due to sideways p-orbital overlap, so only the π bond breaks during addition.';
+  }
+}
+
+const HC_CLASSES = [
+  {name:'Acyclic Mono-Alkene (CnH2n)', ex:'Propene (C₃H₆), But-1-ene (C₄H₈)', sat:'Unsaturated (1 C=C double bond)', br2:'Decolourises orange/brown Br₂(aq) → colourless (in the dark)', kmno4:'Decolourises purple acidified KMnO₄ → colourless diol', ratio:'1 mol reacts with 1 mol H₂ or 1 mol Br₂'},
+  {name:'Cycloalkane (CnH2n) — ISOMER TRAP!', ex:'Cyclopropane (C₃H₆), Cyclobutane (C₄H₈), Cyclohexane (C₆H₁₂)', sat:'Saturated ring (all C–C single σ bonds, NO C=C)', br2:'NO reaction in the dark — stays orange/brown (only reacts with UV light via free-radical substitution)', kmno4:'NO reaction — stays purple', ratio:'0 mol H₂ / Br₂ added in the dark (isomeric with mono-alkenes!)'},
+  {name:'Cycloalkene (CnH2n-2)', ex:'Cyclohexene (C₆H₁₀), Cyclopentene (C₅H₈)', sat:'Unsaturated ring (1 ring + 1 C=C double bond)', br2:'Decolourises orange/brown Br₂(aq) → colourless', kmno4:'Decolourises purple acidified KMnO₄ → cyclohexane-1,2-diol', ratio:'1 mol reacts with 1 mol H₂ (forming cycloalkane C₆H₁₂) or 1 mol Br₂'},
+  {name:'Acyclic Alkadiene (CnH2n-2)', ex:'Buta-1,3-diene (C₄H₆), Penta-1,4-diene (C₅H₈)', sat:'Unsaturated chain with TWO C=C double bonds', br2:'Decolourises Br₂(aq) rapidly (consumes 2 equivalents)', kmno4:'Decolourises acidified KMnO₄ (forms tetraol)', ratio:'1 mol reacts with 2 mol H₂ or 2 mol Br₂ (48 000 cm³ H₂ per mol at r.t.p.!)'}
+];
+
+function showHcClass(idx) {
+  const c = HC_CLASSES[idx];
+  const btns = document.querySelectorAll('#hc-class-btns button');
+  btns.forEach((b, i) => {
+    b.className = 'btn-press px-3 py-1.5 text-[11px] font-mono rounded-lg border ' +
+      (i === idx ? 'bg-emerald-950/60 border-emerald-700 text-emerald-300' : 'bg-slate-900 border-slate-700 text-slate-300');
+  });
+  const out = $('hc-class-out');
+  if (out) {
+    out.innerHTML = `<p class="font-bold text-white">${c.name}</p>
+      <p><span class="text-slate-400">Examples:</span> <span class="font-mono text-emerald-300">${c.ex}</span></p>
+      <p><span class="text-slate-400">Bonding status:</span> ${c.sat}</p>
+      <p><span class="text-slate-400">Bromine water (dark):</span> <b class="text-amber-200">${c.br2}</b></p>
+      <p><span class="text-slate-400">Acidified KMnO₄:</span> ${c.kmno4}</p>
+      <p><span class="text-slate-400">Quantitative stoichiometry:</span> <span class="font-mono text-sky-300">${c.ratio}</span></p>`;
+  }
+}
+
+function calcUnsat() {
+  const nAlk = parseFloat($('quant-mol-alk').value) || 0.01;
+  const vH2 = parseFloat($('quant-vol-h2').value) || 0;
+  const vm = parseFloat($('quant-vm').value) || 24000;
+  const nH2 = vH2 / vm;
+  const ratio = nAlk > 0 ? (nH2 / nAlk) : 0;
+  const rounded = Math.round(ratio);
+  const isClean = Math.abs(ratio - rounded) < 0.08;
+  let verdict = '';
+  if (ratio < 0.05) {
+    verdict = '0 C=C double bonds → <b>Saturated</b> (alkane or cycloalkane, e.g. cyclohexane C₆H₁₂).';
+  } else if (isClean) {
+    verdict = `<b>${rounded} C=C double bond${rounded > 1 ? 's' : ''}</b> per molecule (${rounded === 1 ? 'mono-alkene or cycloalkene' : (rounded === 2 ? 'alkadiene, e.g. limonene / butadiene' : 'polyene with ' + rounded + ' C=C bonds')}).`;
+  } else {
+    verdict = `Mole ratio = <b>${ratio.toFixed(2)} : 1</b> (non-integer — check whether H₂ is in excess or mixture of hydrocarbons).`;
+  }
+  const out = $('quant-unsat-out');
+  if (out) {
+    out.innerHTML = `<p class="font-mono text-sky-300">n(H₂) = ${vH2} / ${vm} = <b>${nH2.toFixed(4)} mol</b></p>
+      <p class="font-mono text-emerald-300">Ratio n(H₂) : n(hydrocarbon) = ${nH2.toFixed(4)} : ${nAlk.toFixed(4)} = <b>${ratio.toFixed(2)} : 1</b></p>
+      <p class="text-slate-200 mt-1">Deduction: ${verdict}</p>`;
+  }
+}
+
+function renderSpecAudit() {
+  const box = $('spec-audit-list');
+  if (!box) return;
+  box.innerHTML = SPEC_AUDIT_ITEMS.map((item, idx) => {
+    const checked = MASTERY_STATE.specChecked.has(idx);
+    return `<button type="button" onclick="toggleSpecCheck(${idx})" class="btn-press text-left p-3 rounded-xl border flex items-start gap-3 ${checked ? 'bg-emerald-950/35 border-emerald-700/70 text-slate-100' : 'bg-slate-950 border-slate-800 text-slate-300'}">
+      <span class="mt-0.5 w-4 h-4 rounded flex items-center justify-center text-[10px] font-bold shrink-0 ${checked ? 'bg-emerald-500 text-slate-950' : 'border border-slate-600 text-transparent'}">✓</span>
+      <span class="text-xs leading-relaxed"><strong class="font-mono text-emerald-300 mr-1.5">[Spec ${item.code}]</strong>${item.text}</span>
+    </button>`;
+  }).join('');
+}
+
+function toggleSpecCheck(idx) {
+  if (MASTERY_STATE.specChecked.has(idx)) MASTERY_STATE.specChecked.delete(idx);
+  else MASTERY_STATE.specChecked.add(idx);
+  renderSpecAudit();
+  updateMasteryBadge();
+}
+
+function toggleAllSpecChecks(val) {
+  SPEC_AUDIT_ITEMS.forEach((_, i) => { if (val) MASTERY_STATE.specChecked.add(i); else MASTERY_STATE.specChecked.delete(i); });
+  renderSpecAudit();
+  updateMasteryBadge();
+}
+
+/* --- TAB 2: VIRTUAL TEST-TUBE BENCH & Br2(aq) CHECK --- */
+function runTestTubeSim() {
+  const sub = $('tt-substrate') ? $('tt-substrate').value : 'ethene';
+  const reg = $('tt-reagent') ? $('tt-reagent').value : 'br2_aq';
+  const out = $('tt-sim-out');
+  if (!out) return;
+  const isAlkene = (sub === 'ethene' || sub === 'propene' || sub === 'cyclohexene');
+  let startCol = '#f97316', endCol = 'transparent', obs = '', eq = '', mech = '';
+  if (reg === 'br2_aq') {
+    startCol = '#ea580c';
+    if (isAlkene) {
+      endCol = 'rgba(255,255,255,0.08)';
+      obs = '<b>Orange/brown solution decolourises</b> (turns colourless); two immiscible layers if liquid alkene.';
+      eq = sub === 'ethene' ? 'CH₂=CH₂ + Br₂(aq) + H₂O → CH₂BrCH₂OH (2-bromoethanol, major) + HBr (plus minor CH₂BrCH₂Br)' :
+           (sub === 'propene' ? 'CH₃CH=CH₂ + Br₂(aq) + H₂O → CH₃CH(OH)CH₂Br (1-bromo-2-propanol, major) + HBr' :
+            'C₆H₁₀ + Br₂(aq) + H₂O → 2-bromocyclohexanol (major) + HBr');
+      mech = 'Electrophilic addition: Br(δ+) adds first to give the carbocation; H₂O (in huge excess) attacks C⁺ via oxygen lone pair.';
+    } else if (sub === 'cyclohexane') {
+      endCol = '#ea580c';
+      obs = '<b>No change in the dark</b> — upper hydrocarbon layer extracts Br₂ (stays orange/brown).';
+      eq = 'C₆H₁₂ + Br₂(aq) → no reaction in the dark (saturated cycloalkane, no C=C).';
+      mech = 'Cycloalkanes have formula CnH2n but only C–C single σ bonds.';
+    } else {
+      endCol = 'rgba(255,255,255,0.08)';
+      obs = '<b>Slowly decolourises under UV light</b> and produces misty white fumes of HBr(g).';
+      eq = 'C₆H₁₄ + Br₂ →[UV] C₆H₁₃Br + HBr (Topic 4 Free-Radical Substitution, NOT addition!).';
+      mech = 'Homolytic fission (UV) — contrast with rapid dark electrophilic addition in alkenes.';
+    }
+  } else if (reg === 'br2_ccl4') {
+    startCol = '#dc2626';
+    if (isAlkene) {
+      endCol = 'rgba(255,255,255,0.08)';
+      obs = '<b>Red-brown/orange solution rapidly decolourises</b> in the dark; no acidic fumes.';
+      eq = sub === 'ethene' ? 'CH₂=CH₂ + Br₂ → CH₂BrCH₂Br (1,2-dibromoethane ONLY)' :
+           (sub === 'propene' ? 'CH₃CH=CH₂ + Br₂ → CH₃CHBrCH₂Br (1,2-dibromopropane ONLY)' :
+            'C₆H₁₀ + Br₂ → 1,2-dibromocyclohexane');
+      mech = 'Anhydrous inert solvent (CCl₄): no H₂O nucleophile present, so only :Br⁻ attacks the carbocation.';
+    } else if (sub === 'cyclohexane') {
+      endCol = '#dc2626';
+      obs = '<b>No reaction in the dark</b> — stays orange/brown.';
+      eq = 'No C=C double bond present.';
+      mech = 'Used in WCH13 practicals to distinguish cyclohexane from cyclohexene.';
+    } else {
+      endCol = 'rgba(255,255,255,0.08)';
+      obs = 'Decolourises slowly with UV light + steamy fumes of HBr.';
+      eq = 'Free-radical substitution (Topic 4).';
+      mech = 'Requires UV radiation to initiate homolytic fission of Br–Br.';
+    }
+  } else if (reg === 'kmno4_acid') {
+    startCol = '#9333ea';
+    if (isAlkene) {
+      endCol = 'rgba(255,255,255,0.08)';
+      obs = '<b>Purple solution decolourises (turns colourless)</b> at room temperature.';
+      eq = sub === 'ethene' ? 'CH₂=CH₂ + [O] + H₂O → CH₂(OH)CH₂(OH) (ethane-1,2-diol)' :
+           (sub === 'propene' ? 'CH₃CH=CH₂ + [O] + H₂O → CH₃CH(OH)CH₂OH (propane-1,2-diol)' :
+            'C₆H₁₀ + [O] + H₂O → cyclohexane-1,2-diol');
+      mech = 'Oxidation (+ addition of 2 –OH groups); MnO₄⁻ (+7, purple) is reduced to Mn²⁺ (+2, colourless).';
+    } else {
+      endCol = '#9333ea';
+      obs = '<b>No change — solution remains purple.</b>';
+      eq = 'Alkanes and cycloalkanes resist oxidation by acidified KMnO₄.';
+      mech = 'Confirms absence of C=C unsaturation.';
+    }
+  } else if (reg === 'kmno4_alk') {
+    startCol = '#9333ea';
+    if (isAlkene) {
+      endCol = '#78350f';
+      obs = '<b>Purple solution turns green then forms a dark brown precipitate</b> (MnO₂) as the diol forms.';
+      eq = 'Alkene + [O] + H₂O → 1,2-diol + MnO₂(s) (brown precipitate, Mn +7 → +4).';
+      mech = 'WCH13 Examiner Note: Acidified KMnO₄ goes purple → colourless (Mn²⁺); alkaline/neutral KMnO₄ goes purple → brown ppt (MnO₂)!';
+    } else {
+      endCol = '#9333ea';
+      obs = '<b>No change — remains purple.</b>';
+      eq = 'No reaction with saturated hydrocarbons.';
+      mech = 'No C=C double bond.';
+    }
+  } else if (reg === 'h2so4_conc') {
+    startCol = 'rgba(255,255,255,0.12)';
+    if (isAlkene) {
+      endCol = 'rgba(52,211,153,0.18)';
+      obs = 'Alkene dissolves exothermically in cold conc. H₂SO₄; warming with H₂O yields the alcohol.';
+      eq = sub === 'propene' ? 'CH₃CH=CH₂ + HOSO₃H → CH₃CH(OSO₃H)CH₃ →[+H₂O, warm] CH₃CH(OH)CH₃ + H₂SO₄' :
+           'CH₂=CH₂ + HOSO₃H → CH₃CH₂OSO₃H (ethyl hydrogen sulfate) →[+H₂O] CH₃CH₂OH + H₂SO₄';
+      mech = 'Electrophilic addition of H–OSO₃H (H is δ+), followed by hydrolysis regenerating the H₂SO₄ catalyst.';
+    } else {
+      endCol = 'rgba(255,255,255,0.12)';
+      obs = 'No reaction — two immiscible colourless layers remain.';
+      eq = 'Saturated alkanes do not react with cold conc. H₂SO₄.';
+      mech = 'No π electron density to protonate.';
+    }
+  }
+  out.innerHTML = `<div class="flex items-center gap-3 pb-2 border-b border-slate-800/80">
+      <div class="flex items-center gap-1.5">
+        <span class="w-4 h-7 rounded-b-full border border-slate-600 inline-block" style="background:${startCol}" title="Initial colour"></span>
+        <span class="text-slate-400">→</span>
+        <span class="w-4 h-7 rounded-b-full border border-slate-600 inline-block" style="background:${endCol}" title="Final colour"></span>
+      </div>
+      <div class="text-[11px] leading-snug">${obs}</div>
+    </div>
+    <p class="font-mono text-[11px] text-emerald-300">${eq}</p>
+    <p class="text-[11px] text-slate-400">${mech}</p>`;
+}
+
+function gradeBr2AqCheck(choice, btn) {
+  const fb = $('br2aq-check-feedback');
+  if (!fb) return;
+  fb.classList.remove('hidden');
+  if (choice === 1) {
+    fb.className = 'p-3 rounded-lg text-[11px] leading-relaxed bg-emerald-950/50 border border-emerald-700 text-emerald-200';
+    fb.innerHTML = '<b>✓ Spot on (WCH11 Mark Scheme):</b> Step 1 is identical (Br<sup>δ+</sup> accepts the π electron pair to form the carbocation). In Step 2, because water is the solvent, [H₂O] ≫ [Br⁻], so a lone pair on oxygen in H₂O attacks the carbocation (followed by deprotonation) to give <b>2-bromoethanol</b> (or <b>1-bromo-2-propanol</b> with propene, where –OH attaches to the secondary C2 carbocation!).';
+    MASTERY_STATE.conceptsChecked.add('br2aq');
+    updateMasteryBadge();
+  } else {
+    fb.className = 'p-3 rounded-lg text-[11px] leading-relaxed bg-rose-950/50 border border-rose-700 text-rose-200';
+    fb.innerHTML = '<b>✗ Not quite:</b> In electrophilic addition with Br₂(aq), Step 1 forms the bromonium/carbocation intermediate via Br<sup>δ+</sup> attack. Then in Step 2, abundant H₂O molecules outcompete Br⁻ as the nucleophile attacking the carbocation.';
+  }
+}
+
+/* --- TAB 3: CURLY-ARROW EXAMINER DOCTOR --- */
+const DOCTOR_CASES = [
+  {
+    title:'Case 1: Propene + HBr (Jan 2024 / Oct 2024 PEF)',
+    student:'Candidate draws curly arrow from C=C bond to H(δ+) of H–Br, and arrow from H–Br bond to Br(δ−). Intermediate shown is CH₃–CH₂–CH₂⁺, attacked by :Br⁻ to give 1-bromopropane.',
+    defect:'Used the primary (1°) carbocation pathway instead of the secondary (2°) carbocation pathway for the major product.',
+    options:[
+      '4/4 Full Marks — all curly arrows and dipoles are valid',
+      'Penalise 1 mark — major product requires the more stable secondary carbocation CH₃C⁺HCH₃ → 2-bromopropane',
+      '0/4 Marks — HBr does not have a permanent dipole'
+    ],
+    correct:1,
+    examiner:'PEF Jan 2024: "If the primary carbocation was drawn leading to 1-bromopropane, candidates could still score the arrow marks, but lost the intermediate and major product mark."'
+  },
+  {
+    title:'Case 2: Ethene + Br₂ (Jan 2022 / Jun 2024 PEF)',
+    student:'Candidate labels Br–Br with δ+ and δ−, draws Step 1 arrows correctly to form BrCH₂–CH₂⁺, then draws a curly arrow in Step 2 starting from the C⁺ positive charge pointing to :Br⁻.',
+    defect:'Step 2 curly arrow is backwards (starts at C⁺ instead of the lone pair on :Br⁻).',
+    options:[
+      'Penalise Step 2 mark — curly arrows always show movement of an electron pair FROM the lone pair on :Br⁻ TO the C⁺ atom',
+      '4/4 Full Marks — shows C⁺ and Br⁻ attracting each other',
+      'Penalise Step 1 mark — Br₂ cannot have a dipole'
+    ],
+    correct:0,
+    examiner:'PEF Jan 2022 & Jun 2024: "Curly arrows must always start from an electron-rich source (a covalent bond or a lone pair) and point towards the electron-deficient centre."'
+  },
+  {
+    title:'Case 3: Written Explanation of Markovnikov (Jan 2024 / Oct 2024 PEF)',
+    student:'Question: Explain why 2-bromopropane is the major product when propene reacts with HBr. Candidate writes: "Because 2-bromopropane is a secondary bromoalkane which is a more stable carbocation than 1-bromopropane."',
+    defect:'Confuses the final halogenoalkane product with the intermediate carbocation.',
+    options:[
+      'Full Marks — mentions secondary and more stable',
+      'Loses the stability mark — must state the secondary CARBOCATION INTERMEDIATE is more stable than the primary carbocation (products are not carbocations!)',
+      'Loses marks because 1-bromopropane is more stable'
+    ],
+    correct:1,
+    examiner:'PEF Jan 2024 & Oct 2024: "Many candidates lost credit by stating that 2-bromopropane is a more stable secondary carbocation, confusing the halogenoalkane product with the intermediate."'
+  },
+  {
+    title:'Case 4: Propene + ICl Interhalogen (Jun 2021 WCH11)',
+    student:'Candidate labels I(δ−)–Cl(δ+) and adds Cl⁺ first to C1 of propene, followed by :I⁻ attacking C2⁺ to form 1-chloro-2-iodopropane.',
+    defect:'Inverted dipole on ICl — chlorine is more electronegative than iodine, so I is δ+ and Cl is δ−.',
+    options:[
+      'Full Marks — Cl is higher in Group 7 so it adds first',
+      'Penalise dipole & regioselectivity — Cl is more electronegative than I, so dipole is I(δ+)–Cl(δ−); I⁺ adds to C1 and :Cl⁻ attacks C2⁺ → 2-chloro-1-iodopropane',
+      'ICl reacts by free-radical substitution only'
+    ],
+    correct:1,
+    examiner:'PEF Jun 2021: "Electronegativity decreases down Group 7 (Cl > I), making iodine the δ+ electrophilic centre in ICl. Thus I attaches to C1 to form the secondary carbocation, and Cl⁻ attacks C2."'
+  },
+  {
+    title:'Case 5: Step 1 Arrow Origin on C=C (Jan 2021 / Jan 2023 PEF)',
+    student:'Candidate draws the first curly arrow starting from the left Carbon nucleus (or from a C–H bond) to the H(δ+) of HCl.',
+    defect:'Curly arrow does not start from the C=C double bond.',
+    options:[
+      'Penalise Step 1 mark — the curly arrow must start clearly from the middle of the C=C double bond',
+      'Full Marks — the electron comes from the carbon atom anyway',
+      'Only loses marks if HCl is aqueous'
+    ],
+    correct:0,
+    examiner:'PEF Jan 2021 & Jan 2023: "The first curly arrow must start from the C=C bond itself (not from a carbon atom or a C–H bond) and point to the δ+ H atom."'
+  },
+  {
+    title:'Case 6: Br⁻ Nucleophile Representation in Step 2 (Aug 2024 MS)',
+    student:'Candidate draws Br⁻ in Step 2 with no lone pair shown, and starts the curly arrow from the middle of the letter "B" to the carbocation C⁺.',
+    defect:'Missing lone pair / arrow does not start from a lone pair or negative charge as required by mark scheme.',
+    options:[
+      'Loses the final mark — mark schemes require the curly arrow to start from a lone pair on :Br⁻ (or from the negative charge if lone pair is shown)',
+      'Full Marks — lone pairs are optional in AS mechanisms',
+      'Loses all 4 marks'
+    ],
+    correct:0,
+    examiner:'WCH11 Mark Scheme Note: "Arrow from lone pair on Br⁻ to the positively charged carbon of the carbocation is required for the final mark."'
+  }
+];
+
+let currentDocCase = 0;
+function renderDoctorCases() {
+  const btns = $('doc-case-btns');
+  if (!btns) return;
+  btns.innerHTML = DOCTOR_CASES.map((c, i) => {
+    const done = MASTERY_STATE.doctorSolved.has(i);
+    return `<button type="button" onclick="selectDocCase(${i})" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border ${i === currentDocCase ? 'border-sky-500 bg-sky-950/60 text-sky-200' : (done ? 'border-emerald-700/60 bg-emerald-950/30 text-emerald-300' : 'border-slate-700 bg-slate-900 text-slate-400')}">${done ? '✓ ' : ''}Case ${i + 1}</button>`;
+  }).join('');
+  const c = DOCTOR_CASES[currentDocCase];
+  const view = $('doc-case-view');
+  if (!view) return;
+  view.innerHTML = `<div class="space-y-2">
+      <span class="text-[10px] font-mono uppercase text-sky-400 font-bold">${c.title}</span>
+      <div class="p-3 bg-slate-950 border border-slate-800 rounded-lg text-xs text-slate-200 font-mono leading-relaxed">
+        " ${c.student} "
+      </div>
+    </div>
+    <p class="text-xs font-semibold text-slate-300">Select the Principal Examiner's marking decision:</p>
+    <div class="space-y-2">
+      ${c.options.map((opt, oi) => `<button type="button" onclick="gradeDocCase(${currentDocCase}, ${oi})" class="btn-press w-full text-left p-3 rounded-lg border border-slate-800 bg-slate-950 hover:border-sky-600/60 text-xs text-slate-300">${String.fromCharCode(65 + oi)}. ${opt}</button>`).join('')}
+    </div>
+    <div id="doc-case-feedback" class="hidden p-3.5 rounded-lg text-xs leading-relaxed"></div>`;
+  const pill = $('doc-score-pill');
+  if (pill) pill.textContent = `Diagnosed: ${MASTERY_STATE.doctorSolved.size} / ${DOCTOR_CASES.length}`;
+}
+
+function selectDocCase(i) {
+  currentDocCase = i;
+  renderDoctorCases();
+}
+
+function gradeDocCase(caseIdx, optIdx) {
+  const c = DOCTOR_CASES[caseIdx];
+  const fb = $('doc-case-feedback');
+  if (!fb) return;
+  fb.classList.remove('hidden');
+  if (optIdx === c.correct) {
+    MASTERY_STATE.doctorSolved.add(caseIdx);
+    updateMasteryBadge();
+    const pill = $('doc-score-pill');
+    if (pill) pill.textContent = `Diagnosed: ${MASTERY_STATE.doctorSolved.size} / ${DOCTOR_CASES.length}`;
+    fb.className = 'p-3.5 rounded-lg text-xs leading-relaxed bg-emerald-950/50 border border-emerald-700 text-emerald-200';
+    fb.innerHTML = `<b>✓ Correct Examiner Diagnosis!</b> ${c.defect}<br><span class="text-emerald-300/90 mt-1 block font-mono text-[11px]">📌 ${c.examiner}</span>`;
+  } else {
+    fb.className = 'p-3.5 rounded-lg text-xs leading-relaxed bg-rose-950/50 border border-rose-700 text-rose-200';
+    fb.innerHTML = `<b>✗ Re-check the Mark Scheme:</b> Look closely at the arrow origin, dipole, or carbocation vs product wording. (${c.defect})`;
+  }
+}
+
+/* --- TAB 4: LIVE CIP SUBSTITUENT SANDBOX --- */
+const CIP_GROUPS = [
+  {id:'H', label:'–H (Hydrogen)', z1:1, z2:0, mass:1, rank:1, desc:'Atom 1: H (Z = 1, A = 1)'},
+  {id:'D', label:'–D (Deuterium ²H)', z1:1, z2:0, mass:2, rank:2, desc:'Atom 1: H isotope (Z = 1, mass number A = 2 > 1)'},
+  {id:'CH3', label:'–CH₃ (Methyl)', z1:6, z2:1, mass:12, rank:3, desc:'Atom 1: C (Z = 6) bonded to (H, H, H)'},
+  {id:'CH2CH3', label:'–CH₂CH₃ (Ethyl)', z1:6, z2:6, mass:12, rank:4, desc:'Atom 1: C (Z = 6) bonded to (C, H, H) → beats –CH₃ on 2nd atom!'},
+  {id:'CH(CH3)2', label:'–CH(CH₃)₂ (Isopropyl)', z1:6, z2:6.5, mass:12, rank:5, desc:'Atom 1: C (Z = 6) bonded to (C, C, H) → beats –CH₂CH₃'},
+  {id:'CH2OH', label:'–CH₂OH (Hydroxymethyl)', z1:6, z2:8, mass:12, rank:6, desc:'Atom 1: C (Z = 6) bonded to (O, H, H) → O (Z=8) beats C (Z=6)'},
+  {id:'CHO', label:'–CHO (Aldehyde C=O)', z1:6, z2:8.5, mass:12, rank:7, desc:'Atom 1: C (Z = 6) double-bonded to O counts as bonded to (O, O, H)'},
+  {id:'NH2', label:'–NH₂ (Amino)', z1:7, z2:1, mass:14, rank:8, desc:'Atom 1: N (Z = 7)'},
+  {id:'OH', label:'–OH (Hydroxyl)', z1:8, z2:1, mass:16, rank:9, desc:'Atom 1: O (Z = 8) — beats –CH₃ or –CH₂CH₃ even though smaller in mass!'},
+  {id:'F', label:'–F (Fluoro)', z1:9, z2:0, mass:19, rank:10, desc:'Atom 1: F (Z = 9)'},
+  {id:'Cl', label:'–Cl (Chloro)', z1:17, z2:0, mass:35.5, rank:11, desc:'Atom 1: Cl (Z = 17)'},
+  {id:'Br', label:'–Br (Bromo)', z1:35, z2:0, mass:79.9, rank:12, desc:'Atom 1: Br (Z = 35)'},
+  {id:'I', label:'–I (Iodo)', z1:53, z2:0, mass:126.9, rank:13, desc:'Atom 1: I (Z = 53)'}
+];
+
+function initCipSandbox() {
+  const opts = CIP_GROUPS.map((g, i) => `<option value="${i}">${g.label}</option>`).join('');
+  ['cip-tl', 'cip-tr', 'cip-bl', 'cip-br'].forEach(id => {
+    const el = $(id);
+    if (el) el.innerHTML = opts;
+  });
+  if ($('cip-tl')) {
+    $('cip-tl').value = '2'; // -CH3
+    $('cip-bl').value = '0'; // -H
+    $('cip-tr').value = '10'; // -Cl
+    $('cip-br').value = '0'; // -H
+    updateCipSandbox();
+  }
+}
+
+function updateCipSandbox() {
+  const tl = CIP_GROUPS[+$('cip-tl').value];
+  const bl = CIP_GROUPS[+$('cip-bl').value];
+  const tr = CIP_GROUPS[+$('cip-tr').value];
+  const br = CIP_GROUPS[+$('cip-br').value];
+
+  const leftSame = (tl.id === bl.id);
+  const rightSame = (tr.id === br.id);
+  const hasEZ = (!leftSame && !rightSame);
+
+  const leftTopHi = tl.rank > bl.rank;
+  const rightTopHi = tr.rank > br.rank;
+  const isZ = hasEZ && (leftTopHi === rightTopHi);
+
+  const badgeCol = !hasEZ ? '#f43f5e' : (isZ ? '#10b981' : '#38bdf8');
+  const tlCol = !hasEZ ? '#94a3b8' : (leftTopHi ? '#34d399' : '#64748b');
+  const blCol = !hasEZ ? '#94a3b8' : (!leftTopHi ? '#34d399' : '#64748b');
+  const trCol = !hasEZ ? '#94a3b8' : (rightTopHi ? '#34d399' : '#64748b');
+  const brCol = !hasEZ ? '#94a3b8' : (!rightTopHi ? '#34d399' : '#64748b');
+
+  const svgBox = $('cip-svg-box');
+  if (svgBox) {
+    svgBox.innerHTML = `<svg viewBox="0 0 420 175" class="w-full max-w-[400px] h-auto">
+      <line x1="20" y1="88" x2="400" y2="88" stroke="rgba(148,163,184,0.22)" stroke-width="1.2" stroke-dasharray="4,4"/>
+      <text x="395" y="82" text-anchor="end" fill="#64748b" font-size="9" font-family="Fira Code">C=C reference plane</text>
+      <!-- Left bonds -->
+      <line x1="160" y1="88" x2="95" y2="38" stroke="${tlCol}" stroke-width="2.5"/>
+      <line x1="160" y1="88" x2="95" y2="138" stroke="${blCol}" stroke-width="2.5"/>
+      <!-- Right bonds -->
+      <line x1="260" y1="88" x2="325" y2="38" stroke="${trCol}" stroke-width="2.5"/>
+      <line x1="260" y1="88" x2="325" y2="138" stroke="${brCol}" stroke-width="2.5"/>
+      <!-- C=C double bond -->
+      <line x1="175" y1="84" x2="245" y2="84" stroke="#e2e8f0" stroke-width="3"/>
+      <line x1="175" y1="92" x2="245" y2="92" stroke="#a78bfa" stroke-width="3"/>
+      <circle cx="165" cy="88" r="14" fill="#1e1b4b" stroke="#a78bfa" stroke-width="2"/>
+      <text x="165" y="92" text-anchor="middle" fill="#fff" font-size="11" font-family="Fira Code" font-weight="700">C1</text>
+      <circle cx="255" cy="88" r="14" fill="#1e1b4b" stroke="#a78bfa" stroke-width="2"/>
+      <text x="255" y="92" text-anchor="middle" fill="#fff" font-size="11" font-family="Fira Code" font-weight="700">C2</text>
+      <!-- Labels -->
+      <text x="88" y="34" text-anchor="end" fill="${tlCol}" font-size="12" font-family="Fira Code" font-weight="700">${tl.id} ${hasEZ ? (leftTopHi ? '★(1)' : '(2)') : ''}</text>
+      <text x="88" y="146" text-anchor="end" fill="${blCol}" font-size="12" font-family="Fira Code" font-weight="700">${bl.id} ${hasEZ ? (!leftTopHi ? '★(1)' : '(2)') : ''}</text>
+      <text x="332" y="34" text-anchor="start" fill="${trCol}" font-size="12" font-family="Fira Code" font-weight="700">${tr.id} ${hasEZ ? (rightTopHi ? '★(1)' : '(2)') : ''}</text>
+      <text x="332" y="146" text-anchor="start" fill="${brCol}" font-size="12" font-family="Fira Code" font-weight="700">${br.id} ${hasEZ ? (!rightTopHi ? '★(1)' : '(2)') : ''}</text>
+      <rect x="155" y="8" width="110" height="22" rx="11" fill="rgba(15,23,42,0.9)" stroke="${badgeCol}" stroke-width="1.4"/>
+      <text x="210" y="23" text-anchor="middle" fill="${badgeCol}" font-size="11" font-family="Fira Code" font-weight="700">${!hasEZ ? 'NO E/Z ISOMERISM' : (isZ ? 'Z-ISOMER (Same)' : 'E-ISOMER (Opp.)')}</text>
+    </svg>`;
+  }
+
+  const vbox = $('cip-verdict-box');
+  if (vbox) {
+    if (!hasEZ) {
+      vbox.innerHTML = `<p class="text-rose-300 font-bold mb-1">✗ No Geometric (E–Z) Isomerism</p>
+        <p>${leftSame ? `<b>Left Carbon (C1)</b> carries two identical <b>${tl.id}</b> groups.` : ''} ${rightSame ? `<b>Right Carbon (C2)</b> carries two identical <b>${tr.id}</b> groups.` : ''} Exam rule (Spec 5.2): <i>each</i> carbon of the C=C double bond must be attached to two different groups.</p>`;
+    } else {
+      const tieL = (tl.z1 === bl.z1) ? ' (resolved by 2nd-atom / isotope rule!)' : '';
+      const tieR = (tr.z1 === br.z1) ? ' (resolved by 2nd-atom / isotope rule!)' : '';
+      vbox.innerHTML = `<p class="font-bold ${isZ ? 'text-emerald-300' : 'text-sky-300'} mb-1">✓ ${isZ ? 'Z-Isomer (Zusammen — Priority 1 groups on the SAME side)' : 'E-Isomer (Entgegen — Priority 1 groups on OPPOSITE sides)'}</p>
+        <p class="text-[11px]"><b class="text-violet-300">Left C1 CIP:</b> <b>${leftTopHi ? tl.id : bl.id}</b> [${leftTopHi ? tl.desc : bl.desc}] outranks <b>${leftTopHi ? bl.id : tl.id}</b> [${leftTopHi ? bl.desc : tl.desc}]${tieL}.</p>
+        <p class="text-[11px] mt-1"><b class="text-violet-300">Right C2 CIP:</b> <b>${rightTopHi ? tr.id : br.id}</b> [${rightTopHi ? tr.desc : br.desc}] outranks <b>${rightTopHi ? br.id : tr.id}</b> [${rightTopHi ? br.desc : tr.desc}]${tieR}.</p>`;
+    }
+  }
+  MASTERY_STATE.conceptsChecked.add('cip');
+  updateMasteryBadge();
+}
+
+function loadCipPreset(type) {
+  if (type === 'tiebreak') {
+    $('cip-tl').value = '3'; // -CH2CH3
+    $('cip-bl').value = '2'; // -CH3
+    $('cip-tr').value = '5'; // -CH2OH
+    $('cip-br').value = '3'; // -CH2CH3
+    updateCipSandbox();
+  }
+}
+
+function loadCipChallenge() {
+  const picks = () => Math.floor(Math.random() * CIP_GROUPS.length);
+  $('cip-tl').value = String(picks());
+  $('cip-bl').value = String(picks());
+  $('cip-tr').value = String(picks());
+  $('cip-br').value = String(picks());
+  updateCipSandbox();
+}
+
+/* --- TAB 5: DISPLAYED REPEAT-UNIT STRUCTURAL VISUALIZER & DISPOSAL MATRIX --- */
+const POLY_VIS_DATA = [
+  {name:'Propene → poly(propene)', mon:'CH₃CH=CH₂', gTL:'H', gBL:'H', gTR:'CH₃', gBR:'H', note:'Notice the –CH₃ group is a vertical side branch! The horizontal backbone has ONLY 2 carbons per repeat unit.'},
+  {name:'But-2-ene → poly(but-2-ene) [Exam Trap!]', mon:'CH₃CH=CHCH₃', gTL:'CH₃', gBL:'H', gTR:'CH₃', gBR:'H', note:'WCH11 Trap: But-2-ene has 4 carbons, so students wrongly draw a 4-carbon chain. Only the TWO C=C carbons go in the horizontal chain; both –CH₃ groups sit vertically!'},
+  {name:'But-1-ene → poly(but-1-ene)', mon:'CH₃CH₂CH=CH₂', gTL:'C₂H₅', gBL:'H', gTR:'H', gBR:'H', note:'The ethyl group (–C₂H₅ / –CH₂CH₃) hangs vertically as a branch off the 2-carbon backbone.'},
+  {name:'Chloroethene → poly(chloroethene) (PVC)', mon:'CH₂=CHCl', gTL:'H', gBL:'H', gTR:'Cl', gBR:'H', note:'Incineration releases acidic HCl(g), which must be scrubbed with alkali (CaO / Ca(OH)₂).'},
+  {name:'Methyl 2-methylpropenoate → Perspex', mon:'CH₂=C(CH₃)COOCH₃', gTL:'H', gBL:'H', gTR:'CH₃', gBR:'COOCH₃', note:'Suggested Practical iv: Disubstituted on C2 — one vertical bond goes to –CH₃ and the other to –COOCH₃.'},
+  {name:'Tetrafluoroethene → PTFE (Teflon)', mon:'CF₂=CF₂', gTL:'F', gBL:'F', gTR:'F', gBR:'F', note:'Strong polar C–F bonds arranged symmetrically make PTFE extremely inert and non-stick.'}
+];
+
+let currentPolyUnits = 1;
+function initPolyVis() {
+  const sel = $('poly-vis-sel');
+  if (sel) {
+    sel.innerHTML = POLY_VIS_DATA.map((p, i) => `<option value="${i}">${p.name}</option>`).join('');
+    renderPolyVis();
+  }
+  showDispStrat(0);
+}
+
+function setPolyUnits(u) {
+  currentPolyUnits = u;
+  $('poly-u-1').className = 'btn-press px-2.5 py-1 text-[10px] font-semibold rounded ' + (u === 1 ? 'bg-amber-600 text-white' : 'bg-slate-800 text-slate-300');
+  $('poly-u-2').className = 'btn-press px-2.5 py-1 text-[10px] font-semibold rounded ' + (u === 2 ? 'bg-amber-600 text-white' : 'bg-slate-800 text-slate-300');
+  renderPolyVis();
+}
+
+function renderPolyVis() {
+  const p = POLY_VIS_DATA[+($('poly-vis-sel') ? $('poly-vis-sel').value : 0)];
+  const box = $('poly-vis-svg');
+  if (!box) return;
+  if (currentPolyUnits === 1) {
+    box.innerHTML = `<svg viewBox="0 0 360 135" class="w-full max-w-[340px] h-auto">
+      <!-- Extension bonds crossing brackets -->
+      <line x1="45" y1="68" x2="295" y2="68" stroke="#fbbf24" stroke-width="2.6"/>
+      <!-- Left and right brackets -->
+      <path d="M 88 22 L 76 22 L 76 114 L 88 114" fill="none" stroke="#e2e8f0" stroke-width="2.2"/>
+      <path d="M 252 22 L 264 22 L 264 114 L 252 114" fill="none" stroke="#e2e8f0" stroke-width="2.2"/>
+      <text x="275" y="116" fill="#34d399" font-size="14" font-family="Fira Code" font-style="italic" font-weight="700">n</text>
+      <!-- C1 and C2 vertical bonds -->
+      <line x1="130" y1="68" x2="130" y2="30" stroke="#94a3b8" stroke-width="2"/>
+      <line x1="130" y1="68" x2="130" y2="106" stroke="#94a3b8" stroke-width="2"/>
+      <line x1="210" y1="68" x2="210" y2="30" stroke="#94a3b8" stroke-width="2"/>
+      <line x1="210" y1="68" x2="210" y2="106" stroke="#94a3b8" stroke-width="2"/>
+      <circle cx="130" cy="68" r="11" fill="#0f172a" stroke="#fbbf24" stroke-width="2"/>
+      <text x="130" y="72" text-anchor="middle" fill="#fff" font-size="11" font-family="Fira Code" font-weight="700">C</text>
+      <circle cx="210" cy="68" r="11" fill="#0f172a" stroke="#fbbf24" stroke-width="2"/>
+      <text x="210" y="72" text-anchor="middle" fill="#fff" font-size="11" font-family="Fira Code" font-weight="700">C</text>
+      <text x="130" y="23" text-anchor="middle" fill="#34d399" font-size="12" font-family="Fira Code" font-weight="700">${p.gTL}</text>
+      <text x="130" y="122" text-anchor="middle" fill="#cbd5e1" font-size="12" font-family="Fira Code">${p.gBL}</text>
+      <text x="210" y="23" text-anchor="middle" fill="#38bdf8" font-size="12" font-family="Fira Code" font-weight="700">${p.gTR}</text>
+      <text x="210" y="122" text-anchor="middle" fill="#cbd5e1" font-size="12" font-family="Fira Code">${p.gBR}</text>
+    </svg>
+    <p class="text-[11px] text-amber-200/90 text-center mt-1">${p.note}</p>`;
+  } else {
+    box.innerHTML = `<svg viewBox="0 0 440 135" class="w-full max-w-[420px] h-auto">
+      <line x1="25" y1="68" x2="405" y2="68" stroke="#fbbf24" stroke-width="2.6"/>
+      <path d="M 55 22 L 45 22 L 45 114 L 55 114" fill="none" stroke="#e2e8f0" stroke-width="2.2"/>
+      <path d="M 375 22 L 385 22 L 385 114 L 375 114" fill="none" stroke="#e2e8f0" stroke-width="2.2"/>
+      <line x1="215" y1="20" x2="215" y2="116" stroke="rgba(52,211,153,0.35)" stroke-width="1.2" stroke-dasharray="3,3"/>
+      ${[95, 175, 255, 335].map((x, idx) => {
+        const isFirst = idx % 2 === 0;
+        const topG = isFirst ? p.gTL : p.gTR;
+        const botG = isFirst ? p.gBL : p.gBR;
+        const topC = isFirst ? '#34d399' : '#38bdf8';
+        return `<line x1="${x}" y1="68" x2="${x}" y2="30" stroke="#94a3b8" stroke-width="2"/>
+          <line x1="${x}" y1="68" x2="${x}" y2="106" stroke="#94a3b8" stroke-width="2"/>
+          <circle cx="${x}" cy="68" r="11" fill="#0f172a" stroke="#fbbf24" stroke-width="2"/>
+          <text x="${x}" y="72" text-anchor="middle" fill="#fff" font-size="11" font-family="Fira Code" font-weight="700">C</text>
+          <text x="${x}" y="23" text-anchor="middle" fill="${topC}" font-size="11" font-family="Fira Code" font-weight="700">${topG}</text>
+          <text x="${x}" y="122" text-anchor="middle" fill="#cbd5e1" font-size="11" font-family="Fira Code">${botG}</text>`;
+      }).join('')}
+    </svg>
+    <p class="text-[11px] text-emerald-200 text-center mt-1"><b>2 Repeat Units (4 backbone carbons):</b> Notice how substituents alternate regularly every 2 carbons along the saturated chain.</p>`;
+  }
+}
+
+const DISP_STRATEGIES = [
+  {
+    title:'(i) Biodegradable & Photodegradable Polymers (Spec 5.8 i)',
+    chem:'Incorporate <b>hydrolysable ester links (–COO–)</b> (e.g. polylactic acid PLA, or starch-blended polymers) so water + bacterial/fungal enzymes break chains by hydrolysis; or incorporate <b>carbonyl groups (C=O)</b> that absorb UV light to weaken and break nearby C–C bonds (photodegradable).',
+    pros:'Breaks down into CO₂, H₂O and biomass; reduces long-term landfill and marine microplastic accumulation; renewable plant feedstock (corn starch / sugarcane) saves crude oil.',
+    cons:'Often more expensive; requires specific industrial composting conditions (oxygen, moisture, warmth — often fails to degrade deep in airless landfill); uses agricultural land.'
+  },
+  {
+    title:'(ii) Incineration with Alkaline Flue-Gas Scrubbing (Spec 5.8 ii)',
+    chem:'Combustion of polyalkenes releases heat energy to generate electricity, but halogenated polymers like <b>PVC [poly(chloroethene)]</b> release corrosive, toxic <b>HCl(g)</b> (and dioxins). Basic scrubbers neutralise acidic gases:<br><span class="font-mono text-emerald-300">Ca(OH)₂(aq/s) + 2HCl(g) → CaCl₂(s/aq) + 2H₂O(l)</span> (or using CaO / CaCO₃ / NaOH).',
+    pros:'Drastically reduces waste volume going to landfill; recovers useful heat/electrical energy from high-calorific hydrocarbon chains.',
+    cons:'Produces greenhouse gas CO₂; incomplete combustion releases toxic CO and soot; requires costly gas-scrubbing equipment to prevent HCl acid rain.'
+  },
+  {
+    title:'(iii) Feedstock Recycling vs Mechanical Recycling',
+    chem:'<b>Mechanical recycling:</b> sorting polymers by resin code (e.g. HDPE, PP, PVC), washing, grinding and remelting.<br><b>Feedstock (chemical) recycling:</b> thermal/catalytic cracking of waste polymers back into short-chain alkenes/monomers to make new virgin polymers or chemicals.',
+    pros:'Conserves finite crude oil reserves; feedstock recycling handles mixed or contaminated plastics without tedious manual sorting.',
+    cons:'Mechanical recycling requires labour-intensive sorting and polymers degrade in chain length/properties each melt cycle.'
+  },
+  {
+    title:'(iv) Why Landfill Fails & 100% Atom Economy (Spec 1.8 & 5.8)',
+    chem:'Addition polymerisation has <b>100% atom economy</b> ($M_r$ of desired polymer = sum of $M_r$ of all reactants; no small molecule eliminated). However, the resulting polymer chain contains only <b>strong, non-polar C–C and C–H σ bonds</b>.',
+    pros:'High atom economy makes production highly efficient with zero by-product waste; chemical inertness makes plastics safe for food/water storage.',
+    cons:'Because C–C and C–H bonds are strong and non-polar, biological enzymes cannot hydrolyse them → <b>non-biodegradable</b> accumulation in landfill.'
+  }
+];
+
+function showDispStrat(idx) {
+  const s = DISP_STRATEGIES[idx];
+  const btns = document.querySelectorAll('#disp-strat-btns button');
+  btns.forEach((b, i) => {
+    b.className = 'btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border ' +
+      (i === idx ? 'bg-emerald-950/60 border-emerald-700 text-emerald-300' : 'bg-slate-950 border-slate-700 text-slate-300');
+  });
+  const out = $('disp-strat-out');
+  if (out) {
+    out.innerHTML = `<p class="font-bold text-white">${s.title}</p>
+      <p>${s.chem}</p>
+      <p class="text-emerald-300/95"><b>✓ Advantages:</b> ${s.pros}</p>
+      <p class="text-rose-300/95"><b>⚠️ Limitations:</b> ${s.cons}</p>`;
+  }
+}
+
+/* --- TAB 6: REVERSE MONOMER DETECTIVE & 10-QUESTION EXAM CONCEPT SIMULATOR --- */
+const REV_MONOMER_CASES = [
+  {chain:'…–CH₂–CH(CH₃)–CH₂–CH(CH₃)–CH₂–CH(CH₃)–…', correct:0, opts:['Propene (CH₃CH=CH₂)', 'Propane (CH₃CH₂CH₃)', 'But-2-ene (CH₃CH=CHCH₃)'], exp:'Slice any 2-carbon repeat unit –[CH₂–CH(CH₃)]– and restore the C=C double bond → CH₂=CHCH₃ (propene).'},
+  {chain:'…–CH(CH₃)–CH(CH₃)–CH(CH₃)–CH(CH₃)–…', correct:1, opts:['But-1-ene (CH₃CH₂CH=CH₂)', 'But-2-ene (CH₃CH=CHCH₃)', 'Propene (CH₃CH=CH₂)'], exp:'Every backbone carbon carries a –CH₃ group! A 2-carbon repeat unit is –[CH(CH₃)–CH(CH₃)]–, so restoring C=C gives CH₃CH=CHCH₃ (but-2-ene).'},
+  {chain:'…–CH₂–C(CH₃)(COOCH₃)–CH₂–C(CH₃)(COOCH₃)–…', correct:2, opts:['Methyl propanoate', 'But-2-enoic acid', 'Methyl 2-methylpropenoate [CH₂=C(CH₃)COOCH₃]'], exp:'The 2-carbon repeat unit has C1 with two H atoms and C2 with –CH₃ and –COOCH₃ → CH₂=C(CH₃)COOCH₃ (Perspex monomer).'},
+  {chain:'…–CH₂–CH(C₂H₅)–CH₂–CH(C₂H₅)–…', correct:0, opts:['But-1-ene (CH₂=CHCH₂CH₃)', 'But-2-ene (CH₃CH=CHCH₃)', 'Pent-2-ene'], exp:'One backbone carbon has –H and –C₂H₅, the other has two –H → CH₂=CH–C₂H₅ (but-1-ene).'}
+];
+
+function initReverseMonomer() {
+  const sel = $('rev-poly-sel');
+  if (!sel) return;
+  sel.innerHTML = REV_MONOMER_CASES.map((c, i) => `<option value="${i}">Polymer Segment ${i + 1}: ${c.chain.slice(0, 32)}…</option>`).join('');
+  loadReverseMonomer();
+}
+
+function loadReverseMonomer() {
+  const idx = +($('rev-poly-sel') ? $('rev-poly-sel').value : 0);
+  const c = REV_MONOMER_CASES[idx];
+  if ($('rev-poly-prompt')) $('rev-poly-prompt').textContent = c.chain;
+  if ($('rev-poly-feedback')) $('rev-poly-feedback').classList.add('hidden');
+  if ($('rev-poly-options')) {
+    $('rev-poly-options').innerHTML = c.opts.map((o, oi) => `<button type="button" onclick="gradeReverseMonomer(${idx}, ${oi})" class="btn-press text-left p-2.5 rounded-lg border border-slate-800 bg-slate-900 hover:border-violet-500/60 text-xs text-slate-200 font-mono">${String.fromCharCode(65 + oi)}. ${o}</button>`).join('');
+  }
+}
+
+function gradeReverseMonomer(caseIdx, optIdx) {
+  const c = REV_MONOMER_CASES[caseIdx];
+  const fb = $('rev-poly-feedback');
+  if (!fb) return;
+  fb.classList.remove('hidden');
+  if (optIdx === c.correct) {
+    fb.className = 'p-3 rounded-lg text-xs leading-relaxed bg-emerald-950/50 border border-emerald-700 text-emerald-200';
+    fb.innerHTML = `<b>✓ Correct Monomer Identified!</b> ${c.exp}`;
+    MASTERY_STATE.conceptsChecked.add('rev_mon');
+    updateMasteryBadge();
+  } else {
+    fb.className = 'p-3 rounded-lg text-xs leading-relaxed bg-rose-950/50 border border-rose-700 text-rose-200';
+    fb.innerHTML = `<b>✗ Watch the 2-Carbon Rule:</b> Isolate a 2-carbon section of the horizontal backbone and reform the C=C double bond between those two carbons. (${c.exp})`;
+  }
+}
+
+const EXAM_SIM_QUESTIONS = [
+  {
+    spec:'5.1', series:'WCH11 Jan 2023',
+    q:'Which statement correctly compares the C=C double bond in ethene with the C–C single bond in ethane?',
+    opts:[
+      'The C=C bond is longer and more than twice as strong as the C–C bond.',
+      'The C=C bond is shorter and less than twice as strong as the C–C bond because sideways π overlap is weaker than head-on σ overlap.',
+      'Both bonds in C=C are π bonds formed by sideways overlap of p-orbitals.',
+      'The H–C–H bond angle in ethene is 109.5° whereas in ethane it is 120°.'
+    ],
+    ans:1,
+    exp:'C=C (0.134 nm, ~612 kJ mol⁻¹) is shorter than C–C (0.154 nm, ~348 kJ mol⁻¹) but less than 2 × 348 = 696 kJ mol⁻¹ because the π bond (sideways p-orbital overlap) is weaker than the σ bond (head-on axial overlap).'
+  },
+  {
+    spec:'5.2 & 5.3', series:'WCH11 Jan 2024 / Jan 2025',
+    q:'Which of the following alkenes exhibits E–Z (geometric) isomerism?',
+    opts:[
+      '2-methylbut-2-ene, (CH₃)₂C=CHCH₃',
+      'Pent-1-ene, CH₂=CHCH₂CH₂CH₃',
+      '1-chloroprop-1-ene, CH₃CH=CHCl',
+      '2-ethylbut-1-ene, CH₂=C(C₂H₅)₂'
+    ],
+    ans:2,
+    exp:'In 1-chloroprop-1-ene (CH₃CH=CHCl), C1 carries –H and –Cl (two different groups) and C2 carries –H and –CH₃ (two different groups). The other three molecules each have two identical groups on one of the double-bond carbons.'
+  },
+  {
+    spec:'5.3', series:'WCH11 Jan 2021',
+    q:'Using the Cahn–Ingold–Prelog (CIP) priority rules, what is the correct IUPAC name when the –CH₂OH group and the –Br atom are on the SAME side of the double bond in CH₃CH₂C(CH₂OH)=C(Br)CH₃?',
+    opts:[
+      '(Z)-2-bromo-3-(hydroxymethyl)pent-2-ene (or Z-isomer)',
+      '(E)-2-bromo-3-(hydroxymethyl)pent-2-ene (or E-isomer)',
+      'cis-2-bromo-3-ethylbut-2-en-1-ol',
+      'It does not have E/Z isomers because C3 is bonded to two carbon groups.'
+    ],
+    ans:0,
+    exp:'On C3, –CH₂OH (C bonded to O,H,H; O has Z=8) outranks –CH₂CH₃ (C bonded to C,H,H; C has Z=6). On C2, –Br (Z=35) outranks –CH₃ (C has Z=6). Since the two higher-priority groups (–CH₂OH and –Br) are on the SAME side, it is the (Z)-isomer!'
+  },
+  {
+    spec:'5.4 & 5.5', series:'WCH11 Oct 2022',
+    q:'A hydrocarbon X has molecular formula C₅H₁₀. It does NOT decolourise bromine water in the dark, nor does it decolourise cold dilute acidified KMnO₄. What could X be?',
+    opts:[
+      'Pent-2-ene',
+      '2-methylbut-1-ene',
+      'Methylcyclobutane (or cyclopentane)',
+      'Pentane'
+    ],
+    ans:2,
+    exp:'C₅H₁₀ fits CnH2n (so it is either a mono-alkene or a cycloalkane, ruling out pentane C₅H₁₂). Since it does not decolourise Br₂(aq) or acidified KMnO₄, it has no C=C bond and must be a saturated cycloalkane (cyclopentane or methylcyclobutane).'
+  },
+  {
+    spec:'5.4 & 5.6', series:'WCH11 Jun 2021',
+    q:'Iodine monochloride (ICl) reacts with propene via electrophilic addition. Given that chlorine is more electronegative than iodine, what is the major organic product?',
+    opts:[
+      '1-chloro-2-iodopropane, CH₃CH(I)CH₂Cl',
+      '2-chloro-1-iodopropane, CH₃CHClCH₂I',
+      '1,2-dichloropropane, CH₃CHClCH₂Cl',
+      '2-iodopropane, CH₃CH(I)CH₃'
+    ],
+    ans:1,
+    exp:'Because Cl is more electronegative than I, the dipole is I(δ+)–Cl(δ−). The π bond attacks I(δ+), attaching I to C1 (the CH₂ carbon) to form the more stable secondary carbocation CH₃C⁺HCH₂I. Then :Cl⁻ attacks C2⁺ to yield 2-chloro-1-iodopropane.'
+  },
+  {
+    spec:'5.5 & 5.6', series:'WCH11 Jan 2024',
+    q:'When propene is shaken with aqueous bromine water, Br₂(aq), what is the formula of the major bromohydrin product formed alongside 1,2-dibromopropane?',
+    opts:[
+      'CH₃CH(OH)CH₂Br (1-bromo-2-propanol)',
+      'CH₃CHBrCH₂OH (2-bromo-1-propanol)',
+      'CH₃CH(OH)CH₂OH (propane-1,2-diol)',
+      'CH₃CH₂CH₂Br (1-bromopropane)'
+    ],
+    ans:0,
+    exp:'In Step 1, Br(δ+) adds to C1 to generate the more stable secondary carbocation at C2 [CH₃C⁺HCH₂Br]. In Step 2, abundant H₂O molecules attack the positive C2 carbon (followed by loss of H⁺), placing the –OH on C2 → CH₃CH(OH)CH₂Br.'
+  },
+  {
+    spec:'5.6', series:'WCH11 Oct 2024 PEF',
+    q:'Why is the secondary carbocation CH₃C⁺HCH₃ more stable than the primary carbocation CH₃CH₂CH₂⁺?',
+    opts:[
+      'Because 2-bromopropane has stronger C–Br bonds than 1-bromopropane.',
+      'Because the secondary carbon has two electron-donating alkyl (methyl) groups (positive inductive effect) that release electron density and disperse the positive charge.',
+      'Because alkyl groups withdraw electrons and concentrate the positive charge on the central carbon.',
+      'Because secondary carbocations have a complete octet of 8 valence electrons.'
+    ],
+    ans:1,
+    exp:'Alkyl groups are electron-releasing (+I inductive effect). Having two alkyl groups attached to C⁺ disperses/spreads out the positive charge more effectively than having only one alkyl group.'
+  },
+  {
+    spec:'5.4', series:'WCH11 Jan 2020 PEF',
+    q:'Which reaction of ethene is an addition reaction, but is NOT classified as an electrophilic addition?',
+    opts:[
+      'Reaction with Br₂ in CCl₄ at room temperature',
+      'Reaction with HBr(g) at room temperature',
+      'Catalytic hydrogenation with H₂(g) over a nickel catalyst',
+      'Reaction with cold concentrated H₂SO₄'
+    ],
+    ans:2,
+    exp:'PEF Jan 2020 reminder: Hydrogenation (H₂ + Ni catalyst) is a heterogeneous catalytic addition (radical/surface mechanism), NOT an electrophilic addition (H–H is non-polar and acts on the metal surface).'
+  },
+  {
+    spec:'5.7', series:'WCH11 Jan 2023 PEF',
+    q:'What is the correct repeat unit of the addition polymer formed from but-2-ene, CH₃CH=CHCH₃?',
+    opts:[
+      '–[CH₂–CH₂–CH₂–CH₂]–',
+      '–[CH(CH₃)–CH(CH₃)]–',
+      '–[CH(CH₃)=CH(CH₃)]–',
+      '–[CH₂–CH(C₂H₅)]–'
+    ],
+    ans:1,
+    exp:'Only the two carbons of the C=C double bond form the horizontal backbone of the repeat unit, and the π bond opens to a single C–C bond: –[CH(CH₃)–CH(CH₃)]–.'
+  },
+  {
+    spec:'5.1 & 5.4', series:'WCH11 Jun 2021 Style',
+    q:'0.015 mol of an unsaturated hydrocarbon Z reacts completely with 720 cm³ of hydrogen gas measured at r.t.p. (Vₘ = 24 000 cm³ mol⁻¹). How many C=C double bonds are present in one molecule of Z?',
+    opts:[
+      '1 C=C double bond',
+      '2 C=C double bonds',
+      '3 C=C double bonds',
+      '4 C=C double bonds'
+    ],
+    ans:1,
+    exp:'n(H₂) = 720 / 24 000 = 0.030 mol. Mole ratio n(H₂) : n(Z) = 0.030 : 0.015 = 2 : 1. Therefore each molecule of Z contains 2 C=C double bonds (an alkadiene/cycloalkadiene).'
+  }
+];
+
+let currentSimQ = 0;
+function initExamSim() {
+  renderExamSim();
+}
+
+function renderExamSim() {
+  const pills = $('sim-q-pills');
+  if (!pills) return;
+  pills.innerHTML = EXAM_SIM_QUESTIONS.map((q, i) => {
+    const solved = MASTERY_STATE.simSolved.has(i);
+    return `<button type="button" onclick="selectSimQ(${i})" class="btn-press px-2.5 py-1 text-[11px] font-mono rounded-lg border ${i === currentSimQ ? 'border-emerald-500 bg-emerald-950/70 text-emerald-200 font-bold' : (solved ? 'border-emerald-800 bg-emerald-950/30 text-emerald-400' : 'border-slate-800 bg-slate-900 text-slate-400')}">${solved ? '✓ ' : ''}Q${i + 1}</button>`;
+  }).join('');
+  const q = EXAM_SIM_QUESTIONS[currentSimQ];
+  const box = $('sim-q-container');
+  if (!box) return;
+  box.innerHTML = `<div class="flex items-center justify-between text-[10px] font-mono text-slate-400">
+      <span class="px-2 py-0.5 rounded bg-slate-950 border border-slate-800 text-sky-300">Spec ${q.spec}</span>
+      <span class="text-amber-300">${q.series}</span>
+    </div>
+    <p class="text-xs sm:text-sm font-semibold text-white leading-relaxed">${currentSimQ + 1}. ${q.q}</p>
+    <div class="space-y-2">
+      ${q.opts.map((opt, oi) => `<button type="button" onclick="gradeSimQ(${currentSimQ}, ${oi})" class="btn-press w-full text-left p-2.5 rounded-lg border border-slate-800 bg-slate-950 hover:border-emerald-500/50 text-xs text-slate-200">${String.fromCharCode(65 + oi)}. ${opt}</button>`).join('')}
+    </div>
+    <div id="sim-q-feedback" class="hidden p-3 rounded-lg text-xs leading-relaxed"></div>`;
+  const badge = $('sim-score-badge');
+  if (badge) badge.textContent = `Score: ${MASTERY_STATE.simSolved.size} / ${EXAM_SIM_QUESTIONS.length}`;
+}
+
+function selectSimQ(i) {
+  currentSimQ = i;
+  renderExamSim();
+}
+
+function gradeSimQ(qIdx, optIdx) {
+  const q = EXAM_SIM_QUESTIONS[qIdx];
+  const fb = $('sim-q-feedback');
+  if (!fb) return;
+  fb.classList.remove('hidden');
+  if (optIdx === q.ans) {
+    MASTERY_STATE.simSolved.add(qIdx);
+    updateMasteryBadge();
+    const badge = $('sim-score-badge');
+    if (badge) badge.textContent = `Score: ${MASTERY_STATE.simSolved.size} / ${EXAM_SIM_QUESTIONS.length}`;
+    fb.className = 'p-3 rounded-lg text-xs leading-relaxed bg-emerald-950/50 border border-emerald-700 text-emerald-200';
+    fb.innerHTML = `<b>✓ Correct (1/1 Mark):</b> ${q.exp}`;
+  } else {
+    fb.className = 'p-3 rounded-lg text-xs leading-relaxed bg-rose-950/50 border border-rose-700 text-rose-200';
+    fb.innerHTML = `<b>✗ Examiner Distractor Alert:</b> ${q.exp}`;
+  }
+}
+
+function resetExamSim() {
+  MASTERY_STATE.simSolved.clear();
+  currentSimQ = 0;
+  renderExamSim();
+  updateMasteryBadge();
+}
+
+/* --- APPLE SPOTLIGHT QUICK COMMAND MODAL --- */
+const SPOTLIGHT_ITEMS = [
+  {title:'Spec 5.1 — σ & π Orbital Visualizer (120° vs 109.5°)', tag:'Tab 1 · Syllabus', act:()=>{switchTab('syllabus');switchSylLab('orbital');}},
+  {title:'Spec 5.1 — CnH2n Alkene vs Cycloalkane & Quantitative H₂ Calculator', tag:'Tab 1 · Syllabus', act:()=>{switchTab('syllabus');switchSylLab('formula');}},
+  {title:'Spec 5.1–5.8 — Interactive Specification Self-Audit Checklist', tag:'Tab 1 · Syllabus', act:()=>{switchTab('syllabus');switchSylLab('checklist');}},
+  {title:'Spec 5.4 — Five Addition Reactions Inspector & Reagent Map', tag:'Tab 2 · Reactions', act:()=>{switchTab('reactions');setMode('rx','explorer');}},
+  {title:'Spec 5.5 — Virtual Test-Tube Bench & Br₂(aq) Bromohydrin Solver', tag:'Tab 2 · Reactions Lab', act:()=>{switchTab('reactions');setMode('rx','lab');}},
+  {title:'Spec 5.6 — Electrophilic Addition Mechanism & Markovnikov Predictor', tag:'Tab 3 · Mechanism', act:()=>{switchTab('mech');setMode('me','map');}},
+  {title:'Spec 5.6 — Curly-Arrow Examiner Doctor (Diagnose 6 WCH11 Scripts)', tag:'Tab 3 · Mechanism Doctor', act:()=>{switchTab('mech');setMode('me','doctor');}},
+  {title:'Spec 5.2–5.3 — E/Z Isomerism & Live CIP Substituent Sandbox', tag:'Tab 4 · E–Z Sandbox', act:()=>{switchTab('ez');setMode('ez','sandbox');}},
+  {title:'Spec 5.7–5.8 — 2-Carbon Polymer Backbone Visualizer & PVC Scrubbing', tag:'Tab 5 · Polymers Lab', act:()=>{switchTab('polymers');setMode('po','sustain');}},
+  {title:'Spec 5.1–5.8 — 10-Question WCH11 Past-Paper Concept Simulator', tag:'Tab 6 · Builder & Sim', act:()=>{switchTab('builder');setTimeout(()=>{const el=$('exam-sim-panel');if(el)el.scrollIntoView({behavior:'smooth'});},100);}},
+  {title:'WCH13 Practical Links & Master Examiner Trap Checklist', tag:'Tab 7 · Final Review', act:()=>{switchTab('review');}}
+];
+
+function openSpotlight() {
+  const m = $('spotlight-modal');
+  if (!m) return;
+  m.classList.remove('hidden');
+  m.classList.add('flex');
+  const inp = $('spotlight-input');
+  if (inp) { inp.value = ''; inp.focus(); }
+  filterSpotlight();
+}
+
+function closeSpotlight() {
+  const m = $('spotlight-modal');
+  if (!m) return;
+  m.classList.add('hidden');
+  m.classList.remove('flex');
+}
+
+function filterSpotlight() {
+  const q = ($('spotlight-input') ? $('spotlight-input').value : '').toLowerCase().trim();
+  const box = $('spotlight-results');
+  if (!box) return;
+  const matches = SPOTLIGHT_ITEMS.filter(it => !q || it.title.toLowerCase().includes(q) || it.tag.toLowerCase().includes(q));
+  box.innerHTML = matches.map((it, idx) => {
+    const origIdx = SPOTLIGHT_ITEMS.indexOf(it);
+    return `<button type="button" onclick="runSpotlightItem(${origIdx})" class="btn-press w-full text-left px-3 py-2.5 rounded-xl hover:bg-slate-800/80 flex items-center justify-between gap-2">
+      <span class="text-xs text-slate-100 font-medium">${it.title}</span>
+      <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-950 text-emerald-300 border border-slate-800 shrink-0">${it.tag}</span>
+    </button>`;
+  }).join('') || '<p class="text-xs text-slate-500 p-3 text-center">No matching concept found.</p>';
+}
+
+function runSpotlightItem(idx) {
+  closeSpotlight();
+  if (SPOTLIGHT_ITEMS[idx]) SPOTLIGHT_ITEMS[idx].act();
+}
+
+
+const FLASHCARDS_DATA = [
+  {q:'Why does a C=C double bond prevent free rotation at room temperature?', a:'Because the π bond is formed by sideways overlap of two parallel p-orbitals (above and below the internuclear axis); rotating one carbon relative to the other would break this overlap, requiring substantial energy.'},
+  {q:'State the two mandatory conditions for a molecule to show E–Z (geometric) isomerism.', a:'1. Restricted rotation about the C=C double bond. 2. Each carbon atom of the C=C double bond must be attached to TWO DIFFERENT atoms or groups.'},
+  {q:'State the reagents and conditions for the industrial hydration of ethene to ethanol.', a:'Steam [H₂O(g)], concentrated phosphoric(V) acid catalyst (conc. H₃PO₄), ~300 °C and ~60–70 atm pressure.'},
+  {q:'Give the reagent, conditions, observation, and organic product when ethene is oxidised to a diol.', a:'Reagent: Cold, dilute acidified potassium manganate(VII) (KMnO₄ / H₂SO₄). Observation: Purple solution decolourises (turns colourless). Product: Ethane-1,2-diol, CH₂(OH)CH₂(OH).'},
+  {q:'Explain why 2-bromopropane is the major product when propene reacts with HBr.', a:'Propene is unsymmetrical. Protonation at C1 forms a secondary (2°) carbocation intermediate [CH₃C⁺HCH₃], which is more stable than the primary (1°) carbocation [CH₃CH₂CH₂⁺] because two electron-donating alkyl groups disperse the positive charge.'},
+  {q:'Why does ethene + aqueous bromine water Br₂(aq) produce 2-bromoethanol (CH₂BrCH₂OH) as the major product?', a:'After Br(δ+) adds in Step 1 to form the [BrCH₂CH₂⁺] carbocation intermediate, H₂O molecules are in huge excess compared to Br⁻ ions and attack the positively charged carbon via a lone pair on oxygen (followed by loss of H⁺).'},
+  {q:'Explain why addition polymers like poly(ethene) are non-biodegradable, whereas polyesters are biodegradable.', a:'Poly(ethene) has only strong, non-polar C–C and C–H σ bonds that cannot be hydrolysed by enzymes or water. Polyesters contain polar ester links (–COO–) that undergo hydrolysis.'},
+  {q:'How are drying agents used when purifying cyclohexene in WCH13, and what observation shows drying is complete?', a:'Add an anhydrous inorganic salt (e.g. anhydrous CaCl₂, MgSO₄, or Na₂SO₄), swirl, and filter/decant. The organic liquid turns from cloudy (water emulsion) to clear, and some drying agent granules remain free-flowing.'}
+];
+
+let fcIndex = 0, fcFlipped = false;
+function renderFlashcard() {
+  const box = $('fc-card-box'), cnt = $('fc-counter');
+  if (!box) return;
+  const item = FLASHCARDS_DATA[fcIndex];
+  if (cnt) cnt.textContent = `${fcIndex + 1} / ${FLASHCARDS_DATA.length}`;
+  box.innerHTML = `<span class="text-[10px] font-mono uppercase px-2.5 py-0.5 rounded-full mb-2 ${fcFlipped ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40' : 'bg-sky-500/20 text-sky-300 border border-sky-500/40'}">${fcFlipped ? '✓ Mark-Scheme Answer (Click to flip back)' : '❓ Question Prompt (Click to reveal answer)'}</span>
+    <p class="text-xs sm:text-sm ${fcFlipped ? 'text-emerald-200 font-medium' : 'text-white font-bold'} max-w-2xl leading-relaxed whitespace-pre-line">${fcFlipped ? item.a : item.q}</p>`;
+}
+
+function flipFlashcard() {
+  fcFlipped = !fcFlipped;
+  renderFlashcard();
+}
+
+function stepFlashcard(dir) {
+  fcIndex = (fcIndex + dir + FLASHCARDS_DATA.length) % FLASHCARDS_DATA.length;
+  fcFlipped = false;
+  renderFlashcard();
+}
+
+document.addEventListener('keydown', function(e) {
+  if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+    e.preventDefault();
+    openSpotlight();
+  }
+});
+
 window.onload=function(){
   renderOverview();
   renderEngine('rx',RX_CARDS,'emerald');
@@ -1000,6 +2611,7 @@ window.onload=function(){
   $('slv-alkene').innerHTML=RX_ALKENES.map((a,i)=>'<option value="'+i+'">'+a.name+' ('+a.f+')</option>').join('');
   $('slv-reagent').innerHTML=RX_REAGENTS.map((r,i)=>'<option value="'+i+'">'+r.name+'</option>').join('');
   renderMkBtns();renderEzBtns();renderPoBtns();
+  showHcClass(0);calcUnsat();renderSpecAudit();runTestTubeSim();renderDoctorCases();initCipSandbox();initPolyVis();initReverseMonomer();initExamSim();renderFlashcard();updateMasteryBadge();
   safeInitKaTeX();
 };
 

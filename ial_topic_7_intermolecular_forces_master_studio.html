@@ -211,6 +211,186 @@ nav, nav > div { max-width: 100% !important; }
 }
 /* ===== /MUX mobile layer ===== */
 </style>
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+<style id="apple-hig-imf-theme">
+/* ===== APPLE HIG / macOS SEQUOIA DARK GLASSMORPHISM & SPRING ANIMATIONS ===== */
+:root {
+  --apple-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --apple-spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --apple-glass: rgba(18, 23, 34, 0.74);
+  --apple-glass-elevated: rgba(26, 32, 46, 0.82);
+  --apple-border: rgba(255, 255, 255, 0.085);
+  --apple-specular: inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Inter", sans-serif !important;
+  background:
+    radial-gradient(ellipse 110% 70% at 85% -8%, rgba(56, 189, 248, 0.12), transparent 58%),
+    radial-gradient(ellipse 95% 65% at -5% 28%, rgba(251, 113, 133, 0.08), transparent 55%),
+    radial-gradient(ellipse 90% 65% at 55% 108%, rgba(45, 212, 191, 0.08), transparent 55%),
+    #04070e !important;
+  color: #f5f5f7 !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.011em;
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Space Grotesk", sans-serif !important;
+  letter-spacing: -0.022em;
+}
+
+header {
+  background: rgba(10, 14, 22, 0.76) !important;
+  -webkit-backdrop-filter: saturate(190%) blur(28px) !important;
+  backdrop-filter: saturate(190%) blur(28px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.55), inset 0 -1px 0 0 rgba(255, 255, 255, 0.04) !important;
+}
+
+nav {
+  background: rgba(12, 16, 26, 0.78) !important;
+  -webkit-backdrop-filter: saturate(190%) blur(26px) !important;
+  backdrop-filter: saturate(190%) blur(26px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.075) !important;
+  padding: 6px 0 !important;
+}
+
+nav > div {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.075);
+  border-radius: 14px;
+  padding: 4px !important;
+  gap: 4px !important;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.45);
+}
+
+nav > div > button {
+  border-radius: 10px !important;
+  border-bottom: none !important;
+  padding: 7px 13px !important;
+  transition: all 0.28s var(--apple-spring) !important;
+}
+
+.tab-btn-active {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  border-bottom: none !important;
+  background: linear-gradient(180deg, rgba(56, 189, 248, 0.26) 0%, rgba(14, 165, 233, 0.15) 100%) !important;
+  box-shadow: 0 2px 10px -2px rgba(56, 189, 248, 0.35), inset 0 1px 0 0 rgba(255, 255, 255, 0.22), 0 0 0 1px rgba(56, 189, 248, 0.34) !important;
+}
+
+/* Apple Glass Panels & Cards */
+.bg-slate-900, .bg-slate-950, .bg-slate-900\/95, .bg-slate-900\/80 {
+  background: var(--apple-glass) !important;
+  -webkit-backdrop-filter: saturate(180%) blur(22px);
+  backdrop-filter: saturate(180%) blur(22px);
+  border-color: var(--apple-border) !important;
+  box-shadow: var(--apple-specular), 0 14px 34px -12px rgba(0, 0, 0, 0.48);
+  border-radius: 18px !important;
+  transition: transform 0.36s var(--apple-spring), border-color 0.36s var(--apple-ease), box-shadow 0.36s var(--apple-ease);
+}
+
+.lift {
+  transition: transform 0.38s var(--apple-spring), border-color 0.38s var(--apple-ease), box-shadow 0.38s var(--apple-ease) !important;
+}
+
+.lift:hover {
+  transform: translateY(-3px) scale(1.003) !important;
+  border-color: rgba(56, 189, 248, 0.34) !important;
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.2), 0 22px 44px -14px rgba(0, 0, 0, 0.65), 0 0 28px -8px rgba(56, 189, 248, 0.22) !important;
+}
+
+main > section:not(.hidden) {
+  animation: appleSectionIn 0.44s var(--apple-spring) both;
+}
+
+@keyframes appleSectionIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.994);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+button {
+  transition: transform 0.18s var(--apple-spring), background-color 0.24s var(--apple-ease), border-color 0.24s var(--apple-ease), box-shadow 0.24s var(--apple-ease), color 0.2s var(--apple-ease) !important;
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+button:active:not(:disabled) {
+  transform: scale(0.96) !important;
+}
+
+select, input[type="text"], input[type="number"] {
+  background: rgba(13, 17, 26, 0.86) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 11px !important;
+  padding: 8px 12px !important;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
+  transition: border-color 0.25s var(--apple-ease), box-shadow 0.25s var(--apple-ease);
+}
+
+select:focus, input[type="text"]:focus, input[type="number"]:focus {
+  border-color: rgba(56, 189, 248, 0.65) !important;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.18) !important;
+  outline: none !important;
+}
+
+.blur-answer {
+  filter: blur(5.5px);
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 7px !important;
+  padding: 2px 9px !important;
+  margin: 0 2px;
+  transition: filter 0.35s var(--apple-spring), background-color 0.35s var(--apple-ease), transform 0.25s var(--apple-spring) !important;
+}
+
+.blur-answer.revealed {
+  filter: blur(0);
+  background: rgba(14, 165, 233, 0.18) !important;
+  border-color: rgba(56, 189, 248, 0.42);
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.18);
+}
+
+.apple-pill {
+  background: rgba(255, 255, 255, 0.055);
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 9999px;
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(16px);
+}
+
+.apple-segmented {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 4px;
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+#spotlight-modal {
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  transition: opacity 0.25s var(--apple-ease);
+}
+</style>
+
 </head>
 <body class="text-slate-100 font-sans min-h-screen flex flex-col">
 
@@ -235,9 +415,18 @@ nav, nav > div { max-width: 100% !important; }
                     <p class="text-xs text-slate-400">WCH12 · Unit 2 · Paper 2 · Spec 7.1–7.6 — London Forces, Dipole–Dipole &amp; Hydrogen Bonding</p>
                 </div>
             </div>
-            <div class="flex items-center gap-2">
-                <span class="px-2.5 py-1 text-xs font-semibold rounded-full bg-sky-950 text-sky-300 border border-sky-800">Edexcel Spec 7.1 – 7.6</span>
-                <span class="px-2.5 py-1 text-xs font-semibold rounded-full bg-rose-950 text-rose-300 border border-rose-800">Animated Dipole Lab</span>
+            <div class="flex flex-wrap items-center gap-2">
+                <span class="hidden lg:inline-block px-2.5 py-1 text-xs font-semibold rounded-full apple-pill text-sky-300">Edexcel Spec 7.1 – 7.6</span>
+                <span class="hidden sm:inline-block px-2.5 py-1 text-xs font-semibold rounded-full apple-pill text-rose-300">Animated Dipole Lab</span>
+                <button type="button" onclick="openSpotlight()" class="flex items-center gap-2 px-3 py-1.5 rounded-full apple-pill text-slate-200 hover:text-sky-300 text-xs font-medium" title="Quick Search & Concept Jump (⌘K)">
+                    <svg class="w-3.5 h-3.5 text-sky-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                    <span>Quick Search</span>
+                    <kbd class="px-1.5 py-0.5 text-[9px] font-mono bg-slate-950/80 text-slate-400 rounded border border-slate-700/80">⌘K</kbd>
+                </button>
+                <button type="button" onclick="switchTab('solver');switchSolver('sim');" class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-sky-500/15 border border-sky-500/35 text-sky-300 hover:bg-sky-500/25 text-xs font-semibold">
+                    <span class="w-2 h-2 rounded-full bg-sky-400 animate-pulse"></span>
+                    <span>Mastery: <strong id="mastery-percentage" class="font-mono text-sky-200">0%</strong></span>
+                </button>
             </div>
         </div>
     </header>
@@ -508,6 +697,66 @@ nav, nav > div { max-width: 100% !important; }
                     <div class="p-3 bg-slate-950 border border-slate-800 rounded-lg"><span class="text-sky-300 font-bold block mb-1">Practical iii</span><span class="text-slate-400">Measuring temperature changes when substances dissolve — ion hydration releases energy.</span></div>
                 </div>
             </div>
+
+            <!-- NEW: INTERACTIVE SPEC 7.1-7.6 MOLECULAR SYMMETRY, COMPLETE IMF INVENTORY & 6-MARK QWC BUILDER -->
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 space-y-5">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-slate-800 pb-4">
+                    <div>
+                        <span class="text-xs font-bold text-sky-400 uppercase tracking-widest">Interactive Concept Lab · Spec 7.1–7.6 &amp; Examiner Reports (2020–2026)</span>
+                        <h3 class="font-display text-lg font-bold text-white mt-1">Molecular Symmetry vs Net Dipole Decoder, Complete IMF Inventory &amp; Spec Self-Audit</h3>
+                        <p class="text-xs text-slate-400 mt-0.5">Directly targets WCH12 pitfalls on polar bonds vs polar molecules (CO₂, CCl₄, BF₃ vs H₂O, NH₃, CHCl₃), listing ALL intermolecular forces present, and writing full-mark 6-mark QWC comparisons.</p>
+                    </div>
+                    <div class="apple-segmented">
+                        <button type="button" onclick="switchSyl7Lab('inventory')" id="s7-btn-inventory" class="px-3 py-1.5 text-xs font-semibold rounded-lg bg-sky-500/20 text-sky-300 border border-sky-500/40">1. Symmetry &amp; IMF Inventory</button>
+                        <button type="button" onclick="switchSyl7Lab('qwc')" id="s7-btn-qwc" class="px-3 py-1.5 text-xs font-semibold rounded-lg text-slate-400 hover:text-white border border-transparent">2. 6-Mark QWC Blueprint</button>
+                        <button type="button" onclick="switchSyl7Lab('audit')" id="s7-btn-audit" class="px-3 py-1.5 text-xs font-semibold rounded-lg text-slate-400 hover:text-white border border-transparent">3. Spec 7.1–7.6 Self-Audit</button>
+                    </div>
+                </div>
+
+                <!-- Sub-panel 1: Symmetry & Complete IMF Inventory -->
+                <div id="s7-panel-inventory" class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
+                    <div class="lg:col-span-5 space-y-2">
+                        <p class="text-xs text-slate-300 font-semibold">Select a molecule to test its VSEPR symmetry, net dipole, and complete IMF inventory:</p>
+                        <div class="grid grid-cols-2 gap-1.5" id="imf-inv-btns"></div>
+                    </div>
+                    <div class="lg:col-span-7 bg-slate-950 border border-slate-800 rounded-xl p-4 space-y-3" id="imf-inv-out"></div>
+                </div>
+
+                <!-- Sub-panel 2: 6-Mark QWC Examiner Blueprint -->
+                <div id="s7-panel-qwc" class="hidden grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl space-y-2.5">
+                        <span class="text-xs font-bold text-amber-300 uppercase">📋 The 4-Step WCH12 6-Mark QWC Structure (PEF Jan 2020 / Jan 2023)</span>
+                        <ol class="text-xs text-slate-300 space-y-2 list-decimal list-inside leading-relaxed">
+                            <li><b>Inventory EVERY force in each substance:</b> State explicitly that <i>all</i> molecules have London forces, then state which ones <i>additionally</i> have permanent dipole–dipole interactions or hydrogen bonding.</li>
+                            <li><b>Compare London force strength via electron count &amp; shape:</b> Quote the number of electrons (or $M_	ext{r}$) and surface area for contact (straight chain vs branched).</li>
+                            <li><b>Compare H-bonding extent (if applicable):</b> Compare individual H-bond strength vs the <b>number of H-bonds per molecule</b> (e.g. $	ext{H}_2	ext{O}$ forms up to 4 vs $	ext{HF}$ / $	ext{NH}_3$ forming 2 on average).</li>
+                            <li><b>Conclude with energy to overcome IMFs:</b> Always end with <i>"more energy is required to overcome the stronger intermolecular forces (NOT covalent bonds) during boiling."</i></li>
+                        </ol>
+                    </div>
+                    <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl space-y-2.5">
+                        <span class="text-xs font-bold text-rose-300 uppercase">⚡ Instant Concept Check: Al₂Cl₆ Dimer vs Carboxylic Acid Dimer (PEF Jan 2023 / Oct 2024)</span>
+                        <p class="text-xs text-slate-300 leading-relaxed">Students often confuse how $	ext{AlCl}_3$ dimerises to $	ext{Al}_2	ext{Cl}_6$ with how ethanoic acid dimerises in the gas phase / non-polar solvents. Which statement is correct?</p>
+                        <div class="space-y-2">
+                            <button type="button" onclick="checkDimerConcept(false)" class="w-full text-left p-2.5 rounded-lg border border-slate-800 bg-slate-900 text-[11px] text-slate-300">
+                                <b>A.</b> Both $	ext{Al}_2	ext{Cl}_6$ and $(	ext{CH}_3	ext{COOH})_2$ are held together by hydrogen bonds.
+                            </button>
+                            <button type="button" onclick="checkDimerConcept(true)" class="w-full text-left p-2.5 rounded-lg border border-slate-800 bg-slate-900 text-[11px] text-slate-300">
+                                <b>B.</b> $(	ext{CH}_3	ext{COOH})_2$ is held by two intermolecular <b>hydrogen bonds</b> ($	ext{C=O:}\cdots	ext{H–O}$), whereas $	ext{Al}_2	ext{Cl}_6$ is held by two <b>dative covalent bonds</b> ($	ext{Cl:}ightarrow	ext{Al}$, from a $	ext{Cl}$ lone pair to the electron-deficient $	ext{Al}$).
+                            </button>
+                        </div>
+                        <div id="dimer-concept-fb" class="hidden p-2.5 rounded-lg text-[11px] leading-relaxed"></div>
+                    </div>
+                </div>
+
+                <!-- Sub-panel 3: Spec 7.1-7.6 Self-Audit -->
+                <div id="s7-panel-audit" class="hidden space-y-3">
+                    <div class="flex flex-wrap items-center justify-between gap-2">
+                        <p class="text-xs text-slate-300">Tick each Edexcel IAL Topic 7 competency as you master it. Your header Mastery % updates live.</p>
+                        <button type="button" onclick="toggleAllSpec7(true)" class="px-3 py-1 text-xs font-semibold rounded-lg bg-sky-500/20 text-sky-300 border border-sky-500/30">Check All</button>
+                    </div>
+                    <div id="spec7-audit-grid" class="grid grid-cols-1 md:grid-cols-2 gap-2.5"></div>
+                </div>
+            </div>
         </section>
 
         <!-- ============================================================ -->
@@ -594,6 +843,26 @@ nav, nav > div { max-width: 100% !important; }
                     </div>
                     <p class="text-[11px] text-slate-400">Bar lengths use a square-root scale so the weak forces stay visible. The message: even the strongest IMF is only ~5–10% of a covalent bond — <b class="text-rose-300">boiling and melting overcome IMFs, never the bonds inside molecules</b>. Note London forces in a large molecule (I₂) can rival a small H-bond — size matters.</p>
                 </div>
+
+                <!-- NEW: H-BOND DIAGRAM INSPECTOR & EXAMINER DRAWING DOCTOR -->
+                <div class="reveal bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 border-b border-slate-800 pb-3">
+                        <div>
+                            <span class="font-display font-bold text-emerald-300 text-sm">📐 5 · Examiner Hydrogen-Bond Diagram Studio — Lone Pairs, δ+/δ− &amp; the 180° Linear Rule</span>
+                            <p class="text-xs text-slate-400 mt-0.5">In WCH12 papers, drawing a hydrogen bond between two molecules is worth 2–3 marks. Inspect the 4 mandatory marking criteria across key exam pairs below:</p>
+                        </div>
+                        <div class="flex flex-wrap gap-1.5">
+                            <button type="button" onclick="showHBondDiag('h2o_h2o')" id="hbd-h2o_h2o" class="px-2.5 py-1 text-[11px] font-semibold rounded bg-emerald-600 text-white">H₂O ⋯ H₂O (180°)</button>
+                            <button type="button" onclick="showHBondDiag('nh3_h2o')" id="hbd-nh3_h2o" class="px-2.5 py-1 text-[11px] font-semibold rounded bg-slate-800 text-slate-300">H₂O ⋯ NH₃ (Who donates H?)</button>
+                            <button type="button" onclick="showHBondDiag('dimer')" id="hbd-dimer" class="px-2.5 py-1 text-[11px] font-semibold rounded bg-slate-800 text-slate-300">Ethanoic Acid Dimer (2 H-bonds)</button>
+                            <button type="button" onclick="showHBondDiag('flawed')" id="hbd-flawed" class="px-2.5 py-1 text-[11px] font-semibold rounded bg-rose-950 text-rose-300 border border-rose-800">⚠️ 0/3 Mark Student Trap</button>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 items-center">
+                        <div class="lg:col-span-7 bg-slate-900 border border-slate-800 rounded-xl p-4 flex justify-center" id="hbd-svg-box"></div>
+                        <div class="lg:col-span-5 space-y-2 text-xs text-slate-300 leading-relaxed" id="hbd-notes-box"></div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -614,6 +883,7 @@ nav, nav > div { max-width: 100% !important; }
                     <button onclick="switchMode('c1','map')" id="c1-mode-btn-map" class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 text-xs">🗺️ Module 2: Trend Charts</button>
                     <button onclick="switchMode('c1','quiz')" id="c1-mode-btn-quiz" class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 text-xs">🎯 Module 3: Blanks</button>
                     <button onclick="switchMode('c1','traps')" id="c1-mode-btn-traps" class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 text-xs">⚡ Module 4: Traps</button>
+                    <button onclick="switchMode('c1','sim')" id="c1-mode-btn-sim" class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-sky-300 text-xs">🔬 Module 5: HCl→HI &amp; Alcohol Isomer Lab</button>
                 </div>
 
                 <!-- MODULE 1: INSPECTOR -->
@@ -767,6 +1037,35 @@ nav, nav > div { max-width: 100% !important; }
                         </div>
                     </div>
                 </div>
+
+                <!-- MODULE 5: HCl->HI PARADOX & ALCOHOL ISOMER BOILING POINT LAB -->
+                <div id="c1-mode-sim" class="hidden p-5 bg-slate-950 border border-slate-800 rounded-xl space-y-5 text-xs">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+                        <div class="p-4 bg-slate-900 border border-slate-800 rounded-xl space-y-3">
+                            <span class="font-bold text-sky-300 block">1. WCH12 Jan 2023 Examiner Deep-Dive: Why does HI boil higher than HCl even though HCl is MORE polar?</span>
+                            <p class="text-slate-400 text-[11px]">Click each hydrogen halide to compare its electronegativity difference $\Delta	ext{EN}$, permanent dipole moment, electron count, and dominant IMF contribution:</p>
+                            <div class="flex flex-wrap gap-1.5" id="hx-paradox-btns">
+                                <button type="button" onclick="showHxParadox(0)" class="px-3 py-1.5 rounded-lg bg-sky-950 border border-sky-500 text-sky-300 font-mono text-[11px]">HF (+19.5 °C)</button>
+                                <button type="button" onclick="showHxParadox(1)" class="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-slate-300 font-mono text-[11px]">HCl (−85 °C)</button>
+                                <button type="button" onclick="showHxParadox(2)" class="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-slate-300 font-mono text-[11px]">HBr (−67 °C)</button>
+                                <button type="button" onclick="showHxParadox(3)" class="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-slate-300 font-mono text-[11px]">HI (−35 °C)</button>
+                            </div>
+                            <div id="hx-paradox-out" class="p-3.5 bg-slate-950 border border-slate-800 rounded-lg space-y-1.5 text-[11px] leading-relaxed"></div>
+                        </div>
+
+                        <div class="p-4 bg-slate-900 border border-slate-800 rounded-xl space-y-3">
+                            <span class="font-bold text-emerald-300 block">2. Primary (1°) vs Secondary (2°) vs Tertiary (3°) Alcohol Isomers (C₄H₉OH)</span>
+                            <p class="text-slate-400 text-[11px]">All three C₄H₉OH isomers have <b>42 electrons</b> and one <b>–OH group</b>, yet their boiling points drop by 36 °C from 1° to 3°:</p>
+                            <select id="alc-iso-sel" onchange="showAlcIso()" class="w-full text-xs text-emerald-300 font-mono">
+                                <option value="0">Butan-1-ol (1° alcohol · bp 118 °C · highest)</option>
+                                <option value="1">Butan-2-ol (2° alcohol · bp 99.5 °C · middle)</option>
+                                <option value="2">2-Methylpropan-2-ol (3° alcohol · bp 82 °C · lowest)</option>
+                                <option value="3">Ethoxyethane (isomeric ether C₄H₁₀O · bp 34.6 °C · no –OH!)</option>
+                            </select>
+                            <div id="alc-iso-out" class="p-3.5 bg-slate-950 border border-slate-800 rounded-lg space-y-1.5 text-[11px] leading-relaxed"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -787,6 +1086,7 @@ nav, nav > div { max-width: 100% !important; }
                     <button onclick="switchMode('c2','map')" id="c2-mode-btn-map" class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 text-xs">🗺️ Module 2: H-Bond Predictor</button>
                     <button onclick="switchMode('c2','quiz')" id="c2-mode-btn-quiz" class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 text-xs">🎯 Module 3: Blanks</button>
                     <button onclick="switchMode('c2','traps')" id="c2-mode-btn-traps" class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 text-xs">⚡ Module 4: Traps</button>
+                    <button onclick="switchMode('c2','sim')" id="c2-mode-btn-sim" class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-emerald-300 text-xs">🧊 Module 5: H-Bond Census &amp; Hydrides Lab</button>
                 </div>
 
                 <!-- MODULE 1: INSPECTOR -->
@@ -867,6 +1167,9 @@ nav, nav > div { max-width: 100% !important; }
                             <option value="c2h5nh2">C₂H₅NH₂ — ethylamine</option>
                             <option value="hcl">HCl — hydrogen chloride</option>
                             <option value="h2s">H₂S — hydrogen sulfide</option>
+                            <option value="propanone">CH₃COCH₃ — propanone (ketone)</option>
+                            <option value="ethanoic">CH₃COOH — ethanoic acid (dimerises!)</option>
+                            <option value="tma">(CH₃)₃N — trimethylamine (3° amine trap!)</option>
                         </select>
                         <button onclick="predictHB()" class="px-4 py-2 bg-emerald-700 hover:bg-emerald-600 rounded-lg font-bold text-white">Run the test</button>
                     </div>
@@ -945,6 +1248,36 @@ nav, nav > div { max-width: 100% !important; }
                         </div>
                     </div>
                 </div>
+
+                <!-- MODULE 5: H-BOND CENSUS & GROUP 14-17 HYDRIDE SERIES COMPARATOR -->
+                <div id="c2-mode-sim" class="hidden p-5 bg-slate-950 border border-slate-800 rounded-xl space-y-5 text-xs">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+                        <div class="p-4 bg-slate-900 border border-slate-800 rounded-xl space-y-3">
+                            <span class="font-bold text-emerald-300 block">1. Interactive H-Bond Donor / Lone-Pair Census Calculator (Spec 7.2 &amp; 7.4)</span>
+                            <p class="text-slate-400 text-[11px]">Examiner reports (PEF Jan 2020) stress that the <b>limiting number of H-bonds per molecule</b> in a pure liquid is $2 	imes \min(	ext{H}^{\delta+}	ext{ donors}, 	ext{lone pairs})$. Select a molecule:</p>
+                            <select id="census-mol-sel" onchange="showCensusMol()" class="w-full text-xs text-emerald-300 font-mono">
+                                <option value="0">Water, H₂O (2 H donors + 2 lone pairs → 4 H-bonds/molecule)</option>
+                                <option value="1">Hydrogen fluoride, HF (1 H donor + 3 lone pairs → avg 2 H-bonds/molecule)</option>
+                                <option value="2">Ammonia, NH₃ (3 H donors + 1 lone pair → avg 2 H-bonds/molecule)</option>
+                                <option value="3">Methanol, CH₃OH (1 O–H donor + 2 lone pairs → avg 2 in pure CH₃OH, up to 3 in water)</option>
+                                <option value="4">Ethane-1,2-diol, HOCH₂CH₂OH (2 O–H donors + 4 lone pairs → bp 197 °C!)</option>
+                            </select>
+                            <div id="census-mol-out" class="p-3.5 bg-slate-950 border border-slate-800 rounded-lg space-y-1.5 text-[11px] leading-relaxed"></div>
+                        </div>
+
+                        <div class="p-4 bg-slate-900 border border-slate-800 rounded-xl space-y-3">
+                            <span class="font-bold text-sky-300 block">2. Group 14 vs Group 15, 16 &amp; 17 Hydrides Trend Explorer</span>
+                            <p class="text-slate-400 text-[11px]">Why does Group 14 ($	ext{CH}_4 ightarrow 	ext{SnH}_4$) show a smooth monotonic rise with NO Period 2 spike, whereas Groups 15, 16, and 17 all spike at Period 2?</p>
+                            <div class="flex flex-wrap gap-1.5" id="hydride-grp-btns">
+                                <button type="button" onclick="showHydrideGrp(0)" class="px-3 py-1.5 rounded-lg bg-emerald-950 border border-emerald-600 text-emerald-300 font-mono text-[11px]">Group 14 (CH₄ → SnH₄)</button>
+                                <button type="button" onclick="showHydrideGrp(1)" class="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-slate-300 font-mono text-[11px]">Group 15 (NH₃ → SbH₃)</button>
+                                <button type="button" onclick="showHydrideGrp(2)" class="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-slate-300 font-mono text-[11px]">Group 16 (H₂O → H₂Te)</button>
+                                <button type="button" onclick="showHydrideGrp(3)" class="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-slate-300 font-mono text-[11px]">Group 17 (HF → HI)</button>
+                            </div>
+                            <div id="hydride-grp-out" class="p-3.5 bg-slate-950 border border-slate-800 rounded-lg space-y-1.5 text-[11px] leading-relaxed"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -965,6 +1298,7 @@ nav, nav > div { max-width: 100% !important; }
                     <button onclick="switchMode('c3','map')" id="c3-mode-btn-map" class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 text-xs">🗺️ Module 2: Solubility Predictor</button>
                     <button onclick="switchMode('c3','quiz')" id="c3-mode-btn-quiz" class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 text-xs">🎯 Module 3: Blanks</button>
                     <button onclick="switchMode('c3','traps')" id="c3-mode-btn-traps" class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 text-xs">⚡ Module 4: Traps</button>
+                    <button onclick="switchMode('c3','sim')" id="c3-mode-btn-sim" class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-violet-300 text-xs">⚖️ Module 5: 3-Force Balance &amp; Alcohol Chain Lab</button>
                 </div>
 
                 <!-- MODULE 1: INSPECTOR -->
@@ -1114,6 +1448,36 @@ nav, nav > div { max-width: 100% !important; }
                         </div>
                     </div>
                 </div>
+
+                <!-- MODULE 5: 3-FORCE ENERGY BALANCE & ALCOHOL CHAIN SOLUBILITY LAB -->
+                <div id="c3-mode-sim" class="hidden p-5 bg-slate-950 border border-slate-800 rounded-xl space-y-5 text-xs">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+                        <div class="p-4 bg-slate-900 border border-slate-800 rounded-xl space-y-3">
+                            <span class="font-bold text-violet-300 block">1. The 3-Force Examiner Solubility Framework (PEF Jun 2019 / Jan 2021)</span>
+                            <p class="text-slate-400 text-[11px]">Examiners require you to compare <b>(1) Solute–Solute</b> + <b>(2) Solvent–Solvent</b> forces broken against <b>(3) Solute–Solvent</b> forces formed. Pick a system:</p>
+                            <select id="sol3-sel" onchange="showSol3Balance()" class="w-full text-xs text-violet-300 font-mono">
+                                <option value="0">Hexane + Water (Immiscible — why water squeezes out alkanes)</option>
+                                <option value="1">Bromoethane + Water (Immiscible — polar solute that cannot H-bond)</option>
+                                <option value="2">Ethanol + Water (Miscible — H-bonding match)</option>
+                                <option value="3">NaCl(s) + Water vs AgCl(s) + Water (Ion–Dipole Hydration vs Lattice Energy)</option>
+                                <option value="4">I₂(s) + Cyclohexane (Purple solution — London force match)</option>
+                            </select>
+                            <div id="sol3-out" class="p-3.5 bg-slate-950 border border-slate-800 rounded-lg space-y-1.5 text-[11px] leading-relaxed"></div>
+                        </div>
+
+                        <div class="p-4 bg-slate-900 border border-slate-800 rounded-xl space-y-3">
+                            <span class="font-bold text-amber-300 block">2. Alcohol Chain-Length vs Water Solubility Visualizer (Spec 7.6ii)</span>
+                            <p class="text-slate-400 text-[11px]">As the hydrophobic alkyl chain grows from $	ext{C}_1$ to $	ext{C}_8$, it disrupts water's H-bond network andLondon forces between hydrocarbon tails favour phase separation:</p>
+                            <div class="space-y-2 pt-1">
+                                <div><div class="flex justify-between text-[11px] mb-0.5"><span class="font-mono text-emerald-300">CH₃OH, C₂H₅OH, C₃H₇OH (C1–C3)</span><span class="font-mono text-emerald-300">Completely miscible (∞)</span></div><div class="h-2.5 bg-slate-950 rounded-full overflow-hidden border border-slate-800"><div class="h-full bg-emerald-500" style="width:100%"></div></div></div>
+                                <div><div class="flex justify-between text-[11px] mb-0.5"><span class="font-mono text-sky-300">Butan-1-ol (C₄H₉OH)</span><span class="font-mono text-sky-300">7.7 g / 100 g H₂O</span></div><div class="h-2.5 bg-slate-950 rounded-full overflow-hidden border border-slate-800"><div class="h-full bg-sky-500" style="width:38%"></div></div></div>
+                                <div><div class="flex justify-between text-[11px] mb-0.5"><span class="font-mono text-amber-300">Pentan-1-ol (C₅H₁₁OH)</span><span class="font-mono text-amber-300">2.2 g / 100 g H₂O</span></div><div class="h-2.5 bg-slate-950 rounded-full overflow-hidden border border-slate-800"><div class="h-full bg-amber-500" style="width:16%"></div></div></div>
+                                <div><div class="flex justify-between text-[11px] mb-0.5"><span class="font-mono text-rose-300">Hexan-1-ol (C₆H₁₃OH)</span><span class="font-mono text-rose-300">0.59 g / 100 g H₂O</span></div><div class="h-2.5 bg-slate-950 rounded-full overflow-hidden border border-slate-800"><div class="h-full bg-rose-500" style="width:6%"></div></div></div>
+                                <div><div class="flex justify-between text-[11px] mb-0.5"><span class="font-mono text-slate-400">Octan-1-ol (C₈H₁₇OH)</span><span class="font-mono text-slate-400">0.05 g / 100 g (Insoluble)</span></div><div class="h-2.5 bg-slate-950 rounded-full overflow-hidden border border-slate-800"><div class="h-full bg-slate-500" style="width:2%"></div></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -1132,6 +1496,7 @@ nav, nav > div { max-width: 100% !important; }
                 <div class="flex flex-wrap gap-2 text-xs border-b border-slate-800 pb-3">
                     <button onclick="switchSolver('duel')" id="solver-btn-duel" class="px-3.5 py-1.5 rounded-lg bg-rose-600 text-white font-bold text-xs">🌡️ Boiling-point duel</button>
                     <button onclick="switchSolver('dissolve')" id="solver-btn-dissolve" class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 text-xs">💧 Solubility verdict</button>
+                    <button onclick="switchSolver('sim')" id="solver-btn-sim" class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-sky-300 text-xs">🎓 10-Q WCH12/13 Exam Simulator</button>
                 </div>
 
                 <!-- Solver 1: duel -->
@@ -1163,6 +1528,22 @@ nav, nav > div { max-width: 100% !important; }
                         <button onclick="runDissolve()" class="px-4 py-2 bg-rose-700 hover:bg-rose-600 rounded-lg font-bold text-white">Verdict</button>
                     </div>
                     <div id="diss-out" class="text-[11px] font-mono text-slate-400 p-3 bg-slate-950 rounded-lg border border-slate-800 whitespace-pre-wrap">Verdict appears here.</div>
+                </div>
+
+                <!-- Solver 3: 10-Question WCH12/WCH13 Past-Paper Concept Diagnostic Simulator -->
+                <div id="solver-sim" class="hidden space-y-4 text-xs">
+                    <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 pb-3">
+                        <div>
+                            <span class="text-xs font-bold text-sky-400 uppercase">WCH12 &amp; WCH13 Past-Paper Concept Diagnostic (2020–2026 Series)</span>
+                            <p class="text-slate-400 text-[11px] mt-0.5">Test your mastery across Spec 7.1–7.6 with authentic Edexcel distractors and mark-scheme explanations.</p>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span id="t7-sim-score" class="px-3 py-1 rounded-full apple-pill text-xs font-mono text-sky-300">Score: 0 / 10</span>
+                            <button type="button" onclick="resetT7Sim()" class="px-2.5 py-1 text-[10px] font-semibold rounded-lg bg-slate-800 text-slate-300 border border-slate-700">Reset</button>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-1.5" id="t7-sim-pills"></div>
+                    <div id="t7-sim-box" class="p-4 bg-slate-950 border border-slate-800 rounded-xl space-y-3"></div>
                 </div>
             </div>
         </section>
@@ -1236,6 +1617,8 @@ nav, nav > div { max-width: 100% !important; }
                     <a href="#rev-water" class="px-3 py-1 bg-amber-950 text-amber-300 border border-amber-800 rounded-full">Water anomalies</a>
                     <a href="#rev-solub" class="px-3 py-1 bg-violet-950 text-violet-300 border border-violet-800 rounded-full">Solubility rules</a>
                     <a href="#rev-traps" class="px-3 py-1 bg-rose-950 text-rose-300 border border-rose-800 rounded-full">Master trap checklist</a>
+                    <a href="#rev-pef-2026" class="px-3 py-1 bg-emerald-950 text-emerald-300 border border-emerald-800 rounded-full">2021–2026 Examiner Deep-Dive</a>
+                    <a href="#rev-flashcards" class="px-3 py-1 bg-sky-950 text-sky-300 border border-sky-800 rounded-full">Active-Recall Flashcards</a>
                 </div>
 
                 <details open id="rev-forces" class="bg-slate-950 border border-slate-800 rounded-xl">
@@ -1310,9 +1693,50 @@ nav, nav > div { max-width: 100% !important; }
                         <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-slate-300">☐ Iodine: purple in cyclohexane, yellow/brown in water — physical mixing</div>
                     </div>
                 </details>
+
+                <details open id="rev-pef-2026" class="bg-slate-950 border border-slate-800 rounded-xl">
+                    <summary class="p-4 cursor-pointer font-display font-bold text-emerald-300 text-sm flex justify-between items-center"><span>6 · 2021–2026 WCH12 &amp; WCH13 Examiner Report Deep-Dive</span><span class="text-slate-500 text-xs">click to collapse</span></summary>
+                    <div class="px-4 pb-4 overflow-x-auto">
+                        <table class="w-full text-[11px] border border-slate-800">
+                            <tr class="bg-slate-900 text-emerald-300"><th class="p-2 border border-slate-800 text-left">Exam Topic &amp; Series</th><th class="p-2 border border-slate-800 text-left">Common Candidate Error</th><th class="p-2 border border-slate-800 text-left">Full-Mark Edexcel WCH12 / WCH13 Phrasing</th></tr>
+                            <tr><td class="p-2 border border-slate-800 font-semibold text-white">Hydrogen Halide Boiling Points (WCH12 Jan 2023)</td><td class="p-2 border border-slate-800 text-rose-300">Saying HBr/HI have stronger permanent dipoles than HCl, or forgetting London forces in HF</td><td class="p-2 border border-slate-800 text-slate-300">All hydrogen halides have London forces AND permanent dipole–dipole forces; only HF has hydrogen bonding. From HCl → HBr → HI, permanent dipole decreases, but electron count increases (18 → 36 → 54), so <b>stronger London forces</b> cause the boiling point to rise.</td></tr>
+                            <tr><td class="p-2 border border-slate-800 font-semibold text-white">Drawing Hydrogen Bonds (WCH12 Jun 2023 / Jan 2025)</td><td class="p-2 border border-slate-800 text-rose-300">Drawing H-bond inside one molecule, omitting lone pairs/dipoles, or drawing a 90° bend at H</td><td class="p-2 border border-slate-800 text-slate-300">Show $\delta+$ on H and $\delta-$ on O/N/F, draw a dashed line from $	ext{H}^{\delta+}$ to a <b>lone pair</b> on the neighbouring O/N/F, and keep the $	ext{X–H}\cdots	ext{:Y}$ angle at <b>~180° (linear)</b>.</td></tr>
+                            <tr><td class="p-2 border border-slate-800 font-semibold text-white">H₂O vs HF or NH₃ Boiling Point (PEF Jan 2020)</td><td class="p-2 border border-slate-800 text-rose-300">Saying "O–H hydrogen bonds are stronger than F–H hydrogen bonds"</td><td class="p-2 border border-slate-800 text-slate-300">Individual $	ext{F–H}\cdots	ext{:F}$ bonds are stronger, but each $	ext{H}_2	ext{O}$ molecule has 2 H atoms and 2 lone pairs so it forms <b>twice as many hydrogen bonds per molecule (up to 4 vs 2)</b>.</td></tr>
+                            <tr><td class="p-2 border border-slate-800 font-semibold text-white">3-Force Solubility Explanation (PEF Jan 2021)</td><td class="p-2 border border-slate-800 text-rose-300">Writing "like dissolves like" or "hexane is hydrophobic" without naming forces</td><td class="p-2 border border-slate-800 text-slate-300">Compare all three interactions: energy released by weak London forces between hexane and water cannot compensate for the energy required to break the strong <b>hydrogen bonds between water molecules</b>.</td></tr>
+                            <tr><td class="p-2 border border-slate-800 font-semibold text-white">Al₂Cl₆ Dimer vs H-Bonded Dimer (PEF Jan 2023 / Oct 2024)</td><td class="p-2 border border-slate-800 text-rose-300">Drawing Al→Cl dative arrows or claiming Al₂Cl₆ has hydrogen bonds</td><td class="p-2 border border-slate-800 text-slate-300">In $	ext{Al}_2	ext{Cl}_6$, two bridging Cl atoms donate a lone pair to Al ($	ext{Cl:}ightarrow	ext{Al}$ dative covalent bond). In $(	ext{CH}_3	ext{COOH})_2$, two intermolecular hydrogen bonds form between $	ext{C=O:}$ and $	ext{H–O}$.</td></tr>
+                        </table>
+                    </div>
+                </details>
+
+                <div id="rev-flashcards" class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+                    <div class="flex flex-wrap items-center justify-between gap-2">
+                        <div>
+                            <span class="text-xs font-bold text-sky-400 uppercase tracking-widest">Active Recall Deck</span>
+                            <h3 class="font-display text-sm font-bold text-white mt-0.5">Topic 7 Rapid-Fire Flashcards (Click Card to Flip)</h3>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button type="button" onclick="stepT7Card(-1)" class="px-3 py-1 text-xs font-semibold rounded-lg bg-slate-800 text-slate-200 border border-slate-700">← Prev</button>
+                            <span id="t7-fc-counter" class="text-xs font-mono text-sky-300 px-2">1 / 10</span>
+                            <button type="button" onclick="stepT7Card(1)" class="px-3 py-1 text-xs font-semibold rounded-lg bg-slate-800 text-slate-200 border border-slate-700">Next →</button>
+                        </div>
+                    </div>
+                    <div id="t7-fc-box" onclick="flipT7Card()" class="cursor-pointer p-6 bg-slate-900 border border-slate-800 hover:border-sky-500/40 rounded-2xl min-h-[135px] flex flex-col items-center justify-center text-center select-none"></div>
+                </div>
             </div>
         </section>
     </main>
+
+    <!-- APPLE SPOTLIGHT QUICK COMMAND & CONCEPT SEARCH MODAL -->
+    <div id="spotlight-modal" class="fixed inset-0 z-[960] hidden items-start justify-center pt-16 sm:pt-24 px-4 bg-black/60" onclick="if(event.target===this)closeSpotlight()">
+        <div class="w-full max-w-xl bg-slate-900 border border-slate-700/80 rounded-2xl shadow-2xl overflow-hidden">
+            <div class="flex items-center gap-3 px-4 py-3 border-b border-slate-800">
+                <svg class="w-4 h-4 text-sky-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                <input id="spotlight-input" type="text" oninput="filterSpotlight()" placeholder="Search Spec 7.1–7.6 London forces, H-bonding, boiling points, water, solubility..." class="w-full bg-transparent border-0 text-xs sm:text-sm text-white focus:outline-none focus:ring-0" style="border:none!important;box-shadow:none!important;background:transparent!important;padding:2px 0!important"/>
+                <button type="button" onclick="closeSpotlight()" class="px-2 py-1 text-[10px] font-mono bg-slate-800 text-slate-400 rounded">ESC</button>
+            </div>
+            <div id="spotlight-results" class="max-h-80 overflow-y-auto divide-y divide-slate-800/60 p-2 space-y-1"></div>
+        </div>
+    </div>
 
     <footer class="border-t border-slate-800 bg-slate-900/80 py-4 mt-8">
         <div class="max-w-7xl mx-auto px-4 text-center text-[11px] text-slate-500">
@@ -1366,7 +1790,7 @@ nav, nav > div { max-width: 100% !important; }
 
         // ============ Engine mode switching ============
         window.switchMode = function(prefix, mode) {
-            ['explorer','map','quiz','traps'].forEach(m => {
+            ['explorer','map','quiz','traps','sim'].forEach(m => {
                 const el = document.getElementById(prefix + '-mode-' + m);
                 const btn = document.getElementById(prefix + '-mode-btn-' + m);
                 if (el) el.classList.toggle('hidden', m !== mode);
@@ -1950,7 +2374,10 @@ nav, nav > div { max-width: 100% !important; }
             ch3och3: { name: 'CH₃OCH₃', self: false, water: true, why: 'No O–H group ⇒ cannot donate ⇒ no self-H-bonding (bp −24 °C). The oxygen lone pairs accept H-bonds from water ⇒ moderately soluble.' },
             c2h5nh2: { name: 'C₂H₅NH₂', self: true, water: true, why: 'N–H bonds provide H(δ+) and N has a lone pair ⇒ H-bonds with itself and with water (weak base, fishy smell, miscible).' },
             hcl: { name: 'HCl', self: false, water: false, why: 'Cl is large and not electronegative enough — H-bonding is restricted to F, O and N. HCl molecules have dipole–dipole + London forces only.' },
-            h2s: { name: 'H₂S', self: false, water: false, why: 'S is below O in the group — larger, less electronegative ⇒ S–H not polar enough. The classic contrast with water: H₂S is a gas at room temperature (bp −60 °C).' }
+            h2s: { name: 'H₂S', self: false, water: false, why: 'S is below O in the group — larger, less electronegative ⇒ S–H not polar enough. The classic contrast with water: H₂S is a gas at room temperature (bp −60 °C).' },
+            propanone: { name: 'CH₃COCH₃ (Propanone)', self: false, water: true, why: 'All 6 H atoms are bonded to C (no O–H bond) ⇒ cannot H-bond with itself (bp 56 °C). However, the lone pairs on the C=O oxygen accept H-bonds from water ⇒ completely miscible with water!' },
+            ethanoic: { name: 'CH₃COOH (Ethanoic acid)', self: true, water: true, why: 'Has both a polar O–H donor and a C=O lone-pair acceptor ⇒ forms cyclic hydrogen-bonded DIMERS (2 H-bonds per pair) in the gas phase/non-polar solvents (bp 118 °C) and H-bonds extensively with water.' },
+            tma: { name: '(CH₃)₃N (Trimethylamine — 3° amine)', self: false, water: true, why: 'Examiner Trap: N has a lone pair, but all H atoms are bonded to C (no N–H bond!) ⇒ CANNOT H-bond with itself (bp 3 °C, much lower than propylamine 48 °C), but CAN accept H-bonds from water!' }
         };
         window.predictHB = function() {
             const d = HB_DATA[document.getElementById('hb-select').value];
@@ -1993,7 +2420,7 @@ nav, nav > div { max-width: 100% !important; }
 
         // ============ Solver ============
         window.switchSolver = function(mode) {
-            ['duel', 'dissolve'].forEach(m => {
+            ['duel', 'dissolve', 'sim'].forEach(m => {
                 const el = document.getElementById('solver-' + m);
                 const btn = document.getElementById('solver-btn-' + m);
                 if (el) el.classList.toggle('hidden', m !== mode);
@@ -2090,8 +2517,688 @@ nav, nav > div { max-width: 100% !important; }
             initDipoles();
             fillDuelSelects();
             setBPSet('alkanes', true);
+            const invBtns = document.getElementById('imf-inv-btns');
+            if (invBtns) {
+                invBtns.innerHTML = IMF_INV_MOLECULES.map((m, i) => `<button type="button" onclick="showImfInv(${i})" class="p-2 rounded-lg border border-slate-800 bg-slate-950 text-slate-400 text-left text-[11px] font-mono">${m.name}</button>`).join('');
+                showImfInv(0);
+            }
+            renderSpec7Audit();
+            showHBondDiag('h2o_h2o');
+            showHxParadox(0);
+            showAlcIso();
+            showCensusMol();
+            showHydrideGrp(0);
+            showSol3Balance();
+            renderT7Sim();
+            renderT7Card();
+            updateT7Mastery();
             requestAnimationFrame(masterLoop);
             setTimeout(safeInitKaTeX, 300);
+        });
+
+
+        // ============ NEW INTERACTIVE MODULES (MASTERY, SYMMETRY & IMF INVENTORY, H-BOND DIAGRAM DOCTOR, HCl->HI & ALCOHOL ISOMERS, CENSUS & HYDRIDES, 3-FORCE SOLUBILITY, EXAM SIM, FLASHCARDS, SPOTLIGHT) ============
+        const T7_MASTERY = {
+            specChecked: new Set([0, 1]),
+            simSolved: new Set(),
+            conceptsChecked: new Set()
+        };
+
+        const SPEC7_AUDIT_ITEMS = [
+            {code:'7.1i', text:'London forces (instantaneous dipole–induced dipole) exist in ALL molecules; strength increases with electron count and surface contact area.'},
+            {code:'7.1ii', text:'Permanent dipole–permanent dipole interactions occur between asymmetrical polar molecules in addition to London forces.'},
+            {code:'7.1iii', text:'Hydrogen bonding requires an H atom covalently bonded to F, O or N AND a lone pair on a neighbouring F, O or N atom (~180° alignment).'},
+            {code:'7.2', text:'Draw and compare H-bonding in H₂O (up to 4 per molecule), NH₃ (limited by 1 lone pair), and HF (limited by 1 H atom).'},
+            {code:'7.3', text:'Explain water’s two anomalies: (1) high mp/bp vs Group 16 hydrides, and (2) ice is less dense than liquid water due to open hexagonal lattice.'},
+            {code:'7.4', text:'Predict self-H-bonding vs H-bonding with water in alcohols, amines, carboxylic acids, aldehydes (ethanal), ketones (propanone), and ethers.'},
+            {code:'7.5 i–ii', text:'Explain alkane boiling points increasing with chain length (more electrons) and decreasing with branching (smaller surface contact area).'},
+            {code:'7.5 iii–iv', text:'Explain alcohols having higher bp / lower volatility than alkanes of similar electron count, and the HF → HCl → HBr → HI boiling-point trend.'},
+            {code:'7.6 i–ii', text:'Explain solubility of ionic solids (ion–dipole hydration) and simple alcohols (H-bonding with water; solubility decreases as carbon chain lengthens).'},
+            {code:'7.6 iii–iv', text:'Explain why halogenoalkanes are immiscible with water (cannot H-bond with water) and why non-polar solutes dissolve in non-polar solvents.'}
+        ];
+
+        function updateT7Mastery() {
+            const total = T7_MASTERY.specChecked.size + T7_MASTERY.simSolved.size + T7_MASTERY.conceptsChecked.size;
+            const pct = Math.min(100, Math.round((total / 26) * 100));
+            const el = document.getElementById('mastery-percentage');
+            if (el) el.textContent = pct + '%';
+        }
+
+        window.switchSyl7Lab = function(view) {
+            ['inventory', 'qwc', 'audit'].forEach(v => {
+                const pan = document.getElementById('s7-panel-' + v);
+                const btn = document.getElementById('s7-btn-' + v);
+                if (pan) pan.classList.toggle('hidden', v !== view);
+                if (btn) {
+                    btn.className = 'px-3 py-1.5 text-xs font-semibold rounded-lg ' +
+                        (v === view ? 'bg-sky-500/20 text-sky-300 border border-sky-500/40' : 'text-slate-400 hover:text-white border border-transparent');
+                }
+            });
+            setTimeout(safeInitKaTeX, 40);
+        };
+
+        const IMF_INV_MOLECULES = [
+            {name:'CO₂ (Carbon dioxide)', shape:'Linear (180°), symmetrical', bonds:'Polar C=O bonds (ΔEN = 1.0)', net:'ZERO net dipole (two equal C=O dipoles pull opposite ways and cancel)', london:true, pd:false, hb:false, note:'Classic WCH12 Trap: CO₂ has polar bonds but is a NON-POLAR molecule → London forces ONLY!'},
+            {name:'CCl₄ (Tetrachloromethane)', shape:'Tetrahedral (109.5°), symmetrical', bonds:'Polar C–Cl bonds', net:'ZERO net dipole (4 symmetrical tetrahedral vectors cancel)', london:true, pd:false, hb:false, note:'Used as a non-polar solvent; has 74 electrons so London forces are strong enough to make it a liquid at r.t.'},
+            {name:'CHCl₃ (Trichloromethane)', shape:'Tetrahedral (~109.5°), asymmetrical', bonds:'Polar C–Cl bonds + C–H', net:'PERMANENT DIPOLE (dipoles do not cancel)', london:true, pd:true, hb:false, note:'Has London forces + permanent dipole–dipole interactions (H is on C, not F/O/N, so no H-bonding).'},
+            {name:'BF₃ (Boron trifluoride)', shape:'Trigonal planar (120°), symmetrical', bonds:'Very polar B–F bonds', net:'ZERO net dipole (3 planar vectors at 120° cancel)', london:true, pd:false, hb:false, note:'Electron-deficient boron (6 valence e⁻); symmetrical planar shape cancels all bond dipoles.'},
+            {name:'NH₃ (Ammonia)', shape:'Trigonal pyramidal (107°), asymmetrical', bonds:'Polar N–H bonds + lone pair', net:'PERMANENT DIPOLE', london:true, pd:true, hb:true, note:'Has ALL THREE: London forces + permanent dipole–dipole + hydrogen bonding!'},
+            {name:'HBr (Hydrogen bromide)', shape:'Linear diatomic, asymmetrical', bonds:'Polar H–Br bond', net:'PERMANENT DIPOLE (H δ+, Br δ−)', london:true, pd:true, hb:false, note:'WCH12 Jan 2023 MS: Has London forces AND permanent dipole–dipole forces (no H-bonding because Br ≠ F/O/N).'},
+            {name:'CH₃CHO (Ethanal)', shape:'Trigonal planar around C=O, asymmetrical', bonds:'Polar C=O bond (C–H non-polar)', net:'PERMANENT DIPOLE', london:true, pd:true, hb:false, note:'Pure liquid has London + permanent dipole–dipole ONLY (no O–H bond). Can accept H-bonds from water.'},
+            {name:'CH₃CH₂OH (Ethanol)', shape:'Bent around O (104.5°), asymmetrical', bonds:'Polar C–O and O–H bonds', net:'PERMANENT DIPOLE', london:true, pd:true, hb:true, note:'Exhibits all three intermolecular forces: London forces + permanent dipole–dipole + hydrogen bonding.'}
+        ];
+
+        window.showImfInv = function(idx) {
+            const m = IMF_INV_MOLECULES[idx];
+            const btns = document.querySelectorAll('#imf-inv-btns button');
+            btns.forEach((b, i) => {
+                b.className = 'p-2 rounded-lg border text-left text-[11px] font-mono ' +
+                    (i === idx ? 'bg-sky-950/70 border-sky-500 text-sky-300 font-bold' : 'bg-slate-950 border-slate-800 text-slate-400');
+            });
+            const badge = (on, label, col) => `<span class="px-2.5 py-1 rounded-lg border text-[11px] font-mono font-bold ${on ? 'bg-' + col + '-950/70 border-' + col + '-600 text-' + col + '-300' : 'bg-slate-900 border-slate-800 text-slate-600 line-through'}">${on ? '✓ ' : '✗ '}${label}</span>`;
+            const out = document.getElementById('imf-inv-out');
+            if (out) {
+                out.innerHTML = `<div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 pb-2">
+                        <span class="font-display font-bold text-white text-sm">${m.name}</span>
+                        <span class="text-[11px] font-mono text-sky-300">${m.shape}</span>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                        <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800"><span class="text-slate-400 block text-[10px] uppercase font-mono">Bond Polarity</span><span class="text-slate-200">${m.bonds}</span></div>
+                        <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800"><span class="text-slate-400 block text-[10px] uppercase font-mono">Molecular Dipole</span><span class="${m.pd ? 'text-emerald-300' : 'text-rose-300'} font-semibold">${m.net}</span></div>
+                    </div>
+                    <div class="space-y-1.5">
+                        <span class="text-[10px] font-mono uppercase text-slate-400 block">Complete IMF Inventory in Pure Substance (Mark-Scheme Checklist):</span>
+                        <div class="flex flex-wrap gap-2">
+                            ${badge(m.london, 'London Forces', 'sky')}
+                            ${badge(m.pd, 'Permanent Dipole–Dipole', 'amber')}
+                            ${badge(m.hb, 'Hydrogen Bonding (Self)', 'emerald')}
+                        </div>
+                    </div>
+                    <p class="text-xs text-amber-200/95 bg-amber-950/30 border border-amber-800/50 rounded-lg p-2.5">${m.note}</p>`;
+            }
+            T7_MASTERY.conceptsChecked.add('imf_inv');
+            updateT7Mastery();
+        };
+
+        window.checkDimerConcept = function(isCorrect) {
+            const fb = document.getElementById('dimer-concept-fb');
+            if (!fb) return;
+            fb.classList.remove('hidden');
+            if (isCorrect) {
+                fb.className = 'p-2.5 rounded-lg text-[11px] leading-relaxed bg-emerald-950/50 border border-emerald-700 text-emerald-200';
+                fb.innerHTML = '<b>✓ Full Marks (PEF Jan 2023 &amp; Oct 2024):</b> Ethanoic acid forms a cyclic dimer via two intermolecular <b>hydrogen bonds</b> between $\text{C=O:}$ and $\text{H–O}$, whereas $\text{Al}_2\text{Cl}_6$ forms via two <b>dative covalent bonds</b> ($\text{Cl:}\rightarrow\text{Al}$, lone pair on Cl donated into empty 3p orbital on Al).';
+                T7_MASTERY.conceptsChecked.add('dimer_q');
+                updateT7Mastery();
+            } else {
+                fb.className = 'p-2.5 rounded-lg text-[11px] leading-relaxed bg-rose-950/50 border border-rose-700 text-rose-200';
+                fb.innerHTML = '<b>✗ Examiner Trap:</b> $\text{Al}_2\text{Cl}_6$ has NO hydrogen atoms! It dimerises via dative covalent bonding ($\text{Cl:}\rightarrow\text{Al}$), whereas carboxylic acids dimerise via two hydrogen bonds.';
+            }
+            setTimeout(safeInitKaTeX, 30);
+        };
+
+        function renderSpec7Audit() {
+            const box = document.getElementById('spec7-audit-grid');
+            if (!box) return;
+            box.innerHTML = SPEC7_AUDIT_ITEMS.map((it, idx) => {
+                const on = T7_MASTERY.specChecked.has(idx);
+                return `<button type="button" onclick="toggleSpec7(${idx})" class="text-left p-3 rounded-xl border flex items-start gap-3 ${on ? 'bg-sky-950/40 border-sky-600/70 text-slate-100' : 'bg-slate-950 border-slate-800 text-slate-300'}">
+                    <span class="mt-0.5 w-4 h-4 rounded flex items-center justify-center text-[10px] font-bold shrink-0 ${on ? 'bg-sky-400 text-slate-950' : 'border border-slate-600 text-transparent'}">✓</span>
+                    <span class="text-xs leading-relaxed"><strong class="font-mono text-sky-300 mr-1.5">[Spec ${it.code}]</strong>${it.text}</span>
+                </button>`;
+            }).join('');
+        }
+
+        window.toggleSpec7 = function(idx) {
+            if (T7_MASTERY.specChecked.has(idx)) T7_MASTERY.specChecked.delete(idx);
+            else T7_MASTERY.specChecked.add(idx);
+            renderSpec7Audit();
+            updateT7Mastery();
+        };
+
+        window.toggleAllSpec7 = function(val) {
+            SPEC7_AUDIT_ITEMS.forEach((_, i) => { if (val) T7_MASTERY.specChecked.add(i); else T7_MASTERY.specChecked.delete(i); });
+            renderSpec7Audit();
+            updateT7Mastery();
+        };
+
+        // --- TAB 2 PANEL 5: H-BOND DIAGRAM INSPECTOR & EXAMINER DRAWING DOCTOR ---
+        window.showHBondDiag = function(mode) {
+            ['h2o_h2o', 'nh3_h2o', 'dimer', 'flawed'].forEach(m => {
+                const b = document.getElementById('hbd-' + m);
+                if (b) {
+                    if (m === 'flawed') {
+                        b.className = 'px-2.5 py-1 text-[11px] font-semibold rounded ' + (m === mode ? 'bg-rose-600 text-white' : 'bg-rose-950 text-rose-300 border border-rose-800');
+                    } else {
+                        b.className = 'px-2.5 py-1 text-[11px] font-semibold rounded ' + (m === mode ? 'bg-emerald-600 text-white' : 'bg-slate-800 text-slate-300');
+                    }
+                }
+            });
+            const svgBox = document.getElementById('hbd-svg-box');
+            const notesBox = document.getElementById('hbd-notes-box');
+            if (!svgBox || !notesBox) return;
+
+            if (mode === 'h2o_h2o') {
+                svgBox.innerHTML = `<svg viewBox="0 0 440 165" class="w-full max-w-[420px]">
+                    <!-- Left O-H---:O linear axis -->
+                    <line x1="65" y1="85" x2="365" y2="85" stroke="rgba(45,212,191,0.22)" stroke-width="10" stroke-linecap="round"/>
+                    <text x="220" y="32" text-anchor="middle" fill="#2dd4bf" font-size="10.5" font-family="monospace" font-weight="bold">180° linear O—H ⋯ :O alignment</text>
+                    <!-- Left H2O -->
+                    <line x1="95" y1="85" x2="55" y2="132" stroke="#94a3b8" stroke-width="3"/>
+                    <line x1="95" y1="85" x2="165" y2="85" stroke="#94a3b8" stroke-width="3"/>
+                    <circle cx="95" cy="85" r="15" fill="#881337" stroke="#fb7185" stroke-width="2"/>
+                    <text x="95" y="89" text-anchor="middle" fill="#fff" font-size="12" font-family="monospace" font-weight="bold">O</text>
+                    <text x="95" y="63" text-anchor="middle" fill="#fda4af" font-size="11" font-family="monospace" font-weight="bold">δ−</text>
+                    <circle cx="52" cy="136" r="10" fill="#1e293b" stroke="#cbd5e1" stroke-width="1.5"/>
+                    <text x="52" y="140" text-anchor="middle" fill="#fff" font-size="10" font-family="monospace">H</text>
+                    <text x="32" y="140" fill="#7dd3fc" font-size="10" font-family="monospace">δ+</text>
+                    <circle cx="172" cy="85" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+                    <text x="172" y="89" text-anchor="middle" fill="#fff" font-size="10" font-family="monospace" font-weight="bold">H</text>
+                    <text x="172" y="67" text-anchor="middle" fill="#38bdf8" font-size="11" font-family="monospace" font-weight="bold">δ+</text>
+                    <!-- H-bond dashed line to lone pair -->
+                    <line x1="186" y1="85" x2="278" y2="85" stroke="#fbbf24" stroke-width="2.5" stroke-dasharray="6,4"/>
+                    <text x="232" y="106" text-anchor="middle" fill="#fbbf24" font-size="10" font-family="monospace">H-bond</text>
+                    <!-- Lone pair dots on Right O -->
+                    <circle cx="288" cy="80" r="3.2" fill="#2dd4bf"/>
+                    <circle cx="288" cy="90" r="3.2" fill="#2dd4bf"/>
+                    <!-- Right H2O -->
+                    <line x1="312" y1="85" x2="362" y2="45" stroke="#94a3b8" stroke-width="3"/>
+                    <line x1="312" y1="85" x2="362" y2="125" stroke="#94a3b8" stroke-width="3"/>
+                    <circle cx="312" cy="85" r="15" fill="#881337" stroke="#fb7185" stroke-width="2"/>
+                    <text x="312" y="89" text-anchor="middle" fill="#fff" font-size="12" font-family="monospace" font-weight="bold">O</text>
+                    <text x="312" y="63" text-anchor="middle" fill="#fda4af" font-size="11" font-family="monospace" font-weight="bold">δ−</text>
+                    <circle cx="366" cy="42" r="10" fill="#1e293b" stroke="#cbd5e1" stroke-width="1.5"/>
+                    <text x="366" y="46" text-anchor="middle" fill="#fff" font-size="10" font-family="monospace">H</text>
+                    <text x="386" y="46" fill="#7dd3fc" font-size="10" font-family="monospace">δ+</text>
+                    <circle cx="366" cy="128" r="10" fill="#1e293b" stroke="#cbd5e1" stroke-width="1.5"/>
+                    <text x="366" y="132" text-anchor="middle" fill="#fff" font-size="10" font-family="monospace">H</text>
+                    <text x="386" y="132" fill="#7dd3fc" font-size="10" font-family="monospace">δ+</text>
+                </svg>`;
+                notesBox.innerHTML = `<p class="font-bold text-emerald-300">✓ 3/3 Mark-Scheme Checklist (H₂O ⋯ H₂O):</p>
+                    <ul class="list-disc list-inside space-y-1 text-[11px]">
+                        <li><b>M1 (Dipoles):</b> $\delta+$ on H and $\delta-$ on O clearly labelled.</li>
+                        <li><b>M2 (Lone pair + Dashed line):</b> Dashed/dotted line from $\text{H}^{\delta+}$ directly to a <b>lone pair</b> on the neighbouring O atom.</li>
+                        <li><b>M3 (180° Linear Angle):</b> The $\text{O–H}\cdots\text{:O}$ atoms lie in a <b>straight line (180°)</b> because the bonding pair in O–H and the lone pair repel to maximum separation.</li>
+                    </ul>`;
+            } else if (mode === 'nh3_h2o') {
+                svgBox.innerHTML = `<svg viewBox="0 0 440 165" class="w-full max-w-[420px]">
+                    <line x1="65" y1="85" x2="365" y2="85" stroke="rgba(56,189,248,0.18)" stroke-width="10" stroke-linecap="round"/>
+                    <text x="220" y="28" text-anchor="middle" fill="#7dd3fc" font-size="10" font-family="monospace" font-weight="bold">H₂O donates H(δ+) → :NH₃ accepts via lone pair!</text>
+                    <!-- Left H2O -->
+                    <line x1="90" y1="85" x2="55" y2="132" stroke="#94a3b8" stroke-width="3"/>
+                    <line x1="90" y1="85" x2="160" y2="85" stroke="#94a3b8" stroke-width="3"/>
+                    <circle cx="90" cy="85" r="15" fill="#881337" stroke="#fb7185" stroke-width="2"/>
+                    <text x="90" y="89" text-anchor="middle" fill="#fff" font-size="12" font-family="monospace" font-weight="bold">O</text>
+                    <text x="90" y="63" text-anchor="middle" fill="#fda4af" font-size="11" font-family="monospace">δ−</text>
+                    <circle cx="52" cy="136" r="10" fill="#1e293b" stroke="#cbd5e1" stroke-width="1.5"/>
+                    <text x="52" y="140" text-anchor="middle" fill="#fff" font-size="10" font-family="monospace">H</text>
+                    <circle cx="168" cy="85" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+                    <text x="168" y="89" text-anchor="middle" fill="#fff" font-size="10" font-family="monospace" font-weight="bold">H</text>
+                    <text x="168" y="67" text-anchor="middle" fill="#38bdf8" font-size="11" font-family="monospace" font-weight="bold">δ+</text>
+                    <!-- H-bond -->
+                    <line x1="182" y1="85" x2="278" y2="85" stroke="#fbbf24" stroke-width="2.5" stroke-dasharray="6,4"/>
+                    <circle cx="288" cy="80" r="3.2" fill="#2dd4bf"/>
+                    <circle cx="288" cy="90" r="3.2" fill="#2dd4bf"/>
+                    <!-- Right NH3 -->
+                    <line x1="312" y1="85" x2="365" y2="42" stroke="#94a3b8" stroke-width="2.8"/>
+                    <line x1="312" y1="85" x2="375" y2="85" stroke="#94a3b8" stroke-width="2.8"/>
+                    <line x1="312" y1="85" x2="365" y2="128" stroke="#94a3b8" stroke-width="2.8"/>
+                    <circle cx="312" cy="85" r="15" fill="#1e1b4b" stroke="#818cf8" stroke-width="2"/>
+                    <text x="312" y="89" text-anchor="middle" fill="#fff" font-size="12" font-family="monospace" font-weight="bold">N</text>
+                    <text x="312" y="63" text-anchor="middle" fill="#fda4af" font-size="11" font-family="monospace">δ−</text>
+                    <circle cx="368" cy="40" r="9" fill="#1e293b" stroke="#cbd5e1" stroke-width="1.5"/><text x="368" y="43" text-anchor="middle" fill="#fff" font-size="9" font-family="monospace">H</text>
+                    <circle cx="378" cy="85" r="9" fill="#1e293b" stroke="#cbd5e1" stroke-width="1.5"/><text x="378" y="88" text-anchor="middle" fill="#fff" font-size="9" font-family="monospace">H</text>
+                    <circle cx="368" cy="130" r="9" fill="#1e293b" stroke="#cbd5e1" stroke-width="1.5"/><text x="368" y="133" text-anchor="middle" fill="#fff" font-size="9" font-family="monospace">H</text>
+                </svg>`;
+                notesBox.innerHTML = `<p class="font-bold text-sky-300">✓ WCH12 Examiner Favourite (NH₃ in Water):</p>
+                    <p class="text-[11px]">Why is the H-bond between $\text{H–O}^{\delta-}\text{–H}^{\delta+}\cdots\text{:NH}_3$ stronger than $\text{H}_2\text{N–H}^{\delta+}\cdots\text{:OH}_2$?</p>
+                    <p class="text-[11px] text-emerald-200">Because <b>oxygen is more electronegative than nitrogen</b> (so the O–H bond is more polar than N–H, making water's H more $\delta+$), AND nitrogen is less electronegative so its lone pair is more easily donated! (Hence $\text{NH}_3 + \text{H}_2\text{O} \rightleftharpoons \text{NH}_4^+ + \text{OH}^-$).</p>`;
+            } else if (mode === 'dimer') {
+                svgBox.innerHTML = `<svg viewBox="0 0 440 165" class="w-full max-w-[420px]">
+                    <text x="220" y="20" text-anchor="middle" fill="#fbbf24" font-size="10.5" font-family="monospace" font-weight="bold">Cyclic Carboxylic Acid Dimer — TWO Hydrogen Bonds (Mr doubles to 120!)</text>
+                    <!-- Left CH3-C -->
+                    <text x="58" y="89" text-anchor="end" fill="#e2e8f0" font-size="12" font-family="monospace" font-weight="bold">H₃C—C</text>
+                    <line x1="65" y1="82" x2="115" y2="46" stroke="#94a3b8" stroke-width="3"/>
+                    <line x1="69" y1="87" x2="119" y2="51" stroke="#94a3b8" stroke-width="3"/>
+                    <line x1="65" y1="88" x2="115" y2="124" stroke="#94a3b8" stroke-width="2.8"/>
+                    <text x="128" y="48" text-anchor="middle" fill="#fb7185" font-size="13" font-family="monospace" font-weight="bold">O:</text>
+                    <text x="128" y="34" text-anchor="middle" fill="#fda4af" font-size="9.5" font-family="monospace">δ−</text>
+                    <text x="128" y="132" text-anchor="middle" fill="#fb7185" font-size="13" font-family="monospace" font-weight="bold">O—H</text>
+                    <text x="148" y="145" text-anchor="middle" fill="#38bdf8" font-size="9.5" font-family="monospace">δ+</text>
+                    <!-- Two H-bonds -->
+                    <line x1="146" y1="44" x2="262" y2="44" stroke="#2dd4bf" stroke-width="2.5" stroke-dasharray="6,4"/>
+                    <line x1="152" y1="128" x2="268" y2="128" stroke="#2dd4bf" stroke-width="2.5" stroke-dasharray="6,4"/>
+                    <!-- Right C-CH3 -->
+                    <text x="288" y="48" text-anchor="middle" fill="#fb7185" font-size="13" font-family="monospace" font-weight="bold">H—O</text>
+                    <text x="272" y="34" text-anchor="middle" fill="#38bdf8" font-size="9.5" font-family="monospace">δ+</text>
+                    <text x="285" y="132" text-anchor="middle" fill="#fb7185" font-size="13" font-family="monospace" font-weight="bold">:O</text>
+                    <text x="285" y="145" text-anchor="middle" fill="#fda4af" font-size="9.5" font-family="monospace">δ−</text>
+                    <line x1="305" y1="48" x2="348" y2="82" stroke="#94a3b8" stroke-width="2.8"/>
+                    <line x1="298" y1="122" x2="345" y2="86" stroke="#94a3b8" stroke-width="3"/>
+                    <line x1="302" y1="127" x2="349" y2="91" stroke="#94a3b8" stroke-width="3"/>
+                    <text x="355" y="89" text-anchor="start" fill="#e2e8f0" font-size="12" font-family="monospace" font-weight="bold">C—CH₃</text>
+                </svg>`;
+                notesBox.innerHTML = `<p class="font-bold text-amber-300">✓ Carboxylic Acid Dimerisation:</p>
+                    <p class="text-[11px]">In the gas phase (just above boiling point) or in non-polar solvents (like benzene/hexane), ethanoic acid molecules pair up into <b>cyclic dimers</b> held by <b>two linear hydrogen bonds</b>.</p>
+                    <p class="text-[11px] text-emerald-300">Exam consequence: The apparent relative molecular mass measured in the gas phase is $2 \times 60 = \mathbf{120}$!</p>`;
+            } else {
+                svgBox.innerHTML = `<svg viewBox="0 0 440 165" class="w-full max-w-[420px]">
+                    <text x="220" y="20" text-anchor="middle" fill="#fda4af" font-size="10.5" font-family="monospace" font-weight="bold">❌ Three Errors That Lose All 3 Diagram Marks</text>
+                    <circle cx="110" cy="75" r="14" fill="#881337" stroke="#f43f5e" stroke-width="2"/>
+                    <text x="110" y="79" text-anchor="middle" fill="#fff" font-size="11" font-family="monospace">O</text>
+                    <line x1="110" y1="89" x2="110" y2="128" stroke="#94a3b8" stroke-width="3"/>
+                    <circle cx="110" cy="132" r="9" fill="#1e293b" stroke="#cbd5e1"/><text x="110" y="135" text-anchor="middle" fill="#fff" font-size="9" font-family="monospace">H</text>
+                    <!-- Wrong 90 deg bend and no lone pair -->
+                    <line x1="122" y1="132" x2="275" y2="132" stroke="#f43f5e" stroke-width="2.5" stroke-dasharray="5,3"/>
+                    <circle cx="290" cy="132" r="14" fill="#881337" stroke="#f43f5e" stroke-width="2"/>
+                    <text x="290" y="136" text-anchor="middle" fill="#fff" font-size="11" font-family="monospace">O</text>
+                    <text x="180" y="118" fill="#fda4af" font-size="9.5" font-family="monospace">✗ 90° angle at H!</text>
+                    <text x="290" y="105" text-anchor="middle" fill="#fda4af" font-size="9.5" font-family="monospace">✗ No lone pair / δ−!</text>
+                </svg>`;
+                notesBox.innerHTML = `<p class="font-bold text-rose-300">✗ Why this candidate diagram scores 0/3:</p>
+                    <ul class="list-disc list-inside space-y-1 text-[11px] text-rose-200">
+                        <li><b>Error 1:</b> The O–H bond and H-bond are drawn at a <b>90° right angle</b> instead of 180° linear.</li>
+                        <li><b>Error 2:</b> No <b>lone pair</b> is shown on the acceptor oxygen atom.</li>
+                        <li><b>Error 3:</b> Missing $\delta+$ and $\delta-$ partial charge labels.</li>
+                    </ul>`;
+            }
+            T7_MASTERY.conceptsChecked.add('hb_diag');
+            updateT7Mastery();
+            setTimeout(safeInitKaTeX, 30);
+        };
+
+        // --- TAB 3 MODULE 5: HCl->HI PARADOX & ALCOHOL ISOMERS ---
+        const HX_PARADOX_DATA = [
+            {name:'HF (Hydrogen fluoride · bp +19.5 °C)', e:'10 e⁻', den:'ΔEN = 1.9 (Most polar)', pd:'Very strong permanent dipole', ldf:'Weakest London forces (only 10 e⁻)', dom:'<b>Hydrogen bonding</b> dominates! Because F is very small and highly electronegative, strong intermolecular H–F⋯:F hydrogen bonds require far more energy to overcome.'},
+            {name:'HCl (Hydrogen chloride · bp −85 °C)', e:'18 e⁻', den:'ΔEN = 0.9 (Moderately polar)', pd:'Strongest permanent dipole of HCl/HBr/HI', ldf:'Weak London forces (18 e⁻)', dom:'<b>Lowest boiling point!</b> Cl is too large for H-bonding, and with only 18 electrons its London forces are weak — even though its permanent dipole is larger than HBr and HI!'},
+            {name:'HBr (Hydrogen bromide · bp −67 °C)', e:'36 e⁻', den:'ΔEN = 0.7 (Less polar than HCl)', pd:'Weaker permanent dipole than HCl', ldf:'Moderate London forces (36 e⁻)', dom:'<b>WCH12 Jan 2023 Key Point:</b> Even though HBr is less polar than HCl, doubling the electron count (18 → 36 e⁻) strengthens <b>London forces</b> enough to raise the boiling point by 18 °C.'},
+            {name:'HI (Hydrogen iodide · bp −35 °C)', e:'54 e⁻', den:'ΔEN = 0.4 (Least polar HX)', pd:'Weakest permanent dipole of all HX', ldf:'Strongest London forces (54 e⁻, large polarisable cloud)', dom:'<b>Highest boiling of HCl/HBr/HI!</b> Having 54 electrons creates strong London forces that completely outweigh its weak permanent dipole.'}
+        ];
+
+        window.showHxParadox = function(idx) {
+            const h = HX_PARADOX_DATA[idx];
+            const btns = document.querySelectorAll('#hx-paradox-btns button');
+            btns.forEach((b, i) => {
+                b.className = 'px-3 py-1.5 rounded-lg font-mono text-[11px] border ' +
+                    (i === idx ? 'bg-sky-950 border-sky-500 text-sky-300' : 'bg-slate-950 border-slate-800 text-slate-300');
+            });
+            const out = document.getElementById('hx-paradox-out');
+            if (out) {
+                out.innerHTML = `<p class="font-bold text-white">${h.name} · <span class="text-sky-300 font-mono">${h.e}</span></p>
+                    <p><span class="text-slate-400">Bond polarity:</span> ${h.den} (${h.pd})</p>
+                    <p><span class="text-slate-400">London dispersion:</span> ${h.ldf}</p>
+                    <p class="text-emerald-200">${h.dom}</p>`;
+            }
+            T7_MASTERY.conceptsChecked.add('hx_paradox');
+            updateT7Mastery();
+        };
+
+        const ALC_ISO_DATA = [
+            {name:'Butan-1-ol, CH₃CH₂CH₂CH₂OH (1° · bp 118 °C)', why:'<b>Unbranched chain + terminal –OH:</b> Largest surface area for intermolecular contact ⇒ <b>strongest London forces</b>, and the terminal –OH group is sterically unhindered so it forms maximum hydrogen bonds.'},
+            {name:'Butan-2-ol, CH₃CH₂CH(OH)CH₃ (2° · bp 99.5 °C)', why:'<b>Intermediate branching:</b> The –OH group sits on C2, slightly crowding hydrogen bond approach and reducing chain surface contact ⇒ weaker London forces than butan-1-ol.'},
+            {name:'2-Methylpropan-2-ol, (CH₃)₃COH (3° · bp 82 °C)', why:'<b>Spherical / highly branched shape:</b> Three bulky methyl groups pack into a compact sphere ⇒ <b>smallest surface area for contact</b> (weakest London forces) AND sterically hinder the –OH group.'},
+            {name:'Ethoxyethane, CH₃CH₂OCH₂CH₃ (Functional group isomer · bp 34.6 °C)', why:'<b>Isomeric ether (42 e⁻, C₄H₁₀O):</b> Has the exact same molecular formula and electron count as the butanols, but has <b>NO O–H bond</b> ⇒ cannot hydrogen-bond with itself (only London + weak dipole–dipole)!'}
+        ];
+
+        window.showAlcIso = function() {
+            const idx = +(document.getElementById('alc-iso-sel') ? document.getElementById('alc-iso-sel').value : 0);
+            const a = ALC_ISO_DATA[idx];
+            const out = document.getElementById('alc-iso-out');
+            if (out) {
+                out.innerHTML = `<p class="font-mono text-white font-bold">${a.name}</p><p class="text-slate-300">${a.why}</p>`;
+            }
+        };
+
+        // --- TAB 4 MODULE 5: H-BOND CENSUS & HYDRIDE SERIES ---
+        const CENSUS_DATA = [
+            {name:'Water, H₂O (bp 100 °C)', donors:'2 (two δ+ H atoms on O)', lps:'2 (two lone pairs on O)', max:'4 H-bonds per molecule (2 donated + 2 accepted)', note:'<b>Perfect 2 : 2 match!</b> Every H and every lone pair participates in the 3D tetrahedral network — explaining why H₂O boils 80 °C higher than HF and 133 °C higher than NH₃.'},
+            {name:'Hydrogen fluoride, HF (bp +19.5 °C)', donors:'1 (only one H atom)', lps:'3 (three lone pairs on F)', max:'2 H-bonds per molecule on average (1 donated + 1 accepted)', note:'<b>Limited by H-donor shortage!</b> Two of fluorine’s three lone pairs are left without an H donor in pure HF, forming zig-zag chains rather than a 3D lattice.'},
+            {name:'Ammonia, NH₃ (bp −33 °C)', donors:'3 (three δ+ H atoms on N)', lps:'1 (only one lone pair on N)', max:'2 H-bonds per molecule on average (1 donated + 1 accepted)', note:'<b>Limited by lone-pair shortage!</b> Two of ammonia’s three H atoms cannot find a lone pair in pure liquid NH₃.'},
+            {name:'Methanol, CH₃OH (bp +65 °C)', donors:'1 (one O–H hydrogen; C–H cannot H-bond!)', lps:'2 (two lone pairs on O)', max:'2 H-bonds per molecule in pure methanol (up to 3 when dissolved in excess water)', note:'<b>Examiner Trap:</b> CH₃OH has 4 H atoms in total, but 3 are on carbon (non-polar C–H). Only the 1 H on oxygen can form hydrogen bonds!'},
+            {name:'Ethane-1,2-diol, HOCH₂CH₂OH (bp +197 °C)', donors:'2 (two –OH groups)', lps:'4 (two lone pairs on each O)', max:'Up to 4 H-bonds per molecule', note:'<b>WCH12 Favorite:</b> Doubling the number of –OH groups per molecule doubles the hydrogen-bonding network, causing a massive jump in boiling point and viscosity (used as antifreeze).'}
+        ];
+
+        window.showCensusMol = function() {
+            const idx = +(document.getElementById('census-mol-sel') ? document.getElementById('census-mol-sel').value : 0);
+            const c = CENSUS_DATA[idx];
+            const out = document.getElementById('census-mol-out');
+            if (out) {
+                out.innerHTML = `<p class="font-bold text-white">${c.name}</p>
+                    <p><span class="text-slate-400">H(δ+) donors:</span> <b class="text-sky-300">${c.donors}</b> · <span class="text-slate-400">Lone pairs:</span> <b class="text-rose-300">${c.lps}</b></p>
+                    <p><span class="text-slate-400">Effective H-bonds in pure liquid:</span> <b class="text-emerald-300 font-mono">${c.max}</b></p>
+                    <p class="text-amber-200/95">${c.note}</p>`;
+            }
+            T7_MASTERY.conceptsChecked.add('census');
+            updateT7Mastery();
+        };
+
+        const HYDRIDE_GRPS = [
+            {name:'Group 14 Hydrides: CH₄ (−162 °C) < SiH₄ (−112 °C) < GeH₄ (−88 °C) < SnH₄ (−52 °C)', why:'<b>NO Period 2 Anomaly!</b> All Group 14 hydrides are symmetrical tetrahedral (non-polar) with <b>no lone pairs</b> and C is not F/O/N. They have <b>London forces ONLY</b>, so boiling point rises smoothly with electron count (10 → 18 → 36 → 54 e⁻).'},
+            {name:'Group 15 Hydrides: NH₃ (−33 °C) > PH₃ (−88 °C) < AsH₃ (−62 °C) < SbH₃ (−17 °C)', why:'<b>NH₃ is anomalous</b> because N is small and electronegative enough for <b>hydrogen bonding</b>. From PH₃ → AsH₃ → SbH₃, there is no H-bonding and boiling points rise as electron count and London forces increase.'},
+            {name:'Group 16 Hydrides: H₂O (+100 °C) ≫ H₂S (−60 °C) < H₂Se (−41 °C) < H₂Te (−2 °C)', why:'<b>H₂O has the largest anomaly</b> because each H₂O forms up to <b>4 hydrogen bonds</b>. H₂S has no H-bonding, so its boiling point drops to −60 °C before rising from H₂S → H₂Te due to increasing London forces.'},
+            {name:'Group 17 Hydrides: HF (+19.5 °C) > HCl (−85 °C) < HBr (−67 °C) < HI (−35 °C)', why:'<b>HF is anomalous</b> due to strong H–F⋯:F hydrogen bonding. HCl → HBr → HI have no H-bonding; their boiling points rise due to increasing electrons (18 → 36 → 54) and stronger London forces.'}
+        ];
+
+        window.showHydrideGrp = function(idx) {
+            const g = HYDRIDE_GRPS[idx];
+            const btns = document.querySelectorAll('#hydride-grp-btns button');
+            btns.forEach((b, i) => {
+                b.className = 'px-3 py-1.5 rounded-lg font-mono text-[11px] border ' +
+                    (i === idx ? 'bg-emerald-950 border-emerald-600 text-emerald-300' : 'bg-slate-950 border-slate-800 text-slate-300');
+            });
+            const out = document.getElementById('hydride-grp-out');
+            if (out) {
+                out.innerHTML = `<p class="font-mono text-white font-bold">${g.name}</p><p class="text-slate-300">${g.why}</p>`;
+            }
+        };
+
+        // --- TAB 5 MODULE 5: 3-FORCE SOLUBILITY ENERGY BALANCE ---
+        const SOL3_BALANCES = [
+            {
+                sys:'Hexane (C₆H₁₄) + Water (H₂O) → IMMISCIBLE (Two layers)',
+                f1:'<b>1. Solute–Solute (Hexane–Hexane):</b> Weak London forces.',
+                f2:'<b>2. Solvent–Solvent (Water–Water):</b> Strong extensive <b>hydrogen bonds</b>.',
+                f3:'<b>3. Solute–Solvent (Hexane–Water):</b> Only weak London / dipole–induced dipole forces possible.',
+                verdict:'<b>Energy Balance Verdict:</b> The energy released forming weak hexane–water attractions cannot compensate for the large energy input needed to break water’s strong hydrogen bonds ⇒ water molecules stay hydrogen-bonded to each other.'
+            },
+            {
+                sys:'Bromoethane (C₂H₅Br) + Water (H₂O) → IMMISCIBLE (Two layers)',
+                f1:'<b>1. Solute–Solute (C₂H₅Br–C₂H₅Br):</b> London forces + permanent dipole–dipole.',
+                f2:'<b>2. Solvent–Solvent (Water–Water):</b> Strong <b>hydrogen bonds</b>.',
+                f3:'<b>3. Solute–Solvent (C₂H₅Br–Water):</b> Dipole–dipole + London forces ONLY (Br cannot H-bond with water!).',
+                verdict:'<b>Energy Balance Verdict (Spec 7.6iii):</b> Although bromoethane is polar, it <b>cannot form hydrogen bonds with water</b>, so the new attractions are too weak to disrupt water’s H-bonded network.'
+            },
+            {
+                sys:'Ethanol (C₂H₅OH) + Water (H₂O) → COMPLETELY MISCIBLE',
+                f1:'<b>1. Solute–Solute (Ethanol–Ethanol):</b> Hydrogen bonds + London forces.',
+                f2:'<b>2. Solvent–Solvent (Water–Water):</b> Hydrogen bonds + London forces.',
+                f3:'<b>3. Solute–Solvent (Ethanol–Water):</b> Strong <b>hydrogen bonds</b> between ethanol’s –OH and water’s O/H!',
+                verdict:'<b>Energy Balance Verdict (Spec 7.6ii):</b> The new ethanol–water hydrogen bonds are comparable in strength to the original H-bonds broken, so energy is compensated and mixing occurs freely.'
+            },
+            {
+                sys:'NaCl(s) vs AgCl(s) in Water → NaCl Dissolves, AgCl Insoluble',
+                f1:'<b>1. Solute–Solute:</b> Strong electrostatic attraction between oppositely charged ions in the giant ionic lattice.',
+                f2:'<b>2. Solvent–Solvent:</b> Hydrogen bonds between water molecules.',
+                f3:'<b>3. Solute–Solvent:</b> <b>Ion–dipole attractions (hydration)</b> as $\text{O}^{\delta-}$ surrounds cations and $\text{H}^{\delta+}$ surrounds anions.',
+                verdict:'<b>Energy Balance Verdict (Spec 7.6i):</b> For NaCl, the exothermic hydration energy compensates for breaking the ionic lattice. For AgCl (or CaCO₃), the lattice attraction is too strong for hydration to overcome.'
+            },
+            {
+                sys:'Iodine, I₂(s) + Cyclohexane (C₆H₁₂) → DISSOLVES (Purple Solution)',
+                f1:'<b>1. Solute–Solute (I₂–I₂):</b> London forces in the simple molecular iodine lattice.',
+                f2:'<b>2. Solvent–Solvent (C₆H₁₂–C₆H₁₂):</b> London forces.',
+                f3:'<b>3. Solute–Solvent (I₂–C₆H₁₂):</b> London forces of comparable strength.',
+                verdict:'<b>Energy Balance Verdict (Spec 7.6iv):</b> London forces formed between $\text{I}_2$ and cyclohexane match the London forces broken in each pure substance ⇒ dissolves readily to form a purple solution.'
+            }
+        ];
+
+        window.showSol3Balance = function() {
+            const idx = +(document.getElementById('sol3-sel') ? document.getElementById('sol3-sel').value : 0);
+            const s = SOL3_BALANCES[idx];
+            const out = document.getElementById('sol3-out');
+            if (out) {
+                out.innerHTML = `<p class="font-bold text-white">${s.sys}</p>
+                    <p class="text-slate-300">${s.f1}</p>
+                    <p class="text-slate-300">${s.f2}</p>
+                    <p class="text-sky-300">${s.f3}</p>
+                    <p class="text-emerald-200 pt-1 border-t border-slate-800">${s.verdict}</p>`;
+            }
+            T7_MASTERY.conceptsChecked.add('sol3');
+            updateT7Mastery();
+            setTimeout(safeInitKaTeX, 30);
+        };
+
+        // --- TAB 6 SOLVER 3: 10-QUESTION WCH12/WCH13 PAST-PAPER EXAM SIMULATOR ---
+        const T7_SIM_QUESTIONS = [
+            {
+                spec:'7.1 & 7.5', series:'WCH12 Jan 2023 Q6',
+                q:'Which sequence shows the hydrogen halides in order of DECREASING boiling temperature (highest first)?',
+                opts:[
+                    'HF > HCl > HBr > HI',
+                    'HI > HBr > HCl > HF',
+                    'HF > HI > HBr > HCl',
+                    'HCl > HBr > HI > HF'
+                ],
+                ans:2,
+                exp:'HF (+19.5 °C) is highest due to hydrogen bonding. Among HCl (−85 °C), HBr (−67 °C), and HI (−35 °C), boiling point increases with electron count (stronger London forces), so the decreasing order is HF > HI > HBr > HCl.'
+            },
+            {
+                spec:'7.1 & 7.4', series:'WCH12 Oct 2022',
+                q:'Which of the following pure liquids has permanent dipole–permanent dipole interactions and London forces, but NO hydrogen bonding between its own molecules?',
+                opts:[
+                    'Methanol, CH₃OH',
+                    'Propanone, CH₃COCH₃',
+                    'Tetrachloromethane, CCl₄',
+                    'Ethylamine, C₂H₅NH₂'
+                ],
+                ans:1,
+                exp:'Propanone (CH₃COCH₃) is polar (C=O bond) so it has permanent dipole–dipole and London forces, but all its H atoms are bonded to carbon (no O–H bond) so it cannot H-bond with itself. (CCl₄ is symmetrical and non-polar).'
+            },
+            {
+                spec:'7.2 & 7.3', series:'WCH12 Jan 2020 PEF',
+                q:'Why does water (H₂O, bp 100 °C) have a much higher boiling temperature than hydrogen fluoride (HF, bp 19.5 °C), even though an individual F–H⋯:F hydrogen bond is stronger than an O–H⋯:O hydrogen bond?',
+                opts:[
+                    'Water has more electrons per molecule than HF, giving stronger London forces.',
+                    'Each H₂O molecule has 2 H atoms and 2 lone pairs so it can form up to 4 hydrogen bonds per molecule, whereas HF can only form an average of 2.',
+                    'Boiling water breaks covalent O–H bonds whereas boiling HF only breaks intermolecular forces.',
+                    'HF is a non-polar molecule.'
+                ],
+                ans:1,
+                exp:'PEF Jan 2020: Each water molecule has 2 δ+ H atoms and 2 lone pairs on O, enabling a 3D network of up to 4 H-bonds per molecule. HF has 3 lone pairs but only 1 H atom, limiting it to 2 H-bonds per molecule on average.'
+            },
+            {
+                spec:'7.5ii', series:'WCH12 Jun 2022',
+                q:'Pentane, 2-methylbutane, and 2,2-dimethylpropane are structural isomers with formula C₅H₁₂. Why does 2,2-dimethylpropane have the lowest boiling temperature?',
+                opts:[
+                    'It has the fewest electrons per molecule, resulting in weaker London forces.',
+                    'It has the weakest C–C covalent bonds, which break most easily on heating.',
+                    'Its molecules are the most branched/spherical, giving the smallest surface area for contact and therefore the weakest London forces.',
+                    'Branching destroys the permanent dipole moment of the alkane.'
+                ],
+                ans:2,
+                exp:'All three C₅H₁₂ isomers have the exact same number of electrons (42 e⁻). 2,2-dimethylpropane is the most branched (spherical), reducing surface area for intermolecular contact and weakening London forces.'
+            },
+            {
+                spec:'7.3', series:'WCH12 Oct 2023',
+                q:'Which statement best explains why ice is less dense than liquid water at 0 °C?',
+                opts:[
+                    'Water molecules expand in size when frozen.',
+                    'In ice, each water molecule is held in an open 3D hexagonal lattice by four fixed hydrogen bonds, keeping the molecules further apart than in liquid water.',
+                    'Covalent O–H bonds lengthen when water freezes.',
+                    'Liquid water has stronger hydrogen bonds than ice.'
+                ],
+                ans:1,
+                exp:'Spec 7.3: In ice, a rigid tetrahedral/hexagonal network of 4 hydrogen bonds per molecule creates open space between molecules. When ice melts, this open lattice partially collapses and molecules pack closer together.'
+            },
+            {
+                spec:'7.4 & 7.6', series:'WCH12 Jan 2024',
+                q:'Trimethylamine, (CH₃)₃N, boils at 3 °C whereas its isomer propylamine, CH₃CH₂CH₂NH₂, boils at 48 °C. Why is trimethylamine’s boiling point so much lower, yet it is still soluble in water?',
+                opts:[
+                    'Trimethylamine has no N–H bond so it cannot form hydrogen bonds with itself, but the lone pair on its N atom can accept hydrogen bonds from water.',
+                    'Trimethylamine has fewer electrons than propylamine.',
+                    'Trimethylamine is an ionic compound.',
+                    'Trimethylamine forms hydrogen bonds with itself but not with water.'
+                ],
+                ans:0,
+                exp:'In (CH₃)₃N, all H atoms are bonded to C (no N–H bond), so pure (CH₃)₃N cannot H-bond with itself (only dipole–dipole + London). In water, the lone pair on N accepts H-bonds from water’s H(δ+)!'
+            },
+            {
+                spec:'7.5', series:'WCH12 Jan 2023 PEF',
+                q:'Octane (C₈H₁₈, bp 126 °C) has a higher boiling temperature than methanol (CH₃OH, bp 65 °C). What is the correct explanation?',
+                opts:[
+                    'Octane forms stronger hydrogen bonds than methanol.',
+                    'London forces are always stronger than hydrogen bonds.',
+                    'Octane has many more electrons (66 e⁻ vs 18 e⁻) and a long chain, so the sum of its London forces is stronger than the intermolecular forces (London + H-bonding) in methanol.',
+                    'Octane has more C–C covalent bonds that must be broken during boiling.'
+                ],
+                ans:2,
+                exp:'PEF Jan 2023: While H-bonding is stronger than London forces for molecules of SIMILAR electron count, octane has 66 electrons vs methanol’s 18 electrons, so octane’s cumulative London forces require more energy to overcome.'
+            },
+            {
+                spec:'7.6iii', series:'WCH12 Jun 2023',
+                q:'Why are 1-bromobutane and water immiscible?',
+                opts:[
+                    '1-bromobutane is a completely non-polar molecule.',
+                    '1-bromobutane cannot form hydrogen bonds with water, and the dipole/London attractions it forms with water are too weak to disrupt the strong hydrogen-bonded network of water.',
+                    'The C–Br covalent bond breaks when mixed with water.',
+                    'Water only dissolves ionic compounds.'
+                ],
+                ans:1,
+                exp:'Spec 7.6iii: 1-bromobutane is polar, but cannot form hydrogen bonds with water. Breaking the strong H-bonds between water molecules is not compensated by the weaker solute–solvent attractions.'
+            },
+            {
+                spec:'7.6i', series:'WCH12 Oct 2021',
+                q:'When solid sodium chloride dissolves in water, how are the water molecules oriented around the ions?',
+                opts:[
+                    'The H(δ+) atoms point towards Na⁺ and the O(δ−) atoms point towards Cl⁻.',
+                    'The O(δ−) atoms point towards Na⁺ and the H(δ+) atoms point towards Cl⁻ via ion–dipole attractions.',
+                    'Water molecules form covalent bonds with both Na⁺ and Cl⁻.',
+                    'Water molecules form hydrogen bonds with Na⁺ ions.'
+                ],
+                ans:1,
+                exp:'In ion–dipole hydration (Spec 7.6i), the lone pairs / δ− oxygen atom of water are attracted to the positively charged Na⁺ cation, while the δ+ hydrogen atoms point towards the negatively charged Cl⁻ anion.'
+            },
+            {
+                spec:'7.2', series:'WCH12 Jan 2025',
+                q:'What is the approximate bond angle around the hydrogen atom involved in a hydrogen bond between two water molecules (O—H⋯:O), and why?',
+                opts:[
+                    '90°, because p-orbitals are perpendicular.',
+                    '104.5°, matching the H–O–H covalent bond angle.',
+                    '180° (linear), because the covalent O–H bonding pair and the lone pair on the neighbouring O atom repel each other to maximum separation.',
+                    '120°, forming a trigonal planar arrangement around H.'
+                ],
+                ans:2,
+                exp:'The two electron pairs around the bridging H atom (the covalent O–H bond pair and the lone pair on the acceptor O) repel to maximum separation, giving a linear ~180° O–H⋯:O arrangement.'
+            }
+        ];
+
+        let curT7Sim = 0;
+        function renderT7Sim() {
+            const pills = document.getElementById('t7-sim-pills');
+            if (!pills) return;
+            pills.innerHTML = T7_SIM_QUESTIONS.map((q, i) => {
+                const done = T7_MASTERY.simSolved.has(i);
+                return `<button type="button" onclick="selectT7Sim(${i})" class="px-2.5 py-1 text-[11px] font-mono rounded-lg border ${i === curT7Sim ? 'border-sky-500 bg-sky-950/70 text-sky-200 font-bold' : (done ? 'border-emerald-800 bg-emerald-950/30 text-emerald-400' : 'border-slate-800 bg-slate-900 text-slate-400')}">${done ? '✓ ' : ''}Q${i + 1}</button>`;
+            }).join('');
+            const q = T7_SIM_QUESTIONS[curT7Sim];
+            const box = document.getElementById('t7-sim-box');
+            if (box) {
+                box.innerHTML = `<div class="flex items-center justify-between text-[10px] font-mono text-slate-400">
+                        <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-sky-300">Spec ${q.spec}</span>
+                        <span class="text-amber-300">${q.series}</span>
+                    </div>
+                    <p class="text-xs sm:text-sm font-semibold text-white leading-relaxed">${curT7Sim + 1}. ${q.q}</p>
+                    <div class="space-y-2">
+                        ${q.opts.map((o, oi) => `<button type="button" onclick="gradeT7Sim(${curT7Sim}, ${oi})" class="w-full text-left p-2.5 rounded-lg border border-slate-800 bg-slate-900 hover:border-sky-500/50 text-xs text-slate-200">${String.fromCharCode(65 + oi)}. ${o}</button>`).join('')}
+                    </div>
+                    <div id="t7-sim-fb" class="hidden p-3 rounded-lg text-xs leading-relaxed"></div>`;
+            }
+            const sc = document.getElementById('t7-sim-score');
+            if (sc) sc.textContent = `Score: ${T7_MASTERY.simSolved.size} / ${T7_SIM_QUESTIONS.length}`;
+        }
+
+        window.selectT7Sim = function(i) { curT7Sim = i; renderT7Sim(); };
+        window.gradeT7Sim = function(qIdx, oIdx) {
+            const q = T7_SIM_QUESTIONS[qIdx];
+            const fb = document.getElementById('t7-sim-fb');
+            if (!fb) return;
+            fb.classList.remove('hidden');
+            if (oIdx === q.ans) {
+                T7_MASTERY.simSolved.add(qIdx);
+                updateT7Mastery();
+                const sc = document.getElementById('t7-sim-score');
+                if (sc) sc.textContent = `Score: ${T7_MASTERY.simSolved.size} / ${T7_SIM_QUESTIONS.length}`;
+                fb.className = 'p-3 rounded-lg text-xs leading-relaxed bg-emerald-950/50 border border-emerald-700 text-emerald-200';
+                fb.innerHTML = `<b>✓ Correct (1/1 Mark):</b> ${q.exp}`;
+            } else {
+                fb.className = 'p-3 rounded-lg text-xs leading-relaxed bg-rose-950/50 border border-rose-700 text-rose-200';
+                fb.innerHTML = `<b>✗ Examiner Distractor Alert:</b> ${q.exp}`;
+            }
+        };
+
+        window.resetT7Sim = function() {
+            T7_MASTERY.simSolved.clear();
+            curT7Sim = 0;
+            renderT7Sim();
+            updateT7Mastery();
+        };
+
+        // --- TAB 7: 10-CARD ACTIVE RECALL FLASHCARD DECK ---
+        const T7_FLASHCARDS = [
+            {q:'How do London forces (instantaneous dipole–induced dipole forces) arise between non-polar molecules?', a:'Random movement of electrons creates a temporary uneven distribution of charge (an instantaneous dipole) in one molecule, which repels/attracts electrons in a neighbouring molecule to induce a dipole; the two dipoles attract.'},
+            {q:'What two factors determine the strength of London forces?', a:'1. Number of electrons per molecule (more electrons → larger, more polarisable electron cloud → stronger London forces). 2. Surface area for intermolecular contact (straight-chain isomers have more contact than branched isomers).'},
+            {q:'State the two mandatory conditions for intermolecular hydrogen bonding.', a:'1. A hydrogen atom covalently bonded to a very small, highly electronegative atom — F, O, or N only. 2. A lone pair of electrons on an F, O, or N atom of a neighbouring molecule.'},
+            {q:'Why does water (100 °C) have a higher boiling point than HF (19.5 °C) and NH₃ (−33 °C)?', a:'Each H₂O molecule has 2 H atoms and 2 lone pairs on O, so it can form up to 4 hydrogen bonds per molecule. HF (1 H) and NH₃ (1 lone pair) can only form an average of 2 H-bonds per molecule.'},
+            {q:'State and explain the two anomalous properties of water caused by hydrogen bonding (Spec 7.3).', a:'1. High melting/boiling point compared to Group 16 hydrides: extra energy needed to break the extensive H-bond network. 2. Ice is less dense than liquid water: 4 fixed H-bonds hold H₂O molecules in an open hexagonal lattice further apart than in liquid water.'},
+            {q:'Why can ethanal (CH₃CHO) or propanone (CH₃COCH₃) NOT form hydrogen bonds in the pure liquid, yet dissolve in water?', a:'In the pure liquid, all H atoms are bonded to carbon (no O–H bond), so they cannot donate H-bonds to each other. In water, the lone pairs on their C=O oxygen accept hydrogen bonds from water’s H(δ+) atoms.'},
+            {q:'Explain the boiling-point trend of the hydrogen halides: HF (+19.5 °C), HCl (−85 °C), HBr (−67 °C), HI (−35 °C).', a:'HF is anomalously high because it forms strong intermolecular hydrogen bonds. HCl, HBr, and HI cannot H-bond; from HCl → HBr → HI, the number of electrons increases (18 → 36 → 54), so London forces become stronger and more energy is needed to overcome them.'},
+            {q:'Explain why ethanol (78 °C) has a much higher boiling point and lower volatility than propane (−42 °C).', a:'Both have 26 electrons, so their London forces are similar in strength. However, ethanol has an –OH group and forms strong intermolecular hydrogen bonds in addition to London forces, whereas propane has London forces only.'},
+            {q:'Explain why bromoethane is immiscible with water despite having a polar C–Br bond.', a:'Bromoethane cannot form hydrogen bonds with water. The energy released by weak bromoethane–water dipole attractions is insufficient to compensate for breaking the strong hydrogen bonds between water molecules.'},
+            {q:'Why does the solubility of alcohols in water decrease as the hydrocarbon chain length increases?', a:'As the non-polar alkyl chain grows longer, it disrupts water’s hydrogen-bonded network without forming compensating H-bonds, so London forces between the hydrocarbon chains dominate and solubility drops.'}
+        ];
+
+        let t7FcIdx = 0, t7FcFlip = false;
+        function renderT7Card() {
+            const box = document.getElementById('t7-fc-box'), cnt = document.getElementById('t7-fc-counter');
+            if (!box) return;
+            const c = T7_FLASHCARDS[t7FcIdx];
+            if (cnt) cnt.textContent = `${t7FcIdx + 1} / ${T7_FLASHCARDS.length}`;
+            box.innerHTML = `<span class="text-[10px] font-mono uppercase px-2.5 py-0.5 rounded-full mb-2 ${t7FcFlip ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40' : 'bg-sky-500/20 text-sky-300 border border-sky-500/40'}">${t7FcFlip ? '✓ Mark-Scheme Answer (Click to flip back)' : '❓ Question Prompt (Click to reveal answer)'}</span>
+                <p class="text-xs sm:text-sm ${t7FcFlip ? 'text-emerald-200 font-medium' : 'text-white font-bold'} max-w-2xl leading-relaxed">${t7FcFlip ? c.a : c.q}</p>`;
+        }
+        window.flipT7Card = function() { t7FcFlip = !t7FcFlip; renderT7Card(); };
+        window.stepT7Card = function(d) { t7FcIdx = (t7FcIdx + d + T7_FLASHCARDS.length) % T7_FLASHCARDS.length; t7FcFlip = false; renderT7Card(); };
+
+        // --- APPLE SPOTLIGHT QUICK COMMAND ---
+        const T7_SPOTLIGHT = [
+            {title:'Spec 7.1 — Molecular Symmetry vs Net Dipole & Complete IMF Inventory', tag:'Tab 1 · Syllabus Lab', act:()=>{switchTab('syllabus');switchSyl7Lab('inventory');}},
+            {title:'Spec 7.1–7.6 — 6-Mark QWC Blueprint & Al₂Cl₆ vs Carboxylic Acid Dimer', tag:'Tab 1 · QWC Lab', act:()=>{switchTab('syllabus');switchSyl7Lab('qwc');}},
+            {title:'Spec 7.1–7.6 — Interactive Specification Self-Audit Checklist', tag:'Tab 1 · Syllabus Audit', act:()=>{switchTab('syllabus');switchSyl7Lab('audit');}},
+            {title:'Spec 7.1–7.3 — Live Animated Dipole Lab (London, HCl, Water & Ice)', tag:'Tab 2 · Dipole Lab', act:()=>{switchTab('dipole');}},
+            {title:'Spec 7.2 — Examiner H-Bond Diagram Inspector (180° Rule, NH₃+H₂O, Dimer)', tag:'Tab 2 · Diagram Studio', act:()=>{switchTab('dipole');setTimeout(()=>{const el=document.getElementById('hbd-svg-box');if(el)el.scrollIntoView({behavior:'smooth'});},100);}},
+            {title:'Spec 7.5 — Animated Boiling-Point Trend Charts (Alkanes, Isomers, HX, 26e⁻)', tag:'Tab 3 · Engine A Map', act:()=>{switchTab('bp');switchMode('c1','map');}},
+            {title:'Spec 7.5 — HCl→HI Polarity vs London Paradox & 1°/2°/3° Alcohol Isomers', tag:'Tab 3 · Module 5 Lab', act:()=>{switchTab('bp');switchMode('c1','sim');}},
+            {title:'Spec 7.4 — Hydrogen-Bond Predictor (Self vs Water, Propanone, 3° Amine)', tag:'Tab 4 · Engine B Map', act:()=>{switchTab('water');switchMode('c2','map');}},
+            {title:'Spec 7.2–7.3 — H-Bond Donor/Lone-Pair Census & Group 14–17 Hydrides', tag:'Tab 4 · Module 5 Lab', act:()=>{switchTab('water');switchMode('c2','sim');}},
+            {title:'Spec 7.6 — 3-Force Solubility Energy-Balance & Alcohol Chain-Length Lab', tag:'Tab 5 · Module 5 Lab', act:()=>{switchTab('solub');switchMode('c3','sim');}},
+            {title:'Spec 7.1–7.6 — 10-Question WCH12/WCH13 Past-Paper Exam Simulator', tag:'Tab 6 · Exam Sim', act:()=>{switchTab('solver');switchSolver('sim');}},
+            {title:'2021–2026 Examiner Report Deep-Dive & Active-Recall Flashcards', tag:'Tab 7 · Final Review', act:()=>{switchTab('review');}}
+        ];
+
+        window.openSpotlight = function() {
+            const m = document.getElementById('spotlight-modal');
+            if (!m) return;
+            m.classList.remove('hidden'); m.classList.add('flex');
+            const inp = document.getElementById('spotlight-input');
+            if (inp) { inp.value = ''; inp.focus(); }
+            filterSpotlight();
+        };
+        window.closeSpotlight = function() {
+            const m = document.getElementById('spotlight-modal');
+            if (!m) return;
+            m.classList.add('hidden'); m.classList.remove('flex');
+        };
+        window.filterSpotlight = function() {
+            const q = (document.getElementById('spotlight-input') ? document.getElementById('spotlight-input').value : '').toLowerCase().trim();
+            const box = document.getElementById('spotlight-results');
+            if (!box) return;
+            const matches = T7_SPOTLIGHT.filter(it => !q || it.title.toLowerCase().includes(q) || it.tag.toLowerCase().includes(q));
+            box.innerHTML = matches.map(it => {
+                const idx = T7_SPOTLIGHT.indexOf(it);
+                return `<button type="button" onclick="runT7Spotlight(${idx})" class="w-full text-left px-3 py-2.5 rounded-xl hover:bg-slate-800/80 flex items-center justify-between gap-2">
+                    <span class="text-xs text-slate-100 font-medium">${it.title}</span>
+                    <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-950 text-sky-300 border border-slate-800 shrink-0">${it.tag}</span>
+                </button>`;
+            }).join('') || '<p class="text-xs text-slate-500 p-3 text-center">No matching concept found.</p>';
+        };
+        window.runT7Spotlight = function(idx) {
+            closeSpotlight();
+            if (T7_SPOTLIGHT[idx]) T7_SPOTLIGHT[idx].act();
+        };
+
+        document.addEventListener('keydown', function(e) {
+            if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+                e.preventDefault();
+                openSpotlight();
+            }
         });
 
         /* ═══ MOBILE_UX boot layer (chrome-only; no content changes) ═══ */

@@ -200,6 +200,197 @@ nav, nav > div { max-width: 100% !important; }
 }
 /* ===== /MUX mobile layer ===== */
 </style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+<style id="apple-hig-energetics-theme">
+/* ===== APPLE HIG / macOS SEQUOIA DARK GLASSMORPHISM & SPRING ANIMATIONS ===== */
+:root {
+  --apple-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --apple-spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --apple-glass: rgba(20, 24, 34, 0.74);
+  --apple-glass-elevated: rgba(28, 34, 48, 0.80);
+  --apple-border: rgba(255, 255, 255, 0.085);
+  --apple-specular: inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Inter", sans-serif !important;
+  background:
+    radial-gradient(ellipse 115% 75% at 80% -10%, rgba(56, 189, 248, 0.13), transparent 58%),
+    radial-gradient(ellipse 95% 65% at 10% 25%, rgba(16, 185, 129, 0.08), transparent 55%),
+    radial-gradient(ellipse 90% 65% at 60% 105%, rgba(245, 158, 11, 0.08), transparent 55%),
+    #04070e !important;
+  color: #f5f5f7 !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.011em;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+h1, h2, h3, h4 {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Space Grotesk", sans-serif !important;
+  letter-spacing: -0.022em;
+}
+
+header {
+  background: rgba(10, 14, 22, 0.76) !important;
+  -webkit-backdrop-filter: saturate(190%) blur(28px) !important;
+  backdrop-filter: saturate(190%) blur(28px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.55), inset 0 -1px 0 0 rgba(255, 255, 255, 0.04) !important;
+}
+
+nav {
+  background: rgba(12, 16, 26, 0.78) !important;
+  -webkit-backdrop-filter: saturate(190%) blur(26px) !important;
+  backdrop-filter: saturate(190%) blur(26px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.075) !important;
+  padding: 6px 0 !important;
+}
+
+nav > div {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.075);
+  border-radius: 14px;
+  padding: 4px !important;
+  gap: 4px !important;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.45);
+}
+
+nav > div > button {
+  border-radius: 10px !important;
+  border-bottom: none !important;
+  padding: 7px 13px !important;
+  transition: all 0.28s var(--apple-spring) !important;
+}
+
+.tab-btn-active {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  border-bottom: none !important;
+  background: linear-gradient(180deg, rgba(56, 189, 248, 0.26) 0%, rgba(14, 165, 233, 0.15) 100%) !important;
+  box-shadow: 0 2px 10px -2px rgba(56, 189, 248, 0.35), inset 0 1px 0 0 rgba(255, 255, 255, 0.22), 0 0 0 1px rgba(56, 189, 248, 0.34) !important;
+}
+
+/* Apple Glass Panels & Cards */
+.bg-slate-900, .bg-slate-950, .bg-slate-900\/95, .bg-slate-900\/80 {
+  background: var(--apple-glass) !important;
+  -webkit-backdrop-filter: saturate(180%) blur(22px);
+  backdrop-filter: saturate(180%) blur(22px);
+  border-color: var(--apple-border) !important;
+  box-shadow: var(--apple-specular), 0 14px 34px -12px rgba(0, 0, 0, 0.48);
+  border-radius: 18px !important;
+  transition: transform 0.36s var(--apple-spring), border-color 0.36s var(--apple-ease), box-shadow 0.36s var(--apple-ease);
+}
+
+.lift {
+  transition: transform 0.38s var(--apple-spring), border-color 0.38s var(--apple-ease), box-shadow 0.38s var(--apple-ease) !important;
+}
+
+.lift:hover {
+  transform: translateY(-3px) scale(1.003) !important;
+  border-color: rgba(56, 189, 248, 0.34) !important;
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.2), 0 22px 44px -14px rgba(0, 0, 0, 0.65), 0 0 28px -8px rgba(56, 189, 248, 0.22) !important;
+}
+
+main > section:not(.hidden) {
+  animation: appleSectionIn 0.44s var(--apple-spring) both;
+}
+
+@keyframes appleSectionIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.994);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+button {
+  transition: transform 0.18s var(--apple-spring), background-color 0.24s var(--apple-ease), border-color 0.24s var(--apple-ease), box-shadow 0.24s var(--apple-ease), color 0.2s var(--apple-ease) !important;
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+button:active:not(:disabled) {
+  transform: scale(0.96) !important;
+}
+
+select, input[type="text"], input[type="number"] {
+  background: rgba(13, 17, 26, 0.86) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 11px !important;
+  padding: 8px 12px !important;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
+  transition: border-color 0.25s var(--apple-ease), box-shadow 0.25s var(--apple-ease);
+}
+
+select:focus, input[type="text"]:focus, input[type="number"]:focus {
+  border-color: rgba(56, 189, 248, 0.65) !important;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.18) !important;
+  outline: none !important;
+}
+
+.blur-answer {
+  filter: blur(5.5px);
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 7px !important;
+  padding: 2px 9px !important;
+  margin: 0 2px;
+  transition: filter 0.35s var(--apple-spring), background-color 0.35s var(--apple-ease), transform 0.25s var(--apple-spring) !important;
+}
+
+.blur-answer.revealed {
+  filter: blur(0);
+  background: rgba(14, 165, 233, 0.18) !important;
+  border-color: rgba(56, 189, 248, 0.42);
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.18);
+}
+
+.apple-pill {
+  background: rgba(255, 255, 255, 0.055);
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 9999px;
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(16px);
+}
+
+.apple-segmented {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 4px;
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+#spotlight-modal {
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  transition: opacity 0.25s var(--apple-ease);
+}
+</style>
+
 </head>
 <body class="text-slate-100 font-sans min-h-screen flex flex-col">
 
@@ -215,9 +406,18 @@ nav, nav > div { max-width: 100% !important; }
                     <p class="text-xs text-slate-400">WCH12 · Unit 2 · Paper 2 · Spec 6.1–6.11 — Enthalpy, Calorimetry, Hess's Law &amp; Bond Enthalpy</p>
                 </div>
             </div>
-            <div class="flex items-center gap-2">
-                <span class="px-2.5 py-1 text-xs font-semibold rounded-full bg-sky-950 text-sky-300 border border-sky-800">Edexcel Spec 6.1 – 6.11</span>
-                <span class="px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-950 text-emerald-300 border border-emerald-800">Core Practical 2</span>
+            <div class="flex flex-wrap items-center gap-2">
+                <span class="hidden lg:inline-block px-2.5 py-1 text-xs font-semibold rounded-full apple-pill text-sky-300">Edexcel Spec 6.1 – 6.11</span>
+                <span class="hidden sm:inline-block px-2.5 py-1 text-xs font-semibold rounded-full apple-pill text-emerald-300">Core Practical 2</span>
+                <button type="button" onclick="openSpotlight()" class="flex items-center gap-2 px-3 py-1.5 rounded-full apple-pill text-slate-200 hover:text-sky-300 text-xs font-medium" title="Quick Search & Concept Jump (⌘K)">
+                    <svg class="w-3.5 h-3.5 text-sky-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                    <span>Quick Search</span>
+                    <kbd class="px-1.5 py-0.5 text-[9px] font-mono bg-slate-950/80 text-slate-400 rounded border border-slate-700/80">⌘K</kbd>
+                </button>
+                <button type="button" onclick="switchTab('solver');switchSolver('sim');" class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-sky-500/15 border border-sky-500/35 text-sky-300 hover:bg-sky-500/25 text-xs font-semibold">
+                    <span class="w-2 h-2 rounded-full bg-sky-400 animate-pulse"></span>
+                    <span>Mastery: <strong id="mastery-percentage" class="font-mono text-sky-200">0%</strong></span>
+                </button>
             </div>
         </div>
     </header>
@@ -490,6 +690,84 @@ nav, nav > div { max-width: 100% !important; }
                     <div class="p-3 bg-slate-950 border border-slate-800 rounded-lg"><span class="text-sky-300 font-bold block mb-1">Practicals iii–iv</span><span class="text-slate-400">Zn + CuSO₄(aq) displacement; hydration of anhydrous CuSO₄.</span></div>
                 </div>
             </div>
+
+            <!-- NEW: INTERACTIVE SPEC 6.1-6.3 ENTHALPY LEVEL & TERMINOLOGY CONCEPT STUDIO -->
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 space-y-5">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-slate-800 pb-4">
+                    <div>
+                        <span class="text-xs font-bold text-sky-400 uppercase tracking-widest">Interactive Concept Lab · Spec 6.1–6.4 &amp; Examiner Reports (2020–2026)</span>
+                        <h3 class="text-lg font-bold text-white mt-1">Interactive Enthalpy Level Builder, H₂O(l) vs H₂O(g) State-Symbol Comparator &amp; Spec Self-Audit</h3>
+                        <p class="text-xs text-slate-400 mt-0.5">Directly targets WCH12 pitfalls on enthalpy level diagrams vs reaction profiles, liquid vs gaseous water enthalpies, and "more/less exothermic" comparative phrasing.</p>
+                    </div>
+                    <div class="apple-segmented">
+                        <button type="button" onclick="switchSyl6Lab('diagram')" id="s6-btn-diagram" class="px-3 py-1.5 text-xs font-semibold rounded-lg bg-sky-500/20 text-sky-300 border border-sky-500/40">1. Enthalpy Level Lab</button>
+                        <button type="button" onclick="switchSyl6Lab('phrasing')" id="s6-btn-phrasing" class="px-3 py-1.5 text-xs font-semibold rounded-lg text-slate-400 hover:text-white border border-transparent">2. Examiner Phrasing Check</button>
+                        <button type="button" onclick="switchSyl6Lab('audit')" id="s6-btn-audit" class="px-3 py-1.5 text-xs font-semibold rounded-lg text-slate-400 hover:text-white border border-transparent">3. Spec 6.1–6.11 Self-Audit</button>
+                    </div>
+                </div>
+
+                <!-- Sub-panel 1: Interactive Enthalpy Level & H2O(l) vs H2O(g) Visualizer -->
+                <div id="s6-panel-diagram" class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-center">
+                    <div class="lg:col-span-7 bg-slate-950 border border-slate-800 rounded-xl p-4 space-y-3">
+                        <div class="flex flex-wrap items-center justify-between gap-2">
+                            <span class="text-xs font-mono font-bold text-sky-300" id="el-diagram-title">Scenario: CH₄ Combustion — H₂O(l) vs H₂O(g)</span>
+                            <div class="flex flex-wrap gap-1.5">
+                                <button type="button" onclick="setEnthalpyDiag('ch4_states')" id="eld-ch4_states" class="px-2.5 py-1 text-[11px] font-semibold rounded bg-sky-600 text-white">CH₄: H₂O(l) vs H₂O(g)</button>
+                                <button type="button" onclick="setEnthalpyDiag('nh3_moles')" id="eld-nh3_moles" class="px-2.5 py-1 text-[11px] font-semibold rounded bg-slate-800 text-slate-300">2NH₃ vs 1NH₃ Stoichiometry</button>
+                                <button type="button" onclick="setEnthalpyDiag('caco3_endo')" id="eld-caco3_endo" class="px-2.5 py-1 text-[11px] font-semibold rounded bg-slate-800 text-slate-300">CaCO₃ Decomposition (+178)</button>
+                                <button type="button" onclick="setEnthalpyDiag('hump_trap')" id="eld-hump_trap" class="px-2.5 py-1 text-[11px] font-semibold rounded bg-rose-950 text-rose-300 border border-rose-800">⚠️ Ea Hump Trap</button>
+                            </div>
+                        </div>
+                        <div id="el-diagram-svg" class="w-full flex justify-center"></div>
+                        <p id="el-diagram-caption" class="text-xs text-slate-300 leading-relaxed"></p>
+                    </div>
+
+                    <div class="lg:col-span-5 space-y-3">
+                        <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl space-y-2.5">
+                            <span class="text-xs font-bold text-amber-300 block">⚡ Instant Concept Check (WCH12 Jun 2023):</span>
+                            <p class="text-xs text-slate-300 leading-relaxed">Why is $\Delta_	ext{c}H^\ominus(	ext{CH}_4) = -891	ext{ kJ mol}^{-1}$ when $	ext{H}_2	ext{O(l)}$ is formed, compared with $-803	ext{ kJ mol}^{-1}$ when $	ext{H}_2	ext{O(g)}$ is formed?</p>
+                            <div class="space-y-2">
+                                <button type="button" onclick="checkStateConcept(false)" class="w-full text-left p-2.5 rounded-lg border border-slate-800 bg-slate-900 text-[11px] text-slate-300">
+                                    <b>A.</b> Because breaking O–H bonds in liquid water is endothermic.
+                                </button>
+                                <button type="button" onclick="checkStateConcept(true)" class="w-full text-left p-2.5 rounded-lg border border-slate-800 bg-slate-900 text-[11px] text-slate-300">
+                                    <b>B.</b> Because condensation $	ext{H}_2	ext{O(g)} ightarrow 	ext{H}_2	ext{O(l)}$ is exothermic ($\Delta_	ext{cond}H = -44	ext{ kJ mol}^{-1}$ per mole of $	ext{H}_2	ext{O}$), releasing an extra $2 	imes 44 = 88	ext{ kJ mol}^{-1}$.
+                                </button>
+                            </div>
+                            <div id="state-concept-fb" class="hidden p-2.5 rounded-lg text-[11px] leading-relaxed"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sub-panel 2: Examiner Phrasing & Comparative Sign Check -->
+                <div id="s6-panel-phrasing" class="hidden grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl space-y-2.5">
+                        <span class="text-xs font-bold text-rose-300 uppercase">❌ Ambiguous Phrasing Penalised in WCH12 (PEF Oct 2020 / Jan 2024)</span>
+                        <ul class="text-xs text-slate-300 space-y-2 list-disc list-inside leading-relaxed">
+                            <li><b>"ΔH is bigger / smaller / higher / lower":</b> Mathematically, $-54$ is greater than $-196$, whereas in magnitude $196 &gt; 54$. Examiners reject "bigger/smaller" as ambiguous!</li>
+                            <li><b>"Energy is required for neutralisation":</b> Neutralisation is always exothermic ($\Delta_	ext{neut}H &lt; 0$); saying "energy required" implies an endothermic process.</li>
+                            <li><b>"Heat loss makes ΔH more positive":</b> For an exothermic reaction, heat loss makes the experimental $\Delta H$ <b>less exothermic (less negative / smaller in magnitude)</b>, never positive!</li>
+                        </ul>
+                    </div>
+                    <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl space-y-2.5">
+                        <span class="text-xs font-bold text-emerald-300 uppercase">✅ Full-Mark Examiner Phrasing</span>
+                        <ul class="text-xs text-slate-300 space-y-2 list-disc list-inside leading-relaxed">
+                            <li>Always write <b>"more exothermic (more negative)"</b> or <b>"less exothermic (less negative)"</b> for negative $\Delta H$ values.</li>
+                            <li>Always write <b>"more endothermic (more positive)"</b> or <b>"less endothermic (less positive)"</b> for positive $\Delta H$ values.</li>
+                            <li>For yield scaling (PEF Jun 2019): if a reaction has a $64\%$ yield and you need to produce $Q	ext{ kJ}$ of heat or $n	ext{ mol}$ of product, you need <b>more reactant</b> — divide by $0.64$ ($	imes rac{100}{64}$), do NOT multiply by $0.64$!</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Sub-panel 3: Spec 6.1-6.11 Self-Audit -->
+                <div id="s6-panel-audit" class="hidden space-y-3">
+                    <div class="flex flex-wrap items-center justify-between gap-2">
+                        <p class="text-xs text-slate-300">Tick each Edexcel IAL Topic 6 competency as you master it. Your header Mastery % updates live.</p>
+                        <button type="button" onclick="toggleAllSpec6(true)" class="px-3 py-1 text-xs font-semibold rounded-lg bg-sky-500/20 text-sky-300 border border-sky-500/30">Check All</button>
+                    </div>
+                    <div id="spec6-audit-grid" class="grid grid-cols-1 md:grid-cols-2 gap-2.5"></div>
+                </div>
+            </div>
         </section>
 
         <!-- ============================================================ -->
@@ -509,6 +787,7 @@ nav, nav > div { max-width: 100% !important; }
                     <button onclick="switchMode('c1','map')" id="c1-mode-btn-map" class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 text-xs">🗺️ Module 2: Definition → Equation</button>
                     <button onclick="switchMode('c1','quiz')" id="c1-mode-btn-quiz" class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 text-xs">🎯 Module 3: Blanks</button>
                     <button onclick="switchMode('c1','traps')" id="c1-mode-btn-traps" class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 text-xs">⚡ Module 4: Traps</button>
+                    <button onclick="switchMode('c1','sim')" id="c1-mode-btn-sim" class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-sky-300 text-xs">🧪 Module 5: Mass &amp; Weak-Acid Lab</button>
                 </div>
 
                 <!-- MODULE 1: INSPECTOR -->
@@ -705,6 +984,35 @@ nav, nav > div { max-width: 100% !important; }
                         </div>
                     </div>
                 </div>
+
+                <!-- MODULE 5: INTERACTIVE MASS m, LIMITING n & WEAK-ACID NEUTRALISATION LAB -->
+                <div id="c1-mode-sim" class="hidden p-5 bg-slate-950 border border-slate-800 rounded-xl space-y-5 text-xs">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 border-b border-slate-800 pb-3">
+                        <div>
+                            <span class="font-bold text-sky-300 uppercase">🧪 Interactive q = mcΔT Mass &amp; Limiting-Mole Inspector + Weak vs Strong Acid Comparator</span>
+                            <p class="text-slate-400 text-[11px] mt-0.5">PEF Oct 2020, Jan 2024 &amp; Oct 2024: The #1 mark loss in calorimetry is picking the wrong mass $m$ in $q = mc\Delta T$ or the wrong moles $n$ in $\Delta H = -q/n$. Test each experimental setup below!</p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+                        <div class="p-4 bg-slate-900 border border-slate-800 rounded-xl space-y-3">
+                            <span class="font-bold text-white block">1. Which mass $m$ and moles $n$ should you use? (Click a WCH12 Scenario)</span>
+                            <div class="flex flex-wrap gap-1.5" id="qmc-scen-btns"></div>
+                            <div id="qmc-scen-out" class="p-3.5 bg-slate-950 border border-slate-800 rounded-lg space-y-2 text-[11px] leading-relaxed"></div>
+                        </div>
+                        <div class="p-4 bg-slate-900 border border-slate-800 rounded-xl space-y-3">
+                            <span class="font-bold text-emerald-300 block">2. Strong vs Weak Acid $\Delta_	ext{neut}H^\ominus$ Explorer (Spec 6.4 iv)</span>
+                            <p class="text-slate-400 text-[11px]">Compare $\Delta_	ext{neut}H^\ominus$ per mole of $	ext{H}_2	ext{O(l)}$ formed when dilute $	ext{NaOH(aq)}$ neutralises different acids:</p>
+                            <select id="neut-acid-sel" onchange="showNeutAcid()" class="w-full text-xs text-sky-300 font-mono">
+                                <option value="0">HCl(aq) + NaOH(aq)  [Strong monoprotic · −57.1 kJ mol⁻¹]</option>
+                                <option value="1">½H₂SO₄(aq) + NaOH(aq)  [Strong diprotic · −57.1 kJ mol⁻¹ per mol H₂O]</option>
+                                <option value="2">CH₃COOH(aq) + NaOH(aq)  [Weak acid · −55.2 kJ mol⁻¹]</option>
+                                <option value="3">HCN(aq) + NaOH(aq)  [Very weak acid · −11.7 kJ mol⁻¹]</option>
+                                <option value="4">HF(aq) + NaOH(aq)  [Weak acid exception · −68.6 kJ mol⁻¹]</option>
+                            </select>
+                            <div id="neut-acid-out" class="p-3.5 bg-slate-950 border border-slate-800 rounded-lg space-y-1.5 text-[11px] leading-relaxed"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -725,6 +1033,7 @@ nav, nav > div { max-width: 100% !important; }
                     <button onclick="switchMode('c2','map')" id="c2-mode-btn-map" class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 text-xs">🗺️ Module 2: Cycle Visualiser</button>
                     <button onclick="switchMode('c2','quiz')" id="c2-mode-btn-quiz" class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 text-xs">🎯 Module 3: Blanks</button>
                     <button onclick="switchMode('c2','traps')" id="c2-mode-btn-traps" class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 text-xs">⚡ Module 4: Traps</button>
+                    <button onclick="switchMode('c2','sim')" id="c2-mode-btn-sim" class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-emerald-300 text-xs">🩺 Module 5: Hess Arrow &amp; Sign Doctor</button>
                 </div>
 
                 <!-- MODULE 1: INSPECTOR -->
@@ -815,6 +1124,7 @@ nav, nav > div { max-width: 100% !important; }
                             <option value="form">Formation route — combustion of CH₄</option>
                             <option value="comb">Combustion route — formation of CH₄</option>
                             <option value="cp2">Core Practical 2 — decomposition of CaCO₃</option>
+                            <option value="khco3">Core Practical 2 — 2KHCO₃(s) → K₂CO₃(s) + CO₂(g) + H₂O(l) (2× multiplier!)</option>
                             <option value="cuso4">Hess application — hydration of anhydrous CuSO₄</option>
                         </select>
                         <button onclick="renderCycle()" class="px-4 py-2 bg-emerald-700 hover:bg-emerald-600 rounded-lg font-bold text-white">Draw the cycle</button>
@@ -896,6 +1206,19 @@ nav, nav > div { max-width: 100% !important; }
                         </div>
                     </div>
                 </div>
+
+                <!-- MODULE 5: HESS CYCLE ARROW & SIGN DOCTOR -->
+                <div id="c2-mode-sim" class="hidden p-5 bg-slate-950 border border-slate-800 rounded-xl space-y-4 text-xs">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 border-b border-slate-800 pb-3">
+                        <div>
+                            <span class="font-bold text-emerald-300 uppercase">🩺 Hess Cycle Arrow &amp; Sign Doctor — Diagnose Real WCH12 / WCH13 Candidate Scripts</span>
+                            <p class="text-slate-400 text-[11px] mt-0.5">Examiner reports (Jan 2022, Jan 2023, Jun 2024) show that candidates lose marks by pointing cycle arrows the wrong way, omitting stoichiometric multipliers (like $2	imes	ext{KHCO}_3$), or getting a negative $\Delta H$ for thermal decomposition.</p>
+                        </div>
+                        <span id="hess-doc-score" class="px-3 py-1 rounded-full apple-pill text-xs font-mono text-emerald-300">Diagnosed: 0 / 5</span>
+                    </div>
+                    <div class="flex flex-wrap gap-1.5" id="hess-doc-btns"></div>
+                    <div id="hess-doc-view" class="p-4 bg-slate-900 border border-slate-800 rounded-xl space-y-3"></div>
+                </div>
             </div>
         </section>
 
@@ -916,6 +1239,7 @@ nav, nav > div { max-width: 100% !important; }
                     <button onclick="switchMode('c3','map')" id="c3-mode-btn-map" class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 text-xs">🗺️ Module 2: Bond Accountant</button>
                     <button onclick="switchMode('c3','quiz')" id="c3-mode-btn-quiz" class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 text-xs">🎯 Module 3: Blanks</button>
                     <button onclick="switchMode('c3','traps')" id="c3-mode-btn-traps" class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 text-xs">⚡ Module 4: Traps</button>
+                    <button onclick="switchMode('c3','sim')" id="c3-mode-btn-sim" class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-violet-300 text-xs">🧪 Module 5: Unknown Bond &amp; C–X Rate Lab</button>
                 </div>
 
                 <!-- MODULE 1: INSPECTOR -->
@@ -1068,6 +1392,35 @@ nav, nav > div { max-width: 100% !important; }
                         </div>
                     </div>
                 </div>
+
+                <!-- MODULE 5: UNKNOWN BOND ENTHALPY (SPEC 6.10) & C-X REACTIVITY (SPEC 6.11) -->
+                <div id="c3-mode-sim" class="hidden p-5 bg-slate-950 border border-slate-800 rounded-xl space-y-5 text-xs">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+                        <div class="p-4 bg-slate-900 border border-slate-800 rounded-xl space-y-3">
+                            <span class="font-bold text-violet-300 block">1. Spec 6.10 — Find an Unknown Mean Bond Enthalpy</span>
+                            <p class="text-slate-400 text-[11px]">Rearrange $\Delta_	ext{r}H = \sum E(	ext{broken}) - \sum E(	ext{formed})$ to solve for a single unknown bond enthalpy $E(	ext{X–Y})$:</p>
+                            <select id="unk-bond-sel" onchange="showUnkBond()" class="w-full text-xs text-violet-300 font-mono">
+                                <option value="0">Find E(N–F) in ½N₂(g) + 3⁄2 F₂(g) → NF₃(g) [ΔfH = −125]</option>
+                                <option value="1">Find E(C–C) in C₂H₆(g) from ΔfH and ΔatH [Classic WCH12]</option>
+                                <option value="2">Find E(S–F) in S(s) + 3F₂(g) → SF₆(g) [ΔfH = −1209]</option>
+                                <option value="3">Find E(O–O) in H₂O₂(g) → H₂O(g) + ½O₂(g) [ΔrH = −106]</option>
+                            </select>
+                            <div id="unk-bond-out" class="p-3.5 bg-slate-950 border border-slate-800 rounded-lg font-mono text-[11px] space-y-1.5 text-slate-300"></div>
+                        </div>
+
+                        <div class="p-4 bg-slate-900 border border-slate-800 rounded-xl space-y-3">
+                            <span class="font-bold text-amber-300 block">2. Spec 6.11 — Bond Enthalpy vs Bond Polarity in R–X Hydrolysis</span>
+                            <p class="text-slate-400 text-[11px]">Click a halogenoalkane to compare its C–X bond enthalpy, bond polarity, and time for $	ext{AgX(s)}$ precipitate formation with aqueous $	ext{AgNO}_3$ in ethanol at $50^\circ	ext{C}$:</p>
+                            <div class="flex flex-wrap gap-1.5" id="cx-rate-btns">
+                                <button type="button" onclick="showCxRate(0)" class="px-3 py-1.5 rounded-lg bg-violet-950/60 border border-violet-700 text-violet-300 font-mono text-[11px]">1-chlorobutane (C–Cl)</button>
+                                <button type="button" onclick="showCxRate(1)" class="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-700 text-slate-300 font-mono text-[11px]">1-bromobutane (C–Br)</button>
+                                <button type="button" onclick="showCxRate(2)" class="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-700 text-slate-300 font-mono text-[11px]">1-iodobutane (C–I)</button>
+                                <button type="button" onclick="showCxRate(3)" class="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-700 text-slate-300 font-mono text-[11px]">1-fluorobutane (C–F)</button>
+                            </div>
+                            <div id="cx-rate-out" class="p-3.5 bg-slate-950 border border-slate-800 rounded-lg text-[11px] space-y-1.5 text-slate-300 leading-relaxed"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -1120,6 +1473,42 @@ nav, nav > div { max-width: 100% !important; }
                     </div>
                     <div id="clinic-out" class="text-[11px] text-slate-400 p-3 bg-slate-900 rounded-lg border border-slate-800">Diagnosis appears here.</div>
                 </div>
+
+                <!-- Instrument 4: WCH13 Percentage Uncertainty Calculator (x2 Readings Rule) -->
+                <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+                    <div class="flex flex-wrap items-center justify-between gap-2">
+                        <div>
+                            <span class="font-bold text-emerald-300 text-sm">⚖️ Instrument 4 — WCH13 Percentage Uncertainty Calculator (The ×2 Readings Rule)</span>
+                            <p class="text-slate-400 text-[11px] mt-0.5">In WCH13 practical papers, thermometer $\Delta T$ ($T_{	ext{final}} - T_{	ext{initial}}$) and balance weighing-by-difference ($m_{	ext{before}} - m_{	ext{after}}$) involve <b>TWO readings</b>, so the apparatus uncertainty is <b>doubled ($	imes 2$)</b>! A measuring cylinder or pipette volume uses <b>ONE reading ($	imes 1$)</b>.</p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                        <div class="p-3.5 bg-slate-900 border border-slate-800 rounded-xl space-y-2">
+                            <span class="font-bold text-sky-300 block">1. Thermometer ΔT (2 readings, ×2)</span>
+                            <div class="grid grid-cols-2 gap-2">
+                                <label class="space-y-1"><span class="text-slate-400 text-[10px] block">± Resolution (°C)</span><input id="unc-t-res" type="number" value="0.5" step="0.1" oninput="calcUncertainties()" class="w-full font-mono text-xs text-sky-300"/></label>
+                                <label class="space-y-1"><span class="text-slate-400 text-[10px] block">Measured |ΔT| (°C)</span><input id="unc-t-val" type="number" value="6.5" step="0.5" oninput="calcUncertainties()" class="w-full font-mono text-xs text-sky-300"/></label>
+                            </div>
+                            <div id="unc-t-out" class="p-2 bg-slate-950 rounded border border-slate-800 font-mono text-[11px] text-slate-300"></div>
+                        </div>
+                        <div class="p-3.5 bg-slate-900 border border-slate-800 rounded-xl space-y-2">
+                            <span class="font-bold text-amber-300 block">2. Balance by Difference (2 readings, ×2)</span>
+                            <div class="grid grid-cols-2 gap-2">
+                                <label class="space-y-1"><span class="text-slate-400 text-[10px] block">± Resolution (g)</span><input id="unc-m-res" type="number" value="0.005" step="0.001" oninput="calcUncertainties()" class="w-full font-mono text-xs text-amber-300"/></label>
+                                <label class="space-y-1"><span class="text-slate-400 text-[10px] block">Mass transferred (g)</span><input id="unc-m-val" type="number" value="2.50" step="0.1" oninput="calcUncertainties()" class="w-full font-mono text-xs text-amber-300"/></label>
+                            </div>
+                            <div id="unc-m-out" class="p-2 bg-slate-950 rounded border border-slate-800 font-mono text-[11px] text-slate-300"></div>
+                        </div>
+                        <div class="p-3.5 bg-slate-900 border border-slate-800 rounded-xl space-y-2">
+                            <span class="font-bold text-emerald-300 block">3. Measuring Cylinder Vol (1 reading, ×1)</span>
+                            <div class="grid grid-cols-2 gap-2">
+                                <label class="space-y-1"><span class="text-slate-400 text-[10px] block">± Uncertainty (cm³)</span><input id="unc-v-res" type="number" value="0.5" step="0.1" oninput="calcUncertainties()" class="w-full font-mono text-xs text-emerald-300"/></label>
+                                <label class="space-y-1"><span class="text-slate-400 text-[10px] block">Volume measured (cm³)</span><input id="unc-v-val" type="number" value="50.0" step="5.0" oninput="calcUncertainties()" class="w-full font-mono text-xs text-emerald-300"/></label>
+                            </div>
+                            <div id="unc-v-out" class="p-2 bg-slate-950 rounded border border-slate-800 font-mono text-[11px] text-slate-300"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -1139,6 +1528,7 @@ nav, nav > div { max-width: 100% !important; }
                     <button onclick="switchSolver('cal')" id="solver-btn-cal" class="px-3.5 py-1.5 rounded-lg bg-rose-600 text-white font-bold text-xs">🌡️ Calorimetry</button>
                     <button onclick="switchSolver('hess')" id="solver-btn-hess" class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 text-xs">🔄 Hess (ΔfH / ΔcH)</button>
                     <button onclick="switchSolver('bond')" id="solver-btn-bond" class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 text-xs">⚡ Bond enthalpy</button>
+                    <button onclick="switchSolver('sim')" id="solver-btn-sim" class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-sky-300 text-xs">🎓 10-Q WCH12/13 Exam Simulator</button>
                 </div>
 
                 <!-- Solver 1: calorimetry -->
@@ -1212,6 +1602,22 @@ nav, nav > div { max-width: 100% !important; }
                     <button onclick="solveBond()" class="px-4 py-2 bg-rose-700 hover:bg-rose-600 rounded-lg font-bold text-white">Solve</button>
                     <div id="sv-bond-out" class="text-[11px] font-mono text-slate-400 p-3 bg-slate-950 rounded-lg border border-slate-800 whitespace-pre-wrap">Solution appears here.</div>
                 </div>
+
+                <!-- Solver 4: 10-Question WCH12/WCH13 Past-Paper Concept & Calculation Simulator -->
+                <div id="solver-sim" class="hidden space-y-4 text-xs">
+                    <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 pb-3">
+                        <div>
+                            <span class="text-xs font-bold text-sky-400 uppercase">WCH12 &amp; WCH13 Past-Paper Concept Diagnostic (2020–2026 Series)</span>
+                            <p class="text-slate-400 text-[11px] mt-0.5">Test your mastery across all 11 specification points with real Edexcel distractors and instant mark-scheme explanations.</p>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span id="t6-sim-score" class="px-3 py-1 rounded-full apple-pill text-xs font-mono text-sky-300">Score: 0 / 10</span>
+                            <button type="button" onclick="resetT6Sim()" class="px-2.5 py-1 text-[10px] font-semibold rounded-lg bg-slate-800 text-slate-300 border border-slate-700">Reset</button>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-1.5" id="t6-sim-pills"></div>
+                    <div id="t6-sim-box" class="p-4 bg-slate-950 border border-slate-800 rounded-xl space-y-3"></div>
+                </div>
             </div>
         </section>
 
@@ -1284,6 +1690,8 @@ nav, nav > div { max-width: 100% !important; }
                     <a href="#rev-formulae" class="px-3 py-1 bg-amber-950 text-amber-300 border border-amber-800 rounded-full">Formulae &amp; cycles</a>
                     <a href="#rev-prac" class="px-3 py-1 bg-violet-950 text-violet-300 border border-violet-800 rounded-full">Practicals</a>
                     <a href="#rev-traps" class="px-3 py-1 bg-rose-950 text-rose-300 border border-rose-800 rounded-full">Master trap checklist</a>
+                    <a href="#rev-pef-2026" class="px-3 py-1 bg-emerald-950 text-emerald-300 border border-emerald-800 rounded-full">2021–2026 Examiner Deep-Dive</a>
+                    <a href="#rev-flashcards" class="px-3 py-1 bg-sky-950 text-sky-300 border border-sky-800 rounded-full">Active-Recall Flashcards</a>
                 </div>
 
                 <details open id="rev-defs" class="bg-slate-950 border border-slate-800 rounded-xl">
@@ -1372,9 +1780,50 @@ nav, nav > div { max-width: 100% !important; }
                         <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-slate-300">☐ No Ea hump on enthalpy level diagrams; no "heat loss" without the chain</div>
                     </div>
                 </details>
+
+                <details open id="rev-pef-2026" class="bg-slate-950 border border-slate-800 rounded-xl">
+                    <summary class="p-4 cursor-pointer font-bold text-emerald-300 text-sm flex justify-between items-center"><span>6 · 2021–2026 WCH12 &amp; WCH13 Examiner Report Deep-Dive</span><span class="text-slate-500 text-xs">click to collapse</span></summary>
+                    <div class="px-4 pb-4 overflow-x-auto">
+                        <table class="w-full text-[11px] border border-slate-800">
+                            <tr class="bg-slate-900 text-emerald-300"><th class="p-2 border border-slate-800 text-left">Exam Topic &amp; Series</th><th class="p-2 border border-slate-800 text-left">Common Candidate Error</th><th class="p-2 border border-slate-800 text-left">Full-Mark Edexcel WCH12 / WCH13 Phrasing</th></tr>
+                            <tr><td class="p-2 border border-slate-800 font-semibold text-white">q = mcΔT Mass Selection (Jan 2024, Oct 2024)</td><td class="p-2 border border-slate-800 text-rose-300">Adding solid mass (e.g. 107.56 g) or using only one solution's volume (25 g instead of 50 g)</td><td class="p-2 border border-slate-800 text-slate-300">Use the total volume/mass of the <b>aqueous solution</b> heated ($50	ext{ g}$ when $25	ext{ cm}^3 + 25	ext{ cm}^3$ are mixed; $100	ext{ g}$ of water when a solid dissolves in $100	ext{ cm}^3$ water). Do NOT add $273$ to $\Delta T$.</td></tr>
+                            <tr><td class="p-2 border border-slate-800 font-semibold text-white">2KHCO₃ Decomposition Cycle (WCH13 Oct 2023 / Oct 2025)</td><td class="p-2 border border-slate-800 text-rose-300">Writing $\Delta H_1 = \Delta H_2 - \Delta H_3$ without doubling $\Delta H_2$</td><td class="p-2 border border-slate-800 text-slate-300">For $2	ext{KHCO}_3	ext{(s)} ightarrow 	ext{K}_2	ext{CO}_3	ext{(s)} + 	ext{CO}_2	ext{(g)} + 	ext{H}_2	ext{O(l)}$, two moles of $	ext{KHCO}_3$ react with $	ext{HCl}$, so $\mathbf{\Delta H_1 = 2\Delta H_2 - \Delta H_3}$ (must be positive/endothermic!).</td></tr>
+                            <tr><td class="p-2 border border-slate-800 font-semibold text-white">Octane / Alcohol Combustion vs Bond Enthalpy (Jun 2023)</td><td class="p-2 border border-slate-800 text-rose-300">Saying only "mean bond enthalpies are averages" for 2-mark question</td><td class="p-2 border border-slate-800 text-slate-300">State BOTH: (1) bond enthalpies are <b>mean values</b> averaged across different compounds, AND (2) octane/ethanol and $	ext{H}_2	ext{O}$ are <b>liquids</b> under standard conditions, whereas bond enthalpies apply to the <b>gaseous state</b>.</td></tr>
+                            <tr><td class="p-2 border border-slate-800 font-semibold text-white">Weighing Bottle &amp; Thermometer Uncertainty (WCH13 Oct 2023)</td><td class="p-2 border border-slate-800 text-rose-300">Forgetting to multiply thermometer or balance uncertainty by 2</td><td class="p-2 border border-slate-800 text-slate-300">Weighing by difference accounts for solid left in the weighing bottle. Both $\Delta T$ and weighing by difference require <b>two readings</b>, so $\% 	ext{ uncertainty} = rac{2 	imes \pm	ext{resolution}}{	ext{change}} 	imes 100\%$.</td></tr>
+                            <tr><td class="p-2 border border-slate-800 font-semibold text-white">Percentage Yield Scaling in Energetics (Jun 2019)</td><td class="p-2 border border-slate-800 text-rose-300">Multiplying required reactant mass by $0.64$ for a $64\%$ yield</td><td class="p-2 border border-slate-800 text-slate-300">When yield $&lt; 100\%$, <b>more reactant</b> is needed to release a target quantity of heat: scale required moles/mass by $\mathbf{	imes rac{100}{	ext{\% yield}}}$.</td></tr>
+                        </table>
+                    </div>
+                </details>
+
+                <div id="rev-flashcards" class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+                    <div class="flex flex-wrap items-center justify-between gap-2">
+                        <div>
+                            <span class="text-xs font-bold text-sky-400 uppercase tracking-widest">Active Recall Deck</span>
+                            <h3 class="text-sm font-bold text-white mt-0.5">Topic 6 Rapid-Fire Flashcards (Click Card to Flip)</h3>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button type="button" onclick="stepT6Card(-1)" class="px-3 py-1 text-xs font-semibold rounded-lg bg-slate-800 text-slate-200 border border-slate-700">← Prev</button>
+                            <span id="t6-fc-counter" class="text-xs font-mono text-sky-300 px-2">1 / 10</span>
+                            <button type="button" onclick="stepT6Card(1)" class="px-3 py-1 text-xs font-semibold rounded-lg bg-slate-800 text-slate-200 border border-slate-700">Next →</button>
+                        </div>
+                    </div>
+                    <div id="t6-fc-box" onclick="flipT6Card()" class="cursor-pointer p-6 bg-slate-900 border border-slate-800 hover:border-sky-500/40 rounded-2xl min-h-[135px] flex flex-col items-center justify-center text-center select-none"></div>
+                </div>
             </div>
         </section>
     </main>
+
+    <!-- APPLE SPOTLIGHT QUICK COMMAND & CONCEPT SEARCH MODAL -->
+    <div id="spotlight-modal" class="fixed inset-0 z-[960] hidden items-start justify-center pt-16 sm:pt-24 px-4 bg-black/60" onclick="if(event.target===this)closeSpotlight()">
+        <div class="w-full max-w-xl bg-slate-900 border border-slate-700/80 rounded-2xl shadow-2xl overflow-hidden">
+            <div class="flex items-center gap-3 px-4 py-3 border-b border-slate-800">
+                <svg class="w-4 h-4 text-sky-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                <input id="spotlight-input" type="text" oninput="filterSpotlight()" placeholder="Search Spec 6.1–6.11 definitions, Hess cycles, Q=mcΔT, CP2, bond enthalpy..." class="w-full bg-transparent border-0 text-xs sm:text-sm text-white focus:outline-none focus:ring-0" style="border:none!important;box-shadow:none!important;background:transparent!important;padding:2px 0!important"/>
+                <button type="button" onclick="closeSpotlight()" class="px-2 py-1 text-[10px] font-mono bg-slate-800 text-slate-400 rounded">ESC</button>
+            </div>
+            <div id="spotlight-results" class="max-h-80 overflow-y-auto divide-y divide-slate-800/60 p-2 space-y-1"></div>
+        </div>
+    </div>
 
     <footer class="border-t border-slate-800 bg-slate-900/80 py-4 mt-8">
         <div class="max-w-7xl mx-auto px-4 text-center text-[11px] text-slate-500">
@@ -1419,7 +1868,7 @@ nav, nav > div { max-width: 100% !important; }
 
         // ============ Engine mode switching ============
         window.switchMode = function(prefix, mode) {
-            ['explorer','map','quiz','traps'].forEach(m => {
+            ['explorer','map','quiz','traps','sim'].forEach(m => {
                 const el = document.getElementById(prefix + '-mode-' + m);
                 const btn = document.getElementById(prefix + '-mode-btn-' + m);
                 if (el) el.classList.toggle('hidden', m !== mode);
@@ -1558,6 +2007,13 @@ nav, nav > div { max-width: 100% !important; }
                     'ΔH₁ = ?', 'ΔH₂ (measured, ≈ −15)', 'ΔH₃ (measured, ≈ −196)', 'down'
                 ),
                 work: 'Core Practical 2 (both routes use excess dilute HCl):\nΔH₁ = ΔH₂ − ΔH₃\n    = (−15) − (−196)\n    = +181 kJ mol⁻¹  (endothermic — matches literature ≈ +178)\nDirect heating to ~900 °C cannot be measured in a school calorimeter.'
+            },
+            khco3: {
+                svg: cycleSVG(
+                    '2KHCO₃(s)', 'K₂CO₃(s) + CO₂(g) + H₂O(l)', '2KCl(aq) + 2CO₂(g) + 2H₂O(l)',
+                    'ΔH₁ = ?', '2 × ΔH₂ (2 × +28 = +56)', 'ΔH₃ (measured, ≈ −34)', 'down'
+                ),
+                work: 'Core Practical 2 — Thermal decomposition of KHCO₃ (WCH13 Oct 2025):\nTarget: 2KHCO₃(s) → K₂CO₃(s) + CO₂(g) + H₂O(l)\nNote the 2 moles of KHCO₃ on the left!\nΔH₁ = 2·ΔH₂ − ΔH₃ = 2(+28) − (−34) = +56 + 34 = +90 kJ mol⁻¹ (endothermic ✓)'
             },
             cuso4: {
                 svg: cycleSVG(
@@ -1773,7 +2229,7 @@ nav, nav > div { max-width: 100% !important; }
 
         // ============ Solver ============
         window.switchSolver = function(mode) {
-            ['cal','hess','bond'].forEach(m => {
+            ['cal','hess','bond','sim'].forEach(m => {
                 const el = document.getElementById('solver-' + m);
                 const btn = document.getElementById('solver-btn-' + m);
                 if (el) el.classList.toggle('hidden', m !== mode);
@@ -1902,7 +2358,731 @@ nav, nav > div { max-width: 100% !important; }
                     r.querySelector('.b-e').value = frmDefaults[i][2];
                 }
             });
+            const qmcBtns = document.getElementById('qmc-scen-btns');
+            if (qmcBtns) {
+                qmcBtns.innerHTML = QMC_SCENARIOS.map((s, i) => `<button type="button" onclick="showQmcScen(${i})" class="px-2.5 py-1 text-[11px] font-semibold rounded-lg border border-slate-800 bg-slate-950 text-slate-400">${s.name}</button>`).join('');
+                showQmcScen(0);
+            }
+            setEnthalpyDiag('ch4_states');
+            renderSpec6Audit();
+            showNeutAcid();
+            renderHessDoctor();
+            showUnkBond();
+            showCxRate(0);
+            calcUncertainties();
+            renderT6Sim();
+            renderT6Card();
+            updateT6Mastery();
             setTimeout(safeInitKaTeX, 300);
+        });
+
+
+        // ============ NEW INTERACTIVE MODULES (MASTERY, ENTHALPY LEVEL LAB, MASS/ACID LAB, HESS DOCTOR, UNK BOND & C-X LAB, UNCERTAINTY, EXAM SIM, FLASHCARDS, SPOTLIGHT) ============
+        const T6_MASTERY = {
+            specChecked: new Set([0, 1]),
+            hessDocSolved: new Set(),
+            simSolved: new Set(),
+            conceptsChecked: new Set()
+        };
+
+        const SPEC6_AUDIT_ITEMS = [
+            {code:'6.1–6.2', text:'ΔH is heat energy change at constant pressure; standard conditions = 100 kPa and 298 K; exothermic (−), endothermic (+).'},
+            {code:'6.3', text:'Enthalpy level diagrams show reactants and products horizontal lines with a labelled ΔH arrow (no activation-energy hump).'},
+            {code:'6.4 i–iii', text:'Define ΔrH⊖, ΔfH⊖ (1 mol compound from elements in standard states; elements = 0), and ΔcH⊖ (1 mol completely burned in excess O₂).'},
+            {code:'6.4 iv–v', text:'Define ΔneutH⊖ (1 mol H₂O formed from acid + alkali; ≈ −57 kJ mol⁻¹ strong/strong) and ΔatH⊖ (1 mol gaseous atoms; always +ve).'},
+            {code:'6.5', text:'Apply Q = mcΔT (m = mass of aqueous solution, c = 4.18, ΔT in °C without adding 273) and ΔH = −Q/(1000 × n_limiting).'},
+            {code:'6.6', text:'Apply Hess’s Law: Formation route = ΣΔfH(products) − ΣΔfH(reactants); Combustion route = ΣΔcH(reactants) − ΣΔcH(products).'},
+            {code:'6.7', text:'Core Practical 2: Indirect ΔH of decomposition (CaCO₃ → CaO + CO₂ or 2KHCO₃ → K₂CO₃ + CO₂ + H₂O) using excess HCl(aq).'},
+            {code:'6.8', text:'Evaluate calorimetry: heat loss → smaller ΔT → less exothermic ΔH; cooling-curve extrapolation to t_mix; % uncertainty ×2 for ΔT & balance.'},
+            {code:'6.9', text:'Bond enthalpy (gaseous, homolytic, +ve) & mean bond enthalpy: ΔrH = ΣE(bonds broken) − ΣE(bonds formed) and its 2 limitations.'},
+            {code:'6.10–6.11', text:'Rearrange bond-enthalpy cycles to find an unknown bond energy; link C–X bond strength (C–F > C–Cl > C–Br > C–I) to hydrolysis rate.'}
+        ];
+
+        function updateT6Mastery() {
+            const total = T6_MASTERY.specChecked.size + T6_MASTERY.hessDocSolved.size + T6_MASTERY.simSolved.size + T6_MASTERY.conceptsChecked.size;
+            const pct = Math.min(100, Math.round((total / 29) * 100));
+            const el = document.getElementById('mastery-percentage');
+            if (el) el.textContent = pct + '%';
+        }
+
+        window.switchSyl6Lab = function(view) {
+            ['diagram', 'phrasing', 'audit'].forEach(v => {
+                const pan = document.getElementById('s6-panel-' + v);
+                const btn = document.getElementById('s6-btn-' + v);
+                if (pan) pan.classList.toggle('hidden', v !== view);
+                if (btn) {
+                    btn.className = 'px-3 py-1.5 text-xs font-semibold rounded-lg ' +
+                        (v === view ? 'bg-sky-500/20 text-sky-300 border border-sky-500/40' : 'text-slate-400 hover:text-white border border-transparent');
+                }
+            });
+            setTimeout(safeInitKaTeX, 40);
+        };
+
+        window.setEnthalpyDiag = function(mode) {
+            ['ch4_states', 'nh3_moles', 'caco3_endo', 'hump_trap'].forEach(m => {
+                const b = document.getElementById('eld-' + m);
+                if (b) {
+                    if (m === 'hump_trap') {
+                        b.className = 'px-2.5 py-1 text-[11px] font-semibold rounded ' + (m === mode ? 'bg-rose-600 text-white' : 'bg-rose-950 text-rose-300 border border-rose-800');
+                    } else {
+                        b.className = 'px-2.5 py-1 text-[11px] font-semibold rounded ' + (m === mode ? 'bg-sky-600 text-white' : 'bg-slate-800 text-slate-300');
+                    }
+                }
+            });
+            const box = document.getElementById('el-diagram-svg');
+            const title = document.getElementById('el-diagram-title');
+            const cap = document.getElementById('el-diagram-caption');
+            if (!box) return;
+            if (mode === 'ch4_states') {
+                title.textContent = 'Scenario 1: CH₄(g) + 2O₂(g) — Why H₂O(l) sits lower in enthalpy than H₂O(g)';
+                box.innerHTML = `<svg viewBox="0 0 460 185" class="w-full max-w-[440px]">
+                    <line x1="40" y1="15" x2="40" y2="170" stroke="#64748b" stroke-width="1.8"/>
+                    <text x="14" y="95" fill="#94a3b8" font-size="11" font-family="monospace" transform="rotate(-90 14,95)">Enthalpy, H</text>
+                    <!-- Reactants -->
+                    <line x1="65" y1="32" x2="210" y2="32" stroke="#38bdf8" stroke-width="2.5"/>
+                    <text x="137" y="24" text-anchor="middle" fill="#e2e8f0" font-size="11" font-family="monospace">CH₄(g) + 2O₂(g)</text>
+                    <!-- H2O(g) level -->
+                    <line x1="230" y1="115" x2="420" y2="115" stroke="#fbbf24" stroke-width="2.2"/>
+                    <text x="325" y="107" text-anchor="middle" fill="#fde68a" font-size="10.5" font-family="monospace">CO₂(g) + 2H₂O(g)</text>
+                    <!-- H2O(l) level -->
+                    <line x1="230" y1="158" x2="420" y2="158" stroke="#34d399" stroke-width="2.5"/>
+                    <text x="325" y="172" text-anchor="middle" fill="#a7f3d0" font-size="10.5" font-family="monospace">CO₂(g) + 2H₂O(l) [standard]</text>
+                    <!-- Arrows -->
+                    <line x1="175" y1="34" x2="175" y2="155" stroke="#34d399" stroke-width="2"/>
+                    <polygon points="175,158 171,150 179,150" fill="#34d399"/>
+                    <text x="115" y="102" fill="#34d399" font-size="10.5" font-family="monospace" font-weight="bold">ΔcH⊖ = −891</text>
+                    <line x1="255" y1="34" x2="255" y2="112" stroke="#fbbf24" stroke-width="1.8" stroke-dasharray="4,2"/>
+                    <polygon points="255,115 251,107 259,107" fill="#fbbf24"/>
+                    <text x="305" y="75" fill="#fbbf24" font-size="10" font-family="monospace">−803 (gas H₂O)</text>
+                    <line x1="395" y1="117" x2="395" y2="155" stroke="#f87171" stroke-width="1.8"/>
+                    <polygon points="395,158 391,150 399,150" fill="#f87171"/>
+                    <text x="342" y="140" fill="#fca5a5" font-size="9.5" font-family="monospace">2×(−44) = −88</text>
+                </svg>`;
+                cap.innerHTML = 'Under standard conditions (298 K, 100 kPa), water is a <b>liquid, H₂O(l)</b>. Because condensing 2 moles of $\text{H}_2\text{O(g)} \rightarrow 2\text{H}_2\text{O(l)}$ is exothermic ($-88\text{ kJ mol}^{-1}$), the $\text{H}_2\text{O(l)}$ level sits <b>lower</b> than $\text{H}_2\text{O(g)}$.';
+            } else if (mode === 'nh3_moles') {
+                title.textContent = 'Scenario 2: ΔrH⊖ vs ΔfH⊖ for Ammonia (Stoichiometric Multiplier Rule)';
+                box.innerHTML = `<svg viewBox="0 0 460 175" class="w-full max-w-[440px]">
+                    <line x1="40" y1="15" x2="40" y2="160" stroke="#64748b" stroke-width="1.8"/>
+                    <text x="14" y="90" fill="#94a3b8" font-size="11" font-family="monospace" transform="rotate(-90 14,90)">Enthalpy, H</text>
+                    <line x1="65" y1="38" x2="220" y2="38" stroke="#38bdf8" stroke-width="2.5"/>
+                    <text x="142" y="29" text-anchor="middle" fill="#e2e8f0" font-size="11" font-family="monospace">N₂(g) + 3H₂(g) [0]</text>
+                    <line x1="240" y1="92" x2="420" y2="92" stroke="#a78bfa" stroke-width="2"/>
+                    <text x="330" y="84" text-anchor="middle" fill="#ddd6fe" font-size="10.5" font-family="monospace">½N₂ + 3⁄2H₂ → 1 NH₃(g)</text>
+                    <line x1="240" y1="145" x2="420" y2="145" stroke="#34d399" stroke-width="2.5"/>
+                    <text x="330" y="160" text-anchor="middle" fill="#a7f3d0" font-size="11" font-family="monospace">2 NH₃(g)</text>
+                    <line x1="180" y1="40" x2="180" y2="142" stroke="#34d399" stroke-width="2"/>
+                    <polygon points="180,145 176,137 184,137" fill="#34d399"/>
+                    <text x="115" y="100" fill="#34d399" font-size="10.5" font-family="monospace" font-weight="bold">ΔrH⊖ = −92</text>
+                    <line x1="265" y1="40" x2="265" y2="89" stroke="#a78bfa" stroke-width="2"/>
+                    <polygon points="265,92 261,84 269,84" fill="#a78bfa"/>
+                    <text x="335" y="65" fill="#c4b5fd" font-size="10.5" font-family="monospace">ΔfH⊖ = −46 kJ mol⁻¹</text>
+                </svg>`;
+                cap.innerHTML = '<b>Spec 6.4 nuance:</b> $\Delta_\text{f}H^\ominus$ is strictly for forming <b>1 mole</b> of $\text{NH}_3\text{(g)}$ ($-46\text{ kJ mol}^{-1}$), whereas $\Delta_\text{r}H^\ominus$ for $\text{N}_2 + 3\text{H}_2 \rightarrow 2\text{NH}_3$ applies to the molar quantities written ($2 \times -46 = -92\text{ kJ mol}^{-1}$).';
+            } else if (mode === 'caco3_endo') {
+                title.textContent = 'Scenario 3: Endothermic Thermal Decomposition — CaCO₃(s) → CaO(s) + CO₂(g)';
+                box.innerHTML = `<svg viewBox="0 0 460 175" class="w-full max-w-[440px]">
+                    <line x1="40" y1="15" x2="40" y2="160" stroke="#64748b" stroke-width="1.8"/>
+                    <text x="14" y="90" fill="#94a3b8" font-size="11" font-family="monospace" transform="rotate(-90 14,90)">Enthalpy, H</text>
+                    <line x1="65" y1="138" x2="220" y2="138" stroke="#38bdf8" stroke-width="2.5"/>
+                    <text x="142" y="154" text-anchor="middle" fill="#e2e8f0" font-size="11" font-family="monospace">CaCO₃(s)</text>
+                    <line x1="240" y1="42" x2="420" y2="42" stroke="#34d399" stroke-width="2.5"/>
+                    <text x="330" y="32" text-anchor="middle" fill="#a7f3d0" font-size="11" font-family="monospace">CaO(s) + CO₂(g)</text>
+                    <line x1="230" y1="136" x2="230" y2="45" stroke="#fbbf24" stroke-width="2.2"/>
+                    <polygon points="230,42 226,50 234,50" fill="#fbbf24"/>
+                    <text x="315" y="95" fill="#fde68a" font-size="11" font-family="monospace" font-weight="bold">ΔrH⊖ = +178 kJ mol⁻¹</text>
+                </svg>`;
+                cap.innerHTML = '<b>PEF Jun 2019 &amp; Jun 2024R:</b> Thermal decomposition is <b>always endothermic (+ve)</b>. The arrow points <b>UP</b> from reactant level to products level, labelled with the $+$ sign and units.';
+            } else {
+                title.textContent = 'Scenario 4: ⚠️ Examiner Trap — Enthalpy Level Diagram vs Reaction Profile';
+                box.innerHTML = `<svg viewBox="0 0 460 175" class="w-full max-w-[440px]">
+                    <line x1="40" y1="15" x2="40" y2="160" stroke="#64748b" stroke-width="1.8"/>
+                    <line x1="60" y1="80" x2="170" y2="80" stroke="#38bdf8" stroke-width="2.5"/>
+                    <line x1="290" y1="138" x2="410" y2="138" stroke="#34d399" stroke-width="2.5"/>
+                    <path d="M 170 80 Q 230 -15 290 138" fill="none" stroke="#f43f5e" stroke-width="2.2" stroke-dasharray="5,3"/>
+                    <line x1="195" y1="25" x2="265" y2="65" stroke="#f43f5e" stroke-width="3"/>
+                    <line x1="265" y1="25" x2="195" y2="65" stroke="#f43f5e" stroke-width="3"/>
+                    <text x="230" y="18" text-anchor="middle" fill="#fda4af" font-size="10.5" font-family="monospace" font-weight="bold">NO Ea HUMP on Enthalpy Level Diagrams!</text>
+                    <text x="115" y="72" text-anchor="middle" fill="#e2e8f0" font-size="10.5" font-family="monospace">Reactants</text>
+                    <text x="350" y="154" text-anchor="middle" fill="#e2e8f0" font-size="10.5" font-family="monospace">Products</text>
+                </svg>`;
+                cap.innerHTML = '<b>Spec 6.3 vs Topic 9A:</b> If the question asks for an <b>enthalpy level diagram</b>, draw flat horizontal steps and vertical $\Delta H$ arrows ONLY. Drawing an activation-energy ($E_\text{a}$) curve belongs to a <i>reaction profile</i>.';
+            }
+            T6_MASTERY.conceptsChecked.add('el_diag');
+            updateT6Mastery();
+            setTimeout(safeInitKaTeX, 30);
+        };
+
+        window.checkStateConcept = function(isCorrect) {
+            const fb = document.getElementById('state-concept-fb');
+            if (!fb) return;
+            fb.classList.remove('hidden');
+            if (isCorrect) {
+                fb.className = 'p-2.5 rounded-lg text-[11px] leading-relaxed bg-emerald-950/50 border border-emerald-700 text-emerald-200';
+                fb.innerHTML = '<b>✓ Correct (WCH12 Mark Scheme):</b> Condensing gaseous water to liquid water forms intermolecular hydrogen bonds and releases heat ($-44\text{ kJ mol}^{-1}$), so forming $\text{H}_2\text{O(l)}$ is more exothermic than forming $\text{H}_2\text{O(g)}$.';
+                T6_MASTERY.conceptsChecked.add('state_q');
+                updateT6Mastery();
+            } else {
+                fb.className = 'p-2.5 rounded-lg text-[11px] leading-relaxed bg-rose-950/50 border border-rose-700 text-rose-200';
+                fb.innerHTML = '<b>✗ Careful:</b> Going from $\text{H}_2\text{O(g)} \rightarrow \text{H}_2\text{O(l)}$ is condensation (forming intermolecular forces), which is exothermic!';
+            }
+            setTimeout(safeInitKaTeX, 30);
+        };
+
+        function renderSpec6Audit() {
+            const box = document.getElementById('spec6-audit-grid');
+            if (!box) return;
+            box.innerHTML = SPEC6_AUDIT_ITEMS.map((it, idx) => {
+                const on = T6_MASTERY.specChecked.has(idx);
+                return `<button type="button" onclick="toggleSpec6(${idx})" class="text-left p-3 rounded-xl border flex items-start gap-3 ${on ? 'bg-sky-950/40 border-sky-600/70 text-slate-100' : 'bg-slate-950 border-slate-800 text-slate-300'}">
+                    <span class="mt-0.5 w-4 h-4 rounded flex items-center justify-center text-[10px] font-bold shrink-0 ${on ? 'bg-sky-400 text-slate-950' : 'border border-slate-600 text-transparent'}">✓</span>
+                    <span class="text-xs leading-relaxed"><strong class="font-mono text-sky-300 mr-1.5">[Spec ${it.code}]</strong>${it.text}</span>
+                </button>`;
+            }).join('');
+        }
+
+        window.toggleSpec6 = function(idx) {
+            if (T6_MASTERY.specChecked.has(idx)) T6_MASTERY.specChecked.delete(idx);
+            else T6_MASTERY.specChecked.add(idx);
+            renderSpec6Audit();
+            updateT6Mastery();
+        };
+
+        window.toggleAllSpec6 = function(val) {
+            SPEC6_AUDIT_ITEMS.forEach((_, i) => { if (val) T6_MASTERY.specChecked.add(i); else T6_MASTERY.specChecked.delete(i); });
+            renderSpec6Audit();
+            updateT6Mastery();
+        };
+
+        // --- TAB 2 MODULE 5: MASS m, LIMITING n & WEAK ACID LAB ---
+        const QMC_SCENARIOS = [
+            {
+                name:'1. Excess Solid + Solution (Zn + CuSO₄)',
+                exp:'1.20 g of zinc powder (0.0183 mol, excess) added to 50.0 cm³ of 0.200 mol dm⁻³ CuSO₄(aq) (0.0100 mol). ΔT = +9.5 °C.',
+                m:'m = 50.0 g (mass of aqueous solution ONLY — NEVER include the 1.20 g of solid Zn!)',
+                n:'n = 0.0100 mol (moles of limiting CuSO₄, NOT the excess 0.0183 mol of Zn!)',
+                calc:'Q = 50.0 × 4.18 × 9.5 = 1985.5 J = 1.986 kJ ⇒ ΔrH = −1.986 / 0.0100 = −199 kJ mol⁻¹'
+            },
+            {
+                name:'2. Acid + Alkali Mixing (HCl + NaOH)',
+                exp:'25.0 cm³ of 2.00 mol dm⁻³ HCl(aq) mixed with 25.0 cm³ of 2.00 mol dm⁻³ NaOH(aq). ΔT = +13.4 °C.',
+                m:'m = 25.0 + 25.0 = 50.0 g (combined mass of BOTH solutions mixed together — PEF Oct 2020 trap!)',
+                n:'n(H₂O) = 0.0250 × 2.00 = 0.0500 mol of water formed',
+                calc:'Q = 50.0 × 4.18 × 13.4 = 2800.6 J = 2.801 kJ ⇒ ΔneutH = −2.801 / 0.0500 = −56.0 kJ mol⁻¹'
+            },
+            {
+                name:'3. Diprotic Acid Neutralisation (H₂SO₄ + NaOH)',
+                exp:'25.0 cm³ of 1.00 mol dm⁻³ H₂SO₄(aq) mixed with 50.0 cm³ of 1.00 mol dm⁻³ NaOH(aq). ΔT = +9.1 °C.',
+                m:'m = 25.0 + 50.0 = 75.0 g (total aqueous volume after mixing)',
+                n:'n(H₂O) = 0.0500 mol (1 mol H₂SO₄ produces 2 mol H₂O with 2 mol NaOH!)',
+                calc:'Q = 75.0 × 4.18 × 9.1 = 2852.9 J = 2.853 kJ ⇒ ΔneutH = −2.853 / 0.0500 = −57.1 kJ mol⁻¹ per mole of H₂O'
+            },
+            {
+                name:'4. Solid Dissolving in Water (NH₄NO₃ / KHCO₃)',
+                exp:'7.56 g of solid NH₄NO₃ (Mr = 80.0, n = 0.0945 mol) dissolved in 100.0 cm³ of water. Temperature falls by 5.8 °C.',
+                m:'m = 100.0 g (WCH12 Jan 2024 PEF: standard AS assumption uses mass of water = 100 g unless question explicitly specifies solution mass 107.56 g)',
+                n:'n = 7.56 / 80.0 = 0.0945 mol of solid dissolved',
+                calc:'Q = 100.0 × 4.18 × 5.8 = 2424.4 J = 2.424 kJ ⇒ ΔsolH = +2.424 / 0.0945 = +25.7 kJ mol⁻¹ (endothermic +ve!)'
+            },
+            {
+                name:'5. Spirit Burner Combustion (Alcohol Heating Water)',
+                exp:'0.46 g of ethanol (Mr = 46.0, n = 0.0100 mol) burned in a spirit burner underneath a copper can containing 200 g of water. ΔT = +13.5 °C.',
+                m:'m = 200 g (mass of WATER in the calorimeter can — NEVER the 0.46 g mass of ethanol burned!)',
+                n:'n = 0.46 / 46.0 = 0.0100 mol of ethanol burned',
+                calc:'Q = 200 × 4.18 × 13.5 = 11 286 J = 11.29 kJ ⇒ ΔcH = −11.29 / 0.0100 = −1129 kJ mol⁻¹'
+            }
+        ];
+
+        window.showQmcScen = function(idx) {
+            const s = QMC_SCENARIOS[idx];
+            const btns = document.querySelectorAll('#qmc-scen-btns button');
+            btns.forEach((b, i) => {
+                b.className = 'px-2.5 py-1 text-[11px] font-semibold rounded-lg border ' +
+                    (i === idx ? 'bg-sky-950 border-sky-500 text-sky-300' : 'bg-slate-950 border-slate-800 text-slate-400');
+            });
+            const out = document.getElementById('qmc-scen-out');
+            if (out) {
+                out.innerHTML = `<p class="text-white font-semibold">${s.exp}</p>
+                    <p><span class="text-emerald-300 font-bold">✓ Correct mass m:</span> ${s.m}</p>
+                    <p><span class="text-sky-300 font-bold">✓ Correct moles n:</span> ${s.n}</p>
+                    <p class="font-mono text-amber-300 pt-1 border-t border-slate-800">${s.calc}</p>`;
+            }
+            T6_MASTERY.conceptsChecked.add('qmc');
+            updateT6Mastery();
+        };
+
+        const NEUT_ACIDS = [
+            {title:'HCl(aq) + NaOH(aq) → NaCl(aq) + H₂O(l)', dh:'−57.1 kJ mol⁻¹', why:'Both HCl and NaOH are <b>strong electrolytes</b> (100% dissociated in water). The only reaction occurring is $\text{H}^+\text{(aq)} + \text{OH}^-\text{(aq)} \rightarrow \text{H}_2\text{O(l)}$.'},
+            {title:'½H₂SO₄(aq) + NaOH(aq) → ½Na₂SO₄(aq) + H₂O(l)', dh:'−57.1 kJ mol⁻¹ (per mol H₂O)', why:'<b>Examiner Watch-Out:</b> For 1 mole of $\text{H}_2\text{SO}_4$ reacting with $2\text{NaOH}$, $\Delta_\text{r}H = -114.2\text{ kJ mol}^{-1}$ because <b>2 moles of water</b> form! Divide by 2 to get $\Delta_\text{neut}H^\ominus = -57.1\text{ kJ mol}^{-1}$ per mole of water.'},
+            {title:'CH₃COOH(aq) + NaOH(aq) → CH₃COONa(aq) + H₂O(l)', dh:'−55.2 kJ mol⁻¹ (less exothermic)', why:'Ethanoic acid is a <b>weak acid</b> (partially dissociated). Part of the exothermic neutralisation energy is absorbed to break the O–H bond as un-ionised $\text{CH}_3\text{COOH}$ molecules dissociate (endothermic ionisation).'},
+            {title:'HCN(aq) + NaOH(aq) → NaCN(aq) + H₂O(l)', dh:'−11.7 kJ mol⁻¹ (much less exothermic)', why:'HCN is an extremely weak acid; breaking the H–CN bond in solution is strongly endothermic ($+45.4\text{ kJ mol}^{-1}$), leaving only $-11.7\text{ kJ mol}^{-1}$ net heat released.'},
+            {title:'HF(aq) + NaOH(aq) → NaF(aq) + H₂O(l)', dh:'−68.6 kJ mol⁻¹ (more exothermic exception!)', why:'Although HF is a weak acid, the tiny $\text{F}^-$ ion released upon neutralisation has a very high charge density and undergoes strongly exothermic hydration with water molecules.'}
+        ];
+
+        window.showNeutAcid = function() {
+            const idx = +(document.getElementById('neut-acid-sel') ? document.getElementById('neut-acid-sel').value : 0);
+            const a = NEUT_ACIDS[idx];
+            const out = document.getElementById('neut-acid-out');
+            if (out) {
+                out.innerHTML = `<p class="font-mono text-white font-bold">${a.title}</p>
+                    <p class="font-mono text-emerald-300">ΔneutH⊖ = ${a.dh}</p>
+                    <p class="text-slate-300">${a.why}</p>`;
+            }
+            setTimeout(safeInitKaTeX, 30);
+        };
+
+        // --- TAB 3 MODULE 5: HESS CYCLE ARROW & SIGN DOCTOR ---
+        const HESS_DOC_CASES = [
+            {
+                title:'Case 1: 2KHCO₃(s) Thermal Decomposition Cycle (WCH13 Oct 2023 / Oct 2025)',
+                script:'Target: 2KHCO₃(s) → K₂CO₃(s) + CO₂(g) + H₂O(l). Candidate measures ΔH₂ = +28 kJ mol⁻¹ (per mol KHCO₃ with HCl) and ΔH₃ = −34 kJ mol⁻¹ (per mol K₂CO₃ with HCl), then writes ΔH₁ = +28 − (−34) = +62 kJ mol⁻¹.',
+                opts:[
+                    'Full marks — correctly subtracted ΔH₂ − ΔH₃',
+                    'Penalise stoichiometry mark — the top equation has 2 mol KHCO₃, so ΔH₁ = 2(+28) − (−34) = +90 kJ mol⁻¹',
+                    'Penalise sign — thermal decomposition should be −62 kJ mol⁻¹'
+                ],
+                ans:1,
+                exp:'PEF Reminder: ΔH₂ is measured per mole of KHCO₃, but the balanced decomposition equation requires 2 moles of KHCO₃. Always multiply ΔH₂ by 2 → ΔH₁ = 2ΔH₂ − ΔH₃ = +90 kJ mol⁻¹.'
+            },
+            {
+                title:'Case 2: Combustion-Data Hess Cycle Direction (WCH12 Jan 2023)',
+                script:'Given ΔcH⊖ values for C(s), H₂(g), and C₃H₈(g) to find ΔfH⊖[C₃H₈(g)], candidate draws arrows pointing UP from the combustion products 3CO₂ + 4H₂O and uses ΔfH = ΣΔcH(products) − ΣΔcH(reactants) = +104 kJ mol⁻¹.',
+                opts:[
+                    'Penalise cycle arrow direction & subtraction order — combustion arrows point DOWN to 3CO₂ + 4H₂O, so ΔfH = ΣΔcH(reactants) − ΣΔcH(products) = −104 kJ mol⁻¹',
+                    'Full marks — formation of propane is endothermic',
+                    'Penalise because O₂ has a non-zero ΔcH⊖'
+                ],
+                ans:0,
+                exp:'PEF Jan 2023: Combustion arrows go FROM reactants and products DOWN to the common combustion products (CO₂ + H₂O). Following the arrows gives ΔrH = ΣΔcH(reactants) − ΣΔcH(products).'
+            },
+            {
+                title:'Case 3: Bottom Box of a Formation Cycle (WCH12 Jan 2022)',
+                script:'In a cycle to find ΔfH⊖ of ethanol, C₂H₅OH(l), candidate writes the bottom box of elements as "2C(g) + 6H(g) + O(g)".',
+                opts:[
+                    'Full marks — all elements are balanced',
+                    'Penalise state symbols & diatomic molecules — elements in standard states must be 2C(s, graphite) + 3H₂(g) + ½O₂(g)',
+                    'Penalise because ½O₂ is not allowed in Hess cycles'
+                ],
+                ans:1,
+                exp:'PEF Jan 2022: Standard enthalpy of formation starts from elements in their standard states at 298 K and 100 kPa (diatomic H₂(g) and O₂(g), solid C(s)), NOT gaseous atoms!'
+            },
+            {
+                title:'Case 4: Thermal Decomposition Sign Check (WCH12 Jun 2019 / Jun 2024R)',
+                script:'Candidate calculates ΔrH⊖ for MgCO₃(s) → MgO(s) + CO₂(g) from formation data and obtains −117 kJ mol⁻¹, leaving the negative sign as their final answer.',
+                opts:[
+                    'Full marks — some carbonates decompose exothermically',
+                    'Self-check alert: thermal decomposition of a carbonate is ALWAYS endothermic (+ve); −117 kJ mol⁻¹ proves the candidate did reactants − products instead of products − reactants (+117 kJ mol⁻¹)',
+                    'MgCO₃ does not decompose on heating'
+                ],
+                ans:1,
+                exp:'PEF Jun 2019 & Jun 2024R: "Thermal decompositions MUST be positive (endothermic) — a quick chemical sign check immediately catches a reversed subtraction."'
+            },
+            {
+                title:'Case 5: Hydration of Anhydrous CuSO₄ Cycle (WCH13 Practical iv)',
+                script:'To find ΔH₁ for CuSO₄(s) + 5H₂O(l) → CuSO₄·5H₂O(s), candidate measures ΔH₂ = −66 kJ mol⁻¹ (anhydrous CuSO₄ in water) and ΔH₃ = +12 kJ mol⁻¹ (CuSO₄·5H₂O in water), then adds them: −66 + 12 = −54 kJ mol⁻¹.',
+                opts:[
+                    'Penalise route algebra — following the cycle arrows gives ΔH₁ + ΔH₃ = ΔH₂, so ΔH₁ = ΔH₂ − ΔH₃ = −66 − (+12) = −78 kJ mol⁻¹',
+                    'Full marks — you always add the two experimental values',
+                    'Hydration of anhydrous CuSO₄ is endothermic (+78 kJ mol⁻¹)'
+                ],
+                ans:0,
+                exp:'Both solids dissolve to form the same final state CuSO₄(aq). Route 1 (ΔH₂) = Route 2 (ΔH₁ + ΔH₃), so ΔH₁ = ΔH₂ − ΔH₃ = −66 − (+12) = −78 kJ mol⁻¹.'
+            }
+        ];
+
+        let curHessDoc = 0;
+        function renderHessDoctor() {
+            const btns = document.getElementById('hess-doc-btns');
+            if (!btns) return;
+            btns.innerHTML = HESS_DOC_CASES.map((c, i) => {
+                const done = T6_MASTERY.hessDocSolved.has(i);
+                return `<button type="button" onclick="selectHessDoc(${i})" class="px-3 py-1.5 text-[11px] font-semibold rounded-lg border ${i === curHessDoc ? 'border-emerald-500 bg-emerald-950/60 text-emerald-200' : (done ? 'border-emerald-800 bg-emerald-950/25 text-emerald-400' : 'border-slate-800 bg-slate-900 text-slate-400')}">${done ? '✓ ' : ''}Case ${i + 1}</button>`;
+            }).join('');
+            const c = HESS_DOC_CASES[curHessDoc];
+            const view = document.getElementById('hess-doc-view');
+            if (view) {
+                view.innerHTML = `<span class="text-[10px] font-mono uppercase text-emerald-400 font-bold block">${c.title}</span>
+                    <div class="p-3 bg-slate-950 border border-slate-800 rounded-lg font-mono text-slate-200 text-xs leading-relaxed">" ${c.script} "</div>
+                    <div class="space-y-2">
+                        ${c.opts.map((o, oi) => `<button type="button" onclick="gradeHessDoc(${curHessDoc}, ${oi})" class="w-full text-left p-2.5 rounded-lg border border-slate-800 bg-slate-950 hover:border-emerald-500/50 text-xs text-slate-300">${String.fromCharCode(65 + oi)}. ${o}</button>`).join('')}
+                    </div>
+                    <div id="hess-doc-fb" class="hidden p-3 rounded-lg text-xs leading-relaxed"></div>`;
+            }
+            const pill = document.getElementById('hess-doc-score');
+            if (pill) pill.textContent = `Diagnosed: ${T6_MASTERY.hessDocSolved.size} / ${HESS_DOC_CASES.length}`;
+        }
+
+        window.selectHessDoc = function(i) { curHessDoc = i; renderHessDoctor(); };
+        window.gradeHessDoc = function(cIdx, oIdx) {
+            const c = HESS_DOC_CASES[cIdx];
+            const fb = document.getElementById('hess-doc-fb');
+            if (!fb) return;
+            fb.classList.remove('hidden');
+            if (oIdx === c.ans) {
+                T6_MASTERY.hessDocSolved.add(cIdx);
+                updateT6Mastery();
+                const pill = document.getElementById('hess-doc-score');
+                if (pill) pill.textContent = `Diagnosed: ${T6_MASTERY.hessDocSolved.size} / ${HESS_DOC_CASES.length}`;
+                fb.className = 'p-3 rounded-lg text-xs leading-relaxed bg-emerald-950/50 border border-emerald-700 text-emerald-200';
+                fb.innerHTML = `<b>✓ Correct Examiner Verdict:</b> ${c.exp}`;
+            } else {
+                fb.className = 'p-3 rounded-lg text-xs leading-relaxed bg-rose-950/50 border border-rose-700 text-rose-200';
+                fb.innerHTML = `<b>✗ Check the Cycle Arrows &amp; Multipliers:</b> ${c.exp}`;
+            }
+        };
+
+        // --- TAB 4 MODULE 5: UNKNOWN BOND ENTHALPY & C-X REACTIVITY LAB ---
+        const UNK_BOND_CASES = [
+            {
+                eq:'½N₂(g) + 3⁄2 F₂(g) → NF₃(g)   ΔfH⊖ = −125 kJ mol⁻¹',
+                given:'Given: E(N≡N) = 945 kJ mol⁻¹, E(F–F) = 159 kJ mol⁻¹',
+                steps:[
+                    'Step 1 (Bonds Broken): ½ × 945 + 1.5 × 159 = 472.5 + 238.5 = +711.0 kJ mol⁻¹',
+                    'Step 2 (Bonds Formed): 1 mol NF₃ contains 3 × E(N–F) bonds',
+                    'Step 3 (Rearrange): −125 = 711.0 − 3 × E(N–F) ⇒ 3 × E(N–F) = 711.0 + 125 = 836.0',
+                    'Answer: E(N–F) = 836.0 ÷ 3 = +279 kJ mol⁻¹'
+                ]
+            },
+            {
+                eq:'2C(s) + 3H₂(g) → C₂H₆(g)   ΔfH⊖ = −85 kJ mol⁻¹',
+                given:'Given: ΔatH⊖[C(s)] = +715 kJ mol⁻¹, E(H–H) = 436, E(C–H) = 413 kJ mol⁻¹',
+                steps:[
+                    'Step 1 (Atomise reactants to gaseous atoms): 2 × (+715) + 3 × (+436) = 1430 + 1308 = +2738 kJ mol⁻¹',
+                    'Step 2 (Bonds Formed in C₂H₆): 1 × E(C–C) + 6 × E(C–H) = E(C–C) + 6(413) = E(C–C) + 2478',
+                    'Step 3 (Rearrange): −85 = 2738 − [E(C–C) + 2478] ⇒ E(C–C) = 2738 − 2478 + 85',
+                    'Answer: E(C–C) = +345 kJ mol⁻¹ (Note how solid carbon requires ΔatH⊖!)'
+                ]
+            },
+            {
+                eq:'S(s) + 3F₂(g) → SF₆(g)   ΔfH⊖ = −1209 kJ mol⁻¹',
+                given:'Given: ΔatH⊖[S(s)] = +279 kJ mol⁻¹, E(F–F) = 159 kJ mol⁻¹',
+                steps:[
+                    'Step 1 (Energy in to make gaseous atoms): +279 + 3 × 159 = 279 + 477 = +756 kJ mol⁻¹',
+                    'Step 2 (Bonds formed in octahedral SF₆): 6 × E(S–F)',
+                    'Step 3 (Rearrange): −1209 = 756 − 6 × E(S–F) ⇒ 6 × E(S–F) = 756 + 1209 = 1965',
+                    'Answer: E(S–F) = 1965 ÷ 6 = +327.5 ≈ +328 kJ mol⁻¹'
+                ]
+            },
+            {
+                eq:'H₂O₂(g) → H₂O(g) + ½O₂(g)   ΔrH = −106 kJ mol⁻¹',
+                given:'Given: E(O–H) = 464 kJ mol⁻¹, E(O=O) = 498 kJ mol⁻¹',
+                steps:[
+                    'Step 1 (Bonds Broken in H–O–O–H): 2 × E(O–H) + 1 × E(O–O) = 928 + E(O–O)',
+                    'Step 2 (Bonds Formed): 2 × E(O–H) + ½ × E(O=O) = 928 + 249 = 1177 kJ mol⁻¹',
+                    'Step 3 (Rearrange): −106 = [928 + E(O–O)] − 1177 ⇒ E(O–O) = 249 − 106',
+                    'Answer: E(O–O) = +143 kJ mol⁻¹ (Notice the 2 O–H bonds cancel on both sides!)'
+                ]
+            }
+        ];
+
+        window.showUnkBond = function() {
+            const idx = +(document.getElementById('unk-bond-sel') ? document.getElementById('unk-bond-sel').value : 0);
+            const u = UNK_BOND_CASES[idx];
+            const out = document.getElementById('unk-bond-out');
+            if (out) {
+                out.innerHTML = `<p class="text-white font-bold">${u.eq}</p>
+                    <p class="text-violet-300">${u.given}</p>
+                    ${u.steps.map((s, si) => `<p class="${si === u.steps.length - 1 ? 'text-emerald-300 font-bold pt-1 border-t border-slate-800' : 'text-slate-300'}">${s}</p>`).join('')}`;
+            }
+            T6_MASTERY.conceptsChecked.add('unk_bond');
+            updateT6Mastery();
+        };
+
+        const CX_RATES = [
+            {name:'1-chlorobutane (C–Cl)', e:'346 kJ mol⁻¹ (Strong)', pol:'ΔEN = 0.6 (More polar than C–Br/C–I)', obs:'White precipitate of AgCl(s) forms VERY SLOWLY (takes many minutes).', rule:'Even though C–Cl is more polar than C–Br or C–I, the high C–Cl bond enthalpy (346 kJ mol⁻¹) means a large energy barrier to bond breaking.'},
+            {name:'1-bromobutane (C–Br)', e:'290 kJ mol⁻¹ (Medium)', pol:'ΔEN = 0.4 (Moderately polar)', obs:'Cream precipitate of AgBr(s) forms at a MODERATE rate (a few minutes).', rule:'C–Br bond enthalpy (290 kJ mol⁻¹) lies between C–Cl (346) and C–I (228), giving an intermediate rate of hydrolysis.'},
+            {name:'1-iodobutane (C–I)', e:'228 kJ mol⁻¹ (Weakest!)', pol:'ΔEN = 0.1 (Almost non-polar)', obs:'Yellow precipitate of AgI(s) forms ALMOST INSTANTLY!', rule:'<b>Spec 6.11 Core Conclusion:</b> C–I has the lowest bond enthalpy (228 kJ mol⁻¹), so it breaks most easily. This proves <b>bond enthalpy (not bond polarity)</b> controls halogenoalkane hydrolysis rate!'},
+            {name:'1-fluorobutane (C–F)', e:'467 kJ mol⁻¹ (Strongest!)', pol:'ΔEN = 1.5 (Most polar C–X bond)', obs:'No precipitate — unreactive under these conditions.', rule:'The C–F bond (467 kJ mol⁻¹) is stronger than C–C (348 kJ mol⁻¹), making fluoroalkanes chemically inert despite having the largest δ+ on carbon.'}
+        ];
+
+        window.showCxRate = function(idx) {
+            const c = CX_RATES[idx];
+            const btns = document.querySelectorAll('#cx-rate-btns button');
+            btns.forEach((b, i) => {
+                b.className = 'px-3 py-1.5 rounded-lg font-mono text-[11px] border ' +
+                    (i === idx ? 'bg-violet-950/60 border-violet-600 text-violet-300' : 'bg-slate-950 border-slate-700 text-slate-300');
+            });
+            const out = document.getElementById('cx-rate-out');
+            if (out) {
+                out.innerHTML = `<p class="font-bold text-white">${c.name} · Bond Enthalpy = <span class="text-emerald-300 font-mono">${c.e}</span></p>
+                    <p><span class="text-slate-400">Bond polarity:</span> ${c.pol}</p>
+                    <p><span class="text-slate-400">AgNO₃/ethanol observation:</span> <b class="text-amber-300">${c.obs}</b></p>
+                    <p class="text-sky-200">${c.rule}</p>`;
+            }
+        };
+
+        // --- TAB 5 INSTRUMENT 4: WCH13 PERCENTAGE UNCERTAINTY CALCULATOR ---
+        window.calcUncertainties = function() {
+            const tRes = parseFloat(document.getElementById('unc-t-res').value) || 0.5;
+            const tVal = parseFloat(document.getElementById('unc-t-val').value) || 6.5;
+            const tPct = (2 * tRes / Math.abs(tVal)) * 100;
+            const tOut = document.getElementById('unc-t-out');
+            if (tOut) tOut.innerHTML = `% unc = (2 × ${tRes} / ${Math.abs(tVal)}) × 100 = <b class="text-sky-300">${tPct.toFixed(2)}%</b>`;
+
+            const mRes = parseFloat(document.getElementById('unc-m-res').value) || 0.005;
+            const mVal = parseFloat(document.getElementById('unc-m-val').value) || 2.50;
+            const mPct = (2 * mRes / Math.abs(mVal)) * 100;
+            const mOut = document.getElementById('unc-m-out');
+            if (mOut) mOut.innerHTML = `% unc = (2 × ${mRes} / ${Math.abs(mVal)}) × 100 = <b class="text-amber-300">${mPct.toFixed(2)}%</b>`;
+
+            const vRes = parseFloat(document.getElementById('unc-v-res').value) || 0.5;
+            const vVal = parseFloat(document.getElementById('unc-v-val').value) || 50.0;
+            const vPct = (1 * vRes / Math.abs(vVal)) * 100;
+            const vOut = document.getElementById('unc-v-out');
+            if (vOut) vOut.innerHTML = `% unc = (1 × ${vRes} / ${Math.abs(vVal)}) × 100 = <b class="text-emerald-300">${vPct.toFixed(2)}%</b>`;
+        };
+
+        // --- TAB 6 SOLVER 4: 10-QUESTION WCH12/WCH13 EXAM SIMULATOR ---
+        const T6_SIM_QUESTIONS = [
+            {
+                spec:'6.4', series:'WCH12 Jan 2023',
+                q:'Which equation represents the standard enthalpy change of atomisation, ΔatH⊖, of bromine?',
+                opts:[
+                    'Br₂(l) → 2Br(g)',
+                    '½Br₂(l) → Br(g)',
+                    '½Br₂(g) → Br(g)',
+                    'Br₂(g) → 2Br(g)'
+                ],
+                ans:1,
+                exp:'ΔatH⊖ is the formation of 1 mole of gaseous atoms from the element in its standard state at 298 K and 100 kPa. Since bromine is a liquid at 298 K, the equation is ½Br₂(l) → Br(g).'
+            },
+            {
+                spec:'6.5', series:'WCH12 Oct 2024 PEF',
+                q:'50.0 cm³ of 1.00 mol dm⁻³ HCl(aq) is mixed with 50.0 cm³ of 1.00 mol dm⁻³ NaOH(aq) in a polystyrene cup. The temperature rises by 6.6 °C. What is ΔneutH (c = 4.18 J g⁻¹ °C⁻¹)?',
+                opts:[
+                    '−27.6 kJ mol⁻¹',
+                    '−55.2 kJ mol⁻¹',
+                    '+55.2 kJ mol⁻¹',
+                    '−55 176 kJ mol⁻¹'
+                ],
+                ans:1,
+                exp:'Total mass m = 50.0 + 50.0 = 100.0 g. Q = 100.0 × 4.18 × 6.6 = 2758.8 J = 2.7588 kJ. Moles of H₂O formed = 0.0500 × 1.00 = 0.0500 mol. ΔneutH = −2.7588 / 0.0500 = −55.2 kJ mol⁻¹.'
+            },
+            {
+                spec:'6.4 & 6.5', series:'WCH12 Jan 2024',
+                q:'When 25.0 cm³ of 1.00 mol dm⁻³ H₂SO₄(aq) is completely neutralised by 50.0 cm³ of 1.00 mol dm⁻³ NaOH(aq), 2.85 kJ of heat energy is released. What is the enthalpy change of neutralisation, ΔneutH?',
+                opts:[
+                    '−114 kJ mol⁻¹',
+                    '−57.0 kJ mol⁻¹',
+                    '−38.0 kJ mol⁻¹',
+                    '+57.0 kJ mol⁻¹'
+                ],
+                ans:1,
+                exp:'ΔneutH is defined per mole of WATER formed. Here n(H₂SO₄) = 0.0250 mol reacts with n(NaOH) = 0.0500 mol to form 0.0500 mol of H₂O. Thus ΔneutH = −2.85 / 0.0500 = −57.0 kJ mol⁻¹.'
+            },
+            {
+                spec:'6.6 & 6.7', series:'WCH13 Oct 2023 / Oct 2025',
+                q:'For 2KHCO₃(s) → K₂CO₃(s) + CO₂(g) + H₂O(l), reacting KHCO₃ with HCl gives ΔH₂ = +28 kJ mol⁻¹ and reacting K₂CO₃ with HCl gives ΔH₃ = −34 kJ mol⁻¹. What is ΔrH for the decomposition of 2 mol KHCO₃?',
+                opts:[
+                    '+62 kJ mol⁻¹',
+                    '−6 kJ mol⁻¹',
+                    '+90 kJ mol⁻¹',
+                    '−90 kJ mol⁻¹'
+                ],
+                ans:2,
+                exp:'By Hess’s Law, 2 mol of KHCO₃ are on the left of the target equation, so ΔrH = 2 × ΔH₂ − ΔH₃ = 2(+28) − (−34) = +56 + 34 = +90 kJ mol⁻¹.'
+            },
+            {
+                spec:'6.6', series:'WCH12 Jun 2023',
+                q:'Given ΔcH⊖ (in kJ mol⁻¹): C(s) = −394, H₂(g) = −286, C₄H₁₀(g) = −2877. What is the standard enthalpy change of formation, ΔfH⊖, of butane, C₄H₁₀(g)?',
+                opts:[
+                    '−129 kJ mol⁻¹',
+                    '+129 kJ mol⁻¹',
+                    '−5883 kJ mol⁻¹',
+                    '−2197 kJ mol⁻¹'
+                ],
+                ans:0,
+                exp:'Target: 4C(s) + 5H₂(g) → C₄H₁₀(g). Using combustion data: ΔfH⊖ = ΣΔcH(reactants) − ΣΔcH(products) = [4(−394) + 5(−286)] − (−2877) = (−1576 − 1430) + 2877 = −3006 + 2877 = −129 kJ mol⁻¹.'
+            },
+            {
+                spec:'6.8', series:'WCH13 Oct 2023',
+                q:'A student measures an initial temperature of 21.0 °C and a maximum temperature of 29.0 °C using a thermometer with an uncertainty of ±0.5 °C per reading. What is the percentage uncertainty in ΔT?',
+                opts:[
+                    '6.25%',
+                    '12.5%',
+                    '3.45%',
+                    '1.72%'
+                ],
+                ans:1,
+                exp:'ΔT = 29.0 − 21.0 = 8.0 °C. Because ΔT uses two thermometer readings (initial and final), the total uncertainty is 2 × 0.5 = ±1.0 °C. % uncertainty = (1.0 / 8.0) × 100% = 12.5%.'
+            },
+            {
+                spec:'6.9', series:'WCH12 Jun 2023 PEF',
+                q:'Why does the enthalpy change of combustion of liquid octane, C₈H₁₈(l), calculated from mean bond enthalpies differ from the experimental data-booklet value?',
+                opts:[
+                    'Because octane and water are in the liquid state under standard conditions, and mean bond enthalpies are averages across different gaseous compounds.',
+                    'Because bond breaking is exothermic and bond forming is endothermic.',
+                    'Because oxygen has a standard enthalpy of formation of zero.',
+                    'Because incomplete combustion always occurs in data-booklet measurements.'
+                ],
+                ans:0,
+                exp:'PEF Jun 2023: Both points are needed for 2 marks — (1) mean bond enthalpies are averages taken across a range of gaseous compounds, and (2) C₈H₁₈(l) and H₂O(l) are liquids under standard conditions, so enthalpy changes of vaporisation are ignored.'
+            },
+            {
+                spec:'6.10', series:'WCH12 Oct 2023',
+                q:'For N₂(g) + 3F₂(g) → 2NF₃(g), ΔrH = −250 kJ mol⁻¹. Given E(N≡N) = 945 and E(F–F) = 159 kJ mol⁻¹, what is the mean bond enthalpy of the N–F bond in NF₃?',
+                opts:[
+                    '+279 kJ mol⁻¹',
+                    '+557 kJ mol⁻¹',
+                    '+195 kJ mol⁻¹',
+                    '+229 kJ mol⁻¹'
+                ],
+                ans:0,
+                exp:'Broken = 945 + 3(159) = 1422 kJ mol⁻¹. Formed = 6 × E(N–F) (since 2 mol NF₃ has 6 N–F bonds). −250 = 1422 − 6E(N–F) ⇒ 6E(N–F) = 1672 ⇒ E(N–F) = +279 kJ mol⁻¹.'
+            },
+            {
+                spec:'6.11', series:'WCH12 Jan 2024',
+                q:'Which statement best explains why 1-iodopropane hydrolyses faster than 1-chloropropane with aqueous NaOH?',
+                opts:[
+                    'The C–I bond is more polar than the C–Cl bond, attracting OH⁻ more strongly.',
+                    'The C–I bond has a lower bond enthalpy than the C–Cl bond, so the C–I bond is weaker and breaks more easily.',
+                    'Iodine has a higher electronegativity than chlorine.',
+                    'Breaking the C–I bond is more exothermic than breaking the C–Cl bond.'
+                ],
+                ans:1,
+                exp:'Spec 6.11: E(C–I) = 228 kJ mol⁻¹ is much lower than E(C–Cl) = 346 kJ mol⁻¹, so the weaker C–I bond requires less energy to break.'
+            },
+            {
+                spec:'6.5 & Yield', series:'WCH12 Jun 2019 PEF',
+                q:'A reaction has ΔrH = −400 kJ mol⁻¹ of reactant A, but only achieves a 64% yield due to side/incomplete reaction. How many moles of A must be supplied to release 200 kJ of heat?',
+                opts:[
+                    '0.320 mol',
+                    '0.500 mol',
+                    '0.781 mol',
+                    '1.28 mol'
+                ],
+                ans:2,
+                exp:'At 100% yield, n(A) needed = 200 / 400 = 0.500 mol. At 64% yield, MORE reactant is needed (PEF Jun 2019): 0.500 × (100 / 64) = 0.781 mol.'
+            }
+        ];
+
+        let curT6Sim = 0;
+        function renderT6Sim() {
+            const pills = document.getElementById('t6-sim-pills');
+            if (!pills) return;
+            pills.innerHTML = T6_SIM_QUESTIONS.map((q, i) => {
+                const done = T6_MASTERY.simSolved.has(i);
+                return `<button type="button" onclick="selectT6Sim(${i})" class="px-2.5 py-1 text-[11px] font-mono rounded-lg border ${i === curT6Sim ? 'border-sky-500 bg-sky-950/70 text-sky-200 font-bold' : (done ? 'border-emerald-800 bg-emerald-950/30 text-emerald-400' : 'border-slate-800 bg-slate-900 text-slate-400')}">${done ? '✓ ' : ''}Q${i + 1}</button>`;
+            }).join('');
+            const q = T6_SIM_QUESTIONS[curT6Sim];
+            const box = document.getElementById('t6-sim-box');
+            if (box) {
+                box.innerHTML = `<div class="flex items-center justify-between text-[10px] font-mono text-slate-400">
+                        <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-sky-300">Spec ${q.spec}</span>
+                        <span class="text-amber-300">${q.series}</span>
+                    </div>
+                    <p class="text-xs sm:text-sm font-semibold text-white leading-relaxed">${curT6Sim + 1}. ${q.q}</p>
+                    <div class="space-y-2">
+                        ${q.opts.map((o, oi) => `<button type="button" onclick="gradeT6Sim(${curT6Sim}, ${oi})" class="w-full text-left p-2.5 rounded-lg border border-slate-800 bg-slate-900 hover:border-sky-500/50 text-xs text-slate-200">${String.fromCharCode(65 + oi)}. ${o}</button>`).join('')}
+                    </div>
+                    <div id="t6-sim-fb" class="hidden p-3 rounded-lg text-xs leading-relaxed"></div>`;
+            }
+            const sc = document.getElementById('t6-sim-score');
+            if (sc) sc.textContent = `Score: ${T6_MASTERY.simSolved.size} / ${T6_SIM_QUESTIONS.length}`;
+        }
+
+        window.selectT6Sim = function(i) { curT6Sim = i; renderT6Sim(); };
+        window.gradeT6Sim = function(qIdx, oIdx) {
+            const q = T6_SIM_QUESTIONS[qIdx];
+            const fb = document.getElementById('t6-sim-fb');
+            if (!fb) return;
+            fb.classList.remove('hidden');
+            if (oIdx === q.ans) {
+                T6_MASTERY.simSolved.add(qIdx);
+                updateT6Mastery();
+                const sc = document.getElementById('t6-sim-score');
+                if (sc) sc.textContent = `Score: ${T6_MASTERY.simSolved.size} / ${T6_SIM_QUESTIONS.length}`;
+                fb.className = 'p-3 rounded-lg text-xs leading-relaxed bg-emerald-950/50 border border-emerald-700 text-emerald-200';
+                fb.innerHTML = `<b>✓ Correct (1/1 Mark):</b> ${q.exp}`;
+            } else {
+                fb.className = 'p-3 rounded-lg text-xs leading-relaxed bg-rose-950/50 border border-rose-700 text-rose-200';
+                fb.innerHTML = `<b>✗ Examiner Distractor Alert:</b> ${q.exp}`;
+            }
+        };
+
+        window.resetT6Sim = function() {
+            T6_MASTERY.simSolved.clear();
+            curT6Sim = 0;
+            renderT6Sim();
+            updateT6Mastery();
+        };
+
+        // --- TAB 7: 10-CARD ACTIVE RECALL FLASHCARD DECK ---
+        const T6_FLASHCARDS = [
+            {q:'Define enthalpy change (ΔH) and state the Edexcel standard conditions.', a:'ΔH is the heat energy change measured at constant pressure. Standard conditions: 100 kPa pressure and a stated temperature (usually 298 K / 25 °C).'},
+            {q:'Define standard enthalpy change of formation (ΔfH⊖) and write the equation for liquid ethanol, C₂H₅OH(l).', a:'The enthalpy change when 1 mole of a compound is formed from its elements in their standard states under standard conditions: 2C(s, graphite) + 3H₂(g) + ½O₂(g) → C₂H₅OH(l).'},
+            {q:'Define standard enthalpy change of neutralisation (ΔneutH⊖) and explain why weak acids give a less exothermic value than −57 kJ mol⁻¹.', a:'The enthalpy change when 1 mole of water is formed by the neutralisation of an acid with an alkali in dilute aqueous solution. Weak acids are only partially dissociated, so part of the energy released is absorbed to break the O–H bond during ionisation.'},
+            {q:'Define standard enthalpy change of atomisation (ΔatH⊖) and state its sign.', a:'The enthalpy change when 1 mole of gaseous atoms is formed from the element in its standard state under standard conditions (e.g. ½Cl₂(g) → Cl(g)). Always endothermic (+ve).'},
+            {q:'State Hess’s Law and give the subtraction order for (i) formation data and (ii) combustion data.', a:'The total enthalpy change of a reaction is independent of the route taken, provided initial and final conditions are the same. (i) Formation: ΣΔfH(products) − ΣΔfH(reactants). (ii) Combustion: ΣΔcH(reactants) − ΣΔcH(products).'},
+            {q:'Why can ΔH for CaCO₃(s) → CaO(s) + CO₂(g) or 2KHCO₃(s) → K₂CO₃(s) + CO₂(g) + H₂O(l) not be measured directly?', a:'Both require high-temperature heating to decompose, so it is impossible to separate the heat supplied by the Bunsen burner from the enthalpy change of the reaction in a school calorimeter.'},
+            {q:'Explain how a cooling-curve graph corrects for heat loss in Zn(s) + CuSO₄(aq).', a:'Record baseline temperature before mixing (t = 0 to t_mix), then record temperature as it rises and cools after mixing. Extrapolate the post-peak cooling line back to the time of mixing (t_mix) to find the theoretical maximum temperature without heat loss.'},
+            {q:'State the two reasons why ΔrH calculated from mean bond enthalpies differs from the standard enthalpy change.', a:'1. Mean bond enthalpies are average values taken across a range of different gaseous compounds. 2. Bond enthalpies apply only to the gaseous state, whereas standard enthalpy changes may involve liquids or solids (e.g. H₂O(l)).'},
+            {q:'How does C–X bond enthalpy control the rate of hydrolysis of halogenoalkanes (Spec 6.11)?', a:'Bond enthalpy decreases down Group 7: C–F (467) > C–Cl (346) > C–Br (290) > C–I (228 kJ mol⁻¹). The weaker C–I bond breaks most easily, so 1-iodobutane hydrolyses fastest.'},
+            {q:'Why is the apparatus uncertainty multiplied by 2 when calculating % uncertainty for ΔT or weighing by difference?', a:'Because both ΔT (T_final − T_initial) and weighing by difference (m_initial − m_final) depend on subtracting TWO independent measurements, each carrying ±resolution uncertainty.'}
+        ];
+
+        let t6FcIdx = 0, t6FcFlip = false;
+        function renderT6Card() {
+            const box = document.getElementById('t6-fc-box'), cnt = document.getElementById('t6-fc-counter');
+            if (!box) return;
+            const c = T6_FLASHCARDS[t6FcIdx];
+            if (cnt) cnt.textContent = `${t6FcIdx + 1} / ${T6_FLASHCARDS.length}`;
+            box.innerHTML = `<span class="text-[10px] font-mono uppercase px-2.5 py-0.5 rounded-full mb-2 ${t6FcFlip ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40' : 'bg-sky-500/20 text-sky-300 border border-sky-500/40'}">${t6FcFlip ? '✓ Mark-Scheme Answer (Click to flip back)' : '❓ Question Prompt (Click to reveal answer)'}</span>
+                <p class="text-xs sm:text-sm ${t6FcFlip ? 'text-emerald-200 font-medium' : 'text-white font-bold'} max-w-2xl leading-relaxed">${t6FcFlip ? c.a : c.q}</p>`;
+        }
+        window.flipT6Card = function() { t6FcFlip = !t6FcFlip; renderT6Card(); };
+        window.stepT6Card = function(d) { t6FcIdx = (t6FcIdx + d + T6_FLASHCARDS.length) % T6_FLASHCARDS.length; t6FcFlip = false; renderT6Card(); };
+
+        // --- APPLE SPOTLIGHT QUICK COMMAND ---
+        const T6_SPOTLIGHT = [
+            {title:'Spec 6.1–6.3 — Interactive Enthalpy Level Builder (H₂O(l) vs H₂O(g) & No Ea Hump)', tag:'Tab 1 · Syllabus Lab', act:()=>{switchTab('syllabus');switchSyl6Lab('diagram');}},
+            {title:'Spec 6.1–6.11 — Interactive Specification Self-Audit Checklist', tag:'Tab 1 · Syllabus Audit', act:()=>{switchTab('syllabus');switchSyl6Lab('audit');}},
+            {title:'Spec 6.4 — Definition → Equation Pathfinder (ΔfH, ΔcH, ΔatH, ΔneutH)', tag:'Tab 2 · Engine A Map', act:()=>{switchTab('deltaH');switchMode('c1','map');}},
+            {title:'Spec 6.5 — q = mcΔT Mass & Limiting-Moles Inspector + Weak Acid ΔneutH', tag:'Tab 2 · Module 5 Lab', act:()=>{switchTab('deltaH');switchMode('c1','sim');}},
+            {title:'Spec 6.6–6.7 — Hess Cycle Visualiser (CH₄, CaCO₃, 2KHCO₃, CuSO₄)', tag:'Tab 3 · Engine B Map', act:()=>{switchTab('hess');switchMode('c2','map');}},
+            {title:'Spec 6.6–6.7 — Hess Cycle Arrow & Sign Doctor (5 WCH12/13 Cases)', tag:'Tab 3 · Module 5 Doctor', act:()=>{switchTab('hess');switchMode('c2','sim');}},
+            {title:'Spec 6.9 — Bond Accountant (Broken − Formed Itemiser)', tag:'Tab 4 · Engine C Map', act:()=>{switchTab('bond');switchMode('c3','map');}},
+            {title:'Spec 6.10–6.11 — Unknown Bond Enthalpy Solver & C–X Hydrolysis Rate Lab', tag:'Tab 4 · Module 5 Lab', act:()=>{switchTab('bond');switchMode('c3','sim');}},
+            {title:'Spec 6.5 & 6.8 — CP2 Calorimetry Workbench, Cooling Curve & ×2 Uncertainty', tag:'Tab 5 · CP2 Lab', act:()=>{switchTab('lab');}},
+            {title:'Spec 6.1–6.11 — 10-Question WCH12/WCH13 Past-Paper Exam Simulator', tag:'Tab 6 · Exam Sim', act:()=>{switchTab('solver');switchSolver('sim');}},
+            {title:'2021–2026 Examiner Report Deep-Dive & Active-Recall Flashcards', tag:'Tab 7 · Final Review', act:()=>{switchTab('review');}}
+        ];
+
+        window.openSpotlight = function() {
+            const m = document.getElementById('spotlight-modal');
+            if (!m) return;
+            m.classList.remove('hidden'); m.classList.add('flex');
+            const inp = document.getElementById('spotlight-input');
+            if (inp) { inp.value = ''; inp.focus(); }
+            filterSpotlight();
+        };
+        window.closeSpotlight = function() {
+            const m = document.getElementById('spotlight-modal');
+            if (!m) return;
+            m.classList.add('hidden'); m.classList.remove('flex');
+        };
+        window.filterSpotlight = function() {
+            const q = (document.getElementById('spotlight-input') ? document.getElementById('spotlight-input').value : '').toLowerCase().trim();
+            const box = document.getElementById('spotlight-results');
+            if (!box) return;
+            const matches = T6_SPOTLIGHT.filter(it => !q || it.title.toLowerCase().includes(q) || it.tag.toLowerCase().includes(q));
+            box.innerHTML = matches.map(it => {
+                const idx = T6_SPOTLIGHT.indexOf(it);
+                return `<button type="button" onclick="runT6Spotlight(${idx})" class="w-full text-left px-3 py-2.5 rounded-xl hover:bg-slate-800/80 flex items-center justify-between gap-2">
+                    <span class="text-xs text-slate-100 font-medium">${it.title}</span>
+                    <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-950 text-sky-300 border border-slate-800 shrink-0">${it.tag}</span>
+                </button>`;
+            }).join('') || '<p class="text-xs text-slate-500 p-3 text-center">No matching concept found.</p>';
+        };
+        window.runT6Spotlight = function(idx) {
+            closeSpotlight();
+            if (T6_SPOTLIGHT[idx]) T6_SPOTLIGHT[idx].act();
+        };
+
+        document.addEventListener('keydown', function(e) {
+            if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+                e.preventDefault();
+                openSpotlight();
+            }
         });
 
         // ============ MOBILE UX BOOT LAYER ============

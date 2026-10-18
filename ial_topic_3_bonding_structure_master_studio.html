@@ -72,6 +72,203 @@ html{scroll-padding-top:calc(var(--hdr) + 10px)}
   .toc-strip{display:flex}
 }
 @media (prefers-reduced-motion:reduce){.glow{animation:none!important}.tab-panel.active{animation:none}}
+
+  /* ══ APPLE CUPERTINO DARK GLASS DESIGN SYSTEM & SUBTLE ANIMATIONS ══ */
+  :root {
+    --apple-bg: #03050a;
+    --apple-glass: rgba(20, 26, 38, 0.68);
+    --apple-glass-card: rgba(12, 17, 28, 0.80);
+    --apple-border: rgba(255, 255, 255, 0.085);
+    --apple-highlight: inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
+    --apple-blue: #0A84FF;
+    --apple-cyan: #64D2FF;
+    --apple-green: #30D158;
+    --apple-amber: #FF9F0A;
+    --apple-rose: #FF375F;
+    --apple-purple: #BF5AF2;
+    --apple-spring: cubic-bezier(0.16, 1, 0.3, 1);
+    --apple-smooth: cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+
+  body {
+    background-color: var(--apple-bg) !important;
+    background-image:
+      radial-gradient(circle at 12% 10%, rgba(10, 132, 255, 0.15) 0%, transparent 38%),
+      radial-gradient(circle at 88% 14%, rgba(191, 90, 242, 0.12) 0%, transparent 36%),
+      radial-gradient(circle at 50% 88%, rgba(48, 209, 88, 0.08) 0%, transparent 44%),
+      linear-gradient(180deg, #03060c 0%, #060b16 52%, #03050a 100%) !important;
+    background-attachment: fixed;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", ui-sans-serif, system-ui, sans-serif !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    letter-spacing: -0.011em;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    letter-spacing: -0.024em;
+  }
+
+  header.sticky {
+    background: rgba(8, 12, 22, 0.75) !important;
+    -webkit-backdrop-filter: saturate(190%) blur(28px) !important;
+    backdrop-filter: saturate(190%) blur(28px) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.09) !important;
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.65), inset 0 -1px 0 0 rgba(255, 255, 255, 0.05);
+  }
+
+  #mainNav {
+    background: rgba(15, 21, 34, 0.72);
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 14px;
+    padding: 4px !important;
+    margin-top: 2px;
+    margin-bottom: 6px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.45), 0 1px 0 rgba(255, 255, 255, 0.05);
+    gap: 4px !important;
+  }
+
+  #mainNav .tab-btn {
+    border-radius: 10px !important;
+    border-bottom-width: 0 !important;
+    transition: all 0.28s var(--apple-spring) !important;
+    letter-spacing: -0.01em;
+  }
+
+  #mainNav .tab-btn:hover {
+    color: #f8fafc !important;
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  #mainNav .tab-btn:active {
+    transform: scale(0.96);
+  }
+
+  #mainNav .tab-btn.tab-btn-active {
+    background: linear-gradient(180deg, rgba(10, 132, 255, 0.34) 0%, rgba(10, 132, 255, 0.18) 100%) !important;
+    color: #ffffff !important;
+    box-shadow: 0 2px 10px rgba(10, 132, 255, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.22) !important;
+    border: 1px solid rgba(100, 210, 255, 0.42) !important;
+  }
+
+  @keyframes appleFadeSlideUp {
+    0% {
+      opacity: 0;
+      transform: translateY(10px) scale(0.994);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  .tab-panel.active {
+    animation: appleFadeSlideUp 0.42s var(--apple-spring) forwards !important;
+  }
+
+  .bg-slate-900, .bg-slate-900\/80 {
+    background: var(--apple-glass) !important;
+    -webkit-backdrop-filter: saturate(165%) blur(22px);
+    backdrop-filter: saturate(165%) blur(22px);
+    border-color: var(--apple-border) !important;
+    box-shadow: 0 20px 45px -18px rgba(0, 0, 0, 0.7), var(--apple-highlight) !important;
+    border-radius: 18px !important;
+  }
+
+  .bg-slate-950 {
+    background: var(--apple-glass-card) !important;
+    border-color: rgba(255, 255, 255, 0.075) !important;
+    box-shadow: 0 10px 28px -12px rgba(0, 0, 0, 0.55), inset 0 1px 0 0 rgba(255, 255, 255, 0.08) !important;
+    border-radius: 15px !important;
+    transition: transform 0.32s var(--apple-spring), border-color 0.32s var(--apple-smooth), box-shadow 0.32s var(--apple-smooth);
+  }
+
+  .card-hover:hover {
+    transform: translateY(-2.5px) !important;
+    border-color: rgba(125, 211, 252, 0.28) !important;
+    box-shadow: 0 18px 38px -12px rgba(0, 0, 0, 0.72), 0 0 24px -8px rgba(10, 132, 255, 0.18), inset 0 1px 0 0 rgba(255, 255, 255, 0.14) !important;
+  }
+
+  input[type="number"], input[type="text"], select, textarea {
+    background: rgba(9, 13, 24, 0.85) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    border-radius: 10px !important;
+    transition: border-color 0.22s var(--apple-smooth), box-shadow 0.22s var(--apple-smooth) !important;
+  }
+  input[type="number"]:focus, input[type="text"]:focus, select:focus, textarea:focus {
+    outline: none !important;
+    border-color: var(--apple-blue) !important;
+    box-shadow: 0 0 0 3px rgba(10, 132, 255, 0.25) !important;
+  }
+
+  button {
+    transition: all 0.24s var(--apple-spring);
+  }
+  button:active:not(:disabled) {
+    transform: scale(0.97);
+  }
+
+  .blur-answer {
+    filter: blur(5.5px);
+    transition: filter 0.32s var(--apple-spring), background 0.32s var(--apple-smooth), box-shadow 0.32s var(--apple-smooth);
+    padding: 1px 7px !important;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .blur-answer:hover {
+    filter: blur(3px);
+    border-color: rgba(100, 210, 255, 0.4);
+  }
+  .blur-answer.revealed {
+    filter: blur(0);
+    background: rgba(10, 132, 255, 0.16) !important;
+    border-color: rgba(100, 210, 255, 0.35);
+    box-shadow: 0 0 12px rgba(10, 132, 255, 0.15);
+  }
+
+  .apple-pill-btn {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 9999px;
+    padding: 4px 11px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #e2e8f0;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+  .apple-pill-btn:hover {
+    background: rgba(255, 255, 255, 0.11);
+    border-color: rgba(100, 210, 255, 0.4);
+    color: #ffffff;
+  }
+
+  .spec-conf-btn {
+    padding: 3px 9px;
+    border-radius: 9999px;
+    font-size: 10px;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(15, 23, 42, 0.7);
+    color: #94a3b8;
+    cursor: pointer;
+    transition: all 0.22s var(--apple-spring);
+  }
+  .spec-conf-btn.conf-review.active {
+    background: rgba(255, 55, 95, 0.2);
+    border-color: #FF375F;
+    color: #fda4af;
+  }
+  .spec-conf-btn.conf-practising.active {
+    background: rgba(255, 159, 10, 0.2);
+    border-color: #FF9F0A;
+    color: #fde68a;
+  }
+  .spec-conf-btn.conf-mastered.active {
+    background: rgba(48, 209, 88, 0.22);
+    border-color: #30D158;
+    color: #86efac;
+  }
 </style>
 <style id="mux-style" data-mux-version="1.4.0">
 /* ===== MUX mobile layer v1.4.0 ===== */
@@ -197,7 +394,18 @@ nav, nav > div { max-width: 100% !important; }
       <p class="text-[10px] text-slate-500">Bonding & Structure · Edexcel IAL</p>
     </div>
   </div>
-  <span class="hidden lg:block text-[10px] font-mono text-slate-600">22 spec codes · 4 engines · shape & polarity predictor · bonding studio · calculator</span>
+  <div class="flex flex-wrap items-center gap-2">
+    <span class="hidden xl:block text-[10px] font-mono text-slate-400 mr-1">22 spec codes · 4 engines · 3D VSEPR · predictor · studio · calculator</span>
+    <button type="button" onclick="openT3Spotlight()" class="apple-pill-btn cursor-pointer" title="Quick Search Spec 3.1–3.22, 3D VSEPR, Polarity & Calculators (⌘K)">
+      <span>🔎 Quick Jump</span>
+      <kbd class="px-1.5 py-0.5 text-[9px] bg-slate-800/90 text-slate-300 rounded border border-slate-700 font-mono">⌘K</kbd>
+    </button>
+    <div class="apple-pill-btn border-sky-500/40 bg-sky-950/60 text-sky-300" title="Overall Topic 3 Mastery across Spec 3.1–3.22 & Interactive Checks">
+      <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+      <span>Mastery:</span>
+      <span id="mastery-percentage" class="font-bold text-white font-mono">0%</span>
+    </div>
+  </div>
 </div>
 <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
   <nav id="mainNav" class="flex flex-wrap gap-0.5 py-1.5">
@@ -244,7 +452,89 @@ nav, nav > div { max-width: 100% !important; }
     <h2 class="font-display text-xl font-bold text-white mt-1">Topic 3 Learning Points & Mark Scheme Secrets (Spec 3.1 – 3.22)</h2>
     <p class="text-xs text-slate-400 mt-1">Every assessment point across 3A Ionic, 3B Covalent, 3C Shapes and 3D Metallic is elaborated with Key Learning Goals and IAL Examiner Watch-Outs. The <span class="text-amber-300 font-semibold">Shape & Polarity Predictor (Tab 6)</span> and <span class="text-sky-300 font-semibold">Bonding Studio (Tab 7)</span> turn the hardest "predict the shape / explain the property" questions into interactive scaffolds.</p>
   </div>
+  <!-- Interactive Topic 3 Syllabus Mastery Dashboard Bar -->
+  <div class="mb-6 p-4 bg-slate-950 border border-slate-800 rounded-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+    <div class="space-y-1.5 flex-1 w-full">
+      <div class="flex items-center justify-between text-xs">
+        <span class="font-bold text-white flex items-center gap-2">
+          <span class="inline-block w-2 h-2 rounded-full bg-sky-400"></span>
+          Interactive Edexcel IAL Spec 3.1–3.22 Self-Audit &amp; Concept Checkers
+        </span>
+        <span id="t3SyllabusProgressLabel" class="font-mono text-[11px] text-sky-300">0 / 18 Cards Mastered · 0 / 18 Concept Checks Passed</span>
+      </div>
+      <div class="w-full h-2 bg-slate-900 rounded-full overflow-hidden border border-slate-800">
+        <div id="t3SyllabusProgressBar" class="h-full bg-gradient-to-r from-sky-500 via-purple-400 to-emerald-400 transition-all duration-500" style="width: 0%"></div>
+      </div>
+      <p class="text-[11px] text-slate-400">Track your confidence on every specification card below and test your understanding with the <b>⚡ Instant Concept Check</b> on each card.</p>
+    </div>
+    <div class="flex gap-2 shrink-0">
+      <button type="button" onclick="expandAllT3SpecChecks(true)" class="text-[11px] font-semibold px-3 py-1.5 rounded-lg bg-sky-950/70 text-sky-300 border border-sky-800/80 hover:bg-sky-900/60">Open All Checks</button>
+      <button type="button" onclick="resetT3SyllabusTracker()" class="text-[11px] font-semibold px-3 py-1.5 rounded-lg bg-slate-900 text-slate-400 border border-slate-700 hover:text-white">Reset</button>
+    </div>
+  </div>
+
   <div id="overview-grid" class="grid grid-cols-1 md:grid-cols-2 gap-5"></div>
+
+  <!-- ══ NEW: UPDATED WCH11 EXAMINER REPORT & SYLLABUS DEEP-DIVE (2019–2026) ══ -->
+  <div class="mt-8 space-y-4">
+    <div class="flex flex-wrap items-center justify-between gap-2 border-t border-slate-800 pt-6">
+      <div>
+        <span class="text-[10px] font-mono uppercase tracking-widest text-cyan-400 font-bold">Updated Examiner Report &amp; Syllabus Additions (2019–2026)</span>
+        <h3 class="font-display text-base font-bold text-white mt-0.5">High-Yield WCH11 Mark Scheme Distinctions &amp; Interactive Concept Bridges</h3>
+      </div>
+      <span class="text-[11px] text-slate-400">Covers Dot-Cross Precision · Al₂Cl₆ Dative Dimers · Polarisation vs ΔEN · VSEPR 3D Wedges</span>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+      <!-- Deep Dive 1: Dot-and-Cross Rules & Al2Cl6 / NH4+ Dative Bonding -->
+      <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3 card-hover">
+        <div class="flex items-center justify-between">
+          <span class="text-[10px] font-mono text-sky-400 uppercase font-bold px-2 py-0.5 bg-sky-950 rounded border border-sky-800">Spec 3.3 · 3.11 · PEF 2019–2024</span>
+          <span class="text-[10px] text-slate-400 font-mono">Dot-Cross Rules</span>
+        </div>
+        <h4 class="font-display text-sm font-bold text-white">Dot-and-Cross Precision &amp; $\text{Al}_2\text{Cl}_6$ Dative Bridges</h4>
+        <p class="text-[11px] text-slate-400 leading-relaxed">Principal Examiner Feedback (Jun 2019, Jan 2023, Oct 2024) highlights three recurring dot-and-cross mark losses:</p>
+        <div class="space-y-1.5 text-[11px] text-slate-300">
+          <div class="p-2 rounded bg-slate-900 border border-slate-800"><b class="text-sky-300">M1 · Ionic brackets &amp; charges:</b> Square brackets AND outside charges are mandatory; $\text{Na}^+$ must show a full 8-electron 2nd shell (or 0 in 3rd), never shared pairs.</div>
+          <div class="p-2 rounded bg-slate-900 border border-slate-800"><b class="text-purple-300">M2 · Dative pair symbols:</b> In a dative bond, <b>both electrons must share the same symbol</b> (both dots or both crosses) because both originate from the donor atom.</div>
+          <div class="p-2 rounded bg-slate-900 border border-slate-800"><b class="text-emerald-300">M3 · $\text{Al}_2\text{Cl}_6$ bridge direction:</b> Arrow points $\text{Cl} \rightarrow \text{Al}$ (lone pair on bridging Cl into empty orbital on Al); there is <b>no Al–Al bond</b>.</div>
+        </div>
+        <button type="button" onclick="switchTab('cov');setMode('cov','drill');" class="w-full py-2 px-3 rounded-lg bg-sky-950/70 hover:bg-sky-900/80 text-sky-300 border border-sky-800/70 text-xs font-semibold">Launch Dative &amp; Covalent Dot-Cross Lab →</button>
+      </div>
+
+      <!-- Deep Dive 2: Polarisation vs Electronegativity Continuum -->
+      <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3 card-hover">
+        <div class="flex items-center justify-between">
+          <span class="text-[10px] font-mono text-purple-400 uppercase font-bold px-2 py-0.5 bg-purple-950 rounded border border-purple-800">Spec 3.6–3.9 · 3.13–3.14</span>
+          <span class="text-[10px] text-slate-400 font-mono">PEF Jun 2023</span>
+        </div>
+        <h4 class="font-display text-sm font-bold text-white">Polarisation vs. Electronegativity Continuum</h4>
+        <p class="text-[11px] text-slate-400 leading-relaxed">Examiner Report (Jun 2023): There is <b>no sharp $\Delta\text{EN}$ threshold</b> separating ionic and covalent bonding — it is a continuous spectrum:</p>
+        <div class="space-y-1.5 text-[11px] text-slate-300">
+          <div class="p-2 rounded bg-slate-900 border border-slate-800"><b class="text-amber-300">Cation Polarising Power:</b> High charge + small radius = high charge density ($\text{Al}^{3+} > \text{Mg}^{2+} > \text{Na}^+$) → pulls anion electron cloud strongly.</div>
+          <div class="p-2 rounded bg-slate-900 border border-slate-800"><b class="text-rose-300">Anion Polarisability:</b> Large radius + high negative charge ($\text{I}^- > \text{Br}^- > \text{Cl}^- > \text{F}^-$) → outer electrons easily distorted.</div>
+          <div class="p-2 rounded bg-slate-900 border border-slate-800"><b class="text-cyan-300">Electron Density Maps:</b> Ideal ionic = separate spheres; polarised ionic = distorted anion contours; covalent = shared density between nuclei.</div>
+        </div>
+        <button type="button" onclick="switchTab('ionic');setMode('ionic','drill');" class="w-full py-2 px-3 rounded-lg bg-purple-950/70 hover:bg-purple-900/80 text-purple-300 border border-purple-800/70 text-xs font-semibold">Open Ionic Migration &amp; Polarisation Duel →</button>
+      </div>
+
+      <!-- Deep Dive 3: VSEPR Lone-Pair Repulsion & Non-Polar Symmetry -->
+      <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3 card-hover">
+        <div class="flex items-center justify-between">
+          <span class="text-[10px] font-mono text-emerald-400 uppercase font-bold px-2 py-0.5 bg-emerald-950 rounded border border-emerald-800">Spec 3.15–3.19 · PEF Jan 2025</span>
+          <span class="text-[10px] text-slate-400 font-mono">VSEPR &amp; Polarity</span>
+        </div>
+        <h4 class="font-display text-sm font-bold text-white">VSEPR Repulsion Order &amp; Dipole Cancellation</h4>
+        <p class="text-[11px] text-slate-400 leading-relaxed">Examiner Reports (Jan 2020, Oct 2023, Jan 2025) emphasise quoting the exact repulsion hierarchy and 3D symmetry:</p>
+        <div class="space-y-1.5 text-[11px] text-slate-300">
+          <div class="p-2 rounded bg-slate-900 border border-slate-800"><b class="text-emerald-300">Exact Angle Series:</b> 4 electron pairs: $\text{CH}_4 / \text{NH}_4^+$ (4 bp, 0 lp = $109.5^\circ$) $\rightarrow$ $\text{NH}_3 / \text{H}_3\text{O}^+$ (3 bp, 1 lp = $107^\circ$) $\rightarrow$ $\text{H}_2\text{O}$ (2 bp, 2 lp = $104.5^\circ$).</div>
+          <div class="p-2 rounded bg-slate-900 border border-slate-800"><b class="text-sky-300">Electron-Deficient &amp; Expanded:</b> $\text{BeCl}_2$ linear $180^\circ$ (2 bp, 0 lp); $\text{BF}_3 / \text{BCl}_3$ trigonal planar $120^\circ$ (3 bp, 0 lp); $\text{PCl}_5(g)$ $90^\circ \& 120^\circ$; $\text{SF}_6$ $90^\circ$.</div>
+          <div class="p-2 rounded bg-slate-900 border border-slate-800"><b class="text-amber-300">Solid vs Gaseous $\text{PCl}_5$:</b> $\text{PCl}_5(g)$ is trigonal bipyramidal, whereas $\text{PCl}_5(s)$ is ionic: $[\text{PCl}_4]^+$ ($109.5^\circ$) and $[\text{PCl}_6]^-$ ($90^\circ$).</div>
+        </div>
+        <button type="button" onclick="switchTab('shape');setMode('shape','drill');" class="w-full py-2 px-3 rounded-lg bg-emerald-950/70 hover:bg-emerald-900/80 text-emerald-300 border border-emerald-800/70 text-xs font-semibold">Launch VSEPR Pair Counter &amp; Angle Drill →</button>
+      </div>
+    </div>
+  </div>
   <div class="mt-6 p-4 bg-rose-950/20 border border-rose-900/40 rounded-xl text-xs text-slate-300 space-y-1">
     <b class="text-rose-300">Out of scope in this studio (Spec 3.1 – 3.22 only):</b>
     <p>• <strong>σ and π bond terminology</strong> (head-on vs sideways orbital overlap) is assessed under alkenes / organic topics, not in 3.10–3.15 — at Topic 3 a double/triple bond is drawn as 2/3 shared pairs.</p>
@@ -263,6 +553,7 @@ nav, nav > div { max-width: 100% !important; }
     <button onclick="setMode('ionic','map')" id="ionic-m-map" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-sky-300">Strength Map</button>
     <button onclick="setMode('ionic','quiz')" id="ionic-m-quiz" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-sky-300">Quiz</button>
     <button onclick="setMode('ionic','traps')" id="ionic-m-traps" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-sky-300">Traps</button>
+    <button onclick="setMode('ionic','drill')" id="ionic-m-drill" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-sky-300">🎯 Migration, Dot-Cross &amp; Polarisation Lab</button>
   </div>
 </div>
 <div id="ionic-mode-explorer" class="ionic-mode"><div id="ionic-explorer" class="grid grid-cols-1 lg:grid-cols-12 gap-4"></div></div>
@@ -294,6 +585,74 @@ nav, nav > div { max-width: 100% !important; }
 </div>
 <div id="ionic-mode-quiz" class="ionic-mode hidden"><div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4"><h3 class="font-display text-sm font-bold text-sky-300">Multi-Blank Quiz — Ionic Bonding</h3><p class="text-xs text-slate-400">Click each blurred answer to reveal it.</p><div id="ionic-quiz-rows" class="space-y-3"></div><button onclick="revealAll('ionic-quiz-rows')" class="btn-press bg-slate-800 hover:bg-slate-700 border border-slate-700 text-sky-300 text-xs font-semibold px-4 py-2 rounded-lg">Reveal All</button></div></div>
 <div id="ionic-mode-traps" class="ionic-mode hidden"><div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4"><h3 class="font-display text-sm font-bold text-rose-300">Trap Pairs — Ionic Bonding</h3><div id="ionic-traps-grid" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div></div></div>
+
+<div id="ionic-mode-drill" class="ionic-mode hidden">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <!-- Left: Interactive Ion Migration & Dot-and-Cross Inspector -->
+    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+      <div class="flex items-center justify-between">
+        <span class="text-[10px] font-mono text-sky-400 uppercase font-bold px-2 py-0.5 bg-sky-950 rounded border border-sky-800">Spec 3.1 – 3.3</span>
+        <span class="text-[10px] font-mono text-slate-400">Migration &amp; Outer Shells</span>
+      </div>
+      <h3 class="font-display text-sm font-bold text-white">Interactive Ion Migration &amp; Dot-and-Cross Evaluator</h3>
+      <p class="text-xs text-slate-400">Select an ionic compound or electrolysis migration experiment below to inspect the exact outer-shell dot-and-cross rules or coloured ion migration observations:</p>
+      <div>
+        <select id="ionicDrillSel" onchange="renderIonicDrill()" class="w-full px-3 py-2 text-xs text-slate-100">
+          <option value="0">1. Electrolysis of Copper(II) Chromate(VI), CuCrO₄(aq) — Ion Migration (Spec 3.1)</option>
+          <option value="1">2. Electrolysis of Potassium Manganate(VII), KMnO₄(aq) — Purple Migration (Spec 3.1)</option>
+          <option value="2">3. Dot-and-Cross: Sodium Fluoride, NaF — [2,8]⁺ [2,8]⁻ (Spec 3.3)</option>
+          <option value="3">4. Dot-and-Cross: Magnesium Oxide, MgO — [2,8]²⁺ [2,8]²⁻ (Spec 3.3)</option>
+          <option value="4">5. Dot-and-Cross: Calcium Chloride, CaCl₂ — 1 : 2 Stoichiometry (Spec 3.3)</option>
+          <option value="5">6. Dot-and-Cross: Lithium Nitride, Li₃N — [2]⁺ vs [2,8]³⁻ (Spec 3.3)</option>
+        </select>
+      </div>
+      <div id="ionicDrillOut" class="p-4 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-300 space-y-2.5"></div>
+    </div>
+
+    <!-- Right: Interactive Lattice Strength & Polarisation Duel -->
+    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+      <div class="flex items-center justify-between">
+        <span class="text-[10px] font-mono text-purple-400 uppercase font-bold px-2 py-0.5 bg-purple-950 rounded border border-purple-800">Spec 3.6 – 3.9 · PEF Jun 2023</span>
+        <span class="text-[10px] font-mono text-slate-400">Lattice Strength &amp; Polarisation</span>
+      </div>
+      <h3 class="font-display text-sm font-bold text-white">Ionic Bond Strength &amp; Polarisation Duel</h3>
+      <p class="text-xs text-slate-400">Choose a comparison pair below, predict the winner, and verify the exact mark-scheme wording on ionic charge, radius, polarising power, and polarisability:</p>
+      <div>
+        <select id="ionicDuelSel" onchange="renderIonicDuel()" class="w-full px-3 py-2 text-xs text-slate-100">
+          <option value="0">Duel 1 · Stronger Ionic Bonding: MgO vs NaF</option>
+          <option value="1">Duel 2 · Higher Melting Point: NaF vs KBr</option>
+          <option value="2">Duel 3 · Greater Covalent Character (Polarisation): MgCl₂ vs NaCl</option>
+          <option value="3">Duel 4 · Greater Anion Distortion: AgI vs AgF</option>
+          <option value="4">Duel 5 · Smaller Isoelectronic Radius: Al³⁺ vs N³⁻</option>
+        </select>
+      </div>
+      <div id="ionicDuelBody" class="space-y-3 text-xs"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Mark-Scheme Word Bank & Common Misconceptions — Ionic Bonding -->
+<div class="mt-4 p-4 bg-slate-950 border border-slate-800 rounded-xl">
+  <p class="text-[11px] font-bold text-sky-300 uppercase tracking-wider mb-2">📝 Mark-Scheme Word Bank — Ionic Bonding (Spec 3.1–3.9)</p>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+    <div class="p-3 bg-slate-900 border border-slate-800 rounded-lg">
+      <p class="font-bold text-white mb-1">Ionic bond definition (2 marks)</p>
+      <p class="text-slate-300 leading-relaxed">① Strong <b>electrostatic attraction</b> ② between <b>oppositely charged ions</b> (in a giant ionic lattice, acting in all directions).</p>
+    </div>
+    <div class="p-3 bg-slate-900 border border-slate-800 rounded-lg">
+      <p class="font-bold text-white mb-1">Conductivity evidence (2 marks)</p>
+      <p class="text-slate-300 leading-relaxed">Solid does not conduct because <b>ions are fixed in the lattice</b>; molten/aqueous conducts because <b>ions are free to move and carry charge</b> (never say electrons!).</p>
+    </div>
+    <div class="p-3 bg-slate-900 border border-slate-800 rounded-lg">
+      <p class="font-bold text-white mb-1">Polarising power vs Polarisability (3 marks)</p>
+      <p class="text-slate-300 leading-relaxed">Small, highly charged <b>cation has high polarising power</b> (high charge density) and <b>distorts the electron cloud</b> of a large, highly charged <b>polarisable anion</b>.</p>
+    </div>
+    <div class="p-3 bg-slate-900 border border-slate-800 rounded-lg">
+      <p class="font-bold text-white mb-1">Isoelectronic series N³⁻ → Al³⁺ (3 marks)</p>
+      <p class="text-slate-300 leading-relaxed">① All have <b>10 electrons / same electron configuration (1s² 2s² 2p⁶)</b> ② <b>nuclear charge (protons) increases</b> from 7 to 13 ③ outer electrons pulled closer to nucleus.</p>
+    </div>
+  </div>
+</div>
 </section>
 <section id="tab-cov" class="tab-panel space-y-6">
 <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5">
@@ -305,6 +664,7 @@ nav, nav > div { max-width: 100% !important; }
     <button onclick="setMode('cov','map')" id="cov-m-map" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-sky-300">Polarity Map</button>
     <button onclick="setMode('cov','quiz')" id="cov-m-quiz" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-sky-300">Quiz</button>
     <button onclick="setMode('cov','traps')" id="cov-m-traps" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-sky-300">Traps</button>
+    <button onclick="setMode('cov','drill')" id="cov-m-drill" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-sky-300">⚗️ Dative Bond &amp; Giant Carbon Lab</button>
   </div>
 </div>
 <div id="cov-mode-explorer" class="cov-mode"><div id="cov-explorer" class="grid grid-cols-1 lg:grid-cols-12 gap-4"></div></div>
@@ -321,6 +681,70 @@ nav, nav > div { max-width: 100% !important; }
 </div>
 <div id="cov-mode-quiz" class="cov-mode hidden"><div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4"><h3 class="font-display text-sm font-bold text-purple-300">Multi-Blank Quiz — Covalent & Polarity</h3><p class="text-xs text-slate-400">Click each blurred answer to reveal it.</p><div id="cov-quiz-rows" class="space-y-3"></div><button onclick="revealAll('cov-quiz-rows')" class="btn-press bg-slate-800 hover:bg-slate-700 border border-slate-700 text-sky-300 text-xs font-semibold px-4 py-2 rounded-lg">Reveal All</button></div></div>
 <div id="cov-mode-traps" class="cov-mode hidden"><div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4"><h3 class="font-display text-sm font-bold text-rose-300">Trap Pairs — Covalent & Polarity</h3><div id="cov-traps-grid" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div></div></div>
+
+<div id="cov-mode-drill" class="cov-mode hidden">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <!-- Left: Interactive Covalent & Dative Dot-and-Cross Inspector -->
+    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+      <div class="flex items-center justify-between">
+        <span class="text-[10px] font-mono text-purple-400 uppercase font-bold px-2 py-0.5 bg-purple-950 rounded border border-purple-800">Spec 3.10 – 3.11 · PEF 2019–2024</span>
+        <span class="text-[10px] text-slate-400 font-mono">Dot-Cross + Dative</span>
+      </div>
+      <h3 class="font-display text-sm font-bold text-white">Interactive Covalent &amp; Dative Dot-and-Cross Inspector</h3>
+      <p class="text-xs text-slate-400">Select a syllabus molecule or ion to inspect its shared pairs, lone pairs, octet exceptions, and dative bond donor/acceptor arrows:</p>
+      <div>
+        <select id="covDotSel" onchange="renderCovDotInspector()" class="w-full px-3 py-2 text-xs text-slate-100">
+          <option value="0">1. Aluminium Chloride Dimer, Al₂Cl₆ — 2 Dative Bridges Cl → Al (Spec 3.11)</option>
+          <option value="1">2. Ammonium Ion, NH₄⁺ — Dative Bond N → H⁺ in Square Brackets (Spec 3.11)</option>
+          <option value="2">3. Hydronium Ion, H₃O⁺ — Dative Bond O → H⁺ + 1 Lone Pair (Spec 3.11)</option>
+          <option value="3">4. Carbon Monoxide, CO — Triple Bond (2 Covalent + 1 Dative O → C)</option>
+          <option value="4">5. Electron-Deficient Monomers: BeCl₂ (4 e⁻) &amp; BF₃ / BCl₃ (6 e⁻)</option>
+          <option value="5">6. Expanded Octets: PCl₅ (10 valence e⁻) &amp; SF₆ (12 valence e⁻)</option>
+        </select>
+      </div>
+      <div id="covDotOut" class="p-4 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-300 space-y-2.5"></div>
+    </div>
+
+    <!-- Right: Giant Carbon Allotropes (Diamond, Graphite, Graphene) Comparator -->
+    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+      <div class="flex items-center justify-between">
+        <span class="text-[10px] font-mono text-emerald-400 uppercase font-bold px-2 py-0.5 bg-emerald-950 rounded border border-emerald-800">Spec 3.12 · Giant Carbon</span>
+        <span class="text-[10px] text-slate-400 font-mono">Structure → Property</span>
+      </div>
+      <h3 class="font-display text-sm font-bold text-white">Giant Carbon Allotropes Interactive Comparator</h3>
+      <p class="text-xs text-slate-400">Click an allotrope to compare C–C bond count, bond angle, delocalised electrons, conductivity, hardness/lubrication, and uses:</p>
+      <div class="flex flex-wrap gap-1.5" id="carbonAlloBtns">
+        <button type="button" onclick="selectCarbonAllo(0)" class="px-3 py-1.5 rounded-lg text-xs font-bold border border-emerald-600 bg-emerald-950/50 text-emerald-200">💎 Diamond (4 bonds)</button>
+        <button type="button" onclick="selectCarbonAllo(1)" class="px-3 py-1.5 rounded-lg text-xs font-bold border border-slate-700 bg-slate-900 text-slate-300">✏️ Graphite (3 bonds + layers)</button>
+        <button type="button" onclick="selectCarbonAllo(2)" class="px-3 py-1.5 rounded-lg text-xs font-bold border border-slate-700 bg-slate-900 text-slate-300">⚡ Graphene (single layer)</button>
+      </div>
+      <div id="carbonAlloOut" class="p-4 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-300 space-y-2"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Mark-Scheme Word Bank — Covalent Bonding & Polarity -->
+<div class="mt-4 p-4 bg-slate-950 border border-slate-800 rounded-xl">
+  <p class="text-[11px] font-bold text-purple-300 uppercase tracking-wider mb-2">📝 Mark-Scheme Word Bank — Covalent Bonding &amp; Polarity (Spec 3.10–3.15)</p>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+    <div class="p-3 bg-slate-900 border border-slate-800 rounded-lg">
+      <p class="font-bold text-white mb-1">Covalent bond definition (2 marks)</p>
+      <p class="text-slate-300 leading-relaxed">Strong <b>electrostatic attraction</b> between the <b>shared pair of electrons</b> and the <b>nuclei of the two bonded atoms</b>.</p>
+    </div>
+    <div class="p-3 bg-slate-900 border border-slate-800 rounded-lg">
+      <p class="font-bold text-white mb-1">Dative covalent bond (2 marks)</p>
+      <p class="text-slate-300 leading-relaxed">A covalent bond in which <b>both shared electrons come from the same atom</b> (e.g. lone pair on Cl donated into empty orbital on Al in $\text{Al}_2\text{Cl}_6$).</p>
+    </div>
+    <div class="p-3 bg-slate-900 border border-slate-800 rounded-lg">
+      <p class="font-bold text-white mb-1">Electronegativity definition (2 marks)</p>
+      <p class="text-slate-300 leading-relaxed">The ability of an atom to <b>attract the bonding / shared pair of electrons</b> in a <b>covalent bond</b>.</p>
+    </div>
+    <div class="p-3 bg-slate-900 border border-slate-800 rounded-lg">
+      <p class="font-bold text-white mb-1">Non-polar molecule with polar bonds (2 marks)</p>
+      <p class="text-slate-300 leading-relaxed">Bonds are polar due to $\Delta\text{EN}$, but the molecule is <b>symmetrical</b> (linear / trigonal planar / tetrahedral / octahedral) so the <b>bond dipoles cancel out</b>.</p>
+    </div>
+  </div>
+</div>
 </section>
 <section id="tab-shape" class="tab-panel space-y-6">
 <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5">
@@ -333,6 +757,7 @@ nav, nav > div { max-width: 100% !important; }
     <button onclick="setMode('shape','quiz')" id="shape-m-quiz" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-sky-300">Quiz</button>
     <button onclick="setMode('shape','traps')" id="shape-m-traps" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-sky-300">Traps</button>
     <button onclick="setMode('shape','sim')" id="shape-m-sim" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-amber-800/60 text-amber-300/80 hover:text-amber-200">🧪 3D Simulator</button>
+    <button onclick="setMode('shape','drill')" id="shape-m-drill" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-sky-300">🧩 VSEPR Pair &amp; Angle Grader</button>
   </div>
 </div>
 <div id="shape-mode-explorer" class="shape-mode"><div id="shape-explorer" class="grid grid-cols-1 lg:grid-cols-12 gap-4"></div></div>
@@ -350,6 +775,95 @@ nav, nav > div { max-width: 100% !important; }
 </div>
 <div id="shape-mode-quiz" class="shape-mode hidden"><div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4"><h3 class="font-display text-sm font-bold text-emerald-300">Multi-Blank Quiz — Shapes</h3><p class="text-xs text-slate-400">Click each blurred answer to reveal it.</p><div id="shape-quiz-rows" class="space-y-3"></div><button onclick="revealAll('shape-quiz-rows')" class="btn-press bg-slate-800 hover:bg-slate-700 border border-slate-700 text-sky-300 text-xs font-semibold px-4 py-2 rounded-lg">Reveal All</button></div></div>
 <div id="shape-mode-traps" class="shape-mode hidden"><div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4"><h3 class="font-display text-sm font-bold text-rose-300">Trap Pairs — Shapes</h3><div id="shape-traps-grid" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div></div></div>
+
+<div id="shape-mode-drill" class="shape-mode hidden">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <!-- Left: Interactive VSEPR Pair Counter & Shape/Angle Grader -->
+    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+      <div class="flex items-center justify-between">
+        <span class="text-[10px] font-mono text-emerald-400 uppercase font-bold px-2 py-0.5 bg-emerald-950 rounded border border-emerald-800">Spec 3.16 – 3.19</span>
+        <span id="vseprDrillScore" class="text-[10px] font-mono text-emerald-300">Score: 0 / 8</span>
+      </div>
+      <h3 class="font-display text-sm font-bold text-white">Interactive VSEPR Pair Counter &amp; Angle Grader</h3>
+      <p class="text-xs text-slate-400">Pick a target molecule or ion below, work out its bonding domains, lone pairs on the central atom, molecular shape, and bond angle, and check your answer:</p>
+      <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 text-xs">
+        <div class="sm:col-span-2">
+          <label class="block text-slate-400 mb-1">Target Species</label>
+          <select id="vseprTarget" onchange="resetVseprDrillFb()" class="w-full px-2 py-1.5 text-xs text-slate-100 font-mono">
+            <option value="0">NH₃ (Ammonia)</option>
+            <option value="1">H₂O (Water)</option>
+            <option value="2">NH₄⁺ (Ammonium ion)</option>
+            <option value="3">H₃O⁺ (Hydronium ion)</option>
+            <option value="4">BeCl₂ (Beryllium chloride)</option>
+            <option value="5">BF₃ (Boron trifluoride)</option>
+            <option value="6">PCl₅(g) (Phosphorus(V) chloride)</option>
+            <option value="7">SF₆ (Sulfur hexafluoride)</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-slate-400 mb-1">Bonding (bp)</label>
+          <input id="vseprBp" type="number" min="1" max="6" value="3" class="w-full px-2 py-1.5 text-xs text-slate-100 font-mono">
+        </div>
+        <div>
+          <label class="block text-slate-400 mb-1">Lone (lp)</label>
+          <input id="vseprLp" type="number" min="0" max="4" value="1" class="w-full px-2 py-1.5 text-xs text-slate-100 font-mono">
+        </div>
+        <div>
+          <label class="block text-slate-400 mb-1">Bond Angle</label>
+          <select id="vseprAngle" class="w-full px-2 py-1.5 text-xs text-slate-100 font-mono">
+            <option value="180°">180°</option>
+            <option value="120°">120°</option>
+            <option value="109.5°">109.5°</option>
+            <option value="107°" selected>107°</option>
+            <option value="104.5°">104.5°</option>
+            <option value="90° & 120°">90° &amp; 120°</option>
+            <option value="90°">90°</option>
+          </select>
+        </div>
+      </div>
+      <div>
+        <label class="block text-slate-400 text-xs mb-1">Molecular Shape Name (atom positions only)</label>
+        <select id="vseprShapeName" class="w-full px-3 py-1.5 text-xs text-slate-100">
+          <option value="Linear">Linear</option>
+          <option value="Trigonal planar">Trigonal planar</option>
+          <option value="Tetrahedral">Tetrahedral</option>
+          <option value="Trigonal pyramidal" selected>Trigonal pyramidal</option>
+          <option value="Bent / non-linear">Bent / non-linear (V-shaped)</option>
+          <option value="Trigonal bipyramidal">Trigonal bipyramidal</option>
+          <option value="Octahedral">Octahedral</option>
+        </select>
+      </div>
+      <div class="flex gap-2">
+        <button type="button" onclick="checkVseprDrill()" class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold py-2 px-4 rounded-lg">Grade VSEPR Prediction</button>
+        <button type="button" onclick="revealVseprDrill()" class="bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold py-2 px-3 rounded-lg border border-slate-700">Show Solution</button>
+      </div>
+      <div id="vseprDrillFb" class="p-3.5 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-300"></div>
+    </div>
+
+    <!-- Right: Solid vs Gaseous PCl5 & Analogous Ions Reference (Spec 3.18-3.19) -->
+    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+      <div class="flex items-center justify-between">
+        <span class="text-[10px] font-mono text-amber-400 uppercase font-bold px-2 py-0.5 bg-amber-950 rounded border border-amber-800">Spec 3.18 – 3.19 · High-Yield Analogues</span>
+        <span class="text-[10px] font-mono text-slate-400">Ions &amp; Phase Changes</span>
+      </div>
+      <h3 class="font-display text-sm font-bold text-white">Analogous Ions &amp; Phase-Change Geometry Matrix</h3>
+      <p class="text-xs text-slate-400">In WCH11, examiners frequently test ions or phase changes ($	ext{PCl}_5(g) ightarrow [	ext{PCl}_4]^+[	ext{PCl}_6]^-(s)$ or $	ext{AlCl}_3 ightarrow 	ext{Al}_2	ext{Cl}_6$). Study how the bond angle shifts:</p>
+      <div class="overflow-x-auto rounded-lg border border-slate-800">
+        <table class="w-full text-xs text-slate-300">
+          <thead class="bg-slate-900 text-slate-400 uppercase text-[10px]">
+            <tr><th class="p-2.5 text-left">Transformation / Pair</th><th class="p-2.5 text-left">(bp, lp) Change</th><th class="p-2.5 text-left">Shape &amp; Angle Shift</th></tr>
+          </thead>
+          <tbody class="divide-y divide-slate-800">
+            <tr><td class="p-2.5 font-semibold text-white">$\text{NH}_3 + \text{H}^+ \rightarrow \text{NH}_4^+$</td><td class="p-2.5 font-mono text-sky-300">(3,1) → (4,0)</td><td class="p-2.5">Trigonal pyramidal ($107^\circ$) → Tetrahedral ($109.5^\circ$)</td></tr>
+            <tr><td class="p-2.5 font-semibold text-white">$\text{H}_2\text{O} + \text{H}^+ \rightarrow \text{H}_3\text{O}^+$</td><td class="p-2.5 font-mono text-sky-300">(2,2) → (3,1)</td><td class="p-2.5">Bent ($104.5^\circ$) → Trigonal pyramidal ($\approx 107^\circ$)</td></tr>
+            <tr><td class="p-2.5 font-semibold text-white">$2\text{AlCl}_3(g) \rightarrow \text{Al}_2\text{Cl}_6(g)$</td><td class="p-2.5 font-mono text-sky-300">(3,0) → (4,0) per Al</td><td class="p-2.5">Trigonal planar ($120^\circ$) → Tetrahedral around Al ($\approx 109.5^\circ$)</td></tr>
+            <tr><td class="p-2.5 font-semibold text-white">$2\text{PCl}_5(g) \rightarrow [\text{PCl}_4]^+[\text{PCl}_6]^-(s)$</td><td class="p-2.5 font-mono text-sky-300">(5,0) → (4,0) &amp; (6,0)</td><td class="p-2.5">TBP ($90^\circ/120^\circ$) → Tetrahedral ($109.5^\circ$) + Octahedral ($90^\circ$)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- ============ 3D VSEPR SIMULATOR (Three.js / PhET-style) ============ -->
 <div id="shape-mode-sim" class="shape-mode hidden space-y-5">
@@ -483,6 +997,7 @@ nav, nav > div { max-width: 100% !important; }
     <button onclick="setMode('metal','map')" id="metal-m-map" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-sky-300">Structure Map</button>
     <button onclick="setMode('metal','quiz')" id="metal-m-quiz" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-sky-300">Quiz</button>
     <button onclick="setMode('metal','traps')" id="metal-m-traps" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-sky-300">Traps</button>
+    <button onclick="setMode('metal','drill')" id="metal-m-drill" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-sky-300">🔬 Mystery Structure Identifier &amp; Metal Lab</button>
   </div>
 </div>
 <div id="metal-mode-explorer" class="metal-mode"><div id="metal-explorer" class="grid grid-cols-1 lg:grid-cols-12 gap-4"></div></div>
@@ -495,6 +1010,54 @@ nav, nav > div { max-width: 100% !important; }
 </div>
 <div id="metal-mode-quiz" class="metal-mode hidden"><div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4"><h3 class="font-display text-sm font-bold text-cyan-300">Multi-Blank Quiz — Metallic & Structures</h3><p class="text-xs text-slate-400">Click each blurred answer to reveal it.</p><div id="metal-quiz-rows" class="space-y-3"></div><button onclick="revealAll('metal-quiz-rows')" class="btn-press bg-slate-800 hover:bg-slate-700 border border-slate-700 text-sky-300 text-xs font-semibold px-4 py-2 rounded-lg">Reveal All</button></div></div>
 <div id="metal-mode-traps" class="metal-mode hidden"><div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4"><h3 class="font-display text-sm font-bold text-rose-300">Trap Pairs — Metallic & Structures</h3><div id="metal-traps-grid" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div></div></div>
+
+<div id="metal-mode-drill" class="metal-mode hidden">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <!-- Left: Interactive Mystery Substance Structure Deduction Lab -->
+    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+      <div class="flex items-center justify-between">
+        <span class="text-[10px] font-mono text-cyan-400 uppercase font-bold px-2 py-0.5 bg-cyan-950 rounded border border-cyan-800">Spec 3.1 · 3.10 · 3.12 · 3.22</span>
+        <span class="text-[10px] font-mono text-slate-400">WCH11 / WCH13 Deduction</span>
+      </div>
+      <h3 class="font-display text-sm font-bold text-white">Mystery Substance Structure &amp; Bonding Identifier</h3>
+      <p class="text-xs text-slate-400">Examine the physical data table for each unknown substance (melting point, electrical conductivity as solid and liquid, solubility) and deduce its structure type:</p>
+      <div>
+        <select id="mysterySubSel" onchange="renderMysterySub()" class="w-full px-3 py-2 text-xs text-slate-100">
+          <option value="0">Substance A: mp = 2852 °C · Solid: Non-conductor · Molten: Conducts</option>
+          <option value="1">Substance B: mp = 650 °C · Solid: Good conductor · Molten: Good conductor · Malleable</option>
+          <option value="2">Substance C: Sublimes 3650 °C · Solid: Good conductor · Soft / slippery layers</option>
+          <option value="3">Substance D: mp = 1710 °C · Solid: Non-conductor · Molten: Non-conductor · Hard crystal</option>
+          <option value="4">Substance E: mp = 114 °C (sublimes) · Solid/Molten: Non-conductor · Soluble in hexane</option>
+          <option value="5">Substance F: Sublimes 180 °C · Formed from metal + Cl₂ · Dimerises in gas phase</option>
+        </select>
+      </div>
+      <div id="mysterySubData" class="p-3 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-200 font-mono"></div>
+      <div class="grid grid-cols-2 gap-2 text-xs">
+        <button type="button" onclick="checkMysterySub('Giant ionic')" class="p-2 rounded-lg border border-slate-700 bg-slate-900 hover:border-purple-500 text-purple-300 font-semibold">Giant Ionic Lattice</button>
+        <button type="button" onclick="checkMysterySub('Giant metallic')" class="p-2 rounded-lg border border-slate-700 bg-slate-900 hover:border-sky-500 text-sky-300 font-semibold">Giant Metallic Lattice</button>
+        <button type="button" onclick="checkMysterySub('Giant covalent')" class="p-2 rounded-lg border border-slate-700 bg-slate-900 hover:border-amber-500 text-amber-300 font-semibold">Giant Covalent Network</button>
+        <button type="button" onclick="checkMysterySub('Simple molecular')" class="p-2 rounded-lg border border-slate-700 bg-slate-900 hover:border-rose-500 text-rose-300 font-semibold">Simple Molecular</button>
+      </div>
+      <div id="mysterySubFb" class="p-3.5 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-300"></div>
+    </div>
+
+    <!-- Right: Period 3 Metallic Bonding Strength Comparator (Na vs Mg vs Al) -->
+    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+      <div class="flex items-center justify-between">
+        <span class="text-[10px] font-mono text-sky-400 uppercase font-bold px-2 py-0.5 bg-sky-950 rounded border border-sky-800">Spec 3.20 – 3.22 · PEF Jun 2024</span>
+        <span class="text-[10px] font-mono text-slate-400">Na → Mg → Al</span>
+      </div>
+      <h3 class="font-display text-sm font-bold text-white">Period 3 Metallic Bonding Strength &amp; Conductivity Explorer</h3>
+      <p class="text-xs text-slate-400">Click any Period 3 metal below to see how cation charge, ionic radius, and delocalised electrons per atom govern melting point and conductivity:</p>
+      <div class="flex gap-2" id="p3MetalBtns">
+        <button type="button" onclick="selectP3Metal(0)" class="flex-1 py-2 px-3 rounded-lg text-xs font-bold border border-sky-600 bg-sky-950/50 text-sky-200">Sodium (Na⁺ + 1 e⁻)</button>
+        <button type="button" onclick="selectP3Metal(1)" class="flex-1 py-2 px-3 rounded-lg text-xs font-bold border border-slate-700 bg-slate-900 text-slate-300">Magnesium (Mg²⁺ + 2 e⁻)</button>
+        <button type="button" onclick="selectP3Metal(2)" class="flex-1 py-2 px-3 rounded-lg text-xs font-bold border border-slate-700 bg-slate-900 text-slate-300">Aluminium (Al³⁺ + 3 e⁻)</button>
+      </div>
+      <div id="p3MetalOut" class="p-4 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-300 space-y-2"></div>
+    </div>
+  </div>
+</div>
 </section>
 <section id="tab-predict" class="tab-panel space-y-6">
 <div class="bg-gradient-to-r from-amber-950/40 via-slate-900 to-slate-900 border border-amber-700/40 rounded-xl p-6 relative overflow-hidden">
@@ -575,6 +1138,41 @@ nav, nav > div { max-width: 100% !important; }
   </div>
   <div id="wrongdiag1"></div>
 </div>
+
+<!-- 07: Live Automated Edexcel Mark-Scheme Keyword Grader for Topic 3 -->
+<div class="bg-slate-900 border border-amber-700/50 rounded-xl p-5 space-y-4 card-hover reveal">
+  <div class="flex items-center justify-between gap-3">
+    <div class="flex items-center gap-3">
+      <span class="font-display text-2xl font-bold text-emerald-400">07</span>
+      <div>
+        <h3 class="font-display text-base font-bold text-slate-100">Automated Edexcel Mark-Scheme Keyword Grader (Topic 3)</h3>
+        <p class="text-xs text-slate-400">Pick any high-frequency WCH11 Bonding &amp; Structure written question below, type your explanation, and get instant M1/M2/M3 grading plus examiner penalty warnings!</p>
+      </div>
+    </div>
+    <span class="text-[10px] font-mono px-2.5 py-1 rounded-full bg-emerald-950 text-emerald-300 border border-emerald-800">Instant Auto-Mark</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
+    <div class="lg:col-span-5 space-y-3">
+      <label class="block text-xs font-semibold text-slate-300">Select WCH11 Written Question</label>
+      <select id="t3AutoExplainQ" onchange="resetT3AutoExplain()" class="w-full px-3 py-2 text-xs text-slate-100">
+        <option value="vsepr">1. Why H–O–H bond angle in H₂O (104.5°) is smaller than H–N–H in NH₃ (107°) and H–C–H in CH₄ (109.5°) [3 marks]</option>
+        <option value="sf6polar">2. Why SF₆ (or CCl₄) is non-polar despite having polar covalent bonds [2 marks]</option>
+        <option value="mgnamp">3. Why Magnesium (Mg) has a much higher melting point and electrical conductivity than Sodium (Na) [3 marks]</option>
+        <option value="al2cl6">4. Why anhydrous AlCl₃ has significant covalent character and forms Al₂Cl₆ dimers in the gas phase [3 marks]</option>
+        <option value="carbongraph">5. Why both diamond and graphite have very high melting points, but only graphite conducts electricity [3 marks]</option>
+      </select>
+      <textarea id="t3AutoExplainInput" rows="4" class="w-full p-3 text-xs text-slate-100" placeholder="Type your full exam explanation here..."></textarea>
+      <div class="flex gap-2">
+        <button type="button" onclick="gradeT3AutoExplain()" class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold py-2 px-4 rounded-lg">Auto-Grade My Answer</button>
+        <button type="button" onclick="showT3AutoExplainModel()" class="bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold py-2 px-3 rounded-lg border border-slate-700">Load Model</button>
+      </div>
+    </div>
+    <div class="lg:col-span-7 bg-slate-950 border border-slate-800 rounded-xl p-4 text-xs text-slate-300 space-y-2" id="t3AutoExplainOutput">
+      <p class="text-slate-400">Select a question on the left, write your causal chain, and click <b>Auto-Grade My Answer</b> to see which mark points (M1, M2, M3) you earned and whether you triggered any examiner penalties.</p>
+    </div>
+  </div>
+</div>
 </section>
 <section id="tab-studio" class="tab-panel space-y-6">
 <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5">
@@ -603,6 +1201,29 @@ nav, nav > div { max-width: 100% !important; }
   <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-3 card-hover">
     <h3 class="font-display text-sm font-bold text-sky-300">Strength of ionic bonding</h3>
     <div id="impCard" class="bg-slate-950 border border-slate-800 rounded-lg p-4 text-xs text-slate-300 leading-relaxed min-h-[180px]"><p class="text-slate-500">Click a bar to see how charge and radius set the melting point.</p></div>
+  </div>
+</div>
+
+<!-- Interactive Electron Density Map Visualiser (Spec 3.1, 3.8, 3.10, 3.14) -->
+<div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-4 card-hover">
+  <div class="flex flex-wrap items-center justify-between gap-2">
+    <div>
+      <span class="text-[10px] font-mono text-cyan-400 uppercase font-bold px-2 py-0.5 bg-cyan-950 rounded border border-cyan-800">Spec 3.1 · 3.8 · 3.10 · 3.14</span>
+      <h3 class="font-display text-sm font-bold text-white mt-1">Interactive Electron Density Contour Map Studio</h3>
+      <p class="text-[11px] text-slate-400">Examiners use X-ray electron-density contour maps as direct experimental evidence for ionic vs. covalent bonding and anion polarisation. Click a bonding regime below:</p>
+    </div>
+    <div class="flex flex-wrap gap-1.5 text-xs" id="edMapBtns">
+      <button type="button" onclick="renderEdMap('ionic')" class="px-3 py-1.5 rounded-lg border border-sky-600 bg-sky-950/60 text-sky-200 font-bold">1. Ideal Ionic (NaCl)</button>
+      <button type="button" onclick="renderEdMap('polarised')" class="px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-900 text-slate-300">2. Polarised Ionic (AgI / AlCl₃)</button>
+      <button type="button" onclick="renderEdMap('covalent')" class="px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-900 text-slate-300">3. Pure Covalent (Cl₂ / C–C)</button>
+      <button type="button" onclick="renderEdMap('polarcov')" class="px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-900 text-slate-300">4. Polar Covalent (HCl)</button>
+    </div>
+  </div>
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 items-center">
+    <div class="lg:col-span-6 bg-slate-950 border border-slate-800 rounded-xl p-4 flex items-center justify-center">
+      <svg id="edMapSvg" viewBox="0 0 380 180" class="w-full max-w-[380px] h-44"></svg>
+    </div>
+    <div id="edMapDesc" class="lg:col-span-6 bg-slate-950 border border-slate-800 rounded-xl p-4 text-xs text-slate-300 leading-relaxed space-y-2"></div>
   </div>
 </div>
 </section>
@@ -640,6 +1261,52 @@ nav, nav > div { max-width: 100% !important; }
     </div>
     <button onclick="solvePol()" class="btn-press w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2 rounded-lg text-xs">Estimate</button>
     <div id="pol-result" class="hidden p-3 bg-slate-900 border border-emerald-800/50 rounded-lg text-xs text-slate-200 space-y-1"></div>
+  </div>
+
+  <!-- Calculator 4: VSEPR Valence-Electron & Geometry Auto-Solver (Spec 3.16–3.19) -->
+  <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 card-hover">
+    <div class="flex items-center justify-between">
+      <h3 class="font-display text-sm font-bold text-amber-300">VSEPR Valence-Electron &amp; Angle Auto-Solver</h3>
+      <span class="text-[10px] font-mono text-slate-400">Spec 3.16 – 3.19</span>
+    </div>
+    <p class="text-xs text-slate-400">Enter the central atom's Periodic Table group (valence $e^-$), number of bonded terminal atoms, electrons contributed per bond (1 for H/Halogen, 2 for $=\text{O}$), and ion charge:</p>
+    <div class="grid grid-cols-4 gap-2 text-xs">
+      <div><label class="text-slate-400 block mb-1">Central Group</label><input type="number" min="2" max="8" id="vcalc-g" value="5" class="w-full p-2 text-slate-100 font-mono"></div>
+      <div><label class="text-slate-400 block mb-1"># Bonded Atoms</label><input type="number" min="2" max="6" id="vcalc-b" value="3" class="w-full p-2 text-slate-100 font-mono"></div>
+      <div><label class="text-slate-400 block mb-1">Bond Type</label>
+        <select id="vcalc-t" class="w-full p-2 text-slate-100 font-mono text-xs">
+          <option value="1" selected>Single (H/F/Cl)</option>
+          <option value="2">Double (=O)</option>
+        </select>
+      </div>
+      <div><label class="text-slate-400 block mb-1">Ion Charge</label><input type="number" min="-3" max="3" id="vcalc-q" value="0" class="w-full p-2 text-slate-100 font-mono"></div>
+    </div>
+    <button type="button" onclick="solveVseprCalc()" class="btn-press w-full bg-amber-600 hover:bg-amber-500 text-white font-bold py-2 rounded-lg text-xs">Deduce BP, LP, Shape &amp; Angle</button>
+    <div id="vcalc-result" class="p-3 bg-slate-900 border border-amber-800/50 rounded-lg text-xs text-slate-200 font-mono space-y-1"></div>
+  </div>
+
+  <!-- Calculator 5: WCH11 Substance Structure & Force Lookup Solver -->
+  <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 card-hover">
+    <div class="flex items-center justify-between">
+      <h3 class="font-display text-sm font-bold text-cyan-300">WCH11 Substance Structure &amp; Forces Lookup</h3>
+      <span class="text-[10px] font-mono text-slate-400">Spec 3.4 · 3.12 · 3.20</span>
+    </div>
+    <p class="text-xs text-slate-400">Select any commonly examined substance to view its lattice type, particles, forces overcome on melting, and conductivity profile:</p>
+    <div>
+      <select id="subLookupSel" onchange="solveSubLookup()" class="w-full p-2.5 text-xs text-slate-100 font-mono">
+        <option value="0">Magnesium oxide (MgO) — Giant Ionic</option>
+        <option value="1">Sodium chloride (NaCl) — Giant Ionic</option>
+        <option value="2">Aluminium chloride (Al₂Cl₆ / AlCl₃) — Simple Molecular Dimer (Polarised)</option>
+        <option value="3">Diamond (C) — Giant Covalent (4 bonds)</option>
+        <option value="4">Graphite (C) — Giant Covalent Layered (3 bonds + delocalised e⁻)</option>
+        <option value="5">Graphene (C) — Giant Covalent 2D Single Layer</option>
+        <option value="6">Silicon(IV) oxide (SiO₂) — Giant Covalent</option>
+        <option value="7">Iodine (I₂) — Simple Molecular Solid</option>
+        <option value="8">Carbon dioxide (CO₂) — Simple Molecular Gas</option>
+        <option value="9">Magnesium (Mg) — Giant Metallic</option>
+      </select>
+    </div>
+    <div id="subLookupResult" class="p-3 bg-slate-900 border border-cyan-800/50 rounded-lg text-xs text-slate-200 space-y-1"></div>
   </div>
 </div>
 </section>
@@ -709,6 +1376,7 @@ nav, nav > div { max-width: 100% !important; }
     <a href="#rev-shape" class="btn-press px-2.5 py-1 text-[10px] font-mono bg-slate-800 border border-slate-700 rounded text-amber-300 hover:border-amber-600">Shapes</a>
     <a href="#rev-metal" class="btn-press px-2.5 py-1 text-[10px] font-mono bg-slate-800 border border-slate-700 rounded text-cyan-300 hover:border-cyan-600">Metallic</a>
     <a href="#rev-traps" class="btn-press px-2.5 py-1 text-[10px] font-mono bg-slate-800 border border-slate-700 rounded text-rose-300 hover:border-rose-600">Master Traps</a>
+    <a href="#rev-t3-diag" class="btn-press px-2.5 py-1 text-[10px] font-mono bg-rose-950 border border-rose-700 rounded text-rose-300 hover:bg-rose-900 font-bold">⚡ 15-Q Exam Diagnostic</a>
   </div>
 </div>
 <details open class="bg-slate-950 border border-slate-800 rounded-xl">
@@ -778,8 +1446,34 @@ nav, nav > div { max-width: 100% !important; }
     <p class="text-rose-300 font-bold">□ Metallic model drawn with "atoms" instead of cations in the electron sea</p>
   </div>
 </details>
+
+<details open class="bg-slate-950 border border-slate-800 rounded-xl">
+  <summary id="rev-t3-diag" class="p-4 font-display text-sm font-bold text-rose-300 flex items-center justify-between">
+    <span>Interactive Edexcel IAL Topic 3 Exam Readiness Diagnostic (Spec 3.1 – 3.22)</span>
+    <span id="t3DiagScoreBadge" class="text-xs font-mono text-rose-300">0 / 15 Correct · 0%</span>
+  </summary>
+  <div class="px-4 pb-5 space-y-4">
+    <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 pb-3">
+      <p class="text-xs text-slate-400">15 exam-style multiple-choice questions spanning every subtopic in Topic 3 (3A Ionic, 3B Covalent &amp; Polarity, 3C VSEPR Shapes, 3D Metallic &amp; Structure Types).</p>
+      <button type="button" onclick="resetT3Diagnostic()" class="text-[11px] font-semibold px-3 py-1 rounded-full bg-slate-900 text-slate-300 border border-slate-700 hover:text-white">Reset Diagnostic</button>
+    </div>
+    <div id="t3DiagContainer" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+  </div>
+</details>
 </section>
 </main>
+
+<!-- ═══════════ APPLE QUICK JUMP SPOTLIGHT MODAL (⌘K) ═══════════ -->
+<div id="t3SpotlightModal" class="fixed inset-0 z-50 hidden items-start justify-center pt-20 px-4" style="background: rgba(2, 6, 18, 0.72); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);" onclick="if(event.target===this)closeT3Spotlight()">
+  <div class="w-full max-w-xl bg-slate-900 border border-slate-700/80 rounded-2xl shadow-2xl overflow-hidden">
+    <div class="p-3.5 border-b border-slate-800 flex items-center gap-3">
+      <span class="text-sky-400 text-sm">🔎</span>
+      <input id="t3SpotlightInput" type="text" oninput="filterT3Spotlight(this.value)" placeholder="Search Spec 3.1–3.22, 3D VSEPR simulator, Al2Cl6 dative bond, polarity, electron density..." class="w-full bg-transparent border-0 text-sm text-white focus:outline-none">
+      <button type="button" onclick="closeT3Spotlight()" class="text-[11px] text-slate-400 hover:text-white px-2 py-1 rounded bg-slate-800">ESC</button>
+    </div>
+    <div id="t3SpotlightResults" class="max-h-80 overflow-y-auto divide-y divide-slate-800/70 p-2 text-xs"></div>
+  </div>
+</div>
 <footer class="bg-slate-950/90 border-t border-slate-800/60 py-4 text-center text-[11px] text-slate-600 relative z-10">
   Edexcel IAL Chemistry · WCH11 Topic 3 · Bonding & Structure · Master Studio
 </footer>
@@ -802,7 +1496,7 @@ function switchTab(id){
 const revealObs=(typeof IntersectionObserver!=='undefined')?new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('revealed')})},{threshold:.06}):{observe(){}};
 document.querySelectorAll('.reveal').forEach(el=>revealObs.observe(el));
 function setMode(p,mode){
-  ['explorer','map','quiz','traps','sim'].forEach(m=>{
+  ['explorer','map','quiz','traps','sim','drill'].forEach(m=>{
     const pan=$(p+'-mode-'+m);if(pan)pan.classList.toggle('hidden',m!==mode);
     const btn=$(p+'-m-'+m);if(btn){
       if(m==='sim'){btn.className='btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border '+(m===mode?'border-amber-500 bg-amber-950/50 text-amber-300':'border-amber-800/60 text-amber-300/80 hover:text-amber-200');}
@@ -1563,6 +2257,948 @@ function simSub(mode){
 function simToggleOpt(){simApp.showLP=$('sim-chk-lp').checked;simRender();}
 function simEnter(){simInitThree();simOnResize();simRender();}
 function initSim(){simSyncBuildCounts();simBuildLibrary();}
+
+
+/* ══════════════════════════════════════════════════════════════════════════
+   TOPIC 3 INTERACTIVE CONCEPT CHECKERS, SIMULATORS & SYLLABUS ALIGNMENT
+   ══════════════════════════════════════════════════════════════════════════ */
+
+const T3_STATE = {
+  specConf: {},      // 0..17
+  specCheck: {},     // 0..17
+  diagAns: {},       // 0..14
+  vseprSolved: {},   // 0..7
+  trapChecked: {}    // 0..13
+};
+
+function loadT3State(){
+  try {
+    const raw = localStorage.getItem('wch11_topic3_studio_state_v1');
+    if (raw) Object.assign(T3_STATE, JSON.parse(raw));
+  } catch (e) {}
+}
+
+function saveT3State(){
+  try {
+    localStorage.setItem('wch11_topic3_studio_state_v1', JSON.stringify(T3_STATE));
+  } catch (e) {}
+}
+
+function updateT3Mastery(){
+  let pts = 0;
+  const maxPts = 51; // 18 conf + 18 spec checks + 15 diag Qs
+  for (let i = 0; i < 18; i++) {
+    if (T3_STATE.specConf[i] === 'mastered') pts += 1;
+    else if (T3_STATE.specConf[i] === 'practising') pts += 0.5;
+    if (T3_STATE.specCheck[i]) pts += 1;
+  }
+  for (let i = 0; i < 15; i++) {
+    if (T3_STATE.diagAns[i] !== undefined && T3_STATE.diagAns[i] === T3_DIAG_QS[i].ans) pts += 1;
+  }
+  const pct = Math.min(100, Math.round((pts / maxPts) * 100));
+  const badge = document.getElementById('mastery-percentage');
+  if (badge) badge.textContent = pct + '%';
+
+  const mCnt = Object.values(T3_STATE.specConf).filter(v => v === 'mastered').length;
+  const cCnt = Object.values(T3_STATE.specCheck).filter(Boolean).length;
+  const bar = document.getElementById('t3SyllabusProgressBar');
+  const lbl = document.getElementById('t3SyllabusProgressLabel');
+  if (bar) bar.style.width = Math.round(((mCnt + cCnt) / 36) * 100) + '%';
+  if (lbl) lbl.textContent = `${mCnt} / 18 Cards Mastered · ${cCnt} / 18 Concept Checks Passed`;
+}
+
+/* ── 1. SYLLABUS CARDS (Spec 3.1–3.22) 18 INSTANT CONCEPT CHECKS ── */
+const T3_SPEC_CHECKS = [
+  { spec: '3.1, 3.2', q: 'During the electrolysis of green aqueous copper(II) chromate(VI), CuCrO₄(aq), what is observed at the electrodes?', opts: ['A blue colour migrates to the anode (+) and a yellow colour migrates to the cathode (−).', 'A blue colour (Cu²⁺) migrates to the negative cathode and a yellow colour (CrO₄²⁻) migrates to the positive anode.', 'Green molecules migrate towards both electrodes equally.'], ans: 1, exp: 'Spec 3.1: Positive Cu²⁺(aq) cations (blue) are attracted to the negative cathode, while negative CrO₄²⁻(aq) anions (yellow) are attracted to the positive anode.' },
+  { spec: '3.3', q: 'Which feature is essential in a dot-and-cross diagram of magnesium fluoride, MgF₂?', opts: ['Overlapping circles showing shared electron pairs between Mg and F.', 'One [Mg]²⁺ ion (showing 8 or 0 outer electrons) and two [F]⁻ ions (each with 8 outer electrons) enclosed in square brackets with charges.', 'Two Mg⁺ ions and one F²⁻ ion with no brackets.'], ans: 1, exp: 'Spec 3.3 / PEF: Ionic dot-and-cross diagrams must show discrete ions in square brackets with correct charges outside top-right, never overlapping covalent circles.' },
+  { spec: '3.4, 3.5', q: 'What is the complete mark-scheme definition of ionic bonding?', opts: ['The transfer of electrons from a metal atom to a non-metal atom.', 'The strong net electrostatic attraction between oppositely charged ions in a giant lattice.', 'The intermolecular attraction between positive and negative molecules.'], ans: 1, exp: 'Spec 3.5: Electron transfer is how ions form from atoms; the ionic bond itself is the strong electrostatic attraction between oppositely charged ions.' },
+  { spec: '3.6', q: 'Why does magnesium oxide (MgO, mp 2852 °C) have a much higher melting point than sodium fluoride (NaF, mp 993 °C)?', opts: ['MgO has stronger intermolecular van der Waals forces.', 'Mg²⁺ and O²⁻ have higher ionic charges (2+/2− vs 1+/1−) and Mg²⁺ is smaller than Na⁺, giving much stronger electrostatic attraction.', 'MgO is giant covalent whereas NaF is giant ionic.'], ans: 1, exp: 'Spec 3.6: Lattice strength increases with higher ionic charge and smaller ionic radius; the 2+/2− vs 1+/1− charge product quadruples the attraction.' },
+  { spec: '3.7', q: 'Which ordering correctly lists the 10-electron isoelectronic ions in order of DECREASING ionic radius (largest first)?', opts: ['Al³⁺ > Mg²⁺ > Na⁺ > F⁻ > O²⁻ > N³⁻', 'N³⁻ > O²⁻ > F⁻ > Na⁺ > Mg²⁺ > Al³⁺', 'Na⁺ > Mg²⁺ > Al³⁺ > N³⁻ > O²⁻ > F⁻'], ans: 1, exp: 'Spec 3.7: All six ions have 10 electrons (1s² 2s² 2p⁶). As proton number rises from Z=7 (N³⁻) to Z=13 (Al³⁺), nuclear attraction pulls the shell closer, so N³⁻ is largest and Al³⁺ is smallest.' },
+  { spec: '3.8, 3.9', q: 'Which combination of cation and anion produces the GREATEST degree of polarisation (covalent character)?', opts: ['Large cation with low charge (K⁺) + small anion with low charge (F⁻)', 'Small cation with high charge (Al³⁺) + large anion with high/moderate charge (I⁻)', 'Large cation with high charge (Ba²⁺) + small anion (F⁻)'], ans: 1, exp: 'Spec 3.8–3.9: Polarising power is highest for a small, highly charged cation (Al³⁺); polarisability is highest for a large anion (I⁻).' },
+  { spec: '3.10', q: 'How does an X-ray electron density map of a covalent crystal (such as diamond or Si) differ from that of an ionic crystal (NaCl)?', opts: ['A covalent map shows zero electron density everywhere.', 'A covalent map shows continuous contours of high electron density concentrated BETWEEN the nuclei, whereas an ionic map shows discrete spherical ions with zero density between them.', 'An ionic map shows shared electron density between nuclei.'], ans: 1, exp: 'Spec 3.10(ii): High electron density between nuclei is direct evidence of a shared pair of electrons in a covalent bond.' },
+  { spec: '3.11', q: 'In the gas-phase dimer Al₂Cl₆, how are the two AlCl₃ units held together?', opts: ['By an Al–Al covalent bond between the two aluminium atoms.', 'By two dative covalent (coordinate) bonds in which bridging Cl atoms donate lone pairs into empty orbitals on the Al atoms (Cl → Al).', 'By dative bonds donated from Al to Cl (Al → Cl).'], ans: 1, exp: 'PEF Jan 2023 & Oct 2024: Each Al in AlCl₃ has only 6 outer electrons; a lone pair on a Cl atom of one unit forms a dative bond (Cl → Al) to the Al of the other unit.' },
+  { spec: '3.12', q: 'Why does graphite conduct electricity whereas diamond does not?', opts: ['Graphite contains mobile C⁴⁺ ions between its layers.', 'In graphite each carbon forms 3 covalent bonds, leaving 1 outer electron per carbon delocalised and free to move along the layers; in diamond all 4 outer electrons are localised in covalent bonds.', 'Diamond has weak intermolecular forces that block electrons.'], ans: 1, exp: 'Spec 3.12: Graphite has delocalised electrons between its hexagonal layers that move when a voltage is applied.' },
+  { spec: '3.13', q: 'What is the mark-scheme definition of electronegativity?', opts: ['The energy required to remove one mole of electrons from one mole of gaseous atoms.', 'The ability of an atom to attract the bonding (shared) pair of electrons in a covalent bond.', 'The charge on an ion in an ionic lattice.'], ans: 1, exp: 'Spec 3.13: Must state “attract the bonding/shared pair of electrons in a covalent bond”.' },
+  { spec: '3.14', q: 'Why is it incorrect to state that any compound with ΔEN < 1.8 is 100% covalent and any with ΔEN > 1.8 is 100% ionic?', opts: ['Because all compounds are 100% ionic.', 'Because ionic and covalent bonding are the two extremes of a continuous bonding spectrum (continuum), with intermediate bonds having polar covalent / partial ionic character.', 'Because electronegativity only applies to noble gases.'], ans: 1, exp: 'Spec 3.14 / PEF Jun 2023: Bonding lies on a continuum; there is no sharp cut-off threshold.' },
+  { spec: '3.15', q: 'Which of the following molecules is POLAR overall?', opts: ['CO₂ (linear)', 'BF₃ (trigonal planar)', 'CH₃Cl (tetrahedral)', 'SF₆ (octahedral)'], ans: 2, exp: 'Spec 3.15: In CO₂, BF₃, and SF₆ all terminal atoms are identical and the symmetrical geometry cancels the bond dipoles. In CH₃Cl, the C–Cl dipole is not cancelled by the three C–H bonds.' },
+  { spec: '3.16', q: 'According to electron-pair repulsion theory (VSEPR), what is the correct order of repulsion strength between electron pairs?', opts: ['Bonding–bonding > lone–bonding > lone–lone', 'Lone pair–lone pair > lone pair–bonding pair > bonding pair–bonding pair', 'All electron pairs repel equally regardless of whether they are lone or bonding.'], ans: 1, exp: 'Spec 3.16: Lone pairs are held closer to the central nucleus and occupy more space, repelling more strongly (LP–LP > LP–BP > BP–BP).' },
+  { spec: '3.17', q: 'How are “bond length” and “bond angle” defined in Spec 3.17?', opts: ['Bond length is the distance between the outer shells; bond angle is always 90°.', 'Bond length is the distance between the nuclei of two covalently bonded atoms; bond angle is the angle between two covalent bonds at a central atom.', 'Bond length is the diameter of one atom.'], ans: 1, exp: 'Spec 3.17: Bond length is measured nucleus-to-nucleus between two bonded atoms.' },
+  { spec: '3.18', q: 'What are the molecular shape and bond angle of water (H₂O) and ammonia (NH₃)?', opts: ['H₂O: Linear (180°); NH₃: Trigonal planar (120°)', 'H₂O: Bent / V-shaped (104.5°); NH₃: Trigonal pyramidal (107°)', 'H₂O: Tetrahedral (104.5°); NH₃: Tetrahedral (107°)'], ans: 1, exp: 'Spec 3.18 / PEF Jan 2020: Both have 4 electron pairs (tetrahedral electron arrangement), but molecular shape is named from atom positions only: NH₃ (3 bp, 1 lp) is trigonal pyramidal (107°); H₂O (2 bp, 2 lp) is bent/non-linear (104.5°).' },
+  { spec: '3.19', q: 'Using VSEPR (Spec 3.19), what are the shape and bond angle of the carbonate ion, CO₃²⁻, and the sulfate ion, SO₄²⁻?', opts: ['CO₃²⁻: Trigonal pyramidal (107°); SO₄²⁻: Square planar (90°)', 'CO₃²⁻: Trigonal planar (120°, 3 bonding regions, 0 lp); SO₄²⁻: Tetrahedral (109.5°, 4 bonding regions, 0 lp)', 'CO₃²⁻: T-shaped (90°); SO₄²⁻: See-saw'], ans: 1, exp: 'Spec 3.19: In CO₃²⁻ carbon has 3 bonding regions and 0 lone pairs → trigonal planar (120°); in SO₄²⁻ sulfur has 4 bonding regions and 0 lone pairs → tetrahedral (109.5°).' },
+  { spec: '3.20, 3.21', q: 'What is the mark-scheme definition of metallic bonding?', opts: ['The attraction between neutral metal atoms and free electrons.', 'The strong electrostatic attraction between a giant lattice of positive metal ions (cations) and a sea of delocalised electrons.', 'Covalent sharing of electrons between metal ions.'], ans: 1, exp: 'Spec 3.21 / PEF Jun 2024: Must state electrostatic attraction between positive metal ions (cations) and delocalised electrons.' },
+  { spec: '3.22', q: 'Why are metals malleable whereas giant ionic crystals are brittle?', opts: ['Metals have weak bonds that break easily.', 'When a force is applied to a metal, layers of positive ions slide over one another while the sea of delocalised electrons moves with them and maintains electrostatic attraction; in an ionic lattice, sliding brings ions of like charge together, causing repulsion and fracture.', 'Ionic crystals contain delocalised electrons that repel.'], ans: 1, exp: 'Spec 3.22: Non-directional metallic bonding stays intact as cation layers slide; shifting an ionic lattice aligns like charges (+/+ and −/−), which repel and shatter the crystal.' }
+];
+
+function injectT3SyllabusChecks(){
+  const cards = document.querySelectorAll('#overview-grid > div');
+  cards.forEach((card, idx) => {
+    if (idx >= T3_SPEC_CHECKS.length || card.querySelector('.t3-spec-footer')) return;
+    const item = T3_SPEC_CHECKS[idx];
+    const conf = T3_STATE.specConf[idx] || '';
+    const passed = !!T3_STATE.specCheck[idx];
+
+    const footer = document.createElement('div');
+    footer.className = 't3-spec-footer pt-3 mt-2 border-t border-slate-800/80 space-y-2.5';
+    footer.innerHTML = `
+      <div class="flex flex-wrap items-center justify-between gap-2">
+        <div class="flex items-center gap-1">
+          <span class="text-[10px] font-mono text-slate-400 mr-1">Confidence:</span>
+          <button type="button" onclick="setT3SpecConf(${idx}, 'review')" class="spec-conf-btn conf-review ${conf==='review'?'active':''}" data-t3-conf="${idx}-review">Review</button>
+          <button type="button" onclick="setT3SpecConf(${idx}, 'practising')" class="spec-conf-btn conf-practising ${conf==='practising'?'active':''}" data-t3-conf="${idx}-practising">Practising</button>
+          <button type="button" onclick="setT3SpecConf(${idx}, 'mastered')" class="spec-conf-btn conf-mastered ${conf==='mastered'?'active':''}" data-t3-conf="${idx}-mastered">✓ Mastered</button>
+        </div>
+        <button type="button" onclick="toggleT3SpecCheck(${idx})" id="t3SpecToggle-${idx}" class="text-[11px] font-semibold px-2.5 py-1 rounded-full border ${passed ? 'bg-emerald-950/60 text-emerald-300 border-emerald-700/70' : 'bg-sky-950/60 text-sky-300 border-sky-800/70'} hover:text-white">
+          ${passed ? '✅ Concept Checked' : '⚡ Instant Concept Check'}
+        </button>
+      </div>
+      <div id="t3SpecPanel-${idx}" class="hidden p-3 rounded-xl bg-slate-900/95 border border-slate-800 space-y-2 text-xs">
+        <p class="font-semibold text-white leading-snug">Spec ${item.spec} Check: ${item.q}</p>
+        <div class="space-y-1.5">
+          ${item.opts.map((opt, oIdx) => `
+            <button type="button" onclick="answerT3SpecCheck(${idx}, ${oIdx})" id="t3SpecOpt-${idx}-${oIdx}" class="w-full text-left p-2 rounded-lg border border-slate-800 bg-slate-950/70 hover:border-sky-700 text-slate-300 text-[11px] leading-relaxed">
+              <span class="font-mono text-sky-400 mr-1.5">${String.fromCharCode(65+oIdx)}.</span>${opt}
+            </button>
+          `).join('')}
+        </div>
+        <div id="t3SpecExp-${idx}" class="hidden p-2.5 rounded-lg text-[11px] leading-relaxed"></div>
+      </div>
+    `;
+    card.appendChild(footer);
+  });
+}
+
+function setT3SpecConf(idx, level){
+  T3_STATE.specConf[idx] = level;
+  saveT3State();
+  ['review','practising','mastered'].forEach(l => {
+    const b = document.querySelector(`[data-t3-conf="${idx}-${l}"]`);
+    if (b) b.classList.toggle('active', l === level);
+  });
+  updateT3Mastery();
+}
+
+function toggleT3SpecCheck(idx){
+  const p = document.getElementById('t3SpecPanel-' + idx);
+  if (p) p.classList.toggle('hidden');
+}
+
+function expandAllT3SpecChecks(open){
+  for (let i = 0; i < 18; i++) {
+    const p = document.getElementById('t3SpecPanel-' + i);
+    if (p) p.classList.toggle('hidden', !open);
+  }
+}
+
+function answerT3SpecCheck(idx, optIdx){
+  const item = T3_SPEC_CHECKS[idx];
+  const isOk = optIdx === item.ans;
+  const exp = document.getElementById('t3SpecExp-' + idx);
+  const btn = document.getElementById('t3SpecToggle-' + idx);
+
+  item.opts.forEach((_, oIdx) => {
+    const b = document.getElementById(`t3SpecOpt-${idx}-${oIdx}`);
+    if (!b) return;
+    if (oIdx === item.ans) b.className = 'w-full text-left p-2 rounded-lg border border-emerald-600 bg-emerald-950/40 text-emerald-200 text-[11px] leading-relaxed font-semibold';
+    else if (oIdx === optIdx) b.className = 'w-full text-left p-2 rounded-lg border border-rose-600 bg-rose-950/40 text-rose-200 text-[11px] leading-relaxed';
+  });
+
+  if (exp) {
+    exp.classList.remove('hidden');
+    exp.className = 'p-2.5 rounded-lg text-[11px] leading-relaxed ' + (isOk ? 'bg-emerald-950/50 border border-emerald-800 text-emerald-200' : 'bg-amber-950/50 border border-amber-800 text-amber-200');
+    exp.innerHTML = (isOk ? '<b>✓ Full Marks!</b> ' : '<b>✗ Examiner Watch-Out:</b> ') + item.exp;
+  }
+
+  if (isOk) {
+    T3_STATE.specCheck[idx] = true;
+    if (!T3_STATE.specConf[idx]) setT3SpecConf(idx, 'mastered');
+    saveT3State();
+    if (btn) {
+      btn.textContent = '✅ Concept Checked';
+      btn.className = 'text-[11px] font-semibold px-2.5 py-1 rounded-full border bg-emerald-950/60 text-emerald-300 border-emerald-700/70';
+    }
+    updateT3Mastery();
+  }
+}
+
+function resetT3SyllabusTracker(){
+  T3_STATE.specConf = {};
+  T3_STATE.specCheck = {};
+  saveT3State();
+  document.querySelectorAll('.spec-conf-btn').forEach(b => b.classList.remove('active'));
+  for (let i = 0; i < 18; i++) {
+    const t = document.getElementById('t3SpecToggle-' + i);
+    if (t) {
+      t.textContent = '⚡ Instant Concept Check';
+      t.className = 'text-[11px] font-semibold px-2.5 py-1 rounded-full border bg-sky-950/60 text-sky-300 border-sky-800/70 hover:text-white';
+    }
+    const exp = document.getElementById('t3SpecExp-' + i);
+    if (exp) exp.classList.add('hidden');
+  }
+  updateT3Mastery();
+}
+
+/* ── 2. TAB 2 DRILL: IONIC MIGRATION, DOT-CROSS & POLARISATION DUELS ── */
+const IONIC_DRILL_ITEMS = [
+  {
+    title: 'Electrolysis of Green Copper(II) Chromate(VI), CuCrO₄(aq)',
+    badge: 'Spec 3.1(iii) · Ion Migration',
+    diagram: `[ − Cathode ]  ⟵  Cu²⁺(aq) (BLUE)   |   CrO₄²⁻(aq) (YELLOW)  ⟶  [ + Anode ]`,
+    points: [
+      '<b>Initial appearance:</b> Green solution (mixture of blue hydrated $\text{Cu}^{2+}$ ions and yellow $\text{CrO}_4^{2-}$ ions).',
+      '<b>Observation at Cathode (−):</b> Solution around the negative electrode turns <b>blue</b> as positive $\text{Cu}^{2+}$ cations migrate towards it.',
+      '<b>Observation at Anode (+):</b> Solution around the positive electrode turns <b>yellow</b> as negative $\text{CrO}_4^{2-}$ anions migrate towards it.'
+    ]
+  },
+  {
+    title: 'Electrolysis of Purple Potassium Manganate(VII), KMnO₄(aq) on Wet Filter Paper',
+    badge: 'Spec 3.1(iii) · Coloured Anion',
+    diagram: `[ − Cathode ]  ⟵  K⁺(aq) (COLOURLESS)   |   MnO₄⁻(aq) (PURPLE)  ⟶  [ + Anode ]`,
+    points: [
+      '<b>Observation:</b> The <b>purple colour</b> moves towards the <b>positive anode (+)</b> because the purple colour is due to the negatively charged manganate(VII) ion, $\text{MnO}_4^-$.',
+      '<b>Examiner Trap:</b> $\text{K}^+$ ions migrate to the negative cathode, but $\text{K}^+(aq)$ is <b>colourless</b> so no colour change is seen at the cathode.'
+    ]
+  },
+  {
+    title: 'Dot-and-Cross: Sodium Fluoride, NaF',
+    badge: 'Spec 3.3 · 1:1 Isoelectronic Pair',
+    diagram: `[ Na ]⁺   [ •× F ×× (8 outer e⁻) ]⁻     (Na⁺ = 2,8 ; F⁻ = 2,8)`,
+    points: [
+      '<b>Sodium ion ($\text{Na}^+$):</b> Atom ($2,8,1$) loses its $3s^1$ electron → draw either $[\text{Na}]^+$ (empty 3rd shell) or show the full 8-electron 2nd shell inside square brackets with $+$ outside top-right.',
+      '<b>Fluoride ion ($\text{F}^-$):</b> Atom ($2,7$) gains 1 electron from Na → show 7 crosses and 1 dot in the outer shell inside square brackets with $-$ outside top-right.'
+    ]
+  },
+  {
+    title: 'Dot-and-Cross: Magnesium Oxide, MgO',
+    badge: 'Spec 3.3 · 2+/2− Transfer',
+    diagram: `[ Mg ]²⁺   [ •• O ×× (6 crosses + 2 dots) ]²⁻`,
+    points: [
+      '<b>Magnesium ion ($\text{Mg}^{2+}$):</b> Loses two $3s$ electrons → enclosed in square brackets with $2+$ charge.',
+      '<b>Oxide ion ($\text{O}^{2-}$):</b> Gains two electrons from Mg → 6 crosses + 2 dots in outer shell inside square brackets with $2-$ charge.'
+    ]
+  },
+  {
+    title: 'Dot-and-Cross: Calcium Chloride, CaCl₂',
+    badge: 'Spec 3.3 · 1:2 Stoichiometry',
+    diagram: `[ Ca ]²⁺   2 [ •× Cl ×× (7 crosses + 1 dot) ]⁻`,
+    points: [
+      '<b>Stoichiometry check:</b> One $\text{Ca}$ atom ($2,8,8,2$) transfers 1 electron to each of <b>two</b> $\text{Cl}$ atoms ($2,8,7$).',
+      '<b>Mark-scheme rule:</b> Clearly write the coefficient $2$ in front of the $[\text{Cl}]^-$ bracket (or draw two separate $[\text{Cl}]^-$ brackets) and include charges on every ion.'
+    ]
+  },
+  {
+    title: 'Dot-and-Cross: Lithium Nitride, Li₃N',
+    badge: 'Spec 3.3 · 3:1 Stoichiometry',
+    diagram: `3 [ Li ]⁺   [ ••• N ×× (5 crosses + 3 dots) ]³⁻`,
+    points: [
+      '<b>Lithium ion ($\text{Li}^+$):</b> $1s^2$ ($2$ outer electrons in 1st shell, or empty 2nd shell) with $+$ charge.',
+      '<b>Nitride ion ($\text{N}^{3-}$):</b> $5$ crosses + $3$ dots = $8$ outer electrons in 2nd shell with $3-$ charge.'
+    ]
+  }
+];
+
+function renderIonicDrill(){
+  const idx = parseInt((document.getElementById('ionicDrillSel') || {}).value || '0', 10);
+  const d = IONIC_DRILL_ITEMS[idx];
+  const out = document.getElementById('ionicDrillOut');
+  if (!out || !d) return;
+  out.innerHTML = `
+    <div class="flex items-center justify-between">
+      <span class="font-bold text-white">${d.title}</span>
+      <span class="text-[10px] font-mono text-sky-300 px-2 py-0.5 rounded bg-sky-950 border border-sky-800">${d.badge}</span>
+    </div>
+    <div class="p-2.5 rounded-lg bg-slate-950 border border-slate-800 font-mono text-center text-sky-300 text-xs">${d.diagram}</div>
+    <ul class="space-y-1 text-[11px] text-slate-300 list-disc list-inside">${d.points.map(p => `<li>${p}</li>`).join('')}</ul>
+  `;
+  renderMathIn(out);
+}
+
+const IONIC_DUELS = [
+  { a: 'MgO (Mg²⁺ / O²⁻)', b: 'NaF (Na⁺ / F⁻)', winner: 0, headline: 'MgO (mp 2852 °C) ≫ NaF (mp 993 °C)', why: 'Both pairs of ions are isoelectronic (10 e⁻), but <b>Mg²⁺ and O²⁻ carry 2+/2− charges</b> (vs 1+/1− in NaF) and Mg²⁺ is smaller than Na⁺, giving a much stronger electrostatic attraction in the giant ionic lattice.' },
+  { a: 'NaF (Na⁺ / F⁻)', b: 'KBr (K⁺ / Br⁻)', winner: 0, headline: 'NaF (mp 993 °C) > KBr (mp 734 °C)', why: 'Both are 1+/1− salts, but <b>Na⁺ is smaller than K⁺ and F⁻ is smaller than Br⁻</b>. Smaller ionic radii allow the oppositely charged ions to pack closer together, giving stronger electrostatic attraction.' },
+  { a: 'MgCl₂ (Mg²⁺ / Cl⁻)', b: 'NaCl (Na⁺ / Cl⁻)', winner: 0, headline: 'MgCl₂ has much greater covalent character (polarisation)', why: '<b>Mg²⁺ has a higher charge (+2 vs +1) and a smaller ionic radius (72 pm vs 102 pm) than Na⁺</b>, giving Mg²⁺ a much higher charge density and <b>greater polarising power</b> to distort the electron cloud of the Cl⁻ ion.' },
+  { a: 'AgI (Ag⁺ / I⁻)', b: 'AgF (Ag⁺ / F⁻)', winner: 0, headline: 'AgI is strongly polarised (insoluble in water, yellow)', why: 'The <b>iodide ion (I⁻) has a much larger ionic radius than F⁻</b>, so its outer electrons are further from the nucleus and more shielded → I⁻ is <b>much more polarisable</b> by the Ag⁺ cation.' },
+  { a: 'Al³⁺ (Z=13, 10 e⁻)', b: 'N³⁻ (Z=7, 10 e⁻)', winner: 0, headline: 'Al³⁺ (54 pm) is nearly 3× smaller than N³⁻ (146 pm)', why: 'Both ions are <b>isoelectronic (10 electrons, 1s² 2s² 2p⁶)</b> with identical shielding, but <b>Al³⁺ has 13 protons vs 7 protons in N³⁻</b>, pulling the electron shell much closer to the nucleus.' }
+];
+
+function renderIonicDuel(){
+  const idx = parseInt((document.getElementById('ionicDuelSel') || {}).value || '0', 10);
+  const d = IONIC_DUELS[idx];
+  const box = document.getElementById('ionicDuelBody');
+  if (!box) return;
+  box.innerHTML = `
+    <div class="grid grid-cols-2 gap-2">
+      <button type="button" onclick="answerIonicDuel(${idx}, 0)" class="p-3 rounded-xl border border-slate-800 bg-slate-900 hover:border-purple-500 font-mono text-xs text-white font-bold">${d.a}</button>
+      <button type="button" onclick="answerIonicDuel(${idx}, 1)" class="p-3 rounded-xl border border-slate-800 bg-slate-900 hover:border-purple-500 font-mono text-xs text-white font-bold">${d.b}</button>
+    </div>
+    <div id="ionicDuelOut" class="p-3.5 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-400">Click one of the two species above to test your prediction.</div>
+  `;
+}
+
+function answerIonicDuel(idx, choice){
+  const d = IONIC_DUELS[idx];
+  const ok = choice === d.winner;
+  const out = document.getElementById('ionicDuelOut');
+  out.innerHTML = `
+    <div class="font-bold ${ok ? 'text-emerald-300' : 'text-amber-300'}">${ok ? '✓ Spot On!' : '✗ Check the Charge & Radius Rules:'} ${d.headline}</div>
+    <div class="mt-1 text-slate-200 leading-relaxed">${d.why}</div>
+  `;
+}
+
+/* ── 3. TAB 3 DRILL: COVALENT & DATIVE DOT-CROSS + GIANT CARBON ALLOTROPES ── */
+const COV_DOT_ITEMS = [
+  {
+    title: 'Aluminium Chloride Dimer, Al₂Cl₆',
+    badge: 'Spec 3.11(ii) · PEF Jan 2023 / Oct 2024',
+    ascii: `Cl\      /Cl\      /Cl
+   Al ⟵ Cl   Cl ⟶ Al
+Cl/      \Cl/      \Cl`,
+    rules: [
+      '<b>Why it dimerises:</b> Monomeric $\text{AlCl}_3$ is electron-deficient (Al has only 6 outer electrons in 3 covalent bonds).',
+      '<b>Dative bond direction:</b> A bridging chlorine atom on each $\text{AlCl}_3$ donates a <b>lone pair of electrons</b> into the empty $3p$ orbital on the other $\text{Al}$ atom ($\text{Cl} \rightarrow \text{Al}$).',
+      '<b>Geometry change:</b> Monomeric $\text{AlCl}_3$ is trigonal planar ($120^\circ$); in $\text{Al}_2\text{Cl}_6$ each Al has 4 bonding pairs and 0 lone pairs → <b>tetrahedral ($\approx 109.5^\circ$)</b> around each Al.'
+    ]
+  },
+  {
+    title: 'Ammonium Ion, NH₄⁺',
+    badge: 'Spec 3.11(ii) · Dative + Brackets',
+    ascii: `[ H — N(→H) (—H)₂ ]⁺   (4 bonding pairs, 0 lone pairs, 109.5°)`,
+    rules: [
+      '<b>Formation:</b> The nitrogen atom in $\text{NH}_3$ donates its <b>lone pair</b> into the empty $1s$ orbital of an $\text{H}^+$ ion ($\text{N} \rightarrow \text{H}^+$).',
+      '<b>Dot-and-cross trap (PEF Jun 2019):</b> The two electrons in the dative bond must be drawn with the <b>same symbol</b> (both dots or both crosses from N), and the entire ion must be enclosed in <b>square brackets with a $+$ charge</b> outside.',
+      '<b>Equivalence:</b> Once formed, all four $\text{N–H}$ bonds are identical in length and strength (tetrahedral, $109.5^\circ$).'
+    ]
+  },
+  {
+    title: 'Hydronium (Oxonium) Ion, H₃O⁺',
+    badge: 'Spec 3.11 & 3.19 · 3 bp + 1 lp',
+    ascii: `[ H — O(••)(→H) — H ]⁺   (3 bonding pairs, 1 lone pair, ~107°)`,
+    rules: [
+      '<b>Formation:</b> Oxygen in $\text{H}_2\text{O}$ donates one of its two lone pairs to $\text{H}^+$ ($\text{O} \rightarrow \text{H}^+$).',
+      '<b>Crucial VSEPR check:</b> One lone pair remains on the oxygen atom! So $\text{H}_3\text{O}^+$ has 3 bonding pairs + 1 lone pair → <b>trigonal pyramidal ($\approx 107^\circ$)</b>, isoelectronic with $\text{NH}_3$.'
+    ]
+  },
+  {
+    title: 'Carbon Monoxide, CO (Triple Bond with 1 Dative Bond)',
+    badge: 'Spec 3.11 · Octet Completion',
+    ascii: `:C ≡ O:   (2 normal covalent bonds + 1 dative bond O → C)`,
+    rules: [
+      '<b>Electron count:</b> Carbon (Group 4) has 4 valence $e^-$; Oxygen (Group 6) has 6 valence $e^-$.',
+      '<b>Bonding:</b> C and O form 2 normal covalent bonds (sharing 2 electrons each → C has 6, O has 8) plus <b>1 dative bond donated from O to C ($\text{O} \rightarrow \text{C}$)</b> so both atoms achieve a full octet of 8 outer electrons.'
+    ]
+  },
+  {
+    title: 'Electron-Deficient Molecules: BeCl₂ (4 e⁻) & BF₃ / BCl₃ (6 e⁻)',
+    badge: 'Spec 3.11 & 3.18 · Octet Exceptions',
+    ascii: `Cl — Be — Cl (180°, 4 outer e⁻ on Be)   |   BF₃ / BCl₃ (120°, 6 outer e⁻ on B)`,
+    rules: [
+      '<b>Beryllium chloride ($\text{BeCl}_2$):</b> Be (Group 2) shares its 2 outer electrons with 2 Cl atoms → <b>only 4 electrons</b> around Be (2 bonding pairs, 0 lone pairs → linear $180^\circ$). Always include the 3 lone pairs on each terminal Cl atom!',
+      '<b>Boron trifluoride / trichloride ($\text{BF}_3 / \text{BCl}_3$):</b> B (Group 3) shares 3 outer electrons → <b>only 6 electrons</b> around B (3 bonding pairs, 0 lone pairs → trigonal planar $120^\circ$). It can accept a lone pair from $\text{NH}_3$ to form $\text{F}_3\text{B} \leftarrow \text{NH}_3$!'
+    ]
+  },
+  {
+    title: 'Expanded Octets: PCl₅ (10 e⁻) & SF₆ (12 e⁻)',
+    badge: 'Spec 3.11 & 3.18 · Period 3 Expansion',
+    ascii: `PCl₅(g): 5 bp, 0 lp (90° & 120°)   |   SF₆: 6 bp, 0 lp (90° octahedral)`,
+    rules: [
+      '<b>Phosphorus(V) chloride ($\text{PCl}_5$):</b> P (Group 5) uses all 5 outer electrons to form 5 covalent bonds → <b>10 outer electrons</b> around P. (Remember: 3 lone pairs on each of the 5 Cl atoms in dot-and-cross!).',
+      '<b>Sulfur hexafluoride ($\text{SF}_6$):</b> S (Group 6) uses all 6 outer electrons to form 6 covalent bonds → <b>12 outer electrons</b> around S (6 bonding pairs, 0 lone pairs → octahedral $90^\circ$).'
+    ]
+  }
+];
+
+function renderCovDotInspector(){
+  const idx = parseInt((document.getElementById('covDotSel') || {}).value || '0', 10);
+  const d = COV_DOT_ITEMS[idx];
+  const out = document.getElementById('covDotOut');
+  if (!out || !d) return;
+  out.innerHTML = `
+    <div class="flex items-center justify-between">
+      <span class="font-bold text-white">${d.title}</span>
+      <span class="text-[10px] font-mono text-purple-300 px-2 py-0.5 rounded bg-purple-950 border border-purple-800">${d.badge}</span>
+    </div>
+    <pre class="p-2.5 rounded-lg bg-slate-950 border border-slate-800 font-mono text-xs text-emerald-300 overflow-x-auto">${d.ascii}</pre>
+    <ul class="space-y-1 text-[11px] text-slate-300 list-disc list-inside">${d.rules.map(r => `<li>${r}</li>`).join('')}</ul>
+  `;
+  renderMathIn(out);
+}
+
+const CARBON_ALLOTROPES = [
+  {
+    name: 'Diamond (3D Tetrahedral Giant Covalent Lattice)',
+    bonds: 'Each C atom forms 4 strong covalent bonds to 4 other C atoms in a continuous 3D tetrahedral network.',
+    angle: '109.5° (tetrahedral around every carbon atom)',
+    cond: 'Non-conductor (insulator) — all 4 outer valence electrons are localised in σ covalent bonds; no mobile delocalised electrons.',
+    mech: 'Extremely hard & very high melting/sublimation point (~3823 K) — requires breaking many strong C–C covalent bonds throughout the 3D lattice. Uses: diamond-tipped cutting tools, drills.',
+    thermal: 'Excellent thermal conductor (rigid 3D covalent lattice transmits atomic vibrations rapidly).'
+  },
+  {
+    name: 'Graphite (Layered Hexagonal Giant Covalent Lattice)',
+    bonds: 'Each C atom forms 3 strong covalent bonds to 3 other C atoms in flat hexagonal layers; the 4th outer electron (in a 2p orbital) is delocalised between the layers.',
+    angle: '120° (trigonal planar within each hexagonal layer)',
+    cond: 'Good electrical conductor along the layers — delocalised electrons between the layers are free to move and carry charge when a potential difference is applied.',
+    mech: 'Very high melting point (many strong C–C covalent bonds within layers), but soft/slippery (lubricant & pencils) because weak London forces between layers allow layers to slide easily.',
+    thermal: 'Used for inert electrodes in electrolysis and high-temperature dry lubricants.'
+  },
+  {
+    name: 'Graphene (Single-Atom-Thick 2D Hexagonal Sheet)',
+    bonds: 'A single isolated layer of graphite: each C atom is covalently bonded to 3 others in a 2D honeycomb sheet with 1 delocalised electron per carbon.',
+    angle: '120° (trigonal planar)',
+    cond: 'Exceptional electrical and thermal conductor — delocalised electrons move unimpeded across the continuous 2D sheet.',
+    mech: 'Extremely high tensile strength (strong C–C covalent bonds in an unbroken sheet), lightweight, and flexible (unlike brittle bulk graphite).',
+    thermal: 'Uses: flexible touchscreens, high-speed nanoelectronics, lightweight composite materials.'
+  }
+];
+
+function selectCarbonAllo(idx){
+  const d = CARBON_ALLOTROPES[idx];
+  const btns = document.querySelectorAll('#carbonAlloBtns button');
+  btns.forEach((b, i) => {
+    b.className = i === idx
+      ? 'px-3 py-1.5 rounded-lg text-xs font-bold border border-emerald-600 bg-emerald-950/50 text-emerald-200'
+      : 'px-3 py-1.5 rounded-lg text-xs font-bold border border-slate-700 bg-slate-900 text-slate-300';
+  });
+  const out = document.getElementById('carbonAlloOut');
+  if (!out || !d) return;
+  out.innerHTML = `
+    <div class="font-bold text-white text-sm">${d.name}</div>
+    <div class="space-y-1.5 text-[11px]">
+      <div class="p-2 rounded bg-slate-950 border border-slate-800"><b class="text-sky-300">Bonding &amp; Angle (${d.angle}):</b> ${d.bonds}</div>
+      <div class="p-2 rounded bg-slate-950 border border-slate-800"><b class="text-emerald-300">Electrical Conductivity:</b> ${d.cond}</div>
+      <div class="p-2 rounded bg-slate-950 border border-slate-800"><b class="text-amber-300">Melting Point &amp; Mechanical Properties:</b> ${d.mech}</div>
+      <div class="p-2 rounded bg-slate-950 border border-slate-800"><b class="text-purple-300">Applications &amp; Notes:</b> ${d.thermal}</div>
+    </div>
+  `;
+}
+
+/* ── 4. TAB 4 DRILL: VSEPR PAIR COUNTER & ANGLE GRADER ── */
+const VSEPR_DRILL_DATA = [
+  { sym: 'NH₃', bp: 3, lp: 1, angle: '107°', shape: 'Trigonal pyramidal', note: 'N (Group 5) + 3 H = 8 e⁻ = 4 pairs (3 bp, 1 lp). Lone pair repels more strongly than bonding pairs, compressing 109.5° → 107°.' },
+  { sym: 'H₂O', bp: 2, lp: 2, angle: '104.5°', shape: 'Bent / non-linear', note: 'O (Group 6) + 2 H = 8 e⁻ = 4 pairs (2 bp, 2 lp). Lone-lone > lone-bonding > bonding-bonding repulsion compresses the angle to 104.5°.' },
+  { sym: 'NH₄⁺', bp: 4, lp: 0, angle: '109.5°', shape: 'Tetrahedral', note: 'N (5) + 4 H (4) − 1 (+ charge) = 8 e⁻ = 4 bonding pairs, 0 lone pairs → symmetrical tetrahedral, 109.5°.' },
+  { sym: 'H₃O⁺', bp: 3, lp: 1, angle: '107°', shape: 'Trigonal pyramidal', note: 'O (6) + 3 H (3) − 1 (+ charge) = 8 e⁻ = 3 bonding pairs + 1 lone pair → trigonal pyramidal (~107°).' },
+  { sym: 'BeCl₂', bp: 2, lp: 0, angle: '180°', shape: 'Linear', note: 'Be (Group 2) + 2 Cl = 4 e⁻ = 2 bonding pairs, 0 lone pairs → linear, 180°.' },
+  { sym: 'BF₃', bp: 3, lp: 0, angle: '120°', shape: 'Trigonal planar', note: 'B (Group 3) + 3 F = 6 e⁻ = 3 bonding pairs, 0 lone pairs → trigonal planar, 120°.' },
+  { sym: 'PCl₅(g)', bp: 5, lp: 0, angle: '90° & 120°', shape: 'Trigonal bipyramidal', note: 'P (Group 5) + 5 Cl = 10 e⁻ = 5 bonding pairs, 0 lone pairs → trigonal bipyramidal (90° axial-equatorial & 120° equatorial).' },
+  { sym: 'SF₆', bp: 6, lp: 0, angle: '90°', shape: 'Octahedral', note: 'S (Group 6) + 6 F = 12 e⁻ = 6 bonding pairs, 0 lone pairs → octahedral, all bond angles 90°.' }
+];
+
+function resetVseprDrillFb(){
+  const fb = document.getElementById('vseprDrillFb');
+  if (fb) fb.innerHTML = '<span class="text-slate-400">Set bp, lp, bond angle, and shape name above, then click <b>Grade VSEPR Prediction</b>.</span>';
+}
+
+function revealVseprDrill(){
+  const idx = parseInt((document.getElementById('vseprTarget') || {}).value || '0', 10);
+  const d = VSEPR_DRILL_DATA[idx];
+  document.getElementById('vseprBp').value = d.bp;
+  document.getElementById('vseprLp').value = d.lp;
+  document.getElementById('vseprAngle').value = d.angle;
+  document.getElementById('vseprShapeName').value = d.shape;
+  checkVseprDrill();
+}
+
+function checkVseprDrill(){
+  const idx = parseInt((document.getElementById('vseprTarget') || {}).value || '0', 10);
+  const d = VSEPR_DRILL_DATA[idx];
+  const bp = parseInt(document.getElementById('vseprBp').value, 10);
+  const lp = parseInt(document.getElementById('vseprLp').value, 10);
+  const ang = document.getElementById('vseprAngle').value;
+  const shp = document.getElementById('vseprShapeName').value;
+
+  const ok = bp === d.bp && lp === d.lp && ang === d.angle && shp === d.shape;
+  if (ok) T3_STATE.vseprSolved[idx] = true;
+  const sc = document.getElementById('vseprDrillScore');
+  if (sc) sc.textContent = `Score: ${Object.values(T3_STATE.vseprSolved).filter(Boolean).length} / 8`;
+
+  document.getElementById('vseprDrillFb').innerHTML = `
+    <div class="font-bold ${ok ? 'text-emerald-300' : 'text-amber-300'}">${ok ? '✓ Full Marks!' : '✗ Check VSEPR Rules:'} ${d.sym} → ${d.bp} bp, ${d.lp} lp · ${d.shape} · ${d.angle}</div>
+    <div class="mt-1 text-[11px] text-slate-300">${d.note}</div>
+  `;
+}
+
+/* ── 5. TAB 5 DRILL: MYSTERY STRUCTURE IDENTIFIER & PERIOD 3 METALS ── */
+const MYSTERY_SUBS = [
+  { id: 'A', data: 'Melting point: 2852 °C · Solid conductivity: Nil · Molten conductivity: Good · Soluble in water (forms alkaline solution)', ans: 'Giant ionic', identity: 'Magnesium Oxide (MgO)', why: 'High melting point + conducts ONLY when molten (mobile ions, fixed in solid) = <b>Giant ionic lattice</b>.' },
+  { id: 'B', data: 'Melting point: 650 °C · Solid conductivity: Very good · Molten conductivity: Very good · Malleable & ductile, insoluble in water', ans: 'Giant metallic', identity: 'Magnesium Metal (Mg)', why: 'Conducts electricity in BOTH solid and molten states (delocalised electrons) and is malleable = <b>Giant metallic lattice</b>.' },
+  { id: 'C', data: 'Sublimation point: ~3650 °C · Solid conductivity: Good (along planes) · Soft, slippery black solid, insoluble in all solvents', ans: 'Giant covalent', identity: 'Graphite (C)', why: 'Very high sublimation point + insoluble + conducts electricity as a solid due to delocalised electrons between hexagonal layers = <b>Giant covalent (layered)</b>.' },
+  { id: 'D', data: 'Melting point: 1710 °C · Solid conductivity: Nil · Molten conductivity: Nil · Hard crystalline solid, insoluble in water', ans: 'Giant covalent', identity: 'Silicon(IV) Oxide (SiO₂) / Diamond', why: 'Very high melting point + non-conductor in both solid and molten states (no mobile ions or delocalised electrons) = <b>Giant covalent network</b>.' },
+  { id: 'E', data: 'Sublimes at 114 °C (purple vapour) · Solid & liquid conductivity: Nil · Readily soluble in non-polar hexane', ans: 'Simple molecular', identity: 'Iodine (I₂)', why: 'Low melting/sublimation point (weak London forces between I₂ molecules overcome, not I–I covalent bonds) + non-conductor = <b>Simple molecular</b>.' },
+  { id: 'F', data: 'Sublimes at 180 °C · Solid/liquid conductivity: Very poor · Formed from a Period 3 metal + Cl₂; vapour has Mr = 267 (Al₂Cl₆)', ans: 'Simple molecular', identity: 'Anhydrous Aluminium Chloride (Al₂Cl₆)', why: 'Classic WCH11 trap! Al³⁺ has such high polarising power that it distorts Cl⁻ strongly, forming covalent Al₂Cl₆ dimers held by weak intermolecular forces = <b>Simple molecular</b>.' }
+];
+
+function renderMysterySub(){
+  const idx = parseInt((document.getElementById('mysterySubSel') || {}).value || '0', 10);
+  const d = MYSTERY_SUBS[idx];
+  const dataBox = document.getElementById('mysterySubData');
+  if (dataBox) dataBox.textContent = d.data;
+  const fb = document.getElementById('mysterySubFb');
+  if (fb) fb.innerHTML = '<span class="text-slate-400">Click one of the four structure types above to classify this substance.</span>';
+}
+
+function checkMysterySub(choice){
+  const idx = parseInt((document.getElementById('mysterySubSel') || {}).value || '0', 10);
+  const d = MYSTERY_SUBS[idx];
+  const ok = choice === d.ans;
+  const fb = document.getElementById('mysterySubFb');
+  fb.innerHTML = `
+    <div class="font-bold ${ok ? 'text-emerald-300' : 'text-amber-300'}">${ok ? '✓ Correct Deduction!' : '✗ Look at the Conductivity & MP:'} ${d.ans} — ${d.identity}</div>
+    <div class="mt-1 text-[11px] text-slate-300">${d.why}</div>
+  `;
+}
+
+const P3_METALS = [
+  { sym: 'Sodium (Na)', ion: 'Na⁺', r: '102 pm', e: '1 delocalised e⁻ per atom (3s¹)', mp: '98 °C (371 K)', desc: 'Lowest cation charge (+1), largest ionic radius, and fewest delocalised electrons (1 per atom) → weakest electrostatic attraction between Na⁺ cations and the delocalised electron sea → lowest melting point and lowest conductivity of the three.' },
+  { sym: 'Magnesium (Mg)', ion: 'Mg²⁺', r: '72 pm', e: '2 delocalised e⁻ per atom (3s²)', mp: '650 °C (923 K)', desc: 'Higher cation charge (+2 vs +1), smaller ionic radius (72 pm vs 102 pm), and twice as many delocalised electrons per atom (2 vs 1) → much stronger electrostatic attraction between Mg²⁺ cations and the electron sea → big jump in mp (98 °C → 650 °C) and higher electrical conductivity.' },
+  { sym: 'Aluminium (Al)', ion: 'Al³⁺', r: '54 pm', e: '3 delocalised e⁻ per atom (3s² 3p¹)', mp: '660 °C (933 K)', desc: 'Highest cation charge (+3), smallest ionic radius (54 pm), and 3 delocalised electrons per atom → strongest metallic bonding and highest electrical conductivity (more mobile charge carriers per ion).' }
+];
+
+function selectP3Metal(idx){
+  const d = P3_METALS[idx];
+  const btns = document.querySelectorAll('#p3MetalBtns button');
+  btns.forEach((b, i) => {
+    b.className = i === idx
+      ? 'flex-1 py-2 px-3 rounded-lg text-xs font-bold border border-sky-600 bg-sky-950/50 text-sky-200'
+      : 'flex-1 py-2 px-3 rounded-lg text-xs font-bold border border-slate-700 bg-slate-900 text-slate-300';
+  });
+  const out = document.getElementById('p3MetalOut');
+  if (!out || !d) return;
+  out.innerHTML = `
+    <div class="flex flex-wrap items-center justify-between gap-2">
+      <span class="font-bold text-white text-sm">${d.sym} &nbsp;·&nbsp; Cation: <span class="font-mono text-sky-300">${d.ion}</span> (${d.r})</span>
+      <span class="font-mono text-amber-300 font-bold">mp = ${d.mp}</span>
+    </div>
+    <div class="p-2 rounded bg-slate-950 border border-slate-800 font-mono text-xs text-emerald-300">${d.e}</div>
+    <p class="text-[11px] text-slate-300 leading-relaxed">${d.desc}</p>
+  `;
+}
+
+/* ── 6. TAB 6 SECTION 07: AUTOMATED EXPLANATION KEYWORD GRADER ── */
+const T3_AUTO_RUBRICS = {
+  vsepr: {
+    model: 'CH₄ has 4 bonding pairs and 0 lone pairs around C (109.5°), NH₃ has 3 bonding pairs and 1 lone pair around N (107°), and H₂O has 2 bonding pairs and 2 lone pairs around O (104.5°). Electron pairs repel for minimum repulsion, and lone pair–lone pair repulsion > lone pair–bonding pair repulsion > bonding pair–bonding pair repulsion, so each extra lone pair compresses the bond angle by ~2.5°.',
+    checks: [
+      { label: 'M1: Correct bonding & lone pair counts (H₂O: 2 bp + 2 lp; NH₃: 3 bp + 1 lp; CH₄: 4 bp + 0 lp)', re: /(2\s*bond.*2\s*lone|two\s*bond.*two\s*lone|lone\s*pair)/i },
+      { label: 'M2: States lone pairs repel more strongly than bonding pairs (LP–LP > LP–BP > BP–BP)', re: /lone.*repel.*more|repulsion.*greater|lone.*>.*bond/i },
+      { label: 'M3: Links extra lone pair repulsion to compression of the bond angle (109.5° → 107° → 104.5°)', re: /(104\.5|107|compress|squeez|smaller\s*angle)/i }
+    ],
+    traps: [
+      { msg: 'Examiner Penalty: Do not call NH₃ or H₂O "tetrahedral" — tetrahedral is the electron-pair arrangement, whereas molecular shapes are trigonal pyramidal and bent/non-linear.', re: /(nh3|h2o|water|ammonia)\s+is\s+tetrahedral/i }
+    ]
+  },
+  sf6polar: {
+    model: 'Each S–F (or C–Cl) bond is polar because fluorine (or chlorine) is much more electronegative than sulfur (or carbon). However, SF₆ is symmetrical octahedral (and CCl₄ is symmetrical tetrahedral), so the bond dipoles act in opposite directions and cancel out completely, leaving zero net dipole moment.',
+    checks: [
+      { label: 'M1: Identifies polar bonds due to difference in electronegativity (ΔEN)', re: /(electronegativ|polar\s*bond|dipole)/i },
+      { label: 'M2: Molecule is symmetrical (octahedral / tetrahedral) so bond dipoles cancel out', re: /symmetr.*cancel|cancel.*symmetr|dipoles\s*cancel/i }
+    ],
+    traps: []
+  },
+  mgnamp: {
+    model: 'Magnesium has a 2+ cation (Mg²⁺) and contributes 2 delocalised electrons per atom, whereas sodium has a 1+ cation (Na⁺) and 1 delocalised electron per atom, and Mg²⁺ has a smaller ionic radius than Na⁺. Therefore, the electrostatic attraction between the cations and the sea of delocalised electrons is much stronger in Mg (higher mp), and Mg has twice as many mobile delocalised electrons to carry charge (higher conductivity).',
+    checks: [
+      { label: 'M1: Compares cation charge/size (Mg²⁺ vs Na⁺, smaller radius) AND number of delocalised electrons (2 vs 1 per atom)', re: /(2\+|two).*delocal|delocal.*(2\+|two)/i },
+      { label: 'M2: Stronger electrostatic attraction between cations and delocalised electrons in Mg → more energy to overcome', re: /stronger.*(electrostatic|attraction|metallic)/i },
+      { label: 'M3: Delocalised electrons are free to move / flow and carry charge', re: /(move|flow|mobile).*charge|delocalised\s*electrons.*move/i }
+    ],
+    traps: [
+      { msg: 'Examiner Penalty (PEF Jun 2024): Never say "atoms" in the sea of electrons or "free electrons" without specifying delocalised electrons and positive metal ions/cations.', re: /between\s+atoms\s+and\s+electrons/i }
+    ]
+  },
+  al2cl6: {
+    model: 'The Al³⁺ ion is very small and has a high 3+ charge (high charge density / high polarising power), so it strongly distorts (polarises) the electron cloud of the large Cl⁻ ion, giving significant covalent character. In monomeric AlCl₃, Al has only 6 outer electrons (electron-deficient), so two AlCl₃ molecules dimerise to Al₂Cl₆ via two dative covalent bonds where a lone pair on a Cl atom is donated into an empty orbital on Al (Cl → Al).',
+    checks: [
+      { label: 'M1: Al³⁺ is small and highly charged → high polarising power distorts Cl⁻ electron cloud', re: /(small|charge).*polaris|distort.*cloud/i },
+      { label: 'M2: AlCl₃ is electron-deficient (6 outer e⁻ on Al)', re: /(6\s*electron|six\s*electron|electron[- ]?deficient|octet)/i },
+      { label: 'M3: Dative covalent bond formed from lone pair on Cl donated to empty orbital on Al (Cl → Al)', re: /(dative|coordinate|lone\s*pair).*cl/i }
+    ],
+    traps: [
+      { msg: 'Examiner Penalty (PEF Jan 2023 / Oct 2024): Never state that the dative bond goes from Al to Cl or that there is an Al–Al bond!', re: /al\s*to\s*cl|al-al\s*bond/i }
+    ]
+  },
+  carbongraph: {
+    model: 'Both diamond and graphite have giant covalent lattice structures, so melting requires breaking a huge number of strong C–C covalent bonds (requiring large amounts of thermal energy). In diamond, each carbon forms 4 covalent bonds so all outer electrons are localised; in graphite, each carbon forms only 3 covalent bonds in hexagonal layers, leaving 1 delocalised electron per carbon atom free to move along the layers and carry electrical charge.',
+    checks: [
+      { label: 'M1: Giant covalent structure in both → many strong C–C covalent bonds must be broken on melting', re: /giant\s*covalent.*strong\s*covalent|many\s*strong.*covalent\s*bonds/i },
+      { label: 'M2: Diamond forms 4 bonds per C (all electrons localised) vs Graphite forms 3 bonds per C', re: /(4|four).*bonds.*(3|three)|(3|three).*bonds.*(4|four)/i },
+      { label: 'M3: Graphite has delocalised electrons between layers that are free to move and carry charge', re: /delocalised\s*electrons.*(move|carry|layer)/i }
+    ],
+    traps: []
+  }
+};
+
+function resetT3AutoExplain(){
+  const out = document.getElementById('t3AutoExplainOutput');
+  if (out) out.innerHTML = '<p class="text-slate-400">Type your explanation on the left and click <b>Auto-Grade My Answer</b>.</p>';
+}
+
+function showT3AutoExplainModel(){
+  const k = document.getElementById('t3AutoExplainQ').value;
+  document.getElementById('t3AutoExplainInput').value = T3_AUTO_RUBRICS[k].model;
+  gradeT3AutoExplain();
+}
+
+function gradeT3AutoExplain(){
+  const k = document.getElementById('t3AutoExplainQ').value;
+  const txt = (document.getElementById('t3AutoExplainInput').value || '').trim();
+  const out = document.getElementById('t3AutoExplainOutput');
+  if (!txt) {
+    out.innerHTML = '<p class="text-amber-300">Please enter an answer first or click <b>Load Model</b>.</p>';
+    return;
+  }
+  const rub = T3_AUTO_RUBRICS[k];
+  let hit = 0;
+  const rows = rub.checks.map(c => {
+    const ok = c.re.test(txt);
+    if (ok) hit++;
+    return `<div class="${ok ? 'text-emerald-300' : 'text-rose-300'}">${ok ? '✓' : '✗'} ${c.label}</div>`;
+  });
+  const traps = rub.traps.filter(t => t.re.test(txt)).map(t => `<div class="text-amber-300 font-semibold">⚠️ ${t.msg}</div>`);
+  out.innerHTML = `
+    <div class="font-bold text-white text-sm">Mark Scheme Score: ${hit} / ${rub.checks.length} Marks</div>
+    <div class="space-y-1">${rows.join('')}</div>
+    ${traps.join('')}
+    <div class="pt-2 border-t border-slate-800 text-[11px] text-slate-400"><b>Exemplar Full-Mark Answer:</b> “${rub.model}”</div>
+  `;
+}
+
+/* ── 7. TAB 7: ELECTRON DENSITY CONTOUR MAP VISUALISER (Spec 3.1, 3.8, 3.10, 3.14) ── */
+const ED_MAPS = {
+  ionic: {
+    title: '1. Ideal Ionic Electron Density Map (e.g. NaCl)',
+    spec: 'Spec 3.1(ii)',
+    svg: `
+      <circle cx="105" cy="90" r="18" fill="none" stroke="#38bdf8" stroke-width="1.8"/>
+      <circle cx="105" cy="90" r="28" fill="none" stroke="#38bdf8" stroke-width="1.4" stroke-dasharray="3 2"/>
+      <circle cx="105" cy="90" r="38" fill="none" stroke="#38bdf8" stroke-width="1" opacity="0.6"/>
+      <circle cx="105" cy="90" r="4" fill="#38bdf8"/>
+      <text x="105" y="148" text-anchor="middle" fill="#7dd3fc" font-size="11" font-family="Fira Code">Na⁺ (small)</text>
+      <line x1="175" y1="25" x2="175" y2="155" stroke="#ef4444" stroke-width="1.2" stroke-dasharray="4 4"/>
+      <text x="175" y="18" text-anchor="middle" fill="#fda4af" font-size="9" font-family="Fira Code">zero density gap</text>
+      <circle cx="265" cy="90" r="24" fill="none" stroke="#fb7185" stroke-width="1.8"/>
+      <circle cx="265" cy="90" r="38" fill="none" stroke="#fb7185" stroke-width="1.5"/>
+      <circle cx="265" cy="90" r="52" fill="none" stroke="#fb7185" stroke-width="1.1" stroke-dasharray="3 2"/>
+      <circle cx="265" cy="90" r="64" fill="none" stroke="#fb7185" stroke-width="0.8" opacity="0.6"/>
+      <circle cx="265" cy="90" r="4" fill="#fb7185"/>
+      <text x="265" y="166" text-anchor="middle" fill="#fda4af" font-size="11" font-family="Fira Code">Cl⁻ (large)</text>
+    `,
+    desc: `
+      <div class="font-bold text-sky-300 text-sm">1. Ideal Ionic Bonding (NaCl) — Spec 3.1(ii)</div>
+      <p>Concentric, circular contour lines surround each nucleus separately, and the electron density <b>drops to zero between the ions</b>.</p>
+      <p class="text-[11px] text-amber-200"><b>Exam deduction:</b> Proves the existence of discrete, separate ions ($\text{Na}^+$ smaller, $\text{Cl}^-$ larger) with no shared electrons.</p>
+    `
+  },
+  polarised: {
+    title: '2. Polarised Ionic Electron Density Map (e.g. AgI / AlCl₃)',
+    spec: 'Spec 3.8 – 3.9',
+    svg: `
+      <circle cx="95" cy="90" r="14" fill="none" stroke="#a855f7" stroke-width="2"/>
+      <circle cx="95" cy="90" r="23" fill="none" stroke="#a855f7" stroke-width="1.3"/>
+      <circle cx="95" cy="90" r="4" fill="#a855f7"/>
+      <text x="95" y="140" text-anchor="middle" fill="#d8b4fe" font-size="11" font-family="Fira Code">Al³⁺ / Ag⁺</text>
+      <ellipse cx="245" cy="90" rx="34" ry="24" fill="none" stroke="#fbbf24" stroke-width="1.8"/>
+      <ellipse cx="235" cy="90" rx="54" ry="36" fill="none" stroke="#fbbf24" stroke-width="1.4"/>
+      <ellipse cx="222" cy="90" rx="76" ry="46" fill="none" stroke="#fbbf24" stroke-width="1" stroke-dasharray="4 2"/>
+      <circle cx="255" cy="90" r="4" fill="#fbbf24"/>
+      <text x="255" y="156" text-anchor="middle" fill="#fde68a" font-size="11" font-family="Fira Code">I⁻ / Cl⁻ (distorted)</text>
+    `,
+    desc: `
+      <div class="font-bold text-amber-300 text-sm">2. Polarised Ionic Bonding (AgI / AlCl₃) — Spec 3.8–3.9</div>
+      <p>The small, highly charged cation ($\text{Al}^{3+}$ or $\text{Ag}^+$) has high <b>polarising power</b> and pulls the outer electron cloud of the large, <b>polarisable</b> anion ($\text{I}^-$ or $\text{Cl}^-$) towards itself.</p>
+      <p class="text-[11px] text-amber-200"><b>Exam deduction:</b> Asymmetrical, pear-shaped distortion of the anion contours towards the cation indicates <b>partial covalent character</b>.</p>
+    `
+  },
+  covalent: {
+    title: '3. Pure (Non-Polar) Covalent Electron Density Map (e.g. Cl₂ / C–C)',
+    spec: 'Spec 3.10(ii)',
+    svg: `
+      <ellipse cx="190" cy="90" rx="95" ry="48" fill="none" stroke="#34d399" stroke-width="1.1" stroke-dasharray="3 2"/>
+      <ellipse cx="190" cy="90" rx="78" ry="36" fill="none" stroke="#34d399" stroke-width="1.5"/>
+      <ellipse cx="190" cy="90" rx="58" ry="22" fill="none" stroke="#34d399" stroke-width="2"/>
+      <circle cx="145" cy="90" r="14" fill="none" stroke="#34d399" stroke-width="1.5"/>
+      <circle cx="235" cy="90" r="14" fill="none" stroke="#34d399" stroke-width="1.5"/>
+      <circle cx="145" cy="90" r="4" fill="#34d399"/>
+      <circle cx="235" cy="90" r="4" fill="#34d399"/>
+      <text x="190" y="158" text-anchor="middle" fill="#6ee7b7" font-size="11" font-family="Fira Code">High shared density between nuclei (ΔEN = 0)</text>
+    `,
+    desc: `
+      <div class="font-bold text-emerald-300 text-sm">3. Pure Covalent Bonding (Cl₂ / Diamond) — Spec 3.10(ii)</div>
+      <p>Continuous outer contours enclose <b>both nuclei</b>, with a high concentration of electron density directly <b>between the two nuclei</b>.</p>
+      <p class="text-[11px] text-emerald-200"><b>Exam deduction:</b> Symmetrical distribution proves equal sharing of the bonding pair of electrons ($\Delta\text{EN} = 0$, non-polar covalent).</p>
+    `
+  },
+  polarcov: {
+    title: '4. Polar Covalent Electron Density Map (e.g. HCl)',
+    spec: 'Spec 3.13 – 3.14',
+    svg: `
+      <ellipse cx="205" cy="90" rx="92" ry="48" fill="none" stroke="#c084fc" stroke-width="1.1" stroke-dasharray="3 2"/>
+      <ellipse cx="212" cy="90" rx="72" ry="36" fill="none" stroke="#c084fc" stroke-width="1.5"/>
+      <ellipse cx="220" cy="90" rx="50" ry="24" fill="none" stroke="#c084fc" stroke-width="2"/>
+      <circle cx="140" cy="90" r="4" fill="#38bdf8"/>
+      <circle cx="240" cy="90" r="20" fill="none" stroke="#c084fc" stroke-width="1.6"/>
+      <circle cx="240" cy="90" r="4" fill="#c084fc"/>
+      <text x="135" y="62" text-anchor="middle" fill="#7dd3fc" font-size="12" font-family="Fira Code">H (δ+)</text>
+      <text x="245" y="55" text-anchor="middle" fill="#d8b4fe" font-size="12" font-family="Fira Code">Cl (δ−)</text>
+    `,
+    desc: `
+      <div class="font-bold text-purple-300 text-sm">4. Polar Covalent Bonding (HCl) — Spec 3.13–3.14</div>
+      <p>The bonding contours still enclose both nuclei (shared electron pair), but the electron density is <b>pulled asymmetrically towards the more electronegative atom</b> ($\text{Cl}, \delta-$).</p>
+      <p class="text-[11px] text-purple-200"><b>Exam deduction:</b> Illustrates the <b>bonding continuum</b> between pure covalent and pure ionic bonding.</p>
+    `
+  }
+};
+
+function renderEdMap(key){
+  const d = ED_MAPS[key];
+  if (!d) return;
+  const svg = document.getElementById('edMapSvg');
+  const desc = document.getElementById('edMapDesc');
+  if (svg) svg.innerHTML = d.svg;
+  if (desc) desc.innerHTML = d.desc;
+  const keys = ['ionic','polarised','covalent','polarcov'];
+  const btns = document.querySelectorAll('#edMapBtns button');
+  btns.forEach((b, i) => {
+    b.className = keys[i] === key
+      ? 'px-3 py-1.5 rounded-lg border border-sky-600 bg-sky-950/60 text-sky-200 font-bold'
+      : 'px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-900 text-slate-300';
+  });
+}
+
+/* ── 8. TAB 8: VSEPR VALENCE AUTO-SOLVER & SUBSTANCE LOOKUP ── */
+function solveVseprCalc(){
+  const g = parseInt((document.getElementById('vcalc-g') || {}).value || '5', 10);
+  const b = parseInt((document.getElementById('vcalc-b') || {}).value || '3', 10);
+  const t = parseInt((document.getElementById('vcalc-t') || {}).value || '1', 10);
+  const q = parseInt((document.getElementById('vcalc-q') || {}).value || '0', 10);
+  const out = document.getElementById('vcalc-result');
+  if (!out) return;
+
+  // For single-bonded terminals (H, Halogens), each contributes 1 e- to bonding pairs.
+  // For double-bonded =O, each =O uses 2 of central atom's valence electrons (so non-bonding electrons on central = g - q - 2*b).
+  const nonBondingE = (t === 1) ? (g - q - b) : (g - q - 2 * b);
+  if (nonBondingE < 0 || nonBondingE % 2 !== 0) {
+    out.innerHTML = `<span class="text-amber-300">⚠️ Check inputs: central valence e⁻ (${g}) − charge (${q}) − bonding e⁻ (${t*b}) = ${nonBondingE} (must be an even non-negative number of lone-pair electrons).</span>`;
+    return;
+  }
+  const lp = nonBondingE / 2;
+  const bp = b;
+  const tot = bp + lp;
+  const eGeom = simElecGeom(tot);
+  const mShape = simShapeName(bp, lp);
+  let angle = simIdealAngle(tot);
+  if (tot === 4 && lp === 1) angle = '107° (compressed from 109.5° by 1 LP)';
+  else if (tot === 4 && lp === 2) angle = '104.5° (compressed from 109.5° by 2 LPs)';
+
+  out.innerHTML = `
+    <div>• Electron Domains = <b>${bp} bonding + ${lp} lone = ${tot} total regions</b></div>
+    <div>• Electron-Pair Arrangement = <b class="text-sky-300">${eGeom}</b> &nbsp;|&nbsp; Molecular Shape = <b class="text-emerald-300">${mShape}</b></div>
+    <div>• Predicted Bond Angle = <b class="text-amber-300">${angle}</b></div>
+  `;
+}
+
+const SUB_LOOKUP_DATA = [
+  { name: 'Magnesium oxide (MgO)', type: 'Giant ionic lattice', part: 'Mg²⁺ and O²⁻ ions', force: 'Strong electrostatic attraction between oppositely charged 2+/2− ions', mp: 'Very high (2852 °C)', cond: 'Solid: No (ions fixed) · Molten: Yes (mobile ions)' },
+  { name: 'Sodium chloride (NaCl)', type: 'Giant ionic lattice', part: 'Na⁺ and Cl⁻ ions', force: 'Strong electrostatic attraction between 1+/1− ions', mp: 'High (801 °C)', cond: 'Solid: No · Molten & Aqueous: Yes (mobile ions)' },
+  { name: 'Aluminium chloride (Al₂Cl₆ / AlCl₃)', type: 'Simple molecular (dimer in gas/liquid)', part: 'Al₂Cl₆ molecules (covalent + 2 dative bonds)', force: 'Weak intermolecular London forces between Al₂Cl₆ dimers', mp: 'Low (sublimes at 180 °C)', cond: 'Non-conductor when molten (molecules, no mobile ions)' },
+  { name: 'Diamond (C)', type: 'Giant covalent lattice (3D)', part: 'Carbon atoms (4 bonds each, 109.5°)', force: 'Many strong C–C covalent bonds throughout 3D lattice', mp: 'Extremely high (~3550 °C)', cond: 'Non-conductor (all 4 valence e⁻ localised in σ bonds)' },
+  { name: 'Graphite (C)', type: 'Giant covalent layered lattice', part: 'Carbon atoms (3 bonds in hexagonal layers, 120°)', force: 'Strong C–C covalent bonds within layers (weak London forces between layers)', mp: 'Extremely high (~3650 °C)', cond: 'Good conductor along layers (1 delocalised e⁻ per C atom)' },
+  { name: 'Graphene (C)', type: 'Giant covalent 2D single layer', part: 'Carbon atoms in a 1-atom-thick hexagonal sheet', force: 'Strong C–C covalent bonds in 2D sheet', mp: 'Extremely high', cond: 'Exceptional conductor (delocalised electrons move across sheet)' },
+  { name: 'Silicon(IV) oxide (SiO₂)', type: 'Giant covalent lattice', part: 'Si and O atoms (each Si bonded to 4 O, each O to 2 Si)', force: 'Many strong Si–O covalent bonds', mp: 'Very high (1710 °C)', cond: 'Non-conductor (solid & molten)' },
+  { name: 'Iodine (I₂)', type: 'Simple molecular solid (face-centred)', part: 'Discrete I₂ molecules', force: 'Weak intermolecular London (van der Waals) forces between I₂ molecules (NOT I–I covalent bonds!)', mp: 'Low (sublimes 114 °C)', cond: 'Non-conductor (no mobile ions or electrons)' },
+  { name: 'Carbon dioxide (CO₂)', type: 'Simple molecular gas', part: 'Linear O=C=O molecules (180°, non-polar)', force: 'Weak intermolecular London forces between CO₂ molecules', mp: 'Very low (sublimes −78 °C)', cond: 'Non-conductor' },
+  { name: 'Magnesium (Mg)', type: 'Giant metallic lattice', part: 'Mg²⁺ cations in a sea of delocalised electrons (2 e⁻/atom)', force: 'Strong electrostatic attraction between Mg²⁺ cations and delocalised electrons', mp: 'High (650 °C)', cond: 'Good conductor in BOTH solid and molten states (delocalised e⁻)' }
+];
+
+function solveSubLookup(){
+  const idx = parseInt((document.getElementById('subLookupSel') || {}).value || '0', 10);
+  const d = SUB_LOOKUP_DATA[idx];
+  const out = document.getElementById('subLookupResult');
+  if (!out || !d) return;
+  out.innerHTML = `
+    <div class="font-bold text-white">${d.name} &nbsp;→&nbsp; <span class="text-cyan-300">${d.type}</span></div>
+    <div>• <b>Particles:</b> ${d.part} &nbsp;|&nbsp; <b>Melting Point:</b> ${d.mp}</div>
+    <div>• <b>Forces overcome on melting:</b> <span class="text-amber-300">${d.force}</span></div>
+    <div>• <b>Conductivity:</b> <span class="text-emerald-300">${d.cond}</span></div>
+  `;
+}
+
+/* ── 9. TAB 9: 15-QUESTION EDEXCEL IAL TOPIC 3 EXAM DIAGNOSTIC ── */
+const T3_DIAG_QS = [
+  { spec: '3.1', q: 'Why does solid magnesium chloride (MgCl₂) not conduct electricity, whereas molten MgCl₂ does?', opts: ['Solid MgCl₂ has no delocalised electrons, whereas molten MgCl₂ has free electrons.', 'In solid MgCl₂ the ions are fixed in the lattice; when molten, the Mg²⁺ and Cl⁻ ions are free to move and carry charge.', 'Melting breaks the covalent bonds in MgCl₂ to form free atoms.'], ans: 1, exp: 'PEF Jan 2020 & Jan 2024: Ionic conductivity is strictly due to mobile IONS in the liquid/aqueous state; mentioning delocalised electrons scores 0.' },
+  { spec: '3.6', q: 'Which of the following ionic compounds has the HIGHEST melting point?', opts: ['NaCl', 'NaF', 'CaO', 'MgO'], ans: 3, exp: 'Spec 3.6: MgO has 2+/2− ions AND Mg²⁺ has a smaller ionic radius than Ca²⁺, giving the strongest electrostatic lattice attraction.' },
+  { spec: '3.7', q: 'Which ion in the isoelectronic series N³⁻, O²⁻, F⁻, Na⁺, Mg²⁺, Al³⁺ has the LARGEST ionic radius?', opts: ['Al³⁺', 'Na⁺', 'F⁻', 'N³⁻'], ans: 3, exp: 'Spec 3.7: All have 10 electrons (1s² 2s² 2p⁶), but N³⁻ has the fewest protons (Z = 7), so its outer shell is pulled least strongly by the nucleus.' },
+  { spec: '3.8–3.9', q: 'Which halide salt shows the GREATEST degree of covalent character due to polarisation?', opts: ['NaF', 'KCl', 'BeI₂', 'CaF₂'], ans: 2, exp: 'Spec 3.8–3.9: Be²⁺ is a very small, 2+ cation (very high polarising power) and I⁻ is a very large anion (high polarisability).' },
+  { spec: '3.11', q: 'How many bonding pairs and lone pairs surround each aluminium atom in the dimer Al₂Cl₆?', opts: ['3 bonding pairs and 1 lone pair', '4 bonding pairs and 0 lone pairs', '6 bonding pairs and 0 lone pairs'], ans: 1, exp: 'PEF Jan 2023 / Oct 2024: Each Al forms 3 normal covalent bonds and accepts 1 dative covalent bond from a bridging Cl lone pair → 4 bonding pairs, 0 lone pairs (tetrahedral around each Al).' },
+  { spec: '3.12', q: 'Which statement correctly compares diamond, graphite, and graphene?', opts: ['All three conduct electricity because carbon has delocalised electrons.', 'Graphite and graphene conduct electricity via delocalised electrons (each C forms 3 bonds), whereas diamond is an insulator (each C forms 4 bonds).', 'Graphite has a low melting point because of weak forces between its layers.'], ans: 1, exp: 'Spec 3.12: Graphite and graphene have 3 covalent bonds per C + 1 delocalised electron; both diamond and graphite have very high melting points because strong C–C covalent bonds must be broken.' },
+  { spec: '3.13–3.14', q: 'Which bond is the MOST polar?', opts: ['C–H', 'C–Cl', 'C–F', 'C–Br'], ans: 2, exp: 'Spec 3.13: Fluorine is the most electronegative element, giving C–F the largest electronegativity difference (ΔEN).' },
+  { spec: '3.15', q: 'Which of the following molecules has polar covalent bonds but is NON-POLAR overall?', opts: ['NH₃', 'H₂O', 'BF₃', 'CHCl₃'], ans: 2, exp: 'Spec 3.15: BF₃ is trigonal planar (120°, 0 lone pairs on B) and symmetrical, so the three B–F bond dipoles cancel out.' },
+  { spec: '3.16–3.18', q: 'What are the correct bond angles in CH₄, NH₃, and H₂O respectively?', opts: ['109.5°, 107°, 104.5°', '109.5°, 120°, 180°', '90°, 107°, 109.5°'], ans: 0, exp: 'Spec 3.18 / PEF Jan 2020: Each lone pair compresses the tetrahedral angle by ~2.5°: CH₄ (0 lp) = 109.5°, NH₃ (1 lp) = 107°, H₂O (2 lp) = 104.5°.' },
+  { spec: '3.18', q: 'What are the shape and bond angle of gaseous beryllium chloride, BeCl₂(g)?', opts: ['Bent / non-linear, 104.5°', 'Linear, 180°', 'Trigonal planar, 120°'], ans: 1, exp: 'PEF Oct 2023 / Jan 2024: Be (Group 2) has 2 bonding pairs and 0 lone pairs in BeCl₂ → linear, 180°.' },
+  { spec: '3.18', q: 'What are the bond angles in gaseous phosphorus(V) chloride, PCl₅(g)?', opts: ['109.5° only', '90° only', '90° and 120°'], ans: 2, exp: 'Spec 3.18: PCl₅(g) has 5 bonding pairs and 0 lone pairs → trigonal bipyramidal, with 120° equatorial angles and 90° axial-to-equatorial angles.' },
+  { spec: '3.19', q: 'Solid phosphorus(V) chloride exists as [PCl₄]⁺[PCl₆]⁻. What are the shapes of the two ions?', opts: ['[PCl₄]⁺ is square planar; [PCl₆]⁻ is octahedral', '[PCl₄]⁺ is tetrahedral (109.5°); [PCl₆]⁻ is octahedral (90°)', '[PCl₄]⁺ is see-saw; [PCl₆]⁻ is trigonal prismatic'], ans: 1, exp: 'Spec 3.19: [PCl₄]⁺ has 4 bonding pairs and 0 lone pairs → tetrahedral (109.5°); [PCl₆]⁻ has 6 bonding pairs and 0 lone pairs → octahedral (90°).' },
+  { spec: '3.19', q: 'What is the shape of the hydronium ion, H₃O⁺?', opts: ['Trigonal planar (120°)', 'Trigonal pyramidal (~107°)', 'Tetrahedral (109.5°)'], ans: 1, exp: 'Spec 3.19: H₃O⁺ has 3 bonding pairs and 1 lone pair on oxygen (isoelectronic with NH₃) → trigonal pyramidal.' },
+  { spec: '3.20–3.22', q: 'Why does aluminium have a higher melting point than sodium?', opts: ['Aluminium has stronger covalent bonds between its atoms.', 'Al³⁺ has a higher charge and smaller radius than Na⁺, and Al donates 3 delocalised electrons per atom (vs 1 in Na), giving stronger metallic electrostatic attraction.', 'Aluminium has stronger intermolecular van der Waals forces.'], ans: 1, exp: 'Spec 3.22: Metallic bond strength depends on cation charge, ionic radius, and number of delocalised electrons per atom.' },
+  { spec: '3.22', q: 'Which row correctly identifies the forces broken when solid iodine (I₂) and solid silicon(IV) oxide (SiO₂) melt?', opts: ['I₂: covalent bonds; SiO₂: van der Waals forces', 'I₂: weak intermolecular (van der Waals / London) forces; SiO₂: strong Si–O covalent bonds', 'Both break covalent bonds'], ans: 1, exp: 'I₂ is simple molecular (only weak intermolecular forces break on melting); SiO₂ is giant covalent (strong covalent bonds break).' }
+];
+
+function renderT3Diagnostic(){
+  const box = document.getElementById('t3DiagContainer');
+  if (!box) return;
+  box.innerHTML = T3_DIAG_QS.map((item, idx) => {
+    const sel = T3_STATE.diagAns[idx];
+    const answered = sel !== undefined;
+    const isOk = sel === item.ans;
+    return `
+      <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-2.5 flex flex-col justify-between">
+        <div class="space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-[10px] font-mono text-rose-400 uppercase font-bold px-2 py-0.5 bg-rose-950 rounded border border-rose-800">Spec ${item.spec}</span>
+            <span class="text-[10px] font-mono ${answered ? (isOk ? 'text-emerald-400' : 'text-amber-400') : 'text-slate-500'}">${answered ? (isOk ? '✓ 1 / 1 Mark' : '✗ 0 / 1 Mark') : 'Unanswered'}</span>
+          </div>
+          <p class="text-xs font-semibold text-white leading-relaxed">${idx+1}. ${item.q}</p>
+          <div class="space-y-1.5">
+            ${item.opts.map((opt, oIdx) => {
+              let cls = 'border-slate-800 bg-slate-950/70 text-slate-300 hover:border-sky-700';
+              if (answered) {
+                if (oIdx === item.ans) cls = 'border-emerald-600 bg-emerald-950/40 text-emerald-200 font-semibold';
+                else if (oIdx === sel) cls = 'border-rose-600 bg-rose-950/40 text-rose-200';
+              }
+              return `
+                <button type="button" onclick="answerT3Diagnostic(${idx}, ${oIdx})" class="w-full text-left p-2 rounded-lg border ${cls} text-[11px] leading-snug">
+                  <span class="font-mono text-sky-400 mr-1.5">${String.fromCharCode(65+oIdx)}.</span>${opt}
+                </button>
+              `;
+            }).join('')}
+          </div>
+        </div>
+        <div class="${answered ? '' : 'hidden'} p-2.5 rounded-lg bg-slate-950 border border-slate-800 text-[11px] text-slate-300 leading-relaxed">
+          <b class="${isOk ? 'text-emerald-400' : 'text-amber-400'}">${isOk ? '✓ Mark Scheme:' : '✗ Examiner Note:'}</b> ${item.exp}
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  let corr = 0;
+  for (let i = 0; i < T3_DIAG_QS.length; i++) if (T3_STATE.diagAns[i] === T3_DIAG_QS[i].ans) corr++;
+  const pct = Math.round((corr / T3_DIAG_QS.length) * 100);
+  const badge = document.getElementById('t3DiagScoreBadge');
+  if (badge) badge.textContent = `${corr} / ${T3_DIAG_QS.length} Correct · ${pct}%`;
+}
+
+function answerT3Diagnostic(qIdx, oIdx){
+  T3_STATE.diagAns[qIdx] = oIdx;
+  saveT3State();
+  renderT3Diagnostic();
+  updateT3Mastery();
+}
+
+function resetT3Diagnostic(){
+  T3_STATE.diagAns = {};
+  saveT3State();
+  renderT3Diagnostic();
+  updateT3Mastery();
+}
+
+function makeT3TrapsInteractive(){
+  const items = document.querySelectorAll('#rev-traps ~ div p');
+  items.forEach((p, idx) => {
+    p.style.cursor = 'pointer';
+    const apply = () => {
+      const on = !!T3_STATE.trapChecked[idx];
+      if (on) {
+        p.innerHTML = p.innerHTML.replace('□', '☑️');
+        p.classList.remove('text-rose-300');
+        p.classList.add('text-emerald-300');
+      } else {
+        p.innerHTML = p.innerHTML.replace('☑️', '□');
+        p.classList.add('text-rose-300');
+        p.classList.remove('text-emerald-300');
+      }
+    };
+    apply();
+    p.addEventListener('click', () => {
+      T3_STATE.trapChecked[idx] = !T3_STATE.trapChecked[idx];
+      saveT3State();
+      apply();
+    });
+  });
+}
+
+/* ── 10. SPOTLIGHT QUICK JUMP MODAL (⌘K) ── */
+const T3_SPOTLIGHT_ITEMS = [
+  { title: 'Spec 3.1–3.22 Master Syllabus & 18 Instant Concept Checks', sub: 'Tab 1 · Syllabus Overview', act: () => switchTab('syllabus') },
+  { title: 'Ion Migration (CuCrO₄ / KMnO₄), Dot-Cross & Polarisation Duels', sub: 'Tab 2 · Ionic Engine Drill', act: () => { switchTab('ionic'); setMode('ionic','drill'); } },
+  { title: 'Dative Bonding (Al₂Cl₆, NH₄⁺, H₃O⁺) & Giant Carbon Allotropes', sub: 'Tab 3 · Covalent Engine Drill', act: () => { switchTab('cov'); setMode('cov','drill'); } },
+  { title: '3D WebGL VSEPR Molecule Shapes Simulator (Build + Real Species)', sub: 'Tab 4 · Shapes 3D Simulator', act: () => { switchTab('shape'); setMode('shape','sim'); } },
+  { title: 'Interactive VSEPR Pair Counter & Angle Compression Grader', sub: 'Tab 4 · Shapes Engine Drill', act: () => { switchTab('shape'); setMode('shape','drill'); } },
+  { title: 'Mystery Substance Structure Identifier & Period 3 Metals Lab', sub: 'Tab 5 · Metallic & Structures Drill', act: () => { switchTab('metal'); setMode('metal','drill'); } },
+  { title: '2D VSEPR Shape Sketcher, Polarity Predictor & Chain Builders', sub: 'Tab 6 · Predictor Workbench', act: () => switchTab('predict') },
+  { title: 'Automated Edexcel Mark-Scheme Keyword Grader (5 Written Qs)', sub: 'Tab 6 · Predictor §07', act: () => switchTab('predict') },
+  { title: 'Isoelectronic Ionic Radii, Melting Points & Electron Density Maps', sub: 'Tab 7 · Bonding Studio', act: () => switchTab('studio') },
+  { title: 'ΔEN Bond Classifier, VSEPR Auto-Solver & Structure Lookup', sub: 'Tab 8 · Bonding Calculator', act: () => switchTab('calc') },
+  { title: '15-Question Edexcel IAL Topic 3 Exam Readiness Diagnostic', sub: 'Tab 9 · Final Review Diagnostic', act: () => switchTab('review') }
+];
+
+function openT3Spotlight(){
+  const m = document.getElementById('t3SpotlightModal');
+  if (!m) return;
+  m.classList.remove('hidden'); m.classList.add('flex');
+  const inp = document.getElementById('t3SpotlightInput');
+  if (inp) { inp.value = ''; filterT3Spotlight(''); setTimeout(() => inp.focus(), 40); }
+}
+
+function closeT3Spotlight(){
+  const m = document.getElementById('t3SpotlightModal');
+  if (!m) return;
+  m.classList.add('hidden'); m.classList.remove('flex');
+}
+
+function filterT3Spotlight(q){
+  const term = (q || '').toLowerCase().trim();
+  const res = document.getElementById('t3SpotlightResults');
+  if (!res) return;
+  const matched = T3_SPOTLIGHT_ITEMS.map((it, idx) => ({ it, idx })).filter(({ it }) => !term || it.title.toLowerCase().includes(term) || it.sub.toLowerCase().includes(term));
+  res.innerHTML = matched.length ? matched.map(({ it, idx }) => `
+    <button type="button" onclick="runT3Spotlight(${idx})" class="w-full text-left p-2.5 rounded-xl hover:bg-slate-800/80 flex items-center justify-between gap-2">
+      <div>
+        <div class="font-semibold text-white text-xs">${it.title}</div>
+        <div class="text-[10px] font-mono text-sky-400">${it.sub}</div>
+      </div>
+      <span class="text-slate-500 text-xs">↵</span>
+    </button>
+  `).join('') : '<div class="p-4 text-center text-slate-400">No matching Topic 3 tools found.</div>';
+}
+
+function runT3Spotlight(idx){
+  closeT3Spotlight();
+  if (T3_SPOTLIGHT_ITEMS[idx]) T3_SPOTLIGHT_ITEMS[idx].act();
+}
+
+document.addEventListener('keydown', function(e){
+  if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+    e.preventDefault();
+    openT3Spotlight();
+  } else if (e.key === 'Escape') {
+    closeT3Spotlight();
+  }
+});
+
+window.addEventListener('load', function(){
+  loadT3State();
+  injectT3SyllabusChecks();
+  renderIonicDrill();
+  renderIonicDuel();
+  renderCovDotInspector();
+  selectCarbonAllo(0);
+  resetVseprDrillFb();
+  renderMysterySub();
+  selectP3Metal(0);
+  renderEdMap('ionic');
+  solveVseprCalc();
+  solveSubLookup();
+  renderT3Diagnostic();
+  makeT3TrapsInteractive();
+  updateT3Mastery();
+});
 
 /* ═══ MOBILE_UX boot layer (chrome-only; no content changes) ═══ */
 window.MOBILE_UX = {

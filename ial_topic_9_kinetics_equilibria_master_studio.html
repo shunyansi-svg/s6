@@ -2053,7 +2053,552 @@
             window.addEventListener('resize', () => { drawMB(); drawProfiles(); drawEquilibriumGraph(1); resizeAndDrawCanvas(); resizePlotCanvas(); drawAllMinis(); });
             // initial labels
             (() => { const el=document.getElementById('mb-t2'); const lab=document.getElementById('mb-t2-label'); if(el&&lab) lab.textContent = 'T₂/T₁ = ' + el.value; })();
+            const rveBtns = document.getElementById('rve-btns');
+            if (rveBtns) {
+                rveBtns.innerHTML = RVE_CASES.map((c, i) => `<button type="button" onclick="showRveCase(${i})" class="p-2 rounded-lg border border-slate-800 bg-slate-950 text-slate-400 text-left text-[11px] font-mono">${c.name}</button>`).join('');
+                showRveCase(0);
+            }
+            renderMbDoctor();
+            renderSpec9Audit();
+            calcEaRev();
+            showColEq(0);
+            renderT9Sim();
+            renderT9Card();
+            updateT9Mastery();
             setTimeout(safeInitKaTeX, 300);
+        });
+
+        // ============ NEW INTERACTIVE MODULES (SPEC 9.1-9.11 LAB, M-B DOCTOR, Ea CALCULATOR, COLOUR EQUILIBRIA, 10-Q SIMULATOR, FLASHCARDS, SPOTLIGHT) ============
+        const T9_MASTERY = {
+            specChecked: new Set([0, 1]),
+            mbDocSolved: new Set(),
+            simSolved: new Set(),
+            conceptsChecked: new Set()
+        };
+
+        const SPEC9_AUDIT_ITEMS = [
+            {code:'9.1', text:'Explain effects of concentration, pressure (gases), surface area (solids), and temperature on reaction rate using collision frequency and energy.'},
+            {code:'9.2', text:'Define activation energy (Ea) and state that reactions require collisions with sufficient energy (E ≥ Ea) AND correct orientation.'},
+            {code:'9.3i', text:'Calculate comparative initial rate from time (rate = 1/t) for clock/fixed-endpoint reactions (disappearing cross, iodine clock).'},
+            {code:'9.3ii', text:'Determine initial rate (tangent at t = 0) and rate at time t from the gradient (|Δy/Δx|) of a continuous progress curve.'},
+            {code:'9.4', text:'Sketch and use Maxwell–Boltzmann distributions (starts at origin, asymptotic tail, constant total area) to explain why a small T rise causes a large rate increase.'},
+            {code:'9.5', text:'State that a catalyst increases reaction rate by providing an alternative reaction route/pathway with a lower activation energy (chemically unchanged at the end).'},
+            {code:'9.6', text:'Draw and label reaction profiles for uncatalysed vs catalysed routes (showing lower Ea, intermediate energy dip, and unchanged ΔH).'},
+            {code:'9.7', text:'Explain how catalysts make industrial processes more sustainable and economically viable (lower T and P → less energy demand, higher atom economy).'},
+            {code:'9.8', text:'Show a catalyst on a fixed-temperature Maxwell–Boltzmann curve as a second vertical line at lower Ea_cat (curve shape unchanged, larger shaded area ≥ Ea_cat).'},
+            {code:'9.9', text:'State the characteristics of dynamic equilibrium in a closed system: forward rate = reverse rate (non-zero), constant (not equal) concentrations, approached from either direction.'},
+            {code:'9.10–9.11', text:'Apply Le Chatelier’s principle (T, P gas moles, concentration, catalyst = no shift) and evaluate industrial compromise conditions (Haber, Contact, ethene hydration).'}
+        ];
+
+        function updateT9Mastery() {
+            const total = T9_MASTERY.specChecked.size + T9_MASTERY.mbDocSolved.size + T9_MASTERY.simSolved.size + T9_MASTERY.conceptsChecked.size;
+            const pct = Math.min(100, Math.round((total / 29) * 100));
+            const el = document.getElementById('mastery-percentage');
+            if (el) el.textContent = pct + '%';
+        }
+
+        window.switchSyl9Lab = function(view) {
+            ['ratevseq', 'mbdoc', 'audit'].forEach(v => {
+                const pan = document.getElementById('s9-panel-' + v);
+                const btn = document.getElementById('s9-btn-' + v);
+                if (pan) pan.classList.toggle('hidden', v !== view);
+                if (btn) {
+                    btn.className = 'px-3 py-1.5 text-xs font-semibold rounded-lg ' +
+                        (v === view ? 'bg-sky-500/20 text-sky-300 border border-sky-500/40' : 'text-slate-400 hover:text-white border border-transparent');
+                }
+            });
+            setTimeout(safeInitKaTeX, 40);
+        };
+
+        const RVE_CASES = [
+            {
+                name:'1. Increase Temperature (↑ T)',
+                rate:'<b class="text-emerald-300">Rate INCREASES strongly (both fwd &amp; rev):</b> Molecules have higher mean kinetic energy; a <b>much larger fraction of molecules have $E \ge E_\text{a}$</b> (M–B tail), so frequency of successful collisions increases.',
+                eq:'<b class="text-rose-300">Position shifts LEFT (← endothermic direction):</b> For an exothermic forward reaction ($\Delta H &lt; 0$), the system opposes the added heat by shifting in the endothermic reverse direction $\Rightarrow$ <b>equilibrium yield of $\text{NH}_3$ DECREASES</b>.',
+                trap:'<b>Classic Exam Conflict:</b> Heating makes the reaction <i>faster</i> (9A) but gives a <i>worse equilibrium yield</i> (9B) — hence the $450^\circ\text{C}$ industrial compromise!'
+            },
+            {
+                name:'2. Increase Gas Pressure (↑ P)',
+                rate:'<b class="text-emerald-300">Rate INCREASES:</b> Gas molecules are pushed closer together (more particles per unit volume) $\Rightarrow$ <b>higher collision frequency</b> (more successful collisions per unit time).',
+                eq:'<b class="text-emerald-300">Position shifts RIGHT (→ fewer gas moles):</b> Left side has $1 + 3 = 4$ moles of gas; right side has $2$ moles of gas. System opposes higher pressure by shifting to the side with <b>fewer moles of gas molecules</b> $\Rightarrow$ <b>yield INCREASES</b>.',
+                trap:'<b>Watch Equal Gas Moles:</b> For $\text{H}_2(\text{g}) + \text{I}_2(\text{g}) \rightleftharpoons 2\text{HI}(\text{g})$ ($2 = 2$ mol gas), increasing $P$ still <b>increases the rate</b>, but has <b>NO effect on equilibrium position</b>!'
+            },
+            {
+                name:'3. Add a Catalyst (e.g. Fe)',
+                rate:'<b class="text-emerald-300">Rate INCREASES (both fwd &amp; rev equally):</b> Provides an <b>alternative reaction pathway with lower activation energy ($E_\text{a}$)</b>, so more molecules have $E \ge E_\text{a}$ at the same temperature.',
+                eq:'<b class="text-amber-300">Position &amp; Yield UNCHANGED (No Shift!):</b> A catalyst lowers $E_\text{a}(\text{forward})$ and $E_\text{a}(\text{reverse})$ by the exact same amount, increasing both rates equally. Equilibrium is simply reached <b>faster</b>.',
+                trap:'<b>#1 Examiner Penalty:</b> Never write "the catalyst shifts equilibrium to the right" or "increases yield" — it only allows the plant to run fast enough at a lower compromise temperature!'
+            },
+            {
+                name:'4. Remove Product Continuously (↓ [NH₃])',
+                rate:'<b class="text-sky-300">Reverse rate DROPS immediately:</b> Fewer product molecules per unit volume means fewer reverse collisions per second.',
+                eq:'<b class="text-emerald-300">Position shifts RIGHT (→ products):</b> In the Haber process, $\text{NH}_3$ is cooled and liquefied out continuously; the position keeps shifting right to replace it, boosting overall conversion.',
+                trap:'<b>Industrial Boost:</b> Combining continuous $\text{NH}_3$ liquefaction with recycling unreacted $\text{N}_2/\text{H}_2$ raises overall conversion from ~15% per pass to ~98%!'
+            }
+        ];
+
+        window.showRveCase = function(idx) {
+            const c = RVE_CASES[idx];
+            const btns = document.querySelectorAll('#rve-btns button');
+            btns.forEach((b, i) => {
+                b.className = 'p-2 rounded-lg border text-left text-[11px] font-mono ' +
+                    (i === idx ? 'bg-sky-950/70 border-sky-500 text-sky-300 font-bold' : 'bg-slate-950 border-slate-800 text-slate-400');
+            });
+            const out = document.getElementById('rve-out');
+            if (out) {
+                out.innerHTML = `<div class="border-b border-slate-800 pb-2">
+                        <span class="font-display font-bold text-white text-sm">${c.name}</span>
+                    </div>
+                    <div class="p-3 bg-slate-900 rounded-lg border border-slate-800 text-xs text-slate-200">${c.rate}</div>
+                    <div class="p-3 bg-slate-900 rounded-lg border border-slate-800 text-xs text-slate-200">${c.eq}</div>
+                    <p class="text-xs text-amber-200/95 bg-amber-950/30 border border-amber-800/50 rounded-lg p-2.5">${c.trap}</p>`;
+            }
+            T9_MASTERY.conceptsChecked.add('rve');
+            updateT9Mastery();
+            setTimeout(safeInitKaTeX, 30);
+        };
+
+        const MB_DOC_CASES = [
+            {
+                title:'Case 1: High-Energy Tail Behaviour (WCH12 Jan 2020 / Jan 2024 / Jan 2025 PEF)',
+                script:'Candidate sketches a Maxwell–Boltzmann curve that starts at (0,0), rises to a peak, and then touches the x-axis at high energy (or hooks slightly upwards at the right-hand end).',
+                opts:[
+                    'Full marks — almost no molecules have very high energy',
+                    'Penalise sketch mark — the high-energy tail must be ASYMPTOTIC to the energy axis (approach but NEVER touch or curve back up)',
+                    'Penalise because the curve should start above (0,0) on the y-axis'
+                ],
+                ans:1,
+                exp:'PEF Jan 2020–Jan 2025: The curve must start at the origin (0,0) (zero molecules have zero energy) and approach the x-axis asymptotically at high energy without ever touching it or hooking upwards.'
+            },
+            {
+                title:'Case 2: Higher Temperature Curve Shape & Area (WCH12 Jun 2023 / Jan 2025 PEF)',
+                script:'Asked to sketch the distribution at a higher temperature T₂ on the same axes, candidate draws the T₂ peak shifted to the right at the SAME height as the T₁ peak (making the total area under T₂ larger).',
+                opts:[
+                    'Penalise — total area under the curve represents the total number of molecules (constant), so the T₂ peak must be LOWER and shifted to the RIGHT',
+                    'Full marks — higher temperature means more total energy so area increases',
+                    'Penalise — the T₂ peak should be higher and shifted to the left'
+                ],
+                ans:0,
+                exp:'PEF Jun 2023 & Jan 2025: Since the total number of molecules is unchanged, the area under the T₂ curve must equal the area under T₁. Because the T₂ curve spreads out to higher energies, its peak height must be LOWER and shifted to the right.'
+            },
+            {
+                title:'Case 3: Explaining Concentration vs Temperature on M–B (WCH12 Oct 2022)',
+                script:'Asked how doubling the concentration of a reactant at constant temperature affects the Maxwell–Boltzmann distribution, candidate writes: "The peak stays at the same height and Ea moves to the left."',
+                opts:[
+                    'Full marks — higher concentration lowers Ea',
+                    'Penalise — doubling concentration doubles the total number of molecules (so the curve is twice as tall at every energy, with the peak at the SAME energy and Ea unchanged)',
+                    'Penalise — doubling concentration shifts the peak to the right'
+                ],
+                ans:1,
+                exp:'At constant temperature, the average kinetic energy and most probable energy do not change, and Ea is unchanged (only a catalyst lowers Ea). Doubling the number of molecules doubles the height/area of the curve at every energy.'
+            },
+            {
+                title:'Case 4: Catalysed Reaction Profile Diagram (Spec 9.6 / PEF Jun 2023)',
+                script:'On an enthalpy profile diagram comparing an uncatalysed and catalysed exothermic reaction, candidate draws the catalysed curve with a lower peak AND lowers the final product enthalpy line.',
+                opts:[
+                    'Full marks — a catalyst makes the reaction more exothermic',
+                    'Penalise — a catalyst provides an alternative route with lower Ea (often showing an intermediate dip), but reactant and product enthalpy levels (and ΔH) MUST remain identical',
+                    'Penalise — a catalyst raises the reactant enthalpy level'
+                ],
+                ans:1,
+                exp:'Spec 9.6: A catalyst lowers the activation energy barrier (and shows an intermediate energy level dip), but has zero effect on the enthalpy of reactants, products, or ΔH.'
+            },
+            {
+                title:'Case 5: Collision Theory Precision (PEF Jun 2019 / Jan 2025)',
+                script:'Question: Explain why powdered calcium carbonate reacts faster with dilute HCl than marble lumps of the same mass. Candidate writes: "Powder has a larger surface area so there are more collisions."',
+                opts:[
+                    'Full marks — mentions surface area and collisions',
+                    'Loses the collision mark — must state there are more (successful) collisions PER UNIT TIME / higher collision FREQUENCY on the exposed surface',
+                    'Loses marks because powder lowers the activation energy'
+                ],
+                ans:1,
+                exp:'PEF Jun 2019 & Jan 2025: Saying "more collisions" alone scores 0 because the same total mass of CaCO₃ gives the same total number of reactions eventually. You must say "more (successful) collisions per unit time / per second" or "higher collision frequency"!'
+            }
+        ];
+
+        let curMbDoc = 0;
+        function renderMbDoctor() {
+            const btns = document.getElementById('mbdoc-btns');
+            if (!btns) return;
+            btns.innerHTML = MB_DOC_CASES.map((c, i) => {
+                const done = T9_MASTERY.mbDocSolved.has(i);
+                return `<button type="button" onclick="selectMbDoc(${i})" class="px-3 py-1.5 text-[11px] font-semibold rounded-lg border ${i === curMbDoc ? 'border-violet-500 bg-violet-950/60 text-violet-200' : (done ? 'border-emerald-800 bg-emerald-950/25 text-emerald-400' : 'border-slate-800 bg-slate-900 text-slate-400')}">${done ? '✓ ' : ''}Case ${i + 1}</button>`;
+            }).join('');
+            const c = MB_DOC_CASES[curMbDoc];
+            const view = document.getElementById('mbdoc-view');
+            if (view) {
+                view.innerHTML = `<span class="text-[10px] font-mono uppercase text-violet-400 font-bold block">${c.title}</span>
+                    <div class="p-3 bg-slate-900 border border-slate-800 rounded-lg font-mono text-slate-200 text-xs leading-relaxed">" ${c.script} "</div>
+                    <div class="space-y-2">
+                        ${c.opts.map((o, oi) => `<button type="button" onclick="gradeMbDoc(${curMbDoc}, ${oi})" class="w-full text-left p-2.5 rounded-lg border border-slate-800 bg-slate-900 hover:border-violet-500/50 text-xs text-slate-300">${String.fromCharCode(65 + oi)}. ${o}</button>`).join('')}
+                    </div>
+                    <div id="mbdoc-fb" class="hidden p-3 rounded-lg text-xs leading-relaxed"></div>`;
+            }
+            const sc = document.getElementById('mbdoc-score');
+            if (sc) sc.textContent = `Diagnosed: ${T9_MASTERY.mbDocSolved.size} / ${MB_DOC_CASES.length}`;
+        }
+
+        window.selectMbDoc = function(i) { curMbDoc = i; renderMbDoctor(); };
+        window.gradeMbDoc = function(cIdx, oIdx) {
+            const c = MB_DOC_CASES[cIdx];
+            const fb = document.getElementById('mbdoc-fb');
+            if (!fb) return;
+            fb.classList.remove('hidden');
+            if (oIdx === c.ans) {
+                T9_MASTERY.mbDocSolved.add(cIdx);
+                updateT9Mastery();
+                const sc = document.getElementById('mbdoc-score');
+                if (sc) sc.textContent = `Diagnosed: ${T9_MASTERY.mbDocSolved.size} / ${MB_DOC_CASES.length}`;
+                fb.className = 'p-3 rounded-lg text-xs leading-relaxed bg-emerald-950/50 border border-emerald-700 text-emerald-200';
+                fb.innerHTML = `<b>✓ Correct Examiner Verdict:</b> ${c.exp}`;
+            } else {
+                fb.className = 'p-3 rounded-lg text-xs leading-relaxed bg-rose-950/50 border border-rose-700 text-rose-200';
+                fb.innerHTML = `<b>✗ Check the PEF Guideline:</b> ${c.exp}`;
+            }
+        };
+
+        function renderSpec9Audit() {
+            const box = document.getElementById('spec9-audit-grid');
+            if (!box) return;
+            box.innerHTML = SPEC9_AUDIT_ITEMS.map((it, idx) => {
+                const on = T9_MASTERY.specChecked.has(idx);
+                return `<button type="button" onclick="toggleSpec9(${idx})" class="text-left p-3 rounded-xl border flex items-start gap-3 ${on ? 'bg-sky-950/40 border-sky-600/70 text-slate-100' : 'bg-slate-950 border-slate-800 text-slate-300'}">
+                    <span class="mt-0.5 w-4 h-4 rounded flex items-center justify-center text-[10px] font-bold shrink-0 ${on ? 'bg-sky-400 text-slate-950' : 'border border-slate-600 text-transparent'}">✓</span>
+                    <span class="text-xs leading-relaxed"><strong class="font-mono text-sky-300 mr-1.5">[Spec ${it.code}]</strong>${it.text}</span>
+                </button>`;
+            }).join('');
+        }
+
+        window.toggleSpec9 = function(idx) {
+            if (T9_MASTERY.specChecked.has(idx)) T9_MASTERY.specChecked.delete(idx);
+            else T9_MASTERY.specChecked.add(idx);
+            renderSpec9Audit();
+            updateT9Mastery();
+        };
+
+        window.toggleAllSpec9 = function(val) {
+            SPEC9_AUDIT_ITEMS.forEach((_, i) => { if (val) T9_MASTERY.specChecked.add(i); else T9_MASTERY.specChecked.delete(i); });
+            renderSpec9Audit();
+            updateT9Mastery();
+        };
+
+        // --- TAB 7: FORWARD VS REVERSE Ea & CATALYST SYMMETRY CALCULATOR ---
+        window.calcEaRev = function() {
+            const eaF = parseFloat(document.getElementById('ea-fwd-in')?.value) || 120;
+            const dH = parseFloat(document.getElementById('ea-dh-in')?.value) || -45;
+            const drop = parseFloat(document.getElementById('ea-drop-in')?.value) || 35;
+            const eaR = eaF - dH;
+            const eaFCat = Math.max(5, eaF - drop);
+            const eaRCat = Math.max(5, eaR - drop);
+            const out = document.getElementById('ea-rev-out');
+            if (out) {
+                out.innerHTML = `<p><span class="text-rose-300"><b>Uncatalysed:</b></span> $E_\text{a}(\text{fwd}) = +${eaF}\text{ kJ mol}^{-1}$  ·  $E_\text{a}(\text{rev}) = E_\text{a}(\text{fwd}) - \Delta H = ${eaF} - (${dH}) = \mathbf{+${eaR}\text{ kJ mol}^{-1}}$</p>
+                    <p><span class="text-emerald-300"><b>Catalysed (−${drop} kJ mol⁻¹ both ways):</b></span> $E_\text{a,cat}(\text{fwd}) = \mathbf{+${eaFCat}\text{ kJ mol}^{-1}}$  ·  $E_\text{a,cat}(\text{rev}) = \mathbf{+${eaRCat}\text{ kJ mol}^{-1}}$</p>
+                    <p class="text-sky-300 pt-1 border-t border-slate-800"><b>Check $\Delta H$ invariance:</b> $\Delta H_\text{cat} = E_\text{a,cat}(\text{fwd}) - E_\text{a,cat}(\text{rev}) = ${eaFCat} - ${eaRCat} = \mathbf{${eaFCat - eaRCat}\text{ kJ mol}^{-1}}$ (Unchanged! Forward &amp; reverse rates increase by the exact same factor).</p>`;
+            }
+            setTimeout(safeInitKaTeX, 30);
+        };
+
+        // --- TAB 8: COLOUR-CHANGE EQUILIBRIUM BENCH ---
+        const COL_EQ_DATA = [
+            {
+                eq:'2NO₂(g) [Dark Brown] ⇌ N₂O₄(g) [Pale Yellow / Colourless]   ΔH = −58 kJ mol⁻¹ (Exothermic forward · 2 mol gas → 1 mol gas)',
+                cases:[
+                    '<b>1. Immerse tube in ice bath (↓ T):</b> Mixture turns <b>paler / yellow</b>. <i>Why:</i> Forward reaction is exothermic, so cooling shifts the position of equilibrium to the <b>right (towards $\text{N}_2\text{O}_4$)</b> to release heat and oppose the temperature drop.',
+                    '<b>2. Immerse tube in hot water (↑ T):</b> Mixture turns <b>darker brown</b>. <i>Why:</i> Heating shifts the position of equilibrium to the <b>left (endothermic direction, towards $\text{NO}_2$)</b> to absorb the added heat.',
+                    '<b>3. Compress gas in syringe (↑ P):</b> Mixture momentarily darkens (all concentrations spike as volume drops!), then turns <b>paler</b> as equilibrium shifts to the <b>right (fewer moles of gas: 2 mol $\rightarrow$ 1 mol)</b>.'
+                ]
+            },
+            {
+                eq:'ICl(l) [Dark Brown Liquid] + Cl₂(g) [Green-Yellow Gas] ⇌ ICl₃(s) [Bright Yellow Solid]   (Exothermic forward · 1 mol gas → 0 mol gas)',
+                cases:[
+                    '<b>1. Pass more Cl₂(g) into the U-tube (↑ [Cl₂]):</b> Brown liquid disappears and <b>bright yellow crystals of $\text{ICl}_3(\text{s})$</b> form. <i>Why:</i> Position of equilibrium shifts to the <b>right</b> to consume the added $\text{Cl}_2(\text{g})$.',
+                    '<b>2. Invert the U-tube to pour out heavy Cl₂(g) (↓ [Cl₂]):</b> Yellow solid $\text{ICl}_3(\text{s})$ decomposes back into <b>dark brown liquid $\text{ICl(l)}$</b>. <i>Why:</i> Position of equilibrium shifts to the <b>left</b> to replace the removed $\text{Cl}_2(\text{g})$.',
+                    '<b>3. Heat the tube gently (↑ T):</b> Yellow solid melts/turns back to <b>brown liquid</b> as equilibrium shifts left (endothermic direction).'
+                ]
+            },
+            {
+                eq:'Cr₂O₇²⁻(aq) [Orange] + H₂O(l) ⇌ 2CrO₄²⁻(aq) [Yellow] + 2H⁺(aq)   (Acid–Base Chromate / Dichromate Equilibrium)',
+                cases:[
+                    '<b>1. Add dilute NaOH(aq) (OH⁻ removes H⁺):</b> Solution turns from <b>orange to yellow</b>. <i>Why:</i> $\text{OH}^-$ reacts with $\text{H}^+$ ($\text{H}^+ + \text{OH}^- \rightarrow \text{H}_2\text{O}$), decreasing $[\text{H}^+]$. Position of equilibrium shifts to the <b>right</b> to replace $\text{H}^+$, forming yellow $\text{CrO}_4^{2-}$.',
+                    '<b>2. Add dilute H₂SO₄(aq) (↑ [H⁺]):</b> Solution turns from <b>yellow to orange</b>. <i>Why:</i> Increasing $[\text{H}^+]$ shifts the position of equilibrium to the <b>left</b> to remove the added $\text{H}^+$, forming orange $\text{Cr}_2\text{O}_7^{2-}$.'
+                ]
+            }
+        ];
+
+        window.showColEq = function(idx) {
+            const d = COL_EQ_DATA[idx];
+            const btns = document.querySelectorAll('#col-eq-btns button');
+            btns.forEach((b, i) => {
+                b.className = 'px-2.5 py-1 text-[11px] font-semibold rounded ' +
+                    (i === idx ? 'bg-rose-600 text-white' : 'bg-slate-800 text-slate-300');
+            });
+            const out = document.getElementById('col-eq-out');
+            if (out) {
+                out.innerHTML = `<div class="p-2.5 bg-slate-950 border border-slate-800 rounded-lg font-mono text-emerald-300 text-xs">${d.eq}</div>
+                    <ul class="space-y-2 list-disc list-inside text-slate-300">${d.cases.map(c => `<li>${c}</li>`).join('')}</ul>`;
+            }
+            T9_MASTERY.conceptsChecked.add('col_eq');
+            updateT9Mastery();
+            setTimeout(safeInitKaTeX, 30);
+        };
+
+        // --- TAB 11 TOOL F: 10-QUESTION WCH12 & WCH13 PAST-PAPER EXAM SIMULATOR ---
+        const T9_SIM_QUESTIONS = [
+            {
+                spec:'9.1 & 9.4', series:'WCH12 Jan 2025 PEF',
+                q:'What is the main reason why a 10 °C rise in temperature approximately doubles the rate of many chemical reactions?',
+                opts:[
+                    'The activation energy of the reaction is halved.',
+                    'Particles move faster so the frequency of collisions doubles.',
+                    'A much larger proportion/fraction of colliding molecules have energy greater than or equal to the activation energy (E ≥ Ea).',
+                    'The enthalpy change ΔH becomes more negative.'
+                ],
+                ans:2,
+                exp:'Spec 9.4: While collision frequency increases slightly with temperature, the dominant factor is the exponential increase in the fraction of molecules in the high-energy Maxwell–Boltzmann tail with E ≥ Ea.'
+            },
+            {
+                spec:'9.3i', series:'WCH13 Jun 2023',
+                q:'In a sodium thiosulfate "disappearing cross" clock reaction, the time t for the cross to be obscured decreases from 50 s to 20 s when the temperature is raised. What happens to the initial rate of reaction (1/t)?',
+                opts:[
+                    'It decreases from 0.050 s⁻¹ to 0.020 s⁻¹.',
+                    'It increases from 0.020 s⁻¹ to 0.050 s⁻¹ (2.5 times faster).',
+                    'It increases by 30 s⁻¹.',
+                    'It stays constant because the same amount of sulfur is formed.'
+                ],
+                ans:1,
+                exp:'Rate = 1/t. At t = 50 s, 1/t = 0.020 s⁻¹. At t = 20 s, 1/t = 0.050 s⁻¹ (2.5 times faster). Shorter time for a fixed amount of sulfur precipitate means a higher rate.'
+            },
+            {
+                spec:'9.3ii', series:'WCH12 Oct 2023',
+                q:'A student plots the volume of CO₂ gas (in cm³) against time (in s) for CaCO₃ + 2HCl. How should the student find the instantaneous rate of reaction at t = 30 s?',
+                opts:[
+                    'Divide the volume of gas at t = 30 s by 30 s.',
+                    'Draw a tangent to the curve at t = 30 s and calculate its gradient Δy / Δx.',
+                    'Draw a tangent to the curve at t = 0 s.',
+                    'Divide the final volume of gas by the total time taken.'
+                ],
+                ans:1,
+                exp:'Spec 9.3ii: The instantaneous rate at a specific time t is the gradient of the tangent drawn to the curve at that exact time t. (Dividing V(30) by 30 gives the average rate over the first 30 s, which is a chord!).'
+            },
+            {
+                spec:'9.4 & 9.8', series:'WCH12 Jan 2024 PEF',
+                q:'Which row correctly compares the effect of (i) increasing temperature and (ii) adding a catalyst on a Maxwell–Boltzmann distribution of a fixed sample of gas?',
+                opts:[
+                    '(i) Peak shifts right & lower, total area constant, Ea unchanged · (ii) Curve unchanged, Ea moves left',
+                    '(i) Peak shifts right & higher, total area increases · (ii) Peak shifts right, Ea moves left',
+                    '(i) Curve unchanged, Ea moves left · (ii) Peak shifts right & lower',
+                    '(i) Peak shifts left & higher, total area constant · (ii) Curve unchanged, Ea moves right'
+                ],
+                ans:0,
+                exp:'Spec 9.4 & 9.8: Increasing temperature reshapes the distribution (peak lower and right, same total area, Ea line fixed). Adding a catalyst at constant T leaves the distribution curve completely unchanged and adds a new vertical line at a lower Ea_cat.'
+            },
+            {
+                spec:'9.5–9.6', series:'WCH12 Jun 2023 PEF',
+                q:'A catalyst is added to an exothermic reaction with uncatalysed activation energy Ea(fwd) = +110 kJ mol⁻¹ and ΔH = −40 kJ mol⁻¹. The catalyst lowers the forward activation energy to +75 kJ mol⁻¹. What are the catalysed reverse activation energy Ea,cat(rev) and the catalysed ΔH?',
+                opts:[
+                    'Ea,cat(rev) = +115 kJ mol⁻¹ · ΔH = −40 kJ mol⁻¹',
+                    'Ea,cat(rev) = +150 kJ mol⁻¹ · ΔH = −75 kJ mol⁻¹',
+                    'Ea,cat(rev) = +35 kJ mol⁻¹ · ΔH = −40 kJ mol⁻¹',
+                    'Ea,cat(rev) = +115 kJ mol⁻¹ · ΔH = −5 kJ mol⁻¹'
+                ],
+                ans:0,
+                exp:'Uncatalysed Ea(rev) = 110 − (−40) = +150 kJ mol⁻¹. The catalyst lowers both barriers by 35 kJ mol⁻¹, so Ea,cat(rev) = 150 − 35 = +115 kJ mol⁻¹, and ΔH remains unchanged at −40 kJ mol⁻¹.'
+            },
+            {
+                spec:'9.9', series:'WCH12 Jan 2022',
+                q:'Which two statements are ALWAYS true for a reversible reaction that has reached dynamic equilibrium in a closed system?',
+                opts:[
+                    'The forward and reverse reactions have stopped, and the concentrations of reactants and products are equal.',
+                    'The rate of the forward reaction equals the rate of the reverse reaction, and the concentrations of reactants and products remain constant.',
+                    'The rate of the forward reaction is greater than the reverse rate, and concentrations are equal.',
+                    'The concentrations of reactants and products are equal, and ΔH = 0.'
+                ],
+                ans:1,
+                exp:'Spec 9.9: Dynamic equilibrium means (i) rate(forward) = rate(reverse) ≠ 0, and (ii) concentrations of reactants and products remain constant (they are rarely equal!).'
+            },
+            {
+                spec:'9.10', series:'WCH12 Oct 2022',
+                q:'For the equilibrium PCl₅(g) ⇌ PCl₃(g) + Cl₂(g) (ΔH = +93 kJ mol⁻¹), which pair of changes will BOTH increase the equilibrium yield of Cl₂(g)?',
+                opts:[
+                    'Increase temperature and increase pressure',
+                    'Increase temperature and decrease pressure',
+                    'Decrease temperature and increase pressure',
+                    'Add a catalyst and increase temperature'
+                ],
+                ans:1,
+                exp:'The forward reaction is endothermic (+93 kJ mol⁻¹), so increasing T shifts equilibrium right. The left side has 1 mol gas and the right side has 2 mol gas, so decreasing P shifts equilibrium to the side with more gas moles (right).'
+            },
+            {
+                spec:'9.10', series:'WCH12 Jan 2022 PEF',
+                q:'Consider the heterogeneous equilibrium: C(s) + H₂O(g) ⇌ CO(g) + H₂(g) (ΔH = +131 kJ mol⁻¹). What is the effect of increasing the total pressure at constant temperature?',
+                opts:[
+                    'No shift, because there are 2 moles of reactants and 2 moles of products.',
+                    'Position of equilibrium shifts to the left, because there is 1 mole of gas on the left and 2 moles of gas on the right.',
+                    'Position of equilibrium shifts to the right, because carbon is a solid.',
+                    'Position of equilibrium shifts to the right, increasing the yield of H₂.'
+                ],
+                ans:1,
+                exp:'PEF Jan 2022 Trap: Count ONLY gaseous species! C(s) is a solid. Left side = 1 mol gas (H₂O(g)); right side = 2 mol gas (CO(g) + H₂(g)). Increasing pressure shifts equilibrium to the side with fewer moles of gas (left).'
+            },
+            {
+                spec:'9.10 & Graphs', series:'WCH12 Jun 2024',
+                q:'On a concentration–time graph for N₂(g) + 3H₂(g) ⇌ 2NH₃(g) at equilibrium, all three concentration lines suddenly jump upwards vertically at time t₁, after which [NH₃] rises further and [N₂] and [H₂] fall to a new plateau. What disturbance occurred at t₁?',
+                opts:[
+                    'Temperature was increased.',
+                    'More N₂(g) was injected at constant volume.',
+                    'The volume of the vessel was decreased (pressure increased).',
+                    'An iron catalyst was added.'
+                ],
+                ans:2,
+                exp:'A sudden vertical spike in ALL THREE gaseous concentrations simultaneously means the container volume was decreased (increasing pressure, since c = n/V). The system then shifts right (4 → 2 mol gas).'
+            },
+            {
+                spec:'9.11', series:'WCH12 Jun 2024 PEF',
+                q:'In the industrial hydration of ethene, C₂H₄(g) + H₂O(g) ⇌ C₂H₅OH(g) (ΔH = −42 kJ mol⁻¹), conditions of 300 °C, 60–70 atm, and a H₃PO₄ catalyst are used. Why is 300 °C chosen rather than 100 °C?',
+                opts:[
+                    'Because 300 °C shifts the equilibrium to the right and gives the maximum equilibrium yield.',
+                    'Because at 100 °C the rate of reaction is too slow to be economically viable, so 300 °C is a compromise between an acceptable rate and a reasonable yield.',
+                    'Because the H₃PO₄ catalyst shifts the equilibrium to the right only above 300 °C.',
+                    'Because the forward reaction is endothermic.'
+                ],
+                ans:1,
+                exp:'PEF Jun 2024: Because the forward reaction is exothermic, 100 °C would give a higher equilibrium yield but an uneconomically slow rate. 300 °C is a compromise temperature that gives a fast enough rate alongside a workable per-pass yield (with unreacted ethene recycled).'
+            }
+        ];
+
+        let curT9Sim = 0;
+        function renderT9Sim() {
+            const pills = document.getElementById('t9-sim-pills');
+            if (!pills) return;
+            pills.innerHTML = T9_SIM_QUESTIONS.map((q, i) => {
+                const done = T9_MASTERY.simSolved.has(i);
+                return `<button type="button" onclick="selectT9Sim(${i})" class="px-2.5 py-1 text-[11px] font-mono rounded-lg border ${i === curT9Sim ? 'border-sky-500 bg-sky-950/70 text-sky-200 font-bold' : (done ? 'border-emerald-800 bg-emerald-950/30 text-emerald-400' : 'border-slate-800 bg-slate-900 text-slate-400')}">${done ? '✓ ' : ''}Q${i + 1}</button>`;
+            }).join('');
+            const q = T9_SIM_QUESTIONS[curT9Sim];
+            const box = document.getElementById('t9-sim-box');
+            if (box) {
+                box.innerHTML = `<div class="flex items-center justify-between text-[10px] font-mono text-slate-400">
+                        <span class="px-2 py-0.5 rounded bg-slate-950 border border-slate-800 text-sky-300">Spec ${q.spec}</span>
+                        <span class="text-amber-300">${q.series}</span>
+                    </div>
+                    <p class="text-xs sm:text-sm font-semibold text-white leading-relaxed">${curT9Sim + 1}. ${q.q}</p>
+                    <div class="space-y-2">
+                        ${q.opts.map((o, oi) => `<button type="button" onclick="gradeT9Sim(${curT9Sim}, ${oi})" class="w-full text-left p-2.5 rounded-lg border border-slate-800 bg-slate-950 hover:border-sky-500/50 text-xs text-slate-200">${String.fromCharCode(65 + oi)}. ${o}</button>`).join('')}
+                    </div>
+                    <div id="t9-sim-fb" class="hidden p-3 rounded-lg text-xs leading-relaxed"></div>`;
+            }
+            const sc = document.getElementById('t9-sim-score');
+            if (sc) sc.textContent = `Score: ${T9_MASTERY.simSolved.size} / ${T9_SIM_QUESTIONS.length}`;
+        }
+
+        window.selectT9Sim = function(i) { curT9Sim = i; renderT9Sim(); };
+        window.gradeT9Sim = function(qIdx, oIdx) {
+            const q = T9_SIM_QUESTIONS[qIdx];
+            const fb = document.getElementById('t9-sim-fb');
+            if (!fb) return;
+            fb.classList.remove('hidden');
+            if (oIdx === q.ans) {
+                T9_MASTERY.simSolved.add(qIdx);
+                updateT9Mastery();
+                const sc = document.getElementById('t9-sim-score');
+                if (sc) sc.textContent = `Score: ${T9_MASTERY.simSolved.size} / ${T9_SIM_QUESTIONS.length}`;
+                fb.className = 'p-3 rounded-lg text-xs leading-relaxed bg-emerald-950/50 border border-emerald-700 text-emerald-200';
+                fb.innerHTML = `<b>✓ Correct (1/1 Mark):</b> ${q.exp}`;
+            } else {
+                fb.className = 'p-3 rounded-lg text-xs leading-relaxed bg-rose-950/50 border border-rose-700 text-rose-200';
+                fb.innerHTML = `<b>✗ Examiner Distractor Alert:</b> ${q.exp}`;
+            }
+        };
+
+        window.resetT9Sim = function() {
+            T9_MASTERY.simSolved.clear();
+            curT9Sim = 0;
+            renderT9Sim();
+            updateT9Mastery();
+        };
+
+        // --- TAB 12: 12-CARD ACTIVE RECALL FLASHCARD DECK ---
+        const T9_FLASHCARDS = [
+            {q:'Define activation energy (Ea) and state the two conditions required for a collision to result in a reaction (Spec 9.2).', a:'Activation energy is the minimum energy required for a collision between particles to result in a reaction. Conditions: 1. Colliding particles must have energy ≥ Ea. 2. Particles must collide with the correct orientation.'},
+            {q:'Explain why increasing the concentration of a solution or the pressure of a gas increases the rate of reaction (Spec 9.1).', a:'There are more particles per unit volume (particles are closer together), which increases the collision frequency, resulting in more successful collisions per unit time.'},
+            {q:'Using a Maxwell–Boltzmann distribution, explain why a small increase in temperature leads to a large increase in reaction rate (Spec 9.4).', a:'At higher temperature, the peak shifts to the right and is lower (total area stays constant). A much larger fraction/proportion of molecules now have energy ≥ Ea (area to the right of Ea increases dramatically), leading to many more successful collisions per unit time.'},
+            {q:'Why is rate = 1/t valid in a disappearing-cross or iodine-clock experiment, and how do you find the instantaneous rate at time t from a gas-volume graph (Spec 9.3)?', a:'In a clock reaction, a fixed amount of product (e.g. sulfur) forms to obscure the cross in every run, so Rate = ΔAmount/Δt ∝ 1/t. On a continuous graph, rate at time t is the gradient (Δy/Δx) of the tangent drawn to the curve at time t.'},
+            {q:'Explain how a catalyst increases the rate of a chemical reaction and how it is represented on a Maxwell–Boltzmann curve (Spec 9.5 & 9.8).', a:'A catalyst provides an alternative reaction route/pathway with a lower activation energy (Ea,cat). On a fixed-T Maxwell–Boltzmann curve, the curve shape is unchanged and a new vertical line is drawn to the left (lower energy), showing a larger shaded area of molecules with E ≥ Ea,cat.'},
+            {q:'What features must be shown on an enthalpy profile diagram comparing an uncatalysed and a catalysed reaction (Spec 9.6)?', a:'1. Same reactant and product enthalpy levels (so ΔH is unchanged). 2. Uncatalysed single hump with vertical arrow from reactants to peak labelled Ea(uncat). 3. Lower catalysed barrier showing an intermediate energy dip, labelled Ea(cat).'},
+            {q:'How do catalysts make industrial processes more sustainable (Spec 9.7)?', a:'They allow reactions to proceed at an acceptable rate at lower temperatures and pressures, reducing energy consumption and CO₂ emissions from burning fossil fuels, and can enable routes with higher atom economy and less waste.'},
+            {q:'State the two defining features of dynamic equilibrium in a closed system (Spec 9.9).', a:'1. The rate of the forward reaction equals the rate of the reverse reaction (both reactions continue at the molecular level; rates are non-zero). 2. The concentrations of reactants and products remain constant (not necessarily equal).'},
+            {q:'State Le Chatelier’s principle and predict the effect of increasing temperature on an exothermic forward reaction (Spec 9.10).', a:'When a system at dynamic equilibrium is subjected to a change in conditions, the position of equilibrium shifts to counteract/oppose the change. Increasing temperature shifts the position in the endothermic (reverse) direction, decreasing the equilibrium yield of products.'},
+            {q:'Why does adding a catalyst have NO effect on the position of equilibrium or equilibrium yield (Spec 9.10)?', a:'A catalyst lowers the activation energy of BOTH the forward and reverse reactions by the exact same amount, increasing the forward and reverse reaction rates equally. Equilibrium is reached faster, but the position is unchanged.'},
+            {q:'Justify the industrial compromise conditions used in the Haber process: N₂(g) + 3H₂(g) ⇌ 2NH₃(g), ΔH = −92 kJ mol⁻¹ (Spec 9.11).', a:'450 °C: Compromise between rate (too slow if cold) and yield (exothermic, so too low if hot). 200 atm: Favours fewer gas moles (4 → 2, higher yield and faster rate) but capped by high equipment/compression cost and safety risks. Iron catalyst: Reaches equilibrium faster at 450 °C.'},
+            {q:'Why does the Contact process (2SO₂ + O₂ ⇌ 2SO₃, ΔH = −196 kJ mol⁻¹, V₂O₅ catalyst) use only 1–2 atm pressure even though gas moles decrease (3 → 2)?', a:'At 450 °C, the position of equilibrium already lies very far to the right (~99% conversion at 1–2 atm), so the high cost and energy of compressing gases to high pressure is not economically justified.'}
+        ];
+
+        let t9FcIdx = 0, t9FcFlip = false;
+        function renderT9Card() {
+            const box = document.getElementById('t9-fc-box'), cnt = document.getElementById('t9-fc-counter');
+            if (!box) return;
+            const c = T9_FLASHCARDS[t9FcIdx];
+            if (cnt) cnt.textContent = `${t9FcIdx + 1} / ${T9_FLASHCARDS.length}`;
+            box.innerHTML = `<span class="text-[10px] font-mono uppercase px-2.5 py-0.5 rounded-full mb-2 ${t9FcFlip ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40' : 'bg-sky-500/20 text-sky-300 border border-sky-500/40'}">${t9FcFlip ? '✓ Mark-Scheme Answer (Click to flip back)' : '❓ Question Prompt (Click to reveal answer)'}</span>
+                <p class="text-xs sm:text-sm ${t9FcFlip ? 'text-emerald-200 font-medium' : 'text-white font-bold'} max-w-2xl leading-relaxed">${t9FcFlip ? c.a : c.q}</p>`;
+        }
+        window.flipT9Card = function() { t9FcFlip = !t9FcFlip; renderT9Card(); };
+        window.stepT9Card = function(d) { t9FcIdx = (t9FcIdx + d + T9_FLASHCARDS.length) % T9_FLASHCARDS.length; t9FcFlip = false; renderT9Card(); };
+
+        // --- APPLE SPOTLIGHT QUICK COMMAND ---
+        const T9_SPOTLIGHT = [
+            {title:'Spec 9.1–9.11 — Rate (9A) vs Equilibrium Yield (9B) Disambiguator', tag:'Tab 1 · Syllabus Lab', act:()=>{switchTab('syllabus');switchSyl9Lab('ratevseq');}},
+            {title:'Spec 9.4 & 9.6 — Maxwell–Boltzmann & Reaction-Profile Examiner Doctor', tag:'Tab 1 · M–B Doctor', act:()=>{switchTab('syllabus');switchSyl9Lab('mbdoc');}},
+            {title:'Spec 9.1–9.11 — Interactive Specification Self-Audit Checklist', tag:'Tab 1 · Syllabus Audit', act:()=>{switchTab('syllabus');switchSyl9Lab('audit');}},
+            {title:'Spec 9.1–9.2 — Collision Theory Suite & Factor Pathfinder', tag:'Tab 2 · Collision', act:()=>{switchTab('collision');}},
+            {title:'Spec 9.3ii — Interactive Tangent Studio (Draw & Verify Gradients)', tag:'Tab 4 · Tangent Studio', act:()=>{switchTab('tangent');}},
+            {title:'Spec 9.3i — 1/t Disappearing-Cross Rate Lab & Faded Worked Examples', tag:'Tab 5 · Rate Lab', act:()=>{switchTab('ratelab');}},
+            {title:'Spec 9.4 & 9.8 — Live Maxwell–Boltzmann Distribution Workbench', tag:'Tab 6 · M–B Curves', act:()=>{switchTab('maxwell');switchMode('c3','map');}},
+            {title:'Spec 9.5–9.7 — Catalysts, Reaction Profiles & Ea(fwd) vs Ea(rev) Calculator', tag:'Tab 7 · Catalysts', act:()=>{switchTab('catalyst');}},
+            {title:'Spec 9.9–9.10 — Dynamic Equilibrium, Le Chatelier & Visual Colour Bench', tag:'Tab 8 · Equilibria', act:()=>{switchTab('equilibria');}},
+            {title:'Spec 9.9–9.10 — Animated Concentration–Time & Rate–Time Graph Studio', tag:'Tab 9 · Graph Studio', act:()=>{switchTab('graph');}},
+            {title:'Spec 9.11 — Industrial Compromise Builder (Haber, Contact, Ethene Hydration)', tag:'Tab 10 · Industry', act:()=>{switchTab('industry');switchMode('c6','map');}},
+            {title:'Spec 9.1–9.11 — 10-Question WCH12/WCH13 Past-Paper Exam Simulator', tag:'Tab 11 · Exam Sim', act:()=>{switchTab('solver');setTimeout(()=>{const el=document.getElementById('t9-sim-panel');if(el)el.scrollIntoView({behavior:'smooth'});},100);}},
+            {title:'2021–2026 Examiner Report Deep-Dive & 12 Active-Recall Flashcards', tag:'Tab 12 · Final Review', act:()=>{switchTab('review');}}
+        ];
+
+        window.openSpotlight = function() {
+            const m = document.getElementById('spotlight-modal');
+            if (!m) return;
+            m.classList.remove('hidden'); m.classList.add('flex');
+            const inp = document.getElementById('spotlight-input');
+            if (inp) { inp.value = ''; inp.focus(); }
+            filterSpotlight();
+        };
+        window.closeSpotlight = function() {
+            const m = document.getElementById('spotlight-modal');
+            if (!m) return;
+            m.classList.add('hidden'); m.classList.remove('flex');
+        };
+        window.filterSpotlight = function() {
+            const q = (document.getElementById('spotlight-input') ? document.getElementById('spotlight-input').value : '').toLowerCase().trim();
+            const box = document.getElementById('spotlight-results');
+            if (!box) return;
+            const matches = T9_SPOTLIGHT.filter(it => !q || it.title.toLowerCase().includes(q) || it.tag.toLowerCase().includes(q));
+            box.innerHTML = matches.map(it => {
+                const idx = T9_SPOTLIGHT.indexOf(it);
+                return `<button type="button" onclick="runT9Spotlight(${idx})" class="w-full text-left px-3 py-2.5 rounded-xl hover:bg-slate-800/80 flex items-center justify-between gap-2">
+                    <span class="text-xs text-slate-100 font-medium">${it.title}</span>
+                    <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-950 text-sky-300 border border-slate-800 shrink-0">${it.tag}</span>
+                </button>`;
+            }).join('') || '<p class="text-xs text-slate-500 p-3 text-center">No matching concept found.</p>';
+        };
+        window.runT9Spotlight = function(idx) {
+            closeSpotlight();
+            if (T9_SPOTLIGHT[idx]) T9_SPOTLIGHT[idx].act();
+        };
+
+        document.addEventListener('keydown', function(e) {
+            if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+                e.preventDefault();
+                openSpotlight();
+            }
         });
 
         /* ═══ MOBILE_UX boot layer (chrome-only; no content changes) ═══ */
@@ -2283,6 +2828,175 @@ nav, nav > div { max-width: 100% !important; }
 }
 /* ===== /MUX mobile layer ===== */
 </style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+<style id="apple-hig-kinetics-theme">
+/* ===== APPLE HIG / macOS SEQUOIA DARK GLASSMORPHISM & SPRING ANIMATIONS ===== */
+:root {
+  --apple-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --apple-spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --apple-glass: rgba(18, 23, 34, 0.74);
+  --apple-glass-elevated: rgba(26, 32, 46, 0.82);
+  --apple-border: rgba(255, 255, 255, 0.085);
+  --apple-specular: inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Inter", sans-serif !important;
+  background:
+    radial-gradient(ellipse 110% 70% at 88% -6%, rgba(56, 189, 248, 0.11), transparent 58%),
+    radial-gradient(ellipse 95% 65% at -8% 24%, rgba(16, 185, 129, 0.09), transparent 55%),
+    radial-gradient(ellipse 90% 65% at 55% 110%, rgba(244, 63, 94, 0.08), transparent 55%),
+    #04070e !important;
+  color: #f5f5f7 !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.011em;
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Space Grotesk", sans-serif !important;
+  letter-spacing: -0.022em;
+}
+
+header {
+  background: rgba(10, 14, 22, 0.76) !important;
+  -webkit-backdrop-filter: saturate(190%) blur(28px) !important;
+  backdrop-filter: saturate(190%) blur(28px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.55), inset 0 -1px 0 0 rgba(255, 255, 255, 0.04) !important;
+}
+
+nav {
+  background: rgba(12, 16, 26, 0.78) !important;
+  -webkit-backdrop-filter: saturate(190%) blur(26px) !important;
+  backdrop-filter: saturate(190%) blur(26px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.075) !important;
+  padding: 6px 0 !important;
+}
+
+nav > div {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.075);
+  border-radius: 14px;
+  padding: 4px !important;
+  gap: 4px !important;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.45);
+}
+
+nav > div > button {
+  border-radius: 10px !important;
+  border-bottom: none !important;
+  padding: 7px 11px !important;
+  transition: all 0.28s var(--apple-spring) !important;
+}
+
+.tab-btn-active {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  border-bottom: none !important;
+  background: linear-gradient(180deg, rgba(56, 189, 248, 0.26) 0%, rgba(14, 165, 233, 0.15) 100%) !important;
+  box-shadow: 0 2px 10px -2px rgba(56, 189, 248, 0.35), inset 0 1px 0 0 rgba(255, 255, 255, 0.22), 0 0 0 1px rgba(56, 189, 248, 0.34) !important;
+}
+
+.bg-slate-900, .bg-slate-950, .bg-slate-900\/95, .bg-slate-900\/80, .bg-slate-950\/60 {
+  background: var(--apple-glass) !important;
+  -webkit-backdrop-filter: saturate(180%) blur(22px);
+  backdrop-filter: saturate(180%) blur(22px);
+  border-color: var(--apple-border) !important;
+  box-shadow: var(--apple-specular), 0 14px 34px -12px rgba(0, 0, 0, 0.48);
+  border-radius: 18px !important;
+  transition: transform 0.36s var(--apple-spring), border-color 0.36s var(--apple-ease), box-shadow 0.36s var(--apple-ease);
+}
+
+main > section:not(.hidden) {
+  animation: appleSectionIn 0.44s var(--apple-spring) both;
+}
+
+@keyframes appleSectionIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.994);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+button {
+  transition: transform 0.18s var(--apple-spring), background-color 0.24s var(--apple-ease), border-color 0.24s var(--apple-ease), box-shadow 0.24s var(--apple-ease), color 0.2s var(--apple-ease) !important;
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+button:active:not(:disabled) {
+  transform: scale(0.96) !important;
+}
+
+select, input[type="text"], input[type="number"] {
+  background: rgba(13, 17, 26, 0.86) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 11px !important;
+  padding: 8px 12px !important;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
+  transition: border-color 0.25s var(--apple-ease), box-shadow 0.25s var(--apple-ease);
+}
+
+select:focus, input[type="text"]:focus, input[type="number"]:focus {
+  border-color: rgba(56, 189, 248, 0.65) !important;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.18) !important;
+  outline: none !important;
+}
+
+.blur-answer {
+  filter: blur(5.5px);
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 7px !important;
+  padding: 2px 9px !important;
+  margin: 0 2px;
+  transition: filter 0.35s var(--apple-spring), background-color 0.35s var(--apple-ease), transform 0.25s var(--apple-spring) !important;
+}
+
+.blur-answer.revealed {
+  filter: blur(0);
+  background: rgba(14, 165, 233, 0.18) !important;
+  border-color: rgba(56, 189, 248, 0.42);
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.18);
+}
+
+.apple-pill {
+  background: rgba(255, 255, 255, 0.055);
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 9999px;
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(16px);
+}
+
+.apple-segmented {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 4px;
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+#spotlight-modal {
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  transition: opacity 0.25s var(--apple-ease);
+}
+</style>
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex flex-col">
     <header class="bg-slate-900 border-b border-slate-800 sticky top-0 z-40 shadow-lg">
@@ -2291,15 +3005,20 @@ nav, nav > div { max-width: 100% !important; }
                 <h1 class="text-lg font-extrabold tracking-tight text-sky-400">IAL Topic 9: Introduction to Kinetics and Equilibria — Master Studio</h1>
                 <p class="text-[11px] text-slate-400 mt-0.5">WCH12/01 · Unit 2 · Syllabus <span class="text-sky-300 font-mono">9.1–9.11</span> (9A Kinetics + 9B Equilibria) · English exam wording</p>
             </div>
-            <div class="flex flex-wrap gap-1.5 text-[10px]">
-                <span class="px-2 py-0.5 rounded bg-sky-950 text-sky-300 border border-sky-800 font-mono">Collision theory</span>
-                <span class="px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-800 font-mono">Rate graphs</span>
-                <span class="px-2 py-0.5 rounded bg-teal-950 text-teal-300 border border-teal-800 font-mono">Tangent &amp; 1/t labs</span>
-                <span class="px-2 py-0.5 rounded bg-violet-950 text-violet-300 border border-violet-800 font-mono">Maxwell–Boltzmann</span>
-                <span class="px-2 py-0.5 rounded bg-amber-950 text-amber-300 border border-amber-800 font-mono">Catalysts</span>
-                <span class="px-2 py-0.5 rounded bg-rose-950 text-rose-300 border border-rose-800 font-mono">Dynamic equilibrium</span>
-                <span class="px-2 py-0.5 rounded bg-amber-950 text-amber-300 border border-amber-800 font-mono">Disturbance graphs</span>
-                <span class="px-2 py-0.5 rounded bg-cyan-950 text-cyan-300 border border-cyan-800 font-mono">Le Chatelier · Industry</span>
+            <div class="flex flex-wrap items-center gap-1.5 text-[10px]">
+                <span class="hidden xl:inline-block px-2 py-0.5 rounded-full apple-pill text-sky-300 font-mono">9A Kinetics</span>
+                <span class="hidden xl:inline-block px-2 py-0.5 rounded-full apple-pill text-rose-300 font-mono">9B Equilibria</span>
+                <span class="hidden lg:inline-block px-2 py-0.5 rounded-full apple-pill text-violet-300 font-mono">Maxwell–Boltzmann</span>
+                <span class="hidden lg:inline-block px-2 py-0.5 rounded-full apple-pill text-cyan-300 font-mono">Le Chatelier · Industry</span>
+                <button type="button" onclick="openSpotlight()" class="flex items-center gap-2 px-3 py-1.5 rounded-full apple-pill text-slate-200 hover:text-sky-300 text-xs font-medium" title="Quick Search & Concept Jump (⌘K)">
+                    <svg class="w-3.5 h-3.5 text-sky-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                    <span>Quick Search</span>
+                    <kbd class="px-1.5 py-0.5 text-[9px] font-mono bg-slate-950/80 text-slate-400 rounded border border-slate-700/80">⌘K</kbd>
+                </button>
+                <button type="button" onclick="switchTab('solver');setTimeout(()=>{const el=document.getElementById('t9-sim-panel');if(el)el.scrollIntoView({behavior:'smooth'});},100);" class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-sky-500/15 border border-sky-500/35 text-sky-300 hover:bg-sky-500/25 text-xs font-semibold">
+                    <span class="w-2 h-2 rounded-full bg-sky-400 animate-pulse"></span>
+                    <span>Mastery: <strong id="mastery-percentage" class="font-mono text-sky-200">0%</strong></span>
+                </button>
             </div>
         </div>
     </header>
@@ -2632,6 +3351,50 @@ nav, nav > div { max-width: 100% !important; }
 
                 <div class="mt-6 p-4 bg-rose-950/20 border border-rose-900/40 rounded-xl text-xs text-slate-300">
                     <b class="text-rose-300">Out of scope in this studio:</b> Unit 4 <b>Kinetics II</b> (rate equations, orders, $k$, Arrhenius calculations) and Unit 4 <b>Equilibria II</b> ($K_c$ calculations, partial pressures, quantitative treatment). Keep 9B answers <b>qualitative</b> — “position of equilibrium” and yield language, not $K$ values.
+                </div>
+            </div>
+
+            <!-- NEW: INTERACTIVE SPEC 9.1-9.11 CONCEPT LAB -->
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 space-y-5">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-slate-800 pb-4">
+                    <div>
+                        <span class="text-xs font-bold text-sky-400 uppercase tracking-widest">Interactive Concept Lab · Spec 9.1–9.11 &amp; Examiner Reports (2019–2026)</span>
+                        <h3 class="font-display text-lg font-bold text-white mt-1">Rate (9A) vs Equilibrium Yield (9B) Disambiguator, M–B Sketch Doctor &amp; Spec Self-Audit</h3>
+                        <p class="text-xs text-slate-400 mt-0.5">Directly targets WCH12 pitfalls on separating kinetic rate arguments from equilibrium yield shifts, diagnosing Maxwell–Boltzmann sketch errors, and tracking Spec 9.1–9.11 mastery.</p>
+                    </div>
+                    <div class="apple-segmented">
+                        <button type="button" onclick="switchSyl9Lab('ratevseq')" id="s9-btn-ratevseq" class="px-3 py-1.5 text-xs font-semibold rounded-lg bg-sky-500/20 text-sky-300 border border-sky-500/40">1. Rate vs Yield Decoder</button>
+                        <button type="button" onclick="switchSyl9Lab('mbdoc')" id="s9-btn-mbdoc" class="px-3 py-1.5 text-xs font-semibold rounded-lg text-slate-400 hover:text-white border border-transparent">2. M–B &amp; Profile Doctor</button>
+                        <button type="button" onclick="switchSyl9Lab('audit')" id="s9-btn-audit" class="px-3 py-1.5 text-xs font-semibold rounded-lg text-slate-400 hover:text-white border border-transparent">3. Spec 9.1–9.11 Self-Audit</button>
+                    </div>
+                </div>
+
+                <!-- Sub-panel 1: Rate (9A) vs Equilibrium Yield (9B) Decoder -->
+                <div id="s9-panel-ratevseq" class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
+                    <div class="lg:col-span-5 space-y-2">
+                        <p class="text-xs text-slate-300 font-semibold">Select a change applied to an exothermic reversible gas reaction (e.g. $\text{N}_2 + 3\text{H}_2 \rightleftharpoons 2\text{NH}_3, \Delta H = -92\text{ kJ mol}^{-1}$):</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5" id="rve-btns"></div>
+                    </div>
+                    <div class="lg:col-span-7 bg-slate-950 border border-slate-800 rounded-xl p-4 space-y-3" id="rve-out"></div>
+                </div>
+
+                <!-- Sub-panel 2: Maxwell-Boltzmann & Reaction Profile Examiner Doctor -->
+                <div id="s9-panel-mbdoc" class="hidden space-y-4">
+                    <div class="flex flex-wrap items-center justify-between gap-2">
+                        <p class="text-xs text-slate-300">Examiner reports (Jan 2020, Jun 2023, Jan 2024, Jan 2025) flag 5 recurring student errors on Maxwell–Boltzmann curves and reaction profiles. Diagnose each case below:</p>
+                        <span id="mbdoc-score" class="px-3 py-1 rounded-full apple-pill text-xs font-mono text-violet-300">Diagnosed: 0 / 5</span>
+                    </div>
+                    <div class="flex flex-wrap gap-1.5" id="mbdoc-btns"></div>
+                    <div id="mbdoc-view" class="p-4 bg-slate-950 border border-slate-800 rounded-xl space-y-3 text-xs"></div>
+                </div>
+
+                <!-- Sub-panel 3: Spec 9.1-9.11 Self-Audit -->
+                <div id="s9-panel-audit" class="hidden space-y-3">
+                    <div class="flex flex-wrap items-center justify-between gap-2">
+                        <p class="text-xs text-slate-300">Tick each Edexcel IAL Topic 9 competency as you master it. Your header Mastery % updates live.</p>
+                        <button type="button" onclick="toggleAllSpec9(true)" class="px-3 py-1 text-xs font-semibold rounded-lg bg-sky-500/20 text-sky-300 border border-sky-500/30">Check All</button>
+                    </div>
+                    <div id="spec9-audit-grid" class="grid grid-cols-1 md:grid-cols-2 gap-2.5"></div>
                 </div>
             </div>
         </section>
@@ -3342,6 +4105,28 @@ nav, nav > div { max-width: 100% !important; }
                     <div class="p-3 bg-rose-950/20 border border-rose-900/40 rounded-xl"><b class="text-rose-300">Trap:</b> Missing intermediate on catalysed profile (9.6).</div>
                     <div class="p-3 bg-rose-950/20 border border-rose-900/40 rounded-xl"><b class="text-rose-300">Trap:</b> “Catalyst shifts equilibrium to the right” — rate, not $K$.</div>
                 </div>
+
+                <!-- NEW: FORWARD VS REVERSE ACTIVATION ENERGY & CATALYST SYMMETRY CALCULATOR -->
+                <div class="p-5 bg-slate-950 border border-slate-800 rounded-xl space-y-3 text-xs">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 border-b border-slate-800 pb-2">
+                        <div>
+                            <span class="font-bold text-amber-300 text-sm">⚖️ Forward vs Reverse Activation Energy ($E_\text{a,fwd}$ vs $E_\text{a,rev}$) &amp; Catalyst Symmetry Calculator (Spec 9.6 &amp; 9.10)</span>
+                            <p class="text-[11px] text-slate-400">Why does a catalyst NOT shift the position of equilibrium? Because it lowers $E_\text{a}(\text{forward})$ and $E_\text{a}(\text{reverse})$ by the <b>exact same amount</b> $\Delta E_\text{a}$, while $\Delta H = E_\text{a}(\text{fwd}) - E_\text{a}(\text{rev})$ stays constant! Test with numbers:</p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <label class="text-slate-300 font-mono text-[11px]">Uncatalysed $E_\text{a}(\text{fwd})$ (kJ mol⁻¹)
+                            <input id="ea-fwd-in" type="number" value="120" step="5" oninput="calcEaRev()" class="mt-1 w-full text-amber-300 font-mono">
+                        </label>
+                        <label class="text-slate-300 font-mono text-[11px]">$\Delta H$ of forward reaction (kJ mol⁻¹)
+                            <input id="ea-dh-in" type="number" value="-45" step="5" oninput="calcEaRev()" class="mt-1 w-full text-sky-300 font-mono">
+                        </label>
+                        <label class="text-slate-300 font-mono text-[11px]">Catalyst lowering $\Delta E_\text{a}$ (kJ mol⁻¹)
+                            <input id="ea-drop-in" type="number" value="35" step="5" oninput="calcEaRev()" class="mt-1 w-full text-emerald-300 font-mono">
+                        </label>
+                    </div>
+                    <div id="ea-rev-out" class="p-3.5 bg-slate-900 border border-slate-800 rounded-lg font-mono text-[11px] space-y-1 text-slate-200"></div>
+                </div>
             </div>
         </section>
 
@@ -3480,6 +4265,22 @@ nav, nav > div { max-width: 100% !important; }
                         <div class="p-3 bg-rose-950/20 border border-rose-900/40 rounded-xl"><b class="text-rose-300">Trap:</b> Writing [reactants] = [products] at equilibrium.<br><span class="text-slate-300">Concentrations are <b>constant</b>, rarely equal.</span></div>
                         <div class="p-3 bg-rose-950/20 border border-rose-900/40 rounded-xl"><b class="text-rose-300">Trap:</b> Mixing rate and position in one sentence.<br><span class="text-slate-300">$P$↑ can raise the rate even when the position does not move (equal moles).</span></div>
                     </div>
+                </div>
+
+                <!-- NEW: INTERACTIVE COLOUR-CHANGE EQUILIBRIUM BENCH (NO2/N2O4, ICl/ICl3, Cr2O72-/CrO42-) -->
+                <div class="p-5 bg-slate-950 border border-slate-800 rounded-xl space-y-4 text-xs">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 border-b border-slate-800 pb-3">
+                        <div>
+                            <span class="font-bold text-rose-300 text-sm">🎨 Interactive Visual Equilibrium Bench — Colour Observations &amp; 3-Step Mark-Scheme Phrasing (Spec 9.9–9.10)</span>
+                            <p class="text-[11px] text-slate-400">Examiner reports (PEF Jun 2024) emphasise that you must link the <b>shift direction</b> to the <b>observable consequence (colour or yield)</b> AND the <b>Le Chatelier reason</b>. Pick a system and apply a disturbance:</p>
+                        </div>
+                        <div class="flex flex-wrap gap-1.5" id="col-eq-btns">
+                            <button type="button" onclick="showColEq(0)" class="px-2.5 py-1 text-[11px] font-semibold rounded bg-rose-600 text-white">2NO₂(g) ⇌ N₂O₄(g)</button>
+                            <button type="button" onclick="showColEq(1)" class="px-2.5 py-1 text-[11px] font-semibold rounded bg-slate-800 text-slate-300">ICl(l) + Cl₂(g) ⇌ ICl₃(s)</button>
+                            <button type="button" onclick="showColEq(2)" class="px-2.5 py-1 text-[11px] font-semibold rounded bg-slate-800 text-slate-300">Cr₂O₇²⁻ + H₂O ⇌ 2CrO₄²⁻ + 2H⁺</button>
+                        </div>
+                    </div>
+                    <div id="col-eq-out" class="p-4 bg-slate-900 border border-slate-800 rounded-xl space-y-3 text-xs leading-relaxed"></div>
                 </div>
             </div>
         </section>
@@ -3741,6 +4542,22 @@ nav, nav > div { max-width: 100% !important; }
                     <p class="text-slate-400">Full system + change predictor with position, yield and rate reasoning — lives in Engine E, Module 2.</p>
                     <button onclick="switchTab('equilibria'); setTimeout(()=>switchMode('c5','map'), 50);" class="px-4 py-2 bg-cyan-800 hover:bg-cyan-700 rounded-lg text-white font-bold">Open Shift Predictor</button>
                 </div>
+
+                <!-- Tool F: 10-Question WCH12 & WCH13 Past-Paper Concept & Calculation Simulator -->
+                <div id="t9-sim-panel" class="p-5 bg-slate-950 border border-slate-800 rounded-xl space-y-4 text-xs">
+                    <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 pb-3">
+                        <div>
+                            <span class="text-xs font-bold text-sky-400 uppercase">F. WCH12 &amp; WCH13 Past-Paper Concept Diagnostic Simulator (2020–2026 Series)</span>
+                            <p class="text-slate-400 text-[11px] mt-0.5">Test your mastery across Spec 9.1–9.11 (Collision Theory, $1/t$ &amp; Tangent Gradients, Maxwell–Boltzmann, Catalysts, Le Chatelier &amp; Industrial Compromises).</p>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span id="t9-sim-score" class="px-3 py-1 rounded-full apple-pill text-xs font-mono text-sky-300">Score: 0 / 10</span>
+                            <button type="button" onclick="resetT9Sim()" class="px-2.5 py-1 text-[10px] font-semibold rounded-lg bg-slate-800 text-slate-300 border border-slate-700">Reset</button>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-1.5" id="t9-sim-pills"></div>
+                    <div id="t9-sim-box" class="p-4 bg-slate-900 border border-slate-800 rounded-xl space-y-3"></div>
+                </div>
             </div>
         </section>
 
@@ -3820,6 +4637,8 @@ nav, nav > div { max-width: 100% !important; }
                         <a href="#rev-graph" class="px-2.5 py-1 rounded-lg bg-amber-950/60 text-amber-300 border border-amber-800">Graph signatures</a>
                         <a href="#rev-exam" class="px-2.5 py-1 rounded-lg bg-fuchsia-950/60 text-fuchsia-300 border border-fuchsia-800">Exam strategy</a>
                         <a href="#rev-traps" class="px-2.5 py-1 rounded-lg bg-rose-950/60 text-rose-300 border border-rose-800">Trap checklist</a>
+                        <a href="#rev-pef-2026" class="px-2.5 py-1 rounded-lg bg-emerald-950/60 text-emerald-300 border border-emerald-800">2021–2026 Examiner Deep-Dive</a>
+                        <a href="#rev-flashcards" class="px-2.5 py-1 rounded-lg bg-sky-950/60 text-sky-300 border border-sky-800">Active-Recall Flashcards</a>
                     </div>
                 </div>
 
@@ -3983,10 +4802,55 @@ nav, nav > div { max-width: 100% !important; }
                         <li>Contact process runs at ~1–2 atm because conversion is already ≈99%.</li>
                     </ul>
                 </details>
+
+                <details id="rev-pef-2026" open class="bg-slate-950/60 border border-slate-800 rounded-xl">
+                    <summary class="cursor-pointer px-4 py-3 font-bold text-emerald-300">🔬 2021–2026 WCH12 &amp; WCH13 Examiner Report Deep-Dive</summary>
+                    <div class="px-4 pb-4 overflow-x-auto">
+                        <table class="w-full text-[11px] text-slate-300 border border-slate-800 min-w-[680px]">
+                            <thead class="bg-slate-900 text-emerald-300 border-b border-slate-800">
+                                <tr><th class="p-2 text-left">Exam Topic &amp; Series</th><th class="p-2 text-left">Common Candidate Error</th><th class="p-2 text-left">Full-Mark Edexcel WCH12 / WCH13 Phrasing</th></tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-800">
+                                <tr><td class="p-2 font-semibold text-white">Collision Frequency Wording (Jun 2019, Jan 2025)</td><td class="p-2 text-rose-300">Writing "particles have more kinetic energy and there are more collisions"</td><td class="p-2">Always include <b>per unit time / frequency</b>: "more <b>successful collisions per unit time</b> (or higher frequency of successful collisions) because a greater proportion of particles have energy $\ge E_\text{a}$."</td></tr>
+                                <tr><td class="p-2 font-semibold text-white">Maxwell–Boltzmann Curve Sketching (Jan 2020, Jun 2023, Jan 2024, Jan 2025)</td><td class="p-2 text-rose-300">Curve not starting at origin (0,0), tail touching or curving up at the x-axis, or total area changing with $T$</td><td class="p-2">Curve must <b>start at the origin (0,0)</b>, be <b>asymptotic to the energy axis</b> (never touch or cross it), have the higher-$T$ peak <b>lower and shifted to the right</b>, and keep the <b>total area under the curve constant</b>.</td></tr>
+                                <tr><td class="p-2 font-semibold text-white">Catalyst Definition &amp; Profile (Jan 2022, Jun 2023, Jan 2025)</td><td class="p-2 text-rose-300">Saying catalyst "lowers the activation energy of the reaction" vaguely or "does not take part"</td><td class="p-2">State that a catalyst provides an <b>alternative reaction route/pathway of lower activation energy</b>, so a larger fraction of molecules have $E \ge E_\text{a}$. On a reaction profile, show the <b>intermediate dip</b> and keep $\Delta H$ unchanged.</td></tr>
+                                <tr><td class="p-2 font-semibold text-white">Pressure &amp; Moles of Gas (Jan 2020, Oct 2020, Jan 2022)</td><td class="p-2 text-rose-300">Saying "shifts to the side with fewer atoms" or "favours the right-hand side" without counting gas moles</td><td class="p-2">Explicitly count <b>moles of gas molecules</b> on each side (e.g. "4 moles of gas on the left vs 2 moles of gas on the right, so increasing pressure shifts the position of equilibrium to the right to oppose the increase in pressure").</td></tr>
+                                <tr><td class="p-2 font-semibold text-white">Linking Shift to Consequence &amp; Compromise (Jun 2024)</td><td class="p-2 text-rose-300">Stating "equilibrium shifts left" without stating what happens to the yield, or giving a 1-sided compromise answer</td><td class="p-2">Always link the shift to its <b>consequence</b> ("position of equilibrium shifts to the left, so the <b>equilibrium yield of ethanol decreases</b>"). For compromise conditions, address <b>both rate AND yield (plus cost/safety)</b>.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </details>
+
+                <div id="rev-flashcards" class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+                    <div class="flex flex-wrap items-center justify-between gap-2">
+                        <div>
+                            <span class="text-xs font-bold text-sky-400 uppercase tracking-widest">Active Recall Deck</span>
+                            <h3 class="font-display text-sm font-bold text-white mt-0.5">Topic 9 Rapid-Fire Flashcards (Click Card to Flip)</h3>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button type="button" onclick="stepT9Card(-1)" class="px-3 py-1 text-xs font-semibold rounded-lg bg-slate-800 text-slate-200 border border-slate-700">← Prev</button>
+                            <span id="t9-fc-counter" class="text-xs font-mono text-sky-300 px-2">1 / 12</span>
+                            <button type="button" onclick="stepT9Card(1)" class="px-3 py-1 text-xs font-semibold rounded-lg bg-slate-800 text-slate-200 border border-slate-700">Next →</button>
+                        </div>
+                    </div>
+                    <div id="t9-fc-box" onclick="flipT9Card()" class="cursor-pointer p-6 bg-slate-900 border border-slate-800 hover:border-sky-500/40 rounded-2xl min-h-[135px] flex flex-col items-center justify-center text-center select-none"></div>
+                </div>
             </div>
         </section>
 
     </main>
+
+    <!-- APPLE SPOTLIGHT QUICK COMMAND & CONCEPT SEARCH MODAL -->
+    <div id="spotlight-modal" class="fixed inset-0 z-[960] hidden items-start justify-center pt-16 sm:pt-24 px-4 bg-black/60" onclick="if(event.target===this)closeSpotlight()">
+        <div class="w-full max-w-xl bg-slate-900 border border-slate-700/80 rounded-2xl shadow-2xl overflow-hidden">
+            <div class="flex items-center gap-3 px-4 py-3 border-b border-slate-800">
+                <svg class="w-4 h-4 text-sky-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                <input id="spotlight-input" type="text" oninput="filterSpotlight()" placeholder="Search Spec 9.1–9.11 collision theory, tangents, 1/t clock lab, Maxwell–Boltzmann, catalysts, Le Chatelier, Haber..." class="w-full bg-transparent border-0 text-xs sm:text-sm text-white focus:outline-none focus:ring-0" style="border:none!important;box-shadow:none!important;background:transparent!important;padding:2px 0!important"/>
+                <button type="button" onclick="closeSpotlight()" class="px-2 py-1 text-[10px] font-mono bg-slate-800 text-slate-400 rounded">ESC</button>
+            </div>
+            <div id="spotlight-results" class="max-h-80 overflow-y-auto divide-y divide-slate-800/60 p-2 space-y-1"></div>
+        </div>
+    </div>
 
     <footer class="border-t border-slate-800 py-4 text-center text-[10px] text-slate-500">
         IAL Topic 9: Introduction to Kinetics and Equilibria — Master Studio · WCH12 · 9.1–9.11 · Single-file Master Studio standard

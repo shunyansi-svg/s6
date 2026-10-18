@@ -72,6 +72,210 @@ html{scroll-padding-top:calc(var(--hdr) + 10px)}
 ::-webkit-scrollbar-track{background:#0f172a}
 ::-webkit-scrollbar-thumb{background:#334155;border-radius:4px}
 ::-webkit-scrollbar-thumb:hover{background:#475569}
+
+  /* ══ APPLE CUPERTINO DARK GLASS DESIGN SYSTEM & SUBTLE ANIMATIONS ══ */
+  :root {
+    --apple-bg: #03050a;
+    --apple-glass: rgba(20, 26, 38, 0.68);
+    --apple-glass-card: rgba(12, 17, 28, 0.80);
+    --apple-border: rgba(255, 255, 255, 0.085);
+    --apple-highlight: inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
+    --apple-blue: #0A84FF;
+    --apple-cyan: #64D2FF;
+    --apple-green: #30D158;
+    --apple-amber: #FF9F0A;
+    --apple-rose: #FF375F;
+    --apple-purple: #BF5AF2;
+    --apple-spring: cubic-bezier(0.16, 1, 0.3, 1);
+    --apple-smooth: cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+
+  body {
+    background-color: var(--apple-bg) !important;
+    background-image:
+      radial-gradient(circle at 12% 10%, rgba(10, 132, 255, 0.15) 0%, transparent 38%),
+      radial-gradient(circle at 88% 14%, rgba(191, 90, 242, 0.12) 0%, transparent 36%),
+      radial-gradient(circle at 50% 88%, rgba(48, 209, 88, 0.08) 0%, transparent 44%),
+      linear-gradient(180deg, #03060c 0%, #060b16 52%, #03050a 100%) !important;
+    background-attachment: fixed;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", ui-sans-serif, system-ui, sans-serif !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    letter-spacing: -0.011em;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    letter-spacing: -0.024em;
+  }
+
+  /* Frosted Apple Header */
+  header.sticky {
+    background: rgba(8, 12, 22, 0.75) !important;
+    -webkit-backdrop-filter: saturate(190%) blur(28px) !important;
+    backdrop-filter: saturate(190%) blur(28px) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.09) !important;
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.65), inset 0 -1px 0 0 rgba(255, 255, 255, 0.05);
+  }
+
+  /* Apple Segmented Control Navigation Bar */
+  #mainNav {
+    background: rgba(15, 21, 34, 0.72);
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 14px;
+    padding: 4px !important;
+    margin-top: 2px;
+    margin-bottom: 6px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.45), 0 1px 0 rgba(255, 255, 255, 0.05);
+    gap: 4px !important;
+  }
+
+  #mainNav .tab-btn {
+    border-radius: 10px !important;
+    border-bottom-width: 0 !important;
+    transition: all 0.28s var(--apple-spring) !important;
+    letter-spacing: -0.01em;
+  }
+
+  #mainNav .tab-btn:hover {
+    color: #f8fafc !important;
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  #mainNav .tab-btn:active {
+    transform: scale(0.96);
+  }
+
+  #mainNav .tab-btn.tab-btn-active {
+    background: linear-gradient(180deg, rgba(10, 132, 255, 0.34) 0%, rgba(10, 132, 255, 0.18) 100%) !important;
+    color: #ffffff !important;
+    box-shadow: 0 2px 10px rgba(10, 132, 255, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.22) !important;
+    border: 1px solid rgba(100, 210, 255, 0.42) !important;
+  }
+
+  /* Subtle Spring Entrance for Tabs */
+  @keyframes appleFadeSlideUp {
+    0% {
+      opacity: 0;
+      transform: translateY(10px) scale(0.994);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  .tab-panel.active {
+    animation: appleFadeSlideUp 0.42s var(--apple-spring) forwards !important;
+  }
+
+  /* Apple Glass Panels & Cards */
+  .bg-slate-900, .bg-slate-900\/80 {
+    background: var(--apple-glass) !important;
+    -webkit-backdrop-filter: saturate(165%) blur(22px);
+    backdrop-filter: saturate(165%) blur(22px);
+    border-color: var(--apple-border) !important;
+    box-shadow: 0 20px 45px -18px rgba(0, 0, 0, 0.7), var(--apple-highlight) !important;
+    border-radius: 18px !important;
+  }
+
+  .bg-slate-950 {
+    background: var(--apple-glass-card) !important;
+    border-color: rgba(255, 255, 255, 0.075) !important;
+    box-shadow: 0 10px 28px -12px rgba(0, 0, 0, 0.55), inset 0 1px 0 0 rgba(255, 255, 255, 0.08) !important;
+    border-radius: 15px !important;
+    transition: transform 0.32s var(--apple-spring), border-color 0.32s var(--apple-smooth), box-shadow 0.32s var(--apple-smooth);
+  }
+
+  .card-hover:hover {
+    transform: translateY(-2.5px) !important;
+    border-color: rgba(125, 211, 252, 0.28) !important;
+    box-shadow: 0 18px 38px -12px rgba(0, 0, 0, 0.72), 0 0 24px -8px rgba(10, 132, 255, 0.18), inset 0 1px 0 0 rgba(255, 255, 255, 0.14) !important;
+  }
+
+  /* Tactile Inputs & Buttons */
+  input[type="number"], input[type="text"], select, textarea {
+    background: rgba(9, 13, 24, 0.85) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    border-radius: 10px !important;
+    transition: border-color 0.22s var(--apple-smooth), box-shadow 0.22s var(--apple-smooth) !important;
+  }
+  input[type="number"]:focus, input[type="text"]:focus, select:focus, textarea:focus {
+    outline: none !important;
+    border-color: var(--apple-blue) !important;
+    box-shadow: 0 0 0 3px rgba(10, 132, 255, 0.25) !important;
+  }
+
+  button {
+    transition: all 0.24s var(--apple-spring);
+  }
+  button:active:not(:disabled) {
+    transform: scale(0.97);
+  }
+
+  /* Blur answer Apple capsule reveal */
+  .blur-answer {
+    filter: blur(5.5px);
+    transition: filter 0.32s var(--apple-spring), background 0.32s var(--apple-smooth), box-shadow 0.32s var(--apple-smooth);
+    padding: 1px 7px !important;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .blur-answer:hover {
+    filter: blur(3px);
+    border-color: rgba(100, 210, 255, 0.4);
+  }
+  .blur-answer.revealed {
+    filter: blur(0);
+    background: rgba(10, 132, 255, 0.16) !important;
+    border-color: rgba(100, 210, 255, 0.35);
+    box-shadow: 0 0 12px rgba(10, 132, 255, 0.15);
+  }
+
+  .apple-pill-btn {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 9999px;
+    padding: 4px 11px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #e2e8f0;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+  .apple-pill-btn:hover {
+    background: rgba(255, 255, 255, 0.11);
+    border-color: rgba(100, 210, 255, 0.4);
+    color: #ffffff;
+  }
+
+  .spec-conf-btn {
+    padding: 3px 9px;
+    border-radius: 9999px;
+    font-size: 10px;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(15, 23, 42, 0.7);
+    color: #94a3b8;
+    cursor: pointer;
+    transition: all 0.22s var(--apple-spring);
+  }
+  .spec-conf-btn.conf-review.active {
+    background: rgba(255, 55, 95, 0.2);
+    border-color: #FF375F;
+    color: #fda4af;
+  }
+  .spec-conf-btn.conf-practising.active {
+    background: rgba(255, 159, 10, 0.2);
+    border-color: #FF9F0A;
+    color: #fde68a;
+  }
+  .spec-conf-btn.conf-mastered.active {
+    background: rgba(48, 209, 88, 0.22);
+    border-color: #30D158;
+    color: #86efac;
+  }
+
 </style>
 <style id="mux-style" data-mux-version="1.4.0">
 /* ===== MUX mobile layer v1.4.0 ===== */
@@ -198,7 +402,18 @@ nav, nav > div { max-width: 100% !important; }
       <p class="text-[10px] text-slate-500">Atomic Structure & the Periodic Table · Edexcel IAL</p>
     </div>
   </div>
-  <span class="hidden lg:block text-[10px] font-mono text-slate-600">18 spec codes · 3 engines · explanation builder · trends studio · calculator</span>
+  <div class="flex flex-wrap items-center gap-2">
+    <span class="hidden xl:block text-[10px] font-mono text-slate-400 mr-1">Spec 2.1–2.18 · 3 Engines · 3 Live Labs · WCH11/13</span>
+    <button type="button" onclick="openT2Spotlight()" class="apple-pill-btn cursor-pointer" title="Quick Search Spec 2.1–2.18, Simulators & Calculators (⌘K)">
+      <span>🔎 Quick Jump</span>
+      <kbd class="px-1.5 py-0.5 text-[9px] bg-slate-800/90 text-slate-300 rounded border border-slate-700 font-mono">⌘K</kbd>
+    </button>
+    <div class="apple-pill-btn border-sky-500/40 bg-sky-950/60 text-sky-300" title="Overall Topic 2 Mastery across Spec 2.1–2.18 & Interactive Checks">
+      <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+      <span>Mastery:</span>
+      <span id="mastery-percentage" class="font-bold text-white font-mono">0%</span>
+    </div>
+  </div>
 </div>
 <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
   <nav id="mainNav" class="flex flex-wrap gap-0.5 py-1.5">
@@ -252,6 +467,26 @@ nav, nav > div { max-width: 100% !important; }
     <span class="kicker">Syllabus Master Overview</span>
     <h2 class="font-display text-xl font-bold text-white mt-1">Topic 2 Learning Points & Mark Scheme Secrets (Spec 2.1 – 2.18)</h2>
     <p class="text-xs text-slate-400 mt-1">Every assessment point elaborated with Key Learning Goals and IAL Examiner Watch-Outs. The <span class="text-amber-300 font-semibold">Explanation Builder (Tab 5)</span> turns the hardest "explain the trend" questions into step-by-step scaffolds.</p>
+  </div>
+  <!-- Interactive Topic 2 Syllabus Mastery Dashboard Bar -->
+  <div class="mb-6 p-4 bg-slate-950 border border-slate-800 rounded-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+    <div class="space-y-1.5 flex-1 w-full">
+      <div class="flex items-center justify-between text-xs">
+        <span class="font-bold text-white flex items-center gap-2">
+          <span class="inline-block w-2 h-2 rounded-full bg-sky-400"></span>
+          Interactive Edexcel IAL Spec 2.1–2.18 Self-Audit &amp; Concept Checkers
+        </span>
+        <span id="t2SyllabusProgressLabel" class="font-mono text-[11px] text-sky-300">0 / 13 Cards Mastered · 0 / 13 Concept Checks Passed</span>
+      </div>
+      <div class="w-full h-2 bg-slate-900 rounded-full overflow-hidden border border-slate-800">
+        <div id="t2SyllabusProgressBar" class="h-full bg-gradient-to-r from-sky-500 via-purple-400 to-emerald-400 transition-all duration-500" style="width: 0%"></div>
+      </div>
+      <p class="text-[11px] text-slate-400">Track your confidence on every specification card below and test your understanding with the <b>⚡ Instant Concept Check</b> on each card.</p>
+    </div>
+    <div class="flex gap-2 shrink-0">
+      <button type="button" onclick="expandAllT2SpecChecks(true)" class="text-[11px] font-semibold px-3 py-1.5 rounded-lg bg-sky-950/70 text-sky-300 border border-sky-800/80 hover:bg-sky-900/60">Open All Checks</button>
+      <button type="button" onclick="resetT2SyllabusTracker()" class="text-[11px] font-semibold px-3 py-1.5 rounded-lg bg-slate-900 text-slate-400 border border-slate-700 hover:text-white">Reset</button>
+    </div>
   </div>
 
   <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -578,6 +813,67 @@ nav, nav > div { max-width: 100% !important; }
 
   </div><!-- /grid -->
 
+  <!-- ══ NEW: LATEST WCH11 EXAMINER REPORT & SYLLABUS DEEP-DIVE (Spec 2.6, 2.8, 2.10, 2.11, 2.18) ══ -->
+  <div class="mt-8 space-y-4">
+    <div class="flex flex-wrap items-center justify-between gap-2 border-t border-slate-800 pt-6">
+      <div>
+        <span class="text-[10px] font-mono uppercase tracking-widest text-cyan-400 font-bold">Updated Examiner Report &amp; Syllabus Additions (2020–2026)</span>
+        <h3 class="font-display text-base font-bold text-white mt-0.5">High-Yield WCH11 Mark Scheme Distinctions &amp; Interactive Concept Bridges</h3>
+      </div>
+      <span class="text-[11px] text-slate-400">Covers Isoelectronic Radii · IE₂ Shifts · Period 2 vs 3 mp/bp · Orbital vs Sub-shell</span>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+      <!-- Deep Dive 1: Isoelectronic Ions & Atomic/Ionic Radius Trends -->
+      <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3 card-hover">
+        <div class="flex items-center justify-between">
+          <span class="text-[10px] font-mono text-sky-400 uppercase font-bold px-2 py-0.5 bg-sky-950 rounded border border-sky-800">Spec 2.4 · 2.14 · 2.18</span>
+          <span class="text-[10px] text-slate-400 font-mono">PEF High-Frequency Q</span>
+        </div>
+        <h4 class="font-display text-sm font-bold text-white">Isoelectronic Ions &amp; Radius Trend ($\text{N}^{3-}$ to $\text{Al}^{3+}$)</h4>
+        <p class="text-[11px] text-slate-400 leading-relaxed">In WCH11, explaining why ionic radius <b>decreases</b> across the isoelectronic series $\text{N}^{3-}, \text{O}^{2-}, \text{F}^-, \text{Ne}, \text{Na}^+, \text{Mg}^{2+}, \text{Al}^{3+}$ requires 3 linked points:</p>
+        <div class="space-y-1.5 text-[11px] text-slate-300">
+          <div class="p-2 rounded bg-slate-900 border border-slate-800"><b class="text-sky-300">M1 · Same electron config:</b> All have <b>10 electrons</b> ($1s^2 2s^2 2p^6$) and <b>identical shielding</b> (2 shells).</div>
+          <div class="p-2 rounded bg-slate-900 border border-slate-800"><b class="text-purple-300">M2 · Rising nuclear charge:</b> Proton number increases from $Z=7$ ($\text{N}^{3-}$) to $Z=13$ ($\text{Al}^{3+}$).</div>
+          <div class="p-2 rounded bg-slate-900 border border-slate-800"><b class="text-emerald-300">M3 · Stronger pull:</b> Stronger electrostatic attraction pulls the outer shell closer to the nucleus ($\text{N}^{3-} = 146\text{ pm} \gg \text{Al}^{3+} = 54\text{ pm}$).</div>
+        </div>
+        <button type="button" onclick="switchTab('atom');setMode('atom','drill');" class="w-full py-2 px-3 rounded-lg bg-sky-950/70 hover:bg-sky-900/80 text-sky-300 border border-sky-800/70 text-xs font-semibold">Launch Isoelectronic &amp; Particle Drill →</button>
+      </div>
+
+      <!-- Deep Dive 2: 1st IE vs 2nd IE Periodicity Shift (Group 1, Group 4, Group 7) -->
+      <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3 card-hover">
+        <div class="flex items-center justify-between">
+          <span class="text-[10px] font-mono text-purple-400 uppercase font-bold px-2 py-0.5 bg-purple-950 rounded border border-purple-800">Spec 2.8 · 2.10 · 2.11</span>
+          <span class="text-[10px] text-slate-400 font-mono">PEF 2021–2025 Trap</span>
+        </div>
+        <h4 class="font-display text-sm font-bold text-white">How 2nd Ionisation Energy ($\text{IE}_2$) Shifts Every Peak &amp; Dip</h4>
+        <p class="text-[11px] text-slate-400 leading-relaxed">For $\text{IE}_2$ ($\text{X}^+(g) \rightarrow \text{X}^{2+}(g) + e^-$), the 1+ ion has one fewer electron, shifting the periodic pattern <b>one group to the right</b>:</p>
+        <div class="space-y-1.5 text-[11px] text-slate-300">
+          <div class="p-2 rounded bg-slate-900 border border-slate-800"><b class="text-rose-300">Group 1 ($\text{Li}^+, \text{Na}^+$) = Peak of $\text{IE}_2$:</b> Electron removed from a <b>full inner noble-gas shell</b> ($1s^2$ or $2p^6$) much closer to the nucleus.</div>
+          <div class="p-2 rounded bg-slate-900 border border-slate-800"><b class="text-amber-300">Group 3 vs 4 ($\text{B}^+$ vs $\text{C}^+$):</b> $\text{C}^+$ ($2s^2 2p^1$) loses a higher-energy $2p$ e⁻, whereas $\text{B}^+$ ($2s^2$) loses a $2s$ e⁻.</div>
+          <div class="p-2 rounded bg-slate-900 border border-slate-800"><b class="text-cyan-300">Group 6 vs 7 ($\text{O}^+$ vs $\text{F}^+$):</b> $\text{F}^+$ ($2p^4$) has spin-pair repulsion in a $2p$ orbital, whereas $\text{O}^+$ ($2p^3$) is half-filled ($\uparrow\ \uparrow\ \uparrow$).</div>
+        </div>
+        <button type="button" onclick="switchTab('ie');setMode('ie','drill');" class="w-full py-2 px-3 rounded-lg bg-purple-950/70 hover:bg-purple-900/80 text-purple-300 border border-purple-800/70 text-xs font-semibold">Open IE₁ vs IE₂ Anomaly Trainer →</button>
+      </div>
+
+      <!-- Deep Dive 3: Orbital vs Sub-shell Precision & Period 2 vs Period 3 mp/bp -->
+      <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3 card-hover">
+        <div class="flex items-center justify-between">
+          <span class="text-[10px] font-mono text-emerald-400 uppercase font-bold px-2 py-0.5 bg-emerald-950 rounded border border-emerald-800">Spec 2.9 · 2.18 · PEF Oct 2023</span>
+          <span class="text-[10px] text-slate-400 font-mono">Wording Precision</span>
+        </div>
+        <h4 class="font-display text-sm font-bold text-white">Sub-shell vs. Orbital &amp; Period 2 vs. 3 Structure</h4>
+        <p class="text-[11px] text-slate-400 leading-relaxed">Examiner Report (Oct 2023 &amp; Jun 2024): Mixing up <b>shell</b>, <b>sub-shell</b>, and <b>orbital</b> is the #1 reason candidates lose explanation marks:</p>
+        <div class="space-y-1.5 text-[11px] text-slate-300">
+          <div class="p-2 rounded bg-slate-900 border border-slate-800"><b class="text-amber-300">Be→B / Mg→Al Dip:</b> Electron is in a higher-energy <b>$2p$ / $3p$ sub-shell</b> (shielded by the $2s^2 / 3s^2$ sub-shell).</div>
+          <div class="p-2 rounded bg-slate-900 border border-slate-800"><b class="text-rose-300">N→O / P→S Dip:</b> Two electrons share the <b>same $2p$ / $3p$ orbital</b> (spin-pair repulsion) — saying "same sub-shell" scores 0!</div>
+          <div class="p-2 rounded bg-slate-900 border border-slate-800"><b class="text-emerald-300">Period 2 vs 3 mp/bp:</b> Period 2 peaks at $\text{C}$ (diamond/graphite, giant covalent) &amp; $\text{B}$; $\text{N}_2, \text{O}_2, \text{F}_2, \text{Ne}$ are gases with weak London forces.</div>
+        </div>
+        <button type="button" onclick="switchTab('trends')" class="w-full py-2 px-3 rounded-lg bg-emerald-950/70 hover:bg-emerald-900/80 text-emerald-300 border border-emerald-800/70 text-xs font-semibold">Compare Period 2 &amp; Period 3 in Trends Studio →</button>
+      </div>
+    </div>
+  </div>
+
   <div class="mt-6 p-4 bg-rose-950/20 border border-rose-900/40 rounded-xl text-xs text-slate-300">
     <b class="text-rose-300">Out of scope in this studio:</b> Detailed transition-metal chemistry and complex ion formation (later units); quantitative Born–Haber / lattice energy (WCH13 Topic 8); full redox & oxidation-number rules (treated as needed in Topic 1 / WCH11 §2 equations). These build on Topic 2 foundations but are taught later.
   </div>
@@ -597,6 +893,7 @@ nav, nav > div { max-width: 100% !important; }
     <button onclick="setMode('atom','map')" id="atom-m-map" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-sky-300">Particle Map</button>
     <button onclick="setMode('atom','quiz')" id="atom-m-quiz" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-sky-300">Quiz</button>
     <button onclick="setMode('atom','traps')" id="atom-m-traps" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-sky-300">Traps</button>
+    <button onclick="setMode('atom','drill')" id="atom-m-drill" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-sky-300">🎯 Isoelectronic &amp; Particle Drill</button>
   </div>
 </div>
 <div id="atom-mode-explorer" class="atom-mode"><div id="atom-explorer" class="grid grid-cols-1 lg:grid-cols-12 gap-4"></div></div>
@@ -624,6 +921,59 @@ nav, nav > div { max-width: 100% !important; }
 </div>
 <div id="atom-mode-quiz" class="atom-mode hidden"><div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4"><h3 class="font-display text-sm font-bold text-sky-300">Multi-Blank Quiz — Atom & Isotopes</h3><p class="text-xs text-slate-400">Click each blurred answer to reveal it.</p><div id="atom-quiz-rows" class="space-y-3"></div><button onclick="revealAll('atom-quiz-rows')" class="btn-press bg-slate-800 hover:bg-slate-700 border border-slate-700 text-sky-300 text-xs font-semibold px-4 py-2 rounded-lg">Reveal All</button></div></div>
 <div id="atom-mode-traps" class="atom-mode hidden"><div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4"><h3 class="font-display text-sm font-bold text-rose-300">Trap Pairs — Atom & Isotopes</h3><div id="atom-traps-grid" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div></div></div>
+<div id="atom-mode-drill" class="atom-mode hidden">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <!-- Left: Interactive Particle & Ion Notation Speed Checker -->
+    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+      <div class="flex items-center justify-between">
+        <span class="text-[10px] font-mono text-sky-400 uppercase font-bold px-2 py-0.5 bg-sky-950 rounded border border-sky-800">Spec 2.1 – 2.4</span>
+        <span id="pDrillScore" class="text-[10px] font-mono text-sky-300">Score: 0 / 5</span>
+      </div>
+      <h3 class="font-display text-sm font-bold text-white">Interactive Species Particle &amp; Charge Evaluator</h3>
+      <p class="text-xs text-slate-400">Select a species below, work out its protons, neutrons, and electrons, and test whether you avoid the ion-proton trap!</p>
+      <div class="grid grid-cols-4 gap-2 text-xs">
+        <div>
+          <label class="block text-slate-400 mb-1">Species</label>
+          <select id="pDrillSelect" onchange="loadParticleDrill()" class="w-full px-2 py-1.5 text-xs text-slate-100 font-mono">
+            <option value="0">³¹₁₅P³⁻</option>
+            <option value="1">⁵⁶₂₆Fe³⁺</option>
+            <option value="2">⁷⁹₃₅Br⁻</option>
+            <option value="3">⁴⁰₂₀Ca²⁺</option>
+            <option value="4">⁵²₂₄Cr²⁺</option>
+          </select>
+        </div>
+        <div><label class="block text-slate-400 mb-1">Protons</label><input id="pDrillP" type="number" placeholder="p⁺" class="w-full px-2 py-1.5 text-slate-100 font-mono"></div>
+        <div><label class="block text-slate-400 mb-1">Neutrons</label><input id="pDrillN" type="number" placeholder="n⁰" class="w-full px-2 py-1.5 text-slate-100 font-mono"></div>
+        <div><label class="block text-slate-400 mb-1">Electrons</label><input id="pDrillE" type="number" placeholder="e⁻" class="w-full px-2 py-1.5 text-slate-100 font-mono"></div>
+      </div>
+      <div class="flex gap-2">
+        <button type="button" onclick="checkParticleDrill()" class="flex-1 bg-sky-600 hover:bg-sky-500 text-white text-xs font-semibold py-2 px-4 rounded-lg">Check p⁺, n⁰, e⁻ Count</button>
+        <button type="button" onclick="revealParticleDrill()" class="bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold py-2 px-3 rounded-lg border border-slate-700">Show Answer</button>
+      </div>
+      <div id="pDrillFeedback" class="p-3.5 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-300"></div>
+    </div>
+
+    <!-- Right: Interactive Isoelectronic Series & Ionic Radius Explorer -->
+    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+      <div class="flex items-center justify-between">
+        <span class="text-[10px] font-mono text-purple-400 uppercase font-bold px-2 py-0.5 bg-purple-950 rounded border border-purple-800">Spec 2.4 · 2.14 · 2.18</span>
+        <span class="text-[10px] font-mono text-slate-400">10 e⁻ Isoelectronic Series</span>
+      </div>
+      <h3 class="font-display text-sm font-bold text-white">Isoelectronic Ionic Radius &amp; Nuclear Pull Simulator</h3>
+      <p class="text-xs text-slate-400">Click any ion in the $1s^2 2s^2 2p^6$ (10-electron) series to compare nuclear charge $Z$, shielding, and ionic radius:</p>
+      <div class="flex flex-wrap gap-1.5" id="isoIonBtns">
+        <button type="button" onclick="selectIsoIon(0)" class="px-3 py-1.5 rounded-lg text-xs font-mono font-bold border border-purple-600 bg-purple-950/50 text-purple-200">N³⁻ (Z=7)</button>
+        <button type="button" onclick="selectIsoIon(1)" class="px-3 py-1.5 rounded-lg text-xs font-mono font-bold border border-slate-700 bg-slate-900 text-slate-300">O²⁻ (Z=8)</button>
+        <button type="button" onclick="selectIsoIon(2)" class="px-3 py-1.5 rounded-lg text-xs font-mono font-bold border border-slate-700 bg-slate-900 text-slate-300">F⁻ (Z=9)</button>
+        <button type="button" onclick="selectIsoIon(3)" class="px-3 py-1.5 rounded-lg text-xs font-mono font-bold border border-slate-700 bg-slate-900 text-slate-300">Ne (Z=10)</button>
+        <button type="button" onclick="selectIsoIon(4)" class="px-3 py-1.5 rounded-lg text-xs font-mono font-bold border border-slate-700 bg-slate-900 text-slate-300">Na⁺ (Z=11)</button>
+        <button type="button" onclick="selectIsoIon(5)" class="px-3 py-1.5 rounded-lg text-xs font-mono font-bold border border-slate-700 bg-slate-900 text-slate-300">Mg²⁺ (Z=12)</button>
+        <button type="button" onclick="selectIsoIon(6)" class="px-3 py-1.5 rounded-lg text-xs font-mono font-bold border border-slate-700 bg-slate-900 text-slate-300">Al³⁺ (Z=13)</button>
+      </div>
+      <div id="isoIonOutput" class="p-4 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-300 space-y-2"></div>
+    </div>
+  </div>
+</div>
 <!-- ===== INSERT: MARK-SCHEME WORD BANK — ATOM & ISOTOPES (GAP A) ===== -->
 <div class="mt-4 p-4 bg-slate-950 border border-slate-800 rounded-xl">
   <p class="text-[11px] font-bold text-sky-300 uppercase tracking-wider mb-2">📝 Mark-Scheme Word Bank — Atom &amp; Isotopes</p>
@@ -703,6 +1053,7 @@ nav, nav > div { max-width: 100% !important; }
     <button onclick="setMode('ie','map')" id="ie-m-map" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-sky-300">Factor Map</button>
     <button onclick="setMode('ie','quiz')" id="ie-m-quiz" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-sky-300">Quiz</button>
     <button onclick="setMode('ie','traps')" id="ie-m-traps" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-sky-300">Traps</button>
+    <button onclick="setMode('ie','drill')" id="ie-m-drill" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-sky-300">⚡ IE₁ vs IE₂ Anomaly &amp; Equation Lab</button>
   </div>
 </div>
 <div id="ie-mode-explorer" class="ie-mode"><div id="ie-explorer" class="grid grid-cols-1 lg:grid-cols-12 gap-4"></div></div>
@@ -733,6 +1084,51 @@ nav, nav > div { max-width: 100% !important; }
 </div>
 <div id="ie-mode-quiz" class="ie-mode hidden"><div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4"><h3 class="font-display text-sm font-bold text-purple-300">Multi-Blank Quiz — Ionisation Energy</h3><p class="text-xs text-slate-400">Click each blurred answer to reveal it.</p><div id="ie-quiz-rows" class="space-y-3"></div><button onclick="revealAll('ie-quiz-rows')" class="btn-press bg-slate-800 hover:bg-slate-700 border border-slate-700 text-sky-300 text-xs font-semibold px-4 py-2 rounded-lg">Reveal All</button></div></div>
 <div id="ie-mode-traps" class="ie-mode hidden"><div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4"><h3 class="font-display text-sm font-bold text-rose-300">Trap Pairs — Ionisation Energy</h3><div id="ie-traps-grid" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div></div></div>
+<div id="ie-mode-drill" class="ie-mode hidden">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <!-- Left: Interactive IE Equation Builder & Examiner Trap Checker -->
+    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+      <div class="flex items-center justify-between">
+        <span class="text-[10px] font-mono text-rose-400 uppercase font-bold px-2 py-0.5 bg-rose-950 rounded border border-rose-800">Spec 2.8 · PEF Jan 2020</span>
+        <span class="text-[10px] font-mono text-slate-400">State Symbols + Charge</span>
+      </div>
+      <h3 class="font-display text-sm font-bold text-white">Ionisation Energy Equation Builder &amp; Grader</h3>
+      <p class="text-xs text-slate-400">Examiner Feedback (Jan 2020): Candidates frequently write $	ext{Cl}_2(g)$ instead of $	ext{Cl}(g)$, omit $(g)$, or start 2nd/3rd IE from the neutral atom. Select a target below and pick the only mark-scheme-valid equation:</p>
+      <div>
+        <select id="ieEqTarget" onchange="renderIeEqChallenge()" class="w-full px-3 py-2 text-xs text-slate-100">
+          <option value="0">1. First Ionisation Energy of Chlorine (Cl)</option>
+          <option value="1">2. Second Ionisation Energy of Magnesium (Mg)</option>
+          <option value="2">3. Third Ionisation Energy of Aluminium (Al)</option>
+          <option value="3">4. Second Ionisation Energy of Sodium (Na — inner shell jump)</option>
+          <option value="4">5. First Ionisation Energy of Bromine (Br — liquid element at r.t.p.!)</option>
+        </select>
+      </div>
+      <div id="ieEqOptions" class="space-y-2 text-xs"></div>
+      <div id="ieEqFeedback" class="p-3.5 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-300"></div>
+    </div>
+
+    <!-- Right: Interactive IE1 vs IE2 Anomaly Duel -->
+    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+      <div class="flex items-center justify-between">
+        <span class="text-[10px] font-mono text-amber-400 uppercase font-bold px-2 py-0.5 bg-amber-950 rounded border border-amber-800">Spec 2.10 · 2.11 · PEF Jun 2024</span>
+        <span class="text-[10px] font-mono text-slate-400">Sub-shell &amp; Spin-Pair Duels</span>
+      </div>
+      <h3 class="font-display text-sm font-bold text-white">1st IE &amp; 2nd IE Anomaly Duel</h3>
+      <p class="text-xs text-slate-400">Pick an exam comparison pair below, predict which element has the <b>higher</b> ionisation energy, and verify the exact sub-shell/orbital configuration reason:</p>
+      <div>
+        <select id="ieDuelSelect" onchange="renderIeDuel()" class="w-full px-3 py-2 text-xs text-slate-100">
+          <option value="0">Duel 1 · 1st IE: Beryllium (Be) vs Boron (B)</option>
+          <option value="1">Duel 2 · 1st IE: Nitrogen (N) vs Oxygen (O)</option>
+          <option value="2">Duel 3 · 2nd IE: Sodium (Na) vs Magnesium (Mg)</option>
+          <option value="3">Duel 4 · 2nd IE: Boron (B) vs Carbon (C)</option>
+          <option value="4">Duel 5 · 2nd IE: Oxygen (O) vs Fluorine (F)</option>
+          <option value="5">Duel 6 · 1st IE: Magnesium (Mg) vs Aluminium (Al)</option>
+        </select>
+      </div>
+      <div id="ieDuelBody" class="space-y-3 text-xs"></div>
+    </div>
+  </div>
+</div>
 <!-- ===== INSERT: MARK-SCHEME WORD BANK — IONISATION ENERGY (GAP A) ===== -->
 <div class="mt-4 p-4 bg-slate-950 border border-slate-800 rounded-xl">
   <p class="text-[11px] font-bold text-purple-300 uppercase tracking-wider mb-2">📝 Mark-Scheme Word Bank — Ionisation Energy</p>
@@ -806,6 +1202,7 @@ nav, nav > div { max-width: 100% !important; }
     <button onclick="setMode('estruct','map')" id="estruct-m-map" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-sky-300">Filling Order</button>
     <button onclick="setMode('estruct','quiz')" id="estruct-m-quiz" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-sky-300">Quiz</button>
     <button onclick="setMode('estruct','traps')" id="estruct-m-traps" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-sky-300">Traps</button>
+    <button onclick="setMode('estruct','drill')" id="estruct-m-drill" class="btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border border-slate-700 text-slate-400 hover:text-sky-300">🧩 Unpaired e⁻ &amp; Config Grader</button>
   </div>
 </div>
 <div id="estruct-mode-explorer" class="estruct-mode"><div id="estruct-explorer" class="grid grid-cols-1 lg:grid-cols-12 gap-4"></div></div>
@@ -835,6 +1232,77 @@ nav, nav > div { max-width: 100% !important; }
 </div>
 <div id="estruct-mode-quiz" class="estruct-mode hidden"><div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4"><h3 class="font-display text-sm font-bold text-cyan-300">Multi-Blank Quiz — Electronic Structure</h3><p class="text-xs text-slate-400">Click each blurred answer to reveal it.</p><div id="estruct-quiz-rows" class="space-y-3"></div><button onclick="revealAll('estruct-quiz-rows')" class="btn-press bg-slate-800 hover:bg-slate-700 border border-slate-700 text-sky-300 text-xs font-semibold px-4 py-2 rounded-lg">Reveal All</button></div></div>
 <div id="estruct-mode-traps" class="estruct-mode hidden"><div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4"><h3 class="font-display text-sm font-bold text-rose-300">Trap Pairs — Electronic Structure</h3><div id="estruct-traps-grid" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div></div></div>
+<div id="estruct-mode-drill" class="estruct-mode hidden">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <!-- Left: Interactive Configuration, Block & Unpaired Electron Grader -->
+    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+      <div class="flex items-center justify-between">
+        <span class="text-[10px] font-mono text-cyan-400 uppercase font-bold px-2 py-0.5 bg-cyan-950 rounded border border-cyan-800">Spec 2.13 – 2.16 · PEF Jan 2022</span>
+        <span class="text-[10px] font-mono text-slate-400">H to Kr + Transition Ions</span>
+      </div>
+      <h3 class="font-display text-sm font-bold text-white">Interactive Configuration, Block &amp; Unpaired $e^-$ Tester</h3>
+      <p class="text-xs text-slate-400">Test your mastery of the high-risk species from past WCH11 papers ($	ext{Cr}, 	ext{Cu}, 	ext{Cu}^{2+}, 	ext{Fe}^{2+}, 	ext{Fe}^{3+}, 	ext{Cl}^-, 	ext{S}$):</p>
+      <div class="grid grid-cols-3 gap-2 text-xs">
+        <div>
+          <label class="block text-slate-400 mb-1">Target Species</label>
+          <select id="ecTarget" onchange="resetEcFeedback()" class="w-full px-2 py-1.5 text-xs text-slate-100 font-mono">
+            <option value="Cr">Cr (Z=24)</option>
+            <option value="Cu">Cu (Z=29)</option>
+            <option value="Cu2+">Cu²⁺ (Z=29)</option>
+            <option value="Fe2+">Fe²⁺ (Z=26)</option>
+            <option value="Fe3+">Fe³⁺ (Z=26)</option>
+            <option value="N">N (Z=7)</option>
+            <option value="S">S (Z=16)</option>
+            <option value="Cl-">Cl⁻ (Z=17)</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-slate-400 mb-1">Block (s / p / d)</label>
+          <select id="ecBlock" class="w-full px-2 py-1.5 text-xs text-slate-100 font-mono">
+            <option value="s">s block</option>
+            <option value="p">p block</option>
+            <option value="d" selected>d block</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-slate-400 mb-1"># Unpaired e⁻</label>
+          <input id="ecUnpaired" type="number" min="0" max="6" value="6" class="w-full px-2 py-1.5 text-xs text-slate-100 font-mono">
+        </div>
+      </div>
+      <div>
+        <label class="block text-slate-400 text-xs mb-1">Your Outer Configuration (after [Ar] or [He], e.g. <span class="font-mono text-cyan-300">3d5 4s1</span> or <span class="font-mono text-cyan-300">1s2 2s2 2p3</span>)</label>
+        <input id="ecConfigIn" type="text" placeholder="e.g. 3d5 4s1" class="w-full px-3 py-1.5 text-xs text-slate-100 font-mono">
+      </div>
+      <div class="flex gap-2">
+        <button type="button" onclick="checkEcDrill()" class="flex-1 bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-semibold py-2 px-4 rounded-lg">Grade Configuration &amp; Unpaired e⁻</button>
+        <button type="button" onclick="fillEcDrill()" class="bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold py-2 px-3 rounded-lg border border-slate-700">Show Answer</button>
+      </div>
+      <div id="ecFeedback" class="p-3.5 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-300"></div>
+    </div>
+
+    <!-- Right: Subshell vs Orbital Wording Trap Classifier (PEF Oct 2023) -->
+    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+      <div class="flex items-center justify-between">
+        <span class="text-[10px] font-mono text-amber-400 uppercase font-bold px-2 py-0.5 bg-amber-950 rounded border border-amber-800">PEF Oct 2023 · Spec 2.9 &amp; 2.16</span>
+        <span class="text-[10px] font-mono text-slate-400">Quantum Numbers</span>
+      </div>
+      <h3 class="font-display text-sm font-bold text-white">Shell vs. Sub-shell vs. Orbital Capacity Matrix</h3>
+      <p class="text-xs text-slate-400">Examiner Feedback (Oct 2023): Students repeatedly confuse <b>orbital</b> (1 box, max $2\ e^-$) with <b>sub-shell</b> (group of degenerate orbitals: $s=2, p=6, d=10$). Click any row to test yourself:</p>
+      <div class="overflow-x-auto rounded-lg border border-slate-800">
+        <table class="w-full text-xs text-slate-300">
+          <thead class="bg-slate-900 text-slate-400 uppercase text-[10px]">
+            <tr><th class="p-2.5 text-left">Level / Term</th><th class="p-2.5 text-left"># of Orbitals</th><th class="p-2.5 text-left">Max Electrons</th><th class="p-2.5 text-left">WCH11 Exam Rule</th></tr>
+          </thead>
+          <tbody class="divide-y divide-slate-800">
+            <tr><td class="p-2.5 font-semibold text-white">Any single orbital ($1s, 2p_x, 3d_{xy}$)</td><td class="p-2.5 font-mono text-sky-300">1</td><td class="p-2.5 font-mono text-emerald-300">2 (↑↓)</td><td class="p-2.5">Spin-pair repulsion happens in a <b>single orbital</b></td></tr>
+            <tr><td class="p-2.5 font-semibold text-white">$s$ sub-shell / $p$ sub-shell / $d$ sub-shell</td><td class="p-2.5 font-mono text-sky-300">1 / 3 / 5</td><td class="p-2.5 font-mono text-emerald-300">2 / 6 / 10</td><td class="p-2.5">Be→B dip is due to higher-energy <b>$2p$ sub-shell</b></td></tr>
+            <tr><td class="p-2.5 font-semibold text-white">Quantum shells $n = 1, 2, 3, 4$</td><td class="p-2.5 font-mono text-sky-300">$n^2$ (1, 4, 9, 16)</td><td class="p-2.5 font-mono text-emerald-300">$2n^2$ (2, 8, 18, 32)</td><td class="p-2.5">Big jumps in successive IE cross <b>quantum shells</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- ===== INSERT: COMMON MISCONCEPTIONS — ELECTRONIC STRUCTURE ===== -->
 <div class="mt-4 p-4 bg-rose-950/20 border border-rose-800/50 rounded-xl">
   <p class="text-[11px] font-bold text-rose-300 uppercase tracking-wider mb-2">❌ Common Misconceptions — Orbitals &amp; Configuration (Spec 2.9, 2.12–2.16)</p>
@@ -1060,6 +1528,41 @@ nav, nav > div { max-width: 100% !important; }
   </div>
 </div>
 
+<!-- 5.10 NEW: Live Automated Mark-Scheme Keyword Grader -->
+<div class="bg-slate-900 border border-amber-700/50 rounded-xl p-5 space-y-4 card-hover reveal">
+  <div class="flex items-center justify-between gap-3">
+    <div class="flex items-center gap-3">
+      <span class="font-display text-2xl font-bold text-emerald-400">10</span>
+      <div>
+        <h3 class="font-display text-base font-bold text-slate-100">Automated Edexcel Mark-Scheme Keyword Grader</h3>
+        <p class="text-xs text-slate-400">Pick any high-frequency WCH11 written question below, type your response, and get instant M1/M2/M3 keyword grading plus examiner penalty warnings!</p>
+      </div>
+    </div>
+    <span class="text-[10px] font-mono px-2.5 py-1 rounded-full bg-emerald-950 text-emerald-300 border border-emerald-800">Instant Auto-Mark</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
+    <div class="lg:col-span-5 space-y-3">
+      <label class="block text-xs font-semibold text-slate-300">Select WCH11 Written Question</label>
+      <select id="autoExplainQ" onchange="resetAutoExplain()" class="w-full px-3 py-2 text-xs text-slate-100">
+        <option value="beb">1. Why 1st IE of Boron (B) is lower than Beryllium (Be) [2 marks]</option>
+        <option value="no">2. Why 1st IE of Oxygen (O) is lower than Nitrogen (N) [2 marks]</option>
+        <option value="namg2">3. Why 2nd IE of Sodium (Na) is much higher than Magnesium (Mg) [3 marks]</option>
+        <option value="iso">4. Why ionic radius decreases from N³⁻ to Al³⁺ [3 marks]</option>
+        <option value="sicl">5. Why Silicon (Si) has a much higher melting point than Chlorine (Cl₂) [3 marks]</option>
+      </select>
+      <textarea id="autoExplainInput" rows="4" class="w-full p-3 text-xs text-slate-100" placeholder="Type your full exam explanation here..."></textarea>
+      <div class="flex gap-2">
+        <button type="button" onclick="gradeAutoExplain()" class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold py-2 px-4 rounded-lg">Auto-Grade My Answer</button>
+        <button type="button" onclick="showAutoExplainModel()" class="bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold py-2 px-3 rounded-lg border border-slate-700">Load Model</button>
+      </div>
+    </div>
+    <div class="lg:col-span-7 bg-slate-950 border border-slate-800 rounded-xl p-4 text-xs text-slate-300 space-y-2" id="autoExplainOutput">
+      <p class="text-slate-400">Select a question on the left, write your causal chain, and click <b>Auto-Grade My Answer</b> to see which mark points (M1, M2, M3) you earned and whether you triggered any examiner penalties.</p>
+    </div>
+  </div>
+</div>
+
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════ -->
@@ -1074,7 +1577,14 @@ nav, nav > div { max-width: 100% !important; }
 
 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
   <div class="lg:col-span-2 bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-3 card-hover">
-    <h3 class="font-display text-sm font-bold text-purple-300">First Ionisation Energy — Elements 1 to 20</h3>
+    <div class="flex flex-wrap items-center justify-between gap-2">
+      <h3 class="font-display text-sm font-bold text-purple-300">First Ionisation Energy — Elements 1 to 20</h3>
+      <div class="flex gap-1 text-[10px] font-mono">
+        <button type="button" id="iePlotBtn-ie1" onclick="setIePlotMode('ie1')" class="px-2.5 py-1 rounded-full bg-purple-950 text-purple-300 border border-purple-700 font-bold">1st IE (kJ mol⁻¹)</button>
+        <button type="button" id="iePlotBtn-log" onclick="setIePlotMode('log')" class="px-2.5 py-1 rounded-full bg-slate-900 text-slate-400 border border-slate-700 hover:text-white">log₁₀(1st IE) (Spec 2.17)</button>
+        <button type="button" id="iePlotBtn-ie2" onclick="setIePlotMode('ie2')" class="px-2.5 py-1 rounded-full bg-slate-900 text-slate-400 border border-slate-700 hover:text-white">Overlay 2nd IE Shift</button>
+      </div>
+    </div>
     <p class="text-[11px] text-slate-400">Click a point. Noble-gas peaks (teal), Group-1 troughs (rose), the group-3 & group-6 dips (amber), general increase (sky).</p>
     <div class="bg-slate-950 rounded-xl border border-slate-800 p-2"><canvas id="ieCanvas" class="w-full h-[300px] block cursor-pointer"></canvas></div>
   </div>
@@ -1088,7 +1598,13 @@ nav, nav > div { max-width: 100% !important; }
 
 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
   <div class="lg:col-span-2 bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-3 card-hover">
-    <h3 class="font-display text-sm font-bold text-emerald-300">Melting Point — Period 3 (Na → Ar)</h3>
+    <div class="flex flex-wrap items-center justify-between gap-2">
+      <h3 class="font-display text-sm font-bold text-emerald-300">Melting Point — Period 3 (Na → Ar) &amp; Period 2 (Li → Ne)</h3>
+      <div class="flex gap-1 text-[10px] font-mono">
+        <button type="button" id="mpPlotBtn-p3" onclick="setMpPlotPeriod('p3')" class="px-2.5 py-1 rounded-full bg-emerald-950 text-emerald-300 border border-emerald-700 font-bold">Period 3 (Na→Ar)</button>
+        <button type="button" id="mpPlotBtn-p2" onclick="setMpPlotPeriod('p2')" class="px-2.5 py-1 rounded-full bg-slate-900 text-slate-400 border border-slate-700 hover:text-white">Period 2 (Li→Ne · Spec 2.18)</button>
+      </div>
+    </div>
     <p class="text-[11px] text-slate-400">Bars coloured by structure type. Click a bar for the structural explanation.</p>
     <div class="flex gap-3 text-[10px] font-mono"><span class="text-sky-300">■ giant metallic</span><span class="text-amber-300">■ giant covalent</span><span class="text-rose-300">■ simple molecular</span></div>
     <div class="bg-slate-950 rounded-xl border border-slate-800 p-2"><canvas id="mpCanvas" class="w-full h-[260px] block cursor-pointer"></canvas></div>
@@ -1188,6 +1704,41 @@ nav, nav > div { max-width: 100% !important; }
     <button onclick="solveDiatomic()" class="btn-press w-full bg-amber-600 hover:bg-amber-500 text-white font-bold py-2 rounded-lg text-xs">Predict peaks</button>
     <div id="d-result" class="hidden p-3 bg-slate-900 border border-amber-800/50 rounded-lg text-xs text-slate-200 font-mono space-y-1"></div>
   </div>
+
+  <!-- NEW 5 · Successive IE Group & Quantum Shell Jump Finder (Spec 2.11) -->
+  <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 card-hover">
+    <div class="flex items-center justify-between">
+      <h3 class="font-display text-sm font-bold text-cyan-300">Successive IE Group &amp; Shell Jump Analyzer (Spec 2.11)</h3>
+      <span class="text-[10px] font-mono text-slate-400">Finds biggest ratio jump</span>
+    </div>
+    <p class="text-xs text-slate-400">Enter successive ionisation energies (comma-separated, in $\text{kJ mol}^{-1}$) or pick a preset mystery element to automatically locate the inner-shell jump and deduce thePeriodic Table Group:</p>
+    <div class="flex flex-wrap gap-1.5 text-[11px]">
+      <button type="button" onclick="setSuccPreset('578, 1817, 2745, 11577, 14842')" class="px-2.5 py-1 rounded bg-slate-900 border border-slate-700 text-cyan-300 hover:border-cyan-500">Preset A (Group 3)</button>
+      <button type="button" onclick="setSuccPreset('738, 1451, 7733, 10543, 13630')" class="px-2.5 py-1 rounded bg-slate-900 border border-slate-700 text-cyan-300 hover:border-cyan-500">Preset B (Group 2)</button>
+      <button type="button" onclick="setSuccPreset('1012, 1907, 2914, 4964, 6274, 21267')" class="px-2.5 py-1 rounded bg-slate-900 border border-slate-700 text-cyan-300 hover:border-cyan-500">Preset C (Group 5)</button>
+    </div>
+    <input type="text" id="succIeInput" value="578, 1817, 2745, 11577, 14842" class="w-full px-3 py-2 text-xs text-slate-100 font-mono">
+    <button type="button" onclick="solveSuccessiveIeJump()" class="btn-press w-full bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-2 rounded-lg text-xs">Locate Big Jump &amp; Deduce Group</button>
+    <div id="succIeResult" class="p-3 bg-slate-900 border border-cyan-800/50 rounded-lg text-xs text-slate-200 font-mono space-y-1"></div>
+  </div>
+
+  <!-- NEW 6 · Mass Spec m/z (1+ vs 2+ Ions) & Missing 3rd Isotope Finder (Spec 2.6(ii,iv)) -->
+  <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 card-hover">
+    <div class="flex items-center justify-between">
+      <h3 class="font-display text-sm font-bold text-rose-300">2+ Ion $m/z$ &amp; 3-Isotope Unknown Finder (Spec 2.6(iv))</h3>
+      <span class="text-[10px] font-mono text-slate-400">m/z = mass ÷ charge</span>
+    </div>
+    <p class="text-xs text-slate-400">Given target $A_r$ and two known isotopes, find the third isotope's mass &amp; abundance, plus its $1+$ and $2+$ $m/z$ peaks:</p>
+    <div class="grid grid-cols-5 gap-2 text-xs">
+      <div><label class="text-slate-400 block mb-1">Given $A_r$</label><input type="number" step="any" id="t3-ar" value="24.31" class="w-full p-2 text-slate-100 font-mono"></div>
+      <div><label class="text-slate-400 block mb-1">Mass 1</label><input type="number" step="any" id="t3-m1" value="24" class="w-full p-2 text-slate-100 font-mono"></div>
+      <div><label class="text-slate-400 block mb-1">% 1</label><input type="number" step="any" id="t3-p1" value="79.0" class="w-full p-2 text-slate-100 font-mono"></div>
+      <div><label class="text-slate-400 block mb-1">Mass 2</label><input type="number" step="any" id="t3-m2" value="25" class="w-full p-2 text-slate-100 font-mono"></div>
+      <div><label class="text-slate-400 block mb-1">% 2</label><input type="number" step="any" id="t3-p2" value="10.0" class="w-full p-2 text-slate-100 font-mono"></div>
+    </div>
+    <button type="button" onclick="solveThirdIsotope()" class="btn-press w-full bg-rose-600 hover:bg-rose-500 text-white font-bold py-2 rounded-lg text-xs">Solve 3rd Isotope &amp; 2+ Peaks</button>
+    <div id="t3-result" class="p-3 bg-slate-900 border border-rose-800/50 rounded-lg text-xs text-slate-200 font-mono space-y-1"></div>
+  </div>
 </div>
 </section>
 
@@ -1206,6 +1757,7 @@ nav, nav > div { max-width: 100% !important; }
     <a href="#rev-ie" class="btn-press px-2.5 py-1 text-[10px] font-mono bg-slate-800 border border-slate-700 rounded text-rose-300 hover:border-rose-600">IE & Trends</a>
     <a href="#rev-traps" class="btn-press px-2.5 py-1 text-[10px] font-mono bg-slate-800 border border-slate-700 rounded text-amber-300 hover:border-amber-600">Master Traps</a>
     <a href="#rev-misc" class="btn-press px-2.5 py-1 text-[10px] font-mono bg-slate-800 border border-slate-700 rounded text-rose-300 hover:border-rose-600">Misconceptions</a>
+    <a href="#rev-t2-diag" class="btn-press px-2.5 py-1 text-[10px] font-mono bg-rose-950 border border-rose-700 rounded text-rose-300 hover:bg-rose-900 font-bold">⚡ 14-Q Exam Diagnostic</a>
   </div>
 </div>
 
@@ -1362,6 +1914,20 @@ nav, nav > div { max-width: 100% !important; }
     <p class="text-rose-300 font-bold">□ Periodic-property definition missing "atomic number" or "recurring pattern"</p>
   </div>
 </details>
+
+<details open class="bg-slate-950 border border-slate-800 rounded-xl">
+  <summary id="rev-t2-diag" class="p-4 font-display text-sm font-bold text-rose-300 flex items-center justify-between">
+    <span>Interactive Edexcel IAL Topic 2 Exam Readiness Diagnostic (Spec 2.1 – 2.18)</span>
+    <span id="t2DiagScoreBadge" class="text-xs font-mono text-rose-300">0 / 14 Correct · 0%</span>
+  </summary>
+  <div class="px-4 pb-5 space-y-4">
+    <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 pb-3">
+      <p class="text-xs text-slate-400">14 exam-style multiple-choice questions spanning every Topic 2 specification point (2.1–2.18) and recent WCH11 examiner report traps.</p>
+      <button type="button" onclick="resetT2Diagnostic()" class="text-[11px] font-semibold px-3 py-1 rounded-full bg-slate-900 text-slate-300 border border-slate-700 hover:text-white">Reset Diagnostic</button>
+    </div>
+    <div id="t2DiagContainer" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+  </div>
+</details>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════ -->
@@ -1434,6 +2000,23 @@ nav, nav > div { max-width: 100% !important; }
       <div id="ms-ar-compare" class="hidden p-3 bg-emerald-950/40 border border-emerald-800/60 rounded-lg text-[11px] text-emerald-200"></div>
     </div>
   </div>
+  <!-- NEW: INTERACTIVE DIATOMIC MOLECULAR ION (Cl₂, Br₂, ClF₃) & 2+ PEAK EXPLORER (Spec 2.6(iv), 2.7, PEF 2020–2024) -->
+  <div class="bg-slate-950 border border-emerald-800/50 rounded-xl p-5 space-y-4">
+    <div class="flex flex-wrap items-center justify-between gap-2">
+      <div>
+        <span class="text-[10px] font-mono text-emerald-400 uppercase font-bold px-2 py-0.5 bg-emerald-950 rounded border border-emerald-800">Spec 2.6(iv) &amp; 2.7 · PEF Jan 2020 / Jun 2023 / Jan 2024</span>
+        <h3 class="font-display text-sm font-bold text-white mt-1">Interactive Diatomic &amp; Polyatomic Mass Spectrum Predictor ($\text{Cl}_2, \text{Br}_2, \text{HCl}, \text{ClF}_3$)</h3>
+      </div>
+      <div class="flex flex-wrap gap-1.5 text-xs">
+        <button type="button" onclick="renderDiatomicSpec('Cl2')" class="px-3 py-1.5 rounded-lg bg-emerald-950/70 text-emerald-300 border border-emerald-700 font-mono font-bold">Cl₂ (9:6:1 + 2+ ions)</button>
+        <button type="button" onclick="renderDiatomicSpec('Br2')" class="px-3 py-1.5 rounded-lg bg-slate-900 text-slate-300 border border-slate-700 hover:text-white font-mono">Br₂ (1:2:1)</button>
+        <button type="button" onclick="renderDiatomicSpec('ClF3')" class="px-3 py-1.5 rounded-lg bg-slate-900 text-slate-300 border border-slate-700 hover:text-white font-mono">ClF₃ (PEF Oct 2019)</button>
+        <button type="button" onclick="renderDiatomicSpec('CH2Br2')" class="px-3 py-1.5 rounded-lg bg-slate-900 text-slate-300 border border-slate-700 hover:text-white font-mono">CH₂Br₂ (M, M+2, M+4)</button>
+      </div>
+    </div>
+    <div id="diatomicSpecDisplay" class="grid grid-cols-1 lg:grid-cols-12 gap-4 items-center"></div>
+  </div>
+
 <!-- ===== INSERT: MARK-SCHEME WORD BANK — MASS SPEC (GAP A) ===== -->
 <div class="mt-4 p-4 bg-slate-950 border border-slate-800 rounded-xl">
   <p class="text-[11px] font-bold text-emerald-300 uppercase tracking-wider mb-2">📝 Mark-Scheme Word Bank — Mass Spectrometry</p>
@@ -1776,9 +2359,43 @@ nav, nav > div { max-width: 100% !important; }
       </div>
     </div>
   </div>
+  <!-- NEW: INTERACTIVE WCH13 FLAME TEST & ELECTRONIC TRANSITION SIMULATOR -->
+  <div class="bg-slate-950 border border-emerald-800/50 rounded-xl p-5 space-y-4">
+    <div class="flex flex-wrap items-center justify-between gap-2">
+      <div>
+        <span class="text-[10px] font-mono text-emerald-400 uppercase font-bold px-2 py-0.5 bg-emerald-950 rounded border border-emerald-800">WCH13 · Electronic Transitions</span>
+        <h3 class="font-display text-sm font-bold text-white mt-1">Interactive Bunsen Flame Test &amp; Quantum Emission Simulator</h3>
+      </div>
+      <span class="text-[11px] text-slate-400">Dip nichrome wire in conc. HCl → test cation in blue Bunsen flame</span>
+    </div>
+    <div class="flex flex-wrap gap-1.5 text-xs" id="flameCationBtns">
+      <button type="button" onclick="selectFlameCation('Li')" class="px-3 py-1.5 rounded-lg border border-rose-700 bg-rose-950/50 text-rose-200 font-bold">Li⁺ (Red/Crimson)</button>
+      <button type="button" onclick="selectFlameCation('Na')" class="px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-900 text-slate-300">Na⁺ (Yellow)</button>
+      <button type="button" onclick="selectFlameCation('K')" class="px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-900 text-slate-300">K⁺ (Lilac)</button>
+      <button type="button" onclick="selectFlameCation('Ca')" class="px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-900 text-slate-300">Ca²⁺ (Brick-red)</button>
+      <button type="button" onclick="selectFlameCation('Sr')" class="px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-900 text-slate-300">Sr²⁺ (Crimson/Red)</button>
+      <button type="button" onclick="selectFlameCation('Ba')" class="px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-900 text-slate-300">Ba²⁺ (Apple-green)</button>
+      <button type="button" onclick="selectFlameCation('Cu')" class="px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-900 text-slate-300">Cu²⁺ (Blue-green)</button>
+      <button type="button" onclick="selectFlameCation('Mg')" class="px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-900 text-slate-300">Mg²⁺ (No colour — UV!)</button>
+    </div>
+    <div id="flameSimOutput" class="p-4 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-300"></div>
+  </div>
 </section>
 <!-- ===== END TAB 12 ===== -->
 </main>
+
+
+<!-- ═══════════ APPLE QUICK JUMP SPOTLIGHT MODAL (⌘K) ═══════════ -->
+<div id="t2SpotlightModal" class="fixed inset-0 z-50 hidden items-start justify-center pt-20 px-4" style="background: rgba(2, 6, 18, 0.72); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);" onclick="if(event.target===this)closeT2Spotlight()">
+  <div class="w-full max-w-xl bg-slate-900 border border-slate-700/80 rounded-2xl shadow-2xl overflow-hidden">
+    <div class="p-3.5 border-b border-slate-800 flex items-center gap-3">
+      <span class="text-sky-400 text-sm">🔎</span>
+      <input id="t2SpotlightInput" type="text" oninput="filterT2Spotlight(this.value)" placeholder="Search Spec 2.1–2.18, IE₂ shifts, isoelectronic ions, mass spec, 3D orbitals..." class="w-full bg-transparent border-0 text-sm text-white focus:outline-none">
+      <button type="button" onclick="closeT2Spotlight()" class="text-[11px] text-slate-400 hover:text-white px-2 py-1 rounded bg-slate-800">ESC</button>
+    </div>
+    <div id="t2SpotlightResults" class="max-h-80 overflow-y-auto divide-y divide-slate-800/70 p-2 text-xs"></div>
+  </div>
+</div>
 
 <footer class="bg-slate-950/90 border-t border-slate-800/60 py-4 text-center text-[11px] text-slate-600 relative z-10">
   Edexcel IAL Chemistry · WCH11 Topic 2 · Atomic Structure & the Periodic Table · Master Studio
@@ -1811,7 +2428,7 @@ document.querySelectorAll('.reveal').forEach(el=>revealObs.observe(el));
 
 /* ── ENGINE MODE SWITCH ── */
 function setMode(p,mode){
-  ['explorer','map','quiz','traps'].forEach(m=>{
+  ['explorer','map','quiz','traps','drill'].forEach(m=>{
     const pan=$(p+'-mode-'+m);if(pan)pan.classList.toggle('hidden',m!==mode);
     const btn=$(p+'-m-'+m);if(btn)btn.className='btn-press px-3 py-1.5 text-[11px] font-semibold rounded-lg border '+(m===mode?'border-sky-700 bg-sky-950/50 text-sky-300':'border-slate-700 text-slate-400 hover:text-sky-300');
   });
@@ -2706,6 +3323,957 @@ const CFG = {
    de-collision with sticky header, tab-hidden detail collapse,
    rAF pause on backgrounded page.
    ════════════════════════════════════════════════════════════ */
+
+/* ══════════════════════════════════════════════════════════════════════════
+   TOPIC 2 INTERACTIVE CONCEPT CHECKERS, SIMULATORS & SYLLABUS ALIGNMENT
+   ══════════════════════════════════════════════════════════════════════════ */
+
+const T2_STATE = {
+  specConf: {},      // 0..12
+  specCheck: {},     // 0..12
+  diagAns: {},       // 0..13
+  pDrillSolved: {},  // 0..4
+  trapChecked: {}    // 0..16
+};
+
+function loadT2State(){
+  try {
+    const raw = localStorage.getItem('wch11_topic2_studio_state_v2');
+    if (raw) Object.assign(T2_STATE, JSON.parse(raw));
+  } catch (e) {}
+}
+
+function saveT2State(){
+  try {
+    localStorage.setItem('wch11_topic2_studio_state_v2', JSON.stringify(T2_STATE));
+  } catch (e) {}
+}
+
+function updateT2Mastery(){
+  let pts = 0;
+  const maxPts = 40; // 13 conf + 13 spec checks + 14 diag Qs
+  for (let i = 0; i < 13; i++) {
+    if (T2_STATE.specConf[i] === 'mastered') pts += 1;
+    else if (T2_STATE.specConf[i] === 'practising') pts += 0.5;
+    if (T2_STATE.specCheck[i]) pts += 1;
+  }
+  for (let i = 0; i < 14; i++) {
+    if (T2_STATE.diagAns[i] !== undefined && T2_STATE.diagAns[i] === T2_DIAG_QS[i].ans) pts += 1;
+  }
+  const pct = Math.min(100, Math.round((pts / maxPts) * 100));
+  const badge = document.getElementById('mastery-percentage');
+  if (badge) badge.textContent = pct + '%';
+
+  const mCnt = Object.values(T2_STATE.specConf).filter(v => v === 'mastered').length;
+  const cCnt = Object.values(T2_STATE.specCheck).filter(Boolean).length;
+  const bar = document.getElementById('t2SyllabusProgressBar');
+  const lbl = document.getElementById('t2SyllabusProgressLabel');
+  if (bar) bar.style.width = Math.round(((mCnt + cCnt) / 26) * 100) + '%';
+  if (lbl) lbl.textContent = `${mCnt} / 13 Cards Mastered · ${cCnt} / 13 Concept Checks Passed`;
+}
+
+/* ── 1. SYLLABUS CARDS (Spec 2.1–2.18) 13 MICRO-CHECKS ── */
+const T2_SPEC_CHECKS = [
+  { spec: '2.1–2.4', q: 'How many protons, neutrons, and electrons are in the nitride ion, ¹⁵₇N³⁻?', opts: ['7 protons, 8 neutrons, 10 electrons', '7 protons, 8 neutrons, 4 electrons', '10 protons, 5 neutrons, 10 electrons'], ans: 0, exp: 'Z = 7 → 7 protons; neutrons = 15 − 7 = 8; 3− charge means 3 extra electrons gained → 7 + 3 = 10 electrons.' },
+  { spec: '2.5', q: 'Why do ³⁵Cl and ³⁷Cl have identical chemical reactions?', opts: ['They have the same number of neutrons in the nucleus.', 'They have the same electronic configuration (1s² 2s² 2p⁶ 3s² 3p⁵).', 'They have the same relative atomic mass.'], ans: 1, exp: 'PEF Jan 2022: Chemical properties depend on electronic configuration (especially outer-shell electrons), which is identical for isotopes of the same element.' },
+  { spec: '2.6', q: 'In a mass spectrometer, a doubly charged ion ⁵⁶Fe²⁺ is formed. At what m/z value is it detected?', opts: ['m/z = 56', 'm/z = 28', 'm/z = 112'], ans: 1, exp: 'Spec 2.6(iv): m/z = mass ÷ charge = 56 ÷ 2 = 28. A 2+ ion is deflected twice as much as a 1+ ion of the same mass.' },
+  { spec: '2.7', q: 'Chlorine has isotopes ³⁵Cl (75%) and ³⁷Cl (25%). What molecular-ion peaks and relative heights appear for Cl₂⁺?', opts: ['Two peaks at m/z 70 and 74 in a 3 : 1 ratio', 'Three peaks at m/z 70, 72, 74 in a 9 : 6 : 1 ratio', 'Three peaks at m/z 70, 72, 74 in a 9 : 3 : 1 ratio'], ans: 1, exp: 'PEF Jan 2020 & Jun 2023: (3/4 + 1/4)² = 9/16 (³⁵Cl³⁵Cl⁺ at 70) : 6/16 (³⁵Cl³⁷Cl⁺ and ³⁷Cl³⁵Cl⁺ at 72) : 1/16 (³⁷Cl³⁷Cl⁺ at 74) = 9 : 6 : 1.' },
+  { spec: '2.8', q: 'Which equation represents the SECOND ionisation energy of calcium?', opts: ['Ca(g) → Ca²⁺(g) + 2e⁻', 'Ca⁺(g) → Ca²⁺(g) + e⁻', 'Ca⁺(s) → Ca²⁺(g) + e⁻'], ans: 1, exp: 'Spec 2.8: 2nd IE removes 1 mole of electrons from 1 mole of gaseous 1+ ions to form 1 mole of gaseous 2+ ions.' },
+  { spec: '2.9 & 2.13', q: 'Which electron-in-boxes arrangement is correct for the 2p sub-shell of a ground-state nitrogen atom (1s² 2s² 2p³)?', opts: ['[↑↓] [↑ ] [  ]', '[↑ ] [↑ ] [↑ ]', '[↑ ] [↓ ] [↑ ]'], ans: 1, exp: 'Hund’s rule: degenerate 2p orbitals are occupied singly with parallel spins before any pairing occurs.' },
+  { spec: '2.10', q: 'Why is the first ionisation energy of sulfur (S) slightly lower than that of phosphorus (P)?', opts: ['Sulfur has more inner electron shells shielding the nucleus.', 'Sulfur removes an electron from a 3d orbital instead of 3p.', 'In sulfur, the electron is removed from a doubly-occupied 3p orbital where spin-pair repulsion makes it easier to remove.'], ans: 2, exp: 'P is 3p³ (↑ ↑ ↑), while S is 3p⁴ (↑↓ ↑ ↑). The two electrons in the same 3p orbital repel each other (spin-pair repulsion).' },
+  { spec: '2.11', q: 'An element has successive IEs (kJ mol⁻¹): 786, 1577, 3232, 4356, 16091, 19805. Which group of the Periodic Table is it in?', opts: ['Group 3', 'Group 4', 'Group 5'], ans: 1, exp: 'The huge jump occurs between the 4th IE (4356) and 5th IE (16091), meaning 4 outer-shell electrons are removed before breaking into an inner quantum shell → Group 4 (Silicon).' },
+  { spec: '2.12', q: 'Which statement accurately describes the 2p sub-shell?', opts: ['One dumbbell-shaped orbital holding up to 6 electrons.', 'Three mutually perpendicular dumbbell-shaped orbitals (px, py, pz), each holding up to 2 electrons.', 'Three spherical orbitals of increasing radius.'], ans: 1, exp: 'Spec 2.12: Each p orbital is dumbbell-shaped (two lobes); three p orbitals lie at 90° along the x, y, and z axes.' },
+  { spec: '2.14', q: 'What is the ground-state electronic configuration of a copper(II) ion, Cu²⁺ (Z = 29)?', opts: ['[Ar] 3d⁷ 4s²', '[Ar] 3d⁹', '[Ar] 3d⁸ 4s¹'], ans: 1, exp: 'PEF Jan 2022: Neutral Cu is [Ar] 3d¹⁰ 4s¹. To form Cu²⁺, remove the 4s¹ electron first and then one 3d electron → [Ar] 3d⁹.' },
+  { spec: '2.15–2.16', q: 'What is the maximum number of electrons that can occupy the 3rd quantum shell (n = 3), and which sub-shells does it contain?', opts: ['8 electrons (3s and 3p only)', '18 electrons (3s², 3p⁶, 3d¹⁰)', '32 electrons (3s², 3p⁶, 3d¹⁰, 3f¹⁴)'], ans: 1, exp: 'Spec 2.16: Max electrons in shell n = 2n² = 2(3)² = 18, accommodated across 3s (2), 3p (6), and 3d (10).' },
+  { spec: '2.17', q: 'Why are logarithms of ionisation energies often plotted on successive-IE and periodic graphs?', opts: ['Because ionisation energies are negative numbers.', 'Because IE values span several orders of magnitude, and a log scale compresses the range so all values and shell jumps fit clearly on one graph.', 'To make the graph a straight horizontal line.'], ans: 1, exp: 'Spec 2.17: Successive IEs range from ~400 to >100,000 kJ mol⁻¹; log₁₀(IE) allows small outer-shell values and huge inner-shell jumps to be visualised together.' },
+  { spec: '2.18', q: 'Why does silicon (Si) have a much higher melting point than phosphorus (P₄) and sulfur (S₈)?', opts: ['Silicon has stronger van der Waals forces between Si molecules.', 'Silicon has a giant metallic lattice with delocalised electrons.', 'Silicon has a giant covalent lattice requiring many strong covalent bonds to be broken, whereas P₄ and S₈ are simple molecular with weak London forces between molecules.'], ans: 2, exp: 'Spec 2.18(i): Always state BOTH the structure type (giant covalent vs simple molecular) AND the bonding/forces overcome.' }
+];
+
+function injectT2SyllabusChecks(){
+  const cards = document.querySelectorAll('#tab-syllabus .grid > .bg-slate-950');
+  cards.forEach((card, idx) => {
+    if (idx >= T2_SPEC_CHECKS.length || card.querySelector('.t2-spec-footer')) return;
+    const item = T2_SPEC_CHECKS[idx];
+    const conf = T2_STATE.specConf[idx] || '';
+    const passed = !!T2_STATE.specCheck[idx];
+
+    const footer = document.createElement('div');
+    footer.className = 't2-spec-footer pt-3 mt-2 border-t border-slate-800/80 space-y-2.5';
+    footer.innerHTML = `
+      <div class="flex flex-wrap items-center justify-between gap-2">
+        <div class="flex items-center gap-1">
+          <span class="text-[10px] font-mono text-slate-400 mr-1">Confidence:</span>
+          <button type="button" onclick="setT2SpecConf(${idx}, 'review')" class="spec-conf-btn conf-review ${conf==='review'?'active':''}" data-t2-conf="${idx}-review">Review</button>
+          <button type="button" onclick="setT2SpecConf(${idx}, 'practising')" class="spec-conf-btn conf-practising ${conf==='practising'?'active':''}" data-t2-conf="${idx}-practising">Practising</button>
+          <button type="button" onclick="setT2SpecConf(${idx}, 'mastered')" class="spec-conf-btn conf-mastered ${conf==='mastered'?'active':''}" data-t2-conf="${idx}-mastered">✓ Mastered</button>
+        </div>
+        <button type="button" onclick="toggleT2SpecCheck(${idx})" id="t2SpecToggle-${idx}" class="text-[11px] font-semibold px-2.5 py-1 rounded-full border ${passed ? 'bg-emerald-950/60 text-emerald-300 border-emerald-700/70' : 'bg-sky-950/60 text-sky-300 border-sky-800/70'} hover:text-white">
+          ${passed ? '✅ Concept Checked' : '⚡ Instant Concept Check'}
+        </button>
+      </div>
+      <div id="t2SpecPanel-${idx}" class="hidden p-3 rounded-xl bg-slate-900/95 border border-slate-800 space-y-2 text-xs">
+        <p class="font-semibold text-white leading-snug">Spec ${item.spec} Check: ${item.q}</p>
+        <div class="space-y-1.5">
+          ${item.opts.map((opt, oIdx) => `
+            <button type="button" onclick="answerT2SpecCheck(${idx}, ${oIdx})" id="t2SpecOpt-${idx}-${oIdx}" class="w-full text-left p-2 rounded-lg border border-slate-800 bg-slate-950/70 hover:border-sky-700 text-slate-300 text-[11px] leading-relaxed">
+              <span class="font-mono text-sky-400 mr-1.5">${String.fromCharCode(65+oIdx)}.</span>${opt}
+            </button>
+          `).join('')}
+        </div>
+        <div id="t2SpecExp-${idx}" class="hidden p-2.5 rounded-lg text-[11px] leading-relaxed"></div>
+      </div>
+    `;
+    card.appendChild(footer);
+  });
+}
+
+function setT2SpecConf(idx, level){
+  T2_STATE.specConf[idx] = level;
+  saveT2State();
+  ['review','practising','mastered'].forEach(l => {
+    const b = document.querySelector(`[data-t2-conf="${idx}-${l}"]`);
+    if (b) b.classList.toggle('active', l === level);
+  });
+  updateT2Mastery();
+}
+
+function toggleT2SpecCheck(idx){
+  const p = document.getElementById('t2SpecPanel-' + idx);
+  if (p) p.classList.toggle('hidden');
+}
+
+function expandAllT2SpecChecks(open){
+  for (let i = 0; i < 13; i++) {
+    const p = document.getElementById('t2SpecPanel-' + i);
+    if (p) p.classList.toggle('hidden', !open);
+  }
+}
+
+function answerT2SpecCheck(idx, optIdx){
+  const item = T2_SPEC_CHECKS[idx];
+  const isOk = optIdx === item.ans;
+  const exp = document.getElementById('t2SpecExp-' + idx);
+  const btn = document.getElementById('t2SpecToggle-' + idx);
+
+  item.opts.forEach((_, oIdx) => {
+    const b = document.getElementById(`t2SpecOpt-${idx}-${oIdx}`);
+    if (!b) return;
+    if (oIdx === item.ans) b.className = 'w-full text-left p-2 rounded-lg border border-emerald-600 bg-emerald-950/40 text-emerald-200 text-[11px] leading-relaxed font-semibold';
+    else if (oIdx === optIdx) b.className = 'w-full text-left p-2 rounded-lg border border-rose-600 bg-rose-950/40 text-rose-200 text-[11px] leading-relaxed';
+  });
+
+  if (exp) {
+    exp.classList.remove('hidden');
+    exp.className = 'p-2.5 rounded-lg text-[11px] leading-relaxed ' + (isOk ? 'bg-emerald-950/50 border border-emerald-800 text-emerald-200' : 'bg-amber-950/50 border border-amber-800 text-amber-200');
+    exp.innerHTML = (isOk ? '<b>✓ Full Marks!</b> ' : '<b>✗ Examiner Watch-Out:</b> ') + item.exp;
+  }
+
+  if (isOk) {
+    T2_STATE.specCheck[idx] = true;
+    if (!T2_STATE.specConf[idx]) setT2SpecConf(idx, 'mastered');
+    saveT2State();
+    if (btn) {
+      btn.textContent = '✅ Concept Checked';
+      btn.className = 'text-[11px] font-semibold px-2.5 py-1 rounded-full border bg-emerald-950/60 text-emerald-300 border-emerald-700/70';
+    }
+    updateT2Mastery();
+  }
+}
+
+function resetT2SyllabusTracker(){
+  T2_STATE.specConf = {};
+  T2_STATE.specCheck = {};
+  saveT2State();
+  document.querySelectorAll('.spec-conf-btn').forEach(b => b.classList.remove('active'));
+  for (let i = 0; i < 13; i++) {
+    const t = document.getElementById('t2SpecToggle-' + i);
+    if (t) {
+      t.textContent = '⚡ Instant Concept Check';
+      t.className = 'text-[11px] font-semibold px-2.5 py-1 rounded-full border bg-sky-950/60 text-sky-300 border-sky-800/70 hover:text-white';
+    }
+    const exp = document.getElementById('t2SpecExp-' + i);
+    if (exp) exp.classList.add('hidden');
+  }
+  updateT2Mastery();
+}
+
+/* ── 2. TAB 2 DRILL: PARTICLE & ISOELECTRONIC SERIES SIMULATOR ── */
+const PARTICLE_DRILL_DATA = [
+  { sym: '³¹₁₅P³⁻', p: 15, n: 16, e: 18, note: '3− anion gains 3 electrons (15 + 3 = 18 e⁻, isoelectronic with Ar).' },
+  { sym: '⁵⁶₂₆Fe³⁺', p: 26, n: 30, e: 23, note: '3+ cation loses 3 electrons (4s² and one 3d → [Ar] 3d⁵, 23 e⁻).' },
+  { sym: '⁷⁹₃₅Br⁻', p: 35, n: 44, e: 36, note: '1− anion gains 1 electron (35 + 1 = 36 e⁻, isoelectronic with Kr).' },
+  { sym: '⁴⁰₂₀Ca²⁺', p: 20, n: 20, e: 18, note: '2+ cation loses its two 4s electrons (20 − 2 = 18 e⁻, isoelectronic with Ar).' },
+  { sym: '⁵²₂₄Cr²⁺', p: 24, n: 28, e: 22, note: '2+ cation has 24 protons, 52 − 24 = 28 neutrons, and 24 − 2 = 22 electrons ([Ar] 3d⁴).' }
+];
+
+function loadParticleDrill(){
+  ['pDrillP','pDrillN','pDrillE'].forEach(id => { const el=document.getElementById(id); if(el) el.value=''; });
+  const fb = document.getElementById('pDrillFeedback');
+  if (fb) fb.innerHTML = '<span class="text-slate-400">Enter protons, neutrons, and electrons above, then click <b>Check p⁺, n⁰, e⁻ Count</b>.</span>';
+}
+
+function checkParticleDrill(){
+  const idx = parseInt((document.getElementById('pDrillSelect') || {}).value || '0', 10);
+  const d = PARTICLE_DRILL_DATA[idx];
+  const p = parseInt(document.getElementById('pDrillP').value, 10);
+  const n = parseInt(document.getElementById('pDrillN').value, 10);
+  const e = parseInt(document.getElementById('pDrillE').value, 10);
+  const ok = p === d.p && n === d.n && e === d.e;
+  if (ok) T2_STATE.pDrillSolved[idx] = true;
+  const sc = document.getElementById('pDrillScore');
+  if (sc) sc.textContent = `Score: ${Object.values(T2_STATE.pDrillSolved).filter(Boolean).length} / 5`;
+
+  document.getElementById('pDrillFeedback').innerHTML = `
+    <div class="font-bold ${ok ? 'text-emerald-300' : 'text-amber-300'}">${ok ? '✓ Spot On!' : '✗ Check Your Counts:'} ${d.sym} → p⁺ = ${d.p}, n⁰ = ${d.n}, e⁻ = ${d.e}</div>
+    <div class="text-[11px] text-slate-300 mt-1">${d.note}</div>
+  `;
+}
+
+function revealParticleDrill(){
+  const idx = parseInt((document.getElementById('pDrillSelect') || {}).value || '0', 10);
+  const d = PARTICLE_DRILL_DATA[idx];
+  document.getElementById('pDrillP').value = d.p;
+  document.getElementById('pDrillN').value = d.n;
+  document.getElementById('pDrillE').value = d.e;
+  checkParticleDrill();
+}
+
+const ISO_IONS = [
+  { sym: 'N³⁻', z: 7, r: 146, desc: 'Lowest nuclear charge (7 protons) pulling on 10 electrons → weakest attraction → LARGEST radius in the 10-electron isoelectronic series.' },
+  { sym: 'O²⁻', z: 8, r: 140, desc: '8 protons pulling on 10 electrons (1s² 2s² 2p⁶). Smaller than N³⁻ because nuclear charge is higher with identical shielding.' },
+  { sym: 'F⁻', z: 9, r: 133, desc: '9 protons pulling on 10 electrons (1s² 2s² 2p⁶). Stronger nuclear pull contracts the 2nd shell further.' },
+  { sym: 'Ne', z: 10, r: 112, desc: 'Neutral neon atom (10 protons, 10 electrons, van der Waals radius).' },
+  { sym: 'Na⁺', z: 11, r: 102, desc: '11 protons pulling on 10 electrons! Losing the 3s¹ shell causes a sharp drop in radius compared to neutral Na (186 pm).' },
+  { sym: 'Mg²⁺', z: 12, r: 72, desc: '12 protons pulling on 10 electrons → much smaller than Na⁺ → higher charge density and stronger metallic/ionic bonding.' },
+  { sym: 'Al³⁺', z: 13, r: 54, desc: 'Highest nuclear charge (13 protons) pulling on the same 10 electrons with the same shielding → SMALLEST radius (highest polarising power).' }
+];
+
+function selectIsoIon(idx){
+  const d = ISO_IONS[idx];
+  const btns = document.querySelectorAll('#isoIonBtns button');
+  btns.forEach((b, i) => {
+    b.className = i === idx
+      ? 'px-3 py-1.5 rounded-lg text-xs font-mono font-bold border border-purple-600 bg-purple-950/50 text-purple-200'
+      : 'px-3 py-1.5 rounded-lg text-xs font-mono font-bold border border-slate-700 bg-slate-900 text-slate-300';
+  });
+  const out = document.getElementById('isoIonOutput');
+  if (!out) return;
+  const barW = Math.round((d.r / 150) * 100);
+  out.innerHTML = `
+    <div class="flex items-center justify-between">
+      <span class="font-bold text-white text-sm font-mono">${d.sym} &nbsp;·&nbsp; Z = ${d.z} protons &nbsp;·&nbsp; 10 e⁻ (1s² 2s² 2p⁶)</span>
+      <span class="font-mono text-purple-300 font-bold">Radius ≈ ${d.r} pm</span>
+    </div>
+    <div class="w-full h-3 bg-slate-950 rounded-full overflow-hidden border border-slate-800">
+      <div class="h-full bg-gradient-to-r from-purple-500 to-sky-400 transition-all duration-300" style="width:${barW}%"></div>
+    </div>
+    <p class="text-[11px] text-slate-300 leading-relaxed">${d.desc}</p>
+  `;
+}
+
+/* ── 3. TAB 3 DRILL: IE EQUATION GRADER & IE1/IE2 DUELS ── */
+const IE_EQ_CHALLENGES = [
+  {
+    opts: [
+      '½Cl₂(g) → Cl⁺(g) + e⁻',
+      'Cl(g) → Cl⁺(g) + e⁻',
+      'Cl(g) + e⁻ → Cl⁻(g)',
+      'Cl₂(g) → 2Cl⁺(g) + 2e⁻'
+    ],
+    ans: 1,
+    exp: 'PEF Jan 2020: 1st IE is defined per mole of gaseous ATOMS, Cl(g), never the diatomic molecule Cl₂(g). Option C is 1st electron affinity.'
+  },
+  {
+    opts: [
+      'Mg(g) → Mg²⁺(g) + 2e⁻',
+      'Mg⁺(g) → Mg²⁺(g) + e⁻',
+      'Mg⁺(s) → Mg²⁺(s) + e⁻',
+      'Mg²⁺(g) → Mg³⁺(g) + e⁻'
+    ],
+    ans: 1,
+    exp: 'Spec 2.8: 2nd IE removes one mole of electrons from one mole of gaseous 1+ ions: Mg⁺(g) → Mg²⁺(g) + e⁻.'
+  },
+  {
+    opts: [
+      'Al²⁺(g) → Al³⁺(g) + e⁻',
+      'Al(g) → Al³⁺(g) + 3e⁻',
+      'Al³⁺(g) → Al⁴⁺(g) + e⁻',
+      'Al²⁺(aq) → Al³⁺(aq) + e⁻'
+    ],
+    ans: 0,
+    exp: 'The 3rd IE starts from the gaseous 2+ ion, Al²⁺(g), and removes 1 electron to form Al³⁺(g).'
+  },
+  {
+    opts: [
+      'Na(g) → Na²⁺(g) + 2e⁻',
+      'Na⁺(g) → Na²⁺(g) + e⁻   [removes e⁻ from 2p⁶ inner shell!]',
+      'Na²⁺(g) → Na³⁺(g) + e⁻',
+      'Na(s) → Na⁺(g) + e⁻'
+    ],
+    ans: 1,
+    exp: 'Na⁺(g) → Na²⁺(g) + e⁻ removes an electron from the full 2p⁶ inner shell (4562 kJ mol⁻¹ — highest 2nd IE in Period 3!).'
+  },
+  {
+    opts: [
+      'Br(l) → Br⁺(g) + e⁻',
+      '½Br₂(l) → Br⁺(g) + e⁻',
+      'Br(g) → Br⁺(g) + e⁻',
+      'Br₂(g) → Br₂⁺(g) + e⁻'
+    ],
+    ans: 2,
+    exp: 'Even though bromine is a liquid (Br₂(l)) at r.t.p., first ionisation energy ALWAYS starts from 1 mole of gaseous atoms: Br(g) → Br⁺(g) + e⁻.'
+  }
+];
+
+function renderIeEqChallenge(){
+  const idx = parseInt((document.getElementById('ieEqTarget') || {}).value || '0', 10);
+  const item = IE_EQ_CHALLENGES[idx];
+  const box = document.getElementById('ieEqOptions');
+  if (!box) return;
+  box.innerHTML = item.opts.map((o, i) => `
+    <button type="button" onclick="checkIeEq(${idx}, ${i})" class="w-full text-left p-2.5 rounded-lg border border-slate-800 bg-slate-900 hover:border-rose-500 font-mono text-xs text-slate-200">
+      ${String.fromCharCode(65+i)}. &nbsp;${o}
+    </button>
+  `).join('');
+  document.getElementById('ieEqFeedback').innerHTML = '<span class="text-slate-400">Click an equation above to check against the Edexcel Mark Scheme.</span>';
+}
+
+function checkIeEq(idx, choice){
+  const item = IE_EQ_CHALLENGES[idx];
+  const ok = choice === item.ans;
+  const fb = document.getElementById('ieEqFeedback');
+  fb.innerHTML = `<div class="${ok ? 'text-emerald-300' : 'text-amber-300'} font-bold">${ok ? '✓ Full Marks!' : '✗ Examiner Trap!'}</div><div class="mt-1 text-slate-300">${item.exp}</div>`;
+}
+
+const IE_DUELS = [
+  { a: 'Be (1s² 2s²)', b: 'B (1s² 2s² 2p¹)', winner: 0, vals: 'Be = 900 vs B = 801 kJ mol⁻¹', why: 'In Boron, the outer electron is removed from a <b>2p sub-shell</b> which is higher in energy and shielded by the 2s² electrons, so less energy is needed than for Be.' },
+  { a: 'N (2s² 2p³: ↑ ↑ ↑)', b: 'O (2s² 2p⁴: ↑↓ ↑ ↑)', winner: 0, vals: 'N = 1402 vs O = 1314 kJ mol⁻¹', why: 'In Oxygen, the electron is removed from a <b>doubly-occupied 2p orbital</b>. Spin-pair repulsion between the two paired electrons makes it easier to remove than from Nitrogen’s singly-occupied 2p orbitals.' },
+  { a: '2nd IE of Na (Na⁺ = 1s² 2s² 2p⁶)', b: '2nd IE of Mg (Mg⁺ = [Ne] 3s¹)', winner: 0, vals: 'Na IE₂ = 4562 vs Mg IE₂ = 1451 kJ mol⁻¹', why: 'Na⁺ loses its second electron from a <b>full 2nd quantum shell (2p⁶)</b> much closer to the nucleus with far less shielding, whereas Mg⁺ loses its 3s¹ electron from the 3rd shell.' },
+  { a: '2nd IE of B (B⁺ = 1s² 2s²)', b: '2nd IE of C (C⁺ = 1s² 2s² 2p¹)', winner: 0, vals: 'B IE₂ = 2427 vs C IE₂ = 2353 kJ mol⁻¹', why: 'Shifted Be/B anomaly! C⁺ (1s² 2s² 2p¹) loses its second electron from the higher-energy, more-shielded <b>2p sub-shell</b>, whereas B⁺ (1s² 2s²) loses from the 2s sub-shell.' },
+  { a: '2nd IE of O (O⁺ = 2s² 2p³: ↑ ↑ ↑)', b: '2nd IE of F (F⁺ = 2s² 2p⁴: ↑↓ ↑ ↑)', winner: 0, vals: 'O IE₂ = 3388 vs F IE₂ = 3374 kJ mol⁻¹', why: 'Shifted N/O anomaly! F⁺ has 4 electrons in 2p (one spin-paired 2p orbital → <b>spin-pair repulsion</b>), whereas O⁺ has 3 unpaired 2p electrons (half-filled sub-shell).' },
+  { a: '1st IE of Mg ([Ne] 3s²)', b: '1st IE of Al ([Ne] 3s² 3p¹)', winner: 0, vals: 'Mg = 738 vs Al = 578 kJ mol⁻¹', why: 'In Aluminium, the electron is removed from the <b>3p sub-shell</b>, which is higher in energy and further from the nucleus (shielded by 3s²) than Magnesium’s 3s electron.' }
+];
+
+function renderIeDuel(){
+  const idx = parseInt((document.getElementById('ieDuelSelect') || {}).value || '0', 10);
+  const d = IE_DUELS[idx];
+  const box = document.getElementById('ieDuelBody');
+  if (!box) return;
+  box.innerHTML = `
+    <p class="text-slate-300">Which species requires <b>MORE energy</b> (higher IE)?</p>
+    <div class="grid grid-cols-2 gap-2">
+      <button type="button" onclick="answerIeDuel(${idx}, 0)" class="p-3 rounded-xl border border-slate-800 bg-slate-900 hover:border-amber-500 font-mono text-xs text-white font-bold">${d.a}</button>
+      <button type="button" onclick="answerIeDuel(${idx}, 1)" class="p-3 rounded-xl border border-slate-800 bg-slate-900 hover:border-amber-500 font-mono text-xs text-white font-bold">${d.b}</button>
+    </div>
+    <div id="ieDuelOut" class="p-3.5 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-400">Click one of the two species above to test your prediction.</div>
+  `;
+}
+
+function answerIeDuel(idx, choice){
+  const d = IE_DUELS[idx];
+  const ok = choice === d.winner;
+  const out = document.getElementById('ieDuelOut');
+  out.innerHTML = `
+    <div class="font-bold ${ok ? 'text-emerald-300' : 'text-amber-300'}">${ok ? '✓ Correct!' : '✗ Careful —'} ${d.vals}</div>
+    <div class="mt-1 text-slate-200 leading-relaxed">${d.why}</div>
+  `;
+}
+
+/* ── 4. TAB 4 DRILL: ELECTRONIC CONFIG, BLOCK & UNPAIRED ELECTRONS ── */
+const EC_DRILL_DATA = {
+  'Cr':   { block: 'd', unp: 6, cfg: '3d5 4s1', note: 'Chromium exception! Half-filled 3d⁵ (5 unpaired) + 4s¹ (1 unpaired) = 6 unpaired electrons total.' },
+  'Cu':   { block: 'd', unp: 1, cfg: '3d10 4s1', note: 'Copper exception! Full 3d¹⁰ (0 unpaired) + 4s¹ (1 unpaired) = 1 unpaired electron.' },
+  'Cu2+': { block: 'd', unp: 1, cfg: '3d9', note: 'PEF Jan 2022: Cu loses 4s¹ AND one 3d electron → [Ar] 3d⁹ (1 unpaired electron).' },
+  'Fe2+': { block: 'd', unp: 4, cfg: '3d6', note: 'Fe ([Ar] 3d⁶ 4s²) loses both 4s electrons first → [Ar] 3d⁶ (1 pair + 4 unpaired = 4 unpaired e⁻).' },
+  'Fe3+': { block: 'd', unp: 5, cfg: '3d5', note: 'Fe³⁺ is [Ar] 3d⁵ — half-filled 3d sub-shell with 5 unpaired electrons (extra stability!).' },
+  'N':    { block: 'p', unp: 3, cfg: '2s2 2p3', note: 'Nitrogen is 1s² 2s² 2p³ — Hund’s rule puts 1 electron in each of the three 2p orbitals → 3 unpaired e⁻.' },
+  'S':    { block: 'p', unp: 2, cfg: '3s2 3p4', note: 'Sulfur is [Ne] 3s² 3p⁴ (↑↓ ↑ ↑) → 1 paired 3p orbital and 2 unpaired electrons.' },
+  'Cl-':  { block: 'p', unp: 0, cfg: '3s2 3p6', note: 'PEF Oct 2019: Chloride ion Cl⁻ has 18 electrons (1s² 2s² 2p⁶ 3s² 3p⁶) — all orbitals full, 0 unpaired e⁻.' }
+};
+
+function resetEcFeedback(){
+  const fb = document.getElementById('ecFeedback');
+  if (fb) fb.innerHTML = '<span class="text-slate-400">Select block, unpaired e⁻ count, and outer configuration, then click <b>Grade Configuration</b>.</span>';
+}
+
+function fillEcDrill(){
+  const k = document.getElementById('ecTarget').value;
+  const d = EC_DRILL_DATA[k];
+  document.getElementById('ecBlock').value = d.block;
+  document.getElementById('ecUnpaired').value = d.unp;
+  document.getElementById('ecConfigIn').value = d.cfg;
+  checkEcDrill();
+}
+
+function checkEcDrill(){
+  const k = document.getElementById('ecTarget').value;
+  const d = EC_DRILL_DATA[k];
+  const b = document.getElementById('ecBlock').value;
+  const u = parseInt(document.getElementById('ecUnpaired').value, 10);
+  const c = (document.getElementById('ecConfigIn').value || '').toLowerCase().replace(/\s+/g, '');
+  const bOk = b === d.block;
+  const uOk = u === d.unp;
+  const cOk = c.includes(d.cfg.replace(/\s+/g, ''));
+
+  document.getElementById('ecFeedback').innerHTML = `
+    <div class="font-bold text-white">Target: ${k} &nbsp;→&nbsp; Expected Outer Config: <span class="font-mono text-cyan-300">${d.cfg}</span></div>
+    <div class="mt-1 space-y-0.5">
+      <div class="${bOk ? 'text-emerald-300' : 'text-rose-300'}">${bOk ? '✓' : '✗'} Block: <b>${d.block}-block</b></div>
+      <div class="${uOk ? 'text-emerald-300' : 'text-rose-300'}">${uOk ? '✓' : '✗'} Unpaired electrons: <b>${d.unp}</b></div>
+      <div class="${cOk ? 'text-emerald-300' : 'text-amber-300'}">${cOk ? '✓' : 'ℹ️'} Configuration notation: <b>${d.cfg}</b></div>
+    </div>
+    <div class="mt-1.5 text-[11px] text-slate-300">${d.note}</div>
+  `;
+}
+
+/* ── 5. TAB 5 SECTION 10: AUTOMATED EXPLANATION KEYWORD GRADER ── */
+const AUTO_EXPLAIN_RUBRICS = {
+  beb: {
+    model: 'Boron’s outer electron is in a 2p sub-shell which is at a higher energy level (and further from the nucleus) than Beryllium’s 2s electron, and is shielded by the full 2s² sub-shell, so less energy is needed to remove it.',
+    checks: [
+      { label: 'M1: Identifies 2p sub-shell (in B) vs 2s sub-shell (in Be) at higher energy', re: /2p.*(higher|energy|2s)|higher.*energy.*2p/i },
+      { label: 'M2: Mentions additional shielding by 2s² / further from nucleus → less energy needed', re: /(shield|further|less attraction|easier to remove|less energy)/i }
+    ],
+    traps: [
+      { msg: 'Examiner Penalty: Do not say "2p shell" — 2p is a sub-shell (or orbital) within the 2nd quantum shell.', re: /2p\s+shell/i }
+    ]
+  },
+  no: {
+    model: 'In oxygen, the outer electron is removed from a doubly-occupied (paired) 2p orbital, whereas nitrogen has three singly-occupied 2p orbitals. Spin-pair repulsion between the two electrons in the same 2p orbital makes the electron easier to remove.',
+    checks: [
+      { label: 'M1: Electron in O is in a paired / doubly-occupied 2p ORBITAL (vs singly-occupied in N)', re: /(pair|two electrons|doubly).*2p\s*orbital|2p\s*orbital.*(pair|two electrons|doubly)/i },
+      { label: 'M2: Spin-pair repulsion (electron-electron repulsion in the orbital) lowers energy needed', re: /repul/i }
+    ],
+    traps: [
+      { msg: 'Examiner Penalty (PEF Oct 2023): Saying "paired in the 2p sub-shell" without specifying "orbital" loses M1!', re: /same\s+2p\s+sub[- ]?shell/i }
+    ]
+  },
+  namg2: {
+    model: 'Na⁺ has configuration 1s² 2s² 2p⁶, so the second electron is removed from an inner 2nd quantum shell (2p), whereas Mg⁺ ([Ne] 3s¹) loses its second electron from the 3rd shell (3s). The 2p electron in Na⁺ is much closer to the nucleus and experiences much less shielding, so attraction is much stronger.',
+    checks: [
+      { label: 'M1: Na⁺ loses e⁻ from 2nd shell / 2p⁶ (inner shell) vs Mg⁺ from 3rd shell / 3s¹', re: /(2p|second shell|2nd shell|inner shell)/i },
+      { label: 'M2: Closer to the nucleus AND less shielding in Na⁺', re: /(closer|distance).*(shield)|shield.*(closer|distance)/i },
+      { label: 'M3: Stronger nuclear attraction on outer electron in Na⁺', re: /stronger.*attract|more energy/i }
+    ],
+    traps: []
+  },
+  iso: {
+    model: 'All ions from N³⁻ to Al³⁺ are isoelectronic with 10 electrons (1s² 2s² 2p⁶), so they have the same number of shells and identical shielding. From N³⁻ to Al³⁺ the number of protons (nuclear charge) increases from 7 to 13, attracting the outer shell electrons more strongly and pulling them closer to the nucleus.',
+    checks: [
+      { label: 'M1: Same number of electrons (10 e⁻ / 1s² 2s² 2p⁶) and same shielding / shells', re: /(10\s*electrons|same.*electron|isoelectronic|same.*shield)/i },
+      { label: 'M2: Nuclear charge / number of protons increases (from N³⁻ to Al³⁺)', re: /(proton|nuclear charge).*increas|increas.*(proton|nuclear charge)/i },
+      { label: 'M3: Stronger attraction pulls electrons closer to nucleus', re: /(stronger.*attract|pull.*closer)/i }
+    ],
+    traps: []
+  },
+  sicl: {
+    model: 'Silicon has a giant covalent lattice structure, so melting requires breaking many strong covalent bonds between Si atoms. Chlorine (Cl₂) has a simple molecular structure, so melting only overcomes weak van der Waals (London dispersion) forces between Cl₂ molecules, requiring much less energy.',
+    checks: [
+      { label: 'M1: Si = giant covalent (macromolecular) AND Cl₂ = simple molecular', re: /giant\s*covalent.*simple\s*molecular|simple\s*molecular.*giant\s*covalent/i },
+      { label: 'M2: Si breaks strong covalent bonds', re: /(strong\s*)?covalent\s*bonds/i },
+      { label: 'M3: Cl₂ overcomes weak London / van der Waals / intermolecular forces', re: /(london|van der waals|intermolecular)/i }
+    ],
+    traps: [
+      { msg: 'Fatal Trap: Never say covalent bonds break when Cl₂ melts!', re: /break.*covalent.*in\s*cl/i }
+    ]
+  }
+};
+
+function resetAutoExplain(){
+  const out = document.getElementById('autoExplainOutput');
+  if (out) out.innerHTML = '<p class="text-slate-400">Type your explanation on the left and click <b>Auto-Grade My Answer</b>.</p>';
+}
+
+function showAutoExplainModel(){
+  const k = document.getElementById('autoExplainQ').value;
+  document.getElementById('autoExplainInput').value = AUTO_EXPLAIN_RUBRICS[k].model;
+  gradeAutoExplain();
+}
+
+function gradeAutoExplain(){
+  const k = document.getElementById('autoExplainQ').value;
+  const txt = (document.getElementById('autoExplainInput').value || '').trim();
+  const out = document.getElementById('autoExplainOutput');
+  if (!txt) {
+    out.innerHTML = '<p class="text-amber-300">Please enter an answer first or click <b>Load Model</b>.</p>';
+    return;
+  }
+  const rub = AUTO_EXPLAIN_RUBRICS[k];
+  let hit = 0;
+  const rows = rub.checks.map(c => {
+    const ok = c.re.test(txt);
+    if (ok) hit++;
+    return `<div class="${ok ? 'text-emerald-300' : 'text-rose-300'}">${ok ? '✓' : '✗'} ${c.label}</div>`;
+  });
+  const traps = rub.traps.filter(t => t.re.test(txt)).map(t => `<div class="text-amber-300 font-semibold">⚠️ ${t.msg}</div>`);
+  out.innerHTML = `
+    <div class="font-bold text-white text-sm">Mark Scheme Score: ${hit} / ${rub.checks.length} Marks</div>
+    <div class="space-y-1">${rows.join('')}</div>
+    ${traps.join('')}
+    <div class="pt-2 border-t border-slate-800 text-[11px] text-slate-400"><b>Exemplar Full-Mark Answer:</b> “${rub.model}”</div>
+  `;
+}
+
+/* ── 6. TAB 6 TRENDS STUDIO UPGRADE: IE2 OVERLAY, LOG(IE1), AND PERIOD 2 MP/BP ── */
+const IE2_VALS = [null, 5251, 7298, 1757, 2427, 2353, 2856, 3388, 3374, 3952, 4562, 1451, 1817, 1577, 1907, 2252, 2298, 2666, 3052, 1145];
+let currentIePlotMode = 'ie1';
+let currentMpPeriod = 'p3';
+
+const P2_MP_SYM = ['Li','Be','B','C','N₂','O₂','F₂','Ne'];
+const P2_MP_VAL = [454, 1560, 2349, 3823, 63, 54, 53, 25];
+const P2_MP_TYPE = ['metallic','metallic','covalent','covalent','molecular','molecular','molecular','molecular'];
+const P2_MP_EXPLAIN = {
+  'Li': '<strong class="text-sky-300">Giant metallic (454 K).</strong> Li⁺ has a 1+ charge and 1 delocalised electron per atom → moderate metallic bonding.',
+  'Be': '<strong class="text-sky-300">Giant metallic (1560 K).</strong> Be²⁺ has a smaller ionic radius, 2+ charge, and 2 delocalised electrons per atom → much stronger metallic bonding than Li.',
+  'B': '<strong class="text-amber-300">Giant covalent icosahedral network (2349 K).</strong> Many strong B–B covalent bonds must be broken throughout the lattice.',
+  'C': '<strong class="text-amber-300">Giant covalent — Diamond/Graphite (~3823 K sublimation).</strong> Each carbon forms 4 (diamond) or 3 (graphite) very strong, short covalent bonds → highest melting/sublimation point in the Period.',
+  'N₂': '<strong class="text-rose-300">Simple molecular gas (63 K).</strong> Only weak London dispersion forces between discrete N₂ molecules are overcome (the strong N≡N triple bond is NOT broken!).',
+  'O₂': '<strong class="text-rose-300">Simple molecular gas (54 K).</strong> Small diatomic molecule held by weak London dispersion forces.',
+  'F₂': '<strong class="text-rose-300">Simple molecular gas (53 K).</strong> Weak London dispersion forces between F₂ molecules.',
+  'Ne': '<strong class="text-rose-300">Monatomic gas (25 K).</strong> Single atoms with 10 tightly held electrons → weakest London forces → lowest mp in Period 2.'
+};
+
+function setIePlotMode(mode){
+  currentIePlotMode = mode;
+  ['ie1','log','ie2'].forEach(m => {
+    const b = document.getElementById('iePlotBtn-' + m);
+    if (!b) return;
+    b.className = m === mode
+      ? 'px-2.5 py-1 rounded-full bg-purple-950 text-purple-300 border border-purple-700 font-bold'
+      : 'px-2.5 py-1 rounded-full bg-slate-900 text-slate-400 border border-slate-700 hover:text-white';
+  });
+  drawIE();
+}
+
+function setMpPlotPeriod(p){
+  currentMpPeriod = p;
+  ['p3','p2'].forEach(k => {
+    const b = document.getElementById('mpPlotBtn-' + k);
+    if (!b) return;
+    b.className = k === p
+      ? 'px-2.5 py-1 rounded-full bg-emerald-950 text-emerald-300 border border-emerald-700 font-bold'
+      : 'px-2.5 py-1 rounded-full bg-slate-900 text-slate-400 border border-slate-700 hover:text-white';
+  });
+  drawMP();
+}
+
+// Enhance drawIE and drawMP to support the new modes while preserving original click handlers
+const _origDrawIE = drawIE;
+drawIE = function(){
+  if (currentIePlotMode === 'ie1') { _origDrawIE(); return; }
+  const cv = $('ieCanvas'); if(!cv) return;
+  const c = cv.getContext('2d'); const w0 = cv.parentElement.clientWidth; if(w0<50) return;
+  const dpr = window.devicePixelRatio||1; cv.width = w0*dpr; cv.height = 300*dpr;
+  const W = cv.width, H = cv.height; c.clearRect(0,0,W,H);
+  const pL=48*dpr, pB=30*dpr, pR=14*dpr, pT=18*dpr, gW=W-pL-pR, gH=H-pT-pB;
+
+  if (currentIePlotMode === 'log') {
+    const minL = 2.5, maxL = 3.5;
+    const mx = i => pL + (i/(SYM.length-1))*gW;
+    const my = v => pT + gH - ((Math.log10(v)-minL)/(maxL-minL))*gH;
+    c.strokeStyle='#1e293b'; c.lineWidth=1*dpr;
+    [2.6, 2.8, 3.0, 3.2, 3.4].forEach(g=>{
+      const y = pT + gH - ((g-minL)/(maxL-minL))*gH;
+      c.beginPath(); c.moveTo(pL,y); c.lineTo(pL+gW,y); c.stroke();
+      c.fillStyle='#64748b'; c.font=(9*dpr)+'px "Fira Code"'; c.textAlign='right';
+      c.fillText(g.toFixed(1), pL-6*dpr, y+3*dpr);
+    });
+    c.strokeStyle='#38bdf8'; c.lineWidth=1.8*dpr; c.beginPath();
+    IE1.forEach((v,i)=>{ const x=mx(i), y=my(v); i?c.lineTo(x,y):c.moveTo(x,y); }); c.stroke();
+    iePts=[];
+    IE1.forEach((v,i)=>{
+      const x=mx(i), y=my(v); iePts.push({x,y,i});
+      c.fillStyle=IE_COL[ieCat(i)]; c.beginPath(); c.arc(x,y,4*dpr,0,7); c.fill();
+      c.fillStyle='#94a3b8'; c.font=(8*dpr)+'px "Fira Code"'; c.textAlign='center';
+      c.fillText(SYM[i], x, pT+gH+13*dpr);
+    });
+  } else {
+    // Overlay IE1 (sky) and IE2 (rose/amber)
+    const maxV = 7500;
+    const mx = i => pL + (i/(SYM.length-1))*gW;
+    const my = v => pT + gH - (v/maxV)*gH;
+    c.strokeStyle='#1e293b'; c.lineWidth=1*dpr;
+    for(let g=0; g<=7500; g+=1500){
+      c.beginPath(); c.moveTo(pL,my(g)); c.lineTo(pL+gW,my(g)); c.stroke();
+      c.fillStyle='#64748b'; c.font=(9*dpr)+'px "Fira Code"'; c.textAlign='right';
+      c.fillText(g, pL-6*dpr, my(g)+3*dpr);
+    }
+    // IE1 curve
+    c.strokeStyle='#38bdf8'; c.lineWidth=1.5*dpr; c.beginPath();
+    IE1.forEach((v,i)=>{ const x=mx(i), y=my(v); i?c.lineTo(x,y):c.moveTo(x,y); }); c.stroke();
+    // IE2 curve
+    c.strokeStyle='#f43f5e'; c.lineWidth=1.8*dpr; c.beginPath();
+    IE2_VALS.forEach((v,i)=>{ if(!v) return; const x=mx(i), y=my(v); i===1?c.moveTo(x,y):c.lineTo(x,y); }); c.stroke();
+    iePts=[];
+    IE1.forEach((v,i)=>{
+      const x=mx(i), y=my(IE2_VALS[i]||v); iePts.push({x,y,i});
+      if(IE2_VALS[i]){
+        c.fillStyle='#f43f5e'; c.beginPath(); c.arc(x,my(IE2_VALS[i]),4*dpr,0,7); c.fill();
+      }
+      c.fillStyle='#38bdf8'; c.beginPath(); c.arc(x,my(v),3*dpr,0,7); c.fill();
+      c.fillStyle='#94a3b8'; c.font=(8*dpr)+'px "Fira Code"'; c.textAlign='center';
+      c.fillText(SYM[i], x, pT+gH+13*dpr);
+    });
+  }
+};
+
+const _origDrawMP = drawMP;
+drawMP = function(){
+  if (currentMpPeriod === 'p3') { _origDrawMP(); return; }
+  const cv = $('mpCanvas'); if(!cv) return;
+  const c = cv.getContext('2d'); const w0 = cv.parentElement.clientWidth; if(w0<50) return;
+  const dpr = window.devicePixelRatio||1; cv.width = w0*dpr; cv.height = 260*dpr;
+  const W = cv.width, H = cv.height; c.clearRect(0,0,W,H);
+  const pL=48*dpr, pB=28*dpr, pR=14*dpr, pT=14*dpr, gW=W-pL-pR, gH=H-pT-pB, maxV=4000;
+  const my = v => pT + gH - (v/maxV)*gH;
+  c.strokeStyle='#1e293b'; c.lineWidth=1*dpr;
+  for(let g=0; g<=4000; g+=1000){
+    c.beginPath(); c.moveTo(pL,my(g)); c.lineTo(pL+gW,my(g)); c.stroke();
+    c.fillStyle='#64748b'; c.font=(9*dpr)+'px "Fira Code"'; c.textAlign='right';
+    c.fillText(g, pL-6*dpr, my(g)+3*dpr);
+  }
+  const bw = gW / P2_MP_SYM.length; mpBars=[];
+  P2_MP_VAL.forEach((v,i)=>{
+    const x = pL + i*bw + bw*0.18, bw2 = bw*0.64, y = my(v);
+    c.fillStyle = MP_COL[P2_MP_TYPE[i]]; c.fillRect(x, y, bw2, pT+gH-y);
+    mpBars.push({x, y, w:bw2, i, isP2:true});
+    c.fillStyle='#cbd5e1'; c.font=(9*dpr)+'px "Fira Code"'; c.textAlign='center';
+    c.fillText(P2_MP_SYM[i], x+bw2/2, pT+gH+13*dpr);
+  });
+};
+
+const _origMpClick = mpClick;
+mpClick = function(e){
+  if (currentMpPeriod === 'p3') { _origMpClick(e); return; }
+  const cv=$('mpCanvas'); const r=cv.getBoundingClientRect(); const dpr=window.devicePixelRatio||1;
+  const px=(e.clientX-r.left)*dpr, py=(e.clientY-r.top)*dpr;
+  const hit=mpBars.find(b=>px>=b.x&&px<=b.x+b.w&&py>=b.y);
+  if(hit){
+    const i=hit.i, sym=P2_MP_SYM[i];
+    $('mpCard').innerHTML='<div class="font-display text-lg font-bold text-white">'+sym+' <span class="text-slate-500 text-xs font-mono">mp ≈ '+P2_MP_VAL[i]+' K · '+P2_MP_TYPE[i]+'</span></div><p class="mt-2 text-slate-300">'+P2_MP_EXPLAIN[sym]+'</p>';
+  }
+};
+
+/* ── 7. TAB 7 NEW CALCULATORS: SUCCESSIVE IE JUMP & 3RD ISOTOPE / 2+ SOLVER ── */
+function setSuccPreset(str){
+  const el = document.getElementById('succIeInput');
+  if (el) { el.value = str; solveSuccessiveIeJump(); }
+}
+
+function solveSuccessiveIeJump(){
+  const raw = (document.getElementById('succIeInput') || {}).value || '';
+  const vals = raw.split(',').map(s => parseFloat(s.trim())).filter(v => v > 0);
+  const out = document.getElementById('succIeResult');
+  if (!out) return;
+  if (vals.length < 3) { out.innerHTML = '⚠️ Enter at least 3 successive ionisation energies.'; return; }
+  let maxRatio = 0, jumpAfter = 1;
+  const ratios = [];
+  for (let i = 1; i < vals.length; i++) {
+    const r = vals[i] / vals[i-1];
+    ratios.push(`IE${i+1}/IE${i} = ×${r.toFixed(2)}`);
+    if (r > maxRatio) { maxRatio = r; jumpAfter = i; }
+  }
+  out.innerHTML = `
+    <div class="text-cyan-300 font-bold">Biggest relative jump: between IE<sub>${jumpAfter}</sub> (${vals[jumpAfter-1]}) and IE<sub>${jumpAfter+1}</sub> (${vals[jumpAfter]}) → factor ×${maxRatio.toFixed(2)}</div>
+    <div class="text-emerald-300">Deduction: <b>${jumpAfter} outer-shell electrons</b> → Element is in <b>Group ${jumpAfter}</b>!</div>
+    <div class="text-[11px] text-slate-400">Ratios: ${ratios.join(' · ')}</div>
+  `;
+}
+
+function solveThirdIsotope(){
+  const ar = gv('t3-ar'), m1 = gv('t3-m1'), p1 = gv('t3-p1'), m2 = gv('t3-m2'), p2 = gv('t3-p2');
+  const out = document.getElementById('t3-result');
+  if (!out) return;
+  if ([ar,m1,p1,m2,p2].some(v => v === null)) { out.innerHTML = '⚠️ Fill in Ar and both known isotopes.'; return; }
+  const p3 = +(100 - p1 - p2).toFixed(2);
+  if (p3 <= 0) { out.innerHTML = '⚠️ Known abundances already sum to ≥100%.'; return; }
+  const m3 = (ar * 100 - m1 * p1 - m2 * p2) / p3;
+  const m3Round = Math.round(m3);
+  out.innerHTML = `
+    <div>• 3rd Isotope Abundance = 100 − (${p1} + ${p2}) = <b>${p3}%</b></div>
+    <div>• 3rd Isotope Mass = (${ar}×100 − ${m1}×${p1} − ${m2}×${p2}) ÷ ${p3} = <b>${m3.toFixed(2)} (Mass Number ≈ ${m3Round})</b></div>
+    <div class="text-rose-300">• <b>1+ Ion m/z peaks:</b> ${m1}, ${m2}, ${m3Round} &nbsp;|&nbsp; <b>2+ Ion m/z peaks (M/2):</b> ${m1/2}, ${m2/2}, ${m3Round/2}</div>
+  `;
+}
+
+/* ── 8. TAB 9 DIATOMIC & 2+ MASS SPECTRUM EXPLORER ── */
+const DIATOMIC_SPECS = {
+  'Cl2': {
+    title: 'Chlorine (Cl₂) — ³⁵Cl (75%) & ³⁷Cl (25%)',
+    peaks: [
+      { mz: '17.5 / 18.5', h: 12, col: '#a855f7', lbl: '³⁵Cl²⁺ / ³⁷Cl²⁺ (2+ atomic)' },
+      { mz: '35', h: 75, col: '#38bdf8', lbl: '³⁵Cl⁺ (atomic) & ⁷⁰Cl₂²⁺' },
+      { mz: '36', h: 15, col: '#a855f7', lbl: '³⁵Cl³⁷Cl²⁺ (2+ molecular!)' },
+      { mz: '37', h: 25, col: '#38bdf8', lbl: '³⁷Cl⁺ (atomic) & ⁷⁴Cl₂²⁺' },
+      { mz: '70', h: 100, col: '#10b981', lbl: '³⁵Cl–³⁵Cl⁺ (9/16 = 56.25%)' },
+      { mz: '72', h: 67, col: '#10b981', lbl: '³⁵Cl–³⁷Cl⁺ (6/16 = 37.5%)' },
+      { mz: '74', h: 11, col: '#10b981', lbl: '³⁷Cl–³⁷Cl⁺ (1/16 = 6.25%)' }
+    ],
+    note: 'PEF Jan 2020 & Jun 2023: The molecular ion region has THREE peaks at m/z = 70, 72, 74 in height ratio <b>9 : 6 : 1</b>. Always include the + charge on species (e.g. [³⁵Cl³⁷Cl]⁺). Notice a doubly-charged [³⁵Cl³⁷Cl]²⁺ ion appears at m/z = 72 ÷ 2 = <b>36</b>!'
+  },
+  'Br2': {
+    title: 'Bromine (Br₂) — ⁷⁹Br (50%) & ⁸¹Br (50%)',
+    peaks: [
+      { mz: '79', h: 50, col: '#38bdf8', lbl: '⁷⁹Br⁺ (atomic)' },
+      { mz: '80', h: 18, col: '#a855f7', lbl: '[⁷⁹Br⁸¹Br]²⁺ (2+ ion)' },
+      { mz: '81', h: 50, col: '#38bdf8', lbl: '⁸¹Br⁺ (atomic)' },
+      { mz: '158', h: 50, col: '#f59e0b', lbl: '[⁷⁹Br–⁷⁹Br]⁺ (1/4 = 25%)' },
+      { mz: '160', h: 100, col: '#f59e0b', lbl: '[⁷⁹Br–⁸¹Br]⁺ (2/4 = 50%)' },
+      { mz: '162', h: 50, col: '#f59e0b', lbl: '[⁸¹Br–⁸¹Br]⁺ (1/4 = 25%)' }
+    ],
+    note: 'PEF Jan 2024: Equal 1:1 isotopic abundance gives molecular ion peaks at m/z = 158, 160, 162 in a <b>1 : 2 : 1</b> ratio. The m/z = 160 peak is twice as tall because there are two permutations (⁷⁹Br⁸¹Br⁺ and ⁸¹Br⁷⁹Br⁺).'
+  },
+  'ClF3': {
+    title: 'Chlorine Trifluoride (ClF₃) — ¹⁹F (100%), ³⁵Cl (75%), ³⁷Cl (25%)',
+    peaks: [
+      { mz: '54 / 56', h: 40, col: '#38bdf8', lbl: '³⁵ClF⁺ / ³⁷ClF⁺ (3:1)' },
+      { mz: '73 / 75', h: 65, col: '#38bdf8', lbl: '³⁵ClF₂⁺ / ³⁷ClF₂⁺ (3:1)' },
+      { mz: '92', h: 100, col: '#10b981', lbl: '[³⁵ClF₃]⁺ (M⁺ = 75%)' },
+      { mz: '94', h: 33, col: '#10b981', lbl: '[³⁷ClF₃]⁺ (M+2⁺ = 25%)' }
+    ],
+    note: 'PEF Oct 2019: Since ¹⁹F has only 1 natural isotope (3 × 19 = 57), the molecular ion peaks of ClF₃⁺ appear at m/z = 35+57 = <b>92</b> and 37+57 = <b>94</b> in a <b>3 : 1</b> height ratio.'
+  },
+  'CH2Br2': {
+    title: 'Dibromomethane (CH₂Br₂) — Mᵣ = 172 / 174 / 176',
+    peaks: [
+      { mz: '93 / 95', h: 80, col: '#38bdf8', lbl: 'CH₂⁷⁹Br⁺ / CH₂⁸¹Br⁺ (1:1)' },
+      { mz: '172', h: 50, col: '#f43f5e', lbl: '[CH₂⁷⁹Br₂]⁺ (25%)' },
+      { mz: '174', h: 100, col: '#f43f5e', lbl: '[CH₂⁷⁹Br⁸¹Br]⁺ (50%)' },
+      { mz: '176', h: 50, col: '#f43f5e', lbl: '[CH₂⁸¹Br₂]⁺ (25%)' }
+    ],
+    note: 'Any molecule containing 2 bromine atoms shows a characteristic <b>1 : 2 : 1</b> triplet of molecular ion peaks separated by 2 m/z units (172, 174, 176).'
+  }
+};
+
+function renderDiatomicSpec(key){
+  const d = DIATOMIC_SPECS[key];
+  const box = document.getElementById('diatomicSpecDisplay');
+  if (!box || !d) return;
+  const bars = d.peaks.map(p => `
+    <div class="flex flex-col items-center justify-end h-36 flex-1">
+      <span class="text-[9px] font-mono text-slate-400 mb-1">${p.h}%</span>
+      <div class="w-7 rounded-t transition-all duration-300" style="height:${p.h}%; background:${p.col}"></div>
+      <span class="text-[10px] font-mono font-bold text-white mt-1.5">${p.mz}</span>
+      <span class="text-[9px] text-slate-400 text-center leading-tight mt-0.5">${p.lbl}</span>
+    </div>
+  `).join('');
+  box.innerHTML = `
+    <div class="lg:col-span-7 bg-slate-900 border border-slate-800 rounded-xl p-4">
+      <div class="text-xs font-bold text-white mb-2">${d.title}</div>
+      <div class="flex items-end justify-around gap-2 pt-4 pb-1 border-b border-slate-800">${bars}</div>
+    </div>
+    <div class="lg:col-span-5 bg-slate-900 border border-slate-800 rounded-xl p-4 text-xs text-slate-300 leading-relaxed space-y-2">
+      <span class="text-[10px] font-mono uppercase text-emerald-400 font-bold block">Examiner Report Breakdown</span>
+      <p>${d.note}</p>
+    </div>
+  `;
+}
+
+/* ── 9. TAB 12 FLAME TEST QUANTUM SIMULATOR ── */
+const FLAME_DATA = {
+  'Li': { col: '#e11d48', name: 'Crimson / Red Flame (λ ≈ 670 nm)', desc: 'Heat energy promotes outer 2s¹ electrons to higher excited orbitals; as they fall back to lower energy levels, they emit photons in the red region of the visible spectrum.' },
+  'Na': { col: '#facc15', name: 'Intense Persistent Yellow Flame (λ ≈ 589 nm)', desc: '3p → 3s electronic transition emits bright yellow light. Clean nichrome wire thoroughly with conc. HCl as trace Na⁺ masks other colours!' },
+  'K':  { col: '#c084fc', name: 'Lilac Flame (λ ≈ 766 / 404 nm)', desc: '4p → 4s transition emits violet/lilac light (often viewed through blue cobalt glass to filter out yellow Na⁺ contamination).' },
+  'Ca': { col: '#ea580c', name: 'Brick-Red (Orange-Red) Flame (λ ≈ 622 nm)', desc: 'Characteristic Group 2 calcium emission from 4s/4p electronic transitions.' },
+  'Sr': { col: '#dc2626', name: 'Crimson / Scarlet-Red Flame (λ ≈ 650 nm)', desc: 'Group 2 strontium cation gives a deep crimson-red flame.' },
+  'Ba': { col: '#4ade80', name: 'Apple-Green (Pale Green) Flame (λ ≈ 524 nm)', desc: 'Group 2 barium cation emits characteristic apple-green light.' },
+  'Cu': { col: '#2dd4bf', name: 'Blue-Green Flame (often with white flashes)', desc: 'd-block Cu²⁺ ions emit blue-green visible photons upon thermal excitation and relaxation.' },
+  'Mg': { col: '#64748b', name: 'No Flame Colour Observed!', desc: 'WCH11/WCH13 Classic Question: Why does Mg²⁺ give NO flame colour? The energy gap ΔE between Mg’s electronic energy levels corresponds to <b>ultraviolet (UV)</b> wavelengths, outside the visible spectrum!' }
+};
+
+function selectFlameCation(sym){
+  const d = FLAME_DATA[sym];
+  const out = document.getElementById('flameSimOutput');
+  if (!out || !d) return;
+  out.innerHTML = `
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 rounded-full shrink-0 shadow-lg" style="background:${d.col}; box-shadow: 0 0 18px ${d.col}"></div>
+      <div>
+        <div class="font-bold text-white text-sm">${sym === 'Cu' || sym === 'Ca' || sym === 'Sr' || sym === 'Ba' || sym === 'Mg' ? sym + '²⁺' : sym + '⁺'} &nbsp;→&nbsp; <span style="color:${d.col}">${d.name}</span></div>
+        <div class="text-[11px] text-slate-300 mt-0.5 leading-relaxed">${d.desc}</div>
+      </div>
+    </div>
+  `;
+}
+
+/* ── 10. TAB 8: 14-QUESTION EDEXCEL IAL TOPIC 2 EXAM DIAGNOSTIC ── */
+const T2_DIAG_QS = [
+  { spec: '2.1–2.4', q: 'Which pair of species is isoelectronic (contains the exact same number of electrons)?', opts: ['³⁵Cl and ³⁷Cl', 'Na⁺ and Mg⁺', 'S²⁻ and Cl⁻', 'Fe²⁺ and Co²⁺'], ans: 2, exp: 'S²⁻ (16 + 2 = 18 e⁻) and Cl⁻ (17 + 1 = 18 e⁻) both have the electronic configuration 1s² 2s² 2p⁶ 3s² 3p⁶.' },
+  { spec: '2.5', q: 'Why do isotopes of the same element have slightly different densities and rates of diffusion?', opts: ['They have different numbers of outer-shell electrons.', 'They have different numbers of neutrons and therefore different atomic masses.', 'They have different nuclear charges.'], ans: 1, exp: 'Isotopes have the same Z and electron configuration (same chemical properties), but different neutron counts → different masses → different physical properties.' },
+  { spec: '2.6', q: 'In a time-of-flight / magnetic-sector mass spectrometer, why must the interior be maintained under a high vacuum?', opts: ['To increase the first ionisation energy of the sample.', 'To prevent ions colliding with air molecules, which would deflect or neutralise them.', 'To accelerate the ions towards the detector.'], ans: 1, exp: 'Mark Scheme: Prevents collisions between sample ions and air particles.' },
+  { spec: '2.6(ii)', q: 'Copper has two isotopes, ⁶³Cu and ⁶⁵Cu, and a relative atomic mass of 63.55. What is the percentage abundance of ⁶³Cu?', opts: ['27.5%', '63.6%', '72.5%', '75.0%'], ans: 2, exp: '63x + 65(1 − x) = 63.55 → 2x = 1.45 → x = 0.725 = 72.5%.' },
+  { spec: '2.7', q: 'What is the ratio of peak heights at m/z = 158, 160, and 162 in the mass spectrum of bromine, Br₂?', opts: ['1 : 1 : 1', '1 : 2 : 1', '9 : 6 : 1', '3 : 1 : 1'], ans: 1, exp: '⁷⁹Br and ⁸¹Br have a 1 : 1 abundance ratio, so (1 + 1)² gives 1 : 2 : 1 for ⁷⁹Br₂⁺ : ⁷⁹Br⁸¹Br⁺ : ⁸¹Br₂⁺.' },
+  { spec: '2.8', q: 'Which equation represents the third ionisation energy of manganese (Mn)?', opts: ['Mn(g) → Mn³⁺(g) + 3e⁻', 'Mn²⁺(g) → Mn³⁺(g) + e⁻', 'Mn³⁺(g) → Mn⁴⁺(g) + e⁻', 'Mn²⁺(s) → Mn³⁺(s) + e⁻'], ans: 1, exp: '3rd IE removes 1 mole of electrons from 1 mole of gaseous 2+ ions: Mn²⁺(g) → Mn³⁺(g) + e⁻.' },
+  { spec: '2.9', q: 'What is the maximum number of electrons that can occupy a single 3d orbital, and a whole 3d sub-shell?', opts: ['2 in a 3d orbital; 6 in a 3d sub-shell', '2 in a 3d orbital; 10 in a 3d sub-shell', '10 in a 3d orbital; 18 in a 3d sub-shell'], ans: 1, exp: 'PEF Oct 2023: ANY single orbital holds at most 2 electrons (with opposite spins); the 3d sub-shell has 5 orbitals = 10 electrons max.' },
+  { spec: '2.10', q: 'Which element in Period 3 has a lower first ionisation energy than the element immediately preceding it?', opts: ['Magnesium and Phosphorus', 'Aluminium and Sulfur', 'Silicon and Chlorine'], ans: 1, exp: 'Al (3p¹) is lower than Mg (3s²) due to the higher-energy 3p sub-shell; S (3p⁴) is lower than P (3p³) due to spin-pair repulsion in a 3p orbital.' },
+  { spec: '2.11', q: 'Which element has the HIGHEST second ionisation energy in Period 3?', opts: ['Argon (Ar)', 'Sodium (Na)', 'Magnesium (Mg)', 'Chlorine (Cl)'], ans: 1, exp: 'Na⁺ has the configuration 1s² 2s² 2p⁶, so its 2nd electron is removed from an inner shell (n = 2) closer to the nucleus with much less shielding.' },
+  { spec: '2.13–2.14', q: 'How many unpaired electrons are present in a ground-state chromium atom, Cr (Z = 24)?', opts: ['4', '5', '6', '2'], ans: 2, exp: 'Cr is [Ar] 3d⁵ 4s¹ — all 5 of the 3d orbitals and the 4s orbital are singly occupied → 6 unpaired electrons.' },
+  { spec: '2.14', q: 'What is the electronic configuration of the iron(II) ion, Fe²⁺ (Z = 26)?', opts: ['1s² 2s² 2p⁶ 3s² 3p⁶ 3d⁴ 4s²', '1s² 2s² 2p⁶ 3s² 3p⁶ 3d⁶', '1s² 2s² 2p⁶ 3s² 3p⁶ 3d⁵ 4s¹'], ans: 1, exp: 'Transition metals lose 4s electrons before 3d electrons: Fe ([Ar] 3d⁶ 4s²) loses two 4s electrons → [Ar] 3d⁶.' },
+  { spec: '2.16', q: 'To which block of the Periodic Table does Helium (1s²) belong?', opts: ['s block', 'p block', 'd block'], ans: 0, exp: 'Spec 2.16: Blocks are named after the sub-shell receiving the outer electrons — Helium is 1s², so it is an s-block element.' },
+  { spec: '2.18(i)', q: 'Which Period 3 element has the highest melting pointamong the simple molecular elements (P₄, S₈, Cl₂, Ar)?', opts: ['Phosphorus (P₄)', 'Sulfur (S₈)', 'Chlorine (Cl₂)', 'Argon (Ar)'], ans: 1, exp: 'S₈ has the largest molecule with the most electrons (128 e⁻), giving it the strongest London dispersion (van der Waals) forces.' },
+  { spec: '2.18', q: 'Which ion in the isoelectronic series N³⁻, O²⁻, F⁻, Na⁺, Mg²⁺, Al³⁺ has the SMALLEST ionic radius?', opts: ['N³⁻', 'F⁻', 'Na⁺', 'Al³⁺'], ans: 3, exp: 'All have 10 electrons and identical shielding, but Al³⁺ has the highest nuclear charge (13 protons), pulling the electron shells closest to the nucleus.' }
+];
+
+function renderT2Diagnostic(){
+  const box = document.getElementById('t2DiagContainer');
+  if (!box) return;
+  box.innerHTML = T2_DIAG_QS.map((item, idx) => {
+    const sel = T2_STATE.diagAns[idx];
+    const answered = sel !== undefined;
+    const isOk = sel === item.ans;
+    return `
+      <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-2.5 flex flex-col justify-between">
+        <div class="space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-[10px] font-mono text-rose-400 uppercase font-bold px-2 py-0.5 bg-rose-950 rounded border border-rose-800">Spec ${item.spec}</span>
+            <span class="text-[10px] font-mono ${answered ? (isOk ? 'text-emerald-400' : 'text-amber-400') : 'text-slate-500'}">${answered ? (isOk ? '✓ 1 / 1 Mark' : '✗ 0 / 1 Mark') : 'Unanswered'}</span>
+          </div>
+          <p class="text-xs font-semibold text-white leading-relaxed">${idx+1}. ${item.q}</p>
+          <div class="space-y-1.5">
+            ${item.opts.map((opt, oIdx) => {
+              let cls = 'border-slate-800 bg-slate-950/70 text-slate-300 hover:border-sky-700';
+              if (answered) {
+                if (oIdx === item.ans) cls = 'border-emerald-600 bg-emerald-950/40 text-emerald-200 font-semibold';
+                else if (oIdx === sel) cls = 'border-rose-600 bg-rose-950/40 text-rose-200';
+              }
+              return `
+                <button type="button" onclick="answerT2Diagnostic(${idx}, ${oIdx})" class="w-full text-left p-2 rounded-lg border ${cls} text-[11px] leading-snug">
+                  <span class="font-mono text-sky-400 mr-1.5">${String.fromCharCode(65+oIdx)}.</span>${opt}
+                </button>
+              `;
+            }).join('')}
+          </div>
+        </div>
+        <div class="${answered ? '' : 'hidden'} p-2.5 rounded-lg bg-slate-950 border border-slate-800 text-[11px] text-slate-300 leading-relaxed">
+          <b class="${isOk ? 'text-emerald-400' : 'text-amber-400'}">${isOk ? '✓ Mark Scheme:' : '✗ Examiner Note:'}</b> ${item.exp}
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  let corr = 0;
+  for (let i = 0; i < T2_DIAG_QS.length; i++) if (T2_STATE.diagAns[i] === T2_DIAG_QS[i].ans) corr++;
+  const pct = Math.round((corr / T2_DIAG_QS.length) * 100);
+  const badge = document.getElementById('t2DiagScoreBadge');
+  if (badge) badge.textContent = `${corr} / ${T2_DIAG_QS.length} Correct · ${pct}%`;
+}
+
+function answerT2Diagnostic(qIdx, oIdx){
+  T2_STATE.diagAns[qIdx] = oIdx;
+  saveT2State();
+  renderT2Diagnostic();
+  updateT2Mastery();
+}
+
+function resetT2Diagnostic(){
+  T2_STATE.diagAns = {};
+  saveT2State();
+  renderT2Diagnostic();
+  updateT2Mastery();
+}
+
+function makeT2TrapsInteractive(){
+  const items = document.querySelectorAll('#rev-traps ~ div p');
+  items.forEach((p, idx) => {
+    p.style.cursor = 'pointer';
+    const apply = () => {
+      const on = !!T2_STATE.trapChecked[idx];
+      if (on) {
+        p.innerHTML = p.innerHTML.replace('□', '☑️');
+        p.classList.remove('text-rose-300');
+        p.classList.add('text-emerald-300');
+      } else {
+        p.innerHTML = p.innerHTML.replace('☑️', '□');
+        p.classList.add('text-rose-300');
+        p.classList.remove('text-emerald-300');
+      }
+    };
+    apply();
+    p.addEventListener('click', () => {
+      T2_STATE.trapChecked[idx] = !T2_STATE.trapChecked[idx];
+      saveT2State();
+      apply();
+    });
+  });
+}
+
+/* ── 11. SPOTLIGHT QUICK JUMP MODAL (⌘K) ── */
+const T2_SPOTLIGHT_ITEMS = [
+  { title: 'Spec 2.1–2.18 Master Syllabus & Instant Concept Checks', sub: 'Tab 1 · Syllabus Overview', act: () => switchTab('syllabus') },
+  { title: 'Isoelectronic Series (N³⁻ to Al³⁺) & Particle Drill', sub: 'Tab 2 · Engine 1 Drill', act: () => { switchTab('atom'); setMode('atom','drill'); } },
+  { title: 'IE₁ vs IE₂ Anomaly Duel & Ionisation Equation Grader', sub: 'Tab 3 · Engine 2 Drill', act: () => { switchTab('ie'); setMode('ie','drill'); } },
+  { title: 'Unpaired Electrons, Cr/Cu Exceptions & Config Grader', sub: 'Tab 4 · Engine 3 Drill', act: () => { switchTab('estruct'); setMode('estruct','drill'); } },
+  { title: 'Automated 3-Mark Explanation Keyword Grader', sub: 'Tab 5 · Explanation Builder §10', act: () => switchTab('explain') },
+  { title: 'Period 2 vs Period 3 Melting Points & IE₁/IE₂/log(IE) Studio', sub: 'Tab 6 · Trends Studio', act: () => switchTab('trends') },
+  { title: 'Successive IE Big Jump Group Analyzer & 2+ m/z Calculator', sub: 'Tab 7 · Calculator', act: () => switchTab('calc') },
+  { title: '14-Question Edexcel IAL Topic 2 Exam Readiness Diagnostic', sub: 'Tab 8 · Final Review Diagnostic', act: () => switchTab('review') },
+  { title: 'Animated 500-Ion Mass Spectrometer & Cl₂/Br₂/ClF₃ Predictor', sub: 'Tab 9 · Mass Spec Lab', act: () => switchTab('massspec') },
+  { title: 'Quantum Shell Simulator & Successive IE Log Plot', sub: 'Tab 10 · Shell Simulator', act: () => switchTab('shells') },
+  { title: 'Interactive 3D s & p Orbitals + Live Config Predictor (Z=1–36)', sub: 'Tab 11 · Orbitals & Config', act: () => switchTab('orbitals') },
+  { title: 'WCH13 Bunsen Flame Test & Quantum Emission Simulator', sub: 'Tab 12 · WCH13 Practicals', act: () => switchTab('pracs') }
+];
+
+function openT2Spotlight(){
+  const m = document.getElementById('t2SpotlightModal');
+  if (!m) return;
+  m.classList.remove('hidden'); m.classList.add('flex');
+  const inp = document.getElementById('t2SpotlightInput');
+  if (inp) { inp.value = ''; filterT2Spotlight(''); setTimeout(() => inp.focus(), 40); }
+}
+
+function closeT2Spotlight(){
+  const m = document.getElementById('t2SpotlightModal');
+  if (!m) return;
+  m.classList.add('hidden'); m.classList.remove('flex');
+}
+
+function filterT2Spotlight(q){
+  const term = (q || '').toLowerCase().trim();
+  const res = document.getElementById('t2SpotlightResults');
+  if (!res) return;
+  const matched = T2_SPOTLIGHT_ITEMS.map((it, idx) => ({ it, idx })).filter(({ it }) => !term || it.title.toLowerCase().includes(term) || it.sub.toLowerCase().includes(term));
+  res.innerHTML = matched.length ? matched.map(({ it, idx }) => `
+    <button type="button" onclick="runT2Spotlight(${idx})" class="w-full text-left p-2.5 rounded-xl hover:bg-slate-800/80 flex items-center justify-between gap-2">
+      <div>
+        <div class="font-semibold text-white text-xs">${it.title}</div>
+        <div class="text-[10px] font-mono text-sky-400">${it.sub}</div>
+      </div>
+      <span class="text-slate-500 text-xs">↵</span>
+    </button>
+  `).join('') : '<div class="p-4 text-center text-slate-400">No matching Topic 2 tools found.</div>';
+}
+
+function runT2Spotlight(idx){
+  closeT2Spotlight();
+  if (T2_SPOTLIGHT_ITEMS[idx]) T2_SPOTLIGHT_ITEMS[idx].act();
+}
+
+document.addEventListener('keydown', function(e){
+  if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+    e.preventDefault();
+    openT2Spotlight();
+  } else if (e.key === 'Escape') {
+    closeT2Spotlight();
+  }
+});
+
+document.addEventListener('DOMContentLoaded', function(){
+  loadT2State();
+  injectT2SyllabusChecks();
+  loadParticleDrill();
+  selectIsoIon(0);
+  renderIeEqChallenge();
+  renderIeDuel();
+  resetEcFeedback();
+  solveSuccessiveIeJump();
+  solveThirdIsotope();
+  renderDiatomicSpec('Cl2');
+  selectFlameCation('Li');
+  renderT2Diagnostic();
+  makeT2TrapsInteractive();
+  updateT2Mastery();
+});
+
 const MOBILE_UX = {
           jumpTo(el){ /* rect-math scrollTo - smooth scrollIntoView no-ops on some mobile engines */
             const hdr=document.querySelector('header'), n=document.querySelector('nav.sticky');

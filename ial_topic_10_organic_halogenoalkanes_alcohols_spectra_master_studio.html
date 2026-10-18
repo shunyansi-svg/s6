@@ -192,6 +192,184 @@ nav, nav > div { max-width: 100% !important; }
 }
 /* ===== /MUX mobile layer ===== */
 </style>
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+<style id="apple-hig-organic-theme">
+/* ===== APPLE HIG / macOS SEQUOIA DARK GLASSMORPHISM & SPRING ANIMATIONS ===== */
+:root {
+  --apple-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --apple-spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --apple-glass: rgba(18, 23, 34, 0.74);
+  --apple-glass-elevated: rgba(26, 32, 46, 0.82);
+  --apple-border: rgba(255, 255, 255, 0.085);
+  --apple-specular: inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Inter", sans-serif !important;
+  background:
+    radial-gradient(ellipse 110% 70% at 88% -6%, rgba(56, 189, 248, 0.11), transparent 58%),
+    radial-gradient(ellipse 95% 65% at -8% 24%, rgba(52, 211, 153, 0.09), transparent 55%),
+    radial-gradient(ellipse 90% 65% at 55% 110%, rgba(251, 146, 60, 0.08), transparent 55%),
+    #04070e !important;
+  color: #f5f5f7 !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.011em;
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Space Grotesk", sans-serif !important;
+  letter-spacing: -0.022em;
+}
+
+header {
+  background: rgba(10, 14, 22, 0.76) !important;
+  -webkit-backdrop-filter: saturate(190%) blur(28px) !important;
+  backdrop-filter: saturate(190%) blur(28px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.55), inset 0 -1px 0 0 rgba(255, 255, 255, 0.04) !important;
+}
+
+nav {
+  background: rgba(12, 16, 26, 0.78) !important;
+  -webkit-backdrop-filter: saturate(190%) blur(26px) !important;
+  backdrop-filter: saturate(190%) blur(26px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.075) !important;
+  padding: 6px 0 !important;
+}
+
+nav > div {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.075);
+  border-radius: 14px;
+  padding: 4px !important;
+  gap: 4px !important;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.45);
+}
+
+nav > div > button {
+  border-radius: 10px !important;
+  border-bottom: none !important;
+  padding: 7px 12px !important;
+  transition: all 0.28s var(--apple-spring) !important;
+}
+
+.tab-btn-active {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  border-bottom: none !important;
+  background: linear-gradient(180deg, rgba(56, 189, 248, 0.26) 0%, rgba(14, 165, 233, 0.15) 100%) !important;
+  box-shadow: 0 2px 10px -2px rgba(56, 189, 248, 0.35), inset 0 1px 0 0 rgba(255, 255, 255, 0.22), 0 0 0 1px rgba(56, 189, 248, 0.34) !important;
+}
+
+.bg-slate-900, .bg-slate-950, .bg-slate-900\/95, .bg-slate-900\/80 {
+  background: var(--apple-glass) !important;
+  -webkit-backdrop-filter: saturate(180%) blur(22px);
+  backdrop-filter: saturate(180%) blur(22px);
+  border-color: var(--apple-border) !important;
+  box-shadow: var(--apple-specular), 0 14px 34px -12px rgba(0, 0, 0, 0.48);
+  border-radius: 18px !important;
+  transition: transform 0.36s var(--apple-spring), border-color 0.36s var(--apple-ease), box-shadow 0.36s var(--apple-ease);
+}
+
+.lift {
+  transition: transform 0.38s var(--apple-spring), border-color 0.38s var(--apple-ease), box-shadow 0.38s var(--apple-ease) !important;
+}
+
+.lift:hover {
+  transform: translateY(-3px) scale(1.003) !important;
+  border-color: rgba(56, 189, 248, 0.34) !important;
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.2), 0 22px 44px -14px rgba(0, 0, 0, 0.65), 0 0 28px -8px rgba(56, 189, 248, 0.22) !important;
+}
+
+main > section:not(.hidden) {
+  animation: appleSectionIn 0.44s var(--apple-spring) both;
+}
+
+@keyframes appleSectionIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.994);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+button {
+  transition: transform 0.18s var(--apple-spring), background-color 0.24s var(--apple-ease), border-color 0.24s var(--apple-ease), box-shadow 0.24s var(--apple-ease), color 0.2s var(--apple-ease) !important;
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+button:active:not(:disabled) {
+  transform: scale(0.96) !important;
+}
+
+select, input[type="text"], input[type="number"] {
+  background: rgba(13, 17, 26, 0.86) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 11px !important;
+  padding: 8px 12px !important;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
+  transition: border-color 0.25s var(--apple-ease), box-shadow 0.25s var(--apple-ease);
+}
+
+select:focus, input[type="text"]:focus, input[type="number"]:focus {
+  border-color: rgba(56, 189, 248, 0.65) !important;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.18) !important;
+  outline: none !important;
+}
+
+.blur-answer {
+  filter: blur(5.5px);
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 7px !important;
+  padding: 2px 9px !important;
+  margin: 0 2px;
+  transition: filter 0.35s var(--apple-spring), background-color 0.35s var(--apple-ease), transform 0.25s var(--apple-spring) !important;
+}
+
+.blur-answer.revealed {
+  filter: blur(0);
+  background: rgba(14, 165, 233, 0.18) !important;
+  border-color: rgba(56, 189, 248, 0.42);
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.18);
+}
+
+.apple-pill {
+  background: rgba(255, 255, 255, 0.055);
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 9999px;
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(16px);
+}
+
+.apple-segmented {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 4px;
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+#spotlight-modal {
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  transition: opacity 0.25s var(--apple-ease);
+}
+</style>
 </head>
 <body class="text-slate-100 font-sans min-h-screen flex flex-col">
 
@@ -214,9 +392,18 @@ nav, nav > div { max-width: 100% !important; }
                     <p class="text-xs text-slate-400">WCH12 · Unit 2 · Paper 2 · Spec 10.1–10.23 — Mechanisms, Reactions, Oxidation, Mass Spec &amp; IR</p>
                 </div>
             </div>
-            <div class="flex items-center gap-2">
-                <span class="px-2.5 py-1 text-xs font-semibold rounded-full bg-sky-950 text-sky-300 border border-sky-800">Edexcel Spec 10.1 – 10.23</span>
-                <span class="px-2.5 py-1 text-xs font-semibold rounded-full bg-emerald-950 text-emerald-300 border border-emerald-800">CP5 · CP6 · CP7 · CP8</span>
+            <div class="flex flex-wrap items-center gap-2">
+                <span class="hidden lg:inline-block px-2.5 py-1 text-xs font-semibold rounded-full apple-pill text-sky-300">Edexcel Spec 10.1 – 10.23</span>
+                <span class="hidden sm:inline-block px-2.5 py-1 text-xs font-semibold rounded-full apple-pill text-emerald-300">CP5 · CP6 · CP7 · CP8</span>
+                <button type="button" onclick="openSpotlight()" class="flex items-center gap-2 px-3 py-1.5 rounded-full apple-pill text-slate-200 hover:text-sky-300 text-xs font-medium" title="Quick Search & Concept Jump (⌘K)">
+                    <svg class="w-3.5 h-3.5 text-sky-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                    <span>Quick Search</span>
+                    <kbd class="px-1.5 py-0.5 text-[9px] font-mono bg-slate-950/80 text-slate-400 rounded border border-slate-700/80">⌘K</kbd>
+                </button>
+                <button type="button" onclick="switchTab('solver');setTimeout(()=>{const el=document.getElementById('t10-sim-panel');if(el)el.scrollIntoView({behavior:'smooth'});},100);" class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-sky-500/15 border border-sky-500/35 text-sky-300 hover:bg-sky-500/25 text-xs font-semibold">
+                    <span class="w-2 h-2 rounded-full bg-sky-400 animate-pulse"></span>
+                    <span>Mastery: <strong id="mastery-percentage" class="font-mono text-sky-200">0%</strong></span>
+                </button>
             </div>
         </div>
     </header>
@@ -501,6 +688,50 @@ nav, nav > div { max-width: 100% !important; }
                     <p class="text-[11px] text-slate-400 leading-relaxed"><b class="text-slate-300">SN1/SN2 mechanisms</b> are tested in <b class="text-emerald-300">Unit 4 (WCH13)</b> — here you only need the nucleophilic-substitution mechanism for <b>primary</b> halogenoalkanes. Alkene chemistry (electrophilic addition) is <b class="text-sky-300">Topic 5</b>; carbonyl/carboxylic-acid reactions in depth are <b class="text-sky-300">Topic 15</b>.</p>
                 </div>
             </div>
+
+            <!-- NEW: INTERACTIVE SPEC 10.1-10.23 CONCEPT LAB -->
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 space-y-5">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-slate-800 pb-4">
+                    <div>
+                        <span class="text-xs font-bold text-sky-400 uppercase tracking-widest">Interactive Concept Lab · Spec 10.1–10.23 &amp; Examiner Reports (2019–2026)</span>
+                        <h3 class="font-display text-lg font-bold text-white mt-1">Reagent &amp; Solvent Disambiguator, Curly-Arrow &amp; Naming Doctor &amp; Spec Self-Audit</h3>
+                        <p class="text-xs text-slate-400 mt-0.5">Directly targets WCH12 pitfalls on aqueous vs ethanolic KOH, alcohol dehydration vs haloalkane elimination, nitrile chain-lengthening nomenclature, skeletal heteroatom H atoms, and Spec 10.1–10.23 mastery.</p>
+                    </div>
+                    <div class="apple-segmented">
+                        <button type="button" onclick="switchSyl10Lab('reagent')" id="s10-btn-reagent" class="px-3 py-1.5 text-xs font-semibold rounded-lg bg-sky-500/20 text-sky-300 border border-sky-500/40">1. Reagent &amp; Solvent Decoder</button>
+                        <button type="button" onclick="switchSyl10Lab('mechdoc')" id="s10-btn-mechdoc" class="px-3 py-1.5 text-xs font-semibold rounded-lg text-slate-400 hover:text-white border border-transparent">2. Mechanism &amp; Naming Doctor</button>
+                        <button type="button" onclick="switchSyl10Lab('audit')" id="s10-btn-audit" class="px-3 py-1.5 text-xs font-semibold rounded-lg text-slate-400 hover:text-white border border-transparent">3. Spec 10.1–10.23 Self-Audit</button>
+                    </div>
+                </div>
+
+                <!-- Sub-panel 1: Reagent & Solvent Role Decoder -->
+                <div id="s10-panel-reagent" class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
+                    <div class="lg:col-span-5 space-y-2">
+                        <p class="text-xs text-slate-300 font-semibold">Select a high-risk WCH12 reagent/solvent pair to compare the role, conditions, and exam traps:</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5" id="reag10-btns"></div>
+                    </div>
+                    <div class="lg:col-span-7 bg-slate-950 border border-slate-800 rounded-xl p-4 space-y-3" id="reag10-out"></div>
+                </div>
+
+                <!-- Sub-panel 2: Mechanism & Naming Examiner Doctor -->
+                <div id="s10-panel-mechdoc" class="hidden space-y-4">
+                    <div class="flex flex-wrap items-center justify-between gap-2">
+                        <p class="text-xs text-slate-300">Examiner reports (2019–2025) flag 5 recurring student errors on organic curly arrows, carbocation terminology, nitrile naming, and skeletal formulas. Diagnose each script:</p>
+                        <span id="m10doc-score" class="px-3 py-1 rounded-full apple-pill text-xs font-mono text-violet-300">Diagnosed: 0 / 5</span>
+                    </div>
+                    <div class="flex flex-wrap gap-1.5" id="m10doc-btns"></div>
+                    <div id="m10doc-view" class="p-4 bg-slate-950 border border-slate-800 rounded-xl space-y-3 text-xs"></div>
+                </div>
+
+                <!-- Sub-panel 3: Spec 10.1-10.23 Self-Audit -->
+                <div id="s10-panel-audit" class="hidden space-y-3">
+                    <div class="flex flex-wrap items-center justify-between gap-2">
+                        <p class="text-xs text-slate-300">Tick each Edexcel IAL Topic 10 competency as you master it. Your header Mastery % updates live.</p>
+                        <button type="button" onclick="toggleAllSpec10(true)" class="px-3 py-1 text-xs font-semibold rounded-lg bg-sky-500/20 text-sky-300 border border-sky-500/30">Check All</button>
+                    </div>
+                    <div id="spec10-audit-grid" class="grid grid-cols-1 md:grid-cols-2 gap-2.5"></div>
+                </div>
+            </div>
         </section>
 
         <!-- ============ TAB 2: REACTION TYPES ============ -->
@@ -541,6 +772,20 @@ nav, nav > div { max-width: 100% !important; }
                         </div>
                     </div>
                 </div>
+
+                <!-- NEW: INTERACTIVE 1°/2°/3° CLASSIFIER, SKELETAL FORMULA RULE & BOND-FISSION STUDIO -->
+                <div class="reveal bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 border-b border-slate-800 pb-3">
+                        <div>
+                            <span class="font-display font-bold text-sky-300 text-sm">🔬 Interactive 1° / 2° / 3° Classifier, Skeletal Heteroatom Rule &amp; Bond-Fission Inspector (Spec 10.2, 10.6–10.7, 10.15–10.16)</span>
+                            <p class="text-[11px] text-slate-400">Select a molecule to inspect its primary/secondary/tertiary classification (by counting carbon neighbours attached to the C–X or C–OH carbon), skeletal formula rules, and reactivity consequences:</p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
+                        <div class="lg:col-span-5 grid grid-cols-2 gap-1.5" id="cls10-btns"></div>
+                        <div class="lg:col-span-7 p-4 bg-slate-900 border border-slate-800 rounded-xl space-y-2.5 text-xs" id="cls10-out"></div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -556,6 +801,7 @@ nav, nav > div { max-width: 100% !important; }
                     <button onclick="switchMode('c1','map')" id="c1-mode-btn-map" class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 text-xs">🗺️ Module 2: Nucleophile → Product</button>
                     <button onclick="switchMode('c1','quiz')" id="c1-mode-btn-quiz" class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 text-xs">🎯 Module 3: Blanks</button>
                     <button onclick="switchMode('c1','traps')" id="c1-mode-btn-traps" class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 text-xs">⚡ Module 4: Traps</button>
+                    <button onclick="switchMode('c1','sim')" id="c1-mode-btn-sim" class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-sky-300 text-xs">🧪 Module 5: Elimination &amp; CP5 Controls</button>
                 </div>
 
                 <!-- SN2 animation -->
@@ -696,6 +942,42 @@ nav, nav > div { max-width: 100% !important; }
                         <div class="p-3 bg-slate-900 rounded-xl border border-slate-800"><span class="text-rose-300 font-bold block mb-1">❌ Trap: AgCl is cream</span><span class="text-emerald-300 font-bold block mb-1">✅ Truth: AgCl white, AgBr cream, AgI yellow</span><p class="text-slate-400 text-[11px]">Learn the three precipitate colours in order.</p></div>
                     </div>
                 </div>
+
+                <!-- MODULE 5: UNSYMMETRICAL ELIMINATION ISOMERS & CP5 CONTROLS LAB -->
+                <div id="c1-mode-sim" class="hidden p-5 bg-slate-950 border border-slate-800 rounded-xl space-y-5 text-xs">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+                        <div class="p-4 bg-slate-900 border border-slate-800 rounded-xl space-y-3">
+                            <span class="font-bold text-sky-300 block">1. Unsymmetrical Halogenoalkane Elimination — Why 2-Bromobutane Gives THREE Isomeric Alkenes (Spec 10.8ii)</span>
+                            <p class="text-slate-400 text-[11px]">With <b>hot ethanolic KOH</b>, $\text{OH}^-$ acts as a <b>base</b>, removing $\text{H}^+$ from a carbon <i>adjacent</i> to the $\text{C–Br}$ carbon. Pick a substrate to see all possible alkene isomers:</p>
+                            <select id="elim-sub-sel" onchange="showElimIsomers()" class="w-full text-xs text-sky-300 font-mono">
+                                <option value="0">2-Bromobutane + KOH(ethanolic), heat → 3 isomeric alkenes!</option>
+                                <option value="1">1-Bromobutane + KOH(ethanolic), heat → 1 alkene only (but-1-ene)</option>
+                                <option value="2">2-Bromo-2-methylbutane + KOH(ethanolic), heat → 2 alkenes</option>
+                                <option value="3">2-Bromopropane + KOH(ethanolic), heat → 1 alkene (propene)</option>
+                            </select>
+                            <div id="elim-sub-out" class="p-3.5 bg-slate-950 border border-slate-800 rounded-lg space-y-1.5 text-[11px] leading-relaxed"></div>
+                        </div>
+
+                        <div class="p-4 bg-slate-900 border border-slate-800 rounded-xl space-y-3">
+                            <span class="font-bold text-emerald-300 block">2. CP5 Hydrolysis Rate Controls &amp; Quantitative Bond-Enthalpy Table (Spec 10.10–10.13)</span>
+                            <p class="text-slate-400 text-[11px]">WCH13 practical exams test the <b>control variables</b> and the <b>C–X bond enthalpy vs polarity</b> argument in $\text{R–X} + \text{AgNO}_3(\text{aq})/\text{ethanol}$:</p>
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-[11px] border border-slate-800 font-mono">
+                                    <tr class="bg-slate-950 text-emerald-300">
+                                        <th class="p-1.5 border border-slate-800 text-left">Bond</th>
+                                        <th class="p-1.5 border border-slate-800 text-left">ΔEN (Polarity)</th>
+                                        <th class="p-1.5 border border-slate-800 text-left">Bond Enthalpy</th>
+                                        <th class="p-1.5 border border-slate-800 text-left">AgX Ppt &amp; Rate</th>
+                                    </tr>
+                                    <tr><td class="p-1.5 border border-slate-800 text-white">C–Cl</td><td class="p-1.5 border border-slate-800 text-sky-300">0.6 (Most polar)</td><td class="p-1.5 border border-slate-800 text-rose-300">+346 kJ mol⁻¹ (Strongest)</td><td class="p-1.5 border border-slate-800 text-slate-300">White AgCl · Slowest</td></tr>
+                                    <tr><td class="p-1.5 border border-slate-800 text-white">C–Br</td><td class="p-1.5 border border-slate-800 text-sky-300">0.4 (Moderate)</td><td class="p-1.5 border border-slate-800 text-amber-300">+290 kJ mol⁻¹ (Medium)</td><td class="p-1.5 border border-slate-800 text-amber-200">Cream AgBr · Moderate</td></tr>
+                                    <tr><td class="p-1.5 border border-slate-800 text-white">C–I</td><td class="p-1.5 border border-slate-800 text-sky-300">0.1 (Least polar)</td><td class="p-1.5 border border-slate-800 text-emerald-300">+228 kJ mol⁻¹ (Weakest!)</td><td class="p-1.5 border border-slate-800 text-yellow-300">Yellow AgI · Fastest!</td></tr>
+                                </table>
+                            </div>
+                            <p class="text-[11px] text-slate-300 leading-relaxed"><b class="text-amber-300">CP5 Mandatory Controls:</b> (i) <b>Ethanol</b> acts as a mutual co-solvent so the water-insoluble halogenoalkane mixes with aqueous $\text{AgNO}_3$; (ii) place tubes in a <b>thermostatically controlled water bath (50 °C)</b>; (iii) use <b>equal moles/volumes</b> and the same chain length (e.g. 1-chloro-, 1-bromo-, 1-iodobutane).</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -711,6 +993,7 @@ nav, nav > div { max-width: 100% !important; }
                     <button onclick="switchMode('c2','map')" id="c2-mode-btn-map" class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 text-xs">🗺️ Module 2: Oxidation Predictor</button>
                     <button onclick="switchMode('c2','quiz')" id="c2-mode-btn-quiz" class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 text-xs">🎯 Module 3: Blanks</button>
                     <button onclick="switchMode('c2','traps')" id="c2-mode-btn-traps" class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 text-xs">⚡ Module 4: Traps</button>
+                    <button onclick="switchMode('c2','sim')" id="c2-mode-btn-sim" class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-emerald-300 text-xs">🔬 Module 5: CP6/CP7 Apparatus &amp; Tests</button>
                 </div>
 
                 <!-- MODULE 1: INSPECTOR -->
@@ -829,6 +1112,43 @@ nav, nav > div { max-width: 100% !important; }
                         <div class="p-3 bg-slate-900 rounded-xl border border-slate-800"><span class="text-rose-300 font-bold block mb-1">❌ Trap: rinse the separating-funnel product with water last</span><span class="text-emerald-300 font-bold block mb-1">✅ Truth: dry after washing, then distil</span><p class="text-slate-400 text-[11px]">Order: separate → wash → dry → distil → bp.</p></div>
                     </div>
                 </div>
+
+                <!-- MODULE 5: CP6 & CP7 APPARATUS INSPECTOR & ORGANIC DISTINGUISHING MATRIX -->
+                <div id="c2-mode-sim" class="hidden p-5 bg-slate-950 border border-slate-800 rounded-xl space-y-5 text-xs">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+                        <div class="p-4 bg-slate-900 border border-slate-800 rounded-xl space-y-3">
+                            <span class="font-bold text-emerald-300 block">1. CP7 Apparatus Inspector — Simple Distillation vs Heating Under Reflux (Spec 10.18–10.19)</span>
+                            <p class="text-slate-400 text-[11px]">WCH12 &amp; WCH13 frequently ask you to draw or spot errors in reflux vs distillation setups. Select a setup to inspect the mark-scheme rules:</p>
+                            <div class="flex flex-wrap gap-1.5" id="app10-btns">
+                                <button type="button" onclick="showApp10(0)" class="px-3 py-1.5 rounded-lg bg-emerald-950 border border-emerald-600 text-emerald-300 font-mono text-[11px]">Distillation (1° Alcohol → Aldehyde)</button>
+                                <button type="button" onclick="showApp10(1)" class="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-slate-300 font-mono text-[11px]">Reflux (1° Alcohol → Acid / 2° → Ketone)</button>
+                                <button type="button" onclick="showApp10(2)" class="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-slate-300 font-mono text-[11px]">CP6: 2-Chloro-2-methylpropane Prep</button>
+                            </div>
+                            <div id="app10-out" class="p-3.5 bg-slate-950 border border-slate-800 rounded-lg space-y-1.5 text-[11px] leading-relaxed"></div>
+                        </div>
+
+                        <div class="p-4 bg-slate-900 border border-slate-800 rounded-xl space-y-3">
+                            <span class="font-bold text-amber-300 block">2. Chemical Tests to Distinguish Alcohols, Aldehydes, Ketones &amp; Acids (PEF Jun 2019 / Oct 2024)</span>
+                            <p class="text-slate-400 text-[11px]">PEF Jun 2019 Warning: <b>Acidified $\text{K}_2\text{Cr}_2\text{O}_7$ is NOT a valid test for the generic –OH group</b> (3° alcohols stay orange, and aldehydes also turn it green!). Use $\text{PCl}_5$ or $\text{Na(s)}$ to test for –OH:</p>
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-[11px] border border-slate-800">
+                                    <tr class="bg-slate-950 text-amber-300">
+                                        <th class="p-1.5 border border-slate-800 text-left">Reagent</th>
+                                        <th class="p-1.5 border border-slate-800 text-left">1° / 2° Alcohol</th>
+                                        <th class="p-1.5 border border-slate-800 text-left">3° Alcohol</th>
+                                        <th class="p-1.5 border border-slate-800 text-left">Aldehyde</th>
+                                        <th class="p-1.5 border border-slate-800 text-left">Carboxylic Acid</th>
+                                    </tr>
+                                    <tr><td class="p-1.5 border border-slate-800 font-mono text-sky-300">PCl₅(s)</td><td class="p-1.5 border border-slate-800 text-emerald-300">Steamy HCl fumes</td><td class="p-1.5 border border-slate-800 text-emerald-300">Steamy HCl fumes</td><td class="p-1.5 border border-slate-800 text-slate-500">No steamy fumes</td><td class="p-1.5 border border-slate-800 text-emerald-300">Steamy HCl fumes</td></tr>
+                                    <tr><td class="p-1.5 border border-slate-800 font-mono text-sky-300">Na(s) metal</td><td class="p-1.5 border border-slate-800 text-emerald-300">Fizzing (H₂ gas)</td><td class="p-1.5 border border-slate-800 text-emerald-300">Fizzing (H₂ gas)</td><td class="p-1.5 border border-slate-800 text-slate-500">No reaction</td><td class="p-1.5 border border-slate-800 text-emerald-300">Fizzing (H₂ gas)</td></tr>
+                                    <tr><td class="p-1.5 border border-slate-800 font-mono text-sky-300">K₂Cr₂O₇/H⁺, heat</td><td class="p-1.5 border border-slate-800 text-emerald-300">Orange → green</td><td class="p-1.5 border border-slate-800 text-rose-300">Stays orange!</td><td class="p-1.5 border border-slate-800 text-emerald-300">Orange → green</td><td class="p-1.5 border border-slate-800 text-rose-300">Stays orange</td></tr>
+                                    <tr><td class="p-1.5 border border-slate-800 font-mono text-sky-300">Fehling's / Benedict's</td><td class="p-1.5 border border-slate-800 text-slate-500">Stays blue</td><td class="p-1.5 border border-slate-800 text-slate-500">Stays blue</td><td class="p-1.5 border border-slate-800 text-rose-300 font-bold">Brick-red ppt (Cu₂O)</td><td class="p-1.5 border border-slate-800 text-slate-500">Stays blue</td></tr>
+                                    <tr><td class="p-1.5 border border-slate-800 font-mono text-sky-300">Na₂CO₃ / NaHCO₃(aq)</td><td class="p-1.5 border border-slate-800 text-slate-500">No fizzing</td><td class="p-1.5 border border-slate-800 text-slate-500">No fizzing</td><td class="p-1.5 border border-slate-800 text-slate-500">No fizzing</td><td class="p-1.5 border border-slate-800 text-emerald-300 font-bold">Fizzing (CO₂ turns limewater milky)</td></tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -890,6 +1210,23 @@ nav, nav > div { max-width: 100% !important; }
                         <tr><td class="p-2 border border-slate-800">C–X</td><td class="p-2 border border-slate-800 font-mono">500–800</td><td class="p-2 border border-slate-800 text-slate-300">halogenoalkanes</td></tr>
                     </table></div>
                 </div>
+
+                <!-- NEW: INTERACTIVE CP8 ISOMER PAIR SPECTRA DETECTIVE & HALOGEN ISOTOPE PATTERN STUDIO -->
+                <div class="reveal bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 border-b border-slate-800 pb-3">
+                        <div>
+                            <span class="font-display font-bold text-amber-300 text-sm">🕵️ CP8 Isomer-Pair Spectra Disambiguator &amp; Halogen M / M+2 Isotope Pattern Lab (Spec 10.21–10.23)</span>
+                            <p class="text-[11px] text-slate-400">Examiner reports (PEF Jan 2020, Jun 2023, Jun 2024R) stress that in IR you must state <b>"bond stretching"</b> and quote the exact wavenumber range, and in Mass Spec you must write the <b>positive charge $+$</b> on every fragment ion (e.g. $\text{CH}_3\text{CO}^+$ at $m/z = 43$, never neutral $\text{CH}_3\text{CO}$!). Select an isomer pair:</p>
+                        </div>
+                        <div class="flex flex-wrap gap-1.5" id="spec10-pair-btns">
+                            <button type="button" onclick="showSpec10Pair(0)" class="px-2.5 py-1 text-[11px] font-semibold rounded bg-amber-600 text-white">Propanal vs Propanone (Mr 58)</button>
+                            <button type="button" onclick="showSpec10Pair(1)" class="px-2.5 py-1 text-[11px] font-semibold rounded bg-slate-800 text-slate-300">Propan-1-ol vs Propan-2-ol (Mr 60)</button>
+                            <button type="button" onclick="showSpec10Pair(2)" class="px-2.5 py-1 text-[11px] font-semibold rounded bg-slate-800 text-slate-300">Propanoic acid vs Hydroxypropanone</button>
+                            <button type="button" onclick="showSpec10Pair(3)" class="px-2.5 py-1 text-[11px] font-semibold rounded bg-slate-800 text-slate-300">Chloro vs Bromo M / M+2 Doublets</button>
+                        </div>
+                    </div>
+                    <div id="spec10-pair-out" class="p-4 bg-slate-900 border border-slate-800 rounded-xl space-y-2.5 text-xs leading-relaxed"></div>
+                </div>
             </div>
         </section>
 
@@ -907,6 +1244,22 @@ nav, nav > div { max-width: 100% !important; }
                     <div class="flex items-end"><button onclick="runSynthesis()" class="w-full px-4 py-2 bg-violet-700 hover:bg-violet-600 rounded-lg font-bold text-white">Find the route</button></div>
                 </div>
                 <div id="syn-out" class="text-[11px] font-mono text-slate-400 p-3 bg-slate-950 rounded-lg border border-slate-800 whitespace-pre-wrap">Choose a start and target, then find the route.</div>
+
+                <!-- NEW: 10-QUESTION WCH12 & WCH13 PAST-PAPER EXAM SIMULATOR -->
+                <div id="t10-sim-panel" class="p-5 bg-slate-950 border border-slate-800 rounded-xl space-y-4 text-xs mt-4">
+                    <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 pb-3">
+                        <div>
+                            <span class="text-xs font-bold text-sky-400 uppercase">🎓 WCH12 &amp; WCH13 Past-Paper Concept Diagnostic Simulator (2019–2026 Series)</span>
+                            <p class="text-slate-400 text-[11px] mt-0.5">Test your mastery across Spec 10.1–10.23 (Nucleophilic Substitution, Elimination vs Dehydration, CP5 Hydrolysis Rates, CP6/CP7 Purification &amp; Oxidation, Mass Spec &amp; IR).</p>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span id="t10-sim-score" class="px-3 py-1 rounded-full apple-pill text-xs font-mono text-sky-300">Score: 0 / 10</span>
+                            <button type="button" onclick="resetT10Sim()" class="px-2.5 py-1 text-[10px] font-semibold rounded-lg bg-slate-800 text-slate-300 border border-slate-700">Reset</button>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-1.5" id="t10-sim-pills"></div>
+                    <div id="t10-sim-box" class="p-4 bg-slate-900 border border-slate-800 rounded-xl space-y-3"></div>
+                </div>
             </div>
         </section>
 
@@ -978,6 +1331,8 @@ nav, nav > div { max-width: 100% !important; }
                     <a href="#rev-rates" class="px-3 py-1 bg-rose-950 text-rose-300 border border-rose-800 rounded-full">Rates &amp; colours</a>
                     <a href="#rev-spec" class="px-3 py-1 bg-amber-950 text-amber-300 border border-amber-800 rounded-full">Spectra</a>
                     <a href="#rev-traps" class="px-3 py-1 bg-slate-800 text-slate-300 border border-slate-700 rounded-full">Master trap checklist</a>
+                    <a href="#rev-pef-2026" class="px-3 py-1 bg-emerald-950 text-emerald-300 border border-emerald-800 rounded-full">2021–2026 Examiner Deep-Dive</a>
+                    <a href="#rev-flashcards" class="px-3 py-1 bg-sky-950 text-sky-300 border border-sky-800 rounded-full">Active-Recall Flashcards</a>
                 </div>
 
                 <details open id="rev-halo" class="bg-slate-950 border border-slate-800 rounded-xl">
@@ -1044,9 +1399,50 @@ nav, nav > div { max-width: 100% !important; }
                         <div class="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-slate-300">☐ SN1/SN2 detail is Unit 4, not here</div>
                     </div>
                 </details>
+
+                <details open id="rev-pef-2026" class="bg-slate-950 border border-slate-800 rounded-xl">
+                    <summary class="p-4 cursor-pointer font-display font-bold text-emerald-300 text-sm flex justify-between items-center"><span>6 · 2019–2026 WCH12 &amp; WCH13 Examiner Report Deep-Dive</span><span class="text-slate-500 text-xs">collapse</span></summary>
+                    <div class="px-4 pb-4 overflow-x-auto">
+                        <table class="w-full text-[11px] border border-slate-800">
+                            <tr class="bg-slate-900 text-emerald-300"><th class="p-2 border border-slate-800 text-left">Exam Topic &amp; Series</th><th class="p-2 border border-slate-800 text-left">Common Candidate Error</th><th class="p-2 border border-slate-800 text-left">Full-Mark Edexcel WCH12 / WCH13 Phrasing</th></tr>
+                            <tr><td class="p-2 border border-slate-800 font-semibold text-white">Dehydration of Alcohols vs Elimination of Haloalkanes (Jan 2020 PEF)</td><td class="p-2 border border-slate-800 text-rose-300">Using $\text{NaOH/KOH}$ in ethanol to dehydrate an alcohol (only 25% scored this mark!)</td><td class="p-2 border border-slate-800 text-slate-300">Alcohol $\rightarrow$ alkene (dehydration) requires <b>concentrated $\text{H}_3\text{PO}_4$ (or conc. $\text{H}_2\text{SO}_4$) and heat</b> (or passing vapour over heated $\text{Al}_2\text{O}_3$). $\text{KOH}$ in hot ethanol is ONLY for eliminating $\text{HX}$ from a halogenoalkane!</td></tr>
+                            <tr><td class="p-2 border border-slate-800 font-semibold text-white">Hydrolysis Rate of 1° vs 3° &amp; C–Cl vs C–I (Oct 2020, Jan 2022, Oct 2024)</td><td class="p-2 border border-slate-800 text-rose-300">Writing "2-chloro-2-methylpropane is a more stable tertiary carbocation" or "C–Cl is less polar"</td><td class="p-2 border border-slate-800 text-slate-300">3° halogenoalkanes hydrolyse faster because they react via a <b>more stable tertiary carbocation INTERMEDIATE</b> (positive inductive effect of 3 alkyl groups). For C–Cl vs C–I, the <b>C–I bond has a lower bond enthalpy</b> (+228 vs +346 kJ mol⁻¹) so it breaks more easily.</td></tr>
+                            <tr><td class="p-2 border border-slate-800 font-semibold text-white">Nitrile Naming &amp; Chain Lengthening (Oct 2020, Jun 2024R, Oct 2024)</td><td class="p-2 border border-slate-800 text-rose-300">Naming $\text{CH}_3\text{CH}_2\text{CN}$ (from bromoethane + KCN) as "ethanenitrile" or "cyanopropane"</td><td class="p-2 border border-slate-800 text-slate-300">Always count the carbon atom of the $-\text{CN}$ group in the longest chain: bromoethane (2C) + KCN $\rightarrow$ <b>propanenitrile</b> (3C); 1-bromopropane (3C) + KCN $\rightarrow$ <b>butanenitrile</b> (4C).</td></tr>
+                            <tr><td class="p-2 border border-slate-800 font-semibold text-white">IR Spectroscopy &amp; Aldehyde vs Ketone (Jan 2020, Jun 2023, Jun 2024R)</td><td class="p-2 border border-slate-800 text-rose-300">Omitting the word "stretch", attributing ~3300 cm⁻¹ to C–O, or claiming C=O distinguishes aldehyde from ketone</td><td class="p-2 border border-slate-800 text-slate-300">Always state <b>bond stretching</b> and wavenumber range: broad <b>O–H stretch</b> at 3200–3600 cm⁻¹ (alcohol) or 2500–3300 cm⁻¹ (acid); strong <b>C=O stretch</b> at 1680–1750 cm⁻¹; aldehyde is distinguished from ketone by the <b>aldehyde C–H stretch at ~2720–2820 cm⁻¹</b> (or Fehling's test).</td></tr>
+                            <tr><td class="p-2 border border-slate-800 font-semibold text-white">Mass Spec Fragment Ions &amp; Skeletal Heteroatom H (Jan 2023, Jun 2023)</td><td class="p-2 border border-slate-800 text-rose-300">Writing neutral radicals ($\text{CH}_3\text{CO}$) for $m/z$ peaks, or drawing skeletal alcohol as $–\text{O}$ instead of $–\text{OH}$</td><td class="p-2 border border-slate-800 text-slate-300">Every species detected in MS must carry a <b>positive charge</b> (e.g. $m/z\ 31 = [\text{CH}_2\text{OH}]^+$, $m/z\ 43 = [\text{CH}_3\text{CO}]^+$ or $[\text{C}_3\text{H}_7]^+$). In skeletal formulae, always write the H on heteroatoms ($\text{–OH}$, $\text{–NH}_2$).</td></tr>
+                        </table>
+                    </div>
+                </details>
+
+                <div id="rev-flashcards" class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+                    <div class="flex flex-wrap items-center justify-between gap-2">
+                        <div>
+                            <span class="text-xs font-bold text-sky-400 uppercase tracking-widest">Active Recall Deck</span>
+                            <h3 class="font-display text-sm font-bold text-white mt-0.5">Topic 10 Rapid-Fire Flashcards (Click Card to Flip)</h3>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button type="button" onclick="stepT10Card(-1)" class="px-3 py-1 text-xs font-semibold rounded-lg bg-slate-800 text-slate-200 border border-slate-700">← Prev</button>
+                            <span id="t10-fc-counter" class="text-xs font-mono text-sky-300 px-2">1 / 12</span>
+                            <button type="button" onclick="stepT10Card(1)" class="px-3 py-1 text-xs font-semibold rounded-lg bg-slate-800 text-slate-200 border border-slate-700">Next →</button>
+                        </div>
+                    </div>
+                    <div id="t10-fc-box" onclick="flipT10Card()" class="cursor-pointer p-6 bg-slate-900 border border-slate-800 hover:border-sky-500/40 rounded-2xl min-h-[135px] flex flex-col items-center justify-center text-center select-none"></div>
+                </div>
             </div>
         </section>
     </main>
+
+    <!-- APPLE SPOTLIGHT QUICK COMMAND & CONCEPT SEARCH MODAL -->
+    <div id="spotlight-modal" class="fixed inset-0 z-[960] hidden items-start justify-center pt-16 sm:pt-24 px-4 bg-black/60" onclick="if(event.target===this)closeSpotlight()">
+        <div class="w-full max-w-xl bg-slate-900 border border-slate-700/80 rounded-2xl shadow-2xl overflow-hidden">
+            <div class="flex items-center gap-3 px-4 py-3 border-b border-slate-800">
+                <svg class="w-4 h-4 text-sky-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                <input id="spotlight-input" type="text" oninput="filterSpotlight()" placeholder="Search Spec 10.1–10.23 mechanisms, KOH(aq) vs ethanolic, CP5–CP8, oxidation, IR, mass spec..." class="w-full bg-transparent border-0 text-xs sm:text-sm text-white focus:outline-none focus:ring-0" style="border:none!important;box-shadow:none!important;background:transparent!important;padding:2px 0!important"/>
+                <button type="button" onclick="closeSpotlight()" class="px-2 py-1 text-[10px] font-mono bg-slate-800 text-slate-400 rounded">ESC</button>
+            </div>
+            <div id="spotlight-results" class="max-h-80 overflow-y-auto divide-y divide-slate-800/60 p-2 space-y-1"></div>
+        </div>
+    </div>
 
     <footer class="border-t border-slate-800 bg-slate-900/80 py-4 mt-8">
         <div class="max-w-7xl mx-auto px-4 text-center text-[11px] text-slate-500">
@@ -1098,7 +1494,7 @@ nav, nav > div { max-width: 100% !important; }
 
         // ============ Engine mode switching ============
         window.switchMode = function(prefix, mode) {
-            ['explorer','map','quiz','traps'].forEach(m => {
+            ['explorer','map','quiz','traps','sim'].forEach(m => {
                 const el = document.getElementById(prefix + '-mode-' + m);
                 const btn = document.getElementById(prefix + '-mode-btn-' + m);
                 if (el) el.classList.toggle('hidden', m !== mode);
@@ -1497,32 +1893,55 @@ nav, nav > div { max-width: 100% !important; }
 
         // ============ Synthesis solver (BFS) ============
         const COMPOUNDS = {
-            ethane:{name:'Ethane', f:'CH₃CH₃'},
-            bromoethane:{name:'Bromoethane', f:'CH₃CH₂Br'},
-            chloroethane:{name:'Chloroethane', f:'CH₃CH₂Cl'},
-            ethanol:{name:'Ethanol', f:'CH₃CH₂OH'},
-            ethanal:{name:'Ethanal', f:'CH₃CHO'},
-            ethanoic:{name:'Ethanoic acid', f:'CH₃COOH'},
-            ethene:{name:'Ethene', f:'CH₂=CH₂'},
-            ethylamine:{name:'Ethylamine', f:'CH₃CH₂NH₂'},
-            ethanenitrile:{name:'Ethanenitrile', f:'CH₃CN'},
-            propan2ol:{name:'Propan-2-ol', f:'CH₃CH(OH)CH₃'},
-            propanone:{name:'Propanone', f:'CH₃COCH₃'}
+            ethane:{name:'Ethane (2C)', f:'CH₃CH₃'},
+            bromoethane:{name:'Bromoethane (2C)', f:'CH₃CH₂Br'},
+            chloroethane:{name:'Chloroethane (2C)', f:'CH₃CH₂Cl'},
+            ethanol:{name:'Ethanol (1°, 2C)', f:'CH₃CH₂OH'},
+            ethanal:{name:'Ethanal (2C aldehyde)', f:'CH₃CHO'},
+            ethanoic:{name:'Ethanoic acid (2C acid)', f:'CH₃COOH'},
+            ethene:{name:'Ethene (2C alkene)', f:'CH₂=CH₂'},
+            ethylamine:{name:'Ethylamine (2C amine)', f:'CH₃CH₂NH₂'},
+            ethanenitrile:{name:'Ethanenitrile (2C)', f:'CH₃CN'},
+            propanenitrile:{name:'Propanenitrile (3C nitrile, chain +1)', f:'CH₃CH₂CN'},
+            propene:{name:'Propene (3C alkene)', f:'CH₃CH=CH₂'},
+            bromopropane1:{name:'1-Bromopropane (1°, 3C)', f:'CH₃CH₂CH₂Br'},
+            bromopropane2:{name:'2-Bromopropane (2°, 3C)', f:'CH₃CHBrCH₃'},
+            propan1ol:{name:'Propan-1-ol (1°, 3C)', f:'CH₃CH₂CH₂OH'},
+            propan2ol:{name:'Propan-2-ol (2°, 3C)', f:'CH₃CH(OH)CH₃'},
+            propanal:{name:'Propanal (3C aldehyde)', f:'CH₃CH₂CHO'},
+            propanoic:{name:'Propanoic acid (3C acid)', f:'CH₃CH₂COOH'},
+            propanone:{name:'Propanone (3C ketone)', f:'CH₃COCH₃'},
+            butanenitrile:{name:'Butanenitrile (4C nitrile, chain +1)', f:'CH₃CH₂CH₂CN'}
         };
         const EDGES = [
             ['ethane','bromoethane','Br₂, UV light','free-radical substitution'],
-            ['bromoethane','ethanol','aq. KOH, warm','nucleophilic substitution'],
+            ['ethane','chloroethane','Cl₂, UV light','free-radical substitution'],
+            ['bromoethane','ethanol','aq. KOH, warm','nucleophilic substitution (hydrolysis)'],
+            ['chloroethane','ethanol','aq. KOH, warm','nucleophilic substitution (hydrolysis)'],
             ['bromoethane','ethene','ethanolic KOH, heat','elimination'],
-            ['bromoethane','ethylamine','alcoholic NH₃, heat & pressure','nucleophilic substitution'],
-            ['bromoethane','ethanenitrile','alcoholic KCN, heat','nucleophilic substitution (+1 C)'],
-            ['ethanol','ethanal','acidified K₂Cr₂O₇, distil','oxidation'],
-            ['ethanol','ethanoic','acidified K₂Cr₂O₇, reflux','oxidation'],
-            ['ethanol','ethene','conc. H₃PO₄, heat','elimination (dehydration)'],
-            ['ethanol','bromoethane','KBr + 50% H₂SO₄','substitution'],
-            ['ethanol','chloroethane','PCl₅','substitution'],
-            ['ethene','bromoethane','HBr','electrophilic addition'],
-            ['ethene','ethanol','steam, H₃PO₄ catalyst','hydration (addition)'],
-            ['propan2ol','propanone','acidified K₂Cr₂O₇, reflux','oxidation (2° → ketone)']
+            ['chloroethane','ethene','ethanolic KOH, heat','elimination'],
+            ['bromoethane','ethylamine','alcoholic NH₃ (excess), heat in sealed tube','nucleophilic substitution'],
+            ['bromoethane','propanenitrile','alcoholic KCN, heat under reflux','nucleophilic substitution (chain +1 C)'],
+            ['ethanol','ethanal','acidified K₂Cr₂O₇, distil immediately','partial oxidation (1° alcohol → aldehyde)'],
+            ['ethanal','ethanoic','acidified K₂Cr₂O₇, heat under reflux','oxidation (aldehyde → carboxylic acid)'],
+            ['ethanol','ethanoic','excess acidified K₂Cr₂O₇, heat under reflux','complete oxidation (1° alcohol → acid)'],
+            ['ethanol','ethene','conc. H₃PO₄ (or conc. H₂SO₄), heat','elimination (dehydration)'],
+            ['ethanol','bromoethane','KBr + 50% H₂SO₄, heat','substitution (in-situ HBr)'],
+            ['ethanol','chloroethane','PCl₅, room temperature','substitution (–OH test, misty HCl fumes)'],
+            ['ethene','bromoethane','HBr(g), room temperature','electrophilic addition'],
+            ['ethene','ethanol','steam, H₃PO₄ catalyst, 300 °C, 60 atm','hydration (electrophilic addition)'],
+            ['propan1ol','propene','conc. H₃PO₄, heat','elimination (dehydration)'],
+            ['propan1ol','propanal','acidified K₂Cr₂O₇, distil immediately','partial oxidation (1° → aldehyde)'],
+            ['propan1ol','propanoic','excess acidified K₂Cr₂O₇, heat under reflux','complete oxidation (1° → acid)'],
+            ['propan1ol','bromopropane1','KBr + 50% H₂SO₄, heat','substitution'],
+            ['bromopropane1','propan1ol','aq. KOH, warm','nucleophilic substitution'],
+            ['bromopropane1','propene','ethanolic KOH, heat','elimination'],
+            ['bromopropane1','butanenitrile','alcoholic KCN, heat under reflux','nucleophilic substitution (chain +1 C → 4C)'],
+            ['propene','bromopropane2','HBr(g), room temperature','electrophilic addition (Markovnikov major product)'],
+            ['bromopropane2','propan2ol','aq. KOH, warm','nucleophilic substitution'],
+            ['bromopropane2','propene','ethanolic KOH, heat','elimination'],
+            ['propan2ol','propene','conc. H₃PO₄, heat','elimination (dehydration)'],
+            ['propan2ol','propanone','acidified K₂Cr₂O₇, heat under reflux','oxidation (2° alcohol → ketone)']
         ];
         function buildAdj() {
             const adj = {};
@@ -1595,8 +2014,661 @@ nav, nav > div { max-width: 100% !important; }
             buildFGStrip();
             buildHydroBtns();
             fillSynSelects();
+            const r10Btns = document.getElementById('reag10-btns');
+            if (r10Btns) {
+                r10Btns.innerHTML = REAG10_CASES.map((c, i) => `<button type="button" onclick="showReag10(${i})" class="p-2 rounded-lg border border-slate-800 bg-slate-950 text-slate-400 text-left text-[11px] font-mono">${c.name}</button>`).join('');
+                showReag10(0);
+            }
+            renderM10Doctor();
+            renderSpec10Audit();
+            const c10Btns = document.getElementById('cls10-btns');
+            if (c10Btns) {
+                c10Btns.innerHTML = CLS10_MOLS.map((m, i) => `<button type="button" onclick="showCls10(${i})" class="p-2 rounded-lg border border-slate-800 bg-slate-900 text-slate-300 text-left text-[11px] font-mono">${m.name}</button>`).join('');
+                showCls10(0);
+            }
+            showElimIsomers();
+            showApp10(0);
+            showSpec10Pair(0);
+            renderT10Sim();
+            renderT10Card();
+            updateT10Mastery();
             requestAnimationFrame(masterLoop);
             setTimeout(safeInitKaTeX, 300);
+        });
+
+        // ============ NEW INTERACTIVE MODULES (SPEC 10.1-10.23 LAB, CLASSIFIER, ELIMINATION & CP5, CP6/CP7 APPARATUS, CP8 SPECTRA DISAMBIGUATOR, 10-Q SIMULATOR, FLASHCARDS, SPOTLIGHT) ============
+        const T10_MASTERY = {
+            specChecked: new Set([0, 1]),
+            docSolved: new Set(),
+            simSolved: new Set(),
+            conceptsChecked: new Set()
+        };
+
+        const SPEC10_AUDIT_ITEMS = [
+            {code:'10.1–10.5', text:'Classify organic reactions (addition, elimination, substitution, oxidation, reduction, hydrolysis, polymerisation) and define nucleophile, electrophile, and heterolytic bond breaking.'},
+            {code:'10.6–10.7', text:'Name and draw structural, displayed, and skeletal formulae (showing H on –OH) for halogenoalkanes and classify them as 1°, 2°, or 3°.'},
+            {code:'10.8', text:'State reagents, conditions, and products for halogenoalkanes with aq. KOH (→ alcohol), ethanolic KOH (→ alkene), AgNO₃/ethanol, alcoholic NH₃ (→ amine), and alcoholic KCN (→ nitrile, chain +1).'},
+            {code:'10.9', text:'Draw the nucleophilic substitution mechanism for primary halogenoalkanes with OH⁻ and NH₃ (curly arrows from lone pair to δ+ C and from C–X bond to X).'},
+            {code:'10.10–10.13', text:'Compare hydrolysis rates of 1°/2°/3° and chloro/bromo/iodoalkanes (CP5); explain halogen trend via C–X bond enthalpy (C–I weakest → fastest) and class trend via carbocation stability.'},
+            {code:'10.14', text:'Core Practical 6: Chlorination of 2-methylpropan-2-ol with conc. HCl and purification (separating funnel, NaHCO₃ washing & venting, anhydrous drying agent, distillation).'},
+            {code:'10.15–10.16', text:'Name and classify alcohols as primary (1°), secondary (2°), or tertiary (3°) based on alkyl groups attached to the C–OH carbon.'},
+            {code:'10.17', text:'Write equations and conditions for alcohol combustion, halogenation (PCl₅ steamy HCl fumes test; KBr + 50% H₂SO₄; red P + I₂), and dehydration (conc. H₃PO₄, heat → alkene).'},
+            {code:'10.18', text:'Core Practical 7: Oxidation of alcohols with acidified K₂Cr₂O₇ (orange → green): 1° + distil → aldehyde (Benedict’s/Fehling’s +ve); 1° + reflux → carboxylic acid (NaHCO₃ fizz); 2° + reflux → ketone; 3° → no reaction.'},
+            {code:'10.19', text:'Explain the purpose and setup of organic preparation & purification techniques: heating under reflux, separating funnel, washing, drying with anhydrous salt, distillation, and boiling-temperature check.'},
+            {code:'10.21', text:'Interpret mass spectra of simple organic compounds: identify the molecular ion peak M⁺ (= Mr) and deduce structures from fragmentation patterns (e.g. m/z 15, 29, 31, 43, 45, 57).'},
+            {code:'10.22–10.23', text:'Core Practical 8: Deduce functional groups from IR spectra using specific bond-stretching absorptions (broad O–H alcohol vs very broad acid O–H, sharp C=O, aldehyde C–H, C=C, N–H, C–X).'}
+        ];
+
+        function updateT10Mastery() {
+            const total = T10_MASTERY.specChecked.size + T10_MASTERY.docSolved.size + T10_MASTERY.simSolved.size + T10_MASTERY.conceptsChecked.size;
+            const pct = Math.min(100, Math.round((total / 31) * 100));
+            const el = document.getElementById('mastery-percentage');
+            if (el) el.textContent = pct + '%';
+        }
+
+        window.switchSyl10Lab = function(view) {
+            ['reagent', 'mechdoc', 'audit'].forEach(v => {
+                const pan = document.getElementById('s10-panel-' + v);
+                const btn = document.getElementById('s10-btn-' + v);
+                if (pan) pan.classList.toggle('hidden', v !== view);
+                if (btn) {
+                    btn.className = 'px-3 py-1.5 text-xs font-semibold rounded-lg ' +
+                        (v === view ? 'bg-sky-500/20 text-sky-300 border border-sky-500/40' : 'text-slate-400 hover:text-white border border-transparent');
+                }
+            });
+            setTimeout(safeInitKaTeX, 40);
+        };
+
+        const REAG10_CASES = [
+            {
+                name:'1. KOH(aq) vs KOH(ethanolic) on R–X',
+                eq:'Sub: R–CH₂CH₂Br + KOH(aq) [warm] → R–CH₂CH₂OH + KBr\nElim: R–CH₂CH₂Br + KOH(ethanolic) [heat] → R–CH=CH₂ + KBr + H₂O',
+                role:'<b>Solvent controls the role of $\text{OH}^-$:</b> In <b>aqueous</b> solution, $\text{OH}^-$ acts as a <b>nucleophile</b> (donating a lone pair to $\text{C}^{\delta+}$) giving an alcohol. In <b>anhydrous ethanol</b>, $\text{OH}^-$ acts as a <b>base</b> (accepting $\text{H}^+$ from an adjacent carbon) giving an alkene!',
+                trap:'<b>PEF Jun 2019:</b> If water is present alongside ethanol, substitution is favoured over elimination. For elimination, you must specify <b>ethanolic</b> $\text{KOH/NaOH}$ and heat!'
+            },
+            {
+                name:'2. Alcohol → Alkene vs Haloalkane → Alkene',
+                eq:'Alcohol dehydration: CH₃CH₂OH →[conc. H₃PO₄ (or conc. H₂SO₄), heat] CH₂=CH₂ + H₂O\nHaloalkane elimination: CH₃CH₂Br + KOH(ethanolic) →[heat] CH₂=CH₂ + KBr + H₂O',
+                role:'<b>Two completely different reagents for elimination:</b> Alcohols are dehydrated using an <b>acid catalyst (conc. $\text{H}_3\text{PO}_4$ or conc. $\text{H}_2\text{SO}_4$)</b> or heated $\text{Al}_2\text{O}_3$. Halogenoalkanes require <b>hot ethanolic $\text{KOH/NaOH}$</b>.',
+                trap:'<b>PEF Jan 2020 (Only 25% scored!):</b> 75% of candidates wrongly wrote "NaOH in ethanol" to dehydrate an alcohol! Alcohols do NOT undergo elimination with ethanolic KOH.'
+            },
+            {
+                name:'3. KCN (ethanolic) — Chain Lengthening (+1 C)',
+                eq:'CH₃CH₂CH₂Br (1-bromopropane, 3C) + KCN →[ethanolic, heat under reflux] CH₃CH₂CH₂CN (butanenitrile, 4C) + KBr',
+                role:'<b>Nucleophilic substitution with $:C\equiv N^-$:</b> The lone pair on the <b>carbon</b> atom of $\text{CN}^-$ attacks $\text{C}^{\delta+}$, forming a new $\text{C–C}$ bond and extending the carbon chain by 1 carbon.',
+                trap:'<b>PEF Oct 2020, Jun 2024R &amp; Oct 2024:</b> Count the nitrile carbon in the root name! 1-bromopropane (3C) gives <b>butanenitrile (4C)</b>, NOT propanenitrile!'
+            },
+            {
+                name:'4. NH₃ (ethanolic, sealed tube) → Primary Amine',
+                eq:'CH₃CH₂Br + 2NH₃ (excess, ethanolic) →[heat in sealed tube] CH₃CH₂NH₂ + NH₄Br',
+                role:'<b>Nucleophilic substitution with $:NH_3$:</b> The first $\text{NH}_3$ attacks $\text{C}^{\delta+}$ to form $\text{CH}_3\text{CH}_2\text{NH}_3^+\text{Br}^-$, and a second $\text{NH}_3$ acts as a base to remove $\text{H}^+$, forming ethylamine + $\text{NH}_4\text{Br}$.',
+                trap:'<b>Why excess $\text{NH}_3$ &amp; sealed tube?</b> A sealed tube prevents ammonia gas escaping when heated; <b>excess $\text{NH}_3$</b> minimises further substitution of the primary amine into $2^\circ / 3^\circ$ amines and quaternary ammonium salts.'
+            },
+            {
+                name:'5. Testing for –OH: PCl₅ / Na vs K₂Cr₂O₇ Trap',
+                eq:'ROH + PCl₅(s) → RCl + POCl₃ + HCl(g)  [steamy/misty white fumes]\n2ROH + 2Na(s) → 2RONa + H₂(g)  [effervescence]',
+                role:'<b>Definitive tests for any alcohol ($1^\circ, 2^\circ,$ or $3^\circ$):</b> Adding solid $\text{PCl}_5$ to a dry liquid produces <b>steamy/misty fumes of $\text{HCl(g)}$</b> (turns damp blue litmus red / white smoke with $\text{NH}_3$).',
+                trap:'<b>PEF Jun 2019:</b> Never use acidified $\text{K}_2\text{Cr}_2\text{O}_7$ as a general test for the $-\text{OH}$ group! Tertiary alcohols do not oxidise (stay orange), and aldehydes also turn dichromate green.'
+            },
+            {
+                name:'6. Halogenating Alcohols: Cl vs Br vs I',
+                eq:'Chloro: ROH + PCl₅ → RCl + POCl₃ + HCl  (or 3° alcohol + conc. HCl at r.t., CP6)\nBromo: ROH + HBr → RBr + H₂O  [generated in situ from KBr + 50% H₂SO₄]\nIodo: 3ROH + PI₃ → 3RI + H₃PO₃  [PI₃ made in situ from red P + I₂]',
+                role:'<b>In-situ generation of $\text{HBr}$ and $\text{PI}_3$:</b> Rather than storing corrosive $\text{HBr}$ gas or unstable $\text{PI}_3$, chemists generate them in the reaction flask.',
+                trap:'<b>Why 50% $\text{H}_2\text{SO}_4$ (not conc.) with $\text{KBr}$?</b> Concentrated $\text{H}_2\text{SO}_4$ oxidises $\text{Br}^-$ to $\text{Br}_2$ (and $\text{I}^-$ to $\text{I}_2$), so 50% $\text{H}_2\text{SO}_4$ is used for bromoalkanes and $\text{red P} + \text{I}_2$ for iodoalkanes.'
+            }
+        ];
+
+        window.showReag10 = function(idx) {
+            const c = REAG10_CASES[idx];
+            const btns = document.querySelectorAll('#reag10-btns button');
+            btns.forEach((b, i) => {
+                b.className = 'p-2 rounded-lg border text-left text-[11px] font-mono ' +
+                    (i === idx ? 'bg-sky-950/70 border-sky-500 text-sky-300 font-bold' : 'bg-slate-950 border-slate-800 text-slate-400');
+            });
+            const out = document.getElementById('reag10-out');
+            if (out) {
+                out.innerHTML = `<div class="border-b border-slate-800 pb-2">
+                        <span class="font-display font-bold text-white text-sm">${c.name}</span>
+                    </div>
+                    <div class="p-3 bg-slate-900 rounded-lg border border-slate-800 font-mono text-xs text-emerald-300 whitespace-pre-wrap">${c.eq}</div>
+                    <p class="text-xs text-slate-200 leading-relaxed">${c.role}</p>
+                    <p class="text-xs text-amber-200/95 bg-amber-950/30 border border-amber-800/50 rounded-lg p-2.5">${c.trap}</p>`;
+            }
+            T10_MASTERY.conceptsChecked.add('reag10');
+            updateT10Mastery();
+            setTimeout(safeInitKaTeX, 30);
+        };
+
+        const M10_DOC_CASES = [
+            {
+                title:'Case 1: Nucleophilic Substitution Curly Arrows (PEF 2019–2025)',
+                script:'In the mechanism of 1-bromopropane + OH⁻, candidate draws a curly arrow from the δ+ C atom to the OH⁻ ion, and a curly arrow from the Br atom to the C–Br bond.',
+                opts:[
+                    'Full marks — shows the C–OH bond forming and C–Br breaking',
+                    'Penalise both arrow marks — curly arrows must start from a lone pair on :OH⁻ to the δ+ C, and from the C–Br bond to the Br atom',
+                    'Penalise only because half-arrows should be used'
+                ],
+                ans:1,
+                exp:'Every organic mechanism paper (PEF 2019–2025): A curly arrow represents the movement of a pair of electrons. It must start from a lone pair on :OH⁻ (or negative charge) and end at the δ+ C, while the second arrow starts from the middle of the C–Br covalent bond and ends at Br.'
+            },
+            {
+                title:'Case 2: Tertiary Halogenoalkane Hydrolysis Wording (PEF Oct 2020, Jan 2022, Oct 2024)',
+                script:'Asked why 2-bromo-2-methylpropane hydrolyses faster than 1-bromobutane, candidate writes: "Because 2-bromo-2-methylpropane is a tertiary carbocation, which is more stable than a primary carbocation."',
+                opts:[
+                    'Full marks — mentions tertiary carbocation stability',
+                    'Penalise — 2-bromo-2-methylpropane is a neutral halogenoalkane molecule, NOT a carbocation! Must state it reacts via a more stable tertiary carbocation INTERMEDIATE',
+                    'Penalise — primary halogenoalkanes hydrolyse faster than tertiary'
+                ],
+                ans:1,
+                exp:'PEF Oct 2020, Jan 2022 & Oct 2024: Examiners repeatedly penalise students who say the halogenoalkane reactant IS a carbocation. State that 2-bromo-2-methylpropane forms a more stable tertiary carbocation intermediate during hydrolysis.'
+            },
+            {
+                title:'Case 3: Skeletal Formula of Alcohols (PEF Jan 2023 & Jun 2023)',
+                script:'Asked to draw the skeletal formula of butan-2-ol, candidate draws a 4-carbon zig-zag chain with a vertical line at C2 ending in "O" (omitting the H atom of the –OH group).',
+                opts:[
+                    'Full marks — H atoms are omitted in skeletal formulae',
+                    'Scores 0 — H atoms are only omitted when bonded to carbon; H atoms bonded to heteroatoms (O, N) MUST be shown explicitly as –OH',
+                    'Scores full marks if a lone pair is drawn on O'
+                ],
+                ans:1,
+                exp:'PEF Jan 2023 & Jun 2023: In skeletal formulae, hydrogen atoms attached to carbon are omitted, but hydrogen atoms attached to heteroatoms (like oxygen in –OH or nitrogen in –NH₂) MUST be written explicitly!'
+            },
+            {
+                title:'Case 4: Oxidation of Primary Alcohol to Aldehyde (PEF Jun 2019 & Oct 2024)',
+                script:'Asked how to oxidise propan-1-ol to propanal, candidate writes: "Heat under reflux with acidified potassium dichromate(VI); the balanced equation is CH₃CH₂CH₂OH + [O] → CH₃CH₂CHO + H₂."',
+                opts:[
+                    'Loses both marks — must use DISTILLATION (reflux oxidises further to propanoic acid) AND the inorganic by-product is H₂O, not H₂!',
+                    'Full marks — [O] oxidises propan-1-ol to propanal under reflux',
+                    'Loses 1 mark only because KMnO₄ must be used'
+                ],
+                ans:0,
+                exp:'PEF Jun 2019 & Oct 2024: Two classic errors in one! (1) To isolate the aldehyde, you must DISTIL off the propanal as it forms (reflux gives the carboxylic acid). (2) In oxidation with [O], the two hydrogens removed combine with [O] to form water (H₂O), never H₂ gas!'
+            },
+            {
+                title:'Case 5: Distinguishing Aldehyde from Ketone by IR Spectroscopy (PEF Jun 2024R)',
+                script:'Asked how IR spectroscopy distinguishes propanal from propanone, candidate writes: "Propanal has a C=O peak at 1720 cm⁻¹ whereas propanone has an O–H peak."',
+                opts:[
+                    'Full marks — only aldehydes have C=O bonds',
+                    'Scores 0 — both have a C=O stretch (~1680–1750 cm⁻¹) and neither has an O–H group; propanal is distinguished by the aldehyde C–H stretch at ~2720–2820 cm⁻¹ (or fingerprint region comparison)',
+                    'Full marks if wavenumber 3300 cm⁻¹ is quoted'
+                ],
+                ans:1,
+                exp:'PEF Jun 2024R: Both aldehydes and ketones contain a C=O bond (strong stretch at ~1680–1750 cm⁻¹) and neither contains an O–H bond. An aldehyde is distinguished in IR by its characteristic C–H bond stretch at ~2720–2820 cm⁻¹ (or unique fingerprint region).'
+            }
+        ];
+
+        let curM10Doc = 0;
+        function renderM10Doctor() {
+            const btns = document.getElementById('m10doc-btns');
+            if (!btns) return;
+            btns.innerHTML = M10_DOC_CASES.map((c, i) => {
+                const done = T10_MASTERY.docSolved.has(i);
+                return `<button type="button" onclick="selectM10Doc(${i})" class="px-3 py-1.5 text-[11px] font-semibold rounded-lg border ${i === curM10Doc ? 'border-violet-500 bg-violet-950/60 text-violet-200' : (done ? 'border-emerald-800 bg-emerald-950/25 text-emerald-400' : 'border-slate-800 bg-slate-900 text-slate-400')}">${done ? '✓ ' : ''}Case ${i + 1}</button>`;
+            }).join('');
+            const c = M10_DOC_CASES[curM10Doc];
+            const view = document.getElementById('m10doc-view');
+            if (view) {
+                view.innerHTML = `<span class="text-[10px] font-mono uppercase text-violet-400 font-bold block">${c.title}</span>
+                    <div class="p-3 bg-slate-900 border border-slate-800 rounded-lg font-mono text-slate-200 text-xs leading-relaxed">" ${c.script} "</div>
+                    <div class="space-y-2">
+                        ${c.opts.map((o, oi) => `<button type="button" onclick="gradeM10Doc(${curM10Doc}, ${oi})" class="w-full text-left p-2.5 rounded-lg border border-slate-800 bg-slate-900 hover:border-violet-500/50 text-xs text-slate-300">${String.fromCharCode(65 + oi)}. ${o}</button>`).join('')}
+                    </div>
+                    <div id="m10doc-fb" class="hidden p-3 rounded-lg text-xs leading-relaxed"></div>`;
+            }
+            const sc = document.getElementById('m10doc-score');
+            if (sc) sc.textContent = `Diagnosed: ${T10_MASTERY.docSolved.size} / ${M10_DOC_CASES.length}`;
+        }
+
+        window.selectM10Doc = function(i) { curM10Doc = i; renderM10Doctor(); };
+        window.gradeM10Doc = function(cIdx, oIdx) {
+            const c = M10_DOC_CASES[cIdx];
+            const fb = document.getElementById('m10doc-fb');
+            if (!fb) return;
+            fb.classList.remove('hidden');
+            if (oIdx === c.ans) {
+                T10_MASTERY.docSolved.add(cIdx);
+                updateT10Mastery();
+                const sc = document.getElementById('m10doc-score');
+                if (sc) sc.textContent = `Diagnosed: ${T10_MASTERY.docSolved.size} / ${M10_DOC_CASES.length}`;
+                fb.className = 'p-3 rounded-lg text-xs leading-relaxed bg-emerald-950/50 border border-emerald-700 text-emerald-200';
+                fb.innerHTML = `<b>✓ Correct Examiner Verdict:</b> ${c.exp}`;
+            } else {
+                fb.className = 'p-3 rounded-lg text-xs leading-relaxed bg-rose-950/50 border border-rose-700 text-rose-200';
+                fb.innerHTML = `<b>✗ Check the PEF Guideline:</b> ${c.exp}`;
+            }
+        };
+
+        function renderSpec10Audit() {
+            const box = document.getElementById('spec10-audit-grid');
+            if (!box) return;
+            box.innerHTML = SPEC10_AUDIT_ITEMS.map((it, idx) => {
+                const on = T10_MASTERY.specChecked.has(idx);
+                return `<button type="button" onclick="toggleSpec10(${idx})" class="text-left p-3 rounded-xl border flex items-start gap-3 ${on ? 'bg-sky-950/40 border-sky-600/70 text-slate-100' : 'bg-slate-950 border-slate-800 text-slate-300'}">
+                    <span class="mt-0.5 w-4 h-4 rounded flex items-center justify-center text-[10px] font-bold shrink-0 ${on ? 'bg-sky-400 text-slate-950' : 'border border-slate-600 text-transparent'}">✓</span>
+                    <span class="text-xs leading-relaxed"><strong class="font-mono text-sky-300 mr-1.5">[Spec ${it.code}]</strong>${it.text}</span>
+                </button>`;
+            }).join('');
+        }
+
+        window.toggleSpec10 = function(idx) {
+            if (T10_MASTERY.specChecked.has(idx)) T10_MASTERY.specChecked.delete(idx);
+            else T10_MASTERY.specChecked.add(idx);
+            renderSpec10Audit();
+            updateT10Mastery();
+        };
+
+        window.toggleAllSpec10 = function(val) {
+            SPEC10_AUDIT_ITEMS.forEach((_, i) => { if (val) T10_MASTERY.specChecked.add(i); else T10_MASTERY.specChecked.delete(i); });
+            renderSpec10Audit();
+            updateT10Mastery();
+        };
+
+        // --- TAB 2: 1°/2°/3° CLASSIFIER & SKELETAL FORMULA RULE ---
+        const CLS10_MOLS = [
+            {name:'1-Bromopropane', f:'CH₃CH₂CH₂Br', cls:'Primary (1°) halogenoalkane', cCount:'1 alkyl group (–CH₂CH₃) and 2 H atoms attached to the C–Br carbon.', rx:'Slowest class in AgNO₃/ethanol hydrolysis; reacts predominantly via 1-step SN2 attack.'},
+            {name:'2-Bromopropane', f:'CH₃CHBrCH₃', cls:'Secondary (2°) halogenoalkane', cCount:'2 alkyl groups (two –CH₃) and 1 H atom attached to the C–Br carbon.', rx:'Intermediate hydrolysis rate with AgNO₃/ethanol; elimination with ethanolic KOH gives propene.'},
+            {name:'2-Chloro-2-methylpropane', f:'(CH₃)₃CCl', cls:'Tertiary (3°) halogenoalkane', cCount:'3 alkyl groups (three –CH₃) and 0 H atoms attached to the C–Cl carbon.', rx:'Fastest class to hydrolyse (forms stable 3° carbocation intermediate); prepared in CP6 from 2-methylpropan-2-ol + conc. HCl.'},
+            {name:'Butan-1-ol', f:'CH₃CH₂CH₂CH₂OH', cls:'Primary (1°) alcohol', cCount:'1 alkyl group (–C₃H₇) and 2 H atoms on the C–OH carbon.', rx:'Oxidised by K₂Cr₂O₇/H⁺ to butanal (distil) or butanoic acid (reflux). Skeletal formula MUST show –OH explicitly!'},
+            {name:'Butan-2-ol', f:'CH₃CH₂CH(OH)CH₃', cls:'Secondary (2°) alcohol', cCount:'2 alkyl groups (–CH₃ and –C₂H₅) and 1 H atom on the C–OH carbon.', rx:'Oxidised by K₂Cr₂O₇/H⁺ under reflux to butanone (a ketone; resists further oxidation).'},
+            {name:'2-Methylpropan-2-ol', f:'(CH₃)₃COH', cls:'Tertiary (3°) alcohol', cCount:'3 alkyl groups (three –CH₃) and 0 H atoms on the C–OH carbon.', rx:'Resists oxidation with K₂Cr₂O₇/H⁺ (solution stays orange), but reacts rapidly with PCl₅ (steamy HCl fumes) and conc. HCl (CP6).'}
+        ];
+
+        window.showCls10 = function(idx) {
+            const m = CLS10_MOLS[idx];
+            const btns = document.querySelectorAll('#cls10-btns button');
+            btns.forEach((b, i) => {
+                b.className = 'p-2 rounded-lg border text-left text-[11px] font-mono ' +
+                    (i === idx ? 'bg-sky-950/70 border-sky-500 text-sky-300 font-bold' : 'bg-slate-900 border-slate-800 text-slate-300');
+            });
+            const out = document.getElementById('cls10-out');
+            if (out) {
+                out.innerHTML = `<div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 pb-2">
+                        <span class="font-bold text-white text-sm">${m.name} (<span class="font-mono text-sky-300">${m.f}</span>)</span>
+                        <span class="px-2.5 py-0.5 rounded-full bg-emerald-950 text-emerald-300 border border-emerald-700 font-mono text-[11px] font-bold">${m.cls}</span>
+                    </div>
+                    <p class="text-slate-300"><b>Carbon-Neighbour Count:</b> ${m.cCount}</p>
+                    <p class="text-amber-200/95">${m.rx}</p>`;
+            }
+            T10_MASTERY.conceptsChecked.add('cls10');
+            updateT10Mastery();
+        };
+
+        // --- TAB 3 MODULE 5: UNSYMMETRICAL ELIMINATION ISOMERS ---
+        const ELIM_CASES = [
+            {
+                sub:'CH₃CH₂CHBrCH₃ (2-Bromobutane) + KOH (ethanolic, heat)',
+                prods:'<b>3 Isomeric Alkenes Form:</b><br>1. <b>But-1-ene</b> ($\text{CH}_3\text{CH}_2\text{CH=CH}_2$) — when $\text{OH}^-$ removes $\text{H}^+$ from C1.<br>2. <b>(E)-But-2-ene</b> ($\text{CH}_3\text{CH=CHCH}_3$) — when $\text{OH}^-$ removes $\text{H}^+$ from C3 (trans arrangement).<br>3. <b>(Z)-But-2-ene</b> ($\text{CH}_3\text{CH=CHCH}_3$) — when $\text{OH}^-$ removes $\text{H}^+$ from C3 (cis arrangement).',
+                note:'<b>WCH12 Classic 3-Mark Question:</b> Students often say "2 products (but-1-ene and but-2-ene)" and forget that but-2-ene exists as a pair of $E/Z$ stereoisomers!'
+            },
+            {
+                sub:'CH₃CH₂CH₂CH₂Br (1-Bromobutane) + KOH (ethanolic, heat)',
+                prods:'<b>1 Alkene Only:</b><br>• <b>But-1-ene</b> ($\text{CH}_3\text{CH}_2\text{CH=CH}_2$) + $\text{KBr} + \text{H}_2\text{O}$.',
+                note:'Because Br is on terminal C1, $\text{H}^+$ can only be removed from the single adjacent carbon (C2), and terminal alkenes ($=\text{CH}_2$) cannot show $E/Z$ isomerism.'
+            },
+            {
+                sub:'(CH₃)₂CBrCH₂CH₃ (2-Bromo-2-methylbutane) + KOH (ethanolic, heat)',
+                prods:'<b>2 Structural Isomers Form (Neither has E/Z!):</b><br>1. <b>2-Methylbut-1-ene</b> ($\text{CH}_2\text{=C(CH}_3)\text{CH}_2\text{CH}_3$) — $\text{H}^+$ removed from C1.<br>2. <b>2-Methylbut-2-ene</b> ($(\text{CH}_3)_2\text{C=CHCH}_3$, major) — $\text{H}^+$ removed from C3.',
+                note:'Why no $E/Z$ isomers for 2-methylbut-2-ene? Because C2 carries two identical $-\text{CH}_3$ groups!'
+            },
+            {
+                sub:'CH₃CHBrCH₃ (2-Bromopropane) + KOH (ethanolic, heat)',
+                prods:'<b>1 Alkene Only:</b><br>• <b>Propene</b> ($\text{CH}_3\text{CH=CH}_2$) + $\text{KBr} + \text{H}_2\text{O}$.',
+                note:'2-Bromopropane is symmetrical — removing $\text{H}^+$ from C1 or C3 gives the exact same molecule (propene).'
+            }
+        ];
+
+        window.showElimIsomers = function() {
+            const idx = +(document.getElementById('elim-sub-sel') ? document.getElementById('elim-sub-sel').value : 0);
+            const c = ELIM_CASES[idx];
+            const out = document.getElementById('elim-sub-out');
+            if (out) {
+                out.innerHTML = `<p class="font-mono text-white font-bold">${c.sub}</p>
+                    <p class="text-emerald-200">${c.prods}</p>
+                    <p class="text-amber-200/95 pt-1 border-t border-slate-800">${c.note}</p>`;
+            }
+            T10_MASTERY.conceptsChecked.add('elim');
+            updateT10Mastery();
+        };
+
+        // --- TAB 4 MODULE 5: CP6/CP7 APPARATUS INSPECTOR ---
+        const APP10_CASES = [
+            {
+                title:'Simple Distillation — Isolating an Aldehyde from a 1° Alcohol (CP7)',
+                rules:[
+                    '<b>Why distil immediately?</b> Propanal ($\text{bp } 49^\circ\text{C}$) has only permanent dipole–dipole forces, so it boils much lower than propan-1-ol ($\text{bp } 97^\circ\text{C}$, H-bonding) and propanoic acid ($\text{bp } 141^\circ\text{C}$, H-bonding). Distilling removes the aldehyde from the oxidising mixture before it can be oxidised further to the carboxylic acid.',
+                    '<b>Diagram check:</b> Thermometer bulb must sit <b>level with the side-arm (T-junction)</b>; cooling water enters the Liebig condenser at the <b>lowest point</b> and exits at the top (against gravity for full jacket cooling); system must be open at the collection end.'
+                ]
+            },
+            {
+                title:'Heating Under Reflux — Complete Oxidation to Acid / Ketone or Slow Substitution (CP7)',
+                rules:[
+                    '<b>Why reflux?</b> Allows volatile organic reactants/intermediates (like the intermediate aldehyde) to boil, condense in the vertical condenser, and return to the reaction flask so complete reaction occurs without losing volatile substances.',
+                    '<b>3 Fatal Diagram Errors Penalised in WCH13:</b> (1) Drawing a stopper/bung at the top of the vertical reflux condenser (creates a closed system that explodes on heating!); (2) Reversing water flow (water MUST go in at the bottom, out at the top); (3) Omitting <b>anti-bumping granules</b> (needed to promote smooth boiling and prevent violent superheating bubbles).'
+                ]
+            },
+            {
+                title:'CP6: Preparing & Purifying 2-Chloro-2-methylpropane from 2-Methylpropan-2-ol',
+                rules:[
+                    '<b>Step 1 (Reaction):</b> Shake 2-methylpropan-2-ol with concentrated $\text{HCl}$ in a separating funnel for 15–20 min, inverting and opening the tap periodically to release pressure: $(\text{CH}_3)_3\text{COH} + \text{HCl} \rightarrow (\text{CH}_3)_3\text{CCl} + \text{H}_2\text{O}$.',
+                    '<b>Step 2 (Neutralisation Wash):</b> Allow layers to separate, discard the lower aqueous layer, and shake the upper organic layer with <b>aqueous $\text{NaHCO}_3$</b> to neutralise residual $\text{HCl}$ (invert and open tap frequently to vent $\text{CO}_2$ gas!).',
+                    '<b>Step 3 (Drying &amp; Distillation):</b> Run off the aqueous layer, transfer the organic layer to a dry conical flask, and add <b>anhydrous $\text{MgSO}_4$ or $\text{CaCl}_2$</b> (swirl until liquid turns from cloudy to clear). Decant/filter off the drying agent, then distil collecting the fraction boiling at $50–52^\circ\text{C}$.'
+                ]
+            }
+        ];
+
+        window.showApp10 = function(idx) {
+            const c = APP10_CASES[idx];
+            const btns = document.querySelectorAll('#app10-btns button');
+            btns.forEach((b, i) => {
+                b.className = 'px-3 py-1.5 rounded-lg font-mono text-[11px] border ' +
+                    (i === idx ? 'bg-emerald-950 border-emerald-600 text-emerald-300' : 'bg-slate-950 border-slate-800 text-slate-300');
+            });
+            const out = document.getElementById('app10-out');
+            if (out) {
+                out.innerHTML = `<p class="font-bold text-white">${c.title}</p>
+                    <ul class="list-disc list-inside space-y-1.5 text-slate-300">${c.rules.map(r => `<li>${r}</li>`).join('')}</ul>`;
+            }
+            T10_MASTERY.conceptsChecked.add('app10');
+            updateT10Mastery();
+        };
+
+        // --- TAB 5: CP8 ISOMER PAIR SPECTRA DISAMBIGUATOR ---
+        const SPEC10_PAIRS = [
+            {
+                title:'Propanal (CH₃CH₂CHO) vs Propanone (CH₃COCH₃) — Both C₃H₆O (Mr = 58)',
+                ir:'<b>IR Spectroscopy (PEF Jun 2024R):</b> Both show a strong <b>C=O stretch at 1680–1750 cm⁻¹</b> and no O–H stretch. Propanal is distinguished by the weak <b>aldehyde C–H stretch at ~2720–2820 cm⁻¹</b> (and unique fingerprint region below 1500 cm⁻¹).',
+                ms:'<b>Mass Spectrometry Fragmentation (Always include + charge!):</b><br>• <b>Propanal:</b> Strong peaks at $\mathbf{m/z = 29}$ ($[\text{CHO}]^+$ or $[\text{C}_2\text{H}_5]^+$) and $\mathbf{m/z = 57}$ ($[\text{CH}_3\text{CH}_2\text{CO}]^+$, loss of H).<br>• <b>Propanone:</b> Base peak at $\mathbf{m/z = 43}$ ($[\text{CH}_3\text{CO}]^+$) and $\mathbf{m/z = 15}$ ($[\text{CH}_3]^+$); NO peak at $m/z = 29$!'
+            },
+            {
+                title:'Propan-1-ol (CH₃CH₂CH₂OH) vs Propan-2-ol (CH₃CH(OH)CH₃) — Both C₃H₈O (Mr = 60)',
+                ir:'<b>IR Spectroscopy:</b> Both show a broad <b>alcohol O–H stretch at 3200–3600 cm⁻¹</b> and a C–O stretch at 1000–1300 cm⁻¹; distinguish via fingerprint region or Mass Spec α-cleavage.',
+                ms:'<b>Mass Spectrometry α-Cleavage next to C–OH:</b><br>• <b>Propan-1-ol:</b> Base peak at $\mathbf{m/z = 31}$ ($[\text{CH}_2\text{OH}]^+$, loss of $\text{C}_2\text{H}_5\cdot$).<br>• <b>Propan-2-ol:</b> Base peak at $\mathbf{m/z = 45}$ ($[\text{CH(OH)CH}_3]^+$, loss of $\text{CH}_3\cdot$).'
+            },
+            {
+                title:'Propanoic Acid (CH₃CH₂COOH) vs Hydroxypropanone (CH₃COCH₂OH) — Both C₃H₆O₂ (Mr = 74)',
+                ir:'<b>IR Spectroscopy:</b><br>• <b>Propanoic acid:</b> Shows a <b>very broad carboxylic acid O–H stretch at 2500–3300 cm⁻¹</b> (overlapping the C–H stretch) AND a strong <b>C=O stretch at ~1700–1725 cm⁻¹</b>.<br>• <b>Hydroxypropanone:</b> Shows a higher-wavenumber alcohol O–H stretch (3200–3600 cm⁻¹) separate from C–H, plus ketone C=O stretch.',
+                ms:'<b>Mass Spectrometry:</b> Propanoic acid gives $m/z = 45$ ($[\text{COOH}]^+$) and $m/z = 57$ ($[\text{CH}_3\text{CH}_2\text{CO}]^+$), whereas hydroxypropanone gives $m/z = 43$ ($[\text{CH}_3\text{CO}]^+$) and $m/z = 31$ ($[\text{CH}_2\text{OH}]^+$).'
+            },
+            {
+                title:'Chloroalkanes vs Bromoalkanes — M⁺ and (M+2)⁺ Molecular Ion Doublets',
+                ir:'<b>IR Spectroscopy:</b> C–Cl stretch appears at 600–800 cm⁻¹; C–Br stretch appears at 500–600 cm⁻¹ (both inside the low-wavenumber fingerprint region).',
+                ms:'<b>Mass Spec Isotopic Abundance Ratios:</b><br>• <b>Chlorine ($^{35}\text{Cl} : ^{37}\text{Cl} = 3 : 1$):</b> Molecular ion region shows two peaks at $M^+$ and $(M+2)^+$ in a <b>3 : 1 height ratio</b> (e.g. chloroethane at $m/z = 64$ and $66$).<br>• <b>Bromine ($^{79}\text{Br} : ^{81}\text{Br} = 1 : 1$):</b> Molecular ion region shows two peaks at $M^+$ and $(M+2)^+$ of <b>equal (1 : 1) height</b> (e.g. bromoethane at $m/z = 108$ and $110$).'
+            }
+        ];
+
+        window.showSpec10Pair = function(idx) {
+            const p = SPEC10_PAIRS[idx];
+            const btns = document.querySelectorAll('#spec10-pair-btns button');
+            btns.forEach((b, i) => {
+                b.className = 'px-2.5 py-1 text-[11px] font-semibold rounded ' +
+                    (i === idx ? 'bg-amber-600 text-white' : 'bg-slate-800 text-slate-300');
+            });
+            const out = document.getElementById('spec10-pair-out');
+            if (out) {
+                out.innerHTML = `<p class="font-bold text-white">${p.title}</p>
+                    <p class="text-amber-200">${p.ir}</p>
+                    <p class="text-sky-200 pt-1 border-t border-slate-800">${p.ms}</p>`;
+            }
+            T10_MASTERY.conceptsChecked.add('spec10_pair');
+            updateT10Mastery();
+            setTimeout(safeInitKaTeX, 30);
+        };
+
+        // --- TAB 6: 10-QUESTION WCH12 & WCH13 PAST-PAPER EXAM SIMULATOR ---
+        const T10_SIM_QUESTIONS = [
+            {
+                spec:'10.8', series:'WCH12 Oct 2024 PEF',
+                q:'1-Bromopropane is heated under reflux with ethanolic potassium cyanide, KCN. What is the IUPAC name of the organic product and the type of reaction?',
+                opts:[
+                    'Propanenitrile · Nucleophilic substitution',
+                    'Butanenitrile · Nucleophilic substitution',
+                    'Butanenitrile · Electrophilic addition',
+                    'Propylamine · Elimination'
+                ],
+                ans:1,
+                exp:'PEF Oct 2024: CN⁻ substitutes Br⁻ to lengthen the chain from 3 carbons to 4 carbons. Counting the carbon of the –CN group gives butanenitrile (CH₃CH₂CH₂CN).'
+            },
+            {
+                spec:'10.8 & 10.17', series:'WCH12 Jan 2020 PEF',
+                q:'Which row gives the correct reagents and conditions to convert (i) 2-bromopropane into propene, and (ii) propan-2-ol into propene?',
+                opts:[
+                    '(i) KOH in hot ethanol · (ii) Concentrated H₃PO₄ (or conc. H₂SO₄) and heat',
+                    '(i) Aqueous KOH, warm · (ii) KOH in hot ethanol',
+                    '(i) Concentrated H₃PO₄, heat · (ii) KOH in hot ethanol',
+                    '(i) KOH in hot ethanol · (ii) Acidified K₂Cr₂O₇, reflux'
+                ],
+                ans:0,
+                exp:'PEF Jan 2020: Elimination of HX from a halogenoalkane requires hot ethanolic KOH/NaOH (OH⁻ acts as a base), whereas dehydration of an alcohol requires concentrated H₃PO₄ (or conc. H₂SO₄ / Al₂O₃) and heat.'
+            },
+            {
+                spec:'10.10–10.13', series:'WCH12 Jan 2022 PEF',
+                q:'Equal amounts of 1-chlorobutane, 1-bromobutane, and 1-iodobutane are warmed with aqueous silver nitrate in ethanol at 50 °C. Which statement correctly explains the order of rate of precipitate formation?',
+                opts:[
+                    '1-chlorobutane is fastest because the C–Cl bond is the most polar, attracting the nucleophile most strongly.',
+                    '1-iodobutane is fastest because the C–I bond has the lowest bond enthalpy and therefore breaks most easily.',
+                    '1-iodobutane is fastest because the I⁻ ion is the strongest nucleophile.',
+                    '1-bromobutane is fastest because AgBr is a cream precipitate.'
+                ],
+                ans:1,
+                exp:'Spec 10.13 & PEF Jan 2022: Down Group 7, the C–X bond enthalpy decreases (C–Cl 346 > C–Br 290 > C–I 228 kJ mol⁻¹). Because the weaker C–I bond requires less energy to break, 1-iodobutane hydrolyses fastest.'
+            },
+            {
+                spec:'10.11–10.12', series:'WCH12 Oct 2024 PEF',
+                q:'Why does 2-bromo-2-methylpropane hydrolyse much faster than 1-bromobutane when warmed with aqueous silver nitrate in ethanol?',
+                opts:[
+                    'Because 2-bromo-2-methylpropane is a tertiary carbocation.',
+                    'Because 2-bromo-2-methylpropane reacts via a tertiary carbocation intermediate, which is more stable than a primary carbocation due to electron-releasing alkyl groups.',
+                    'Because the C–Br bond in 2-bromo-2-methylpropane is stronger than in 1-bromobutane.',
+                    'Because 2-bromo-2-methylpropane is insoluble in ethanol.'
+                ],
+                ans:1,
+                exp:'PEF Oct 2024: Never say the halogenoalkane IS a carbocation! State that the tertiary halogenoalkane reacts via a more stable tertiary carbocation intermediate.'
+            },
+            {
+                spec:'10.14 & 10.19', series:'WCH13 Jun 2023 (CP6)',
+                q:'In the preparation of 2-chloro-2-methylpropane from 2-methylpropan-2-ol and concentrated HCl, why is the crude organic layer shaken with aqueous sodium hydrogencarbonate (NaHCO₃) in a separating funnel, and why must the tap be opened periodically?',
+                opts:[
+                    'To dry the organic layer; tap opened to let water out.',
+                    'To neutralise/remove unreacted HCl acid; tap opened to release pressure from CO₂ gas produced.',
+                    'To oxidise unreacted alcohol; tap opened to let O₂ in.',
+                    'To precipitate AgCl; tap opened to remove the precipitate.'
+                ],
+                ans:1,
+                exp:'CP6 (Spec 10.14): Aqueous NaHCO₃ neutralises excess acidic HCl (NaHCO₃ + HCl → NaCl + H₂O + CO₂). Because CO₂ gas is evolved, pressure builds up inside the separating funnel and must be vented through the tap.'
+            },
+            {
+                spec:'10.17 & 10.18', series:'WCH12 Jun 2019 PEF',
+                q:'A student wants to confirm that an unknown liquid X (which could be propan-1-ol, 2-methylpropan-2-ol, or propanal) contains an –OH group. Which reagent gives a positive result for BOTH alcohols but NOT for propanal?',
+                opts:[
+                    'Warm acidified potassium dichromate(VI), K₂Cr₂O₇ / H₂SO₄',
+                    'Solid phosphorus(V) chloride, PCl₅ (under dry conditions)',
+                    'Fehling’s solution, warm',
+                    'Aqueous sodium hydrogencarbonate, NaHCO₃'
+                ],
+                ans:1,
+                exp:'PEF Jun 2019: Acidified K₂Cr₂O₇ turns green with propan-1-ol AND propanal, but stays orange with 2-methylpropan-2-ol (3° alcohol) — so it fails as an –OH test! Solid PCl₅ reacts with all alcohols (1°, 2°, 3°) to give steamy white fumes of HCl(g), and does not give steamy fumes with propanal.'
+            },
+            {
+                spec:'10.18', series:'WCH12 Oct 2024 PEF',
+                q:'Which equation and experimental technique correctly represent the partial oxidation of propan-1-ol to propanal?',
+                opts:[
+                    'CH₃CH₂CH₂OH + [O] → CH₃CH₂CHO + H₂O · Heat with acidified K₂Cr₂O₇ and distil off the product immediately',
+                    'CH₃CH₂CH₂OH + [O] → CH₃CH₂CHO + H₂ · Heat with acidified K₂Cr₂O₇ under reflux',
+                    'CH₃CH₂CH₂OH + 2[O] → CH₃CH₂CHO + H₂O · Heat with acidified K₂Cr₂O₇ under reflux',
+                    'CH₃CH₂CH₂OH + [O] → CH₃COCH₃ + H₂O · Distil'
+                ],
+                ans:0,
+                exp:'PEF Jun 2019 & Oct 2024: The co-product of alcohol oxidation with [O] is H₂O (never H₂!), and you must use DISTILLATION so the volatile aldehyde distils off before further oxidation to propanoic acid.'
+            },
+            {
+                spec:'10.18 & 10.22', series:'WCH12 Jun 2024',
+                q:'A secondary alcohol C₄H₁₀O is heated under reflux with acidified K₂Cr₂O₇. What is observed in the flask, and what absorption changes occur in the IR spectrum of the purified organic product compared to the starting alcohol?',
+                opts:[
+                    'Orange to green; the broad O–H stretch (3200–3600 cm⁻¹) disappears and a strong C=O stretch (1680–1750 cm⁻¹) appears.',
+                    'Stays orange; no change in the IR spectrum.',
+                    'Orange to green; both a very broad O–H stretch (2500–3300 cm⁻¹) and a C=O stretch appear.',
+                    'Green to orange; the C=O stretch disappears.'
+                ],
+                ans:0,
+                exp:'The secondary alcohol (butan-2-ol) is oxidised to a ketone (butanone), turning dichromate from orange to green. The alcohol’s broad O–H stretch at 3200–3600 cm⁻¹ disappears and the ketone’s strong C=O stretch at 1680–1750 cm⁻¹ appears.'
+            },
+            {
+                spec:'10.21', series:'WCH12 Jan 2024',
+                q:'Pentan-2-one (CH₃COCH₂CH₂CH₃) and pentan-3-one (CH₃CH₂COCH₂CH₃) are structural isomers with Mr = 86. Which m/z peak in the mass spectrum would be strong in pentan-2-one but ABSENT (or negligible) in pentan-3-one?',
+                opts:[
+                    'm/z = 86',
+                    'm/z = 43 ([CH₃CO]⁺)',
+                    'm/z = 57 ([CH₃CH₂CO]⁺)',
+                    'm/z = 29 ([C₂H₅]⁺)'
+                ],
+                ans:1,
+                exp:'Pentan-2-one has a CH₃CO– group and undergoes α-cleavage (or C3H7+ loss) to give a prominent peak at m/z = 43 ([CH₃CO]⁺ / [C₃H₇]⁺). Symmetrical pentan-3-one cleaves to give m/z = 57 ([CH₃CH₂CO]⁺) and m/z = 29 ([C₂H₅]⁺).'
+            },
+            {
+                spec:'10.8 & 10.17', series:'WCH12 Jun 2023',
+                q:'Which two-step synthesis converts bromoethane (CH₃CH₂Br) into 1,2-dibromoethane (CH₂BrCH₂Br)?',
+                opts:[
+                    'Step 1: Warm with KOH(aq) · Step 2: Add KBr + 50% H₂SO₄',
+                    'Step 1: Heat with KOH in ethanol · Step 2: Add Br₂ at room temperature',
+                    'Step 1: Heat with KCN in ethanol · Step 2: Add Br₂ in UV light',
+                    'Step 1: Heat with conc. H₃PO₄ · Step 2: Add HBr'
+                ],
+                ans:1,
+                exp:'Step 1: Elimination of HBr from bromoethane using hot ethanolic KOH forms ethene (CH₂=CH₂). Step 2: Electrophilic addition of Br₂ to ethene at room temperature forms 1,2-dibromoethane.'
+            }
+        ];
+
+        let curT10Sim = 0;
+        function renderT10Sim() {
+            const pills = document.getElementById('t10-sim-pills');
+            if (!pills) return;
+            pills.innerHTML = T10_SIM_QUESTIONS.map((q, i) => {
+                const done = T10_MASTERY.simSolved.has(i);
+                return `<button type="button" onclick="selectT10Sim(${i})" class="px-2.5 py-1 text-[11px] font-mono rounded-lg border ${i === curT10Sim ? 'border-sky-500 bg-sky-950/70 text-sky-200 font-bold' : (done ? 'border-emerald-800 bg-emerald-950/30 text-emerald-400' : 'border-slate-800 bg-slate-950 text-slate-400')}">${done ? '✓ ' : ''}Q${i + 1}</button>`;
+            }).join('');
+            const q = T10_SIM_QUESTIONS[curT10Sim];
+            const box = document.getElementById('t10-sim-box');
+            if (box) {
+                box.innerHTML = `<div class="flex items-center justify-between text-[10px] font-mono text-slate-400">
+                        <span class="px-2 py-0.5 rounded bg-slate-950 border border-slate-800 text-sky-300">Spec ${q.spec}</span>
+                        <span class="text-amber-300">${q.series}</span>
+                    </div>
+                    <p class="text-xs sm:text-sm font-semibold text-white leading-relaxed">${curT10Sim + 1}. ${q.q}</p>
+                    <div class="space-y-2">
+                        ${q.opts.map((o, oi) => `<button type="button" onclick="gradeT10Sim(${curT10Sim}, ${oi})" class="w-full text-left p-2.5 rounded-lg border border-slate-800 bg-slate-950 hover:border-sky-500/50 text-xs text-slate-200">${String.fromCharCode(65 + oi)}. ${o}</button>`).join('')}
+                    </div>
+                    <div id="t10-sim-fb" class="hidden p-3 rounded-lg text-xs leading-relaxed"></div>`;
+            }
+            const sc = document.getElementById('t10-sim-score');
+            if (sc) sc.textContent = `Score: ${T10_MASTERY.simSolved.size} / ${T10_SIM_QUESTIONS.length}`;
+        }
+
+        window.selectT10Sim = function(i) { curT10Sim = i; renderT10Sim(); };
+        window.gradeT10Sim = function(qIdx, oIdx) {
+            const q = T10_SIM_QUESTIONS[qIdx];
+            const fb = document.getElementById('t10-sim-fb');
+            if (!fb) return;
+            fb.classList.remove('hidden');
+            if (oIdx === q.ans) {
+                T10_MASTERY.simSolved.add(qIdx);
+                updateT10Mastery();
+                const sc = document.getElementById('t10-sim-score');
+                if (sc) sc.textContent = `Score: ${T10_MASTERY.simSolved.size} / ${T10_SIM_QUESTIONS.length}`;
+                fb.className = 'p-3 rounded-lg text-xs leading-relaxed bg-emerald-950/50 border border-emerald-700 text-emerald-200';
+                fb.innerHTML = `<b>✓ Correct (1/1 Mark):</b> ${q.exp}`;
+            } else {
+                fb.className = 'p-3 rounded-lg text-xs leading-relaxed bg-rose-950/50 border border-rose-700 text-rose-200';
+                fb.innerHTML = `<b>✗ Examiner Distractor Alert:</b> ${q.exp}`;
+            }
+        };
+
+        window.resetT10Sim = function() {
+            T10_MASTERY.simSolved.clear();
+            curT10Sim = 0;
+            renderT10Sim();
+            updateT10Mastery();
+        };
+
+        // --- TAB 7: 12-CARD ACTIVE RECALL FLASHCARD DECK ---
+        const T10_FLASHCARDS = [
+            {q:'Define a nucleophile and an electrophile, and state what heterolytic bond fission produces (Spec 10.3–10.4).', a:'A nucleophile is an electron-pair donor (has a lone pair, e.g. :OH⁻, :NH₃, :CN⁻). An electrophile is an electron-pair acceptor. Heterolytic fission breaks a covalent bond unevenly so both bonding electrons go to one atom, forming a positive ion (cation) and a negative ion (anion).'},
+            {q:'Compare the reagent, conditions, role of OH⁻, and organic product when 1-bromopropane reacts with (i) aqueous KOH and (ii) ethanolic KOH (Spec 10.8).', a:'(i) Warm aqueous KOH: OH⁻ acts as a NUCLEOPHILE in nucleophilic substitution → propan-1-ol. (ii) Hot ethanolic KOH: OH⁻ acts as a BASE (removing H⁺) in elimination → propene + KBr + H₂O.'},
+            {q:'How do you convert a halogenoalkane into (i) a primary amine and (ii) a nitrile with one extra carbon atom (Spec 10.8)?', a:'(i) Heat with excess concentrated ethanolic NH₃ in a sealed tube → primary amine. (ii) Heat under reflux with ethanolic KCN → nitrile (chain length increases by 1 carbon; remember to include the CN carbon when naming!).'},
+            {q:'Explain the trend in rate of hydrolysis from 1-chlorobutane to 1-bromobutane to 1-iodobutane with aqueous AgNO₃ in ethanol (Spec 10.10–10.13, CP5).', a:'Rate increases: 1-chlorobutane (slowest, white AgCl ppt) < 1-bromobutane (cream AgBr ppt) < 1-iodobutane (fastest, yellow AgI ppt). Down Group 7, the C–X bond enthalpy decreases (C–I is weakest), so the C–I bond requires least energy to break.'},
+            {q:'Explain why a tertiary halogenoalkane hydrolyses much faster than a primary halogenoalkane (Spec 10.11–10.12).', a:'A tertiary halogenoalkane reacts via a two-step SN1 mechanism that forms a tertiary carbocation intermediate, which is stabilised by the electron-releasing inductive effect of three alkyl groups (more stable than a primary carbocation).'},
+            {q:'State the reagents and conditions to convert an alcohol into (i) a chloroalkane, (ii) a bromoalkane, (iii) an iodoalkane, and (iv) an alkene (Spec 10.17).', a:'(i) Solid PCl₅ at r.t. (gives steamy fumes of HCl; or conc. HCl for 3° alcohols). (ii) KBr + 50% H₂SO₄, heat (generates HBr in situ). (iii) Red phosphorus + I₂, heat under reflux (generates PI₃ in situ). (iv) Concentrated H₃PO₄ (or conc. H₂SO₄), heat (dehydration).'},
+            {q:'How do you oxidise a primary alcohol to (i) an aldehyde only, and (ii) a carboxylic acid? State the colour change and reagents (Spec 10.18, CP7).', a:'Reagent: Acidified potassium dichromate(VI) (K₂Cr₂O₇ + dilute H₂SO₄), colour changes from orange to green. (i) Aldehyde: heat gently and DISTIL off the aldehyde immediately as it forms. (ii) Carboxylic acid: heat under REFLUX with excess oxidising agent.'},
+            {q:'How can you chemically distinguish between an aldehyde (e.g. propanal) and a ketone (e.g. propanone) or carboxylic acid (Spec 10.18)?', a:'Warm with Fehling’s solution (or Benedict’s solution): the aldehyde is oxidised and reduces blue Cu²⁺(aq) to a brick-red precipitate of copper(I) oxide (Cu₂O), whereas ketones and carboxylic acids stay blue. Carboxylic acids fizz with Na₂CO₃/NaHCO₃(aq) releasing CO₂.'},
+            {q:'In CP6 (preparation of 2-chloro-2-methylpropane), state the purpose of (i) shaking with aqueous NaHCO₃, (ii) adding anhydrous MgSO₄/CaCl₂, and (iii) final distillation (Spec 10.14 & 10.19).', a:'(i) Aqueous NaHCO₃ neutralises and removes unreacted acidic HCl (vent CO₂ gas!). (ii) Anhydrous MgSO₄ or CaCl₂ is a drying agent that removes traces of water (liquid goes from cloudy to clear). (iii) Distillation collects pure product at its boiling range (50–52 °C).'},
+            {q:'Why must water enter a Liebig or reflux condenser at the bottom, and why must a reflux condenser never be stoppered at the top (Spec 10.19)?', a:'Water enters at the bottom and leaves at the top (against gravity) to ensure the condenser jacket stays completely full of cold water for efficient cooling. Stoppering a heated reflux condenser creates a closed system where expanding vapour pressure can shatter the glassware.'},
+            {q:'How do you use Mass Spectrometry to find the relative molecular mass (Mr) and identify key fragments like m/z = 15, 29, 31, 43 (Spec 10.21)?', a:'The molecular ion peak M⁺ is the peak at the highest m/z value (excluding tiny M+1 13C peaks) and equals the Mr. Common positive fragment ions: m/z 15 = [CH₃]⁺, m/z 29 = [C₂H₅]⁺ or [CHO]⁺, m/z 31 = [CH₂OH]⁺, m/z 43 = [CH₃CO]⁺ or [C₃H₇]⁺ (always show the + charge!).'},
+            {q:'How do you distinguish an alcohol, a carboxylic acid, and an aldehyde/ketone using Infrared (IR) spectroscopy (Spec 10.22–10.23, CP8)?', a:'Alcohol: broad O–H bond stretch at 3200–3600 cm⁻¹ (no C=O stretch). Carboxylic acid: BOTH a very broad O–H stretch at 2500–3300 cm⁻¹ AND a strong C=O stretch at ~1700 cm⁻¹. Aldehyde/Ketone: strong C=O stretch at 1680–1750 cm⁻¹ with no O–H stretch (aldehyde also has C–H stretch at ~2720–2820 cm⁻¹).'}
+        ];
+
+        let t10FcIdx = 0, t10FcFlip = false;
+        function renderT10Card() {
+            const box = document.getElementById('t10-fc-box'), cnt = document.getElementById('t10-fc-counter');
+            if (!box) return;
+            const c = T10_FLASHCARDS[t10FcIdx];
+            if (cnt) cnt.textContent = `${t10FcIdx + 1} / ${T10_FLASHCARDS.length}`;
+            box.innerHTML = `<span class="text-[10px] font-mono uppercase px-2.5 py-0.5 rounded-full mb-2 ${t10FcFlip ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40' : 'bg-sky-500/20 text-sky-300 border border-sky-500/40'}">${t10FcFlip ? '✓ Mark-Scheme Answer (Click to flip back)' : '❓ Question Prompt (Click to reveal answer)'}</span>
+                <p class="text-xs sm:text-sm ${t10FcFlip ? 'text-emerald-200 font-medium' : 'text-white font-bold'} max-w-2xl leading-relaxed">${t10FcFlip ? c.a : c.q}</p>`;
+        }
+        window.flipT10Card = function() { t10FcFlip = !t10FcFlip; renderT10Card(); };
+        window.stepT10Card = function(d) { t10FcIdx = (t10FcIdx + d + T10_FLASHCARDS.length) % T10_FLASHCARDS.length; t10FcFlip = false; renderT10Card(); };
+
+        // --- APPLE SPOTLIGHT QUICK COMMAND ---
+        const T10_SPOTLIGHT = [
+            {title:'Spec 10.8 & 10.17 — Reagent & Solvent Role Disambiguator (KOH aq vs ethanolic, H₃PO₄, KCN)', tag:'Tab 1 · Syllabus Lab', act:()=>{switchTab('syllabus');switchSyl10Lab('reagent');}},
+            {title:'Spec 10.3–10.9 — Mechanism, Carbocation & Nitrile Naming Examiner Doctor', tag:'Tab 1 · Mechanism Doctor', act:()=>{switchTab('syllabus');switchSyl10Lab('mechdoc');}},
+            {title:'Spec 10.1–10.23 — Interactive Specification Self-Audit Checklist', tag:'Tab 1 · Syllabus Audit', act:()=>{switchTab('syllabus');switchSyl10Lab('audit');}},
+            {title:'Spec 10.1–10.7, 10.15 — Reaction Types & 1° / 2° / 3° Classifier Studio', tag:'Tab 2 · Reaction Types', act:()=>{switchTab('types');}},
+            {title:'Spec 10.9–10.13 — SN2 Mechanism Animation & CP5 AgNO₃ Hydrolysis Rate Lab', tag:'Tab 3 · Halogenoalkanes', act:()=>{switchTab('halo');switchMode('c1','explorer');}},
+            {title:'Spec 10.8ii — Unsymmetrical Elimination Isomers (2-Bromobutane → 3 Alkenes) & CP5 Controls', tag:'Tab 3 · Module 5 Lab', act:()=>{switchTab('halo');switchMode('c1','sim');}},
+            {title:'Spec 10.18 — Alcohol Oxidation Predictor (1° Distil vs Reflux, 2°, 3°)', tag:'Tab 4 · Alcohols Map', act:()=>{switchTab('alcohol');switchMode('c2','map');}},
+            {title:'Spec 10.14 & 10.19 — CP6/CP7 Reflux vs Distillation Apparatus & Chemical Tests Matrix', tag:'Tab 4 · Module 5 Lab', act:()=>{switchTab('alcohol');switchMode('c2','sim');}},
+            {title:'Spec 10.21–10.23 — Interactive IR & Mass Spectra Explorer & Isomer Disambiguator (CP8)', tag:'Tab 5 · Spectra', act:()=>{switchTab('spectra');}},
+            {title:'Spec 10.8 & 10.17 — Multi-Step Organic Synthesis Pathway Builder (BFS Solver)', tag:'Tab 6 · Synthesis Solver', act:()=>{switchTab('solver');}},
+            {title:'Spec 10.1–10.23 — 10-Question WCH12/WCH13 Past-Paper Exam Simulator', tag:'Tab 6 · Exam Sim', act:()=>{switchTab('solver');setTimeout(()=>{const el=document.getElementById('t10-sim-panel');if(el)el.scrollIntoView({behavior:'smooth'});},100);}},
+            {title:'2019–2026 Examiner Report Deep-Dive & 12 Active-Recall Flashcards', tag:'Tab 7 · Final Review', act:()=>{switchTab('review');}}
+        ];
+
+        window.openSpotlight = function() {
+            const m = document.getElementById('spotlight-modal');
+            if (!m) return;
+            m.classList.remove('hidden'); m.classList.add('flex');
+            const inp = document.getElementById('spotlight-input');
+            if (inp) { inp.value = ''; inp.focus(); }
+            filterSpotlight();
+        };
+        window.closeSpotlight = function() {
+            const m = document.getElementById('spotlight-modal');
+            if (!m) return;
+            m.classList.add('hidden'); m.classList.remove('flex');
+        };
+        window.filterSpotlight = function() {
+            const q = (document.getElementById('spotlight-input') ? document.getElementById('spotlight-input').value : '').toLowerCase().trim();
+            const box = document.getElementById('spotlight-results');
+            if (!box) return;
+            const matches = T10_SPOTLIGHT.filter(it => !q || it.title.toLowerCase().includes(q) || it.tag.toLowerCase().includes(q));
+            box.innerHTML = matches.map(it => {
+                const idx = T10_SPOTLIGHT.indexOf(it);
+                return `<button type="button" onclick="runT10Spotlight(${idx})" class="w-full text-left px-3 py-2.5 rounded-xl hover:bg-slate-800/80 flex items-center justify-between gap-2">
+                    <span class="text-xs text-slate-100 font-medium">${it.title}</span>
+                    <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-950 text-sky-300 border border-slate-800 shrink-0">${it.tag}</span>
+                </button>`;
+            }).join('') || '<p class="text-xs text-slate-500 p-3 text-center">No matching concept found.</p>';
+        };
+        window.runT10Spotlight = function(idx) {
+            closeSpotlight();
+            if (T10_SPOTLIGHT[idx]) T10_SPOTLIGHT[idx].act();
+        };
+
+        document.addEventListener('keydown', function(e) {
+            if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+                e.preventDefault();
+                openSpotlight();
+            }
         });
 
         // ============ MOBILE UX boot (chrome only, JS-injected) ============

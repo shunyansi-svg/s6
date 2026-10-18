@@ -86,6 +86,176 @@
           .toc-strip{display:flex}
         }
         @media (prefers-reduced-motion:reduce){#backTop{transition:none}html{scroll-behavior:auto}}
+
+        /* ══ APPLE CUPERTINO DARK GLASS DESIGN SYSTEM & SUBTLE ANIMATIONS ══ */
+        :root {
+            --apple-bg: #03050a;
+            --apple-glass: rgba(20, 26, 38, 0.68);
+            --apple-glass-card: rgba(12, 17, 28, 0.80);
+            --apple-border: rgba(255, 255, 255, 0.085);
+            --apple-highlight: inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
+            --apple-blue: #0A84FF;
+            --apple-cyan: #64D2FF;
+            --apple-green: #30D158;
+            --apple-amber: #FF9F0A;
+            --apple-rose: #FF375F;
+            --apple-purple: #BF5AF2;
+            --apple-spring: cubic-bezier(0.16, 1, 0.3, 1);
+            --apple-smooth: cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+
+        body {
+            background-color: var(--apple-bg) !important;
+            background-image:
+                radial-gradient(circle at 12% 10%, rgba(10, 132, 255, 0.14) 0%, transparent 38%),
+                radial-gradient(circle at 88% 14%, rgba(16, 185, 129, 0.10) 0%, transparent 36%),
+                radial-gradient(circle at 50% 88%, rgba(191, 90, 242, 0.08) 0%, transparent 44%),
+                linear-gradient(180deg, #03060c 0%, #060b16 52%, #03050a 100%) !important;
+            background-attachment: fixed;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", ui-sans-serif, system-ui, sans-serif !important;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            letter-spacing: -0.011em;
+        }
+
+        h1, h2, h3, h4 {
+            letter-spacing: -0.024em;
+        }
+
+        header.sticky {
+            background: rgba(8, 12, 22, 0.76) !important;
+            -webkit-backdrop-filter: saturate(190%) blur(28px) !important;
+            backdrop-filter: saturate(190%) blur(28px) !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.09) !important;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.65), inset 0 -1px 0 0 rgba(255, 255, 255, 0.05);
+        }
+
+        nav.sticky {
+            background: rgba(11, 16, 28, 0.80) !important;
+            -webkit-backdrop-filter: saturate(190%) blur(24px) !important;
+            backdrop-filter: saturate(190%) blur(24px) !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+        }
+
+        nav.sticky > div > button {
+            border-radius: 10px !important;
+            transition: all 0.28s var(--apple-spring) !important;
+            letter-spacing: -0.01em;
+        }
+
+        nav.sticky > div > button:active {
+            transform: scale(0.96);
+        }
+
+        nav.sticky > div > button.tab-btn-active {
+            background: linear-gradient(180deg, rgba(10, 132, 255, 0.34) 0%, rgba(10, 132, 255, 0.18) 100%) !important;
+            color: #ffffff !important;
+            box-shadow: 0 2px 10px rgba(10, 132, 255, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.22) !important;
+            border: 1px solid rgba(100, 210, 255, 0.42) !important;
+        }
+
+        @keyframes appleFadeSlideUp {
+            0% {
+                opacity: 0;
+                transform: translateY(10px) scale(0.994);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        main > section:not(.hidden) {
+            animation: appleFadeSlideUp 0.42s var(--apple-spring) forwards;
+        }
+
+        .bg-slate-900 {
+            background: var(--apple-glass) !important;
+            -webkit-backdrop-filter: saturate(165%) blur(22px);
+            backdrop-filter: saturate(165%) blur(22px);
+            border-color: var(--apple-border) !important;
+            box-shadow: 0 20px 45px -18px rgba(0, 0, 0, 0.7), var(--apple-highlight) !important;
+            border-radius: 18px !important;
+        }
+
+        .bg-slate-950 {
+            background: var(--apple-glass-card) !important;
+            border-color: rgba(255, 255, 255, 0.075) !important;
+            box-shadow: 0 10px 28px -12px rgba(0, 0, 0, 0.55), inset 0 1px 0 0 rgba(255, 255, 255, 0.08) !important;
+            border-radius: 15px !important;
+            transition: transform 0.32s var(--apple-spring), border-color 0.32s var(--apple-smooth), box-shadow 0.32s var(--apple-smooth);
+        }
+
+        .card-lift:hover {
+            transform: translateY(-2.5px) !important;
+            border-color: rgba(125, 211, 252, 0.28) !important;
+            box-shadow: 0 18px 38px -12px rgba(0, 0, 0, 0.72), 0 0 24px -8px rgba(10, 132, 255, 0.18), inset 0 1px 0 0 rgba(255, 255, 255, 0.14) !important;
+        }
+
+        input[type="number"], input[type="text"], select, textarea {
+            background: rgba(9, 13, 24, 0.85) !important;
+            border: 1px solid rgba(255, 255, 255, 0.12) !important;
+            border-radius: 10px !important;
+            transition: border-color 0.22s var(--apple-smooth), box-shadow 0.22s var(--apple-smooth) !important;
+        }
+        input[type="number"]:focus, input[type="text"]:focus, select:focus, textarea:focus {
+            outline: none !important;
+            border-color: var(--apple-blue) !important;
+            box-shadow: 0 0 0 3px rgba(10, 132, 255, 0.25) !important;
+        }
+
+        button {
+            transition: all 0.24s var(--apple-spring);
+        }
+        button:active:not(:disabled) {
+            transform: scale(0.97);
+        }
+
+        .apple-pill-btn {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 9999px;
+            padding: 4px 11px;
+            font-size: 11px;
+            font-weight: 600;
+            color: #e2e8f0;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+        .apple-pill-btn:hover {
+            background: rgba(255, 255, 255, 0.11);
+            border-color: rgba(100, 210, 255, 0.4);
+            color: #ffffff;
+        }
+
+        .spec-conf-btn {
+            padding: 3px 9px;
+            border-radius: 9999px;
+            font-size: 10px;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(15, 23, 42, 0.7);
+            color: #94a3b8;
+            cursor: pointer;
+            transition: all 0.22s var(--apple-spring);
+        }
+        .spec-conf-btn.conf-review.active {
+            background: rgba(255, 55, 95, 0.2);
+            border-color: #FF375F;
+            color: #fda4af;
+        }
+        .spec-conf-btn.conf-practising.active {
+            background: rgba(255, 159, 10, 0.2);
+            border-color: #FF9F0A;
+            color: #fde68a;
+        }
+        .spec-conf-btn.conf-mastered.active {
+            background: rgba(48, 209, 88, 0.22);
+            border-color: #30D158;
+            color: #86efac;
+        }
     </style>
     <script>
         function safeInitKaTeX() {
@@ -120,7 +290,7 @@
         };
 
         window.switchMode = function(prefix, mode) {
-            ['explorer','map','quiz','traps'].forEach(m => {
+            ['explorer','map','quiz','traps','drill'].forEach(m => {
                 const el = document.getElementById(prefix + '-mode-' + m);
                 const btn = document.getElementById(prefix + '-mode-btn-' + m);
                 if (el) el.classList.toggle('hidden', m !== mode);
@@ -915,6 +1085,15 @@ nav, nav > div { max-width: 100% !important; }
                 <span class="px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-800 font-mono">Fuels &amp; crude oil</span>
                 <span class="px-2 py-0.5 rounded bg-violet-950 text-violet-300 border border-violet-800 font-mono">Isomerism</span>
                 <span class="px-2 py-0.5 rounded bg-amber-950 text-amber-300 border border-amber-800 font-mono">Free radical substitution</span>
+                <button type="button" onclick="openT4Spotlight()" class="apple-pill-btn cursor-pointer" title="Quick Search Spec 4.1–4.18, Naming, Free Radical Mechanism, Fuels & Isomers (⌘K)">
+                    <span>🔎 Quick Jump</span>
+                    <kbd class="px-1.5 py-0.5 text-[9px] bg-slate-800/90 text-slate-300 rounded border border-slate-700 font-mono">⌘K</kbd>
+                </button>
+                <div class="apple-pill-btn border-sky-500/40 bg-sky-950/60 text-sky-300" title="Overall Topic 4 Mastery across Spec 4.1–4.18 & Interactive Checks">
+                    <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span>Mastery:</span>
+                    <span id="mastery-percentage" class="font-bold text-white font-mono">0%</span>
+                </div>
             </div>
         </div>
     </header>
@@ -964,7 +1143,28 @@ nav, nav > div { max-width: 100% !important; }
                     <p class="text-xs text-slate-400 mt-1">Every assessment point elaborated with Key Learning Goals and IAL Examiner Watch-Outs. WCH11/01 · Unit 1 · Paper 1. Related topics in Units 2, 4 and 5 assume this material.</p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Interactive Topic 4 Syllabus Mastery Dashboard Bar -->
+                <div class="mb-6 p-4 bg-slate-950 border border-slate-800 rounded-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <div class="space-y-1.5 flex-1 w-full">
+                        <div class="flex items-center justify-between text-xs">
+                            <span class="font-bold text-white flex items-center gap-2">
+                                <span class="inline-block w-2 h-2 rounded-full bg-sky-400"></span>
+                                Interactive Edexcel IAL Spec 4.1–4.18 Self-Audit &amp; Concept Checkers
+                            </span>
+                            <span id="t4SyllabusProgressLabel" class="font-mono text-[11px] text-sky-300">0 / 12 Cards Mastered · 0 / 12 Concept Checks Passed</span>
+                        </div>
+                        <div class="w-full h-2 bg-slate-900 rounded-full overflow-hidden border border-slate-800">
+                            <div id="t4SyllabusProgressBar" class="h-full bg-gradient-to-r from-sky-500 via-emerald-400 to-violet-400 transition-all duration-500" style="width: 0%"></div>
+                        </div>
+                        <p class="text-[11px] text-slate-400">Track your confidence on every specification card below and test your understanding with the <b>⚡ Instant Concept Check</b> on each card.</p>
+                    </div>
+                    <div class="flex gap-2 shrink-0">
+                        <button type="button" onclick="expandAllT4SpecChecks(true)" class="text-[11px] font-semibold px-3 py-1.5 rounded-lg bg-sky-950/70 text-sky-300 border border-sky-800/80 hover:bg-sky-900/60">Open All Checks</button>
+                        <button type="button" onclick="resetT4SyllabusTracker()" class="text-[11px] font-semibold px-3 py-1.5 rounded-lg bg-slate-900 text-slate-400 border border-slate-700 hover:text-white">Reset</button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="t4-syllabus-grid">
 
                     <!-- Card 1: 4.1-4.3 -->
                     <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between card-lift">
@@ -1275,6 +1475,67 @@ nav, nav > div { max-width: 100% !important; }
                         <p class="text-xs text-slate-400 leading-relaxed">Alkenes (C=C, E–Z isomerism, electrophilic addition mechanisms, bromine water test, addition polymerisation) belong to <b>Topic 5</b>; reactions of halogenoalkanes and alcohols belong to <b>Unit 2 (WCH12)</b>. In this studio, alkenes appear only where the syllabus requires them — as <b>cracking products</b> (4.12) — and electrophiles appear only as the 4.8 definition.</p>
                     </div>
                 </div>
+
+                <!-- ══ NEW: UPDATED WCH11 EXAMINER REPORT & SYLLABUS DEEP-DIVE (2019–2026) ══ -->
+                <div class="mt-8 space-y-4">
+                    <div class="flex flex-wrap items-center justify-between gap-2 border-t border-slate-800 pt-6">
+                        <div>
+                            <span class="text-[10px] font-mono uppercase tracking-widest text-cyan-400 font-bold">Updated Examiner Report &amp; Syllabus Additions (2019–2026)</span>
+                            <h3 class="text-base font-bold text-white mt-0.5">High-Yield WCH11 Mark Scheme Distinctions &amp; Interactive Concept Bridges</h3>
+                        </div>
+                        <span class="text-[11px] text-slate-400">Covers Hazard vs Risk · Homologous Series Wording · Radical Fishhooks · Branching Boiling Points</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+                        <!-- Deep Dive 1: Hazard vs Risk & Specific Practical Controls -->
+                        <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3 card-lift">
+                            <div class="flex items-center justify-between">
+                                <span class="text-[10px] font-mono text-sky-400 uppercase font-bold px-2 py-0.5 bg-sky-950 rounded border border-sky-800">Spec 4.1 – 4.3 · WCH11/13</span>
+                                <span class="text-[10px] text-slate-400 font-mono">Safety &amp; Controls</span>
+                            </div>
+                            <h4 class="text-sm font-bold text-white">Hazard vs. Risk &amp; Named Precaution Matching</h4>
+                            <p class="text-[11px] text-slate-400 leading-relaxed">Examiners reject vague statements like "wear lab coat / be careful". Every precaution must match the specific hazard:</p>
+                            <div class="space-y-1.5 text-[11px] text-slate-300">
+                                <div class="p-2 rounded bg-slate-900 border border-slate-800"><b class="text-sky-300">Hazard vs Risk:</b> <b>Hazard</b> = inherent potential of a substance to cause harm; <b>Risk</b> = probability/likelihood of harm occurring in a specific procedure.</div>
+                                <div class="p-2 rounded bg-slate-900 border border-slate-800"><b class="text-amber-300">Flammable alkanes:</b> Keep away from naked flames; heat using an electric heating mantle or water bath.</div>
+                                <div class="p-2 rounded bg-slate-900 border border-slate-800"><b class="text-rose-300">Toxic/volatile $\text{Cl}_2, \text{Br}_2$, haloalkanes:</b> Carry out in a working <b>fume cupboard</b> or use smaller quantities.</div>
+                            </div>
+                            <button type="button" onclick="switchTab('naming')" class="w-full py-2 px-3 rounded-lg bg-sky-950/70 hover:bg-sky-900/80 text-sky-300 border border-sky-800/70 text-xs font-semibold">Open Formula Converter &amp; Naming Fixer →</button>
+                        </div>
+
+                        <!-- Deep Dive 2: Free Radical Substitution Precision (PEF 2019–2026) -->
+                        <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3 card-lift">
+                            <div class="flex items-center justify-between">
+                                <span class="text-[10px] font-mono text-emerald-400 uppercase font-bold px-2 py-0.5 bg-emerald-950 rounded border border-emerald-800">Spec 4.7 – 4.8 · 4.18 · PEF Jan 2025/2026</span>
+                                <span class="text-[10px] text-slate-400 font-mono">Radical Mechanism</span>
+                            </div>
+                            <h4 class="text-sm font-bold text-white">Free-Radical Substitution Examiner Precision</h4>
+                            <p class="text-[11px] text-slate-400 leading-relaxed">Principal Examiner Feedback (Jan 2020, Jan 2025, Jan 2026) highlights the four strictest mark-scheme rules:</p>
+                            <div class="space-y-1.5 text-[11px] text-slate-300">
+                                <div class="p-2 rounded bg-slate-900 border border-slate-800"><b class="text-emerald-300">M1 · Initiation:</b> Requires <b>UV light</b> + homolytic fission ($\text{Cl}_2 \rightarrow 2\text{Cl}^\bullet$) with two <b>fish-hook (single-headed) half-arrows</b>.</div>
+                                <div class="p-2 rounded bg-slate-900 border border-slate-800"><b class="text-sky-300">M2 · Propagation:</b> Radical + molecule $\rightarrow$ new alkyl radical (dot on C: ${^\bullet\text{CH}_3}$ or $\text{CH}_3\text{CH}_2^\bullet$) + $\text{HCl}$, then regenerates $\text{Cl}^\bullet$.</div>
+                                <div class="p-2 rounded bg-slate-900 border border-slate-800"><b class="text-amber-300">M3 · Termination &amp; Trace Alkane:</b> State <b>"two radicals combine"</b>; coupling of $2\,{^\bullet\text{CH}_3} \rightarrow \text{C}_2\text{H}_6$ (or $2\,\text{C}_2\text{H}_5^\bullet \rightarrow \text{C}_4\text{H}_{10}$) proves the radical mechanism!</div>
+                            </div>
+                            <button type="button" onclick="switchTab('mech');switchMode('c1','drill');" class="w-full py-2 px-3 rounded-lg bg-emerald-950/70 hover:bg-emerald-900/80 text-emerald-300 border border-emerald-800/70 text-xs font-semibold">Launch Radical Builder &amp; Monochloro Lab →</button>
+                        </div>
+
+                        <!-- Deep Dive 3: Homologous Series, Branching & Boiling Points -->
+                        <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3 card-lift">
+                            <div class="flex items-center justify-between">
+                                <span class="text-[10px] font-mono text-violet-400 uppercase font-bold px-2 py-0.5 bg-violet-950 rounded border border-violet-800">Spec 4.4 · 4.10 – 4.12 · PEF Jan 2025</span>
+                                <span class="text-[10px] text-slate-400 font-mono">Structure &amp; BP</span>
+                            </div>
+                            <h4 class="text-sm font-bold text-white">Homologous Series Wording &amp; Branching Trends</h4>
+                            <p class="text-[11px] text-slate-400 leading-relaxed">Examiner Report (Jan 2025): Extra incorrect statements negate marks in homologous series definitions!</p>
+                            <div class="space-y-1.5 text-[11px] text-slate-300">
+                                <div class="p-2 rounded bg-slate-900 border border-slate-800"><b class="text-violet-300">Homologous series:</b> Same general formula ($\text{C}_n\text{H}_{2n+2}$), differ by $\text{–CH}_2\text{–}$, similar <b>chemical</b> properties, gradual trend in <b>physical</b> properties.</div>
+                                <div class="p-2 rounded bg-slate-900 border border-slate-800"><b class="text-sky-300">Branching lowers b.p.:</b> More branches $\rightarrow$ more spherical shape $\rightarrow$ smaller surface area of contact $\rightarrow$ weaker London forces.</div>
+                                <div class="p-2 rounded bg-slate-900 border border-slate-800"><b class="text-amber-300">Reforming vs Cracking:</b> Branched/cyclic alkanes from reforming promote <b>more efficient (smoother) combustion</b> (higher octane number).</div>
+                            </div>
+                            <button type="button" onclick="switchTab('isomers');switchMode('c3','drill');" class="w-full py-2 px-3 rounded-lg bg-violet-950/70 hover:bg-violet-900/80 text-violet-300 border border-violet-800/70 text-xs font-semibold">Open Branching Boiling Point Lab →</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -1298,6 +1559,51 @@ nav, nav > div { max-width: 100% !important; }
                 <div class="p-3.5 bg-slate-950 border border-slate-800 rounded-xl text-[11px] text-slate-400 leading-relaxed">
                     <b class="text-sky-300">Method the examiner rewards:</b> ① find the <b>longest continuous chain</b> — it may bend a corner in a skeletal drawing; ② <b>number from the end nearer the first branch</b>; ③ name substituents with locants (commas between numbers, hyphens before letters); ④ alphabetise substituents; ⑤ check every carbon has four bonds.
                 </div>
+
+                <!-- NEW: Interactive Formula Converter & Illegal IUPAC Name Fixer -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 pt-2">
+                    <!-- Left: Interactive Formula Type Converter (Spec 4.5) -->
+                    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] font-mono text-emerald-400 uppercase font-bold px-2 py-0.5 bg-emerald-950 rounded border border-emerald-800">Spec 4.5 · Formula Types</span>
+                            <span class="text-[10px] font-mono text-slate-400">Molecular · Empirical · Structural · Displayed · Skeletal</span>
+                        </div>
+                        <h3 class="text-sm font-bold text-white">Interactive 5-Representation Formula Translator</h3>
+                        <p class="text-xs text-slate-400">Select any syllabus alkane or cycloalkane to compare its Molecular, Empirical, Structural, Displayed, and Skeletal formulae side-by-side:</p>
+                        <div>
+                            <select id="formulaTransSel" onchange="renderFormulaTranslator()" class="w-full px-3 py-2 text-xs text-slate-100 font-mono">
+                                <option value="0">1. Butane (straight-chain C₄H₁₀)</option>
+                                <option value="1">2. 2-Methylpropane (branched C₄H₁₀)</option>
+                                <option value="2">3. 2,2-Dimethylpropane (neopentane, C₅H₁₂)</option>
+                                <option value="3">4. 2,3-Dimethylbutane (branched C₆H₁₄)</option>
+                                <option value="4">5. Cyclopentane (cyclic C₅H₁₀)</option>
+                                <option value="5">6. Methylcyclopropane (substituted ring C₄H₈)</option>
+                            </select>
+                        </div>
+                        <div id="formulaTransOut" class="p-4 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-300 space-y-2"></div>
+                    </div>
+
+                    <!-- Right: Interactive Illegal IUPAC Name Detector & Fixer -->
+                    <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] font-mono text-amber-400 uppercase font-bold px-2 py-0.5 bg-amber-950 rounded border border-amber-800">Spec 4.5 · PEF Naming Traps</span>
+                            <span class="text-[10px] font-mono text-slate-400">Longest Chain &amp; Locants</span>
+                        </div>
+                        <h3 class="text-sm font-bold text-white">“Spot the Illegal IUPAC Name” Examiner Clinic</h3>
+                        <p class="text-xs text-slate-400">Students lose marks by numbering from the wrong end or missing a longer chain bending around a corner. Select a student-written name below to diagnose it:</p>
+                        <div>
+                            <select id="illegalNameSel" onchange="renderIllegalNameClinic()" class="w-full px-3 py-2 text-xs text-slate-100 font-mono">
+                                <option value="0">Student wrote: “3-methylbutane”</option>
+                                <option value="1">Student wrote: “2-ethylbutane”</option>
+                                <option value="2">Student wrote: “1-methylpropane”</option>
+                                <option value="3">Student wrote: “2,3,3-trimethylbutane”</option>
+                                <option value="4">Student wrote: “1,4-dimethylcyclopentane”</option>
+                                <option value="5">Student wrote: “2-methyl-3-ethylpentane”</option>
+                            </select>
+                        </div>
+                        <div id="illegalNameOut" class="p-4 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-300 space-y-2.5"></div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -1319,6 +1625,7 @@ nav, nav > div { max-width: 100% !important; }
                     <button onclick="switchMode('c1','map')" id="c1-mode-btn-map" class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-sky-300 text-xs transition">🗺️ Module 2: Step Classifier &amp; Product Predictor</button>
                     <button onclick="switchMode('c1','quiz')" id="c1-mode-btn-quiz" class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-sky-300 text-xs transition">🎯 Module 3: Fill-in-the-Blanks</button>
                     <button onclick="switchMode('c1','traps')" id="c1-mode-btn-traps" class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-sky-300 text-xs transition">⚡ Module 4: Trap Pairs Lab</button>
+                    <button onclick="switchMode('c1','drill')" id="c1-mode-btn-drill" class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-sky-300 text-xs transition">🔬 Module 5: Radical Builder &amp; Monochloro-Isomer Lab</button>
                 </div>
 
                 <!-- MODULE 1: STEP INSPECTOR -->
@@ -1527,6 +1834,92 @@ nav, nav > div { max-width: 100% !important; }
                         </div>
                     </div>
                 </div>
+
+                <!-- MODULE 5: ANY-ALKANE RADICAL BUILDER & MONOCHLORO-ISOMER COUNTER -->
+                <div id="c1-mode-drill" class="hidden space-y-4">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <!-- Left: Any-Alkane Initiation, Propagation & Termination Generator -->
+                        <div class="p-5 bg-slate-950 border border-slate-800 rounded-xl space-y-4 text-xs">
+                            <div class="flex items-center justify-between">
+                                <span class="text-[10px] font-mono text-sky-400 uppercase font-bold px-2 py-0.5 bg-sky-950 rounded border border-sky-800">Spec 4.18 · PEF Jan 2025/2026</span>
+                                <span class="text-[10px] font-mono text-slate-400">Any Alkane + Cl₂ / Br₂</span>
+                            </div>
+                            <h3 class="text-sm font-bold text-white">Interactive Any-Alkane Radical Step Generator</h3>
+                            <p class="text-slate-400 text-[11px]">Examiners test ethane, propane, cyclohexane, and even mono-substituted haloalkanes in free-radical questions. Pick a substrate and halogen below to generate every step and trace coupling product:</p>
+                            <div class="grid grid-cols-2 gap-2">
+                                <div>
+                                    <label class="block text-slate-400 mb-1">Substrate Alkane</label>
+                                    <select id="radSubSel" onchange="renderRadicalBuilder()" class="w-full p-2 text-xs text-sky-300 font-mono">
+                                        <option value="0">Methane (CH₄)</option>
+                                        <option value="1" selected>Ethane (C₂H₆ · Jan 2026)</option>
+                                        <option value="2">Propane (C₃H₈ — 2° vs 1°)</option>
+                                        <option value="3">Cyclohexane (C₆H₁₂ ring)</option>
+                                        <option value="4">Chloromethane (CH₃Cl → CH₂Cl₂)</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-slate-400 mb-1">Halogen ($X_2$)</label>
+                                    <select id="radHalSel" onchange="renderRadicalBuilder()" class="w-full p-2 text-xs text-sky-300 font-mono">
+                                        <option value="Cl" selected>Chlorine (Cl₂ / UV)</option>
+                                        <option value="Br">Bromine (Br₂ / UV)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div id="radBuilderOut" class="p-3.5 rounded-xl bg-slate-900 border border-slate-800 space-y-2 text-[11px] text-slate-300"></div>
+                        </div>
+
+                        <!-- Right: Monochloro-Isomer Equivalence Counter (High-Discriminator WCH11 Skill) -->
+                        <div class="p-5 bg-slate-950 border border-slate-800 rounded-xl space-y-4 text-xs">
+                            <div class="flex items-center justify-between">
+                                <span class="text-[10px] font-mono text-emerald-400 uppercase font-bold px-2 py-0.5 bg-emerald-950 rounded border border-emerald-800">Spec 4.10 · 4.18(iv)</span>
+                                <span class="text-[10px] font-mono text-slate-400">Symmetry &amp; Equivalence</span>
+                            </div>
+                            <h3 class="text-sm font-bold text-white">Monosubstituted Haloalkane Isomer Counter</h3>
+                            <p class="text-slate-400 text-[11px]">Classic Paper 1 Section A/B discriminator: <i>“Which isomer of $\text{C}_5\text{H}_{12}$ reacts with $\text{Cl}_2$ in UV light to form <b>only ONE</b> monochloro-substituted product?”</i> Select a hydrocarbon and predict how many distinct monochloro structural isomers form:</p>
+                            <div>
+                                <select id="monoIsoSel" onchange="renderMonoIsoChallenge()" class="w-full p-2 text-xs text-emerald-300 font-mono">
+                                    <option value="0">1. 2,2-Dimethylpropane (C₅H₁₂)</option>
+                                    <option value="1">2. Pentane (straight-chain C₅H₁₂)</option>
+                                    <option value="2">3. 2-Methylbutane (branched C₅H₁₂)</option>
+                                    <option value="3">4. Butane (straight-chain C₄H₁₀)</option>
+                                    <option value="4">5. 2-Methylpropane (branched C₄H₁₀)</option>
+                                    <option value="5">6. 2,3-Dimethylbutane (C₆H₁₄)</option>
+                                    <option value="6">7. Cyclopentane (C₅H₁₀ ring)</option>
+                                </select>
+                            </div>
+                            <div class="flex gap-2" id="monoIsoBtns">
+                                <button type="button" onclick="checkMonoIsoCount(1)" class="flex-1 py-2 rounded-lg bg-slate-900 border border-slate-700 hover:border-emerald-500 font-bold text-white">1 Isomer</button>
+                                <button type="button" onclick="checkMonoIsoCount(2)" class="flex-1 py-2 rounded-lg bg-slate-900 border border-slate-700 hover:border-emerald-500 font-bold text-white">2 Isomers</button>
+                                <button type="button" onclick="checkMonoIsoCount(3)" class="flex-1 py-2 rounded-lg bg-slate-900 border border-slate-700 hover:border-emerald-500 font-bold text-white">3 Isomers</button>
+                                <button type="button" onclick="checkMonoIsoCount(4)" class="flex-1 py-2 rounded-lg bg-slate-900 border border-slate-700 hover:border-emerald-500 font-bold text-white">4 Isomers</button>
+                            </div>
+                            <div id="monoIsoOut" class="p-3.5 rounded-xl bg-slate-900 border border-slate-800 text-[11px] text-slate-300 space-y-1.5"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mark-Scheme Word Bank — Mechanism & Fission -->
+                <div class="mt-2 p-4 bg-slate-950 border border-slate-800 rounded-xl">
+                    <p class="text-[11px] font-bold text-sky-300 uppercase tracking-wider mb-2">📝 Mark-Scheme Word Bank — Bond Fission &amp; Free Radical Substitution (Spec 4.7–4.8, 4.18)</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                        <div class="p-3 bg-slate-900 border border-slate-800 rounded-lg">
+                            <p class="font-bold text-white mb-1">Homolytic vs Heterolytic fission (2 marks)</p>
+                            <p class="text-slate-300 leading-relaxed"><b>Homolytic:</b> covalent bond breaks with <b>one bonding electron going to each atom</b> to form two <b>free radicals</b>. <b>Heterolytic:</b> <b>both bonding electrons go to one atom</b> to form a positive ion (cation) and negative ion (anion).</p>
+                        </div>
+                        <div class="p-3 bg-slate-900 border border-slate-800 rounded-lg">
+                            <p class="font-bold text-white mb-1">Free radical vs Electrophile (2 marks)</p>
+                            <p class="text-slate-300 leading-relaxed"><b>Free radical:</b> a species with an <b>unpaired electron</b> (e.g. $\text{Cl}^\bullet, {^\bullet\text{CH}_3}$). <b>Electrophile:</b> a species that is attracted to electron-rich regions and <b>accepts a pair of electrons</b> to form a covalent bond.</p>
+                        </div>
+                        <div class="p-3 bg-slate-900 border border-slate-800 rounded-lg">
+                            <p class="font-bold text-white mb-1">Why alkanes are unreactive towards polar reagents (2 marks)</p>
+                            <p class="text-slate-300 leading-relaxed">① $\text{C–C}$ and $\text{C–H}$ $\sigma$ bonds have <b>high bond enthalpies (very strong)</b> ② $\text{C}$ and $\text{H}$ have very similar electronegativities so bonds are <b>essentially non-polar</b> (no $\delta+/\delta-$ site for nucleophiles/electrophiles).</p>
+                        </div>
+                        <div class="p-3 bg-slate-900 border border-slate-800 rounded-lg">
+                            <p class="font-bold text-white mb-1">Why FRS has low yield in synthesis (2 marks)</p>
+                            <p class="text-slate-300 leading-relaxed">① <b>Further (multiple) substitution</b> produces di-, tri-, and tetrachlorinated products ② substitution can occur at <b>different positions along a carbon chain</b> (for $\ge\text{C}_3$), giving a mixture of isomers.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -1548,6 +1941,7 @@ nav, nav > div { max-width: 100% !important; }
                     <button onclick="switchMode('c2','map')" id="c2-mode-btn-map" class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-emerald-300 text-xs transition">🗺️ Module 2: Fuel &amp; Pollutant Maps</button>
                     <button onclick="switchMode('c2','quiz')" id="c2-mode-btn-quiz" class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-emerald-300 text-xs transition">🎯 Module 3: Fill-in-the-Blanks</button>
                     <button onclick="switchMode('c2','traps')" id="c2-mode-btn-traps" class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-emerald-300 text-xs transition">⚡ Module 4: Trap Pairs Lab</button>
+                    <button onclick="switchMode('c2','drill')" id="c2-mode-btn-drill" class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-emerald-300 text-xs transition">🌡️ Module 5: Fractionating Tower &amp; Process Sorter</button>
                 </div>
 
                 <!-- MODULE 1 -->
@@ -1757,6 +2151,55 @@ nav, nav > div { max-width: 100% !important; }
                         </div>
                     </div>
                 </div>
+
+                <!-- MODULE 5: INTERACTIVE CRUDE OIL FRACTIONATING TOWER & INDUSTRIAL PROCESS SORTER -->
+                <div id="c2-mode-drill" class="hidden space-y-4">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <!-- Left: Interactive Crude Oil Fractionating Column Explorer -->
+                        <div class="p-5 bg-slate-950 border border-slate-800 rounded-xl space-y-4 text-xs">
+                            <div class="flex items-center justify-between">
+                                <span class="text-[10px] font-mono text-emerald-400 uppercase font-bold px-2 py-0.5 bg-emerald-950 rounded border border-emerald-800">Spec 4.12(i) · Fractional Distillation</span>
+                                <span class="text-[10px] font-mono text-slate-400">Cool Top → Hot Bottom</span>
+                            </div>
+                            <h3 class="text-sm font-bold text-white">Interactive Crude Oil Fractionating Column</h3>
+                            <p class="text-slate-400 text-[11px]">Click any fraction from top (coolest, shortest chain) to bottom (hottest, longest chain) to inspect its carbon range, boiling range, London force strength, viscosity, and uses:</p>
+                            <div class="grid grid-cols-2 sm:grid-cols-3 gap-1.5" id="fracTowerBtns">
+                                <button type="button" onclick="selectFraction(0)" class="p-2 rounded-lg text-[11px] font-bold border border-emerald-500 bg-emerald-950/50 text-emerald-200">1. Refinery Gas (C₁–C₄)</button>
+                                <button type="button" onclick="selectFraction(1)" class="p-2 rounded-lg text-[11px] font-bold border border-slate-700 bg-slate-900 text-slate-300">2. Petrol / Gasoline (C₅–C₁₀)</button>
+                                <button type="button" onclick="selectFraction(2)" class="p-2 rounded-lg text-[11px] font-bold border border-slate-700 bg-slate-900 text-slate-300">3. Naphtha (C₈–C₁₂)</button>
+                                <button type="button" onclick="selectFraction(3)" class="p-2 rounded-lg text-[11px] font-bold border border-slate-700 bg-slate-900 text-slate-300">4. Kerosene / Jet (C₁₀–C₁₆)</button>
+                                <button type="button" onclick="selectFraction(4)" class="p-2 rounded-lg text-[11px] font-bold border border-slate-700 bg-slate-900 text-slate-300">5. Diesel / Gas Oil (C₁₄–C₂₀)</button>
+                                <button type="button" onclick="selectFraction(5)" class="p-2 rounded-lg text-[11px] font-bold border border-slate-700 bg-slate-900 text-slate-300">6. Fuel Oil &amp; Bitumen (&gt;C₃₀)</button>
+                            </div>
+                            <div id="fracTowerOut" class="p-3.5 rounded-xl bg-slate-900 border border-slate-800 space-y-1.5 text-[11px] text-slate-300"></div>
+                        </div>
+
+                        <!-- Right: Industrial Refinery Process Sorter (Distillation vs Cracking vs Reforming) -->
+                        <div class="p-5 bg-slate-950 border border-slate-800 rounded-xl space-y-4 text-xs">
+                            <div class="flex items-center justify-between">
+                                <span class="text-[10px] font-mono text-amber-400 uppercase font-bold px-2 py-0.5 bg-amber-950 rounded border border-amber-800">Spec 4.12(i–iii) · PEF Trap</span>
+                                <span class="text-[10px] font-mono text-slate-400">Distillation · Cracking · Reforming</span>
+                            </div>
+                            <h3 class="text-sm font-bold text-white">Refinery Process &amp; Catalyst Classifier</h3>
+                            <p class="text-slate-400 text-[11px]">Pick a refinery transformation below and classify whether it is <b>Fractional Distillation</b>, <b>Catalytic Cracking</b>, or <b>Catalytic Reforming</b>:</p>
+                            <div>
+                                <select id="refProcSel" onchange="renderRefProcChallenge()" class="w-full p-2 text-xs text-emerald-300 font-mono">
+                                    <option value="0">1. Heptane (C₇H₁₆) → Methylcyclohexane (C₇H₁₄) + H₂ over Pt / Al₂O₃</option>
+                                    <option value="1">2. Dodecane (C₁₂H₂₆) → Octane (C₈H₁₈) + But-1-ene (C₄H₈) over zeolite / Al₂O₃ at 450 °C</option>
+                                    <option value="2">3. Separating vaporised crude oil into kerosene and diesel in a temperature gradient column</option>
+                                    <option value="3">4. Hexane (C₆H₁₄) → Benzene (C₆H₆) + 4H₂ to increase octane number and prevent knocking</option>
+                                    <option value="4">5. Heating liquid paraffin over Al₂O₃ shards and collecting a gas that decolourises bromine water</option>
+                                </select>
+                            </div>
+                            <div class="grid grid-cols-3 gap-2">
+                                <button type="button" onclick="checkRefProc('Distillation')" class="py-2 px-2 rounded-lg bg-slate-900 border border-slate-700 hover:border-sky-500 font-bold text-sky-300">Distillation</button>
+                                <button type="button" onclick="checkRefProc('Cracking')" class="py-2 px-2 rounded-lg bg-slate-900 border border-slate-700 hover:border-emerald-500 font-bold text-emerald-300">Cracking</button>
+                                <button type="button" onclick="checkRefProc('Reforming')" class="py-2 px-2 rounded-lg bg-slate-900 border border-slate-700 hover:border-amber-500 font-bold text-amber-300">Reforming</button>
+                            </div>
+                            <div id="refProcOut" class="p-3.5 rounded-xl bg-slate-900 border border-slate-800 text-[11px] text-slate-300"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -1778,6 +2221,7 @@ nav, nav > div { max-width: 100% !important; }
                     <button onclick="switchMode('c3','map')" id="c3-mode-btn-map" class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-violet-300 text-xs transition">🗺️ Module 2: Isomer Builder</button>
                     <button onclick="switchMode('c3','quiz')" id="c3-mode-btn-quiz" class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-violet-300 text-xs transition">🎯 Module 3: Fill-in-the-Blanks</button>
                     <button onclick="switchMode('c3','traps')" id="c3-mode-btn-traps" class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-violet-300 text-xs transition">⚡ Module 4: Trap Pairs Lab</button>
+                    <button onclick="switchMode('c3','drill')" id="c3-mode-btn-drill" class="px-3.5 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-violet-300 text-xs transition">🔥 Module 5: Boiling Point &amp; London Forces Lab</button>
                 </div>
 
                 <!-- MODULE 1 -->
@@ -1946,6 +2390,46 @@ nav, nav > div { max-width: 100% !important; }
                         </div>
                     </div>
                 </div>
+
+                <!-- MODULE 5: BRANCHING VS BOILING POINT & LONDON FORCES LAB -->
+                <div id="c3-mode-drill" class="hidden space-y-4">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <!-- Left: Interactive C5H12 & C6H14 Boiling Point vs Branching Visualiser -->
+                        <div class="p-5 bg-slate-950 border border-slate-800 rounded-xl space-y-4 text-xs">
+                            <div class="flex items-center justify-between">
+                                <span class="text-[10px] font-mono text-violet-400 uppercase font-bold px-2 py-0.5 bg-violet-950 rounded border border-violet-800">Spec 4.4 · 4.10 · Topic 7 IMF Link</span>
+                                <span class="text-[10px] text-slate-400 font-mono">Surface Area &amp; London Forces</span>
+                            </div>
+                            <h3 class="text-sm font-bold text-white">Branching vs. Boiling Point Interactive Comparator</h3>
+                            <p class="text-slate-400 text-[11px]">Click an isomer family below to compare how chain length vs. branching controls the boiling point via London dispersion forces:</p>
+                            <div class="flex flex-wrap gap-1.5" id="bpIsomerBtns">
+                                <button type="button" onclick="selectBpSeries(0)" class="px-3 py-1.5 rounded-lg text-xs font-bold border border-violet-600 bg-violet-950/50 text-violet-200">C₅H₁₂ Isomers (36 °C → 9.5 °C)</button>
+                                <button type="button" onclick="selectBpSeries(1)" class="px-3 py-1.5 rounded-lg text-xs font-bold border border-slate-700 bg-slate-900 text-slate-300">C₄H₁₀ Isomers (−0.5 °C vs −11.7 °C)</button>
+                                <button type="button" onclick="selectBpSeries(2)" class="px-3 py-1.5 rounded-lg text-xs font-bold border border-slate-700 bg-slate-900 text-slate-300">Cycloalkane vs Alkane (C₆H₁₂ vs C₆H₁₄)</button>
+                            </div>
+                            <div id="bpIsomerOut" class="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-2 text-[11px] text-slate-300"></div>
+                        </div>
+
+                        <!-- Right: Mystery Hydrocarbon Structure Deduction Challenge -->
+                        <div class="p-5 bg-slate-950 border border-slate-800 rounded-xl space-y-4 text-xs">
+                            <div class="flex items-center justify-between">
+                                <span class="text-[10px] font-mono text-amber-400 uppercase font-bold px-2 py-0.5 bg-amber-950 rounded border border-amber-800">Spec 4.9 – 4.11 · WCH11 Deduction</span>
+                                <span class="text-[10px] text-slate-400 font-mono">Paper 1 Section B Style</span>
+                            </div>
+                            <h3 class="text-sm font-bold text-white">Mystery Hydrocarbon Structure Deduction Lab</h3>
+                            <p class="text-slate-400 text-[11px]">Read the experimental clue card for each unknown hydrocarbon X and deduce its exact IUPAC identity:</p>
+                            <div>
+                                <select id="mysHcSel" onchange="renderMysHc()" class="w-full p-2 text-xs text-violet-300 font-mono">
+                                    <option value="0">Clue 1: Alkane C₅H₁₂ with the lowest boiling point (9.5 °C); gives only 1 monochloro product</option>
+                                    <option value="1">Clue 2: Saturated hydrocarbon C₅H₁₀; does not decolourise Br₂(aq) in dark; gives only 1 monochloro product</option>
+                                    <option value="2">Clue 3: Branched alkane C₆H₁₄; has two tertiary carbons and gives exactly 2 monochloro structural isomers</option>
+                                    <option value="3">Clue 4: Cyclic hydrocarbon C₄H₈; has one methyl branch on a 3-membered ring</option>
+                                </select>
+                            </div>
+                            <div id="mysHcOut" class="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-2 text-[11px] text-slate-300"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -2012,6 +2496,47 @@ nav, nav > div { max-width: 100% !important; }
 
                 <div class="p-3.5 bg-slate-950 border border-slate-800 rounded-xl text-[11px] text-slate-400 leading-relaxed">
                     <b class="text-sky-300">Balancing shortcut for complete combustion of $\text{C}_n\text{H}_{2n+2}$:</b> $1\,\text{C}_n\text{H}_{2n+2} + \frac{3n+1}{2}\,\text{O}_2 \rightarrow n\,\text{CO}_2 + (n+1)\,\text{H}_2\text{O}$ — then double everything if the O₂ coefficient is a half (e.g. ethane: $2\text{C}_2\text{H}_6 + 7\text{O}_2 \rightarrow 4\text{CO}_2 + 6\text{H}_2\text{O}$). Balance C first, H second, O last.
+                </div>
+
+                <!-- Part C: Reforming & Exhaust Catalytic Converter Equation Builder + Part D: Automated Mark-Scheme Keyword Grader -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 pt-2">
+                    <!-- Part C: Reforming & Catalytic Converter Equation Generator -->
+                    <div class="lg:col-span-5 p-4 bg-slate-950 border border-slate-800 rounded-xl space-y-3 text-xs">
+                        <span class="font-bold text-violet-300 uppercase">🔄 Part C — Reforming &amp; Catalytic Converter Equations</span>
+                        <p class="text-slate-400 text-[11px]">Select a reforming or exhaust-cleaning reaction to view the balanced equation, catalyst, and hydrogen / nitrogen co-products:</p>
+                        <select id="refEqSel" onchange="renderRefEqBuilder()" class="w-full p-2 text-xs text-violet-300 font-mono">
+                            <option value="0">1. Reforming Hexane → Cyclohexane + H₂</option>
+                            <option value="1">2. Reforming Heptane → Methylcyclohexane + H₂</option>
+                            <option value="2">3. Reforming Octane → Ethylcyclohexane + H₂</option>
+                            <option value="3">4. Reforming Hexane → Benzene (C₆H₆) + 4H₂</option>
+                            <option value="4">5. Catalytic Converter: CO + NO → CO₂ + N₂</option>
+                            <option value="5">6. Catalytic Converter: Unburned Octane + NO → CO₂ + H₂O + N₂</option>
+                        </select>
+                        <div id="refEqOut" class="p-3.5 rounded-xl bg-slate-900 border border-slate-800 space-y-1.5 text-[11px] text-slate-300"></div>
+                    </div>
+
+                    <!-- Part D: Automated Edexcel Mark-Scheme Keyword Grader (Topic 4 Written Questions) -->
+                    <div class="lg:col-span-7 p-4 bg-slate-950 border border-amber-700/50 rounded-xl space-y-3 text-xs">
+                        <div class="flex items-center justify-between">
+                            <span class="font-bold text-emerald-300 uppercase">🎓 Part D — Automated Edexcel Mark-Scheme Keyword Grader</span>
+                            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-800">Instant M1/M2/M3 Grader</span>
+                        </div>
+                        <select id="t4AutoExplainQ" onchange="resetT4AutoExplain()" class="w-full p-2 text-xs text-slate-100">
+                            <option value="homol">1. Define a homologous series and explain why boiling point increases with chain length [3 marks]</option>
+                            <option value="branchbp">2. Explain why pentane (36 °C) has a higher boiling point than 2,2-dimethylpropane (9.5 °C) [3 marks]</option>
+                            <option value="frslimit">3. Explain two limitations of free-radical substitution in synthesis and how to maximise mono-substitution [3 marks]</option>
+                            <option value="noxsocat">4. Explain how NOₓ and SO₂ form in car engines, why they cause acid rain, and how CO &amp; NO are removed [4 marks]</option>
+                            <option value="cneutral">5. Explain why bioethanol is approximately carbon neutral, whereas hydrogen may not be [3 marks]</option>
+                        </select>
+                        <textarea id="t4AutoExplainInput" rows="3" class="w-full p-2.5 text-xs text-slate-100" placeholder="Type your full exam explanation here..."></textarea>
+                        <div class="flex gap-2">
+                            <button type="button" onclick="gradeT4AutoExplain()" class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2 px-3 rounded-lg text-xs">Auto-Grade My Answer</button>
+                            <button type="button" onclick="showT4AutoExplainModel()" class="bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold py-2 px-3 rounded-lg border border-slate-700 text-xs">Load Model</button>
+                        </div>
+                        <div id="t4AutoExplainOut" class="p-3 rounded-xl bg-slate-900 border border-slate-800 text-[11px] text-slate-300 space-y-1.5">
+                            <span class="text-slate-400">Select a question above, write your explanation, and click <b>Auto-Grade My Answer</b>.</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -2087,6 +2612,7 @@ nav, nav > div { max-width: 100% !important; }
                         <a href="#rev-isomers" class="px-2.5 py-1 rounded-lg bg-amber-950/60 text-amber-300 border border-amber-800 hover:bg-amber-900/50">Isomer Inventory</a>
                         <a href="#rev-pollutants" class="px-2.5 py-1 rounded-lg bg-cyan-950/60 text-cyan-300 border border-cyan-800 hover:bg-cyan-900/50">Pollutants</a>
                         <a href="#rev-traps" class="px-2.5 py-1 rounded-lg bg-rose-950/60 text-rose-300 border border-rose-800 hover:bg-rose-900/50">Master Traps</a>
+                        <a href="#rev-t4-diag" class="px-2.5 py-1 rounded-lg bg-rose-950 text-rose-200 border border-rose-600 hover:bg-rose-900 font-bold">⚡ 15-Q Exam Diagnostic</a>
                     </div>
                 </div>
 
@@ -2233,10 +2759,36 @@ nav, nav > div { max-width: 100% !important; }
                             </ul>
                         </div>
                     </details>
+
+                    <details id="rev-t4-diag" class="group bg-slate-950/60 border border-slate-800 rounded-xl" open>
+                        <summary class="cursor-pointer list-none px-4 py-3 flex items-center justify-between gap-3 select-none">
+                            <span class="font-bold text-sm text-rose-300">⚡ Interactive Edexcel IAL Topic 4 Exam Readiness Diagnostic (Spec 4.1 – 4.18)</span>
+                            <span id="t4DiagScoreBadge" class="text-xs font-mono text-rose-300">0 / 15 Correct · 0%</span>
+                        </summary>
+                        <div class="px-4 pb-5 pt-2 border-t border-slate-800/80 space-y-4">
+                            <div class="flex flex-wrap items-center justify-between gap-2">
+                                <p class="text-xs text-slate-400">15 exam-style multiple-choice questions covering every specification point in Topic 4 (4A Core Organic &amp; Safety, 4B Alkanes, Isomers, Fuels, Pollution &amp; Free Radical Substitution).</p>
+                                <button type="button" onclick="resetT4Diagnostic()" class="text-[11px] font-semibold px-3 py-1 rounded-full bg-slate-900 text-slate-300 border border-slate-700 hover:text-white">Reset Diagnostic</button>
+                            </div>
+                            <div id="t4DiagContainer" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+                        </div>
+                    </details>
                 </div>
             </div>
         </section>
     </main>
+
+    <!-- ═══════════ APPLE QUICK JUMP SPOTLIGHT MODAL (⌘K) ═══════════ -->
+    <div id="t4SpotlightModal" class="fixed inset-0 z-50 hidden items-start justify-center pt-20 px-4" style="background: rgba(2, 6, 18, 0.72); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);" onclick="if(event.target===this)closeT4Spotlight()">
+        <div class="w-full max-w-xl bg-slate-900 border border-slate-700/80 rounded-2xl shadow-2xl overflow-hidden">
+            <div class="p-3.5 border-b border-slate-800 flex items-center gap-3">
+                <span class="text-sky-400 text-sm">🔎</span>
+                <input id="t4SpotlightInput" type="text" oninput="filterT4Spotlight(this.value)" placeholder="Search Spec 4.1–4.18, IUPAC naming, free radical substitution, cracking, isomers..." class="w-full bg-transparent border-0 text-sm text-white focus:outline-none">
+                <button type="button" onclick="closeT4Spotlight()" class="text-[11px] text-slate-400 hover:text-white px-2 py-1 rounded bg-slate-800">ESC</button>
+            </div>
+            <div id="t4SpotlightResults" class="max-h-80 overflow-y-auto divide-y divide-slate-800/70 p-2 text-xs"></div>
+        </div>
+    </div>
 
     <footer class="border-t border-slate-800 bg-slate-900/80 py-4 mt-6">
         <div class="max-w-7xl mx-auto px-4 text-center text-[10px] text-slate-500 space-y-1">
@@ -2244,6 +2796,693 @@ nav, nav > div { max-width: 100% !important; }
             <p>Master Studio pattern: Topic 16 Syllabus Overview depth + Topic 20 / 9A engine depth · Chemistry aligned to Paper 1 golden summaries (Jan 2025 &amp; Jan 2026 mark scheme phrasing)</p>
         </div>
     </footer>
+
+<script>
+/* ══════════════════════════════════════════════════════════════════════════
+   TOPIC 4 INTERACTIVE CONCEPT CHECKERS, SIMULATORS & SYLLABUS ALIGNMENT
+   ══════════════════════════════════════════════════════════════════════════ */
+
+const T4_STATE = {
+    specConf: {},      // 0..11
+    specCheck: {},     // 0..11
+    diagAns: {},       // 0..14
+    trapChecked: {}    // 0..11
+};
+
+function loadT4State(){
+    try {
+        const raw = localStorage.getItem('wch11_topic4_studio_state_v1');
+        if (raw) Object.assign(T4_STATE, JSON.parse(raw));
+    } catch (e) {}
+}
+
+function saveT4State(){
+    try {
+        localStorage.setItem('wch11_topic4_studio_state_v1', JSON.stringify(T4_STATE));
+    } catch (e) {}
+}
+
+function updateT4Mastery(){
+    let pts = 0;
+    const maxPts = 39; // 12 conf + 12 spec checks + 15 diag Qs
+    for (let i = 0; i < 12; i++) {
+        if (T4_STATE.specConf[i] === 'mastered') pts += 1;
+        else if (T4_STATE.specConf[i] === 'practising') pts += 0.5;
+        if (T4_STATE.specCheck[i]) pts += 1;
+    }
+    for (let i = 0; i < 15; i++) {
+        if (T4_STATE.diagAns[i] !== undefined && T4_STATE.diagAns[i] === T4_DIAG_QS[i].ans) pts += 1;
+    }
+    const pct = Math.min(100, Math.round((pts / maxPts) * 100));
+    const badge = document.getElementById('mastery-percentage');
+    if (badge) badge.textContent = pct + '%';
+
+    const mCnt = Object.values(T4_STATE.specConf).filter(v => v === 'mastered').length;
+    const cCnt = Object.values(T4_STATE.specCheck).filter(Boolean).length;
+    const bar = document.getElementById('t4SyllabusProgressBar');
+    const lbl = document.getElementById('t4SyllabusProgressLabel');
+    if (bar) bar.style.width = Math.round(((mCnt + cCnt) / 24) * 100) + '%';
+    if (lbl) lbl.textContent = `${mCnt} / 12 Cards Mastered · ${cCnt} / 12 Concept Checks Passed`;
+}
+
+/* ── 1. SYLLABUS CARDS (Spec 4.1–4.18) 12 INSTANT CONCEPT CHECKS ── */
+const T4_SPEC_CHECKS = [
+    { spec: '4.1–4.3', q: 'What is the correct distinction between “hazard” and “risk”, and which control measure reduces the risk of heating a flammable alkane?', opts: ['Hazard is the probability of harm; risk is the potential to cause harm; use a Bunsen burner.', 'Hazard is the inherent potential of a substance to cause harm; risk is the likelihood of harm occurring in a specific procedure; heat with an electric water bath / heating mantle away from naked flames.', 'Hazard and risk mean the same thing; wear a lab coat.'], ans: 1, exp: 'Spec 4.1–4.3: Hazard = potential to cause harm; Risk = likelihood of harm occurring. Flammable liquids are heated with a water bath or electric heater (no naked flames).' },
+    { spec: '4.4', q: 'Which statement about a homologous series is CORRECT according to Edexcel mark schemes (PEF Jan 2025)?', opts: ['Members have the same empirical formula and identical physical properties.', 'Members have the same functional group, the same general formula, similar chemical properties, differ by a –CH₂– group, and show a gradual change in physical properties.', 'Members have different functional groups but the same molecular mass.'], ans: 1, exp: 'PEF Jan 2025: Members have the same general formula and functional group, differ by –CH₂–, and have similar CHEMICAL properties (never say similar physical properties!).' },
+    { spec: '4.5', q: 'A student names a branched C₅H₁₂ alkane “3-methylbutane” and a C₆H₁₄ alkane “2-ethylbutane”. What are their correct IUPAC names?', opts: ['Both names are already correct.', '2-methylbutane and 3-methylpentane', '1-methylbutane and 2,2-dimethylbutane'], ans: 1, exp: 'Spec 4.5: Number from the end nearer the branch (“3-methylbutane” → 2-methylbutane), and always trace the longest continuous chain around corners (“2-ethylbutane” has a 5-carbon longest chain → 3-methylpentane).' },
+    { spec: '4.6', q: 'How are (i) complete combustion of propane and (ii) reaction of methane with chlorine in UV light classified under Spec 4.6?', opts: ['(i) Addition; (ii) Polymerisation', '(i) Oxidation; (ii) Substitution', '(i) Reduction; (ii) Addition'], ans: 1, exp: 'Spec 4.6: Burning an alkane in oxygen is oxidation; replacing an H atom in an alkane with a Cl atom is substitution.' },
+    { spec: '4.7–4.8', q: 'What is produced by the homolytic fission of a Cl–Cl bond under UV light, and how is a free radical defined?', opts: ['Cl⁺ and Cl⁻ ions; a species with a lone pair of electrons.', 'Two Cl• free radicals; a species with an unpaired electron.', 'Two Cl• electrophiles; an electron-pair donor.'], ans: 1, exp: 'Spec 4.7–4.8: Homolytic fission splits the bonding pair equally (one electron to each atom) to form two free radicals (species with a single/unpaired electron).' },
+    { spec: '4.9', q: 'What are the general formulae of acyclic alkanes and cycloalkanes (with one ring), and are cycloalkanes saturated or unsaturated?', opts: ['Alkanes: CₙH₂ₙ₊₂; Cycloalkanes: CₙH₂ₙ (both are SATURATED hydrocarbons containing single bonds only).', 'Alkanes: CₙH₂ₙ; Cycloalkanes: CₙH₂ₙ₊₂ (unsaturated).', 'Both are CₙH₂ₙ₊₂.'], ans: 0, exp: 'Spec 4.9 / PEF Jan 2021: Acyclic alkanes are CₙH₂ₙ₊₂; cycloalkanes are CₙH₂ₙ because closing the ring removes 2 H atoms, but cycloalkanes are still SATURATED (only C–C and C–H single σ bonds).' },
+    { spec: '4.10–4.11', q: 'How many structural isomers exist for the alkane molecular formulae C₄H₁₀, C₅H₁₂, and C₆H₁₄ respectively?', opts: ['2, 3, and 4', '2, 3, and 5', '3, 4, and 6'], ans: 1, exp: 'Spec 4.10–4.11: C₄H₁₀ has 2 (butane, 2-methylpropane); C₅H₁₂ has 3 (pentane, 2-methylbutane, 2,2-dimethylpropane); C₆H₁₄ has 5 (hexane, 2-methylpentane, 3-methylpentane, 2,2-dimethylbutane, 2,3-dimethylbutane).' },
+    { spec: '4.12', q: 'Which row correctly distinguishes fractional distillation, catalytic cracking, and catalytic reforming?', opts: ['Distillation: breaks C–C bonds; Cracking: physical separation; Reforming: makes polymers.', 'Distillation: physical separation by boiling point; Cracking: breaks long alkanes into shorter alkane + alkene; Reforming: converts straight-chain alkanes into branched/cyclic hydrocarbons + H₂.', 'All three are chemical decompositions.'], ans: 1, exp: 'Spec 4.12: Distillation = physical separation by b.p.; Cracking = thermal/catalytic C–C bond breaking → shorter alkane + alkene; Reforming = straight chain → branched/cyclic + H₂ (improves octane rating).' },
+    { spec: '4.13–4.14', q: 'Where do the nitrogen in NOₓ and the sulfur in SO₂ originate during the combustion of alkane fuels in a car engine?', opts: ['Nitrogen comes from the fuel; sulfur comes from the air.', 'Nitrogen comes from the air (N₂ + O₂ reacting at high engine temperature/spark); sulfur comes from sulfur-containing impurities in the hydrocarbon fuel.', 'Both come from the catalytic converter.'], ans: 1, exp: 'Spec 4.13–4.14: N₂ and O₂ from the air combine at the high temperature of the engine cylinder; SO₂ comes from burning sulfur impurities present in the fuel.' },
+    { spec: '4.15–4.16', q: 'What reaction occurs in a Rh/Pt catalytic converter, and why is hydrogen fuel NOT automatically carbon neutral?', opts: ['2CO + 2NO → 2CO₂ + N₂; hydrogen manufacture (e.g. steam reforming of methane or fossil-powered electrolysis) often releases CO₂.', 'CO₂ is converted into O₂; hydrogen releases CO₂ when burned.', 'SO₂ is converted into S; hydrogen is a greenhouse gas.'], ans: 0, exp: 'Spec 4.15–4.16: The catalytic converter oxidises CO to CO₂ and reduces NO to N₂ (2CO + 2NO → 2CO₂ + N₂). Hydrogen produces only H₂O on combustion, but its production uses energy / fossil methane.' },
+    { spec: '4.17', q: 'What is the balanced equation for the COMPLETE combustion of octane, C₈H₁₈, and what forms in limited oxygen?', opts: ['C₈H₁₈ + 8O₂ → 8CO₂ + 9H₂; limited O₂ gives CO₂.', '2C₈H₁₈ + 25O₂ → 16CO₂ + 18H₂O (or C₈H₁₈ + 12.5O₂ → 8CO₂ + 9H₂O); limited O₂ gives toxic CO and/or carbon particulates (soot) + H₂O.', 'C₈H₁₈ + 12.5O₂ → 8CO + 9H₂O'], ans: 1, exp: 'Spec 4.17 / PEF Jan 2023: Complete combustion in excess O₂ yields CO₂ + H₂O; incomplete combustion in limited O₂ yields CO and/or C (soot) + H₂O.' },
+    { spec: '4.18', q: 'Which equation represents a TERMINATION step in the free-radical substitution of methane with chlorine, and how do you maximise the yield of CH₃Cl?', opts: ['•CH₃ + Cl₂ → CH₃Cl + Cl• ; use excess chlorine.', '•CH₃ + •CH₃ → C₂H₆ (or •CH₃ + Cl• → CH₃Cl); use excess methane so Cl• radicals are more likely to collide with CH₄ than with CH₃Cl.', 'Cl₂ → 2Cl• ; use a catalyst.'], ans: 1, exp: 'Spec 4.18 / PEF Jan 2025: Termination is where TWO radicals combine to form a stable molecule with no radicals on the product side. Excess methane minimises further substitution.' }
+];
+
+function injectT4SyllabusChecks(){
+    const cards = document.querySelectorAll('#t4-syllabus-grid > .card-lift');
+    cards.forEach((card, idx) => {
+        if (idx >= T4_SPEC_CHECKS.length || card.querySelector('.t4-spec-footer')) return;
+        const item = T4_SPEC_CHECKS[idx];
+        const conf = T4_STATE.specConf[idx] || '';
+        const passed = !!T4_STATE.specCheck[idx];
+
+        const footer = document.createElement('div');
+        footer.className = 't4-spec-footer pt-3 mt-2 border-t border-slate-800/80 space-y-2.5';
+        footer.innerHTML = `
+            <div class="flex flex-wrap items-center justify-between gap-2">
+                <div class="flex items-center gap-1">
+                    <span class="text-[10px] font-mono text-slate-400 mr-1">Confidence:</span>
+                    <button type="button" onclick="setT4SpecConf(${idx}, 'review')" class="spec-conf-btn conf-review ${conf==='review'?'active':''}" data-t4-conf="${idx}-review">Review</button>
+                    <button type="button" onclick="setT4SpecConf(${idx}, 'practising')" class="spec-conf-btn conf-practising ${conf==='practising'?'active':''}" data-t4-conf="${idx}-practising">Practising</button>
+                    <button type="button" onclick="setT4SpecConf(${idx}, 'mastered')" class="spec-conf-btn conf-mastered ${conf==='mastered'?'active':''}" data-t4-conf="${idx}-mastered">✓ Mastered</button>
+                </div>
+                <button type="button" onclick="toggleT4SpecCheck(${idx})" id="t4SpecToggle-${idx}" class="text-[11px] font-semibold px-2.5 py-1 rounded-full border ${passed ? 'bg-emerald-950/60 text-emerald-300 border-emerald-700/70' : 'bg-sky-950/60 text-sky-300 border-sky-800/70'} hover:text-white">
+                    ${passed ? '✅ Concept Checked' : '⚡ Instant Concept Check'}
+                </button>
+            </div>
+            <div id="t4SpecPanel-${idx}" class="hidden p-3 rounded-xl bg-slate-900/95 border border-slate-800 space-y-2 text-xs">
+                <p class="font-semibold text-white leading-snug">Spec ${item.spec} Check: ${item.q}</p>
+                <div class="space-y-1.5">
+                    ${item.opts.map((opt, oIdx) => `
+                        <button type="button" onclick="answerT4SpecCheck(${idx}, ${oIdx})" id="t4SpecOpt-${idx}-${oIdx}" class="w-full text-left p-2 rounded-lg border border-slate-800 bg-slate-950/70 hover:border-sky-700 text-slate-300 text-[11px] leading-relaxed">
+                            <span class="font-mono text-sky-400 mr-1.5">${String.fromCharCode(65+oIdx)}.</span>${opt}
+                        </button>
+                    `).join('')}
+                </div>
+                <div id="t4SpecExp-${idx}" class="hidden p-2.5 rounded-lg text-[11px] leading-relaxed"></div>
+            </div>
+        `;
+        card.appendChild(footer);
+    });
+}
+
+function setT4SpecConf(idx, level){
+    T4_STATE.specConf[idx] = level;
+    saveT4State();
+    ['review','practising','mastered'].forEach(l => {
+        const b = document.querySelector(`[data-t4-conf="${idx}-${l}"]`);
+        if (b) b.classList.toggle('active', l === level);
+    });
+    updateT4Mastery();
+}
+
+function toggleT4SpecCheck(idx){
+    const p = document.getElementById('t4SpecPanel-' + idx);
+    if (p) p.classList.toggle('hidden');
+}
+
+function expandAllT4SpecChecks(open){
+    for (let i = 0; i < 12; i++) {
+        const p = document.getElementById('t4SpecPanel-' + i);
+        if (p) p.classList.toggle('hidden', !open);
+    }
+}
+
+function answerT4SpecCheck(idx, optIdx){
+    const item = T4_SPEC_CHECKS[idx];
+    const isOk = optIdx === item.ans;
+    const exp = document.getElementById('t4SpecExp-' + idx);
+    const btn = document.getElementById('t4SpecToggle-' + idx);
+
+    item.opts.forEach((_, oIdx) => {
+        const b = document.getElementById(`t4SpecOpt-${idx}-${oIdx}`);
+        if (!b) return;
+        if (oIdx === item.ans) b.className = 'w-full text-left p-2 rounded-lg border border-emerald-600 bg-emerald-950/40 text-emerald-200 text-[11px] leading-relaxed font-semibold';
+        else if (oIdx === optIdx) b.className = 'w-full text-left p-2 rounded-lg border border-rose-600 bg-rose-950/40 text-rose-200 text-[11px] leading-relaxed';
+    });
+
+    if (exp) {
+        exp.classList.remove('hidden');
+        exp.className = 'p-2.5 rounded-lg text-[11px] leading-relaxed ' + (isOk ? 'bg-emerald-950/50 border border-emerald-800 text-emerald-200' : 'bg-amber-950/50 border border-amber-800 text-amber-200');
+        exp.innerHTML = (isOk ? '<b>✓ Full Marks!</b> ' : '<b>✗ Examiner Watch-Out:</b> ') + item.exp;
+    }
+
+    if (isOk) {
+        T4_STATE.specCheck[idx] = true;
+        if (!T4_STATE.specConf[idx]) setT4SpecConf(idx, 'mastered');
+        saveT4State();
+        if (btn) {
+            btn.textContent = '✅ Concept Checked';
+            btn.className = 'text-[11px] font-semibold px-2.5 py-1 rounded-full border bg-emerald-950/60 text-emerald-300 border-emerald-700/70';
+        }
+        updateT4Mastery();
+    }
+}
+
+function resetT4SyllabusTracker(){
+    T4_STATE.specConf = {};
+    T4_STATE.specCheck = {};
+    saveT4State();
+    document.querySelectorAll('.spec-conf-btn').forEach(b => b.classList.remove('active'));
+    for (let i = 0; i < 12; i++) {
+        const t = document.getElementById('t4SpecToggle-' + i);
+        if (t) {
+            t.textContent = '⚡ Instant Concept Check';
+            t.className = 'text-[11px] font-semibold px-2.5 py-1 rounded-full border bg-sky-950/60 text-sky-300 border-sky-800/70 hover:text-white';
+        }
+        const exp = document.getElementById('t4SpecExp-' + i);
+        if (exp) exp.classList.add('hidden');
+    }
+    updateT4Mastery();
+}
+
+/* ── 2. TAB 2: FORMULA TRANSLATOR & ILLEGAL IUPAC NAME CLINIC ── */
+const FORMULA_TRANS_DATA = [
+    { name: 'Butane (straight-chain)', mol: 'C₄H₁₀', emp: 'C₂H₅ (simplest whole-number ratio!)', struct: 'CH₃CH₂CH₂CH₃  or  CH₃(CH₂)₂CH₃', disp: 'All 4 C–C and 10 C–H single bonds drawn explicitly; every C has 4 bonds', svg: () => window.zigzagSVG(4) },
+    { name: '2-Methylpropane (branched isomer of C₄H₁₀)', mol: 'C₄H₁₀', emp: 'C₂H₅', struct: 'CH₃CH(CH₃)CH₃  or  (CH₃)₃CH', disp: 'Central C bonded to 3 CH₃ groups and 1 H atom (tertiary carbon)', svg: () => window.zigzagSVG(3, [[1,'up']]) },
+    { name: '2,2-Dimethylpropane (branched isomer of C₅H₁₂)', mol: 'C₅H₁₂', emp: 'C₅H₁₂ (5 and 12 share no common factor)', struct: 'C(CH₃)₄  or  CH₃C(CH₃)₂CH₃', disp: 'Central quaternary C bonded to 4 methyl groups (0 H on central C); all 12 H atoms are equivalent!', svg: () => window.zigzagSVG(3, [[1,'up'],[1,'down']]) },
+    { name: '2,3-Dimethylbutane (branched isomer of C₆H₁₄)', mol: 'C₆H₁₄', emp: 'C₃H₇ (divide 6 and 14 by 2!)', struct: 'CH₃CH(CH₃)CH(CH₃)CH₃  or  (CH₃)₂CHCH(CH₃)₂', disp: 'Longest chain = 4 carbons; one methyl branch on C2 and one on C3', svg: () => window.zigzagSVG(4, [[1,'up'],[2,'down']]) },
+    { name: 'Cyclopentane (saturated ring)', mol: 'C₅H₁₀', emp: 'CH₂ (same empirical formula as alkenes!)', struct: '(CH₂)₅ ring', disp: '5-membered carbon ring; each C bonded to 2 other C atoms and 2 H atoms', svg: () => window.zigzagSVG(5, null, true) },
+    { name: 'Methylcyclopropane (substituted ring)', mol: 'C₄H₈', emp: 'CH₂', struct: 'C₃H₅–CH₃ (ring)', disp: '3-membered carbon ring with a –CH₃ branch on C1 (no locant needed for 1 substituent)', svg: () => window.zigzagSVG(3, null, true, [{v:0,n:1}]) }
+];
+
+window.renderFormulaTranslator = function(){
+    const idx = parseInt((document.getElementById('formulaTransSel') || {}).value || '0', 10);
+    const d = FORMULA_TRANS_DATA[idx];
+    const out = document.getElementById('formulaTransOut');
+    if (!out || !d) return;
+    out.innerHTML = `
+        <div class="grid grid-cols-1 sm:grid-cols-12 gap-3 items-center">
+            <div class="sm:col-span-4 bg-slate-950 border border-slate-800 rounded-xl p-2 text-center">
+                ${d.svg()}
+                <span class="text-[10px] font-mono text-sky-300 block mt-1">Skeletal Formula</span>
+            </div>
+            <div class="sm:col-span-8 space-y-1.5 text-[11px]">
+                <div class="p-2 rounded bg-slate-950 border border-slate-800"><b class="text-sky-300">Molecular Formula:</b> <span class="font-mono text-white">${d.mol}</span> &nbsp;|&nbsp; <b class="text-amber-300">Empirical:</b> <span class="font-mono text-white">${d.emp}</span></div>
+                <div class="p-2 rounded bg-slate-950 border border-slate-800"><b class="text-emerald-300">Structural Formula:</b> <span class="font-mono text-white">${d.struct}</span></div>
+                <div class="p-2 rounded bg-slate-950 border border-slate-800"><b class="text-purple-300">Displayed Rule:</b> ${d.disp}</div>
+            </div>
+        </div>
+    `;
+};
+
+const ILLEGAL_NAMES = [
+    { wrong: '“3-methylbutane”', right: '2-methylbutane', rule: '<b>Lowest Locant Rule Violation:</b> Numbering the 4-carbon butane chain from the other end puts the methyl branch on <b>C2</b>, not C3.' },
+    { wrong: '“2-ethylbutane”', right: '3-methylpentane', rule: '<b>Longest Continuous Chain Violation:</b> An ethyl group on C2 of a 4-carbon chain extends the longest continuous chain to <b>5 carbons (pentane)</b> with a methyl branch on C3!' },
+    { wrong: '“1-methylpropane”', right: 'butane', rule: '<b>Terminal Branch Trap:</b> A methyl group on the end carbon (C1) of propane simply lengthens the unbranched chain to 4 carbons (<b>butane</b>).' },
+    { wrong: '“2,3,3-trimethylbutane”', right: '2,2,3-trimethylbutane', rule: '<b>Lowest Locant Set Rule:</b> Numbering from the right gives locants <b>2,2,3-</b>, which is lower at the first point of difference than 2,3,3-.' },
+    { wrong: '“1,4-dimethylcyclopentane”', right: '1,3-dimethylcyclopentane', rule: '<b>Ring Numbering Direction:</b> Numbering around the 5-membered ring in the shorter direction gives <b>1,3-</b> instead of 1,4-.' },
+    { wrong: '“2-methyl-3-ethylpentane”', right: '3-ethyl-2-methylpentane', rule: '<b>Alphabetical Order Rule:</b> Substituents must be listed <b>alphabetically</b> in the name: <b>e</b>thyl comes before <b>m</b>ethyl.' }
+];
+
+window.renderIllegalNameClinic = function(){
+    const idx = parseInt((document.getElementById('illegalNameSel') || {}).value || '0', 10);
+    const d = ILLEGAL_NAMES[idx];
+    const out = document.getElementById('illegalNameOut');
+    if (!out || !d) return;
+    out.innerHTML = `
+        <div class="flex flex-wrap items-center justify-between gap-2">
+            <span class="text-rose-300 font-mono font-bold">✗ ${d.wrong}</span>
+            <span class="text-emerald-300 font-mono font-bold px-2.5 py-0.5 rounded bg-emerald-950 border border-emerald-700">✓ Correct IUPAC: ${d.right}</span>
+        </div>
+        <p class="text-[11px] text-slate-300 leading-relaxed">${d.rule}</p>
+    `;
+};
+
+/* ── 3. TAB 3 MODULE 5: ANY-ALKANE RADICAL BUILDER & MONOCHLORO COUNTER ── */
+const RAD_SUBSTRATES = [
+    { name: 'Methane', rh: 'CH₄', rDot: '•CH₃', rx: 'CH₃', dimer: 'C₂H₆ (ethane)', further: 'CH₂X₂, CHX₃, CX₄' },
+    { name: 'Ethane', rh: 'CH₃CH₃', rDot: 'CH₃CH₂•', rx: 'CH₃CH₂', dimer: 'C₄H₁₀ (butane)', further: 'CH₃CHX₂, CH₂XCH₂X, etc. (up to C₂X₆)' },
+    { name: 'Propane', rh: 'CH₃CH₂CH₃', rDot: 'CH₃•CHCH₃ (2°)  or  CH₃CH₂CH₂• (1°)', rx: 'CH₃CH(X)CH₃ + CH₃CH₂CH₂', dimer: 'C₆H₁₄ (2,3-dimethylbutane / hexane)', further: '1-halopropane + 2-halopropane + di-/poly-substituted isomers' },
+    { name: 'Cyclohexane', rh: 'C₆H₁₂', rDot: '•C₆H₁₁', rx: 'C₆H₁₁', dimer: 'C₁₂H₂₂ (bicyclohexyl)', further: 'C₆H₁₀X₂ (1,1-, 1,2-, 1,3-, 1,4-dihalocyclohexanes)' },
+    { name: 'Chloromethane', rh: 'CH₃Cl', rDot: '•CH₂Cl', rx: 'CH₂Cl', dimer: 'ClCH₂CH₂Cl (1,2-dichloroethane)', further: 'CHCl₂X → CCl₄' }
+];
+
+window.renderRadicalBuilder = function(){
+    const idx = parseInt((document.getElementById('radSubSel') || {}).value || '1', 10);
+    const X = (document.getElementById('radHalSel') || {}).value || 'Cl';
+    const s = RAD_SUBSTRATES[idx];
+    const out = document.getElementById('radBuilderOut');
+    if (!out || !s) return;
+    out.innerHTML = `
+        <div class="p-2 rounded bg-slate-950 border border-slate-800"><b class="text-sky-300">Overall:</b> <span class="font-mono text-white">${s.rh} + ${X}₂ → ${s.rx}${X} + H${X}</span> &nbsp;(Condition: <b>UV light</b>)</div>
+        <div class="p-2 rounded bg-slate-950 border border-slate-800"><b class="text-amber-300">Initiation:</b> <span class="font-mono text-white">${X}₂ → 2${X}•</span> &nbsp;(homolytic fission, two fish-hook half-arrows)</div>
+        <div class="p-2 rounded bg-slate-950 border border-slate-800 space-y-1">
+            <div><b class="text-emerald-300">Propagation ①:</b> <span class="font-mono text-white">${s.rh} + ${X}• → ${s.rDot} + H${X}</span></div>
+            <div><b class="text-emerald-300">Propagation ②:</b> <span class="font-mono text-white">${s.rDot} + ${X}₂ → ${s.rx}${X} + ${X}•</span> &nbsp;(regenerates ${X}• chain carrier)</div>
+        </div>
+        <div class="p-2 rounded bg-slate-950 border border-slate-800"><b class="text-violet-300">Termination (two radicals combine):</b> <span class="font-mono text-white">2${X}• → ${X}₂</span> &nbsp;·&nbsp; <span class="font-mono text-white">${s.rDot} + ${X}• → ${s.rx}${X}</span> &nbsp;·&nbsp; <span class="font-mono text-rose-300">2(${s.rDot}) → ${s.dimer}</span></div>
+        <div class="text-[10px] text-slate-400"><b>Further substitution products:</b> ${s.further}</div>
+    `;
+};
+
+const MONO_ISO_DATA = [
+    { name: '2,2-Dimethylpropane, C(CH₃)₄', count: 1, why: 'All 12 hydrogen atoms on the four methyl groups are chemically equivalent by tetrahedral symmetry → <b>only 1 monochloro isomer</b> (1-chloro-2,2-dimethylpropane).' },
+    { name: 'Pentane, CH₃CH₂CH₂CH₂CH₃', count: 3, why: 'Three distinct carbon environments (C1=C5, C2=C4, and C3) → <b>3 monochloro structural isomers</b>: 1-chloropentane, 2-chloropentane, and 3-chloropentane.' },
+    { name: '2-Methylbutane, (CH₃)₂CHCH₂CH₃', count: 4, why: 'Four non-equivalent carbon environments → <b>4 monochloro structural isomers</b>: 1-chloro-2-methylbutane, 2-chloro-2-methylbutane, 2-chloro-3-methylbutane, and 1-chloro-3-methylbutane.' },
+    { name: 'Butane, CH₃CH₂CH₂CH₃', count: 2, why: 'Two distinct carbon environments (terminal C1/C4 and internal C2/C3) → <b>2 monochloro structural isomers</b>: 1-chlorobutane and 2-chlorobutane.' },
+    { name: '2-Methylpropane, (CH₃)₃CH', count: 2, why: 'Two distinct environments (the 9 primary H atoms on the three CH₃ groups vs the 1 tertiary H on C2) → <b>2 monochloro structural isomers</b>: 1-chloro-2-methylpropane and 2-chloro-2-methylpropane.' },
+    { name: '2,3-Dimethylbutane, (CH₃)₂CHCH(CH₃)₂', count: 2, why: 'Symmetrical branched C₆H₁₄! The four methyl groups are equivalent (primary) and the two CH carbons are equivalent (tertiary) → <b>only 2 monochloro structural isomers</b> (1-chloro-2,3-dimethylbutane and 2-chloro-2,3-dimethylbutane).' },
+    { name: 'Cyclopentane, C₅H₁₀ ring', count: 1, why: 'All 5 ring carbons (and all 10 H atoms) are equivalent → <b>only 1 monochloro product</b> (chlorocyclopentane).' }
+];
+
+window.renderMonoIsoChallenge = function(){
+    const idx = parseInt((document.getElementById('monoIsoSel') || {}).value || '0', 10);
+    const d = MONO_ISO_DATA[idx];
+    const out = document.getElementById('monoIsoOut');
+    if (out) out.innerHTML = `<span class="text-slate-400">How many distinct monochloro structural isomers form when <b>${d.name}</b> reacts with Cl₂/UV? Click a button above.</span>`;
+};
+
+window.checkMonoIsoCount = function(pick){
+    const idx = parseInt((document.getElementById('monoIsoSel') || {}).value || '0', 10);
+    const d = MONO_ISO_DATA[idx];
+    const ok = pick === d.count;
+    const out = document.getElementById('monoIsoOut');
+    out.innerHTML = `
+        <div class="font-bold ${ok ? 'text-emerald-300' : 'text-amber-300'}">${ok ? '✓ Correct!' : '✗ Count Unique Carbon Environments:'} ${d.name} forms ${d.count} monochloro isomer(s)</div>
+        <div class="text-slate-300 leading-relaxed">${d.why}</div>
+    `;
+};
+
+/* ── 4. TAB 4 MODULE 5: CRUDE OIL FRACTIONATING TOWER & PROCESS SORTER ── */
+const FRAC_TOWER_DATA = [
+    { name: '1. Refinery Gas (C₁–C₄ · Top of Column)', bp: '&lt; 25 °C (Gases)', imf: 'Weakest London forces (fewest electrons, smallest surface area)', visc: 'Gas · Lowest viscosity · Most volatile &amp; clean burning', use: 'Bottled gas (LPG — propane/butane) for domestic heating &amp; cooking.' },
+    { name: '2. Petrol / Gasoline (C₅–C₁₀)', bp: '40 – 100 °C', imf: 'Weak London dispersion forces → volatile liquid', visc: 'Runny liquid · Ignites easily', use: 'Fuel for internal combustion engines in cars. High demand → produced further via catalytic cracking &amp; reforming.' },
+    { name: '3. Naphtha (C₈–C₁₂)', bp: '100 – 150 °C', imf: 'Moderate London forces', visc: 'Volatile liquid', use: 'Chemical feedstock for petrochemical industry (cracked to make alkenes for polymers &amp; synthesis).' },
+    { name: '4. Kerosene / Paraffin (C₁₀–C₁₆)', bp: '150 – 250 °C', imf: 'Stronger London forces (more electrons)', visc: 'Medium viscosity liquid', use: 'Jet / aviation fuel and central heating oil.' },
+    { name: '5. Diesel / Gas Oil (C₁₄–C₂₀)', bp: '250 – 350 °C', imf: 'Strong London forces', visc: 'Higher viscosity, less volatile, smokier flame', use: 'Fuel for diesel engines (lorries, trains, ships) and feedstock for catalytic cracking.' },
+    { name: '6. Fuel Oil, Lubricating Oil &amp; Bitumen (&gt;C₃₀ · Bottom)', bp: '&gt; 350 °C', imf: 'Strongest London dispersion forces (huge electron clouds &amp; long chains)', visc: 'Very high viscosity / thick semi-solid residue', use: 'Ships/power station fuel oil, waxes/greases, and bitumen for road surfacing &amp; roofing.' }
+];
+
+window.selectFraction = function(idx){
+    const d = FRAC_TOWER_DATA[idx];
+    const btns = document.querySelectorAll('#fracTowerBtns button');
+    btns.forEach((b, i) => {
+        b.className = i === idx
+            ? 'p-2 rounded-lg text-[11px] font-bold border border-emerald-500 bg-emerald-950/50 text-emerald-200'
+            : 'p-2 rounded-lg text-[11px] font-bold border border-slate-700 bg-slate-900 text-slate-300';
+    });
+    const out = document.getElementById('fracTowerOut');
+    if (!out || !d) return;
+    out.innerHTML = `
+        <div class="flex items-center justify-between font-bold text-white"><span>${d.name}</span><span class="font-mono text-emerald-300">b.p. ${d.bp}</span></div>
+        <div>• <b class="text-sky-300">Intermolecular Forces:</b> ${d.imf}</div>
+        <div>• <b class="text-amber-300">Physical State &amp; Viscosity:</b> ${d.visc}</div>
+        <div>• <b class="text-purple-300">Industrial Use:</b> ${d.use}</div>
+    `;
+};
+
+const REF_PROC_ITEMS = [
+    { ans: 'Reforming', why: '<b>Catalytic Reforming (Spec 4.12 iii):</b> Converts straight-chain heptane into cyclic methylcyclohexane + H₂ over a Pt/Al₂O₃ catalyst to improve octane number.' },
+    { ans: 'Cracking', why: '<b>Catalytic Cracking (Spec 4.12 ii):</b> Breaks a long-chain alkane (C₁₂H₂₆) into a shorter alkane (C₈H₁₈) and an alkene (C₄H₈) using a zeolite / Al₂O₃–SiO₂ catalyst at ~450 °C.' },
+    { ans: 'Distillation', why: '<b>Fractional Distillation (Spec 4.12 i):</b> A <b>physical separation</b> based on boiling points / London force strength — no covalent bonds are broken.' },
+    { ans: 'Reforming', why: '<b>Catalytic Reforming:</b> Dehydrogenation/cyclisation of straight-chain hexane into an arene (benzene) + 4H₂.' },
+    { ans: 'Cracking', why: '<b>School Cracking Practical:</b> Vaporised paraffin is passed over heated Al₂O₃ catalyst; the gaseous alkene product decolourises bromine water.' }
+];
+
+window.renderRefProcChallenge = function(){
+    const out = document.getElementById('refProcOut');
+    if (out) out.innerHTML = '<span class="text-slate-400">Click <b>Distillation</b>, <b>Cracking</b>, or <b>Reforming</b> above to classify this process.</span>';
+};
+
+window.checkRefProc = function(pick){
+    const idx = parseInt((document.getElementById('refProcSel') || {}).value || '0', 10);
+    const d = REF_PROC_ITEMS[idx];
+    const ok = pick === d.ans;
+    const out = document.getElementById('refProcOut');
+    out.innerHTML = `
+        <div class="font-bold ${ok ? 'text-emerald-300' : 'text-amber-300'}">${ok ? '✓ Correct!' : '✗ Check the Bonds & Products:'}</div>
+        <div class="mt-1 text-slate-300 leading-relaxed">${d.why}</div>
+    `;
+};
+
+/* ── 5. TAB 5 MODULE 5: BOILING POINT VS BRANCHING & MYSTERY HYDROCARBON LAB ── */
+const BP_SERIES_DATA = [
+    {
+        title: 'Isomers of C₅H₁₂ (All have 72 electrons — identical Mr = 72.0)',
+        rows: [
+            ['Pentane (straight chain)', '36.1 °C', 'Rod-shaped molecule → largest surface area of contact → molecules pack closely → strongest London dispersion forces.'],
+            ['2-Methylbutane (1 branch)', '27.8 °C', 'More compact → smaller surface area of contact between adjacent molecules → weaker London forces than pentane.'],
+            ['2,2-Dimethylpropane (2 branches)', '9.5 °C (gas at warm r.t.p.!)', 'Nearly spherical shape → minimum surface area of contact and cannot pack closely → weakest London forces → lowest boiling point.']
+        ]
+    },
+    {
+        title: 'Isomers of C₄H₁₀ (All have Mr = 58.0)',
+        rows: [
+            ['Butane (unbranched)', '−0.5 °C', 'Longer, straighter chain allows greater surface contact and closer packing → stronger London forces.'],
+            ['2-Methylpropane (branched)', '−11.7 °C', 'Branched, more spherical shape reduces surface contact → weaker London forces → boils 11 °C lower.']
+        ]
+    },
+    {
+        title: 'Cycloalkane vs Straight-Chain Alkane (Cyclohexane C₆H₁₂ vs Hexane C₆H₁₄)',
+        rows: [
+            ['Cyclohexane (C₆H₁₂ ring)', '80.7 °C', 'Ring structure is more rigid and packs more closely in the liquid state, giving stronger London dispersion forces despite having 2 fewer electrons.'],
+            ['Hexane (C₆H₁₄ open chain)', '68.7 °C', 'Flexible open chain packs less efficiently than the cycloalkane ring.']
+        ]
+    }
+];
+
+window.selectBpSeries = function(idx){
+    const d = BP_SERIES_DATA[idx];
+    const btns = document.querySelectorAll('#bpIsomerBtns button');
+    btns.forEach((b, i) => {
+        b.className = i === idx
+            ? 'px-3 py-1.5 rounded-lg text-xs font-bold border border-violet-600 bg-violet-950/50 text-violet-200'
+            : 'px-3 py-1.5 rounded-lg text-xs font-bold border border-slate-700 bg-slate-900 text-slate-300';
+    });
+    const out = document.getElementById('bpIsomerOut');
+    if (!out || !d) return;
+    out.innerHTML = `
+        <div class="font-bold text-white">${d.title}</div>
+        <div class="space-y-1.5">
+            ${d.rows.map(r => `<div class="p-2 rounded bg-slate-950 border border-slate-800"><div class="flex justify-between font-bold"><span class="text-violet-300">${r[0]}</span><span class="font-mono text-amber-300">b.p. = ${r[1]}</span></div><p class="text-slate-300 mt-0.5">${r[2]}</p></div>`).join('')}
+        </div>
+    `;
+};
+
+const MYS_HC_DATA = [
+    { name: '2,2-Dimethylpropane, C(CH₃)₄', svg: () => window.zigzagSVG(3, [[1,'up'],[1,'down']]), why: 'Spherical shape gives the lowest boiling point (9.5 °C) of the three C₅H₁₂ isomers, and all 12 H atoms are equivalent so free-radical chlorination gives only 1-chloro-2,2-dimethylpropane.' },
+    { name: 'Cyclopentane, C₅H₁₀', svg: () => window.zigzagSVG(5, null, true), why: 'Fits CₙH₂ₙ (C₅H₁₀) but does not decolourise bromine water in the dark → saturated cycloalkane ring. Since all 5 ring carbons are equivalent, it forms only 1 monochloro isomer.' },
+    { name: '2,3-Dimethylbutane, (CH₃)₂CHCH(CH₃)₂', svg: () => window.zigzagSVG(4, [[1,'up'],[2,'down']]), why: 'C2 and C3 are both tertiary carbons (each bonded to 3 C atoms). By symmetry, all 4 methyl groups are equivalent and both CH groups are equivalent → exactly 2 monochloro isomers.' },
+    { name: 'Methylcyclopropane, C₄H₈', svg: () => window.zigzagSVG(3, null, true, [{v:0,n:1}]), why: 'Three-membered cyclopropane ring with one methyl substituent (no locant needed for a monosubstituted cycloalkane).' }
+];
+
+window.renderMysHc = function(){
+    const idx = parseInt((document.getElementById('mysHcSel') || {}).value || '0', 10);
+    const d = MYS_HC_DATA[idx];
+    const out = document.getElementById('mysHcOut');
+    if (!out || !d) return;
+    out.innerHTML = `
+        <div class="grid grid-cols-1 sm:grid-cols-12 gap-3 items-center">
+            <div class="sm:col-span-4 bg-slate-950 border border-slate-800 rounded-xl p-2 text-center">${d.svg()}</div>
+            <div class="sm:col-span-8 space-y-1">
+                <div class="font-bold text-emerald-300 text-xs">Deduced Structure: ${d.name}</div>
+                <p class="text-slate-300 leading-relaxed">${d.why}</p>
+            </div>
+        </div>
+    `;
+};
+
+/* ── 6. TAB 6 PART C & PART D: REFORMING BUILDER & AUTOMATED KEYWORD GRADER ── */
+const REF_EQ_DATA = [
+    { eq: '$\\text{C}_6\\text{H}_{14} \\xrightarrow{\\text{Pt/Al}_2\\text{O}_3,\\;\\Delta} \\text{C}_6\\text{H}_{12}\\,(\\text{cyclohexane}) + \\text{H}_2$', note: 'Dehydrocyclisation of straight-chain hexane into cyclohexane + 1 mol H₂.' },
+    { eq: '$\\text{C}_7\\text{H}_{16} \\xrightarrow{\\text{Pt/Al}_2\\text{O}_3,\\;\\Delta} \\text{C}_7\\text{H}_{14}\\,(\\text{methylcyclohexane}) + \\text{H}_2$', note: 'Straight-chain heptane (octane rating 0) reforms into methylcyclohexane + H₂.' },
+    { eq: '$\\text{C}_8\\text{H}_{18} \\xrightarrow{\\text{Pt/Al}_2\\text{O}_3,\\;\\Delta} \\text{C}_8\\text{H}_{16}\\,(\\text{ethylcyclohexane / dimethylcyclohexane}) + \\text{H}_2$', note: 'Octane reforms into cyclic C₈H₁₆ + H₂ (or isomerises into 2,2,4-trimethylpentane with 0 H₂).' },
+    { eq: '$\\text{C}_6\\text{H}_{14} \\xrightarrow{\\text{Pt/Al}_2\\text{O}_3,\\;\\Delta} \\text{C}_6\\text{H}_6\\,(\\text{benzene}) + 4\\text{H}_2$', note: 'Aromatisation of hexane into benzene releases 4 moles of H₂ gas!' },
+    { eq: '$2\\text{CO} + 2\\text{NO} \\xrightarrow{\\text{Rh / Pt}} 2\\text{CO}_2 + \\text{N}_2$', note: 'Simultaneous oxidation of toxic CO and reduction of acidic NO over a rhodium/platinum honeycomb catalyst.' },
+    { eq: '$\\text{C}_8\\text{H}_{18} + 25\\text{NO} \\xrightarrow{\\text{Rh / Pt}} 8\\text{CO}_2 + 9\\text{H}_2\\text{O} + 12.5\\text{N}_2$', note: 'Unburned hydrocarbons are oxidised to CO₂ and H₂O while NO is reduced to N₂.' }
+];
+
+window.renderRefEqBuilder = function(){
+    const idx = parseInt((document.getElementById('refEqSel') || {}).value || '0', 10);
+    const d = REF_EQ_DATA[idx];
+    const out = document.getElementById('refEqOut');
+    if (!out || !d) return;
+    out.innerHTML = `
+        <div class="p-2.5 rounded bg-slate-950 border border-slate-800 text-center text-emerald-300 font-mono">${d.eq}</div>
+        <p class="text-slate-300">${d.note}</p>
+    `;
+    setTimeout(safeInitKaTeX, 40);
+};
+
+const T4_AUTO_RUBRICS = {
+    homol: {
+        model: 'A homologous series is a family of organic compounds with the same general formula and same functional group, where successive members differ by a –CH₂– unit and show similar chemical properties. As chain length increases, the number of electrons increases (and molecular surface area increases), so London dispersion forces between molecules become stronger and require more energy to overcome.',
+        checks: [
+            { label: 'M1: Same general formula / same functional group AND successive members differ by –CH₂–', re: /(general\s*formula|functional\s*group).*ch2|ch2.*(general\s*formula|functional\s*group)/i },
+            { label: 'M2: More electrons / larger surface area as chain length increases', re: /(more\s*electrons|surface\s*area|larger\s*molecule)/i },
+            { label: 'M3: Stronger London (dispersion / van der Waals) forces requiring more energy to overcome', re: /stronger.*(london|dispersion|van der waals|intermolecular)/i }
+        ],
+        traps: [
+            { msg: 'Examiner Penalty (PEF Jan 2025): Never write "similar physical properties" — physical properties change gradually!', re: /similar\s+physical\s+properties/i }
+        ]
+    },
+    branchbp: {
+        model: 'Pentane and 2,2-dimethylpropane are structural isomers with the same number of electrons (Mᵣ = 72). However, pentane is a straight-chain molecule with a larger surface area of contact (can pack closely), whereas 2,2-dimethylpropane is branched and more spherical with a smaller surface area of contact. Therefore, pentane has stronger London dispersion forces between molecules, requiring more energy to overcome.',
+        checks: [
+            { label: 'M1: Branching makes 2,2-dimethylpropane more spherical / compact with smaller surface area of contact', re: /(spher|compact|surface\s*area|contact|pack)/i },
+            { label: 'M2: Stronger London / dispersion / van der Waals forces in straight-chain pentane', re: /(london|dispersion|van der waals)/i },
+            { label: 'M3: More thermal energy needed to overcome the intermolecular forces', re: /(more\s*energy|higher\s*temperature).*overcome/i }
+        ],
+        traps: [
+            { msg: 'Fatal Trap: Never say covalent C–C or C–H bonds are broken when boiling an alkane!', re: /break.*covalent\s*bonds/i }
+        ]
+    },
+    frslimit: {
+        model: 'Free-radical substitution has low yield in synthesis because (1) further substitution occurs (CH₃Cl reacts further to form CH₂Cl₂, CHCl₃, and CCl₄) and (2) for longer chains, substitution occurs at different carbon positions to give a mixture of structural isomers. To maximise the yield of the monosubstituted product, use a large excess of the alkane (methane).',
+        checks: [
+            { label: 'M1: Further / multiple substitution produces di-, tri-, or polychlorinated alkanes', re: /(further|multiple)\s*substitution|ch2cl2|ccl4|mixture/i },
+            { label: 'M2: Use excess alkane / excess methane to favour monosubstitution', re: /excess\s*(alkane|methane|ch4)/i }
+        ],
+        traps: []
+    },
+    noxsocat: {
+        model: 'Nitrogen and oxygen from the air react at the very high temperature/spark inside the car engine (N₂ + O₂ → 2NO), whereas SO₂ forms from the combustion of sulfur impurities present in the fuel (S + O₂ → SO₂). Both NOₓ and SO₂ are acidic oxides that dissolve in rainwater to form HNO₃ and H₂SO₄ (acid rain). In a Pt/Rh catalytic converter, CO and NO react to form harmless gases: 2CO + 2NO → 2CO₂ + N₂.',
+        checks: [
+            { label: 'M1: N₂ + O₂ from the AIR react at high engine temperature / spark', re: /air.*(high\s*temp|spark)|(high\s*temp|spark).*air/i },
+            { label: 'M2: SO₂ comes from sulfur impurities in the fuel', re: /sulfur.*(impurit|fuel)/i },
+            { label: 'M3: Acidic oxides react with water/O₂ in atmosphere to form acid rain', re: /acid.*rain|nitric|sulfuric/i },
+            { label: 'M4: Catalytic converter (Pt/Rh) converts CO + NO → CO₂ + N₂', re: /(2co|co).*no.*co2.*n2/i }
+        ],
+        traps: []
+    },
+    cneutral: {
+        model: 'Carbon neutral means there is no net release of CO₂ into the atmosphere over the full fuel cycle. Bioethanol is approximately carbon neutral because the growing crop absorbs CO₂ via photosynthesis equal to the CO₂ released on combustion, though fossil fuels burned during farming, harvesting, and distillation mean it is not 100% carbon neutral. Hydrogen produces only water on combustion, but manufacturing hydrogen (by steam reforming of methane or electrolysis using fossil electricity) releases CO₂.',
+        checks: [
+            { label: 'M1: Defines carbon neutral (no net release of CO₂) or balances photosynthesis vs combustion', re: /(no\s*net.*co2|photosynthesis|absorb.*equal)/i },
+            { label: 'M2: Explains why bioethanol is only approximately neutral (energy used in farming/fertiliser/distillation)', re: /(distill|farm|harvest|transport|fossil\s*fuel)/i },
+            { label: 'M3: Explains hydrogen manufacture caveat (steam reforming of methane / electricity source emits CO₂)', re: /(manufactur|produc|reforming|electrolysis)/i }
+        ],
+        traps: []
+    }
+};
+
+window.resetT4AutoExplain = function(){
+    const out = document.getElementById('t4AutoExplainOut');
+    if (out) out.innerHTML = '<span class="text-slate-400">Type your explanation above and click <b>Auto-Grade My Answer</b>.</span>';
+};
+
+window.showT4AutoExplainModel = function(){
+    const k = document.getElementById('t4AutoExplainQ').value;
+    document.getElementById('t4AutoExplainInput').value = T4_AUTO_RUBRICS[k].model;
+    gradeT4AutoExplain();
+};
+
+window.gradeT4AutoExplain = function(){
+    const k = document.getElementById('t4AutoExplainQ').value;
+    const txt = (document.getElementById('t4AutoExplainInput').value || '').trim();
+    const out = document.getElementById('t4AutoExplainOut');
+    if (!txt) {
+        out.innerHTML = '<span class="text-amber-300">Please enter an answer first or click <b>Load Model</b>.</span>';
+        return;
+    }
+    const rub = T4_AUTO_RUBRICS[k];
+    let hit = 0;
+    const rows = rub.checks.map(c => {
+        const ok = c.re.test(txt);
+        if (ok) hit++;
+        return `<div class="${ok ? 'text-emerald-300' : 'text-rose-300'}">${ok ? '✓' : '✗'} ${c.label}</div>`;
+    });
+    const traps = rub.traps.filter(t => t.re.test(txt)).map(t => `<div class="text-amber-300 font-semibold">⚠️ ${t.msg}</div>`);
+    out.innerHTML = `
+        <div class="font-bold text-white text-xs">Mark Scheme Score: ${hit} / ${rub.checks.length} Marks</div>
+        <div class="space-y-1">${rows.join('')}</div>
+        ${traps.join('')}
+        <div class="pt-1.5 border-t border-slate-800 text-[10px] text-slate-400"><b>Exemplar Model:</b> “${rub.model}”</div>
+    `;
+};
+
+/* ── 7. TAB 7: 15-QUESTION EDEXCEL IAL TOPIC 4 EXAM DIAGNOSTIC ── */
+const T4_DIAG_QS = [
+    { spec: '4.1–4.3', q: 'Which pair correctly defines “hazard” and “risk” in an organic chemistry practical?', opts: ['Hazard: likelihood of harm; Risk: inherent potential to cause harm.', 'Hazard: inherent potential of a substance to cause harm; Risk: likelihood of harm occurring under specific conditions of use.', 'Hazard: toxicity only; Risk: flammability only.'], ans: 1, exp: 'Spec 4.1: Hazard is an intrinsic property of the chemical; risk is the chance that someone is harmed in a particular procedure.' },
+    { spec: '4.4', q: 'Which property is shared by all members of the alkane homologous series?', opts: ['The same empirical formula', 'The same boiling point', 'The same general formula (CₙH₂ₙ₊₂) and similar chemical properties'], ans: 2, exp: 'Spec 4.4 / PEF Jan 2025: Homologous series share the same general formula and functional group, differ by –CH₂–, and have similar chemical properties.' },
+    { spec: '4.5', q: 'What is the correct IUPAC name for (CH₃)₂CHCH₂CH(CH₃)₂?', opts: ['2,4-dimethylpentane', '1,1,3,3-tetramethylpropane', '2-methyl-4-methylpentane'], ans: 0, exp: 'Spec 4.5: Longest continuous chain = 5 carbons (pentane) with two methyl groups at C2 and C4 → 2,4-dimethylpentane.' },
+    { spec: '4.5', q: 'What is the empirical formula of 2,3-dimethylbutane, C₆H₁₄?', opts: ['C₆H₁₄', 'C₃H₇', 'CH₂'], ans: 1, exp: 'Spec 4.5: Divide 6 and 14 by their highest common factor (2) → C₃H₇.' },
+    { spec: '4.6', q: 'What type of reaction is C₁₀H₂₂ → C₈H₁₈ + C₂H₄, and what type is CH₄ + Cl₂ → CH₃Cl + HCl?', opts: ['Thermal decomposition (cracking) and free-radical substitution', 'Addition and electrophilic substitution', 'Reforming and oxidation'], ans: 0, exp: 'Spec 4.6 & 4.12: Breaking a long alkane into a shorter alkane + alkene is cracking (thermal decomposition); replacing H with Cl in an alkane is free-radical substitution.' },
+    { spec: '4.7–4.8', q: 'What is formed when a covalent bond undergoes heterolytic fission?', opts: ['Two free radicals with unpaired electrons', 'A positively charged cation and a negatively charged anion', 'Two neutral atoms'], ans: 1, exp: 'Spec 4.7: In heterolytic fission, both bonding electrons go to one atom, producing a cation and an anion.' },
+    { spec: '4.9', q: 'Which molecular formula represents a saturated cycloalkane with one ring?', opts: ['C₆H₁₄', 'C₆H₁₂', 'C₆H₁₀'], ans: 1, exp: 'Spec 4.9: Cycloalkanes have the general formula CₙH₂ₙ (C₆H₁₂) and are saturated (single bonds only).' },
+    { spec: '4.10–4.11', q: 'How many structural isomers (alkanes only) have the molecular formula C₆H₁₄?', opts: ['3', '4', '5'], ans: 2, exp: 'Spec 4.10: C₆H₁₄ has 5 isomers: hexane, 2-methylpentane, 3-methylpentane, 2,2-dimethylbutane, and 2,3-dimethylbutane.' },
+    { spec: '4.10', q: 'Which isomer of C₅H₁₂ has the LOWEST boiling point?', opts: ['Pentane', '2-Methylbutane', '2,2-Dimethylpropane'], ans: 2, exp: '2,2-Dimethylpropane is the most branched (most spherical), giving it the smallest surface area of contact and the weakest London dispersion forces.' },
+    { spec: '4.12', q: 'Why are straight-chain alkanes reformed into branched and cyclic hydrocarbons in oil refineries?', opts: ['To increase their viscosity for road surfacing.', 'To promote more efficient, smoother combustion in petrol engines (higher octane number / less knocking).', 'To make them solidify at room temperature.'], ans: 1, exp: 'Spec 4.12(iii): Branched and cyclic hydrocarbons burn more smoothly in engines (higher octane rating) without pre-ignition (knocking).' },
+    { spec: '4.13–4.14', q: 'Why is carbon monoxide (CO) toxic to humans?', opts: ['It dissolves in rain to form acid rain.', 'It binds irreversibly/strongly to haemoglobin in red blood cells, preventing oxygen transport.', 'It depletes the stratospheric ozone layer.'], ans: 1, exp: 'Spec 4.14(i): CO binds to haemoglobin in the blood, starving tissues of oxygen.' },
+    { spec: '4.15–4.16', q: 'Which pollutant is NOT removed by a platinum/rhodium catalytic converter in a car exhaust?', opts: ['Carbon monoxide (CO)', 'Nitrogen monoxide (NO)', 'Carbon dioxide (CO₂) and sulfur dioxide (SO₂)'], ans: 2, exp: 'Spec 4.16: The catalytic converter converts CO and NO into CO₂ and N₂; it does not remove CO₂ or SO₂ (sulfur is removed from the fuel before combustion).' },
+    { spec: '4.17', q: 'What is the coefficient of O₂ when 1 mole of pentane (C₅H₁₂) undergoes complete combustion?', opts: ['5', '8', '11'], ans: 1, exp: 'Spec 4.17: C₅H₁₂ + 8O₂ → 5CO₂ + 6H₂O (5×2 + 6×1 = 16 O atoms = 8 O₂).' },
+    { spec: '4.18', q: 'In the reaction of ethane with chlorine under UV light, which trace hydrocarbon product provides direct evidence for ethyl radicals?', opts: ['Methane (CH₄)', 'Propane (C₃H₈)', 'Butane (C₄H₁₀)'], ans: 2, exp: 'Spec 4.18 / PEF Jan 2026: Two ethyl radicals (•C₂H₅) combine in a termination step to form butane (C₄H₁₀).' },
+    { spec: '4.18(iv)', q: 'Which alkane reacts with chlorine in UV light to form ONLY ONE monochloro-substituted structural isomer?', opts: ['Propane', '2-Methylbutane', '2,2-Dimethylpropane'], ans: 2, exp: 'In 2,2-dimethylpropane, C(CH₃)₄, all 12 hydrogen atoms are chemically equivalent, so replacing any H gives 1-chloro-2,2-dimethylpropane.' }
+];
+
+function renderT4Diagnostic(){
+    const box = document.getElementById('t4DiagContainer');
+    if (!box) return;
+    box.innerHTML = T4_DIAG_QS.map((item, idx) => {
+        const sel = T4_STATE.diagAns[idx];
+        const answered = sel !== undefined;
+        const isOk = sel === item.ans;
+        return `
+            <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-2.5 flex flex-col justify-between">
+                <div class="space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[10px] font-mono text-rose-400 uppercase font-bold px-2 py-0.5 bg-rose-950 rounded border border-rose-800">Spec ${item.spec}</span>
+                        <span class="text-[10px] font-mono ${answered ? (isOk ? 'text-emerald-400' : 'text-amber-400') : 'text-slate-500'}">${answered ? (isOk ? '✓ 1 / 1 Mark' : '✗ 0 / 1 Mark') : 'Unanswered'}</span>
+                    </div>
+                    <p class="text-xs font-semibold text-white leading-relaxed">${idx+1}. ${item.q}</p>
+                    <div class="space-y-1.5">
+                        ${item.opts.map((opt, oIdx) => {
+                            let cls = 'border-slate-800 bg-slate-950/70 text-slate-300 hover:border-sky-700';
+                            if (answered) {
+                                if (oIdx === item.ans) cls = 'border-emerald-600 bg-emerald-950/40 text-emerald-200 font-semibold';
+                                else if (oIdx === sel) cls = 'border-rose-600 bg-rose-950/40 text-rose-200';
+                            }
+                            return `
+                                <button type="button" onclick="answerT4Diagnostic(${idx}, ${oIdx})" class="w-full text-left p-2 rounded-lg border ${cls} text-[11px] leading-snug">
+                                    <span class="font-mono text-sky-400 mr-1.5">${String.fromCharCode(65+oIdx)}.</span>${opt}
+                                </button>
+                            `;
+                        }).join('')}
+                    </div>
+                </div>
+                <div class="${answered ? '' : 'hidden'} p-2.5 rounded-lg bg-slate-950 border border-slate-800 text-[11px] text-slate-300 leading-relaxed">
+                    <b class="${isOk ? 'text-emerald-400' : 'text-amber-400'}">${isOk ? '✓ Mark Scheme:' : '✗ Examiner Note:'}</b> ${item.exp}
+                </div>
+            </div>
+        `;
+    }).join('');
+
+    let corr = 0;
+    for (let i = 0; i < T4_DIAG_QS.length; i++) if (T4_STATE.diagAns[i] === T4_DIAG_QS[i].ans) corr++;
+    const pct = Math.round((corr / T4_DIAG_QS.length) * 100);
+    const badge = document.getElementById('t4DiagScoreBadge');
+    if (badge) badge.textContent = `${corr} / ${T4_DIAG_QS.length} Correct · ${pct}%`;
+}
+
+window.answerT4Diagnostic = function(qIdx, oIdx){
+    T4_STATE.diagAns[qIdx] = oIdx;
+    saveT4State();
+    renderT4Diagnostic();
+    updateT4Mastery();
+};
+
+window.resetT4Diagnostic = function(){
+    T4_STATE.diagAns = {};
+    saveT4State();
+    renderT4Diagnostic();
+    updateT4Mastery();
+};
+
+function makeT4TrapsInteractive(){
+    const items = document.querySelectorAll('#rev-traps ul li');
+    items.forEach((li, idx) => {
+        li.style.cursor = 'pointer';
+        const apply = () => {
+            const on = !!T4_STATE.trapChecked[idx];
+            if (on) {
+                li.innerHTML = li.innerHTML.replace('☐', '☑️');
+                li.classList.add('text-emerald-300');
+            } else {
+                li.innerHTML = li.innerHTML.replace('☑️', '☐');
+                li.classList.remove('text-emerald-300');
+            }
+        };
+        apply();
+        li.addEventListener('click', () => {
+            T4_STATE.trapChecked[idx] = !T4_STATE.trapChecked[idx];
+            saveT4State();
+            apply();
+        });
+    });
+}
+
+/* ── 8. SPOTLIGHT QUICK JUMP MODAL (⌘K) ── */
+const T4_SPOTLIGHT_ITEMS = [
+    { title: 'Spec 4.1–4.18 Master Syllabus & 12 Instant Concept Checks', sub: 'Tab 1 · Syllabus Overview', act: () => switchTab('syllabus') },
+    { title: 'IUPAC Name ↔ Skeletal Structure Drill (13 Shuffled Qs)', sub: 'Tab 2 · Naming Workbench', act: () => switchTab('naming') },
+    { title: '5-Representation Formula Translator & Illegal IUPAC Name Clinic', sub: 'Tab 2 · Naming Extensions', act: () => switchTab('naming') },
+    { title: 'Free Radical Substitution Step Inspector & Classifier', sub: 'Tab 3 · Mechanism Engine', act: () => switchTab('mech') },
+    { title: 'Any-Alkane Radical Step Builder & Monochloro-Isomer Counter', sub: 'Tab 3 · Mechanism Module 5', act: () => { switchTab('mech'); switchMode('c1','drill'); } },
+    { title: 'Crude Oil Distillation, Cracking, Reforming & Pollutants', sub: 'Tab 4 · Fuels & Oil Engine', act: () => switchTab('fuels') },
+    { title: 'Interactive Fractionating Column & Refinery Process Sorter', sub: 'Tab 4 · Fuels Module 5', act: () => { switchTab('fuels'); switchMode('c2','drill'); } },
+    { title: 'Structural Isomerism Inspector & C₄–C₆ Isomer Builder', sub: 'Tab 5 · Isomers Engine', act: () => switchTab('isomers') },
+    { title: 'Branching vs Boiling Point Comparator & Mystery Hydrocarbon Lab', sub: 'Tab 5 · Isomers Module 5', act: () => { switchTab('isomers'); switchMode('c3','drill'); } },
+    { title: 'Combustion Balancer, Cracking Builder & Reforming Equations', sub: 'Tab 6 · Equation Solver', act: () => switchTab('solver') },
+    { title: 'Automated Edexcel Mark-Scheme Keyword Grader (5 Written Qs)', sub: 'Tab 6 · Solver Part D', act: () => switchTab('solver') },
+    { title: '15-Question Edexcel IAL Topic 4 Exam Readiness Diagnostic', sub: 'Tab 7 · Final Review Diagnostic', act: () => switchTab('review') }
+];
+
+window.openT4Spotlight = function(){
+    const m = document.getElementById('t4SpotlightModal');
+    if (!m) return;
+    m.classList.remove('hidden'); m.classList.add('flex');
+    const inp = document.getElementById('t4SpotlightInput');
+    if (inp) { inp.value = ''; filterT4Spotlight(''); setTimeout(() => inp.focus(), 40); }
+};
+
+window.closeT4Spotlight = function(){
+    const m = document.getElementById('t4SpotlightModal');
+    if (!m) return;
+    m.classList.add('hidden'); m.classList.remove('flex');
+};
+
+window.filterT4Spotlight = function(q){
+    const term = (q || '').toLowerCase().trim();
+    const res = document.getElementById('t4SpotlightResults');
+    if (!res) return;
+    const matched = T4_SPOTLIGHT_ITEMS.map((it, idx) => ({ it, idx })).filter(({ it }) => !term || it.title.toLowerCase().includes(term) || it.sub.toLowerCase().includes(term));
+    res.innerHTML = matched.length ? matched.map(({ it, idx }) => `
+        <button type="button" onclick="runT4Spotlight(${idx})" class="w-full text-left p-2.5 rounded-xl hover:bg-slate-800/80 flex items-center justify-between gap-2">
+            <div>
+                <div class="font-semibold text-white text-xs">${it.title}</div>
+                <div class="text-[10px] font-mono text-sky-400">${it.sub}</div>
+            </div>
+            <span class="text-slate-500 text-xs">↵</span>
+        </button>
+    `).join('') : '<div class="p-4 text-center text-slate-400">No matching Topic 4 tools found.</div>';
+};
+
+window.runT4Spotlight = function(idx){
+    closeT4Spotlight();
+    if (T4_SPOTLIGHT_ITEMS[idx]) T4_SPOTLIGHT_ITEMS[idx].act();
+};
+
+document.addEventListener('keydown', function(e){
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        openT4Spotlight();
+    } else if (e.key === 'Escape') {
+        closeT4Spotlight();
+    }
+});
+
+window.addEventListener('load', function(){
+    loadT4State();
+    injectT4SyllabusChecks();
+    renderFormulaTranslator();
+    renderIllegalNameClinic();
+    renderRadicalBuilder();
+    renderMonoIsoChallenge();
+    selectFraction(0);
+    renderRefProcChallenge();
+    selectBpSeries(0);
+    renderMysHc();
+    renderRefEqBuilder();
+    renderT4Diagnostic();
+    makeT4TrapsInteractive();
+    updateT4Mastery();
+});
+</script>
+
 <script id="mux-script" data-mux-version="1.4.0">
 (function () {
   'use strict';

@@ -44,6 +44,272 @@
     .toc-strip{display:flex}
   }
   @media (prefers-reduced-motion:reduce){.tab-panel.active{animation:none}}
+
+  /* ══ APPLE CUPERTINO DARK GLASS DESIGN SYSTEM & SUBTLE ANIMATIONS ══ */
+  :root {
+    --apple-bg: #03050a;
+    --apple-glass: rgba(22, 27, 38, 0.66);
+    --apple-glass-elevated: rgba(30, 37, 52, 0.72);
+    --apple-glass-card: rgba(13, 18, 29, 0.78);
+    --apple-border: rgba(255, 255, 255, 0.085);
+    --apple-border-hover: rgba(125, 211, 252, 0.35);
+    --apple-highlight: inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
+    --apple-blue: #0A84FF;
+    --apple-cyan: #64D2FF;
+    --apple-green: #30D158;
+    --apple-amber: #FF9F0A;
+    --apple-rose: #FF375F;
+    --apple-purple: #BF5AF2;
+    --apple-spring: cubic-bezier(0.16, 1, 0.3, 1);
+    --apple-smooth: cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+
+  body {
+    background-color: var(--apple-bg) !important;
+    background-image:
+      radial-gradient(circle at 14% 8%, rgba(10, 132, 255, 0.14) 0%, transparent 38%),
+      radial-gradient(circle at 86% 12%, rgba(191, 90, 242, 0.11) 0%, transparent 36%),
+      radial-gradient(circle at 50% 88%, rgba(48, 209, 88, 0.08) 0%, transparent 45%),
+      linear-gradient(180deg, #03060d 0%, #060b16 50%, #03050a 100%) !important;
+    background-attachment: fixed;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", ui-sans-serif, system-ui, sans-serif !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    letter-spacing: -0.011em;
+  }
+
+  h1, h2, h3, h4 {
+    letter-spacing: -0.024em;
+  }
+
+  /* Frosted Apple Header */
+  header.sticky {
+    background: rgba(8, 12, 22, 0.74) !important;
+    -webkit-backdrop-filter: saturate(190%) blur(28px) !important;
+    backdrop-filter: saturate(190%) blur(28px) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.09) !important;
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.65), inset 0 -1px 0 0 rgba(255, 255, 255, 0.05);
+    transition: background 0.35s var(--apple-smooth), box-shadow 0.35s var(--apple-smooth);
+  }
+
+  /* Apple Segmented Control Navigation Bar */
+  #mainNav {
+    background: rgba(15, 21, 34, 0.72);
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 14px;
+    padding: 4px !important;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.45), 0 1px 0 rgba(255, 255, 255, 0.05);
+    gap: 4px !important;
+  }
+
+  #mainNav button {
+    border-radius: 10px !important;
+    border-bottom-width: 0 !important;
+    transition: all 0.28s var(--apple-spring) !important;
+    position: relative;
+    letter-spacing: -0.01em;
+  }
+
+  #mainNav button:hover {
+    color: #f8fafc !important;
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  #mainNav button:active {
+    transform: scale(0.96);
+  }
+
+  #mainNav button.tab-btn-active {
+    background: linear-gradient(180deg, rgba(10, 132, 255, 0.32) 0%, rgba(10, 132, 255, 0.18) 100%) !important;
+    color: #ffffff !important;
+    box-shadow: 0 2px 10px rgba(10, 132, 255, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.22) !important;
+    border: 1px solid rgba(100, 210, 255, 0.42) !important;
+  }
+
+  /* Subtle Spring Entrance for Tabs & Engine Modules */
+  @keyframes appleFadeSlideUp {
+    0% {
+      opacity: 0;
+      transform: translateY(10px) scale(0.994);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  .tab-panel.active {
+    animation: appleFadeSlideUp 0.42s var(--apple-spring) forwards;
+  }
+
+  .engine-module.active {
+    animation: appleFadeSlideUp 0.34s var(--apple-spring) forwards;
+  }
+
+  /* Apple Glass Panels & Cards */
+  .bg-slate-900 {
+    background: var(--apple-glass) !important;
+    -webkit-backdrop-filter: saturate(160%) blur(22px);
+    backdrop-filter: saturate(160%) blur(22px);
+    border-color: var(--apple-border) !important;
+    box-shadow: 0 20px 45px -18px rgba(0, 0, 0, 0.7), var(--apple-highlight) !important;
+    border-radius: 18px !important;
+  }
+
+  .bg-slate-950 {
+    background: var(--apple-glass-card) !important;
+    border-color: rgba(255, 255, 255, 0.075) !important;
+    box-shadow: 0 10px 28px -12px rgba(0, 0, 0, 0.55), inset 0 1px 0 0 rgba(255, 255, 255, 0.08) !important;
+    border-radius: 15px !important;
+    transition: transform 0.32s var(--apple-spring), border-color 0.32s var(--apple-smooth), box-shadow 0.32s var(--apple-smooth);
+  }
+
+  .grid > .bg-slate-950:hover, .def-card .bg-slate-950:hover, .eq-card .bg-slate-950:hover, .mole-card .bg-slate-950:hover, .gas-card .bg-slate-950:hover, .sol-card .bg-slate-950:hover, .prac-card .bg-slate-950:hover {
+    transform: translateY(-2px);
+    border-color: rgba(125, 211, 252, 0.24) !important;
+    box-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.72), 0 0 24px -8px rgba(10, 132, 255, 0.16), inset 0 1px 0 0 rgba(255, 255, 255, 0.14) !important;
+  }
+
+  /* Apple Mode Pills */
+  .mode-pill {
+    transition: all 0.26s var(--apple-spring) !important;
+    background: rgba(15, 23, 42, 0.65);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+  .mode-pill:hover {
+    transform: translateY(-1px);
+    border-color: rgba(125, 211, 252, 0.45) !important;
+    color: #e0f2fe !important;
+  }
+  .mode-pill:active {
+    transform: scale(0.96);
+  }
+  .mode-pill.active {
+    background: linear-gradient(180deg, rgba(10, 132, 255, 0.28), rgba(10, 132, 255, 0.14)) !important;
+    color: #ffffff !important;
+    border-color: rgba(100, 210, 255, 0.55) !important;
+    box-shadow: 0 4px 14px -2px rgba(10, 132, 255, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+  }
+
+  /* Tactile Inputs & Buttons */
+  input[type="number"], input[type="text"], select, textarea {
+    background: rgba(9, 13, 24, 0.85) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    border-radius: 10px !important;
+    transition: border-color 0.22s var(--apple-smooth), box-shadow 0.22s var(--apple-smooth) !important;
+  }
+  input[type="number"]:focus, input[type="text"]:focus, select:focus, textarea:focus {
+    outline: none !important;
+    border-color: var(--apple-blue) !important;
+    box-shadow: 0 0 0 3px rgba(10, 132, 255, 0.25) !important;
+  }
+
+  button {
+    transition: all 0.24s var(--apple-spring);
+  }
+  button:active {
+    transform: scale(0.97);
+  }
+
+  /* Blur answer Apple capsule reveal */
+  .blur-answer {
+    filter: blur(5.5px);
+    transition: filter 0.32s var(--apple-spring), background 0.32s var(--apple-smooth), box-shadow 0.32s var(--apple-smooth);
+    padding: 1px 7px !important;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .blur-answer:hover {
+    filter: blur(3px);
+    border-color: rgba(100, 210, 255, 0.4);
+  }
+  .blur-answer.revealed {
+    filter: blur(0);
+    background: rgba(10, 132, 255, 0.16) !important;
+    border-color: rgba(100, 210, 255, 0.35);
+    box-shadow: 0 0 12px rgba(10, 132, 255, 0.15);
+  }
+
+  /* KaTeX equation display block refinement */
+  .katex-block {
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0.78) 0%, rgba(9, 14, 26, 0.88) 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 12px !important;
+    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.45), 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+
+  /* Apple Mastery Pill & Quick Search Modal */
+  .apple-pill-btn {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 9999px;
+    padding: 4px 11px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #e2e8f0;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+  .apple-pill-btn:hover {
+    background: rgba(255, 255, 255, 0.11);
+    border-color: rgba(100, 210, 255, 0.4);
+    color: #ffffff;
+  }
+
+  .spec-conf-btn {
+    padding: 3px 9px;
+    border-radius: 9999px;
+    font-size: 10px;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(15, 23, 42, 0.7);
+    color: #94a3b8;
+    cursor: pointer;
+    transition: all 0.22s var(--apple-spring);
+  }
+  .spec-conf-btn.conf-review.active {
+    background: rgba(255, 55, 95, 0.2);
+    border-color: #FF375F;
+    color: #fda4af;
+  }
+  .spec-conf-btn.conf-practising.active {
+    background: rgba(255, 159, 10, 0.2);
+    border-color: #FF9F0A;
+    color: #fde68a;
+  }
+  .spec-conf-btn.conf-mastered.active {
+    background: rgba(48, 209, 88, 0.22);
+    border-color: #30D158;
+    color: #86efac;
+  }
+
+  /* Custom Range Slider Apple Style */
+  input[type="range"].apple-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 6px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.14);
+    outline: none;
+  }
+  input[type="range"].apple-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.45), 0 0 0 2px #0A84FF;
+    cursor: pointer;
+    transition: transform 0.18s var(--apple-spring);
+  }
+  input[type="range"].apple-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.12);
+  }
+
 </style>
 <style id="mux-style" data-mux-version="1.4.0">
 /* ===== MUX mobile layer v1.4.0 ===== */
@@ -166,17 +432,27 @@ nav, nav > div { max-width: 100% !important; }
         <h1 class="text-base sm:text-lg font-bold text-white leading-tight">WCH11 · Topic 1 Master Studio</h1>
         <p class="text-[11px] text-slate-400 font-mono">Formulae, Equations &amp; Amount of Substance · Pearson Edexcel IAL Unit 1 · IAS</p>
       </div>
-      <div class="flex gap-2 text-[10px] font-mono">
+      <div class="flex flex-wrap items-center gap-2 text-[10px] font-mono">
         <span class="chip bg-sky-950 text-sky-400 border border-sky-800">Spec 1.1 – 1.12</span>
         <span class="chip bg-purple-950 text-purple-400 border border-purple-800">WCH11/01</span>
         <span class="chip bg-emerald-950 text-emerald-400 border border-emerald-800">Core Practical 1</span>
         <span class="chip bg-amber-950 text-amber-400 border border-amber-800">+ WCH13 practicals</span>
+        <button type="button" onclick="openSpotlightModal()" class="apple-pill-btn cursor-pointer" title="Quick Search Syllabus, Ions & Calculators (⌘K)">
+          <span>🔎 Quick Jump</span>
+          <kbd class="px-1.5 py-0.5 text-[9px] bg-slate-800/90 text-slate-300 rounded border border-slate-700">⌘K</kbd>
+        </button>
+        <div class="apple-pill-btn border-sky-500/40 bg-sky-950/60 text-sky-300" title="Overall Topic 1 Mastery across Spec 1.1–1.12 & Interactive Checks">
+          <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span>Mastery:</span>
+          <span id="mastery-percentage" class="font-bold text-white num-card">0%</span>
+        </div>
       </div>
     </div>
   </div>
   <!-- Nav (wrap, two-row pills) -->
   <nav class="max-w-7xl mx-auto px-4 pb-2 flex flex-wrap gap-1 border-t border-slate-800/60 pt-2" id="mainNav">
     <button class="tab-btn-active py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs text-sky-400 font-bold border-b-2 border-sky-400 bg-sky-950/40" data-tab="tab-syllabus" onclick="switchTab('tab-syllabus')">1. Syllabus</button>
+    <button class="py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs text-slate-400 hover:text-sky-300 font-medium border-b-2 border-transparent" data-tab="tab-check" onclick="switchTab('tab-check')">Check</button>
     <button class="py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs text-slate-400 hover:text-sky-300 font-medium border-b-2 border-transparent" data-tab="tab-defs" onclick="switchTab('tab-defs')">2. Definitions</button>
     <button class="py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs text-slate-400 hover:text-sky-300 font-medium border-b-2 border-transparent" data-tab="tab-equations" onclick="switchTab('tab-equations')">3. Equations</button>
     <button class="py-2 px-3 sm:px-3.5 text-[11px] sm:text-xs text-slate-400 hover:text-sky-300 font-medium border-b-2 border-transparent" data-tab="tab-moles" onclick="switchTab('tab-moles')">4. Moles</button>
@@ -192,6 +468,10 @@ nav, nav > div { max-width: 100% !important; }
 
 <!-- ═══════════ TAB 1 · SYLLABUS MASTER OVERVIEW ═══════════ -->
 <section id="tab-syllabus" class="tab-panel active space-y-6">
+  <div class="t1-banner">
+    <p><strong>The cards below are the notes.</strong> Check asks you to decide before the mark-scheme line appears, and it names the mark the other choice would lose.</p>
+    <button type="button" onclick="switchTab('tab-check')">Open Check</button>
+  </div>
   <!-- ══ PEF REMINDERS — from chemistry-wiki examiner-insights (harvested 2026-08-11) ══ -->
   <div class="bg-slate-900 border border-amber-800/60 rounded-xl p-5 shadow-sm">
     <details open>
@@ -217,6 +497,26 @@ nav, nav > div { max-width: 100% !important; }
       <span class="text-xs font-bold text-sky-400 uppercase tracking-widest">Syllabus Master Overview</span>
       <h2 class="text-xl font-bold text-white mt-1">Topic 1 Learning Points &amp; Mark Scheme Secrets (Spec 1.1 – 1.12)</h2>
       <p class="text-xs text-slate-400 mt-1">Review essential learning goals and examiner watch-outs across the full in-scope unit — formulae, equations and amounts of substance.</p>
+    </div>
+    <!-- Interactive Syllabus Mastery Dashboard Bar -->
+    <div class="mb-6 p-4 bg-slate-950 border border-slate-800 rounded-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div class="space-y-1 flex-1 w-full">
+        <div class="flex items-center justify-between text-xs">
+          <span class="font-bold text-white flex items-center gap-2">
+            <span class="inline-block w-2 h-2 rounded-full bg-sky-400"></span>
+            Interactive Edexcel IAL Spec 1.1–1.12 Concept Check &amp; Self-Audit
+          </span>
+          <span id="syllabusProgressLabel" class="font-mono text-[11px] text-sky-300 num-card">0 / 12 Spec Points Mastered · 0 / 12 Concept Checks Passed</span>
+        </div>
+        <div class="w-full h-2 bg-slate-900 rounded-full overflow-hidden border border-slate-800">
+          <div id="syllabusProgressBar" class="h-full bg-gradient-to-r from-sky-500 via-cyan-400 to-emerald-400 transition-all duration-500" style="width: 0%"></div>
+        </div>
+        <p class="text-[11px] text-slate-400">Rate your confidence on each specification card below and test yourself with the <b>⚡ Instant Concept Check</b> on every card.</p>
+      </div>
+      <div class="flex gap-2 shrink-0">
+        <button type="button" onclick="expandAllSpecChecks(true)" class="text-[11px] font-semibold px-3 py-1.5 rounded-lg bg-sky-950/70 text-sky-300 border border-sky-800/80 hover:bg-sky-900/60">Open All Checks</button>
+        <button type="button" onclick="resetSyllabusTracker()" class="text-[11px] font-semibold px-3 py-1.5 rounded-lg bg-slate-900 text-slate-400 border border-slate-700 hover:text-white">Reset</button>
+      </div>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -525,12 +825,126 @@ nav, nav > div { max-width: 100% !important; }
 
     </div>
 
+    <!-- ══ NEW: EDEXCEL IAL SYLLABUS DEEP-DIVE & INTERACTIVE CONCEPT TOOLS (Spec 1.1, 1.3, 1.4(iv), 1.12) ══ -->
+    <div class="mt-8 space-y-4">
+      <div class="flex flex-wrap items-center justify-between gap-2 border-t border-slate-800 pt-6">
+        <div>
+          <span class="text-[10px] font-mono uppercase tracking-widest text-cyan-400 font-bold">Edexcel IAL Syllabus Alignment Additions</span>
+          <h3 class="text-base font-bold text-white mt-0.5">High-Yield Specification Reference &amp; Interactive Concept Checkers</h3>
+        </div>
+        <span class="text-[11px] text-slate-400">Covers Spec 1.1 · 1.3 · 1.4(i,iv) · 1.10 · 1.12</span>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        <!-- Deep Dive 1: Mandatory IAL Ions & Charges (Spec 1.1 & 1.3, PEF Jun 2024) -->
+        <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-[10px] font-mono text-sky-400 uppercase font-bold px-2 py-0.5 bg-sky-950 rounded border border-sky-800">Spec 1.1 &amp; 1.3 · PEF Jun 2024</span>
+            <span class="text-[10px] text-slate-400 font-mono">Must-know charges</span>
+          </div>
+          <h4 class="text-sm font-bold text-white">Mandatory Polyatomic &amp; Transition Ion Charges</h4>
+          <p class="text-[11px] text-slate-400 leading-relaxed">Principal Examiner Feedback (Jun 2024): <i>“Learn the charges on ions”</i> — wrong ion charges lose marks in both formula writing and ionic equations.</p>
+          <div class="grid grid-cols-2 gap-1.5 text-[11px] font-mono">
+            <div class="p-2 rounded bg-slate-900/90 border border-slate-800 flex justify-between"><span>Ammonium</span><b class="text-sky-300">NH₄⁺</b></div>
+            <div class="p-2 rounded bg-slate-900/90 border border-slate-800 flex justify-between"><span>Hydroxide</span><b class="text-sky-300">OH⁻</b></div>
+            <div class="p-2 rounded bg-slate-900/90 border border-slate-800 flex justify-between"><span>Nitrate / Nitrite</span><b class="text-sky-300">NO₃⁻ / NO₂⁻</b></div>
+            <div class="p-2 rounded bg-slate-900/90 border border-slate-800 flex justify-between"><span>Hydrogencarb.</span><b class="text-sky-300">HCO₃⁻</b></div>
+            <div class="p-2 rounded bg-slate-900/90 border border-slate-800 flex justify-between"><span>Carbonate</span><b class="text-purple-300">CO₃²⁻</b></div>
+            <div class="p-2 rounded bg-slate-900/90 border border-slate-800 flex justify-between"><span>Sulfate / Sulfite</span><b class="text-purple-300">SO₄²⁻ / SO₃²⁻</b></div>
+            <div class="p-2 rounded bg-slate-900/90 border border-slate-800 flex justify-between"><span>Dichromate(VI)</span><b class="text-amber-300">Cr₂O₇²⁻</b></div>
+            <div class="p-2 rounded bg-slate-900/90 border border-slate-800 flex justify-between"><span>Manganate(VII)</span><b class="text-rose-300">MnO₄⁻</b></div>
+            <div class="p-2 rounded bg-slate-900/90 border border-slate-800 flex justify-between"><span>Phosphate</span><b class="text-emerald-300">PO₄³⁻</b></div>
+            <div class="p-2 rounded bg-slate-900/90 border border-slate-800 flex justify-between"><span>Silver / Zinc</span><b class="text-emerald-300">Ag⁺ / Zn²⁺</b></div>
+          </div>
+          <button type="button" onclick="switchTab('tab-defs');switchDefsMode('grader');" class="w-full py-2 px-3 rounded-lg bg-sky-950/70 hover:bg-sky-900/80 text-sky-300 border border-sky-800/70 text-xs font-semibold">Launch Interactive Ion Formula Builder →</button>
+        </div>
+
+        <!-- Deep Dive 2: Spec 1.4(iv) Parts Per Million (ppm) including Atmospheric Gases -->
+        <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-[10px] font-mono text-amber-400 uppercase font-bold px-2 py-0.5 bg-amber-950 rounded border border-amber-800">Spec 1.4(iv)</span>
+            <span class="text-[10px] text-slate-400 font-mono">Solutions &amp; Atmosphere</span>
+          </div>
+          <h4 class="text-sm font-bold text-white">Parts Per Million (ppm) in Air &amp; Solution</h4>
+          <p class="text-[11px] text-slate-400 leading-relaxed">Spec 1.4(iv) explicitly tests <b>gases in the atmosphere</b> as well as dilute aqueous solutions:</p>
+          <div class="space-y-2 text-xs text-slate-300">
+            <div class="p-2.5 rounded-lg bg-slate-900 border border-slate-800">
+              <span class="text-[10px] font-bold text-amber-300 uppercase block">1 · Gases in the Atmosphere (by volume)</span>
+              <span class="font-mono text-[11px] text-white block mt-0.5">ppm = (volume of gas ÷ total volume of air) × 10⁶</span>
+              <span class="text-[11px] text-slate-400 block mt-0.5">Shortcut: <b>% by volume × 10 000 = ppm</b> (e.g. 0.042% CO₂ in dry air = 420 ppm; 1.5 dm³ CO₂ in 10 m³ air = 1.5 ÷ 10 000 × 10⁶ = 150 ppm).</span>
+            </div>
+            <div class="p-2.5 rounded-lg bg-slate-900 border border-slate-800">
+              <span class="text-[10px] font-bold text-sky-300 uppercase block">2 · Aqueous Solutions (by mass)</span>
+              <span class="font-mono text-[11px] text-white block mt-0.5">ppm = (mass of solute in g ÷ mass of solution in g) × 10⁶</span>
+              <span class="text-[11px] text-slate-400 block mt-0.5">Since 1 dm³ of dilute aqueous solution has mass ≈ 1000 g = 10⁶ mg, <b>1 mg dm⁻³ = 1 ppm</b>.</span>
+            </div>
+          </div>
+          <button type="button" onclick="switchTab('tab-solutions');switchSolMode('studio');" class="w-full py-2 px-3 rounded-lg bg-amber-950/60 hover:bg-amber-900/70 text-amber-300 border border-amber-800/70 text-xs font-semibold">Open Atmospheric &amp; Solution ppm Lab →</button>
+        </div>
+
+        <!-- Deep Dive 3: Spec 1.12 Complete Precipitate & Gas Observation Matrix -->
+        <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-[10px] font-mono text-emerald-400 uppercase font-bold px-2 py-0.5 bg-emerald-950 rounded border border-emerald-800">Spec 1.12 · PEF Jan 2024</span>
+            <span class="text-[10px] text-slate-400 font-mono">Test-tube reactions</span>
+          </div>
+          <h4 class="text-sm font-bold text-white">Test-Tube Precipitate &amp; Gas Colour Matrix</h4>
+          <p class="text-[11px] text-slate-400 leading-relaxed">Write what you <b>see</b> (effervescence, colour of solid/solution), never just name the product:</p>
+          <div class="space-y-1.5 text-[11px]">
+            <div class="p-2 rounded bg-slate-900 border border-slate-800 flex justify-between"><span>Ag⁺(aq) + Cl⁻ / Br⁻ / I⁻(aq)</span><b class="text-slate-100">White / Cream / Yellow ppt</b></div>
+            <div class="p-2 rounded bg-slate-900 border border-slate-800 flex justify-between"><span>Ba²⁺(aq) + SO₄²⁻(aq)</span><b class="text-slate-100">Thick white precipitate</b></div>
+            <div class="p-2 rounded bg-slate-900 border border-slate-800 flex justify-between"><span>Pb²⁺(aq) + 2I⁻(aq) → PbI₂(s)</span><b class="text-yellow-300">Bright yellow precipitate</b></div>
+            <div class="p-2 rounded bg-slate-900 border border-slate-800 flex justify-between"><span>Cu²⁺(aq) + 2OH⁻(aq) → Cu(OH)₂(s)</span><b class="text-sky-300">Pale blue precipitate</b></div>
+            <div class="p-2 rounded bg-slate-900 border border-slate-800 flex justify-between"><span>Fe²⁺ / Fe³⁺(aq) + OH⁻(aq)</span><b class="text-emerald-300">Green / Red-brown ppt</b></div>
+            <div class="p-2 rounded bg-slate-900 border border-slate-800 flex justify-between"><span>2H⁺(aq) + CO₃²⁻ / HCO₃⁻</span><b class="text-amber-300">Effervescence (limewater cloudy)</b></div>
+          </div>
+          <button type="button" onclick="switchTab('tab-equations');switchEqMode('lab');" class="w-full py-2 px-3 rounded-lg bg-emerald-950/60 hover:bg-emerald-900/70 text-emerald-300 border border-emerald-800/70 text-xs font-semibold">Launch Equation &amp; Observation Lab →</button>
+        </div>
+      </div>
+    </div>
+
     <!-- Out of scope -->
     <div class="mt-6 p-4 bg-rose-950/20 border border-rose-900/40 rounded-xl text-xs text-slate-300">
       <b class="text-rose-300">Out of scope in this studio:</b> Topic 2 Atomic Structure &amp; Periodicity (mass spec ionisation stages, IE trends, electron configuration), Topic 3 Bonding &amp; Structure, Topics 4–5 Organic. Core Practical 1 is covered here (Spec 1.11) and expanded with 4 more WCH13-linked practicals in <b>Tab 8</b>. Titration calculations proper are deferred to WCH13 practical skills (Spec 8.21/8.23) — but solution concentration, dilution and the CP3/CP4 titration methods are covered in Tab 6 and Tab 8.
     </div>
   </div>
-</section><!-- ═══════════ TAB 2 · DEFINITIONS ENGINE ═══════════ -->
+</section>
+<section id="tab-check" class="tab-panel space-y-6">
+  <div class="t1-head">
+    <h2>Concept Check</h2>
+    <p>Decide first. The cards, engines and labs are still there. This tab is the short pass: one choice, then the reason that choice loses the mark.</p>
+    <p class="t1-stat" id="t1-stat"></p>
+  </div>
+  <details class="t1-note">
+    <summary>What this adds to the Topic 1 specification</summary>
+    <p>WCH11 Topic 1 is formulae, equations and amount of substance, spec points 1.1 to 1.12, including Core Practical 1. The twelve cards already follow that map. Each card and the final-review quiz already had one check. Those checks now say why the option you picked fails, not only what the mark scheme wanted.</p>
+    <p>The new gaps were the ones a single shared explanation does not catch: a calculation stopped at the failed step, and a command word treated as a different command word. Unit 2 and Topics 2 to 5 are not added here.</p>
+  </details>
+  <div class="t1-seg" id="t1-modes">
+    <button type="button" data-mode="practice" class="is-on" onclick="t1SetMode('practice')">Practice</button>
+    <button type="button" data-mode="steps" onclick="t1SetMode('steps')">Calculations</button>
+    <button type="button" data-mode="words" onclick="t1SetMode('words')">Command words</button>
+  </div>
+  <div class="t1-sub" id="t1-sub">
+    <button type="button" data-filter="mixed" class="is-on" onclick="t1SetFilter('mixed')">Mixed 8</button>
+    <button type="button" data-filter="all" onclick="t1SetFilter('all')">All</button>
+    <button type="button" data-filter="missed" onclick="t1SetFilter('missed')">Missed</button>
+    <button type="button" data-filter="1.1" onclick="t1SetFilter('1.1')">1.1</button>
+    <button type="button" data-filter="1.2" onclick="t1SetFilter('1.2')">1.2</button>
+    <button type="button" data-filter="1.3" onclick="t1SetFilter('1.3')">1.3</button>
+    <button type="button" data-filter="1.4" onclick="t1SetFilter('1.4')">1.4</button>
+    <button type="button" data-filter="1.5" onclick="t1SetFilter('1.5')">1.5</button>
+    <button type="button" data-filter="1.6" onclick="t1SetFilter('1.6')">1.6</button>
+    <button type="button" data-filter="1.7" onclick="t1SetFilter('1.7')">1.7</button>
+    <button type="button" data-filter="1.8" onclick="t1SetFilter('1.8')">1.8</button>
+    <button type="button" data-filter="1.9" onclick="t1SetFilter('1.9')">1.9</button>
+    <button type="button" data-filter="1.10" onclick="t1SetFilter('1.10')">1.10</button>
+    <button type="button" data-filter="1.11" onclick="t1SetFilter('1.11')">1.11</button>
+    <button type="button" data-filter="1.12" onclick="t1SetFilter('1.12')">1.12</button>
+  </div>
+  <div id="t1-stage"></div>
+</section>
+<!-- ═══════════ TAB 2 · DEFINITIONS ENGINE ═══════════ -->
 <section id="tab-defs" class="tab-panel space-y-6">
   <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-sm">
     <div class="border-b border-slate-800 pb-4 mb-6">
@@ -545,6 +959,7 @@ nav, nav > div { max-width: 100% !important; }
       <button class="mode-pill border border-slate-700 text-slate-400 hover:text-sky-300 text-xs font-semibold px-3 py-1.5 rounded-full" onclick="switchDefsMode('map')">🗺️ Concept Map</button>
       <button class="mode-pill border border-slate-700 text-slate-400 hover:text-sky-300 text-xs font-semibold px-3 py-1.5 rounded-full" onclick="switchDefsMode('quiz')">✏️ Multi-blank Quiz</button>
       <button class="mode-pill border border-slate-700 text-slate-400 hover:text-sky-300 text-xs font-semibold px-3 py-1.5 rounded-full" onclick="switchDefsMode('traps')">⚠️ Trap Pairs</button>
+      <button class="mode-pill border border-slate-700 text-slate-400 hover:text-sky-300 text-xs font-semibold px-3 py-1.5 rounded-full" onclick="switchDefsMode('grader')">🎯 Keyword Grader &amp; Ion Drill</button>
     </div>
 
     <!-- MODULE 1 · INSPECTOR -->
@@ -959,6 +1374,99 @@ nav, nav > div { max-width: 100% !important; }
         </div>
       </div>
     </div>
+
+    <!-- MODULE 5 · INTERACTIVE KEYWORD GRADER & ION FORMULA BUILDER -->
+    <div id="defs-grader" class="engine-module">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Left: Live Mark Scheme Definition Keyword Grader -->
+        <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-[10px] font-mono text-sky-400 uppercase font-bold px-2 py-0.5 bg-sky-950 rounded border border-sky-800">Spec 1.1 · 1.2 · 1.4</span>
+            <span class="text-[10px] text-slate-400 font-mono">Active Recall Grader</span>
+          </div>
+          <h3 class="text-sm font-bold text-white">Edexcel Mark Scheme Definition Evaluator</h3>
+          <p class="text-xs text-slate-400">Type your exam definition below. The evaluator checks for mandatory Edexcel M1/M2 phrases and flags examiner-rejected wording (PEF 2023/2024).</p>
+          <div class="space-y-3">
+            <div>
+              <label class="block text-[11px] font-semibold text-slate-300 mb-1">Select Term to Define</label>
+              <select id="defGraderTerm" onchange="resetDefGraderFeedback()" class="w-full px-3 py-2 text-xs text-slate-100">
+                <option value="ar">Relative atomic mass (Aᵣ) — [2 marks]</option>
+                <option value="mole">The Mole (mol) — [1 mark]</option>
+                <option value="rfm">Why Relative Formula Mass is preferred for NaCl — [1 mark]</option>
+                <option value="emp">Empirical formula vs Molecular formula — [2 marks]</option>
+                <option value="ae">Atom economy (why high AE is desirable) — [1 mark]</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-[11px] font-semibold text-slate-300 mb-1">Your Exam Answer</label>
+              <textarea id="defGraderInput" rows="3" class="w-full p-3 text-xs text-slate-100" placeholder="e.g. The weighted mean mass of an atom of an element compared to 1/12 of the mass of a carbon-12 atom..."></textarea>
+            </div>
+            <div class="flex gap-2">
+              <button type="button" onclick="evaluateDefinition()" class="flex-1 bg-sky-600 hover:bg-sky-500 text-white text-xs font-semibold py-2 px-4 rounded-lg">Grade Against Mark Scheme</button>
+              <button type="button" onclick="fillModelDefinition()" class="bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold py-2 px-3 rounded-lg border border-slate-700">Show Model</button>
+            </div>
+            <div id="defGraderOutput" class="p-3.5 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-300 space-y-2 min-h-[72px]">
+              <span class="text-slate-400">Select a term, type your wording, and press <b>Grade Against Mark Scheme</b> to see which M1/M2 keywords you hit.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Interactive Ionic Formula Builder & Avogadro Ion Counter -->
+        <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-[10px] font-mono text-purple-400 uppercase font-bold px-2 py-0.5 bg-purple-950 rounded border border-purple-800">Spec 1.2 · 1.3 · PEF Jun 2024</span>
+            <span class="text-[10px] text-slate-400 font-mono">Ion Charge &amp; N = nL</span>
+          </div>
+          <h3 class="text-sm font-bold text-white">Interactive Ionic Formula &amp; Particle Count Lab</h3>
+          <p class="text-xs text-slate-400">Pick a cation, an anion, and molar amount $n$. Test whether you know the correct formula (with brackets!) and total number of ions using $L = 6.02 	imes 10^{23}\ 	ext{mol}^{-1}$.</p>
+          <div class="grid grid-cols-3 gap-2 text-xs">
+            <div>
+              <label class="block text-slate-400 mb-1">Cation</label>
+              <select id="ionCat" onchange="updateIonChallenge()" class="w-full px-2 py-1.5 text-xs text-slate-100">
+                <option value="Mg|2|Mg²⁺">Mg²⁺ (Magnesium)</option>
+                <option value="Al|3|Al³⁺">Al³⁺ (Aluminium)</option>
+                <option value="NH4|1|NH₄⁺" selected>NH₄⁺ (Ammonium)</option>
+                <option value="Fe3|3|Fe³⁺">Fe³⁺ (Iron(III))</option>
+                <option value="Ca|2|Ca²⁺">Ca²⁺ (Calcium)</option>
+                <option value="Ag|1|Ag⁺">Ag⁺ (Silver)</option>
+                <option value="Zn|2|Zn²⁺">Zn²⁺ (Zinc)</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1">Anion</label>
+              <select id="ionAn" onchange="updateIonChallenge()" class="w-full px-2 py-1.5 text-xs text-slate-100">
+                <option value="SO4|2|SO₄²⁻" selected>SO₄²⁻ (Sulfate)</option>
+                <option value="NO3|1|NO₃⁻">NO₃⁻ (Nitrate)</option>
+                <option value="CO3|2|CO₃²⁻">CO₃²⁻ (Carbonate)</option>
+                <option value="PO4|3|PO₄³⁻">PO₄³⁻ (Phosphate)</option>
+                <option value="OH|1|OH⁻">OH⁻ (Hydroxide)</option>
+                <option value="HCO3|1|HCO₃⁻">HCO₃⁻ (Hydrogencarb.)</option>
+                <option value="Cr2O7|2|Cr₂O₇²⁻">Cr₂O₇²⁻ (Dichromate)</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1">Amount n (mol)</label>
+              <input id="ionMol" type="number" step="0.1" value="2.0" oninput="updateIonChallenge()" class="w-full px-2 py-1.5 text-xs text-slate-100 num-card">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2 text-xs">
+            <div>
+              <label class="block text-slate-400 mb-1">Your Formula Guess (plain text)</label>
+              <input id="ionUserFormula" type="text" placeholder="e.g. (NH4)2SO4" class="w-full px-2.5 py-1.5 text-xs text-slate-100 font-mono">
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1">Total ions per formula unit?</label>
+              <input id="ionUserCount" type="number" placeholder="e.g. 3" class="w-full px-2.5 py-1.5 text-xs text-slate-100 num-card">
+            </div>
+          </div>
+
+          <button type="button" onclick="checkIonChallenge()" class="w-full bg-purple-600 hover:bg-purple-500 text-white text-xs font-semibold py-2 px-4 rounded-lg">Check Formula &amp; Calculate Particle Count</button>
+
+          <div id="ionChallengeOutput" class="p-3.5 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-300 space-y-1.5"></div>
+        </div>
+      </div>
+    </div>
   </div>
 </section><!-- ═══════════ TAB 3 · EQUATIONS ENGINE ═══════════ -->
 <section id="tab-equations" class="tab-panel space-y-6">
@@ -975,6 +1483,7 @@ nav, nav > div { max-width: 100% !important; }
       <button class="mode-pill border border-slate-700 text-slate-400 hover:text-sky-300 text-xs font-semibold px-3 py-1.5 rounded-full" onclick="switchEqMode('map')">🗺️ Reaction Map</button>
       <button class="mode-pill border border-slate-700 text-slate-400 hover:text-sky-300 text-xs font-semibold px-3 py-1.5 rounded-full" onclick="switchEqMode('quiz')">✏️ Multi-blank Quiz</button>
       <button class="mode-pill border border-slate-700 text-slate-400 hover:text-sky-300 text-xs font-semibold px-3 py-1.5 rounded-full" onclick="switchEqMode('traps')">⚠️ Trap Pairs</button>
+      <button class="mode-pill border border-slate-700 text-slate-400 hover:text-sky-300 text-xs font-semibold px-3 py-1.5 rounded-full" onclick="switchEqMode('lab')">⚗️ Balancer &amp; Observation Lab</button>
     </div>
 
     <!-- MODULE 1 · INSPECTOR -->
@@ -1269,6 +1778,48 @@ nav, nav > div { max-width: 100% !important; }
         </div>
       </div>
     </div>
+
+    <!-- MODULE 5 · INTERACTIVE EQUATION BALANCER, SPECTATOR CANCELLER & OBSERVATION VS INFERENCE LAB -->
+    <div id="eq-lab" class="engine-module">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Left: Interactive Coefficient & State Symbol Balancer -->
+        <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-[10px] font-mono text-emerald-400 uppercase font-bold px-2 py-0.5 bg-emerald-950 rounded border border-emerald-800">Spec 1.3 · 1.12</span>
+            <span class="text-[10px] text-slate-400 font-mono">Coefficients + State Symbols</span>
+          </div>
+          <h3 class="text-sm font-bold text-white">Interactive Equation &amp; State Symbol Workbench</h3>
+          <p class="text-xs text-slate-400">Adjust the stoichiometric coefficients and state symbols, then check whether both <b>atoms</b>, <b>charge</b>, and <b>Edexcel state symbols</b> are balanced.</p>
+          <div>
+            <label class="block text-[11px] font-semibold text-slate-300 mb-1">Choose Reaction System</label>
+            <select id="eqLabSelect" onchange="loadEqLabChallenge()" class="w-full px-3 py-2 text-xs text-slate-100">
+              <option value="0">1. Carbonate + Acid: CaCO₃ + HCl → CaCl₂ + CO₂ + H₂O</option>
+              <option value="1">2. Precipitation (Yellow): Pb(NO₃)₂ + KI → PbI₂ + KNO₃</option>
+              <option value="2">3. Ionic Redox: Al(s) + H⁺(aq) → Al³⁺(aq) + H₂(g)</option>
+              <option value="3">4. Alkane Combustion: C₄H₁₀ + O₂ → CO₂ + H₂O</option>
+              <option value="4">5. Hydroxide Precipitation: FeCl₃ + NaOH → Fe(OH)₃ + NaCl</option>
+            </select>
+          </div>
+          <div id="eqLabWorkspace" class="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-3"></div>
+          <div class="flex gap-2">
+            <button type="button" onclick="checkEqLabChallenge()" class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold py-2 px-4 rounded-lg">Verify Atom, Charge &amp; State Balance</button>
+            <button type="button" onclick="solveEqLabChallenge()" class="bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold py-2 px-3 rounded-lg border border-slate-700">Auto-Balance</button>
+          </div>
+          <div id="eqLabFeedback" class="p-3.5 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-300"></div>
+        </div>
+
+        <!-- Right: Observation vs Inference Classifier (PEF Jan 2024) -->
+        <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-[10px] font-mono text-amber-400 uppercase font-bold px-2 py-0.5 bg-amber-950 rounded border border-amber-800">PEF Jan 2024 · Spec 1.12</span>
+            <span id="obsScoreBadge" class="text-[10px] text-amber-300 font-mono">Score: 0 / 6</span>
+          </div>
+          <h3 class="text-sm font-bold text-white">Observation vs. Inference Examiner Drill</h3>
+          <p class="text-xs text-slate-400">Examiner Feedback (Jan 2024): <i>“Bubbles/effervescence is the observation; hydrogen gas evolved is an inference.”</i> Decide whether each student answer scores the observation mark or is rejected:</p>
+          <div id="obsDrillList" class="space-y-2.5"></div>
+        </div>
+      </div>
+    </div>
   </div>
 </section><!-- ═══════════ TAB 4 · MOLE CALCULATIONS ENGINE ═══════════ -->
 <section id="tab-moles" class="tab-panel space-y-6">
@@ -1285,6 +1836,7 @@ nav, nav > div { max-width: 100% !important; }
       <button class="mode-pill border border-slate-700 text-slate-400 hover:text-sky-300 text-xs font-semibold px-3 py-1.5 rounded-full" onclick="switchMolesMode('map')">🗺️ Factor Map</button>
       <button class="mode-pill border border-slate-700 text-slate-400 hover:text-sky-300 text-xs font-semibold px-3 py-1.5 rounded-full" onclick="switchMolesMode('quiz')">✏️ Multi-blank Quiz</button>
       <button class="mode-pill border border-slate-700 text-slate-400 hover:text-sky-300 text-xs font-semibold px-3 py-1.5 rounded-full" onclick="switchMolesMode('traps')">⚠️ Trap Pairs</button>
+      <button class="mode-pill border border-slate-700 text-slate-400 hover:text-sky-300 text-xs font-semibold px-3 py-1.5 rounded-full" onclick="switchMolesMode('trainer')">🧮 M1/M2/M3 Trainer &amp; Continuous Variation</button>
     </div>
 
     <!-- MODULE 1 · INSPECTOR -->
@@ -1577,6 +2129,64 @@ nav, nav > div { max-width: 100% !important; }
         </div>
       </div>
     </div>
+
+    <!-- MODULE 5 · STEP-BY-STEP M1/M2/M3 EXAM TRAINER & CONTINUOUS VARIATION GRAPH SIMULATOR -->
+    <div id="moles-trainer" class="engine-module">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Left: Scaffolded M1 / M2 / M3 Exam Problem Trainer with TE Check -->
+        <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-[10px] font-mono text-purple-400 uppercase font-bold px-2 py-0.5 bg-purple-950 rounded border border-purple-800">Spec 1.6 · 1.7 · 1.9</span>
+            <span class="text-[10px] text-slate-400 font-mono">M1 → M2 → M3 Mark Scheme</span>
+          </div>
+          <h3 class="text-sm font-bold text-white">Interactive Multi-Step Exam Calculation Trainer</h3>
+          <p class="text-xs text-slate-400">Enter your intermediate steps (M1, M2) and final answer (M3). The grader checks for <b>Transferred Error (TE)</b> and flags premature rounding!</p>
+          <div>
+            <select id="moleTrainerSelect" onchange="loadMoleTrainerProblem()" class="w-full px-3 py-2 text-xs text-slate-100">
+              <option value="0">Problem 1 · Combustion Data → Empirical Formula (Spec 1.6)</option>
+              <option value="1">Problem 2 · Limiting Reagent &amp; % Yield of Double Salt (Spec 1.7/1.9)</option>
+              <option value="2">Problem 3 · Hydrate Water of Crystallisation x (Spec 1.10)</option>
+              <option value="3">Problem 4 · Atom Economy vs Substitution Waste (Spec 1.9)</option>
+            </select>
+          </div>
+          <div id="moleTrainerPrompt" class="p-3.5 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-200 leading-relaxed"></div>
+          <div id="moleTrainerSteps" class="space-y-2.5 text-xs"></div>
+          <div class="flex gap-2">
+            <button type="button" onclick="gradeMoleTrainerProblem()" class="flex-1 bg-purple-600 hover:bg-purple-500 text-white text-xs font-semibold py-2 px-4 rounded-lg">Mark My Working (M1 / M2 / M3)</button>
+            <button type="button" onclick="revealMoleTrainerSolution()" class="bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold py-2 px-3 rounded-lg border border-slate-700">Show Full MS</button>
+          </div>
+          <div id="moleTrainerFeedback" class="p-3.5 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-300"></div>
+        </div>
+
+        <!-- Right: Interactive Continuous Variation Simulator (Spec 1.10) -->
+        <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-[10px] font-mono text-rose-400 uppercase font-bold px-2 py-0.5 bg-rose-950 rounded border border-rose-800">Spec 1.10 · Continuous Variation</span>
+            <span class="text-[10px] text-slate-400 font-mono">Confirming an Equation</span>
+          </div>
+          <h3 class="text-sm font-bold text-white">Continuous Variation (Job's Method) Precipitate Graph</h3>
+          <p class="text-xs text-slate-400">Vary the volumes of two equimolar ($0.50\ 	ext{mol dm}^{-3}$) solutions while keeping total volume = $10.0\ 	ext{cm}^3$. Find the stoichiometric ratio from the intersection peak!</p>
+          <div class="grid grid-cols-2 gap-3 text-xs">
+            <div>
+              <label class="block text-slate-400 mb-1">Reaction System</label>
+              <select id="cvSystem" onchange="updateContinuousVariation()" class="w-full px-2.5 py-1.5 text-xs text-slate-100">
+                <option value="1:2|Pb(NO₃)₂(aq) + 2KI(aq) → PbI₂(s)|#facc15" selected>Pb²⁺ + 2I⁻ → PbI₂ (1 : 2)</option>
+                <option value="1:1|BaCl₂(aq) + Na₂SO₄(aq) → BaSO₄(s)|#38bdf8">Ba²⁺ + SO₄²⁻ → BaSO₄ (1 : 1)</option>
+                <option value="1:3|FeCl₃(aq) + 3NaOH(aq) → Fe(OH)₃(s)|#fb7185">Fe³⁺ + 3OH⁻ → Fe(OH)₃ (1 : 3)</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1">Volume of Reactant A: <span id="cvVolALabel" class="text-white font-bold num-card">3.3 cm³</span></label>
+              <input id="cvSlider" type="range" min="0" max="10" step="0.1" value="3.3" oninput="updateContinuousVariation()" class="w-full apple-slider mt-2">
+            </div>
+          </div>
+          <div class="bg-slate-900 border border-slate-800 rounded-xl p-3">
+            <svg id="cvSvg" viewBox="0 0 360 175" class="w-full h-44"></svg>
+          </div>
+          <div id="cvReadout" class="p-3 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-300 leading-relaxed"></div>
+        </div>
+      </div>
+    </div>
   </div>
 </section><!-- ═══════════ TAB 5 · GASES ENGINE ═══════════ -->
 <section id="tab-gas" class="tab-panel space-y-6">
@@ -1593,6 +2203,7 @@ nav, nav > div { max-width: 100% !important; }
       <button class="mode-pill border border-slate-700 text-slate-400 hover:text-sky-300 text-xs font-semibold px-3 py-1.5 rounded-full" onclick="switchGasMode('map')">🗺️ Unit Map</button>
       <button class="mode-pill border border-slate-700 text-slate-400 hover:text-sky-300 text-xs font-semibold px-3 py-1.5 rounded-full" onclick="switchGasMode('quiz')">✏️ Multi-blank Quiz</button>
       <button class="mode-pill border border-slate-700 text-slate-400 hover:text-sky-300 text-xs font-semibold px-3 py-1.5 rounded-full" onclick="switchGasMode('traps')">⚠️ Trap Pairs</button>
+      <button class="mode-pill border border-slate-700 text-slate-400 hover:text-sky-300 text-xs font-semibold px-3 py-1.5 rounded-full" onclick="switchGasMode('sim')">🌡️ pV=nRT &amp; Combustion Volume Lab</button>
     </div>
 
     <!-- MODULE 1 · INSPECTOR -->
@@ -1812,6 +2423,70 @@ nav, nav > div { max-width: 100% !important; }
         </div>
       </div>
     </div>
+
+    <!-- MODULE 5 · LIVE pV=nRT UNIT GUARD & HYDROCARBON COMBUSTION GAS VOLUME SIMULATOR -->
+    <div id="gas-sim" class="engine-module">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Left: Live pV = nRT & Volatile Liquid Mr Simulator with Trap Comparator -->
+        <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-[10px] font-mono text-cyan-400 uppercase font-bold px-2 py-0.5 bg-cyan-950 rounded border border-cyan-800">Spec 1.8 · PEF 2019–2024</span>
+            <span class="text-[10px] text-slate-400 font-mono">SI Unit Guard</span>
+          </div>
+          <h3 class="text-sm font-bold text-white">Interactive $pV = nRT$ &amp; Volatile Liquid $M_r$ Sandbox</h3>
+          <p class="text-xs text-slate-400">Adjust the experimental lab readings below. Watch how each value converts into strict SI units ($p$ in Pa, $V$ in m³, $T$ in K) and see the exact examiner trap values produced if you forget a conversion!</p>
+          <div class="grid grid-cols-2 gap-3 text-xs">
+            <div>
+              <label class="block text-slate-400 mb-1">Mass of volatile liquid $m$ (g)</label>
+              <input id="simGasM" type="number" step="0.01" value="0.29" oninput="updateGasSim()" class="w-full px-2.5 py-1.5 text-slate-100 num-card">
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1">Pressure $p$ (kPa)</label>
+              <input id="simGasP" type="number" step="1" value="101" oninput="updateGasSim()" class="w-full px-2.5 py-1.5 text-slate-100 num-card">
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1">Volume $V$ (cm³)</label>
+              <input id="simGasV" type="number" step="1" value="125" oninput="updateGasSim()" class="w-full px-2.5 py-1.5 text-slate-100 num-card">
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1">Temperature $T$ (°C)</label>
+              <input id="simGasT" type="number" step="1" value="35" oninput="updateGasSim()" class="w-full px-2.5 py-1.5 text-slate-100 num-card">
+            </div>
+          </div>
+          <div id="simGasOutput" class="p-3.5 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-300 space-y-2"></div>
+        </div>
+
+        <!-- Right: Total Gas Volume After Hydrocarbon Combustion (Jan 2026 Q12 Trap) -->
+        <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-[10px] font-mono text-purple-400 uppercase font-bold px-2 py-0.5 bg-purple-950 rounded border border-purple-800">Spec 1.8 · Total Gas Volume</span>
+            <span class="text-[10px] text-slate-400 font-mono">Avogadro's Law at r.t.p.</span>
+          </div>
+          <h3 class="text-sm font-bold text-white">Hydrocarbon Combustion Total Gas Volume Simulator</h3>
+          <p class="text-xs text-slate-400">At r.t.p., $	ext{H}_2	ext{O(l)}$ is a liquid (negligible volume), so total final gas volume = $V(	ext{CO}_2	ext{ formed}) + V(	ext{unreacted excess O}_2)$.</p>
+          <div class="grid grid-cols-3 gap-2 text-xs">
+            <div>
+              <label class="block text-slate-400 mb-1">Hydrocarbon</label>
+              <select id="combHC" onchange="updateCombustionSim()" class="w-full px-2 py-1.5 text-xs text-slate-100">
+                <option value="1|4|CH₄">CH₄ (Methane)</option>
+                <option value="2|4|C₂H₄">C₂H₄ (Ethene)</option>
+                <option value="3|8|C₃H₈" selected>C₃H₈ (Propane)</option>
+                <option value="4|10|C₄H₁₀">C₄H₁₀ (Butane)</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1">$V(	ext{C}_x	ext{H}_y)$ cm³</label>
+              <input id="combVhc" type="number" step="5" value="20" oninput="updateCombustionSim()" class="w-full px-2 py-1.5 text-xs text-slate-100 num-card">
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1">$V(	ext{O}_2	ext{ initial})$ cm³</label>
+              <input id="combVo2" type="number" step="10" value="150" oninput="updateCombustionSim()" class="w-full px-2 py-1.5 text-xs text-slate-100 num-card">
+            </div>
+          </div>
+          <div id="combSimOutput" class="p-3.5 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-300 space-y-2"></div>
+        </div>
+      </div>
+    </div>
   </div>
 </section><!-- ═══════════ TAB 6 · SOLUTIONS ENGINE ═══════════ -->
 <section id="tab-solutions" class="tab-panel space-y-6">
@@ -1828,6 +2503,7 @@ nav, nav > div { max-width: 100% !important; }
       <button class="mode-pill border border-slate-700 text-slate-400 hover:text-sky-300 text-xs font-semibold px-3 py-1.5 rounded-full" onclick="switchSolMode('map')">🗺️ Unit Map</button>
       <button class="mode-pill border border-slate-700 text-slate-400 hover:text-sky-300 text-xs font-semibold px-3 py-1.5 rounded-full" onclick="switchSolMode('quiz')">✏️ Multi-blank Quiz</button>
       <button class="mode-pill border border-slate-700 text-slate-400 hover:text-sky-300 text-xs font-semibold px-3 py-1.5 rounded-full" onclick="switchSolMode('traps')">⚠️ Trap Pairs</button>
+      <button class="mode-pill border border-slate-700 text-slate-400 hover:text-sky-300 text-xs font-semibold px-3 py-1.5 rounded-full" onclick="switchSolMode('studio')">💧 Aliquot Scaler &amp; ppm Lab</button>
     </div>
 
     <!-- MODULE 1 · INSPECTOR -->
@@ -2029,6 +2705,79 @@ nav, nav > div { max-width: 100% !important; }
         </div>
       </div>
     </div>
+
+    <!-- MODULE 5 · VOLUMETRIC FLASK ALIQUOT SCALER & ATMOSPHERIC/SOLUTION PPM LAB -->
+    <div id="sol-studio" class="engine-module">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Left: Volumetric Flask to Pipette Aliquot Scaler -->
+        <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-[10px] font-mono text-rose-400 uppercase font-bold px-2 py-0.5 bg-rose-950 rounded border border-rose-800">Spec 1.5 · 1.7 · CP4</span>
+            <span class="text-[10px] text-slate-400 font-mono">Aliquot vs Total Moles</span>
+          </div>
+          <h3 class="text-sm font-bold text-white">Interactive Volumetric Flask $ightarrow$ Pipette Aliquot Scaler</h3>
+          <p class="text-xs text-slate-400">When you take a $25.0\ 	ext{cm}^3$ pipette portion from a $250\ 	ext{cm}^3$ volumetric flask, <b>concentration stays identical</b> while <b>moles divide by 10</b>.</p>
+          <div class="grid grid-cols-2 gap-3 text-xs">
+            <div>
+              <label class="block text-slate-400 mb-1">Mass of solute dissolved (g)</label>
+              <input id="aliMass" type="number" step="0.01" value="2.65" oninput="updateAliquotStudio()" class="w-full px-2.5 py-1.5 text-slate-100 num-card">
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1">Solute $M_r$ (g mol⁻¹)</label>
+              <input id="aliMr" type="number" step="0.1" value="106.0" oninput="updateAliquotStudio()" class="w-full px-2.5 py-1.5 text-slate-100 num-card">
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1">Volumetric Flask $V_{	ext{total}}$ (cm³)</label>
+              <select id="aliFlask" onchange="updateAliquotStudio()" class="w-full px-2.5 py-1.5 text-xs text-slate-100">
+                <option value="100">100 cm³</option>
+                <option value="250" selected>250 cm³ (Standard)</option>
+                <option value="500">500 cm³</option>
+                <option value="1000">1000 cm³ (1 dm³)</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1">Pipette Aliquot $V_{	ext{pipette}}$ (cm³)</label>
+              <select id="aliPipette" onchange="updateAliquotStudio()" class="w-full px-2.5 py-1.5 text-xs text-slate-100">
+                <option value="10">10.0 cm³</option>
+                <option value="20">20.0 cm³</option>
+                <option value="25" selected>25.0 cm³ (Standard)</option>
+                <option value="50">50.0 cm³</option>
+              </select>
+            </div>
+          </div>
+          <div id="aliStudioOutput" class="p-3.5 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-300 space-y-2"></div>
+        </div>
+
+        <!-- Right: Spec 1.4(iv) Atmospheric Gas & Solution ppm Studio -->
+        <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-[10px] font-mono text-amber-400 uppercase font-bold px-2 py-0.5 bg-amber-950 rounded border border-amber-800">Spec 1.4(iv) · ppm</span>
+            <span class="text-[10px] text-slate-400 font-mono">Atmosphere + Aqueous</span>
+          </div>
+          <h3 class="text-sm font-bold text-white">Parts Per Million (ppm) Dual Converter</h3>
+          <p class="text-xs text-slate-400">Calculate ppm for both <b>atmospheric gases by volume</b> (Spec 1.4(iv)) and <b>aqueous solutions by mass</b>:</p>
+          <div class="grid grid-cols-3 gap-2 text-xs">
+            <div>
+              <label class="block text-slate-400 mb-1">Component (g, cm³ or %)</label>
+              <input id="ppmPart" type="number" step="any" value="0.042" oninput="updatePpmStudio()" class="w-full px-2 py-1.5 text-slate-100 num-card">
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1">Total Sample (g or cm³)</label>
+              <input id="ppmTotal" type="number" step="any" value="100" oninput="updatePpmStudio()" class="w-full px-2 py-1.5 text-slate-100 num-card">
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1">Mode</label>
+              <select id="ppmMode" onchange="updatePpmStudio()" class="w-full px-2 py-1.5 text-xs text-slate-100">
+                <option value="pct" selected>% to ppm (×10⁴)</option>
+                <option value="ratio">Part ÷ Total × 10⁶</option>
+                <option value="mgdm3">mg in V (cm³) → ppm</option>
+              </select>
+            </div>
+          </div>
+          <div id="ppmStudioOutput" class="p-3.5 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-300 space-y-2"></div>
+        </div>
+      </div>
+    </div>
   </div>
 </section><!-- ═══════════ TAB 7 · SOLVER WORKBENCH ═══════════ -->
 <section id="tab-solver" class="tab-panel space-y-6"><div class="bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-sm">
@@ -2100,6 +2849,71 @@ nav, nav > div { max-width: 100% !important; }
       </div>
     </div>
 
+    <!-- NEW GATES 5–8: IDEAL GAS, EMPIRICAL FORMULA, YIELD/ATOM ECONOMY, ISOTOPIC Ar -->
+    <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Gate 5 · Ideal Gas Equation pV = nRT -->
+      <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2"><span class="text-[10px] font-mono text-cyan-400 uppercase font-bold px-2 py-0.5 bg-cyan-950 rounded border border-cyan-800">Gate 5 · Spec 1.8</span><h3 class="text-sm font-bold text-white">Ideal Gas $pV = nRT$ Solver</h3></div>
+          <span class="text-[10px] font-mono text-slate-400">R = 8.31 J K⁻¹ mol⁻¹</span>
+        </div>
+        <div class="grid grid-cols-4 gap-2 text-xs">
+          <div><label class="block text-slate-400 mb-1">p (kPa)</label><input id="sIdP" type="number" value="101" class="w-full px-2 py-1.5 text-slate-100 num-card"></div>
+          <div><label class="block text-slate-400 mb-1">V (cm³)</label><input id="sIdV" type="number" value="480" class="w-full px-2 py-1.5 text-slate-100 num-card"></div>
+          <div><label class="block text-slate-400 mb-1">T (°C)</label><input id="sIdT" type="number" value="25" class="w-full px-2 py-1.5 text-slate-100 num-card"></div>
+          <div class="flex items-end"><button type="button" onclick="solverIdealGas()" class="w-full bg-cyan-700 hover:bg-cyan-600 text-white text-xs font-semibold py-1.5 px-2 rounded-md">= n &amp; V</button></div>
+        </div>
+        <div id="sIdOut" class="text-xs text-cyan-300 font-mono min-h-[20px]"></div>
+      </div>
+
+      <!-- Gate 6 · Empirical Formula 3-Element Calculator -->
+      <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2"><span class="text-[10px] font-mono text-purple-400 uppercase font-bold px-2 py-0.5 bg-purple-950 rounded border border-purple-800">Gate 6 · Spec 1.6</span><h3 class="text-sm font-bold text-white">Empirical Formula Finder</h3></div>
+          <span class="text-[10px] font-mono text-slate-400">Auto-detects 1.5 / 1.33</span>
+        </div>
+        <div class="grid grid-cols-4 gap-2 text-xs">
+          <div><label class="block text-slate-400 mb-1">% C (12.0)</label><input id="sEmpC" type="number" value="40.0" class="w-full px-2 py-1.5 text-slate-100 num-card"></div>
+          <div><label class="block text-slate-400 mb-1">% H (1.0)</label><input id="sEmpH" type="number" value="6.7" class="w-full px-2 py-1.5 text-slate-100 num-card"></div>
+          <div><label class="block text-slate-400 mb-1">% O (16.0)</label><input id="sEmpO" type="number" value="53.3" class="w-full px-2 py-1.5 text-slate-100 num-card"></div>
+          <div class="flex items-end"><button type="button" onclick="solverEmpirical()" class="w-full bg-purple-700 hover:bg-purple-600 text-white text-xs font-semibold py-1.5 px-2 rounded-md">= Ratio</button></div>
+        </div>
+        <div id="sEmpOut" class="text-xs text-purple-300 font-mono min-h-[20px]"></div>
+      </div>
+
+      <!-- Gate 7 · % Yield & Atom Economy Calculator -->
+      <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2"><span class="text-[10px] font-mono text-emerald-400 uppercase font-bold px-2 py-0.5 bg-emerald-950 rounded border border-emerald-800">Gate 7 · Spec 1.9</span><h3 class="text-sm font-bold text-white">% Yield &amp; Atom Economy</h3></div>
+          <span class="text-[10px] font-mono text-slate-400">Checks &gt;100% trap</span>
+        </div>
+        <div class="grid grid-cols-5 gap-1.5 text-xs">
+          <div><label class="block text-slate-400 mb-1">Actual (g)</label><input id="sYaAct" type="number" value="12.52" class="w-full px-1.5 py-1.5 text-slate-100 num-card"></div>
+          <div><label class="block text-slate-400 mb-1">Theor. (g)</label><input id="sYaTheo" type="number" value="18.475" class="w-full px-1.5 py-1.5 text-slate-100 num-card"></div>
+          <div><label class="block text-slate-400 mb-1">Mᵣ Desired</label><input id="sYaDes" type="number" value="40.3" class="w-full px-1.5 py-1.5 text-slate-100 num-card"></div>
+          <div><label class="block text-slate-400 mb-1">ΣMᵣ Prod.</label><input id="sYaTot" type="number" value="84.3" class="w-full px-1.5 py-1.5 text-slate-100 num-card"></div>
+          <div class="flex items-end"><button type="button" onclick="solverYieldAE()" class="w-full bg-emerald-700 hover:bg-emerald-600 text-white text-xs font-semibold py-1.5 px-1.5 rounded-md">= %</button></div>
+        </div>
+        <div id="sYaOut" class="text-xs text-emerald-300 font-mono min-h-[20px]"></div>
+      </div>
+
+      <!-- Gate 8 · Weighted Isotopic Ar & Sig-Fig / d.p. Inspector -->
+      <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-3">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2"><span class="text-[10px] font-mono text-amber-400 uppercase font-bold px-2 py-0.5 bg-amber-950 rounded border border-amber-800">Gate 8 · Spec 1.4(i)</span><h3 class="text-sm font-bold text-white">Weighted Isotopic $A_r$ &amp; s.f.</h3></div>
+          <span class="text-[10px] font-mono text-slate-400">PEF Jun 2023 s.f. vs d.p.</span>
+        </div>
+        <div class="grid grid-cols-5 gap-1.5 text-xs">
+          <div><label class="block text-slate-400 mb-1">Mass 1</label><input id="sIsoM1" type="number" value="35" class="w-full px-1.5 py-1.5 text-slate-100 num-card"></div>
+          <div><label class="block text-slate-400 mb-1">% 1</label><input id="sIsoP1" type="number" value="75.52" class="w-full px-1.5 py-1.5 text-slate-100 num-card"></div>
+          <div><label class="block text-slate-400 mb-1">Mass 2</label><input id="sIsoM2" type="number" value="37" class="w-full px-1.5 py-1.5 text-slate-100 num-card"></div>
+          <div><label class="block text-slate-400 mb-1">% 2</label><input id="sIsoP2" type="number" value="24.48" class="w-full px-1.5 py-1.5 text-slate-100 num-card"></div>
+          <div class="flex items-end"><button type="button" onclick="solverIsotopeAr()" class="w-full bg-amber-700 hover:bg-amber-600 text-white text-xs font-semibold py-1.5 px-1.5 rounded-md">= Aᵣ</button></div>
+        </div>
+        <div id="sIsoOut" class="text-xs text-amber-300 font-mono min-h-[20px]"></div>
+      </div>
+    </div>
+
     <!-- Worked example strip -->
     <div class="mt-6 p-4 bg-slate-950 border border-slate-800 rounded-xl text-xs text-slate-300 leading-relaxed">
       <p class="text-[11px] font-bold text-slate-300 uppercase tracking-wider mb-2">Why this matters — the exam chain</p>
@@ -2121,6 +2935,7 @@ nav, nav > div { max-width: 100% !important; }
       <button class="mode-pill border border-slate-700 text-slate-400 hover:text-sky-300 text-xs font-semibold px-3 py-1.5 rounded-full" onclick="switchPracMode('errors')">📏 Errors &amp; Apparatus</button>
       <button class="mode-pill border border-slate-700 text-slate-400 hover:text-sky-300 text-xs font-semibold px-3 py-1.5 rounded-full" onclick="switchPracMode('quiz')">✏️ Multi-blank Quiz</button>
       <button class="mode-pill border border-slate-700 text-slate-400 hover:text-sky-300 text-xs font-semibold px-3 py-1.5 rounded-full" onclick="switchPracMode('traps')">⚠️ Trap Pairs</button>
+      <button class="mode-pill border border-slate-700 text-slate-400 hover:text-sky-300 text-xs font-semibold px-3 py-1.5 rounded-full" onclick="switchPracMode('sim')">🔬 Virtual CP1 Lab &amp; Uncertainty Sim</button>
     </div>
 
     <!-- MODULE 1 · INSPECTOR -->
@@ -2398,6 +3213,74 @@ nav, nav > div { max-width: 100% !important; }
         </div>
       </div>
     </div>
+
+    <!-- MODULE 5 · INTERACTIVE CP1 MOLAR VOLUME SIMULATOR & WCH13 UNCERTAINTY CALCULATOR -->
+    <div id="prac-sim" class="engine-module">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Left: Virtual Core Practical 1 (Spec 1.11) Gas Syringe Simulator -->
+        <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-[10px] font-mono text-emerald-400 uppercase font-bold px-2 py-0.5 bg-emerald-950 rounded border border-emerald-800">Spec 1.11 · Core Practical 1</span>
+            <span class="text-[10px] text-slate-400 font-mono">Mg + 2HCl → MgCl₂ + H₂</span>
+          </div>
+          <h3 class="text-sm font-bold text-white">Virtual CP1 Molar Volume &amp; Limiting Acid Plateau Lab</h3>
+          <p class="text-xs text-slate-400">React Mg ribbon with $30.0\ 	ext{cm}^3$ of $1.00\ 	ext{mol dm}^{-3}$ HCl ($n(	ext{HCl}) = 0.0300\ 	ext{mol}$). See how gas volume varies with Mg mass, what happens if you read while hot, or if $	ext{CO}_2$ is collected over water!</p>
+          <div class="grid grid-cols-2 gap-3 text-xs">
+            <div>
+              <label class="block text-slate-400 mb-1">Mass of Mg: <span id="cp1MassLabel" class="text-white font-bold num-card">0.12 g</span></label>
+              <input id="cp1MassSlider" type="range" min="0.03" max="0.50" step="0.01" value="0.12" oninput="updateCp1Sim()" class="w-full apple-slider mt-2">
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1">Experimental Condition</label>
+              <select id="cp1Cond" onchange="updateCp1Sim()" class="w-full px-2.5 py-1.5 text-xs text-slate-100">
+                <option value="ideal" selected>Airtight syringe, cooled to r.t.p. (Ideal)</option>
+                <option value="hot">Read immediately while still hot (+8% V)</option>
+                <option value="bung">Slow bung insertion / gas escape (−12% V)</option>
+                <option value="co2water">CaCO₃ + HCl collected over water (CO₂ dissolves)</option>
+              </select>
+            </div>
+          </div>
+          <div class="bg-slate-900 border border-slate-800 rounded-xl p-3">
+            <svg id="cp1Svg" viewBox="0 0 360 165" class="w-full h-40"></svg>
+          </div>
+          <div id="cp1Readout" class="p-3 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-300 leading-relaxed"></div>
+        </div>
+
+        <!-- Right: WCH13 Apparatus Percentage Uncertainty Simulator -->
+        <div class="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-[10px] font-mono text-sky-400 uppercase font-bold px-2 py-0.5 bg-sky-950 rounded border border-sky-800">WCH13 · Error Analysis</span>
+            <span class="text-[10px] text-slate-400 font-mono">1 vs 2 Readings Trap</span>
+          </div>
+          <h3 class="text-sm font-bold text-white">Apparatus Percentage Uncertainty Calculator</h3>
+          <p class="text-xs text-slate-400">In Edexcel IAL, a measurement taken by difference (burette titre = final − initial, or mass by difference = before − after) requires <b>multiplying the half-scale uncertainty by 2</b>!</p>
+          <div class="grid grid-cols-3 gap-2 text-xs">
+            <div>
+              <label class="block text-slate-400 mb-1">Apparatus</label>
+              <select id="uncApp" onchange="syncUncDefaults()" class="w-full px-2 py-1.5 text-xs text-slate-100">
+                <option value="0.05|2|24.00|cm³" selected>Burette titre (±0.05 × 2)</option>
+                <option value="0.06|1|25.0|cm³">25 cm³ Pipette (±0.06 × 1)</option>
+                <option value="0.15|1|250.0|cm³">250 cm³ Vol. Flask (±0.15 × 1)</option>
+                <option value="0.005|2|0.120|g">3 d.p. Balance by diff. (±0.005 × 2)</option>
+                <option value="0.5|1|48.0|cm³">100 cm³ Gas Syringe (±0.5 × 1)</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1">Measured Value</label>
+              <input id="uncVal" type="number" step="any" value="24.00" oninput="updateUncSim()" class="w-full px-2 py-1.5 text-slate-100 num-card">
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1"># of Readings</label>
+              <select id="uncN" onchange="updateUncSim()" class="w-full px-2 py-1.5 text-xs text-slate-100">
+                <option value="1">1 reading (single)</option>
+                <option value="2" selected>2 readings (by difference)</option>
+              </select>
+            </div>
+          </div>
+          <div id="uncSimOutput" class="p-3.5 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-300 space-y-2"></div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 <!-- ═══════════ TAB 8 · FINAL REVIEW ═══════════ -->
@@ -2414,6 +3297,7 @@ nav, nav > div { max-width: 100% !important; }
         <a href="#rev-cp1" class="chip bg-cyan-950 text-cyan-400 border border-cyan-800 hover:bg-cyan-900">Core Practical 1</a>
                 <a href="#rev-pracs" class="chip bg-emerald-950 text-emerald-400 border border-emerald-800 hover:bg-emerald-900">WCH13 practicals</a>
                 <a href="#rev-traps" class="chip bg-amber-950 text-amber-400 border border-amber-800 hover:bg-amber-900">Trap checklist</a>
+                <a href="#rev-diagnostic" class="chip bg-rose-950 text-rose-400 border border-rose-800 hover:bg-rose-900">⚡ 12-Q Exam Diagnostic</a>
       </div>
     </div>
 
@@ -2557,6 +3441,21 @@ nav, nav > div { max-width: 100% !important; }
       </div>
     </details>
 
+        <!-- 7 · Interactive 12-Question Edexcel IAL Topic 1 Exam Diagnostic (Spec 1.1–1.12) -->
+        <details id="rev-diagnostic" open class="bg-slate-950 border border-slate-800 rounded-xl mb-4">
+          <summary class="flex items-center justify-between p-4">
+            <span class="text-sm font-bold text-rose-300">7 · Interactive Edexcel IAL Topic 1 Exam Readiness Diagnostic (Spec 1.1 – 1.12)</span>
+            <span id="diagSummaryScore" class="text-xs font-mono text-rose-300">0 / 12 Answered · 0%</span>
+          </summary>
+          <div class="px-4 pb-5 space-y-4">
+            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 pb-3">
+              <p class="text-xs text-slate-400">One exam-style multiple-choice question per specification point (1.1 to 1.12), complete with real Edexcel distractor analysis and mark-scheme explanations.</p>
+              <button type="button" onclick="resetDiagnosticQuiz()" class="text-[11px] font-semibold px-3 py-1 rounded-full bg-slate-900 text-slate-300 border border-slate-700 hover:text-white">Reset Diagnostic</button>
+            </div>
+            <div id="diagQuizContainer" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+          </div>
+        </details>
+
     <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl text-xs text-slate-400 leading-relaxed">
       <b class="text-slate-200">Sources:</b> Syllabus 1.1–1.12 (official) · [[amount-of-substance]] · [[empirical-and-molecular-formulae]] · [[edexcel-formula-sheet]] · WCH11 Q-banks Jan 2026 / Oct 2025 / Oct 2025A / 2022–2025 · WCH13 Q-banks Jan 2026 / Oct 2025 / 2020 · Golden Rule Paper 1 + Paper 3 + Chapter 1 · Core Practicals 1, 3, 4 (Spec 1.11, 8.21, 8.23). Built with the IAL Master Studio standard (Topic 16 Overview pattern + Topic 20 engine parity).
     </div>
@@ -2564,6 +3463,19 @@ nav, nav > div { max-width: 100% !important; }
 </section>
 
 </main>
+
+
+<!-- ═══════════ APPLE QUICK JUMP SPOTLIGHT MODAL (⌘K) ═══════════ -->
+<div id="spotlightModal" class="fixed inset-0 z-50 hidden items-start justify-center pt-20 px-4" style="background: rgba(2, 6, 18, 0.72); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);" onclick="if(event.target===this)closeSpotlightModal()">
+  <div class="w-full max-w-xl bg-slate-900 border border-slate-700/80 rounded-2xl shadow-2xl overflow-hidden">
+    <div class="p-3.5 border-b border-slate-800 flex items-center gap-3">
+      <span class="text-sky-400 text-sm">🔎</span>
+      <input id="spotlightInput" type="text" oninput="filterSpotlight(this.value)" placeholder="Search Spec 1.1–1.12, definitions, equations, ions, or calculators..." class="w-full bg-transparent border-0 text-sm text-white focus:outline-none">
+      <button type="button" onclick="closeSpotlightModal()" class="text-[11px] text-slate-400 hover:text-white px-2 py-1 rounded bg-slate-800">ESC</button>
+    </div>
+    <div id="spotlightResults" class="max-h-80 overflow-y-auto divide-y divide-slate-800/70 p-2 text-xs"></div>
+  </div>
+</div>
 
 <!-- ═══════════ SCRIPTS ═══════════ -->
 <script>
@@ -2593,49 +3505,49 @@ function makeModeSwitcher(prefix, ids){
   };
 }
 function switchDefsMode(mode){
-  const m={explorer:0,map:1,quiz:2,traps:3}[mode];
-  ['defs-explorer','defs-map','defs-quiz','defs-traps'].forEach((id,i)=>{
-    document.getElementById(id).classList.toggle('active', i===m);
+  const m={explorer:0,map:1,quiz:2,traps:3,grader:4}[mode];
+  ['defs-explorer','defs-map','defs-quiz','defs-traps','defs-grader'].forEach((id,i)=>{
+    const el=document.getElementById(id); if(el) el.classList.toggle('active', i===m);
   });
   document.querySelectorAll('#tab-defs .mode-pill').forEach((b,i)=>b.classList.toggle('active', i===m));
   safeInitKaTeX();
 }
 function switchEqMode(mode){
-  const m={explorer:0,map:1,quiz:2,traps:3}[mode];
-  ['eq-explorer','eq-map','eq-quiz','eq-traps'].forEach((id,i)=>{
-    document.getElementById(id).classList.toggle('active', i===m);
+  const m={explorer:0,map:1,quiz:2,traps:3,lab:4}[mode];
+  ['eq-explorer','eq-map','eq-quiz','eq-traps','eq-lab'].forEach((id,i)=>{
+    const el=document.getElementById(id); if(el) el.classList.toggle('active', i===m);
   });
   document.querySelectorAll('#tab-equations .mode-pill').forEach((b,i)=>b.classList.toggle('active', i===m));
   safeInitKaTeX();
 }
 function switchMolesMode(mode){
-  const m={explorer:0,map:1,quiz:2,traps:3}[mode];
-  ['moles-explorer','moles-map','moles-quiz','moles-traps'].forEach((id,i)=>{
-    document.getElementById(id).classList.toggle('active', i===m);
+  const m={explorer:0,map:1,quiz:2,traps:3,trainer:4}[mode];
+  ['moles-explorer','moles-map','moles-quiz','moles-traps','moles-trainer'].forEach((id,i)=>{
+    const el=document.getElementById(id); if(el) el.classList.toggle('active', i===m);
   });
   document.querySelectorAll('#tab-moles .mode-pill').forEach((b,i)=>b.classList.toggle('active', i===m));
   safeInitKaTeX();
 }
 function switchGasMode(mode){
-  const m={explorer:0,map:1,quiz:2,traps:3}[mode];
-  ['gas-explorer','gas-map','gas-quiz','gas-traps'].forEach((id,i)=>{
-    document.getElementById(id).classList.toggle('active', i===m);
+  const m={explorer:0,map:1,quiz:2,traps:3,sim:4}[mode];
+  ['gas-explorer','gas-map','gas-quiz','gas-traps','gas-sim'].forEach((id,i)=>{
+    const el=document.getElementById(id); if(el) el.classList.toggle('active', i===m);
   });
   document.querySelectorAll('#tab-gas .mode-pill').forEach((b,i)=>b.classList.toggle('active', i===m));
   safeInitKaTeX();
 }
 function switchSolMode(mode){
-  const m={explorer:0,map:1,quiz:2,traps:3}[mode];
-  ['sol-explorer','sol-map','sol-quiz','sol-traps'].forEach((id,i)=>{
-    document.getElementById(id).classList.toggle('active', i===m);
+  const m={explorer:0,map:1,quiz:2,traps:3,studio:4}[mode];
+  ['sol-explorer','sol-map','sol-quiz','sol-traps','sol-studio'].forEach((id,i)=>{
+    const el=document.getElementById(id); if(el) el.classList.toggle('active', i===m);
   });
   document.querySelectorAll('#tab-solutions .mode-pill').forEach((b,i)=>b.classList.toggle('active', i===m));
   safeInitKaTeX();
 }
 function switchPracMode(mode){
-  const m={inspector:0,errors:1,quiz:2,traps:3}[mode];
-  ['prac-inspector','prac-errors','prac-quiz','prac-traps'].forEach((id,i)=>{
-    document.getElementById(id).classList.toggle('active', i===m);
+  const m={inspector:0,errors:1,quiz:2,traps:3,sim:4}[mode];
+  ['prac-inspector','prac-errors','prac-quiz','prac-traps','prac-sim'].forEach((id,i)=>{
+    const el=document.getElementById(id); if(el) el.classList.toggle('active', i===m);
   });
   document.querySelectorAll('#tab-pracs .mode-pill').forEach((b,i)=>b.classList.toggle('active', i===m));
   safeInitKaTeX();
@@ -2763,6 +3675,1148 @@ document.addEventListener('DOMContentLoaded', function(){
   safeInitKaTeX();
 });
 
+
+/* ══════════════════════════════════════════════════════════════════════════
+   NEW INTERACTIVE CONCEPT CHECKERS, SIMULATORS & SYLLABUS ALIGNMENT ENGINES
+   ══════════════════════════════════════════════════════════════════════════ */
+
+const STUDIO_STATE = {
+  specConf: {},      // 0..11 -> 'review' | 'practising' | 'mastered'
+  specCheck: {},     // 0..11 -> true
+  diagAns: {},       // 0..11 -> selected index
+  obsAns: {},        // 0..5 -> true/false
+  trapChecked: {}    // 0..19 -> boolean
+};
+
+function loadStudioState(){
+  try {
+    const raw = localStorage.getItem('wch11_topic1_studio_state_v2');
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      Object.assign(STUDIO_STATE, parsed);
+    }
+  } catch (e) {}
+}
+
+function saveStudioState(){
+  try {
+    localStorage.setItem('wch11_topic1_studio_state_v2', JSON.stringify(STUDIO_STATE));
+  } catch (e) {}
+}
+
+function updateMasteryDisplay(){
+  let points = 0;
+  const maxPoints = 36; // 12 spec conf (up to 1 each) + 12 spec micro-checks (1 each) + 12 diag Qs (1 each)
+  for (let i = 0; i < 12; i++) {
+    if (STUDIO_STATE.specConf[i] === 'mastered') points += 1;
+    else if (STUDIO_STATE.specConf[i] === 'practising') points += 0.5;
+    if (STUDIO_STATE.specCheck[i]) points += 1;
+    if (STUDIO_STATE.diagAns[i] !== undefined && STUDIO_STATE.diagAns[i] === DIAG_QUESTIONS[i].ans) points += 1;
+  }
+  const pct = Math.min(100, Math.round((points / maxPoints) * 100));
+  const badge = document.getElementById('mastery-percentage');
+  if (badge) badge.textContent = pct + '%';
+
+  const masteredCount = Object.values(STUDIO_STATE.specConf).filter(v => v === 'mastered').length;
+  const checkCount = Object.values(STUDIO_STATE.specCheck).filter(Boolean).length;
+  const bar = document.getElementById('syllabusProgressBar');
+  const lbl = document.getElementById('syllabusProgressLabel');
+  if (bar) bar.style.width = Math.round(((masteredCount + checkCount) / 24) * 100) + '%';
+  if (lbl) lbl.textContent = masteredCount + ' / 12 Spec Points Mastered · ' + checkCount + ' / 12 Concept Checks Passed';
+}
+
+/* ── 1. SYLLABUS CARDS (Spec 1.1–1.12) MICRO-CONCEPT CHECKERS ── */
+const SPEC_MICRO_CHECKS = [
+  {
+    spec: '1.1',
+    q: 'Which statement correctly distinguishes O₂(g), H₂O(l), and NaCl(s) in Edexcel IAL terminology?',
+    opts: [
+      'O₂ is a molecule of an element; H₂O is a molecule of a compound; NaCl is a giant ionic lattice expressed as an empirical formula.',
+      'O₂ is a compound of oxygen; H₂O and NaCl are discrete covalent molecules.',
+      'All three exist as discrete molecules with relative molecular masses.'
+    ],
+    ans: 0,
+    exp: 'Mark Scheme: O₂ contains bonded atoms of the same element (molecule of an element); H₂O has different elements bonded (molecule of a compound); NaCl is a giant ionic lattice (relative formula mass).'
+  },
+  {
+    spec: '1.2',
+    q: 'How many total ions are present in 2.00 mol of Mohr’s salt, (NH₄)₂Fe(SO₄)₂·6H₂O? (L = 6.02 × 10²³ mol⁻¹)',
+    opts: [
+      '1.20 × 10²⁴ ions',
+      '6.02 × 10²⁴ ions (5 ions per formula unit: 2 NH₄⁺ + 1 Fe²⁺ + 2 SO₄²⁻)',
+      '3.61 × 10²⁴ ions'
+    ],
+    ans: 1,
+    exp: '1 formula unit releases 2 NH₄⁺ + 1 Fe²⁺ + 2 SO₄²⁻ = 5 ions (H₂O is covalent water of crystallisation). In 2.00 mol: n(ions) = 10.0 mol → N = 10.0 × 6.02 × 10²³ = 6.02 × 10²⁴ ions (3.61 × 10²⁴ is the cation-only count in Jan 2026 Q24a(ii)).'
+  },
+  {
+    spec: '1.3',
+    q: 'What is the balanced net ionic equation (with state symbols) for reacting aqueous silver nitrate with aqueous calcium chloride?',
+    opts: [
+      '2Ag⁺(aq) + CaCl₂(aq) → 2AgCl(s) + Ca²⁺(aq)',
+      'Ag⁺(aq) + Cl⁻(aq) → AgCl(s)',
+      'AgNO₃(aq) + Cl⁻(aq) → AgCl(aq) + NO₃⁻(aq)'
+    ],
+    ans: 1,
+    exp: 'Ca²⁺ and NO₃⁻ are spectator ions and cancel out; the 2:2 stoichiometry simplifies to 1:1: Ag⁺(aq) + Cl⁻(aq) → AgCl(s).'
+  },
+  {
+    spec: '1.4',
+    q: 'A sample of dry air contains 0.0420% carbon dioxide by volume. What is the concentration of CO₂ in parts per million (ppm)?',
+    opts: [
+      '42.0 ppm',
+      '420 ppm',
+      '4200 ppm'
+    ],
+    ans: 1,
+    exp: 'Spec 1.4(iv): ppm = (0.0420 ÷ 100) × 10⁶ = 420 ppm (% × 10 000 = ppm).'
+  },
+  {
+    spec: '1.5',
+    q: 'What is the concentration in g dm⁻³ of a 0.0500 mol dm⁻³ solution of CaCl₂ (Mᵣ = 111.1)?',
+    opts: [
+      '5.56 g dm⁻³',
+      '3.78 g dm⁻³',
+      '0.000450 g dm⁻³'
+    ],
+    ans: 0,
+    exp: 'g dm⁻³ = mol dm⁻³ × Mᵣ = 0.0500 × 111.1 = 5.56 g dm⁻³ (remember 2 Cl atoms in CaCl₂!).'
+  },
+  {
+    spec: '1.6',
+    q: 'Complete combustion of an organic hydrocarbon produces 0.88 g CO₂ and 0.54 g H₂O. What is the mole ratio C : H?',
+    opts: [
+      '0.020 mol C : 0.030 mol H → C₂H₃',
+      '0.020 mol C : 0.060 mol H → CH₃',
+      '0.88 mol C : 1.08 mol H → C₄H₅'
+    ],
+    ans: 1,
+    exp: 'n(C) = 0.88 / 44.0 = 0.020 mol. n(H₂O) = 0.54 / 18.0 = 0.030 mol, and each H₂O supplies 2 H atoms → n(H) = 0.060 mol. Ratio 0.020 : 0.060 = 1 : 3 (CH₃).'
+  },
+  {
+    spec: '1.7',
+    q: 'In the reaction TiCl₄ + 2Mg → Ti + 2MgCl₂, 0.050 mol TiCl₄ is heated with 0.080 mol Mg. Which is the limiting reagent and what is the maximum moles of Ti formed?',
+    opts: [
+      'TiCl₄ is limiting → 0.050 mol Ti',
+      'Mg is limiting (needs 2 × 0.050 = 0.100 mol Mg, only 0.080 mol present) → 0.040 mol Ti',
+      'Mg is limiting → 0.080 mol Ti'
+    ],
+    ans: 1,
+    exp: '0.050 mol TiCl₄ requires 0.100 mol Mg (1:2 ratio). Since only 0.080 mol Mg is available, Mg is limiting and produces 0.080 ÷ 2 = 0.040 mol Ti.'
+  },
+  {
+    spec: '1.8',
+    q: 'Which expression gives the volume V (in m³) of 0.0250 mol of an ideal gas at 35 °C and 110 kPa?',
+    opts: [
+      '(0.0250 × 8.31 × 35) ÷ 110',
+      '(0.0250 × 8.31 × 308) ÷ 110 000',
+      '(0.0250 × 8.31 × 308) ÷ 110'
+    ],
+    ans: 1,
+    exp: 'In pV = nRT, T must be in Kelvin (35 + 273 = 308 K) and p must be in Pascals (110 kPa = 110 000 Pa).'
+  },
+  {
+    spec: '1.9',
+    q: 'Why does the industrial hydration of ethene (C₂H₄ + H₂O → C₂H₅OH) have a 100% atom economy even if its percentage yield in a single pass is only 5%?',
+    opts: [
+      'Because the reaction goes to completion with no unreacted ethene.',
+      'Because ethanol is the ONLY product in the balanced equation (ΣMᵣ desired = ΣMᵣ all products), whereas % yield measures practical/equilibrium conversion.',
+      'Because water is a catalyst and is not included in the atom economy calculation.'
+    ],
+    ans: 1,
+    exp: 'Addition reactions have 100% atom economy because every atom in the reactants ends up in the single desired product; % yield depends on equilibrium/practical conversion.'
+  },
+  {
+    spec: '1.10',
+    q: 'When determining x in CuSO₄·xH₂O by heating in a crucible, why must the solid be heated and reweighed until constant mass?',
+    opts: [
+      'To calculate a mean mass from three readings.',
+      'To ensure thermal decomposition of anhydrous CuSO₄ into CuO has started.',
+      'To ensure all water of crystallisation has been completely driven off (complete dehydration).'
+    ],
+    ans: 2,
+    exp: 'Mark Scheme: Heating to constant mass ensures all water of crystallisation has been driven off (“repeat 3 times” alone scores 0).'
+  },
+  {
+    spec: '1.11',
+    q: 'In Core Practical 1 (measuring the molar volume of a gas using CaCO₃ + 2HCl → CaCl₂ + CO₂ + H₂O), why is collecting the gas over water unsuitable?',
+    opts: [
+      'CO₂ reacts exothermically with water to boil the water.',
+      'CO₂ is measurably soluble in water, so the collected gas volume is smaller than expected (giving a lower calculated molar volume).',
+      'CO₂ is denser than water so it sinks to the bottom of the trough.'
+    ],
+    ans: 1,
+    exp: 'CO₂ dissolves in water (forming carbonic acid), so the volume collected is underestimated; use a gas syringe instead.'
+  },
+  {
+    spec: '1.12',
+    q: 'Magnesium ribbon is added to dilute hydrochloric acid in a test tube. Which response scores the mark for the OBSERVATION?',
+    opts: [
+      'Hydrogen gas is evolved and magnesium chloride forms.',
+      'Effervescence / bubbles of colourless gas, and the grey solid dissolves to form a colourless solution.',
+      'A white precipitate of MgCl₂(s) forms with fizzing.'
+    ],
+    ans: 1,
+    exp: 'PEF Jan 2024 & Jun 2019: “Effervescence/bubbles” and “solid dissolves” are observations; “hydrogen gas” is an inference, and MgCl₂(aq) is soluble (not a precipitate!).'
+  }
+];
+
+function injectSyllabusCardInteractivity(){
+  const cards = document.querySelectorAll('#tab-syllabus .grid > .bg-slate-950');
+  cards.forEach((card, idx) => {
+    if (idx >= SPEC_MICRO_CHECKS.length || card.querySelector('.spec-interactive-footer')) return;
+    const item = SPEC_MICRO_CHECKS[idx];
+    const conf = STUDIO_STATE.specConf[idx] || '';
+    const passed = !!STUDIO_STATE.specCheck[idx];
+
+    const footer = document.createElement('div');
+    footer.className = 'spec-interactive-footer pt-3 mt-2 border-t border-slate-800/80 space-y-2.5';
+    footer.innerHTML = `
+      <div class="flex flex-wrap items-center justify-between gap-2">
+        <div class="flex items-center gap-1">
+          <span class="text-[10px] font-mono text-slate-400 mr-1">Confidence:</span>
+          <button type="button" onclick="setSpecConf(${idx}, 'review')" class="spec-conf-btn conf-review ${conf==='review'?'active':''}" data-spec-conf="${idx}-review">Review</button>
+          <button type="button" onclick="setSpecConf(${idx}, 'practising')" class="spec-conf-btn conf-practising ${conf==='practising'?'active':''}" data-spec-conf="${idx}-practising">Practising</button>
+          <button type="button" onclick="setSpecConf(${idx}, 'mastered')" class="spec-conf-btn conf-mastered ${conf==='mastered'?'active':''}" data-spec-conf="${idx}-mastered">✓ Mastered</button>
+        </div>
+        <button type="button" onclick="toggleSpecCheckPanel(${idx})" class="text-[11px] font-semibold px-2.5 py-1 rounded-full border ${passed ? 'bg-emerald-950/60 text-emerald-300 border-emerald-700/70' : 'bg-sky-950/60 text-sky-300 border-sky-800/70'} hover:text-white" id="specCheckToggle-${idx}">
+          ${passed ? '✅ Concept Checked' : '⚡ Instant Concept Check'}
+        </button>
+      </div>
+      <div id="specCheckPanel-${idx}" class="hidden p-3 rounded-xl bg-slate-900/95 border border-slate-800 space-y-2 text-xs">
+        <p class="font-semibold text-white leading-snug">Spec ${item.spec} Check: ${item.q}</p>
+        <div class="space-y-1.5">
+          ${item.opts.map((opt, oIdx) => `
+            <button type="button" onclick="answerSpecCheck(${idx}, ${oIdx})" id="specOpt-${idx}-${oIdx}" class="w-full text-left p-2 rounded-lg border border-slate-800 bg-slate-950/70 hover:border-sky-700 text-slate-300 text-[11px] leading-relaxed">
+              <span class="font-mono text-sky-400 mr-1.5">${String.fromCharCode(65+oIdx)}.</span>${opt}
+            </button>
+          `).join('')}
+        </div>
+        <div id="specCheckExp-${idx}" class="hidden p-2.5 rounded-lg text-[11px] leading-relaxed"></div>
+      </div>
+    `;
+    card.appendChild(footer);
+  });
+}
+
+function setSpecConf(idx, level){
+  STUDIO_STATE.specConf[idx] = level;
+  saveStudioState();
+  ['review', 'practising', 'mastered'].forEach(l => {
+    const btn = document.querySelector(`[data-spec-conf="${idx}-${l}"]`);
+    if (btn) btn.classList.toggle('active', l === level);
+  });
+  updateMasteryDisplay();
+}
+
+function toggleSpecCheckPanel(idx){
+  const panel = document.getElementById('specCheckPanel-' + idx);
+  if (panel) panel.classList.toggle('hidden');
+}
+
+function expandAllSpecChecks(open){
+  for (let i = 0; i < 12; i++) {
+    const p = document.getElementById('specCheckPanel-' + i);
+    if (p) p.classList.toggle('hidden', !open);
+  }
+}
+
+function answerSpecCheck(idx, optIdx){
+  const item = SPEC_MICRO_CHECKS[idx];
+  const exp = document.getElementById('specCheckExp-' + idx);
+  const toggleBtn = document.getElementById('specCheckToggle-' + idx);
+  const isCorrect = optIdx === item.ans;
+
+  item.opts.forEach((_, oIdx) => {
+    const b = document.getElementById(`specOpt-${idx}-${oIdx}`);
+    if (!b) return;
+    if (oIdx === item.ans) {
+      b.className = 'w-full text-left p-2 rounded-lg border border-emerald-600 bg-emerald-950/40 text-emerald-200 text-[11px] leading-relaxed font-semibold';
+    } else if (oIdx === optIdx) {
+      b.className = 'w-full text-left p-2 rounded-lg border border-rose-600 bg-rose-950/40 text-rose-200 text-[11px] leading-relaxed';
+    }
+  });
+
+  if (exp) {
+    exp.classList.remove('hidden');
+    exp.className = 'p-2.5 rounded-lg text-[11px] leading-relaxed ' + (isCorrect ? 'bg-emerald-950/50 border border-emerald-800 text-emerald-200' : 'bg-amber-950/50 border border-amber-800 text-amber-200');
+    var miss = (!isCorrect && item.why && item.why[optIdx]) ? item.why[optIdx] + ' ' : '';
+    exp.innerHTML = (isCorrect ? '<b>✓ Full Marks!</b> ' : '<b>✗ Not this one.</b> ' + miss) + (isCorrect ? item.exp : '<br><b>The line that scores:</b> ' + item.exp);
+  }
+
+  if (isCorrect) {
+    STUDIO_STATE.specCheck[idx] = true;
+    if (!STUDIO_STATE.specConf[idx]) setSpecConf(idx, 'mastered');
+    saveStudioState();
+    if (toggleBtn) {
+      toggleBtn.textContent = '✅ Concept Checked';
+      toggleBtn.className = 'text-[11px] font-semibold px-2.5 py-1 rounded-full border bg-emerald-950/60 text-emerald-300 border-emerald-700/70';
+    }
+    updateMasteryDisplay();
+  }
+}
+
+function resetSyllabusTracker(){
+  STUDIO_STATE.specConf = {};
+  STUDIO_STATE.specCheck = {};
+  saveStudioState();
+  document.querySelectorAll('.spec-conf-btn').forEach(b => b.classList.remove('active'));
+  for (let i = 0; i < 12; i++) {
+    const t = document.getElementById('specCheckToggle-' + i);
+    if (t) {
+      t.textContent = '⚡ Instant Concept Check';
+      t.className = 'text-[11px] font-semibold px-2.5 py-1 rounded-full border bg-sky-950/60 text-sky-300 border-sky-800/70 hover:text-white';
+    }
+    const exp = document.getElementById('specCheckExp-' + i);
+    if (exp) exp.classList.add('hidden');
+  }
+  updateMasteryDisplay();
+}
+
+/* ── 2. TAB 2: DEFINITION KEYWORD GRADER & ION FORMULA BUILDER ── */
+const DEF_RUBRICS = {
+  ar: {
+    model: 'The weighted mean (average) mass of an atom of an element compared to 1/12 of the mass of a carbon-12 atom.',
+    checks: [
+      { label: 'M1: "weighted mean / average mass of an atom"', re: /(weighted|mean|average).*mass.*atom|mass.*atom.*(weighted|mean|average)/i },
+      { label: 'M2: "compared/relative to 1/12 of the mass of a carbon-12 (¹²C) atom"', re: /(1\/12|one[- ]twelfth|twelfth).*(carbon[- ]?12|12c)/i }
+    ],
+    traps: [
+      { msg: 'Examiner Penalty: Do not say "mass of an element/isotope" without specifying "an atom".', re: /mass of an element/i },
+      { msg: 'Examiner Penalty: Saying "12 g of carbon" instead of "a carbon-12 atom" confuses Aᵣ with the mole definition.', re: /12\s*g/i }
+    ]
+  },
+  mole: {
+    model: 'The amount of substance that contains the same number of particles as there are carbon atoms in exactly 12 g of carbon-12.',
+    checks: [
+      { label: 'M1a: "same number of particles/entities as atoms"', re: /(same number|as many).*(particles|entities|atoms)/i },
+      { label: 'M1b: "in 12 g of carbon-12 (¹²C)"', re: /12\s*g.*(carbon[- ]?12|12c)/i }
+    ],
+    traps: [
+      { msg: 'Examiner Penalty: Saying "12 g of carbon" without specifying the isotope "carbon-12" loses the mark.', re: /12\s*g of carbon(?!\s*[- ]?12)/i }
+    ]
+  },
+  rfm: {
+    model: 'Ionic compounds exist as a giant ionic lattice of ions rather than discrete covalent molecules.',
+    checks: [
+      { label: 'M1a: Mentions "giant ionic lattice" or "consists of ions"', re: /(giant.*lattice|ionic lattice|made of ions|contains ions)/i },
+      { label: 'M1b: States "no discrete/simple molecules"', re: /(no|not|rather than|do not exist as).*(discrete|individual|separate|simple)?\s*molecules/i }
+    ],
+    traps: []
+  },
+  emp: {
+    model: 'The empirical formula shows the simplest whole-number ratio of atoms of each element in a compound, whereas the molecular formula shows the actual number of atoms of each element in one molecule.',
+    checks: [
+      { label: 'M1: Empirical = "simplest whole-number ratio of atoms of each element"', re: /simplest.*(whole[- ]number\s*)?ratio.*atoms/i },
+      { label: 'M2: Molecular = "actual number of atoms of each element in one molecule"', re: /actual\s*number.*atoms.*molecule/i }
+    ],
+    traps: []
+  },
+  ae: {
+    model: 'A higher percentage of reactant atoms are converted into the desired product, producing less waste (by-product) and making the process more sustainable.',
+    checks: [
+      { label: 'M1: "Less waste / fewer by-products / higher proportion of reactant mass in desired product"', re: /(less waste|fewer by[- ]?products|more sustainable|desired product)/i }
+    ],
+    traps: [
+      { msg: 'Examiner Penalty (PEF): Bare "no waste" on its own is rejected unless the reaction is an addition reaction.', re: /^\s*no waste\s*\.?\s*$/i }
+    ]
+  }
+};
+
+function resetDefGraderFeedback(){
+  const out = document.getElementById('defGraderOutput');
+  if (out) out.innerHTML = '<span class="text-slate-400">Type your wording above and click <b>Grade Against Mark Scheme</b>.</span>';
+}
+
+function fillModelDefinition(){
+  const key = document.getElementById('defGraderTerm').value;
+  document.getElementById('defGraderInput').value = DEF_RUBRICS[key].model;
+  evaluateDefinition();
+}
+
+function evaluateDefinition(){
+  const key = document.getElementById('defGraderTerm').value;
+  const text = (document.getElementById('defGraderInput').value || '').trim();
+  const out = document.getElementById('defGraderOutput');
+  if (!text) {
+    out.innerHTML = '<span class="text-amber-300">Please enter a definition first, or click <b>Show Model</b>.</span>';
+    return;
+  }
+  const rub = DEF_RUBRICS[key];
+  let hit = 0;
+  const rows = rub.checks.map(c => {
+    const ok = c.re.test(text);
+    if (ok) hit++;
+    return `<div class="${ok ? 'text-emerald-300' : 'text-rose-300'}">${ok ? '✓' : '✗'} ${c.label}</div>`;
+  });
+  const trapHits = rub.traps.filter(t => t.re.test(text)).map(t => `<div class="text-amber-300 font-semibold">⚠️ ${t.msg}</div>`);
+  out.innerHTML = `
+    <div class="font-bold text-white">Score: ${hit} / ${rub.checks.length} Mark Scheme Points</div>
+    <div class="space-y-1">${rows.join('')}</div>
+    ${trapHits.join('')}
+    <div class="pt-1.5 border-t border-slate-800 text-[11px] text-slate-400"><b>Edexcel Model:</b> “${rub.model}”</div>
+  `;
+}
+
+function gcd(a, b){ return b === 0 ? a : gcd(b, a % b); }
+
+const POLY_CAT = { 'NH4': true };
+const POLY_AN = { 'SO4': true, 'NO3': true, 'CO3': true, 'PO4': true, 'OH': true, 'HCO3': true, 'Cr2O7': true };
+
+function computeIonData(){
+  const catRaw = (document.getElementById('ionCat') || {}).value || 'NH4|1|NH₄⁺';
+  const anRaw = (document.getElementById('ionAn') || {}).value || 'SO4|2|SO₄²⁻';
+  const nMol = parseFloat((document.getElementById('ionMol') || {}).value) || 1;
+  const [catSym, catChgS, catDisp] = catRaw.split('|');
+  const [anSym, anChgS, anDisp] = anRaw.split('|');
+  const cChg = parseInt(catChgS, 10);
+  const aChg = parseInt(anChgS, 10);
+  const g = gcd(cChg, aChg);
+  const nCat = aChg / g;
+  const nAn = cChg / g;
+  const cleanCat = catSym === 'Fe3' ? 'Fe' : catSym;
+  const catPart = (nCat > 1 && POLY_CAT[catSym]) ? `(${cleanCat})${nCat}` : `${cleanCat}${nCat > 1 ? nCat : ''}`;
+  const anPart = (nAn > 1 && POLY_AN[anSym]) ? `(${anSym})${nAn}` : `${anSym}${nAn > 1 ? nAn : ''}`;
+  const plainFormula = catPart + anPart;
+  const prettyFormula = plainFormula.replace(/(\d+)/g, '₀₁₂₃₄₅₆₇₈₉'[0] ? m => m.split('').map(d => '₀₁₂₃₄₅₆₇₈₉'[+d]).join('') : '$1');
+  const totalIonsPerUnit = nCat + nAn;
+  const totalParticles = nMol * totalIonsPerUnit * 6.02e23;
+  return { catDisp, anDisp, nCat, nAn, plainFormula, prettyFormula, totalIonsPerUnit, nMol, totalParticles };
+}
+
+function updateIonChallenge(){
+  const d = computeIonData();
+  const out = document.getElementById('ionChallengeOutput');
+  if (!out) return;
+  out.innerHTML = `
+    <div class="text-slate-300">Combine <b>${d.catDisp}</b> and <b>${d.anDisp}</b> (${d.nMol} mol). Enter your formula guess above or click <b>Check Formula</b>!</div>
+  `;
+}
+
+function checkIonChallenge(){
+  const d = computeIonData();
+  const uForm = (document.getElementById('ionUserFormula').value || '').trim().replace(/\s+/g, '');
+  const uCnt = parseInt(document.getElementById('ionUserCount').value, 10);
+  const formOk = uForm.toLowerCase() === d.plainFormula.toLowerCase();
+  const cntOk = uCnt === d.totalIonsPerUnit;
+  const out = document.getElementById('ionChallengeOutput');
+  out.innerHTML = `
+    <div class="flex flex-wrap items-center justify-between gap-2">
+      <span class="font-bold text-white">Correct Formula: <span class="font-mono text-sky-300 text-sm">${d.prettyFormula}</span> <span class="text-slate-400 font-mono text-[11px]">(${d.plainFormula})</span></span>
+      <span class="chip ${formOk && cntOk ? 'bg-emerald-950 text-emerald-300 border border-emerald-700' : 'bg-amber-950 text-amber-300 border border-amber-700'}">
+        ${uForm ? (formOk ? '✓ Formula Match' : '✗ Check Brackets/Subscripts') : 'Solution Shown'}
+      </span>
+    </div>
+    <div class="text-slate-300">• <b>Ions per formula unit:</b> ${d.nCat} ${d.catDisp} + ${d.nAn} ${d.anDisp} = <b>${d.totalIonsPerUnit} ions</b> ${!isNaN(uCnt) ? (cntOk ? '✓' : `(you entered ${uCnt})`) : ''}</div>
+    <div class="text-emerald-300 font-mono">• Total ions in ${d.nMol} mol = ${d.nMol} × ${d.totalIonsPerUnit} × 6.02×10²³ = <b>${d.totalParticles.toExponential(2)} ions</b></div>
+    <div class="text-[11px] text-slate-400">Cations only = ${(d.nMol * d.nCat * 6.02e23).toExponential(2)} · Anions only = ${(d.nMol * d.nAn * 6.02e23).toExponential(2)}</div>
+  `;
+}
+
+/* ── 3. TAB 3: EQUATION BALANCER & OBSERVATION VS INFERENCE DRILL ── */
+const EQ_LAB_DATA = [
+  {
+    species: ['CaCO₃', 'HCl', '→', 'CaCl₂', 'CO₂', 'H₂O'],
+    coeffs: [1, 2, 1, 1, 1],
+    states: ['(s)', '(aq)', '(aq)', '(g)', '(l)'],
+    ionic: 'CO₃²⁻(s/aq) + 2H⁺(aq) → CO₂(g) + H₂O(l)  [Spectator: Cl⁻]',
+    obs: 'Effervescence / bubbles of colourless gas; white solid dissolves.'
+  },
+  {
+    species: ['Pb(NO₃)₂', 'KI', '→', 'PbI₂', 'KNO₃'],
+    coeffs: [1, 2, 1, 2],
+    states: ['(aq)', '(aq)', '(s)', '(aq)'],
+    ionic: 'Pb²⁺(aq) + 2I⁻(aq) → PbI₂(s)  [Spectators: K⁺, NO₃⁻]',
+    obs: 'Bright yellow precipitate forms immediately on mixing colourless solutions.'
+  },
+  {
+    species: ['Al', 'H⁺', '→', 'Al³⁺', 'H₂'],
+    coeffs: [2, 6, 2, 3],
+    states: ['(s)', '(aq)', '(aq)', '(g)'],
+    ionic: 'Already a net ionic equation! Charge LHS = 6(+1) = +6; Charge RHS = 2(+3) = +6.',
+    obs: 'Effervescence (bubbles) and silver metal solid dissolves to form a colourless solution.'
+  },
+  {
+    species: ['C₄H₁₀', 'O₂', '→', 'CO₂', 'H₂O'],
+    coeffs: [2, 13, 8, 10],
+    states: ['(g)', '(g)', '(g)', '(l)'],
+    ionic: 'Covalent combustion (no ions). 1 : 6.5 : 4 : 5 is also accepted by Edexcel.',
+    obs: 'Clean blue flame in excess oxygen; water vapour condenses on a cold surface.'
+  },
+  {
+    species: ['FeCl₃', 'NaOH', '→', 'Fe(OH)₃', 'NaCl'],
+    coeffs: [1, 3, 1, 3],
+    states: ['(aq)', '(aq)', '(s)', '(aq)'],
+    ionic: 'Fe³⁺(aq) + 3OH⁻(aq) → Fe(OH)₃(s)  [Spectators: Na⁺, Cl⁻]',
+    obs: 'Reddish-brown (rust-brown) gelatinous precipitate forms.'
+  }
+];
+
+function loadEqLabChallenge(){
+  const idx = parseInt((document.getElementById('eqLabSelect') || {}).value || '0', 10);
+  const item = EQ_LAB_DATA[idx];
+  const ws = document.getElementById('eqLabWorkspace');
+  if (!ws) return;
+  let sIdx = 0;
+  const htmlParts = item.species.map(sp => {
+    if (sp === '→') return `<span class="text-sky-400 font-bold px-1">→</span>`;
+    const cur = sIdx++;
+    return `
+      <div class="inline-flex items-center gap-1 bg-slate-950 border border-slate-800 px-2 py-1.5 rounded-lg">
+        <input id="eqCoeff-${cur}" type="number" min="1" max="20" value="1" class="w-11 text-center text-xs font-mono text-sky-300 py-0.5">
+        <span class="font-mono text-xs text-white font-semibold">${sp}</span>
+        <select id="eqState-${cur}" class="text-[11px] font-mono text-emerald-300 py-0.5 px-1">
+          <option value="(aq)">(aq)</option>
+          <option value="(s)">(s)</option>
+          <option value="(l)">(l)</option>
+          <option value="(g)">(g)</option>
+        </select>
+      </div>
+    `;
+  });
+  ws.innerHTML = `<div class="flex flex-wrap items-center gap-2">${htmlParts.join('<span class="text-slate-500 font-bold">+</span>').replace('+</span><span class="text-sky-400 font-bold px-1">→</span><span class="text-slate-500 font-bold">+', '</span><span class="text-sky-400 font-bold px-1">→</span>')}</div>`;
+  document.getElementById('eqLabFeedback').innerHTML = `<span class="text-slate-400">Set the coefficients and state symbols, then click <b>Verify Atom, Charge &amp; State Balance</b>.</span>`;
+}
+
+function solveEqLabChallenge(){
+  const idx = parseInt((document.getElementById('eqLabSelect') || {}).value || '0', 10);
+  const item = EQ_LAB_DATA[idx];
+  item.coeffs.forEach((c, i) => {
+    const el = document.getElementById('eqCoeff-' + i);
+    if (el) el.value = c;
+    const st = document.getElementById('eqState-' + i);
+    if (st) st.value = item.states[i];
+  });
+  checkEqLabChallenge();
+}
+
+function checkEqLabChallenge(){
+  const idx = parseInt((document.getElementById('eqLabSelect') || {}).value || '0', 10);
+  const item = EQ_LAB_DATA[idx];
+  const uCoeffs = item.coeffs.map((_, i) => parseFloat(document.getElementById('eqCoeff-' + i).value) || 0);
+  const uStates = item.states.map((_, i) => document.getElementById('eqState-' + i).value);
+
+  const ratio = uCoeffs[0] / item.coeffs[0];
+  const coeffOk = ratio > 0 && item.coeffs.every((c, i) => Math.abs(uCoeffs[i] - c * ratio) < 1e-3);
+  const stateOk = item.states.every((s, i) => uStates[i] === s);
+
+  const fb = document.getElementById('eqLabFeedback');
+  fb.innerHTML = `
+    <div class="font-bold ${coeffOk && stateOk ? 'text-emerald-300' : 'text-amber-300'}">
+      ${coeffOk ? '✓ Stoichiometry & Charge Balanced!' : '✗ Coefficients Not Balanced (Expected ratio: ' + item.coeffs.join(' : ') + ')'}
+      · ${stateOk ? '✓ All State Symbols Correct!' : '✗ State Symbol Mismatch (Expected: ' + item.states.join(', ') + ')'}
+    </div>
+    <div class="mt-1.5 text-sky-300 font-mono text-[11px]"><b>Net Ionic:</b> ${item.ionic}</div>
+    <div class="mt-1 text-slate-300 text-[11px]"><b>Test-Tube Observation (Spec 1.12):</b> ${item.obs}</div>
+  `;
+}
+
+const OBS_DRILL_ITEMS = [
+  { text: '“Bubbles / effervescence and the magnesium ribbon dissolves.”', isObs: true, why: 'Scores full marks — states directly observable visual changes.' },
+  { text: '“Hydrogen gas is evolved when Mg reacts with HCl.”', isObs: false, why: 'PEF Jan 2024: Rejected as an observation! Identifying H₂ without a lighted-splint test is a theoretical inference.' },
+  { text: '“Blue CuSO₄ solution fades to colourless and a pink-brown solid forms.”', isObs: true, why: 'Scores both marks in Zn + CuSO₄ displacement (solution colour change + solid deposit).' },
+  { text: '“Carbon dioxide gas is given off when HCl is added to CaCO₃.”', isObs: false, why: 'Rejected as an observation — must say “effervescence / fizzing / bubbles”.' },
+  { text: '“A bright yellow precipitate forms on mixing Pb(NO₃)₂(aq) and KI(aq).”', isObs: true, why: 'Scores the mark — states both the colour (yellow) and state change (precipitate/solid).' },
+  { text: '“A white precipitate of MgCl₂ forms when Mg reacts with HCl(aq).”', isObs: false, why: 'PEF Jun 2019: MgCl₂ is soluble in water — a colourless solution forms, NOT a white precipitate!' }
+];
+
+function renderObsDrill(){
+  const wrap = document.getElementById('obsDrillList');
+  if (!wrap) return;
+  wrap.innerHTML = OBS_DRILL_ITEMS.map((it, i) => `
+    <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 space-y-1.5">
+      <div class="flex items-start justify-between gap-2">
+        <span class="text-xs text-slate-200 leading-snug">${i+1}. ${it.text}</span>
+        <div class="flex gap-1 shrink-0">
+          <button type="button" onclick="answerObsDrill(${i}, true)" id="obsBtnT-${i}" class="px-2 py-1 rounded text-[10px] font-semibold bg-slate-800 text-slate-300 border border-slate-700 hover:border-emerald-500">Observation ✓</button>
+          <button type="button" onclick="answerObsDrill(${i}, false)" id="obsBtnF-${i}" class="px-2 py-1 rounded text-[10px] font-semibold bg-slate-800 text-slate-300 border border-slate-700 hover:border-rose-500">Inference / Trap ✗</button>
+        </div>
+      </div>
+      <div id="obsExp-${i}" class="hidden text-[11px] pt-1 border-t border-slate-800/80"></div>
+    </div>
+  `).join('');
+}
+
+function answerObsDrill(i, choice){
+  const it = OBS_DRILL_ITEMS[i];
+  const ok = choice === it.isObs;
+  STUDIO_STATE.obsAns[i] = ok;
+  const exp = document.getElementById('obsExp-' + i);
+  if (exp) {
+    exp.classList.remove('hidden');
+    exp.className = 'text-[11px] pt-1 border-t border-slate-800/80 ' + (ok ? 'text-emerald-300' : 'text-amber-300');
+    exp.innerHTML = (ok ? '<b>✓ Correct!</b> ' : '<b>✗ Watch out:</b> ') + it.why;
+  }
+  const score = Object.values(STUDIO_STATE.obsAns).filter(Boolean).length;
+  const badge = document.getElementById('obsScoreBadge');
+  if (badge) badge.textContent = `Score: ${score} / ${OBS_DRILL_ITEMS.length}`;
+}
+
+/* ── 4. TAB 4: MULTI-STEP M1/M2/M3 TRAINER & CONTINUOUS VARIATION SIMULATOR ── */
+const MOLE_PROBLEMS = [
+  {
+    prompt: '<b>Spec 1.6 Combustion Analysis:</b> 1.50 g of an organic compound containing C, H and O is burned completely in excess oxygen, producing <b>2.20 g of CO₂</b> (Mᵣ = 44.0) and <b>0.90 g of H₂O</b> (Mᵣ = 18.0). Find the empirical formula.',
+    steps: [
+      { label: 'M1 · Moles of C (= m(CO₂)/44.0) and moles of H (= 2 × m(H₂O)/18.0), comma-separated:', placeholder: '0.05, 0.10', check: v => { const p=v.split(',').map(parseFloat); return Math.abs(p[0]-0.05)<0.002 && Math.abs(p[1]-0.10)<0.004; }, ansText: '0.050 mol C, 0.100 mol H' },
+      { label: 'M2 · Mass of O by subtraction (g) and moles of O (÷ 16.0), comma-separated:', placeholder: '0.80, 0.05', check: v => { const p=v.split(',').map(parseFloat); return Math.abs(p[0]-0.80)<0.03 && Math.abs(p[1]-0.05)<0.003; }, ansText: 'm(O) = 1.50 − (0.60 + 0.10) = 0.80 g → 0.050 mol O' },
+      { label: 'M3 · Empirical formula (simplest whole-number ratio):', placeholder: 'CH2O', check: v => v.trim().toUpperCase() === 'CH2O' || v.trim() === 'CH₂O', ansText: 'CH₂O (ratio 0.05 : 0.10 : 0.05 = 1 : 2 : 1)' }
+    ]
+  },
+  {
+    prompt: '<b>Spec 1.7 & 1.9 Limiting Reagent & % Yield:</b> (NH₄)₂SO₄ (Mᵣ = 132.1) reacts 1 : 1 with CuSO₄ (Mᵣ = 159.6) to form hydrated double salt CuSO₄·(NH₄)₂SO₄·6H₂O (Mᵣ = 399.8). A student reacts <b>3.36 g (NH₄)₂SO₄</b> with <b>3.96 g CuSO₄</b> and obtains <b>9.52 g</b> of pure dry crystals.',
+    steps: [
+      { label: 'M1 · Moles of limiting reagent (CuSO₄ = 3.96/159.6 vs (NH₄)₂SO₄ = 3.36/132.1):', placeholder: '0.0248', check: v => Math.abs(parseFloat(v)-0.0248)<0.0005, ansText: 'n(CuSO₄) = 0.0248 mol < n((NH₄)₂SO₄) = 0.0254 mol → CuSO₄ is limiting' },
+      { label: 'M2 · Theoretical yield of double salt (g) (= n_limiting × 399.8):', placeholder: '9.92', check: v => Math.abs(parseFloat(v)-9.92)<0.08, ansText: '0.02481 × 399.8 = 9.92 g' },
+      { label: 'M3 · Percentage yield (%) to 3 s.f.:', placeholder: '96.0', check: v => Math.abs(parseFloat(v)-96.0)<0.4, ansText: '(9.52 ÷ 9.92) × 100 = 96.0%' }
+    ]
+  },
+  {
+    prompt: '<b>Spec 1.10 Water of Crystallisation:</b> <b>3.56 g</b> of hydrated sodium carbonate, Na₂CO₃·xH₂O, is heated to constant mass, leaving <b>1.32 g</b> of anhydrous Na₂CO₃ (Mᵣ = 106.0). Calculate x.',
+    steps: [
+      { label: 'M1 · Moles of anhydrous Na₂CO₃ (= 1.32 ÷ 106.0):', placeholder: '0.0125', check: v => Math.abs(parseFloat(v)-0.01245)<0.0004, ansText: '0.01245 mol' },
+      { label: 'M2 · Mass of H₂O lost (g) and moles of H₂O (÷ 18.0), comma-separated:', placeholder: '2.24, 0.124', check: v => { const p=v.split(',').map(parseFloat); return Math.abs(p[0]-2.24)<0.03 && Math.abs(p[1]-0.1244)<0.003; }, ansText: '2.24 g H₂O → 0.1244 mol H₂O' },
+      { label: 'M3 · Value of integer x:', placeholder: '10', check: v => parseInt(v,10) === 10, ansText: 'x = 0.1244 ÷ 0.01245 = 9.99 ≈ 10 (Na₂CO₃·10H₂O)' }
+    ]
+  },
+  {
+    prompt: '<b>Spec 1.9 Atom Economy:</b> Magnesium oxide (Mᵣ = 40.3) can be made by decomposing MgCO₃ (Mᵣ = 84.3 → MgO + CO₂) or Mg(OH)₂ (Mᵣ = 58.3 → MgO + H₂O). Calculate both atom economies.',
+    steps: [
+      { label: 'M1 · Atom economy from MgCO₃ (%) (= 40.3 / 84.3 × 100):', placeholder: '47.8', check: v => Math.abs(parseFloat(v)-47.8)<0.3, ansText: '47.8%' },
+      { label: 'M2 · Atom economy from Mg(OH)₂ (%) (= 40.3 / 58.3 × 100):', placeholder: '69.1', check: v => Math.abs(parseFloat(v)-69.1)<0.3, ansText: '69.1%' },
+      { label: 'M3 · Difference in atom economy (% points):', placeholder: '21.3', check: v => Math.abs(parseFloat(v)-21.3)<0.4, ansText: '21.3% higher for Mg(OH)₂ because H₂O (18.0) has a lower molar mass than CO₂ (44.0)' }
+    ]
+  }
+];
+
+function loadMoleTrainerProblem(){
+  const idx = parseInt((document.getElementById('moleTrainerSelect') || {}).value || '0', 10);
+  const p = MOLE_PROBLEMS[idx];
+  const pr = document.getElementById('moleTrainerPrompt');
+  const st = document.getElementById('moleTrainerSteps');
+  if (!pr || !st) return;
+  pr.innerHTML = p.prompt;
+  st.innerHTML = p.steps.map((s, i) => `
+    <div>
+      <label class="block text-[11px] text-slate-300 mb-1">${s.label}</label>
+      <input id="moleStepIn-${i}" type="text" placeholder="${s.placeholder}" class="w-full px-3 py-1.5 text-xs text-slate-100 font-mono">
+    </div>
+  `).join('');
+  document.getElementById('moleTrainerFeedback').innerHTML = `<span class="text-slate-400">Complete M1, M2, and M3 above and click <b>Mark My Working</b>.</span>`;
+}
+
+function gradeMoleTrainerProblem(){
+  const idx = parseInt((document.getElementById('moleTrainerSelect') || {}).value || '0', 10);
+  const p = MOLE_PROBLEMS[idx];
+  let score = 0;
+  const lines = p.steps.map((s, i) => {
+    const val = (document.getElementById('moleStepIn-' + i).value || '').trim();
+    const ok = val ? s.check(val) : false;
+    if (ok) score++;
+    return `<div class="${ok ? 'text-emerald-300' : 'text-amber-300'}">${ok ? '✓' : '✗'} <b>M${i+1}:</b> ${s.ansText}</div>`;
+  });
+  document.getElementById('moleTrainerFeedback').innerHTML = `
+    <div class="font-bold text-white mb-1">Mark Scheme Result: ${score} / 3 Marks</div>
+    <div class="space-y-1">${lines.join('')}</div>
+  `;
+}
+
+function revealMoleTrainerSolution(){
+  const idx = parseInt((document.getElementById('moleTrainerSelect') || {}).value || '0', 10);
+  const p = MOLE_PROBLEMS[idx];
+  p.steps.forEach((s, i) => {
+    document.getElementById('moleStepIn-' + i).value = s.placeholder;
+  });
+  gradeMoleTrainerProblem();
+}
+
+function updateContinuousVariation(){
+  const raw = (document.getElementById('cvSystem') || {}).value || '1:2|Pb(NO₃)₂(aq) + 2KI(aq) → PbI₂(s)|#facc15';
+  const [ratioStr, eqStr, color] = raw.split('|');
+  const [rA, rB] = ratioStr.split(':').map(Number);
+  const vA = parseFloat((document.getElementById('cvSlider') || {}).value) || 3.3;
+  const vB = +(10 - vA).toFixed(1);
+  const optVA = +(10 * rA / (rA + rB)).toFixed(2);
+  const optVB = +(10 - optVA).toFixed(2);
+
+  const lbl = document.getElementById('cvVolALabel');
+  if (lbl) lbl.textContent = `${vA.toFixed(1)} cm³ A + ${vB.toFixed(1)} cm³ B`;
+
+  const svg = document.getElementById('cvSvg');
+  if (svg) {
+    const x0 = 40, x1 = 340, y0 = 145, yPeak = 28;
+    const peakX = x0 + (optVA / 10) * (x1 - x0);
+    const curX = x0 + (vA / 10) * (x1 - x0);
+    const frac = vA <= optVA ? (vA / optVA) : ((10 - vA) / (10 - optVA));
+    const curY = y0 - frac * (y0 - yPeak);
+
+    svg.innerHTML = `
+      <line x1="${x0}" y1="${y0}" x2="${x1}" y2="${y0}" stroke="#475569" stroke-width="1.5"/>
+      <line x1="${x0}" y1="${y0}" x2="${x0}" y2="15" stroke="#475569" stroke-width="1.5"/>
+      <line x1="${peakX}" y1="${yPeak}" x2="${peakX}" y2="${y0}" stroke="${color}" stroke-dasharray="4 3" stroke-width="1.2"/>
+      <polyline points="${x0},${y0} ${peakX},${yPeak} ${x1},${y0}" fill="none" stroke="${color}" stroke-width="2.5" stroke-linecap="round"/>
+      <circle cx="${curX}" cy="${curY}" r="5.5" fill="#ffffff" stroke="${color}" stroke-width="2.5"/>
+      <text x="${peakX}" y="18" text-anchor="middle" fill="${color}" font-size="10" font-family="monospace">Peak: ${optVA} cm³ A : ${optVB} cm³ B (${rA}:${rB})</text>
+      <text x="190" y="166" text-anchor="middle" fill="#94a3b8" font-size="10">Volume of Reactant A (cm³) [Total V = 10.0 cm³]</text>
+      <text x="14" y="85" text-anchor="middle" fill="#94a3b8" font-size="10" transform="rotate(-90 14 85)">Ppt Height</text>
+    `;
+  }
+
+  const read = document.getElementById('cvReadout');
+  if (read) {
+    const lim = Math.abs(vA - optVA) < 0.12
+      ? '<b class="text-emerald-300">Exact Stoichiometric Equivalence Point!</b> Neither reactant is in excess; maximum precipitate forms.'
+      : (vA < optVA ? '<b>Reactant A is limiting</b> (ascending line); adding more A increases precipitate height.' : '<b>Reactant B is limiting</b> (descending line); Reactant A is in excess.');
+    read.innerHTML = `
+      <div><b>Equation:</b> <span class="font-mono text-white">${eqStr}</span></div>
+      <div class="mt-1">${lim}</div>
+    `;
+  }
+}
+
+/* ── 5. TAB 5: LIVE pV=nRT SANDBOX & COMBUSTION GAS CONTRACTION SIMULATOR ── */
+function updateGasSim(){
+  const m = parseFloat((document.getElementById('simGasM') || {}).value) || 0.29;
+  const pKpa = parseFloat((document.getElementById('simGasP') || {}).value) || 101;
+  const vCm3 = parseFloat((document.getElementById('simGasV') || {}).value) || 125;
+  const tC = parseFloat((document.getElementById('simGasT') || {}).value) || 35;
+
+  const pPa = pKpa * 1000;
+  const vM3 = vCm3 * 1e-6;
+  const tK = tC + 273;
+  const R = 8.31;
+  const n = (pPa * vM3) / (R * tK);
+  const Mr = m / n;
+  const trapCelsiusMr = (m * R * tC) / (pPa * vM3);
+  const trapCm3Mr = (m * R * tK) / (pKpa * vCm3);
+
+  const out = document.getElementById('simGasOutput');
+  if (!out) return;
+  out.innerHTML = `
+    <div class="grid grid-cols-3 gap-2 text-[11px] font-mono">
+      <div class="p-2 rounded bg-slate-950 border border-slate-800">p = <b>${pPa.toLocaleString()} Pa</b></div>
+      <div class="p-2 rounded bg-slate-950 border border-slate-800">V = <b>${vM3.toExponential(3)} m³</b></div>
+      <div class="p-2 rounded bg-slate-950 border border-slate-800">T = <b>${tK} K</b></div>
+    </div>
+    <div class="text-emerald-300 font-mono">• n = pV / RT = <b>${n.toExponential(3)} mol</b> &nbsp;|&nbsp; Mᵣ = mRT / pV = <b>${Mr.toFixed(1)} g mol⁻¹</b></div>
+    <div class="text-[11px] text-rose-300">⚠️ <b>Examiner Trap Comparison:</b> Using °C (${tC}) instead of K gives Mᵣ = ${trapCelsiusMr.toFixed(1)}; leaving kPa &amp; cm³ unscaled gives Mᵣ = ${trapCm3Mr.toExponential(2)}.</div>
+  `;
+}
+
+function updateCombustionSim(){
+  const raw = (document.getElementById('combHC') || {}).value || '3|8|C₃H₈';
+  const [xS, yS, formula] = raw.split('|');
+  const x = parseInt(xS, 10), y = parseInt(yS, 10);
+  const vHC = parseFloat((document.getElementById('combVhc') || {}).value) || 20;
+  const vO2Init = parseFloat((document.getElementById('combVo2') || {}).value) || 150;
+
+  const o2Ratio = x + y / 4;
+  const o2Needed = vHC * o2Ratio;
+  const out = document.getElementById('combSimOutput');
+  if (!out) return;
+
+  if (vO2Init < o2Needed) {
+    out.innerHTML = `<div class="text-amber-300">⚠️ <b>Oxygen is limiting!</b> ${vHC} cm³ of ${formula} requires <b>${o2Needed} cm³ O₂</b> (ratio 1 : ${o2Ratio}), but only ${vO2Init} cm³ O₂ is present. Increase V(O₂) above ${o2Needed} cm³ for complete combustion.</div>`;
+    return;
+  }
+  const vCO2 = vHC * x;
+  const vO2Left = vO2Init - o2Needed;
+  const vTotalFinal = vCO2 + vO2Left;
+  const vH2OgasTrap = vHC * (y / 2);
+
+  out.innerHTML = `
+    <div class="font-mono text-white text-[11px]">${formula}(g) + ${o2Ratio}O₂(g) → ${x}CO₂(g) + ${y/2}H₂O(l)</div>
+    <div class="grid grid-cols-3 gap-2 text-[11px] font-mono">
+      <div class="p-2 rounded bg-slate-950 border border-slate-800">V(CO₂) = <b class="text-sky-300">${vCO2} cm³</b></div>
+      <div class="p-2 rounded bg-slate-950 border border-slate-800">Unreacted O₂ = <b class="text-purple-300">${vO2Left} cm³</b></div>
+      <div class="p-2 rounded bg-slate-950 border border-emerald-800/70">Total Gas (r.t.p.) = <b class="text-emerald-300">${vTotalFinal} cm³</b></div>
+    </div>
+    <div class="text-[11px] text-amber-300">💡 <b>WCH11 Exam Trap:</b> At r.t.p., H₂O is liquid (0 cm³ gas). If a student wrongly counts ${vH2OgasTrap} cm³ of H₂O(g) or forgets the ${vO2Left} cm³ excess O₂, they lose the final mark!</div>
+  `;
+}
+
+/* ── 6. TAB 6: ALIQUOT SCALER & PPM STUDIO ── */
+function updateAliquotStudio(){
+  const m = parseFloat((document.getElementById('aliMass') || {}).value) || 2.65;
+  const Mr = parseFloat((document.getElementById('aliMr') || {}).value) || 106.0;
+  const vFlask = parseFloat((document.getElementById('aliFlask') || {}).value) || 250;
+  const vPip = parseFloat((document.getElementById('aliPipette') || {}).value) || 25;
+
+  const nFlask = m / Mr;
+  const cMol = nFlask / (vFlask / 1000);
+  const cGram = cMol * Mr;
+  const scaleFactor = vFlask / vPip;
+  const nAliquot = nFlask / scaleFactor;
+
+  const out = document.getElementById('aliStudioOutput');
+  if (!out) return;
+  out.innerHTML = `
+    <div class="grid grid-cols-2 gap-2 text-[11px] font-mono">
+      <div class="p-2.5 rounded bg-slate-950 border border-slate-800">
+        <span class="text-slate-400 block">In ${vFlask} cm³ Volumetric Flask:</span>
+        <b class="text-sky-300">n = ${nFlask.toFixed(5)} mol</b><br>
+        <span class="text-slate-300">c = ${cMol.toFixed(4)} mol dm⁻³ (${cGram.toFixed(2)} g dm⁻³)</span>
+      </div>
+      <div class="p-2.5 rounded bg-slate-950 border border-rose-800/70">
+        <span class="text-slate-400 block">In ${vPip} cm³ Pipette Aliquot (÷${scaleFactor}):</span>
+        <b class="text-rose-300">n = ${nAliquot.toFixed(5)} mol</b><br>
+        <span class="text-emerald-300">c = ${cMol.toFixed(4)} mol dm⁻³ (UNCHANGED)</span>
+      </div>
+    </div>
+    <div class="text-[11px] text-slate-400">Working backwards in a titration: multiply moles in the ${vPip} cm³ aliquot by <b>×${scaleFactor}</b> to find total moles in the ${vFlask} cm³ flask.</div>
+  `;
+}
+
+function updatePpmStudio(){
+  const part = parseFloat((document.getElementById('ppmPart') || {}).value) || 0;
+  const tot = parseFloat((document.getElementById('ppmTotal') || {}).value) || 100;
+  const mode = (document.getElementById('ppmMode') || {}).value || 'pct';
+  const out = document.getElementById('ppmStudioOutput');
+  if (!out) return;
+
+  let ppm = 0, formulaStr = '';
+  if (mode === 'pct') {
+    ppm = part * 10000;
+    formulaStr = `${part}% × 10 000 = ${ppm.toLocaleString()} ppm (since 1% = 1 in 100 = 10 000 in 10⁶)`;
+  } else if (mode === 'ratio') {
+    ppm = tot > 0 ? (part / tot) * 1e6 : 0;
+    formulaStr = `(${part} ÷ ${tot}) × 10⁶ = ${ppm.toFixed(2)} ppm`;
+  } else {
+    const dm3 = tot / 1000;
+    ppm = dm3 > 0 ? part / dm3 : 0;
+    formulaStr = `${part} mg ÷ ${dm3} dm³ = ${ppm.toFixed(2)} mg dm⁻³ = ${ppm.toFixed(2)} ppm`;
+  }
+  out.innerHTML = `
+    <div class="text-amber-300 font-mono text-sm font-bold">Result = ${ppm.toLocaleString(undefined, {maximumFractionDigits: 3})} ppm</div>
+    <div class="text-[11px] text-slate-300 font-mono">${formulaStr}</div>
+    <div class="text-[11px] text-slate-400">Equivalent percentage = <b>${(ppm / 10000).toFixed(5)}%</b></div>
+  `;
+}
+
+/* ── 7. TAB 7: NEW SOLVER WORKBENCH GATES 5–8 ── */
+function solverIdealGas(){
+  const p = parseFloat(document.getElementById('sIdP').value);
+  const v = parseFloat(document.getElementById('sIdV').value);
+  const t = parseFloat(document.getElementById('sIdT').value);
+  const out = document.getElementById('sIdOut');
+  if (!(p > 0) || !(v > 0) || isNaN(t)) { out.textContent = 'Enter valid p (kPa), V (cm³), T (°C).'; return; }
+  const pPa = p * 1000, vM3 = v * 1e-6, tK = t + 273;
+  const n = (pPa * vM3) / (8.31 * tK);
+  out.textContent = `SI: ${pPa} Pa, ${vM3.toExponential(2)} m³, ${tK} K → n = ${n.toExponential(4)} mol`;
+}
+
+function solverEmpirical(){
+  const c = parseFloat(document.getElementById('sEmpC').value) || 0;
+  const h = parseFloat(document.getElementById('sEmpH').value) || 0;
+  const o = parseFloat(document.getElementById('sEmpO').value) || 0;
+  const out = document.getElementById('sEmpOut');
+  const vals = [
+    { sym: 'C', n: c / 12.0 },
+    { sym: 'H', n: h / 1.0 },
+    { sym: 'O', n: o / 16.0 }
+  ].filter(x => x.n > 0);
+  if (!vals.length) { out.textContent = 'Enter % or mass for C, H, O.'; return; }
+  const minN = Math.min(...vals.map(x => x.n));
+  const rawR = vals.map(x => x.n / minN);
+  let mult = 1;
+  for (const m of [1, 2, 3, 4]) {
+    if (rawR.every(r => Math.abs(r * m - Math.round(r * m)) < 0.08)) { mult = m; break; }
+  }
+  const f = vals.map((x, i) => {
+    const k = Math.round(rawR[i] * mult);
+    return x.sym + (k > 1 ? k : '');
+  }).join('');
+  out.textContent = `Moles ÷ smallest (${minN.toFixed(3)}) ×${mult} → Empirical Formula = ${f}`;
+}
+
+function solverYieldAE(){
+  const act = parseFloat(document.getElementById('sYaAct').value);
+  const theo = parseFloat(document.getElementById('sYaTheo').value);
+  const des = parseFloat(document.getElementById('sYaDes').value);
+  const tot = parseFloat(document.getElementById('sYaTot').value);
+  const out = document.getElementById('sYaOut');
+  const yld = (act > 0 && theo > 0) ? (act / theo) * 100 : 0;
+  const ae = (des > 0 && tot > 0) ? (des / tot) * 100 : 0;
+  const warn = yld > 100 ? ' ⚠️ (>100%: check limiting reagent!)' : '';
+  out.textContent = `% Yield = ${yld.toFixed(1)}%${warn}  |  Atom Economy = ${ae.toFixed(1)}%`;
+}
+
+function solverIsotopeAr(){
+  const m1 = parseFloat(document.getElementById('sIsoM1').value) || 0;
+  const p1 = parseFloat(document.getElementById('sIsoP1').value) || 0;
+  const m2 = parseFloat(document.getElementById('sIsoM2').value) || 0;
+  const p2 = parseFloat(document.getElementById('sIsoP2').value) || 0;
+  const out = document.getElementById('sIsoOut');
+  const totP = p1 + p2;
+  if (!(totP > 0)) { out.textContent = 'Enter isotope masses and abundances.'; return; }
+  const ar = (m1 * p1 + m2 * p2) / totP;
+  out.textContent = `Aᵣ = ${ar.toFixed(4)} → 2 d.p.: ${ar.toFixed(2)} | 4 s.f.: ${ar.toPrecision(4)} (unitless!)`;
+}
+
+/* ── 8. TAB 8: VIRTUAL CP1 LAB & WCH13 UNCERTAINTY CALCULATOR ── */
+function updateCp1Sim(){
+  const mMg = parseFloat((document.getElementById('cp1MassSlider') || {}).value) || 0.12;
+  const cond = (document.getElementById('cp1Cond') || {}).value || 'ideal';
+  const lbl = document.getElementById('cp1MassLabel');
+  if (lbl) lbl.textContent = mMg.toFixed(2) + ' g';
+
+  // 30 cm3 of 1.00 mol dm-3 HCl = 0.0300 mol HCl -> max H2 = 0.0150 mol -> max Mg = 0.0150 * 24.3 = 0.3645 g
+  const maxMg = 0.3645;
+  const factor = cond === 'hot' ? 1.08 : (cond === 'bung' ? 0.88 : (cond === 'co2water' ? 0.68 : 1.00));
+  const nMg = mMg / 24.3;
+  const nGasActual = Math.min(nMg, 0.0150);
+  const vGasCm3 = nGasActual * 24000 * factor;
+  const calcVm = (vGasCm3 / 1000) / nMg; // if student assumes all Mg reacted
+  const pctErr = ((calcVm - 24.0) / 24.0) * 100;
+
+  const svg = document.getElementById('cp1Svg');
+  if (svg) {
+    const x0 = 42, x1 = 340, y0 = 140, yTop = 25;
+    const platX = x0 + (maxMg / 0.50) * (x1 - x0);
+    const platY = y0 - (360 * factor / 400) * (y0 - yTop);
+    const curX = x0 + (mMg / 0.50) * (x1 - x0);
+    const curY = y0 - (vGasCm3 / 400) * (y0 - yTop);
+
+    svg.innerHTML = `
+      <line x1="${x0}" y1="${y0}" x2="${x1}" y2="${y0}" stroke="#475569" stroke-width="1.5"/>
+      <line x1="${x0}" y1="${y0}" x2="${x0}" y2="15" stroke="#475569" stroke-width="1.5"/>
+      <line x1="${platX}" y1="${yTop}" x2="${platX}" y2="${y0}" stroke="#f59e0b" stroke-dasharray="3 3" stroke-width="1"/>
+      <polyline points="${x0},${y0} ${platX},${platY} ${x1},${platY}" fill="none" stroke="#10b981" stroke-width="2.5"/>
+      <circle cx="${curX}" cy="${curY}" r="5" fill="#ffffff" stroke="#10b981" stroke-width="2.5"/>
+      <text x="${platX}" y="18" text-anchor="middle" fill="#fbbf24" font-size="9.5" font-family="monospace">Acid Limiting &gt; 0.36 g Mg</text>
+      <text x="190" y="158" text-anchor="middle" fill="#94a3b8" font-size="10">Mass of Mg Ribbon Added (g)</text>
+      <text x="14" y="80" text-anchor="middle" fill="#94a3b8" font-size="10" transform="rotate(-90 14 80)">V(gas) cm³</text>
+    `;
+  }
+
+  const read = document.getElementById('cp1Readout');
+  if (read) {
+    const limNote = mMg > maxMg
+      ? '<span class="text-amber-300 font-semibold">⚠️ HCl is now limiting! Unreacted Mg remains, so dividing V by n(Mg) underestimates Vₘ.</span>'
+      : '<span class="text-emerald-300">✓ HCl is in excess (Mg is limiting).</span>';
+    read.innerHTML = `
+      <div>n(Mg) = <b>${nMg.toFixed(5)} mol</b> · Measured V = <b>${vGasCm3.toFixed(1)} cm³</b> · Experimental Vₘ = <b>${calcVm.toFixed(2)} dm³ mol⁻¹</b> (${pctErr >= 0 ? '+' : ''}${pctErr.toFixed(1)}% error)</div>
+      <div class="mt-1">${limNote}</div>
+    `;
+  }
+}
+
+function syncUncDefaults(){
+  const raw = (document.getElementById('uncApp') || {}).value || '0.05|2|24.00|cm³';
+  const [unc, nRead, defVal] = raw.split('|');
+  document.getElementById('uncVal').value = defVal;
+  document.getElementById('uncN').value = nRead;
+  updateUncSim();
+}
+
+function updateUncSim(){
+  const raw = (document.getElementById('uncApp') || {}).value || '0.05|2|24.00|cm³';
+  const [uncS, , , unit] = raw.split('|');
+  const halfUnc = parseFloat(uncS);
+  const val = parseFloat((document.getElementById('uncVal') || {}).value) || 24.0;
+  const nRead = parseInt((document.getElementById('uncN') || {}).value, 10) || 1;
+  const totalAbs = halfUnc * nRead;
+  const pct = (totalAbs / val) * 100;
+
+  const out = document.getElementById('uncSimOutput');
+  if (!out) return;
+  out.innerHTML = `
+    <div class="font-mono text-sky-300 text-xs">
+      % Uncertainty = (${nRead} × ±${halfUnc} ${unit} ÷ ${val} ${unit}) × 100 = <b class="text-white text-sm">${pct.toFixed(2)}%</b>
+    </div>
+    <div class="text-[11px] text-slate-400">
+      • Single-reading trap (forgetting ×2 on a burette/balance-by-difference) would give <b>${((halfUnc / val) * 100).toFixed(2)}%</b>.<br>
+      • To reduce % uncertainty in WCH13: use a <b>larger mass / larger titre</b> (e.g. lower concentration titrant).
+    </div>
+  `;
+}
+
+/* ── 9. TAB 9: INTERACTIVE TRAP CHECKLIST & 12-QUESTION EXAM DIAGNOSTIC ── */
+const DIAG_QUESTIONS = [
+  { spec: '1.1', q: 'Which species is a molecule of a compound?', opts: ['O₃(g)', 'NH₃(g)', 'NaCl(s)', 'Mg²⁺(g)'], ans: 1, exp: 'NH₃ is a discrete covalent molecule containing atoms of two different elements chemically combined.' },
+  { spec: '1.2', q: 'How many oxygen atoms are in 0.050 mol of hydrated copper(II) sulfate, CuSO₄·5H₂O?', opts: ['3.01 × 10²²', '1.20 × 10²³', '2.71 × 10²³', '5.42 × 10²³'], ans: 2, exp: '1 formula unit of CuSO₄·5H₂O contains 4 + 5 = 9 oxygen atoms. N(O) = 0.050 × 9 × 6.02 × 10²³ = 2.71 × 10²³ atoms.' },
+  { spec: '1.3', q: 'What is the ionic equation for the reaction of solid magnesium oxide with dilute nitric acid?', opts: ['MgO(s) + 2H⁺(aq) → Mg²⁺(aq) + H₂O(l)', 'O²⁻(aq) + 2H⁺(aq) → H₂O(l)', 'Mg²⁺(s) + 2NO₃⁻(aq) → Mg(NO₃)₂(aq)', 'MgO(s) + 2HNO₃(aq) → Mg(NO₃)₂(s) + H₂O(l)'], ans: 0, exp: 'MgO is an insoluble solid so it is written as MgO(s), while NO₃⁻ is the aqueous spectator ion.' },
+  { spec: '1.4', q: 'A sample of river water contains 15.0 mg of nitrate ions in 250 cm³ of solution. What is the concentration in ppm?', opts: ['3.75 ppm', '15.0 ppm', '60.0 ppm', '600 ppm'], ans: 2, exp: '250 cm³ = 250 g of solution. 15.0 mg in 250 cm³ = 60.0 mg dm⁻³ = 60.0 ppm.' },
+  { spec: '1.5', q: '25.0 cm³ of 0.400 mol dm⁻³ Na₂CO₃ is diluted with distilled water to a total volume of 200 cm³. What is the new concentration of Na⁺(aq) ions?', opts: ['0.0500 mol dm⁻³', '0.100 mol dm⁻³', '0.200 mol dm⁻³', '0.800 mol dm⁻³'], ans: 1, exp: 'c₂(Na₂CO₃) = 0.400 × (25.0/200) = 0.0500 mol dm⁻³. Each Na₂CO₃ releases 2 Na⁺ ions → [Na⁺] = 0.100 mol dm⁻³.' },
+  { spec: '1.6', q: 'An oxide of nitrogen contains 30.4% N by mass and has Mᵣ = 92.0. What is its molecular formula?', opts: ['NO₂', 'N₂O₃', 'N₂O₄', 'N₂O₅'], ans: 2, exp: 'N : O = (30.4/14.0) : (69.6/16.0) = 2.17 : 4.35 = 1 : 2 → empirical NO₂ (Mᵣ = 46.0). Since 92.0 / 46.0 = 2, molecular formula is N₂O₄.' },
+  { spec: '1.7', q: 'Impure CaCO₃ (2.50 g) reacts with excess HCl to produce 0.880 g of CO₂. What is the percentage purity of the CaCO₃?', opts: ['35.2%', '70.4%', '80.0%', '88.0%'], ans: 2, exp: 'n(CO₂) = 0.880 / 44.0 = 0.0200 mol = n(pure CaCO₃). Mass of pure CaCO₃ = 0.0200 × 100.1 = 2.00 g. % purity = (2.00 / 2.50) × 100 = 80.0%.' },
+  { spec: '1.8', q: '20 cm³ of ethene (C₂H₄) is burned completely in 100 cm³ of O₂ at r.t.p. What is the total volume of gas remaining at r.t.p.?', opts: ['80 cm³', '100 cm³', '120 cm³', '160 cm³'], ans: 0, exp: 'C₂H₄ + 3O₂ → 2CO₂ + 2H₂O(l). 20 cm³ C₂H₄ reacts with 60 cm³ O₂ (leaving 40 cm³ excess O₂) and forms 40 cm³ CO₂. Total gas at r.t.p. = 40 + 40 = 80 cm³.' },
+  { spec: '1.9', q: 'For Fe₂O₃ + 3CO → 2Fe + 3CO₂, what is the atom economy to produce iron (Aᵣ: Fe = 55.8, C = 12.0, O = 16.0)?', opts: ['30.1%', '45.8%', '54.2%', '69.9%'], ans: 1, exp: 'Mass of desired product = 2 × 55.8 = 111.6. Total mass of all products = 111.6 + 3(44.0) = 243.6. Atom economy = (111.6 / 243.6) × 100 = 45.8%.' },
+  { spec: '1.10', q: 'In a continuous variation experiment between 0.50 mol dm⁻³ AgNO₃ and 0.50 mol dm⁻³ K₂CrO₄ (total V = 12 cm³), at what volumes is maximum Ag₂CrO₄(s) formed?', opts: ['6.0 cm³ AgNO₃ + 6.0 cm³ K₂CrO₄', '8.0 cm³ AgNO₃ + 4.0 cm³ K₂CrO₄', '4.0 cm³ AgNO₃ + 8.0 cm³ K₂CrO₄', '9.0 cm³ AgNO₃ + 3.0 cm³ K₂CrO₄'], ans: 1, exp: '2Ag⁺ + CrO₄²⁻ → Ag₂CrO₄(s) reacts in a 2 : 1 mole ratio, so 8.0 cm³ AgNO₃ + 4.0 cm³ K₂CrO₄ gives the peak.' },
+  { spec: '1.11', q: 'In Core Practical 1, which error causes the calculated molar volume of H₂ to be LOWER than 24.0 dm³ mol⁻¹?', opts: ['Reading the gas syringe before the hot flask has cooled to r.t.p.', 'Some H₂ gas escaping before the bung is inserted.', 'Using excess hydrochloric acid.', 'The magnesium ribbon being slightly damp with water before weighing.'], ans: 1, exp: 'Wait — both gas escape AND damp Mg reduce V/n! Specifically, gas escaping before inserting the bung directly reduces the measured volume V of H₂ collected.' },
+  { spec: '1.12', q: 'Which pair of aqueous solutions forms a white precipitate that is insoluble in dilute hydrochloric acid?', opts: ['Na₂CO₃(aq) + BaCl₂(aq)', 'Na₂SO₄(aq) + BaCl₂(aq)', 'KI(aq) + Pb(NO₃)₂(aq)', 'NaOH(aq) + CuSO₄(aq)'], ans: 1, exp: 'Ba²⁺(aq) + SO₄²⁻(aq) → BaSO₄(s) is a white precipitate insoluble in dilute HCl (whereas BaCO₃ dissolves with effervescence).' }
+];
+
+function renderDiagnosticQuiz(){
+  const wrap = document.getElementById('diagQuizContainer');
+  if (!wrap) return;
+  wrap.innerHTML = DIAG_QUESTIONS.map((item, idx) => {
+    const sel = STUDIO_STATE.diagAns[idx];
+    const answered = sel !== undefined;
+    const isOk = sel === item.ans;
+    return `
+      <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-2.5 flex flex-col justify-between">
+        <div class="space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-[10px] font-mono text-rose-400 uppercase font-bold px-2 py-0.5 bg-rose-950 rounded border border-rose-800">Spec ${item.spec}</span>
+            <span class="text-[10px] font-mono ${answered ? (isOk ? 'text-emerald-400' : 'text-amber-400') : 'text-slate-500'}">${answered ? (isOk ? '✓ 1 / 1 Mark' : '✗ 0 / 1 Mark') : 'Unanswered'}</span>
+          </div>
+          <p class="text-xs font-semibold text-white leading-relaxed">${idx+1}. ${item.q}</p>
+          <div class="space-y-1.5">
+            ${item.opts.map((opt, oIdx) => {
+              let cls = 'border-slate-800 bg-slate-950/70 text-slate-300 hover:border-sky-700';
+              if (answered) {
+                if (oIdx === item.ans) cls = 'border-emerald-600 bg-emerald-950/40 text-emerald-200 font-semibold';
+                else if (oIdx === sel) cls = 'border-rose-600 bg-rose-950/40 text-rose-200';
+              }
+              return `
+                <button type="button" onclick="answerDiagnostic(${idx}, ${oIdx})" class="w-full text-left p-2 rounded-lg border ${cls} text-[11px] leading-snug">
+                  <span class="font-mono text-sky-400 mr-1.5">${String.fromCharCode(65+oIdx)}.</span>${opt}
+                </button>
+              `;
+            }).join('')}
+          </div>
+        </div>
+        <div class="${answered ? '' : 'hidden'} p-2.5 rounded-lg bg-slate-950 border border-slate-800 text-[11px] text-slate-300 leading-relaxed">
+          <b class="${isOk ? 'text-emerald-400' : 'text-amber-400'}">${isOk ? '✓ Mark Scheme:' : '✗ Examiner Note:'}</b> ${item.exp}${(!isOk && item.why && item.why[sel]) ? ' ' + item.why[sel] : ''}
+        </div>
+      </div>
+    `;
+  }).join('');
+  updateDiagnosticScore();
+}
+
+function answerDiagnostic(qIdx, oIdx){
+  STUDIO_STATE.diagAns[qIdx] = oIdx;
+  saveStudioState();
+  renderDiagnosticQuiz();
+  updateMasteryDisplay();
+}
+
+function updateDiagnosticScore(){
+  const answered = Object.keys(STUDIO_STATE.diagAns).length;
+  let correct = 0;
+  for (let i = 0; i < DIAG_QUESTIONS.length; i++) {
+    if (STUDIO_STATE.diagAns[i] === DIAG_QUESTIONS[i].ans) correct++;
+  }
+  const pct = Math.round((correct / DIAG_QUESTIONS.length) * 100);
+  const el = document.getElementById('diagSummaryScore');
+  if (el) el.textContent = `${correct} / ${DIAG_QUESTIONS.length} Correct (${answered} Answered) · ${pct}%`;
+}
+
+function resetDiagnosticQuiz(){
+  STUDIO_STATE.diagAns = {};
+  saveStudioState();
+  renderDiagnosticQuiz();
+  updateMasteryDisplay();
+}
+
+function makeTrapChecklistInteractive(){
+  const traps = document.querySelectorAll('#rev-traps .grid > div');
+  traps.forEach((div, idx) => {
+    div.style.cursor = 'pointer';
+    const applyState = () => {
+      const on = !!STUDIO_STATE.trapChecked[idx];
+      if (on) {
+        div.innerHTML = div.innerHTML.replace('☐', '☑️');
+        div.classList.add('border-emerald-700/70', 'bg-emerald-950/20');
+      } else {
+        div.innerHTML = div.innerHTML.replace('☑️', '☐');
+        div.classList.remove('border-emerald-700/70', 'bg-emerald-950/20');
+      }
+    };
+    applyState();
+    div.addEventListener('click', () => {
+      STUDIO_STATE.trapChecked[idx] = !STUDIO_STATE.trapChecked[idx];
+      saveStudioState();
+      applyState();
+    });
+  });
+}
+
+/* ── 10. SPOTLIGHT QUICK JUMP MODAL (⌘K) ── */
+const SPOTLIGHT_ITEMS = [
+  { title: 'Spec 1.1–1.12 Master Syllabus & Micro-Checks', sub: 'Tab 1 · Syllabus Overview', act: () => switchTab('tab-syllabus') },
+  { title: 'Mandatory Polyatomic Ion Charges & Formula Builder', sub: 'Tab 2 · Engine A Grader & Ion Drill', act: () => { switchTab('tab-defs'); switchDefsMode('grader'); } },
+  { title: 'Mark Scheme Definition Keyword Grader (Aᵣ, Mole, Formula Mass)', sub: 'Tab 2 · Engine A Grader', act: () => { switchTab('tab-defs'); switchDefsMode('grader'); } },
+  { title: 'Interactive Equation Balancer & State Symbols', sub: 'Tab 3 · Engine B Lab', act: () => { switchTab('tab-equations'); switchEqMode('lab'); } },
+  { title: 'Observation vs Inference Examiner Drill (PEF Jan 2024)', sub: 'Tab 3 · Engine B Lab', act: () => { switchTab('tab-equations'); switchEqMode('lab'); } },
+  { title: 'Step-by-Step M1/M2/M3 Mole Problem Trainer', sub: 'Tab 4 · Engine C Trainer', act: () => { switchTab('tab-moles'); switchMolesMode('trainer'); } },
+  { title: 'Continuous Variation (Job’s Method) Precipitate Graph', sub: 'Tab 4 · Spec 1.10 Simulator', act: () => { switchTab('tab-moles'); switchMolesMode('trainer'); } },
+  { title: 'Ideal Gas pV = nRT & Volatile Liquid Mᵣ Sandbox', sub: 'Tab 5 · Engine D Simulator', act: () => { switchTab('tab-gas'); switchGasMode('sim'); } },
+  { title: 'Hydrocarbon Combustion Total Gas Volume Contraction', sub: 'Tab 5 · Engine D Simulator', act: () => { switchTab('tab-gas'); switchGasMode('sim'); } },
+  { title: 'Volumetric Flask → Pipette Aliquot Scaler (×10)', sub: 'Tab 6 · Engine E Studio', act: () => { switchTab('tab-solutions'); switchSolMode('studio'); } },
+  { title: 'Atmospheric Gas & Solution ppm Converter (Spec 1.4(iv))', sub: 'Tab 6 · Engine E Studio', act: () => { switchTab('tab-solutions'); switchSolMode('studio'); } },
+  { title: '8-Gate Mole, Ideal Gas, Empirical, Yield & Isotopic Aᵣ Solver', sub: 'Tab 7 · Solver Workbench', act: () => switchTab('tab-solver') },
+  { title: 'Virtual Core Practical 1 (CP1) Molar Volume & Uncertainty Lab', sub: 'Tab 8 · Core Practicals Sim', act: () => { switchTab('tab-pracs'); switchPracMode('sim'); } },
+  { title: '12-Question Edexcel IAL Topic 1 Exam Readiness Diagnostic', sub: 'Tab 9 · Final Review Diagnostic', act: () => { switchTab('tab-review'); const el=document.getElementById('rev-diagnostic'); if(el){el.open=true; el.scrollIntoView({behavior:'smooth'});} } }
+];
+
+function openSpotlightModal(){
+  const m = document.getElementById('spotlightModal');
+  if (!m) return;
+  m.classList.remove('hidden');
+  m.classList.add('flex');
+  const inp = document.getElementById('spotlightInput');
+  if (inp) { inp.value = ''; filterSpotlight(''); setTimeout(() => inp.focus(), 40); }
+}
+
+function closeSpotlightModal(){
+  const m = document.getElementById('spotlightModal');
+  if (!m) return;
+  m.classList.add('hidden');
+  m.classList.remove('flex');
+}
+
+function filterSpotlight(q){
+  const term = (q || '').toLowerCase().trim();
+  const res = document.getElementById('spotlightResults');
+  if (!res) return;
+  const matched = SPOTLIGHT_ITEMS.map((it, idx) => ({ it, idx })).filter(({ it }) => !term || it.title.toLowerCase().includes(term) || it.sub.toLowerCase().includes(term));
+  res.innerHTML = matched.length ? matched.map(({ it, idx }) => `
+    <button type="button" onclick="runSpotlightItem(${idx})" class="w-full text-left p-2.5 rounded-xl hover:bg-slate-800/80 flex items-center justify-between gap-2">
+      <div>
+        <div class="font-semibold text-white text-xs">${it.title}</div>
+        <div class="text-[10px] font-mono text-sky-400">${it.sub}</div>
+      </div>
+      <span class="text-slate-500 text-xs">↵</span>
+    </button>
+  `).join('') : '<div class="p-4 text-center text-slate-400">No matching Topic 1 tools found.</div>';
+}
+
+function runSpotlightItem(idx){
+  closeSpotlightModal();
+  if (SPOTLIGHT_ITEMS[idx]) SPOTLIGHT_ITEMS[idx].act();
+}
+
+document.addEventListener('keydown', function(e){
+  if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+    e.preventDefault();
+    openSpotlightModal();
+  } else if (e.key === 'Escape') {
+    closeSpotlightModal();
+  }
+});
+
+document.addEventListener('DOMContentLoaded', function(){
+  loadStudioState();
+  injectSyllabusCardInteractivity();
+  updateIonChallenge();
+  loadEqLabChallenge();
+  renderObsDrill();
+  loadMoleTrainerProblem();
+  updateContinuousVariation();
+  updateGasSim();
+  updateCombustionSim();
+  updateAliquotStudio();
+  updatePpmStudio();
+  updateCp1Sim();
+  updateUncSim();
+  renderDiagnosticQuiz();
+  makeTrapChecklistInteractive();
+  updateMasteryDisplay();
+  setTimeout(safeInitKaTeX, 150);
+});
+
 /* ══ MOBILE UX BOOT LAYER (chrome-only, JS-injected) ══ */
 const MOBILE_UX = {
           jumpTo(el){ /* rect-math scrollTo - smooth scrollIntoView no-ops on some mobile engines */
@@ -2859,7 +4913,606 @@ else MOBILE_UX.init();
   }
   [1500,4000].forEach(ms=>setTimeout(()=>{ if(M.buildToc) M.buildToc(); },ms));
 })();
+/* Topic 1 decide-first layer. Existing notes, labs and quizzes stay. */
+const T1_CHECK_KEY = 'wch11_t1_decide_v1';
+let t1Store = null;
+let t1Mode = 'practice';
+let t1Filter = 'mixed';
+let t1Queue = [];
+let t1Pos = 0;
+let t1Step = 0;
+let t1StepPos = 0;
+let t1Miss = '';
+
+const SPEC_WHY = [
+  [
+    'O₂ is the same element bonded to itself. H₂O has different elements bonded. NaCl is a lattice, so it has a relative formula mass, not a molecular mass.',
+    'O₂ is a molecule of an element, not a compound. NaCl is not a discrete covalent molecule.',
+    'NaCl does not exist as molecules. Calling all three molecular loses the lattice mark.'
+  ],
+  [
+    '1.20 × 10²⁴ is 2.00 × L, the formula units only. Each unit releases 5 ions.',
+    '2.00 mol × 5 ions = 10.0 mol of ions. 10.0 × 6.02 × 10²³ = 6.02 × 10²⁴. The water of crystallisation is not an ion.',
+    '3.61 × 10²⁴ counts the cations only (4 NH₄⁺ + 2 Fe²⁺ in 2.00 mol). The two sulfate ions must be counted as well.'
+  ],
+  [
+    'CaCl₂ has not been split, and Ca²⁺ is a spectator. The 2 : 2 ratio cancels to Ag⁺(aq) + Cl⁻(aq) → AgCl(s).',
+    'Spectators cancel. AgCl is the insoluble solid, so the state symbol is (s).',
+    'AgCl is not aqueous, and AgNO₃ should be split before the spectators are cancelled.'
+  ],
+  [
+    '42 is the percentage × 1 000. Parts per million are the percentage × 10 000.',
+    '0.0420 × 10 000 = 420 ppm.',
+    '4 200 is ten times too large. 0.0420% is 420 ppm.'
+  ],
+  [
+    '0.0500 × 111.1 = 5.56. The Mr includes both chlorine atoms.',
+    '3.78 is 0.0500 × 75.6, which is CaCl with only one chlorine. CaCl₂ is 111.1.',
+    'Dividing by Mr does not give g dm⁻³. Multiply.'
+  ],
+  [
+    '0.030 mol is the water, not the hydrogen atoms. Each H₂O gives 2 H, so n(H) = 0.060 mol.',
+    'n(C) = 0.88 / 44.0 = 0.020. n(H₂O) = 0.54 / 18.0 = 0.030, then × 2 = 0.060 mol H. Ratio 1 : 3, so CH₃.',
+    '0.88 and 0.54 are grams. Divide by 44 and 18 before you write a ratio.'
+  ],
+  [
+    'TiCl₄ would be limiting only if at least 0.100 mol of Mg were there. Only 0.080 mol is present.',
+    '0.050 mol TiCl₄ needs 0.100 mol Mg. Mg runs out first, and 0.080 / 2 = 0.040 mol Ti.',
+    'Mg is limiting, but the ratio is 2 Mg : 1 Ti. Do not report 0.080 mol of titanium.'
+  ],
+  [
+    '35 °C and 110 kPa do not match R = 8.31 J mol⁻¹ K⁻¹. Use kelvin and pascals for a volume in m³.',
+    '308 K and 110 000 Pa. V = nRT / p, with those units, is in m³.',
+    '308 K is right. 110 is still kilopascals. For m³, divide by 110 000 Pa.'
+  ],
+  [
+    'Going to completion is a yield idea. Atom economy ignores the 5% and uses only the equation.',
+    'One product means every reactant atom is in the desired product, so the atom economy is 100% even when the yield is 5%.',
+    'Water is a reactant here, not a catalyst. It becomes part of the ethanol.'
+  ],
+  [
+    'Heating three times and averaging is not what constant mass means.',
+    'The aim is to drive off water, not to decompose anhydrous CuSO₄ to CuO. Overheating ruins x.',
+    'Heat, weigh, and repeat until the mass stops falling. That is the evidence that the water has all left.'
+  ],
+  [
+    'Dissolving is not the same as boiling the water.',
+    'CO₂ is soluble enough that some never reaches the syringe or the measuring cylinder. The volume, and so the molar volume, comes out low.',
+    'Density does not decide this error. Solubility does.'
+  ],
+  [
+    '“Hydrogen is evolved” is an inference. The mark for the observation is what you see.',
+    'Bubbles, and the grey solid disappearing into a colourless solution. MgCl₂ is soluble, so there is no precipitate.',
+    'Magnesium chloride dissolves. A white precipitate is the wrong product and the wrong observation.'
+  ]
+];
+
+const DIAG_WHY = [
+  [
+    'O₃ is a molecule of an element. Every atom is oxygen.',
+    'NH₃ has nitrogen and hydrogen bonded. That is a molecule of a compound.',
+    'NaCl is a giant ionic lattice, not a molecule.',
+    'Mg²⁺ is an ion, not a molecule.'
+  ],
+  [
+    '3.01 × 10²² is 0.050 × L, the formula units. Each unit has 9 oxygen atoms.',
+    '1.20 × 10²³ counts only the 4 oxygen atoms in SO₄ and misses the 5 in the water.',
+    '9 × 0.050 × 6.02 × 10²³ = 2.71 × 10²³.',
+    '5.42 × 10²³ is double. There are 9 oxygen atoms in the formula, not 18.'
+  ],
+  [
+    'MgO stays as a solid. The acid supplies the H⁺. Nitrate is a spectator and cancels.',
+    'The oxide is not present as O²⁻(aq). Do not split MgO(s).',
+    'Mg²⁺ is not a solid, and nitrate does not show the reaction. It is a spectator.',
+    'That is a full equation, and Mg(NO₃)₂ is aqueous, not a solid.'
+  ],
+  [
+    '3.75 is 15.0 ÷ 4. The volume in dm³ is 0.250, not 4.',
+    '15.0 mg is the mass in the sample, not the concentration. Divide by 0.250 dm³.',
+    '15.0 / 0.250 = 60.0 mg dm⁻³ = 60.0 ppm.',
+    '600 divides by 0.025 dm³, which is 25 cm³, not 250 cm³.'
+  ],
+  [
+    '0.0500 mol dm⁻³ is the diluted Na₂CO₃. Each formula unit releases two Na⁺ ions.',
+    '0.400 × 25.0 / 200 = 0.0500 mol dm⁻³ of carbonate, then × 2 = 0.100 mol dm⁻³ of Na⁺.',
+    '0.200 has not applied the full dilution from 25 cm³ to 200 cm³.',
+    '0.800 is 0.400 × 2 with no dilution. The volume did change.'
+  ],
+  [
+    'NO₂ is the empirical formula. Mr 46, and 92 / 46 = 2, so the molecular formula is N₂O₄.',
+    'N₂O₃ would be 36.8% N, not 30.4%.',
+    '30.4% N and Mr 92 is exactly N₂O₄: empirical NO₂, then multiply by 2.',
+    'N₂O₅ would be 25.9% N. The percentage does not match.'
+  ],
+  [
+    '35.2% is 0.880 / 2.50 × 100. That compares two masses and never uses the equation.',
+    '70.4% comes from using 88 instead of 100 as the Mr of CaCO₃. The Mr is 100.',
+    '0.880 / 44.0 = 0.0200 mol of CO₂, and of CaCO₃. Mass of pure salt = 2.00 g. 2.00 / 2.50 × 100 = 80.0%.',
+    '88.0% treats 0.880 g as though the sample were 1.00 g.'
+  ],
+  [
+    'C₂H₄ + 3O₂ → 2CO₂ + 2H₂O. 20 cm³ of ethene uses 60 cm³ of oxygen and makes 40 cm³ of CO₂. Oxygen left = 40 cm³. Water is a liquid at r.t.p., so the gas left is 80 cm³.',
+    '100 cm³ is the oxygen you started with, not the gas remaining.',
+    '120 cm³ counts the water as if it were still a gas.',
+    '160 cm³ has not subtracted the oxygen that was used up.'
+  ],
+  [
+    '30.1% is not 2 × 55.8 divided by the sum of the Mr values of the products.',
+    'Desired product 2Fe = 111.6. All products = 111.6 + 3 × 44.0 = 243.6. 111.6 / 243.6 × 100 = 45.8%.',
+    '54.2% is the carbon dioxide share of the products. That is the waste, not the iron.',
+    '69.9% uses Fe₂O₃ as the denominator. Atom economy uses the products, not the reactant.'
+  ],
+  [
+    '6.0 + 6.0 is a 1 : 1 ratio. Ag₂CrO₄ needs 2 Ag⁺ for each CrO₄²⁻.',
+    'Equal concentrations, so the volumes follow 2 : 1. That is 8.0 cm³ of AgNO₃ and 4.0 cm³ of K₂CrO₄.',
+    '4.0 and 8.0 reverses the formula. The silver salt is the larger volume.',
+    '9.0 and 3.0 is 3 : 1. The precipitate is Ag₂CrO₄, so the ratio is 2 : 1.'
+  ],
+  [
+    'A hot gas has expanded. Reading it before the flask cools makes the volume, and the molar volume, too high.',
+    'Gas that escapes before the bung is fitted is never measured. V is low, so V / n is low.',
+    'Excess acid is there so that the magnesium reacts fully. It does not reduce the volume of hydrogen.',
+    'A damp ribbon also lowers the calculated value, because the weighed mass is not all magnesium. It is a real error. The keyed choice in this item is the gas lost before the bung is fitted. Excess acid is not a cause.'
+  ],
+  [
+    'BaCO₃ is white, but it dissolves in dilute hydrochloric acid and fizzes. The question says insoluble.',
+    'BaSO₄ is white and does not dissolve in dilute hydrochloric acid.',
+    'Lead(II) iodide is yellow, not white.',
+    'Copper(II) hydroxide is blue, not white.'
+  ]
+];
+
+SPEC_MICRO_CHECKS.forEach(function (item, i) { item.why = SPEC_WHY[i]; });
+DIAG_QUESTIONS.forEach(function (item, i) { item.why = DIAG_WHY[i]; });
+
+const T1_BANK = [
+  { id: 'a1', spec: '1.1', skill: 'Empirical formula',
+    q: 'Which line is the definition of an empirical formula?',
+    options: ['The simplest whole-number ratio of atoms of each element.', 'The actual number of atoms in one molecule.', 'The formula that shows the charges on the ions.', 'The mass of the most common isotope.'],
+    answer: 0,
+    why: ['Whole-number ratio. Not the molecular formula, and not a charged formula.', 'That is the molecular formula.', 'Charges belong on an ionic formula. An empirical formula is a ratio.', 'That is not a formula at all.'] },
+  { id: 'a2', spec: '1.2', skill: 'The mole',
+    q: 'Which definition of the mole scores?',
+    options: ['The amount of substance that contains as many particles as there are atoms in exactly 12 g of carbon-12.', 'The amount of substance in 12 g of carbon.', '6.02 × 10²³ grams of any substance.', 'The mass of one atom of the element.'],
+    answer: 0,
+    why: ['Both parts: the same number of particles, and exactly 12 g of carbon-12. Not “12 g of carbon”.', '“Carbon” is not “carbon-12”. The comparison atom has to be named.', 'L is a number of particles per mole, not a mass in grams.', 'That is closer to an atomic mass, and it is not the definition of the mole.'] },
+  { id: 'a3', spec: '1.2', skill: 'Using L',
+    q: 'You have 0.250 mol of molecules and you want the number of molecules. What do you do with L?',
+    options: ['Multiply the amount by L.', 'Divide the amount by L.', 'Multiply the amount by 24.0.', 'Multiply the amount by the Mr.'],
+    answer: 0,
+    why: ['N = nL. Dividing by L is the usual wrong way round.', 'Dividing gives an amount from a number of particles. You already have the amount.', '24.0 dm³ mol⁻¹ converts moles of gas into a volume. It does not count molecules.', 'Mr converts moles into grams.'] },
+  { id: 'a4', spec: '1.3', skill: 'Balancing',
+    q: 'A student balances an equation by changing a subscript. What is wrong?',
+    options: ['Subscripts are part of the formula. Only coefficients may change.', 'Subscripts are the correct thing to change. Coefficients are optional.', 'State symbols are used to balance atoms.', 'Charge does not have to balance if the atoms do.'],
+    answer: 0,
+    why: ['Changing a subscript invents a different substance. Balance with coefficients. Ionic equations must balance charge as well as atoms.', 'That reverses the rule.', 'State symbols describe the state. They do not balance the equation.', 'An ionic equation that does not balance for charge does not score.'] },
+  { id: 'a5', spec: '1.3', skill: 'Charge balance',
+    q: 'Which ionic equation is balanced for both atoms and charge?',
+    options: ['Mg(s) + 2H⁺(aq) → Mg²⁺(aq) + H₂(g)', 'Mg(s) + H⁺(aq) → Mg²⁺(aq) + H₂(g)', 'Mg(s) + 2H⁺(aq) → Mg⁺(aq) + H₂(g)', 'Mg²⁺(aq) + 2Cl⁻(aq) → MgCl₂(s)'],
+    answer: 0,
+    why: ['Two H⁺ on the left match Mg²⁺ on the right. The atoms balance, and the gas is H₂.', 'One H⁺ cannot produce H₂, and the charge goes from +1 to +2.', 'The magnesium ion from the metal and acid is Mg²⁺, not Mg⁺.', 'MgCl₂ is soluble. It is not a precipitate, and this is not the reaction of magnesium with acid.'] },
+  { id: 'a6', spec: '1.3', skill: 'State symbols',
+    q: 'Magnesium chloride is dissolved in water. Which state symbol scores?',
+    options: ['MgCl₂(aq)', 'MgCl₂(s)', 'MgCl₂(AQ)', 'MgCl₂(l)'],
+    answer: 0,
+    why: ['Dissolved means (aq). A June 2019 script lost the mark for (s) on aqueous MgCl₂. Capitals are not state symbols.', '(s) is the solid salt, not the solution. The examiner report flags this one.', '(AQ) is not a state symbol. Use lowercase (aq).', '(l) is a pure liquid, such as water. A solution is (aq).'] },
+  { id: 'a7', spec: '1.4', skill: 'Significant figures',
+    q: 'A calculated relative atomic mass is 35.4896. The question asks for 4 significant figures. Which value scores?',
+    options: ['35.49', '35.4900', '35.5', '35.4896'],
+    answer: 0,
+    why: ['35.49 has 4 significant figures. The examiner report rejected 35.4900 because that is 4 decimal places, not 4 significant figures. Round only the final answer.', '35.4900 is what candidates wrote when they confused decimal places with significant figures. It did not score.', '35.5 has 3 significant figures.', '35.4896 is the unrounded calculator value. The question asked for 4 significant figures.'] },
+  { id: 'a8', spec: '1.4', skill: 'Relative mass and molar mass',
+    q: 'Which statement is correct?',
+    options: ['Relative atomic mass has no units. Molar mass is the same number in g mol⁻¹.', 'They are different numbers.', 'Relative atomic mass is measured in grams.', 'Molar mass has no units.'],
+    answer: 0,
+    why: ['The number matches. The unit is the difference. Ionic compounds use relative formula mass, for the same reason: no units, and they are not molecules.', 'The numbers are equal. Do not invent a difference.', 'Grams would make it a mass, not a relative mass.', 'Molar mass needs g mol⁻¹. A missing unit can lose the final mark.'] },
+  { id: 'a9', spec: '1.5', skill: 'Volume unit',
+    q: 'Concentration is in mol dm⁻³. The volume measured is 25.0 cm³. Which value goes into n = cV?',
+    options: ['0.0250 dm³', '25.0', '25 000', '2.50 dm³'],
+    answer: 0,
+    why: ['Divide cm³ by 1 000 before you use n = cV. Leaving 25.0 in the equation is the usual lost mark.', '25.0 is still in cm³. The amount comes out 1 000 times too big.', '25 000 would be a conversion the wrong way, or into mm³.', '2.50 dm³ is 100 times too large. 25.0 cm³ = 0.0250 dm³.'] },
+  { id: 'a10', spec: '1.5', skill: 'g dm⁻³',
+    q: 'How do you convert a concentration in mol dm⁻³ into g dm⁻³?',
+    options: ['Multiply by the Mr.', 'Divide by the Mr.', 'Multiply by 1 000.', 'Multiply by 24.0.'],
+    answer: 0,
+    why: ['g dm⁻³ = mol dm⁻³ × Mr. The reverse conversion divides.', 'Dividing converts g dm⁻³ into mol dm⁻³.', '1 000 converts cm³ and dm³. It does not change the mass unit.', '24.0 dm³ mol⁻¹ is the molar volume of a gas, not a solution.'] },
+  { id: 'a11', spec: '1.6', skill: 'A 1.5 ratio',
+    q: 'A mole ratio comes out as 1 : 1.50. What is the empirical formula ratio?',
+    options: ['2 : 3', '1 : 2', '1 : 1.5, which is already an empirical formula', '1 : 15'],
+    answer: 0,
+    why: ['Multiply 1 : 1.50 by 2. Do not round 1.50 to 2, and do not leave the decimal in the formula.', 'Rounding 1.50 to 2 is the error the specification cards warn about.', 'An empirical formula is a whole-number ratio.', 'Moving the decimal point is not scaling the ratio.'] },
+  { id: 'a12', spec: '1.6', skill: 'Hydrogen in combustion',
+    q: 'In a combustion analysis, each molecule of water collected corresponds to how many hydrogen atoms in the compound?',
+    options: ['2', '1', '18', '0. Water is not used for the hydrogen count.'],
+    answer: 0,
+    why: ['H₂O contains 2 H. Forgetting the ×2 halves the hydrogen ratio. The carbon count comes from CO₂, one C per molecule.', '1 would be right for CO₂ and carbon, not for water and hydrogen.', '18 is the Mr of water, not the number of hydrogen atoms.', 'The water is the evidence for the hydrogen. It has to be used, and then doubled.'] },
+  { id: 'a13', spec: '1.7', skill: 'Transferred error',
+    q: 'A candidate uses a wrong Mr and then a correct mole ratio. Which statement matches the mark scheme?',
+    options: ['Later marks can still be awarded, as transferred error, from the wrong Mr.', 'A wrong mole ratio is also transferred error, so every later mark still stands.', 'Any wrong number ends the question. No later mark is available.', 'The unit is marked even when no working is shown.'],
+    answer: 0,
+    why: ['A wrong mass or Mr can carry forward. A wrong mole ratio from the equation caps the marks that follow. That difference is worth knowing before a long calculation.', 'The ratio is the step that does not transfer. Get the balancing right before you multiply.', 'Transferred error exists. A wrong Mr does not automatically zero the rest.', 'A missing method can lose the method marks. The unit is a separate, smaller point.'] },
+  { id: 'a14', spec: '1.7', skill: 'Three percentages',
+    q: 'Which expression is percentage purity?',
+    options: ['Mass of the pure substance ÷ mass of the sample × 100', 'Actual yield ÷ theoretical yield × 100', 'Mr of the desired product ÷ sum of the Mr values of all products × 100', 'Mass of the impurity ÷ mass of the sample × 100'],
+    answer: 0,
+    why: ['Purity is about the sample. Yield compares what you collected with what the equation predicted. Atom economy uses the equation alone and does not use the mass you collected.', 'That is percentage yield.', 'That is atom economy.', 'That is the percentage of impurity, not the purity.'] },
+  { id: 'a15', spec: '1.8', skill: 'Which gas constant',
+    q: 'A question says “at r.t.p.” and gives no pressure or temperature. How do you get a gas volume from an amount?',
+    options: ['Multiply the amount by 24.0 dm³ mol⁻¹.', 'Use pV = nRT with R = 8.31 and T = 25.', 'Multiply by 22.4 dm³ mol⁻¹, because that is always the molar volume on this paper.', 'Divide the amount by 24.0.'],
+    answer: 0,
+    why: ['This paper’s molar volume at r.t.p. is 24.0 dm³ mol⁻¹, or 24 000 cm³ mol⁻¹. Use pV = nRT only when the question gives p and T that are not r.t.p. Do not put 25 °C into that equation.', 'R is not the molar volume, and 25 is not a kelvin temperature.', '22.4 dm³ mol⁻¹ is not the value this specification uses at r.t.p.', 'Dividing by 24 gives an amount from a volume. You were asked for the volume.'] },
+  { id: 'a16', spec: '1.8', skill: 'A measured gas volume',
+    q: 'Core Practical 1 gives a measured volume of hydrogen. The question asks for the molar volume from the experiment. What do you use?',
+    options: ['The measured volume, divided by the amount of gas.', '24.0 dm³, because that is the accepted molar volume.', 'The mass of acid, whether or not the metal was limiting.', 'The room pressure only, with no volume.'],
+    answer: 0,
+    why: ['June 2019: do not replace an experimental volume with 24.0 dm³. The point of the practical is the measured volume. 24.0 dm³ is the value you compare with, afterwards.', '24.0 dm³ is the accepted value, not the experimental result.', 'The amount of gas comes from the limiting reagent. Excess acid is not that amount.', 'Pressure is not a substitute for the volume you collected.'] },
+  { id: 'a17', spec: '1.9', skill: 'Atom economy denominator',
+    q: 'What is the denominator in an atom-economy calculation?',
+    options: ['The sum of the Mr values of all the products.', 'The sum of the Mr values of the reactants.', 'The actual mass collected.', 'The theoretical mass of the desired product, even when the equation has other products.'],
+    answer: 0,
+    why: ['Products, not reactants. June 2019 and October 2023 both flag the denominator. If the equation has only one product, the atom economy is 100%.', 'Reactant masses are the wrong total. The specification cards say products.', 'The mass you collected is for the percentage yield, not the atom economy.', 'Other products are part of the sum. Leaving them out treats every reaction as an addition.'] },
+  { id: 'a18', spec: '1.9', skill: 'A low yield',
+    q: 'A yield is below 100%. Which reason scores?',
+    options: ['Some product was lost while it was being transferred.', 'The reaction is reversible. Those three words, and nothing else.', 'The atom economy is below 100%, so the yield must be too.', 'The answer was given to too many significant figures.'],
+    answer: 0,
+    why: ['Loss on transfer, equilibrium losses, or other practical losses can score. A bare “reversible” or “incomplete reaction” is rejected. Atom economy is a different percentage.', 'The examiner report rejects this line on its own. Say where the material was lost.', 'A low atom economy does not cause a low yield. One can be high while the other is low.', 'Significant figures are a presentation point. They do not explain a low yield.'] },
+  { id: 'a19', spec: '1.10', skill: 'Constant mass',
+    q: 'What does “heat to constant mass” require you to do?',
+    options: ['Heat, weigh, and repeat until the mass no longer changes.', 'Heat three times and take a mean. That sentence is the whole requirement.', 'Heat once, then calculate.', 'Add water and weigh the wet solid.'],
+    answer: 0,
+    why: ['The evidence is that the mass has stopped falling. “Repeat three times” does not say that. The same idea is used for a hydrate and for any gravimetric heating.', 'A mean of three readings is not constant mass.', 'One heating can leave water behind, so x comes out low.', 'Adding water undoes the dehydration.'] },
+  { id: 'a20', spec: '1.11', skill: 'Which gas over water',
+    q: 'In these Topic 1 practicals, which gas may be collected over water without a serious solubility error?',
+    options: ['Hydrogen', 'Carbon dioxide', 'Ammonia', 'Hydrogen chloride'],
+    answer: 0,
+    why: ['Hydrogen is effectively insoluble, so a gas syringe or collection over water both work. Carbon dioxide is soluble enough that collection over water makes the volume low. Ammonia and hydrogen chloride are very soluble.', 'Carbon dioxide dissolves. The volume, and the molar volume, come out low.', 'Ammonia dissolves readily. It is a poor choice for collection over water.', 'Hydrogen chloride is very soluble. It will not give the volume the equation predicts.'] },
+  { id: 'a21', spec: '1.11', skill: 'When to read the volume',
+    q: 'The flask in Core Practical 1 is still warm. When should you read the gas volume?',
+    options: ['After the apparatus has cooled to room temperature.', 'Immediately, while the gas is hot, so you record the largest volume.', 'After you heat the syringe with a Bunsen burner.', 'Temperature does not affect a gas volume, so either time is fine.'],
+    answer: 0,
+    why: ['A hot gas has expanded. Reading it early makes the experimental molar volume too high. Cool to r.t.p., then read.', 'The largest volume is the wrong volume. The comparison is with 24.0 dm³ at r.t.p.', 'Heating the syringe makes the error worse.', 'Gas volume does depend on temperature. That is why the practical specifies room temperature.'] },
+  { id: 'a22', spec: '1.11', skill: 'Percentage error',
+    q: 'Which expression is the percentage error?',
+    options: ['(Absolute uncertainty ÷ measured value) × 100', 'Measured value ÷ absolute uncertainty', 'The difference between two readings, with no division', 'Always 0.05%, whatever was measured'],
+    answer: 0,
+    why: ['A burette uncertainty of 0.05 cm³ becomes a percentage only after you divide by the titre. A smaller measured volume gives a larger percentage error.', 'That ratio is upside down, and it is not a percentage until you multiply by 100.', 'A difference is an absolute uncertainty, not yet a percentage.', '0.05 cm³ is an absolute uncertainty on a burette reading, not a percentage.'] },
+  { id: 'a23', spec: '1.12', skill: 'Observation or inference',
+    q: 'Acid is added to a carbonate. The question says “describe what you would see”. Which line scores?',
+    options: ['Effervescence. A colourless gas is given off.', 'Carbon dioxide is evolved.', 'The acid has been neutralised.', 'The temperature rises, and no bubbles are mentioned.'],
+    answer: 0,
+    why: ['January 2024: bubbles or effervescence is the observation. Naming the gas is the inference. You can write both, but the observation has to be there.', 'Naming carbon dioxide, with no bubbles, is the inference. It does not say what you saw.', 'Neutralisation is a conclusion, not an observation.', 'A temperature change can be real, but it is not the observation this reaction is tested on. The fizz is.'] },
+  { id: 'a24', spec: '1.1', skill: 'Ion charges',
+    q: 'What is the formula of iron(III) sulfate?',
+    options: ['Fe₂(SO₄)₃', 'FeSO₄', 'Fe₂(SO₄)₂', 'Fe(SO₄)₃'],
+    answer: 0,
+    why: ['Fe³⁺ and SO₄²⁻ balance as 2 : 3. June 2024: learn the charges. FeSO₄ is the iron(II) salt.', 'FeSO₄ is iron(II) sulfate. The charge on the cation is +2, not +3.', '2 and 2 does not balance +3 against −2.', 'One Fe³⁺ cannot balance three SO₄²⁻. The charges are −6 against +3.'] }
+];
+
+const T1_WORDS = [
+  { id: 'c1', spec: '1.8', skill: 'Command word: state',
+    q: 'The question is: “State the molar volume of a gas at r.t.p.” What is enough?',
+    options: ['24.0 dm³ mol⁻¹. No reason is required.', 'A full derivation of pV = nRT, with a sample calculation.', 'The reason hydrogen can be collected over water.', 'The percentage error in a gas syringe.'],
+    answer: 0,
+    why: ['State asks for the fact. 24.0 dm³ mol⁻¹, or 24 000 cm³ mol⁻¹. A reason belongs to “explain”.', 'That would suit a calculate or explain question. It is not what “state” asks for.', 'That is a practical point, not the molar volume.', 'Percentage error is a different question.'] },
+  { id: 'c2', spec: '1.4', skill: 'Command word: explain',
+    q: 'The question is: “Explain why relative formula mass is used for NaCl, not relative molecular mass.” What must the answer do?',
+    options: ['Give the reason: NaCl is a giant ionic lattice, not a molecule.', 'Quote the Mr of NaCl and stop.', 'Write the ionic equation for dissolving NaCl.', 'State the Avogadro constant.'],
+    answer: 0,
+    why: ['Explain needs the cause. There are no NaCl molecules, so “molecular” is the wrong word.', 'A number does not explain the choice of words.', 'An equation does not say why the mass is called a formula mass.', 'L is not the reason.'] },
+  { id: 'c3', spec: '1.5', skill: 'Command word: calculate',
+    q: 'The question is: “Calculate the mass of NaOH needed to make 250 cm³ of 0.200 mol dm⁻³ solution.” What earns the marks?',
+    options: ['Working: volume in dm³, then n = cV, then m = nM, with the unit g.', 'The definition of concentration, and no number.', 'An ionic equation for NaOH in water.', 'A hazard warning for sodium hydroxide.'],
+    answer: 0,
+    why: ['Calculate means a number from shown working, with a unit. 0.200 × 0.250 = 0.0500 mol, then × 40.0 = 2.00 g.', 'A definition answers “define” or “state what is meant”.', 'An equation does not give the mass.', 'The hazard may matter in another question. It is not the mass.'] },
+  { id: 'c4', spec: '1.11', skill: 'Command word: suggest',
+    q: 'The question is: “Suggest why the volume of CO₂ collected was less than expected.” What kind of answer is wanted?',
+    options: ['A cause that fits this experiment: the gas escaped, or CO₂ dissolved, or the reading was taken before the reaction finished.', 'The definition of molar volume, with no link to the missing gas.', 'The electron configuration of carbon.', 'A statement that experiments always match the calculation, so the question is wrong.'],
+    answer: 0,
+    why: ['Suggest means a sensible cause for this practical. More than one cause can score. It still has to explain a low volume.', 'A definition does not say where the gas went.', 'Carbon’s configuration does not explain a low volume.', 'The gap between the calculated volume and the collected volume is the point of the question.'] },
+  { id: 'c5', spec: '1.7', skill: 'Command word: deduce',
+    q: 'The question gives both reactant amounts and says “Deduce the limiting reagent.” What do you do?',
+    options: ['Use those amounts and the ratio in the equation. The reagent that runs out first is limiting.', 'Name the more reactive metal, and ignore the amounts.', 'Write the definition of the mole.', 'Calculate an atom economy from the amounts.'],
+    answer: 0,
+    why: ['Deduce means work it out from what you were given. Divide each amount by its coefficient and compare.', 'Reactivity does not decide a limiting reagent. The amounts and the ratio do.', 'A definition does not use the data.', 'Atom economy does not use the amounts you were given. It uses the equation.'] },
+  { id: 'c6', spec: '1.12', skill: 'Command word: describe',
+    q: 'The question is: “Describe what you would see when magnesium is added to dilute hydrochloric acid.” What scores?',
+    options: ['The observation: the grey solid disappears and bubbles are given off.', 'The equation only, with no observation.', '“Hydrogen is evolved”, and nothing about what you saw.', 'The mass of magnesium, calculated to 3 significant figures.'],
+    answer: 0,
+    why: ['Describe, here, means what you see. Bubbles, and the solid disappearing. Naming hydrogen is the inference.', 'An equation answers “write the equation”. It does not describe the tube.', 'Naming the gas, with no bubbles, is the inference the examiner report separates from the observation.', 'A calculation is not an observation.'] }
+];
+
+const T1_STEPS = [
+  { id: 'p1', spec: '1.5', title: 'Mass from a concentration',
+    intro: 'What mass of NaOH (Mr = 40.0) is needed for 250 cm³ of a 0.200 mol dm⁻³ solution?',
+    close: 'The mark is usually lost by leaving 250 in cm³. Concentration is in mol dm⁻³, so the volume has to be in dm³ before n = cV.',
+    steps: [
+      { prompt: 'Volume in dm³', answer: 0.25, tol: 0.0001, miss: function (v) { return Math.abs(v - 250) < 0.1 ? '250 cm³ is 0.250 dm³. Divide by 1 000.' : 'Divide the cm³ value by 1 000.'; } },
+      { prompt: 'Amount of NaOH in mol', answer: 0.05, tol: 0.0001, miss: function (v) { return Math.abs(v - 50) < 0.1 ? 'That still uses 250 cm³. n = 0.200 × 0.250.' : 'Multiply 0.200 mol dm⁻³ by 0.250 dm³.'; } },
+      { prompt: 'Mass in g', answer: 2, tol: 0.001, miss: function () { return '0.0500 mol × 40.0 g mol⁻¹ = 2.00 g.'; } }
+    ] },
+  { id: 'p2', spec: '1.6', title: 'Empirical formula, with a 1.5 trap',
+    intro: 'An oxide of M (Ar = 56.0) is 70.0% M and 30.0% O. Use 100 g and Ar(O) = 16.0. Do not round until the last step.',
+    close: '1 : 1.50 is not a whole-number ratio. Multiply by 2. Rounding 1.50 to 2 gives MO₂, which is the error this question is built to catch.',
+    steps: [
+      { prompt: 'Moles of M in 100 g', answer: 1.25, tol: 0.005, miss: function () { return '70.0 ÷ 56.0 = 1.25 mol.'; } },
+      { prompt: 'Moles of O in 100 g', answer: 1.875, tol: 0.01, miss: function () { return '30.0 ÷ 16.0 = 1.875 mol.'; } },
+      { prompt: 'Moles of O after dividing both amounts by 1.25', answer: 1.5, tol: 0.02, miss: function (v) { return Math.abs(v - 2) < 0.05 ? '1.875 ÷ 1.25 = 1.50, not 2. Keep the .5 and scale it in the next step.' : 'Divide 1.875 by 1.25.'; } },
+      { prompt: 'Empirical formula. Type M2O3.', answer: 'M2O3', kind: 'text', miss: function (raw) { var t = t1Norm(raw); if (t === 'MO2' || t === 'MO') return 'That is the formula you get if 1.50 is rounded to 2 or to 1. Multiply 1 : 1.50 by 2.'; return 'The whole-number ratio is 2 : 3, so the formula is M₂O₃.'; } }
+    ] },
+  { id: 'p3', spec: '1.6', title: 'Combustion analysis, and the hydrogen',
+    intro: 'A hydrocarbon gives 0.880 g of CO₂ and 0.540 g of H₂O. Use Mr(CO₂) = 44.0 and Mr(H₂O) = 18.0.',
+    close: 'Carbon comes one-for-one from CO₂. Hydrogen comes two-for-one from H₂O. The empirical formula here is CH₃.',
+    steps: [
+      { prompt: 'Moles of carbon', answer: 0.02, tol: 0.0002, miss: function (v) { return Math.abs(v - 0.88) < 0.01 ? '0.880 is the mass in grams. Divide by 44.0.' : '0.880 ÷ 44.0 = 0.0200 mol of C.'; } },
+      { prompt: 'Moles of water', answer: 0.03, tol: 0.0003, miss: function () { return '0.540 ÷ 18.0 = 0.0300 mol of H₂O.'; } },
+      { prompt: 'Moles of hydrogen atoms', answer: 0.06, tol: 0.0005, miss: function (v) { return Math.abs(v - 0.03) < 0.001 ? '0.0300 is the water. Each H₂O gives 2 H, so multiply by 2.' : '0.0300 × 2 = 0.0600 mol of H atoms.'; } },
+      { prompt: 'Empirical formula. Type CH3.', answer: 'CH3', kind: 'text', miss: function (raw) { var t = t1Norm(raw); if (t === 'C2H3' || t === 'CH2') return 'That uses the water moles as if they were hydrogen atoms. The ratio is 0.0200 : 0.0600, which is CH₃.'; return '0.0200 : 0.0600 = 1 : 3, so the formula is CH₃.'; } }
+    ] },
+  { id: 'p4', spec: '1.8', title: 'pV = nRT in the units this paper expects',
+    intro: '0.100 mol of gas at 100 kPa and 20 °C. Use R = 8.31 J mol⁻¹ K⁻¹. Take 0 °C as 273 K. Give the last answer in dm³ to 3 significant figures. The safe route for a volume in m³ is pascals and kelvin.',
+    close: 'Pa with m³, and kelvin, always matches R. kPa with dm³ is also consistent, and gives the same 2.43 dm³. Celsius never works, and mixing Pa with dm³ does not work.',
+    steps: [
+      { prompt: 'Temperature in K', answer: 293, tol: 0.01, miss: function (v) { if (Math.abs(v - 20) < 0.1) return '20 °C cannot go into the equation. Add 273.'; return '20 + 273 = 293 K.'; } },
+      { prompt: 'Pressure in Pa', answer: 100000, tol: 1, miss: function (v) { if (Math.abs(v - 100) < 0.1) return '100 is the value in kPa. Multiply by 1 000.'; return '100 kPa = 100 000 Pa.'; } },
+      { prompt: 'Volume in m³', answer: 0.00243483, tol: 0.00005, miss: function (v) { if (v > 1) return 'A value above 1 is probably already in dm³, or the pressure is still in kPa. This step wants m³, using pascals.'; return 'V = 0.100 × 8.31 × 293 / 100 000 = 0.00243 m³.'; } },
+      { prompt: 'Volume in dm³, to 3 significant figures', answer: 2.43, tol: 0.015, miss: function (v) { if (Math.abs(v - 0.00243) < 0.0002) return 'That is still m³. Multiply by 1 000.'; if (Math.abs(v - 2.4) < 0.011) return '2.43 has 3 significant figures. 2.4 has dropped one.'; return '0.00243 m³ = 2.43 dm³.'; } }
+    ] },
+  { id: 'p5', spec: '1.9', title: 'Atom economy, then percentage yield',
+    intro: 'CH₃COOH + C₂H₅OH → CH₃COOC₂H₅ + H₂O. Mr of the ester is 88.0. Mr of water is 18.0. Theoretical mass of ester = 5.00 g. Mass collected = 3.20 g.',
+    close: 'Atom economy uses the equation. Percentage yield uses the mass you collected. Swapping the two numbers is a common loss of the “from the equation” mark.',
+    steps: [
+      { prompt: 'Sum of the Mr values of all products', answer: 106, tol: 0.01, miss: function (v) { if (Math.abs(v - 88) < 0.1) return '88 is only the desired product. Add the water. The denominator is every product.'; return '88.0 + 18.0 = 106.'; } },
+      { prompt: 'Percentage atom economy, to 3 significant figures', answer: 83, tol: 0.15, miss: function (v) { if (Math.abs(v - 64) < 0.2) return '64.0% is the yield, from 3.20 / 5.00. Atom economy does not use those masses.'; if (Math.abs(v - 100) < 0.1) return '100% would be one product. This equation also makes water.'; return '88.0 / 106 × 100 = 83.0%.'; } },
+      { prompt: 'Percentage yield, to 3 significant figures', answer: 64, tol: 0.15, miss: function (v) { if (Math.abs(v - 83) < 0.2) return '83.0% is the atom economy. Yield uses 3.20 / 5.00 × 100.'; return '3.20 / 5.00 × 100 = 64.0%.'; } }
+    ] },
+  { id: 'p6', spec: '1.10', title: 'Water of crystallisation',
+    intro: '2.46 g of MgSO₄·xH₂O leaves 1.20 g of anhydrous MgSO₄ after heating to constant mass. Use Mr(MgSO₄) = 120 and Mr(H₂O) = 18.0.',
+    close: 'Heating once is not constant mass. The arithmetic, once the water has all left, gives x = 7.',
+    steps: [
+      { prompt: 'Mass of water lost, in g', answer: 1.26, tol: 0.001, miss: function (v) { return Math.abs(v - 2.46) < 0.01 ? '2.46 g is the hydrate. Subtract the anhydrous mass.' : '2.46 − 1.20 = 1.26 g.'; } },
+      { prompt: 'Moles of MgSO₄', answer: 0.01, tol: 0.0001, miss: function () { return '1.20 / 120 = 0.0100 mol.'; } },
+      { prompt: 'Moles of water', answer: 0.07, tol: 0.0005, miss: function () { return '1.26 / 18.0 = 0.0700 mol.'; } },
+      { prompt: 'x, as a whole number', answer: 7, tol: 0.05, miss: function (v) { if (Math.abs(v - 0.7) < 0.02) return 'Divide moles of water by moles of salt, not the other way round.'; return '0.0700 / 0.0100 = 7.'; } }
+    ] },
+  { id: 'p7', spec: '1.7', title: 'Percentage purity',
+    intro: '2.50 g of impure CaCO₃ reacts with excess HCl and gives 0.880 g of CO₂. Use Mr(CaCO₃) = 100 and Mr(CO₂) = 44.0. The equation is 1 : 1 for CaCO₃ and CO₂.',
+    close: 'Purity uses the equation to find the mass of pure CaCO₃, then compares that with the sample. 0.880 / 2.50 × 100 is 35.2%, and it has not used the equation.',
+    steps: [
+      { prompt: 'Moles of CO₂', answer: 0.02, tol: 0.0002, miss: function (v) { return Math.abs(v - 0.88) < 0.01 ? '0.880 is the mass. Divide by 44.0.' : '0.880 ÷ 44.0 = 0.0200 mol.'; } },
+      { prompt: 'Mass of pure CaCO₃, in g', answer: 2, tol: 0.01, miss: function (v) { if (Math.abs(v - 0.02) < 0.001) return '0.0200 is the amount in moles. Multiply by Mr 100.'; if (Math.abs(v - 1.76) < 0.02) return '1.76 uses 88 instead of 100. Mr of CaCO₃ is 100.'; return '0.0200 × 100 = 2.00 g.'; } },
+      { prompt: 'Percentage purity', answer: 80, tol: 0.15, miss: function (v) { if (Math.abs(v - 35.2) < 0.2) return '35.2% is 0.880 / 2.50 × 100. Convert the CO₂ into moles of CaCO₃ first.'; return '2.00 / 2.50 × 100 = 80.0%.'; } }
+    ] }
+];
+
+function t1Load() {
+  if (t1Store) return t1Store;
+  try { t1Store = JSON.parse(localStorage.getItem(T1_CHECK_KEY) || ''); } catch (e) { t1Store = null; }
+  if (!t1Store || !t1Store.items) t1Store = { items: {} };
+  return t1Store;
+}
+function t1Save() { try { localStorage.setItem(T1_CHECK_KEY, JSON.stringify(t1Store)); } catch (e) {} }
+function t1Esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+function t1Shuffle(list) {
+  var a = list.slice();
+  for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; }
+  return a;
+}
+function t1Norm(s) {
+  var map = { '₀':'0','₁':'1','₂':'2','₃':'3','₄':'4','₅':'5','₆':'6','₇':'7','₈':'8','₉':'9' };
+  return String(s || '').replace(/\s+/g, '').replace(/[₀-₉]/g, function (ch) { return map[ch] || ch; }).toUpperCase();
+}
+function t1Num(raw) {
+  var s = String(raw || '').replace(/\s+/g, '');
+  if (!s) return { error: 'Enter the value for this step.' };
+  if (s.indexOf(',') >= 0) return { error: 'Use a decimal point, not a comma.' };
+  var n = Number(s);
+  if (!isFinite(n)) return { error: 'Enter a number.' };
+  return { value: n };
+}
+function t1Mixed() {
+  var by = { '1.1': [], '1.2': [], '1.3': [], '1.4': [], '1.5': [], '1.6': [], '1.7': [], '1.8': [], '1.9': [], '1.10': [], '1.11': [], '1.12': [] };
+  T1_BANK.forEach(function (q) { (by[q.spec] || (by[q.spec] = [])).push(q); });
+  var store = t1Load();
+  var picked = [];
+  Object.keys(by).forEach(function (spec) {
+    var pool = by[spec].slice().sort(function (a, b) {
+      var aw = store.items[a.id] && store.items[a.id].correct ? 1 : 0;
+      var bw = store.items[b.id] && store.items[b.id].correct ? 1 : 0;
+      return aw - bw;
+    });
+    if (pool[0]) picked.push(pool[0]);
+  });
+  return t1Shuffle(picked).slice(0, 8);
+}
+function t1SetMode(mode) {
+  t1Mode = mode;
+  document.querySelectorAll('#t1-modes button').forEach(function (btn) {
+    btn.classList.toggle('is-on', btn.getAttribute('data-mode') === mode);
+  });
+  var sub = document.getElementById('t1-sub');
+  if (sub) sub.style.display = mode === 'practice' ? 'flex' : 'none';
+  if (mode === 'practice') t1SetFilter(t1Filter);
+  else if (mode === 'steps') { t1Step = 0; t1StepPos = 0; t1Miss = ''; t1RenderStep(); }
+  else { t1Queue = t1Shuffle(T1_WORDS); t1Pos = 0; t1RenderQ(); }
+}
+function t1SetFilter(filter) {
+  t1Filter = filter;
+  document.querySelectorAll('#t1-sub button').forEach(function (btn) {
+    btn.classList.toggle('is-on', btn.getAttribute('data-filter') === filter);
+  });
+  if (filter === 'mixed') t1Queue = t1Mixed();
+  else if (filter === 'all') t1Queue = t1Shuffle(T1_BANK);
+  else if (filter === 'missed') {
+    var store = t1Load();
+    t1Queue = t1Shuffle(T1_BANK.concat(T1_WORDS).filter(function (q) { return store.items[q.id] && !store.items[q.id].correct; }));
+  } else t1Queue = t1Shuffle(T1_BANK.filter(function (q) { return q.spec === filter; }));
+  t1Pos = 0;
+  t1RenderQ();
+}
+function t1Stat() {
+  var el = document.getElementById('t1-stat');
+  if (!el) return;
+  var store = t1Load();
+  var n = Object.keys(store.items).filter(function (k) { return store.items[k].correct; }).length;
+  el.textContent = n + ' checks scored';
+}
+function t1RenderQ() {
+  var stage = document.getElementById('t1-stage');
+  if (!stage) return;
+  t1Stat();
+  if (!t1Queue.length) {
+    stage.innerHTML = '<p class="t1-note">Nothing in this set yet. Missed fills up after a wrong answer. Mixed 8 is the short pass.</p>';
+    return;
+  }
+  if (t1Pos >= t1Queue.length) { t1Done(); return; }
+  var item = t1Queue[t1Pos];
+  var order = t1Shuffle(item.options.map(function (_, i) { return i; }));
+  var correctAt = order.indexOf(item.answer);
+  stage.innerHTML =
+    '<div class="t1-q"><div class="t1-kicker"><span>Question ' + (t1Pos + 1) + ' of ' + t1Queue.length + '</span><span class="t1-pill">Spec ' + t1Esc(item.spec) + '</span><b>' + t1Esc(item.skill) + '</b></div>' +
+    '<h3>' + t1Esc(item.q) + '</h3><div class="t1-options" id="t1-options">' +
+    order.map(function (oi, i) { return '<button type="button" data-i="' + i + '" onclick="t1Answer(' + i + ',' + correctAt + ')"><span class="t1-dot"></span><span>' + t1Esc(item.options[oi]) + '</span></button>'; }).join('') +
+    '</div><div class="t1-feedback" id="t1-feedback" aria-live="polite"></div>' +
+    '<div class="t1-actions"><button type="button" class="t1-text" onclick="t1Back()">Back</button></div>' +
+    '<p class="t1-keys">Keys 1–' + item.options.length + ' answer. Enter continues.</p></div>';
+  stage.dataset.order = order.join(',');
+  stage.dataset.locked = '0';
+}
+function t1Answer(index, correctAt) {
+  var stage = document.getElementById('t1-stage');
+  var item = t1Queue[t1Pos];
+  if (!item || !stage || stage.dataset.locked === '1') return;
+  stage.dataset.locked = '1';
+  var order = stage.dataset.order.split(',').map(Number);
+  var chosen = order[index];
+  var right = index === correctAt;
+  var store = t1Load();
+  store.items[item.id] = { spec: item.spec, correct: right, at: Date.now() };
+  t1Save();
+  t1Stat();
+  document.querySelectorAll('#t1-options button').forEach(function (btn, i) {
+    btn.disabled = true;
+    if (i === correctAt) btn.classList.add('is-right');
+    if (i === index && !right) btn.classList.add('is-wrong');
+  });
+  var fb = document.getElementById('t1-feedback');
+  fb.innerHTML = right
+    ? '<strong>That scores.</strong> ' + t1Esc(item.why[item.answer])
+    : '<strong>Not this one.</strong> ' + t1Esc(item.why[chosen]) + ' <strong>The line that scores:</strong> ' + t1Esc(item.options[item.answer]);
+  stage.querySelector('.t1-actions').innerHTML = '<button type="button" class="t1-text" onclick="t1Back()">Back</button><button type="button" class="t1-next" id="t1-next" onclick="t1Next()">' + (t1Pos + 1 === t1Queue.length ? 'See the set' : 'Next question') + '</button>';
+}
+function t1Next() { if (t1Pos < t1Queue.length) t1Pos += 1; t1RenderQ(); }
+function t1Back() { if (t1Pos > 0) t1Pos -= 1; t1RenderQ(); }
+function t1Done() {
+  var store = t1Load();
+  var right = 0;
+  t1Queue.forEach(function (q) { if (store.items[q.id] && store.items[q.id].correct) right += 1; });
+  document.getElementById('t1-stage').innerHTML = '<div class="t1-q"><h3>' + right + ' of ' + t1Queue.length + ' would have scored.</h3><p class="t1-note">' + (t1Queue.length - right ? 'Missed keeps the ones to retry.' : 'Nothing in this set was missed.') + '</p><button type="button" class="t1-next" onclick="t1SetMode(\'practice\')">Another set</button></div>';
+}
+function t1RenderStep() {
+  var stage = document.getElementById('t1-stage');
+  t1Stat();
+  var problem = T1_STEPS[t1Step];
+  if (!problem) {
+    stage.innerHTML = '<div class="t1-q"><h3>Calculations finished.</h3><p class="t1-note">Each one stops at the step that fails. The mole trainer in Tab 4 still marks a full method in one go.</p><button type="button" class="t1-next" onclick="t1Step=0;t1StepPos=0;t1Miss=\'\';t1RenderStep();">Start again</button></div>';
+    return;
+  }
+  var step = problem.steps[t1StepPos];
+  var done = problem.steps.slice(0, t1StepPos).map(function (s, i) { return '<p class="t1-done">Step ' + (i + 1) + ' · ' + t1Esc(s.prompt) + '</p>'; }).join('');
+  stage.innerHTML = '<div class="t1-q"><div class="t1-kicker"><span>Calculation ' + (t1Step + 1) + ' of ' + T1_STEPS.length + '</span><span class="t1-pill">Spec ' + t1Esc(problem.spec) + '</span></div><h3>' + t1Esc(problem.title) + '</h3><p class="t1-note">' + t1Esc(problem.intro) + '</p>' + done + '<label for="t1-input">' + t1Esc(step.prompt) + '</label><div class="t1-row"><input id="t1-input" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" aria-label="' + t1Esc(step.prompt) + '"><button type="button" class="t1-next" onclick="t1SubmitStep()">Check step</button></div>' + (t1Miss ? '<p class="t1-miss">' + t1Esc(t1Miss) + '</p>' : '') + '</div>';
+  var input = document.getElementById('t1-input');
+  if (input) input.focus();
+}
+function t1SubmitStep() {
+  var problem = T1_STEPS[t1Step];
+  var step = problem.steps[t1StepPos];
+  var raw = document.getElementById('t1-input').value;
+  var ok = false;
+  if (step.kind === 'text') {
+    ok = t1Norm(raw) === t1Norm(step.answer);
+    if (!ok) t1Miss = step.miss(raw);
+  } else {
+    var parsed = t1Num(raw);
+    if (parsed.error) t1Miss = parsed.error;
+    else if (Math.abs(parsed.value - step.answer) <= step.tol) ok = true;
+    else t1Miss = step.miss(parsed.value);
+  }
+  if (!ok) { t1RenderStep(); var again = document.getElementById('t1-input'); if (again) again.value = raw; return; }
+  t1Miss = '';
+  t1StepPos += 1;
+  if (t1StepPos >= problem.steps.length) {
+    var store = t1Load();
+    store.items[problem.id] = { spec: problem.spec, correct: true, at: Date.now() };
+    t1Save();
+    document.getElementById('t1-stage').innerHTML = '<div class="t1-q"><div class="t1-kicker"><span class="t1-pill">Spec ' + t1Esc(problem.spec) + '</span></div><h3>' + t1Esc(problem.title) + '</h3><p class="t1-feedback"><strong>All steps scored.</strong> ' + t1Esc(problem.close) + '</p><button type="button" class="t1-next" onclick="t1NextProblem()">' + (t1Step + 1 === T1_STEPS.length ? 'Finish calculations' : 'Next calculation') + '</button></div>';
+    return;
+  }
+  t1RenderStep();
+}
+function t1NextProblem() { t1Step += 1; t1StepPos = 0; t1Miss = ''; t1RenderStep(); }
+function t1Key(e) {
+  var view = document.getElementById('tab-check');
+  if (!view || !view.classList.contains('active')) return;
+  var tag = (e.target && e.target.tagName) || '';
+  if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') {
+    if (e.key === 'Enter' && e.target.id === 't1-input') { e.preventDefault(); t1SubmitStep(); }
+    return;
+  }
+  if (t1Mode === 'steps') return;
+  if (e.key >= '1' && e.key <= '4') {
+    var btn = document.querySelector('#t1-options button[data-i="' + (Number(e.key) - 1) + '"]');
+    if (btn && !btn.disabled) btn.click();
+  } else if (e.key === 'Enter') {
+    var next = document.getElementById('t1-next');
+    if (next) next.click();
+  }
+}
+document.addEventListener('keydown', t1Key);
+if (document.getElementById('t1-stage')) t1SetMode('practice');
+
 </script>
+
+<style id="t1-check-style">
+#tab-check { max-width: 42rem; }
+.t1-banner { display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 16px; border-radius:14px; background:#1c1c1e; border:1px solid rgba(255,255,255,.08); border-left:3px solid #0a84ff; }
+.t1-banner p { margin:0; color:#aeaeb2; font-size:14px; line-height:1.45; max-width:68ch; }
+.t1-banner strong { color:#f5f5f7; font-weight:600; }
+.t1-banner button, .t1-next { appearance:none; border:0; cursor:pointer; background:#0a84ff; color:#fff; font-weight:600; border-radius:980px; padding:8px 14px; font-size:14px; }
+.t1-banner button:active, .t1-next:active { transform:scale(.98); }
+.t1-head h2 { margin:0 0 6px; font-size:28px; font-weight:650; letter-spacing:-.022em; color:#f5f5f7; }
+.t1-head p, .t1-note { color:#aeaeb2; font-size:15px; line-height:1.45; }
+.t1-stat, .t1-keys, .t1-done { color:#8e8e93; font-size:13px; }
+.t1-seg { display:inline-flex; max-width:100%; overflow-x:auto; background:rgba(118,118,128,.24); border-radius:10px; padding:2px; margin:8px 0; }
+.t1-seg button, .t1-sub button { appearance:none; border:0; background:transparent; color:rgba(255,255,255,.72); font-size:13px; font-weight:500; padding:7px 12px; border-radius:8px; cursor:pointer; }
+.t1-seg button.is-on { background:rgba(99,99,102,.95); color:#fff; }
+.t1-sub { display:flex; flex-wrap:wrap; gap:4px; margin:0 0 14px; }
+.t1-sub button { color:#0a84ff; padding:4px 6px; }
+.t1-sub button.is-on { color:#f5f5f7; }
+.t1-kicker { display:flex; flex-wrap:wrap; gap:8px; align-items:center; color:#8e8e93; font-size:13px; margin-bottom:8px; }
+.t1-pill { font-size:12px; font-weight:600; color:#64d2ff; background:rgba(10,132,255,.14); border-radius:980px; padding:2px 8px; }
+.t1-q h3 { margin:0 0 14px; font-size:22px; line-height:1.28; font-weight:600; letter-spacing:-.02em; color:#f5f5f7; }
+.t1-options { background:#1c1c1e; border-radius:14px; overflow:hidden; border:1px solid rgba(255,255,255,.06); }
+.t1-options button { width:100%; text-align:left; display:flex; gap:12px; align-items:flex-start; padding:14px 16px; min-height:48px; border:0; border-bottom:1px solid rgba(255,255,255,.08); background:transparent; color:#f5f5f7; font-size:15px; line-height:1.4; cursor:pointer; font-family:inherit; }
+.t1-options button:last-child { border-bottom:0; }
+.t1-options button:hover { background:rgba(255,255,255,.04); }
+.t1-dot { flex:0 0 18px; width:18px; height:18px; margin-top:1px; border-radius:50%; border:1.5px solid rgba(255,255,255,.35); }
+.t1-options button.is-right { background:rgba(48,209,88,.16); box-shadow:inset 3px 0 0 #30d158; }
+.t1-options button.is-wrong { background:rgba(255,69,58,.16); box-shadow:inset 3px 0 0 #ff453a; }
+.t1-options button:disabled { cursor:default; }
+.t1-feedback, .t1-miss { margin-top:12px; color:#aeaeb2; font-size:15px; line-height:1.45; }
+.t1-feedback strong { color:#f5f5f7; }
+.t1-miss { color:#ff9f0a; }
+.t1-actions { display:flex; gap:16px; align-items:center; margin-top:16px; }
+.t1-text { appearance:none; background:transparent; border:0; color:#0a84ff; font-size:14px; font-weight:500; cursor:pointer; padding:8px 2px; }
+.t1-q label { display:block; font-size:17px; font-weight:600; margin:8px 0 10px; color:#f5f5f7; }
+.t1-row { display:flex; gap:8px; }
+.t1-row input { flex:1; padding:12px 14px; border-radius:12px; background:#1c1c1e; border:1px solid rgba(255,255,255,.12); color:#f5f5f7; font-size:16px; }
+.t1-done { margin:0 0 4px; }
+#tab-check details summary { cursor:pointer; color:#0a84ff; }
+@media (max-width:640px) { .t1-banner { flex-direction:column; align-items:flex-start; } .t1-head h2 { font-size:24px; } }
+@media (prefers-reduced-motion: reduce) { .t1-banner button, .t1-next { transition:none; } }
+</style>
+
 <script id="mux-script" data-mux-version="1.4.0">
 (function () {
   'use strict';
